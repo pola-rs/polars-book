@@ -1,0 +1,10 @@
+[book]
+authors = ["ritchie46"]
+language = "en"
+multilingual = false
+src = "src"
+title = "polars-book"
+
+[output.html]
+default-theme = "Ayu"
+mathjax-support = true
