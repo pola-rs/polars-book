@@ -5,3 +5,6 @@
 - [Lazy Polars](lazy_polars/intro.md)
     * [Predicate pushdown](lazy_polars/predicate_pushdown.md)
     * [Projection pushdown](lazy_polars/projection_pushdown.md)
+    * [Other optimizations](lazy_polars/other_optimizations.md)
+- [How can I?](how_can_i/intro.md)
+    * [GroupBy](how_can_i/groupby.md)
