@@ -1,5 +1,6 @@
 SHELL=/bin/bash
-PYTHON=.venv/bin/python
+#PYTHON=.venv/bin/python
+PYTHON=python
 
 .venv:
 	@python3  -m venv .venv
@@ -13,7 +14,6 @@ data/: .venv
 	$(PYTHON) -m micro_bench.groupby_pandas
 	$(PYTHON) -m micro_bench.groupby_polars
 	$(PYTHON) -m micro_bench.join
-	$(PYTHON) -m micro_bench.plot_results
 
 .PHONY: clean
 	@rm -r .venv
@@ -21,7 +21,10 @@ data/: .venv
 
 
 run: data
+	$(PYTHON) -m micro_bench.plot_results
 	$(PYTHON) -m book.src.examples.lazy_chapter.data_head
 	$(PYTHON) -m book.src.examples.lazy_chapter.predicate_pushdown_0
 	$(PYTHON) -m book.src.examples.lazy_chapter.predicate_pushdown_1
 	$(PYTHON) -m book.src.examples.lazy_chapter.projection_pushdown_0
+	$(PYTHON) -m book.src.examples.how_can_i.groupby
+	$(PYTHON) -m book.src.examples.how_can_i.aggregate
