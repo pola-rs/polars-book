@@ -8,3 +8,4 @@
     * [Other optimizations](lazy_polars/other_optimizations.md)
 - [How can I?](how_can_i/intro.md)
     * [GroupBy](how_can_i/groupby.md)
+    * [Aggregate](how_can_i/aggregate.md)
