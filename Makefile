@@ -31,3 +31,6 @@ run: data
 	$(PYTHON) -m book.src.examples.how_can_i.aggregate
 	$(PYTHON) -m book.src.examples.how_can_i.parse_dates
 	$(PYTHON) -m book.src.examples.how_can_i.conditionally_apply
+	$(PYTHON) -m book.src.examples.how_can_i.use_custom_functions
+	$(PYTHON) -m book.src.examples.how_can_i.use_custom_functions_1
+	$(PYTHON) -m book.src.examples.how_can_i.use_custom_functions_2
