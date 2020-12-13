@@ -1,5 +1,5 @@
 # Lazy Polars
-We directly skip the eager API and dive into the lazy API of Polars. We will be exploring it's functionality by exploring
+We directly skip the eager API and dive into the lazy API of Polars. We will be exploring its functionality by exploring
 two medium large datasets of usernames; the [reddit usernames dataset](https://www.reddit.com/r/datasets/comments/9i8s5j/dataset_metadata_for_69_million_reddit_users_in/)
 containing 69+ Million rows and a [runescape username dataset](https://github.com/RuneStar/name-cleanup-2014) containing
 55+ Million rows.
