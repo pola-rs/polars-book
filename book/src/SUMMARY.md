@@ -11,3 +11,5 @@
     * [Aggregate](how_can_i/aggregate.md)
     * [Conditionally apply](how_can_i/conditionally_apply.md)
     * [Parse dates](how_can_i/parse_dates.md)
+    * [Use custom functions](how_can_i/use_custom_functions.md)
+- [Reference guide](reference.md)
