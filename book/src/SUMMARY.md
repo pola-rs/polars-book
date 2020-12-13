@@ -1,7 +1,6 @@
 # Summary
 
 - [Introduction](introduction/introduction.md)
-    * [Micro benchmarks](introduction/micro_benchmarks.md)
 - [Lazy Polars](lazy_polars/intro.md)
     * [Predicate pushdown](lazy_polars/predicate_pushdown.md)
     * [Projection pushdown](lazy_polars/projection_pushdown.md)
@@ -13,3 +12,4 @@
     * [Parse dates](how_can_i/parse_dates.md)
     * [Use custom functions](how_can_i/use_custom_functions.md)
 - [Reference guide](reference.md)
+- [Micro benchmarks](micro_benchmarks.md)

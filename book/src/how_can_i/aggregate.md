@@ -7,7 +7,7 @@ If you want to do a specific aggregation on all columns you can use the wildcard
 ## Examples
 ```python
 {{#include ../examples/how_can_i/aggregate.py:1:8}}
-reddit.collect()
+reddit.fetch()
 ```
 
 ```text

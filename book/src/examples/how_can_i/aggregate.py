@@ -6,6 +6,6 @@ reddit = pl.scan_csv("data/reddit.csv").select(
 )
 
 if __name__ == "__main__":
-    df = reddit.collect()
+    df = reddit.fetch()
     with open("book/src/outputs/how_can_i_aggregate.txt", "w") as f:
         f.write(str(df))

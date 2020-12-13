@@ -9,6 +9,6 @@ reddit = (
 )
 
 if __name__ == "__main__":
-    df = reddit.collect()
+    df = reddit.fetch()
     with open("book/src/outputs/how_can_i_groupby.txt", "w") as f:
         f.write(str(df))
