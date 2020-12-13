@@ -1,9 +1,8 @@
 import pypolars as pl
 from pypolars.lazy import *
 
-reddit = (
-    pl.scan_csv("data/reddit.csv")
-    .select([pl.sum("comment_karma"), pl.min("link_karma")])
+reddit = pl.scan_csv("data/reddit.csv").select(
+    [pl.sum("comment_karma"), pl.min("link_karma")]
 )
 
 if __name__ == "__main__":

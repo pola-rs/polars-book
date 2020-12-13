@@ -21,6 +21,7 @@ data/: .venv
 
 
 run: data
+	@mkdir -p book/src/outputs
 	$(PYTHON) -m micro_bench.plot_results
 	$(PYTHON) -m book.src.examples.lazy_chapter.data_head
 	$(PYTHON) -m book.src.examples.lazy_chapter.predicate_pushdown_0
@@ -28,3 +29,5 @@ run: data
 	$(PYTHON) -m book.src.examples.lazy_chapter.projection_pushdown_0
 	$(PYTHON) -m book.src.examples.how_can_i.groupby
 	$(PYTHON) -m book.src.examples.how_can_i.aggregate
+	$(PYTHON) -m book.src.examples.how_can_i.parse_dates
+	$(PYTHON) -m book.src.examples.how_can_i.conditionally_apply

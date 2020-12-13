@@ -9,3 +9,5 @@
 - [How can I?](how_can_i/intro.md)
     * [GroupBy](how_can_i/groupby.md)
     * [Aggregate](how_can_i/aggregate.md)
+    * [Conditionally apply](how_can_i/conditionally_apply.md)
+    * [Parse dates](how_can_i/parse_dates.md)
