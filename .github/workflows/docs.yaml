@@ -1,0 +1,42 @@
+name: Docs
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  test:
+    name: Docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ghp-import py-polars pandas matplotlib
+          sudo apt install graphviz
+          cargo install mdbook --vers "^0.4"
+
+      - name: Run examples
+        run: |
+          bash download.sh
+          make .venv
+          make data
+          make run
+
+      - name: deploy docs
+        run: |
+          mdbook build --dest-dir ../docs book
+          ghp-import --no-jekyll docs
+          git push -qf https://${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git gh-pages

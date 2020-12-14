@@ -1,16 +1,15 @@
 SHELL=/bin/bash
-#PYTHON=.venv/bin/python
-PYTHON=python
+PYTHON=.venv/bin/python
 
 .venv:
 	@python3  -m venv .venv
 	@.venv/bin/pip install -r requirements.txt;
 
 .PHONY: data
-data/: .venv
+data: .venv
 	-@mkdir "data"
 	@$(PYTHON) create_data.py
-	$(PYTHON) m micro_bench.csv_read
+	$(PYTHON) -m micro_bench.csv_read
 	$(PYTHON) -m micro_bench.groupby_pandas
 	$(PYTHON) -m micro_bench.groupby_polars
 	$(PYTHON) -m micro_bench.join
@@ -20,7 +19,7 @@ data/: .venv
 	@rm -r data
 
 
-run: data
+run:
 	@mkdir -p book/src/outputs
 	$(PYTHON) -m micro_bench.plot_results
 	$(PYTHON) -m book.src.examples.lazy_chapter.data_head

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir "data"
 wget https://github.com/RuneStar/name-cleanup-2014/releases/download/1.1/name-cleanup-2014.zip -O data/runescape.zip
 unzip -p data/runescape.zip > data/runescape.csv
 
