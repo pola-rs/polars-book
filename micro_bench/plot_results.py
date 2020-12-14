@@ -6,25 +6,22 @@ import numpy as np
 os.makedirs("book/src/img", exist_ok=True)
 
 
-with open("data/macro_bench_pandas.txt") as f:
-    pandas = [float(a) for a in f.read().split("\n")]
-
-with open("data/macro_bench_polars.txt") as f:
-    polars = [float(a) for a in f.read().split("\n")]
-
-lib = ["py-polars", "pandas"]
-x = ["macro"]
-
-plt.figure(figsize=(14, 4))
-plt.suptitle("macro query")
-
-df = pd.DataFrame({"query": x, "polars": polars, "pandas": pandas})
-
-df.plot.bar(x="query", figsize=(14, 6))
-plt.savefig("book/src/img/macro_query.png")
-
-
+# with open("data/macro_bench_pandas.txt") as f:
+#     pandas = [float(a) for a in f.read().split("\n")]
 #
+# with open("data/macro_bench_polars.txt") as f:
+#     polars = [float(a) for a in f.read().split("\n")]
+#
+# lib = ["py-polars", "pandas"]
+# x = ["macro"]
+#
+# plt.figure(figsize=(14, 4))
+# plt.suptitle("macro query")
+#
+# df = pd.DataFrame({"query": x, "polars": polars, "pandas": pandas})
+#
+# df.plot.bar(x="query", figsize=(14, 6))
+# plt.savefig("book/src/img/macro_query.png")
 
 
 with open("data/pandas_bench_join.txt") as f:
