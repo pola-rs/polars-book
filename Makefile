@@ -33,3 +33,4 @@ run:
 	$(PYTHON) -m book.src.examples.how_can_i.use_custom_functions
 	$(PYTHON) -m book.src.examples.how_can_i.use_custom_functions_1
 	$(PYTHON) -m book.src.examples.how_can_i.use_custom_functions_2
+	$(PYTHON) -m book.src.examples.how_can_i.process_strings

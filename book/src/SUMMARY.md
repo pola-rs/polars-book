@@ -11,5 +11,7 @@
     * [Conditionally apply](how_can_i/conditionally_apply.md)
     * [Parse dates](how_can_i/parse_dates.md)
     * [Use custom functions](how_can_i/use_custom_functions.md)
+    * [Process strings](how_can_i/process_strings.md)
+- [Numpy interop](numpy.md)
 - [Reference guide](reference.md)
 - [Micro benchmarks](micro_benchmarks.md)
