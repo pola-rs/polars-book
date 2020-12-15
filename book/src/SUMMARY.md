@@ -12,6 +12,7 @@
     * [Parse dates](how_can_i/parse_dates.md)
     * [Use custom functions](how_can_i/use_custom_functions.md)
     * [Process strings](how_can_i/process_strings.md)
+    * [Apply window functions](how_can_i/apply_window_functions.md)
 - [Numpy interop](numpy.md)
 - [Reference guide](reference.md)
 - [Micro benchmarks](micro_benchmarks.md)

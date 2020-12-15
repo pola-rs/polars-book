@@ -27,6 +27,7 @@ jobs:
           pip install ghp-import py-polars pandas matplotlib
           sudo apt install graphviz
           cargo install mdbook --vers "^0.4"
+#          cargo install mdbook-linkcheck --vers "^0.7"
 
       - name: Run examples
         run: |
