@@ -8,3 +8,5 @@ title = "polars-book"
 [output.html]
 default-theme = "Ayu"
 mathjax-support = true
+
+#[output.linkcheck] # validate links
