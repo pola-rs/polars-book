@@ -64,3 +64,19 @@ print(out.collect())
 ```text
 {{#include ../outputs/how_can_i_use_custom_functions_2.txt}}
 ```
+
+
+### GroupBy
+
+You can also use custom functions in a GroupBy context. The most intuitive way to apply custom functions is with the
+`apply_groups` method. This method will receive a `Series` of every group as input. Below we'll show 3 ways the get
+the length of the groups, where 2 use custom functions.
+
+```python
+{{#include ../examples/how_can_i/use_custom_functions_3.py:1:28}}
+print(out.collect())
+```
+
+```text
+{{#include ../outputs/how_can_i_use_custom_functions_3.txt}}
+```
