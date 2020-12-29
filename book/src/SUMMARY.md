@@ -13,6 +13,7 @@
     * [Use custom functions](how_can_i/use_custom_functions.md)
     * [Process strings](how_can_i/process_strings.md)
     * [Apply window functions](how_can_i/apply_window_functions.md)
+    * [Split/ apply / combine](how_can_i/split_apply_combine.md)
 - [Numpy interop](numpy.md)
 - [Reference guide](reference.md)
 - [Micro benchmarks](micro_benchmarks.md)
