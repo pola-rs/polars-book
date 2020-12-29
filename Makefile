@@ -19,7 +19,7 @@ data: .venv
 	@rm -r data
 
 
-run:
+run: .venv
 	@mkdir -p book/src/outputs
 	$(PYTHON) -m micro_bench.plot_results
 	$(PYTHON) -m book.src.examples.lazy_chapter.data_head
@@ -33,5 +33,6 @@ run:
 	$(PYTHON) -m book.src.examples.how_can_i.use_custom_functions
 	$(PYTHON) -m book.src.examples.how_can_i.use_custom_functions_1
 	$(PYTHON) -m book.src.examples.how_can_i.use_custom_functions_2
+	$(PYTHON) -m book.src.examples.how_can_i.use_custom_functions_3
 	$(PYTHON) -m book.src.examples.how_can_i.process_strings
 	$(PYTHON) -m book.src.examples.how_can_i.apply_window_functions
