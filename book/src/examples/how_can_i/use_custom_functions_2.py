@@ -10,11 +10,8 @@ def my_custom_func(s: Series) -> Series:
     return s.apply(lambda x: my_map[x])
 
 
-# a simple wrapper that take a function and sets output type
-my_udf = udf(my_custom_func, output_type=pl.datatypes.Utf8)
-
 # run query with udf
-out = df.lazy().with_column(col("foo").apply(my_udf).alias("mapped"))
+out = df.lazy().with_column(col("foo").map(my_custom_func).alias("mapped"))
 
 if __name__ == "__main__":
     with open("book/src/outputs/how_can_i_use_custom_functions_2.txt", "w") as f:

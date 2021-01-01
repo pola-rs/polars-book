@@ -49,7 +49,7 @@ out = (
     .agg(
         [
             col("date").list().alias("date"),
-            col("cumcases").apply_groups(mkdiff).alias("diff_cases"),
+            col("cumcases").apply(mkdiff).alias("diff_cases"),
         ]
     )
     .explode(["date", "diff_cases"])
