@@ -12,10 +12,10 @@ def my_custom_func(s: Series) -> Series:
 
 
 # a simple wrapper that take a function and sets output type
-my_udf = udf(my_custom_func, output_type=pl.datatypes.Float64)
+my_udf = udf(my_custom_func, output_type=pl.Float64)
 
 # run query with udf
-out = df.lazy().filter(col("bar").apply(my_udf) > -1)
+out = df.lazy().filter(col("bar").map(my_udf) > -1)
 
 if __name__ == "__main__":
     with open("book/src/outputs/how_can_i_use_custom_functions_1.txt", "w") as f:

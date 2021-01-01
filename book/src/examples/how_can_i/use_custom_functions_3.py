@@ -17,10 +17,8 @@ out = (
     .groupby("fruits")
     .agg(
         [
-            col("cars").apply_groups(lambda groups: groups.len()).alias("custom_1"),
-            col("cars")
-            .apply(lambda x: x.apply(lambda groups: groups.len()))
-            .alias("custom_2"),
+            col("cars").apply(lambda groups: groups.len()).alias("custom_1"),
+            col("cars").apply(lambda groups: groups.len()).alias("custom_2"),
             pl.count("cars"),
         ]
     )

@@ -25,15 +25,22 @@ initially inferred type, the value will be indicated as missing: `null`. If you 
 it's recommended to provide this information to Polars.
 
 ```python
-s.apply(lambda x: my_map[x], dtype_out=pl.datatypes.Utf8)
+s.apply(lambda x: my_map[x], dtype_out=pl.Utf8)
 ```
 
 ### Lazy
-In lazy you can also apply custom functions. It should be noted that there are differences with eager. In the eager API
-the function in `.apply` works on a single element level. The `lambda` we used above got `int` as input and returned `str`
-ofter finding the right key in the `dictionary`.
+In lazy you can apply custom functions via the `.map` and the `.apply` methods.
+ 
+#### map
+You can use `map` to map from a `Series` to a `Series` or a `DataFrame` to 
+a `DataFrame`. 
 
-In lazy the `.apply` get's a whole `Series` and input and must return a new `Series`. The output type must also be provided
+#### apply
+Or you can use `apply` to operate on the values of a `Series`. The function passed to `.apply` operate on a single primitive 
+(e.g. int, str, bool).
+The `lambda` we used above got `int` as input and returned `str` after finding the right key in the `dictionary`.
+
+When a custom function is used, the output type must also be provided
 because for the optimizer to be able to do optimizations the Schema of the query needs to be known at all times.
 
 ```python
@@ -53,11 +60,11 @@ the query execution on the available cores on your machine. However, in Python t
 So if you have many UDF's they'd have to wait in line until they are allowed there GIL time.
 
 
-### Double apply
-In the lazy UDF you can always use the eager custom lambas as well. To go back to our first example *applying a dictonary map*:
+### Apply
+Similarly as done in the eager example, we can also `apply` a lambda over the elements of a `Series`:
 
 ```python
-{{#include ../examples/how_can_i/use_custom_functions_2.py:1:18}}
+{{#include ../examples/how_can_i/use_custom_functions_2.py:1:15}}
 print(out.collect())
 ```
 
@@ -73,7 +80,7 @@ You can also use custom functions in a GroupBy context. The most intuitive way t
 the length of the groups, where 2 use custom functions.
 
 ```python
-{{#include ../examples/how_can_i/use_custom_functions_3.py:1:28}}
+{{#include ../examples/how_can_i/use_custom_functions_3.py:1:26}}
 print(out.collect())
 ```
 
