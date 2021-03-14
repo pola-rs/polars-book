@@ -69,7 +69,7 @@ with open("data/pandas_bench_gb.txt") as f:
     pandas = parse_result(f)
 
 with open("data/polars_bench_gb.txt") as f:
-    pypolars = parse_result(f)
+    polars = parse_result(f)
 
 sizes = [1e4, 1e5, 1e6, 1e7]
 lib = ["py-polars", "pandas"]
@@ -80,14 +80,14 @@ plt.suptitle("Group by on 10 groups")
 plt.subplots_adjust(wspace=0.4)
 r = 0
 ax = ax[None, :]
-for i in range(len(pypolars)):
+for i in range(len(polars)):
     c = i
     ca = ax[r, c]
 
     ca.set_title(f"{int(sizes[i]):,} rows")
     ca.bar(
         x,
-        [pypolars[i], pandas[i]],
+        [polars[i], pandas[i]],
         color=["C0", "C1"],
         width=0.4,
         label="int",
@@ -102,21 +102,21 @@ with open("data/pandas_gb_mem.txt") as f:
     pandas = [float(a) for a in f.read().split("\n")[:-1]]
 
 with open("data/polars_gb_mem.txt") as f:
-    pypolars = [float(a) for a in f.read().split("\n")[:-1]]
+    polars = [float(a) for a in f.read().split("\n")[:-1]]
 
 fig, ax = plt.subplots(1, len(sizes), figsize=(14, 4))
 plt.suptitle("Memory usage during Groupby")
 plt.subplots_adjust(wspace=0.5, bottom=0.2)
 r = 0
 ax = ax[None, :]
-for i in range(len(pypolars)):
+for i in range(len(polars)):
     c = i
     ca = ax[r, c]
 
     ca.set_title(f"{int(sizes[i]):,} rows")
     ca.bar(
         x,
-        [pypolars[i], pandas[i]],
+        [polars[i], pandas[i]],
         color=["C0", "C1"],
         alpha=0.75,
         width=0.4,

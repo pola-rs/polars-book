@@ -1,6 +1,6 @@
 import datatable as dt
 from utils import peak_memory, gb_data_files, simple_bench
-import pypolars as pl
+import polars as pl
 import pandas as pd
 
 

@@ -1,4 +1,4 @@
-import pypolars as pl
+import polars as pl
 
 my_map = {1: "foo", 2: "bar", 3: "ham", 4: "spam", 5: "eggs"}
 

@@ -1,5 +1,5 @@
-import pypolars as pl
-from pypolars.lazy import *
+import polars as pl
+from polars.lazy import *
 import numpy as np
 
 np.random.seed(1)
