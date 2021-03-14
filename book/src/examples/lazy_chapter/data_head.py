@@ -1,4 +1,4 @@
-import pypolars as pl
+import polars as pl
 
 df = pl.read_csv("./data/reddit.csv", stop_after_n_rows=10)
 df.head()

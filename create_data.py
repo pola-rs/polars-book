@@ -1,6 +1,6 @@
 import numpy as np
 from pandas.util.testing import rands
-import pypolars as pl
+import polars as pl
 
 data_dir = "./data"
 

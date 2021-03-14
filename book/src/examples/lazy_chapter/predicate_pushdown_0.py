@@ -1,5 +1,5 @@
-import pypolars as pl
-from pypolars.lazy import *
+import polars as pl
+from polars.lazy import *
 
 # A scan is a lazy read. This means nothing happens.
 reddit = pl.scan_csv("data/reddit.csv")
