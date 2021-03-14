@@ -1,4 +1,4 @@
 pandas
-py-polars
+polars
 datatable
 matplotlib

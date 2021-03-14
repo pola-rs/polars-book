@@ -12,7 +12,7 @@ os.makedirs("book/src/img", exist_ok=True)
 # with open("data/macro_bench_polars.txt") as f:
 #     polars = [float(a) for a in f.read().split("\n")]
 #
-# lib = ["py-polars", "pandas"]
+# lib = ["polars", "pandas"]
 # x = ["macro"]
 #
 # plt.figure(figsize=(14, 4))
@@ -72,7 +72,7 @@ with open("data/polars_bench_gb.txt") as f:
     polars = parse_result(f)
 
 sizes = [1e4, 1e5, 1e6, 1e7]
-lib = ["py-polars", "pandas"]
+lib = ["polars", "pandas"]
 x = np.arange(1, 3)
 
 fig, ax = plt.subplots(1, len(sizes), figsize=(14, 4))

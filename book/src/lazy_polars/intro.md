@@ -5,7 +5,7 @@ containing 69+ Million rows and a [runescape username dataset](https://github.co
 55+ Million rows.
 
 Let's write our first lines of Polars and see what kind of data we got. If you haven't done this already you can install
-the py-polars from PyPi: `$ pip install --upgrade py-polars`
+polars from PyPi: `$ pip install --upgrade polars`
 
 ## Reddit data
 ```python
