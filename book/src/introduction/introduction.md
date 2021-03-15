@@ -63,3 +63,8 @@ This is a concise summary of the features that allow Polars to meet its goals.
 ## Possibilities
 * Memory mapped files
     - Out of core analysis.
+
+## Acknowledgements
+Development of Polars is proudly powered by
+
+[![Xomnia](../img/xomnia_logo.svg)](https://www.xomnia.com)
