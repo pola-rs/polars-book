@@ -67,4 +67,4 @@ This is a concise summary of the features that allow Polars to meet its goals.
 ## Acknowledgements
 Development of Polars is proudly powered by
 
-[![Xomnia](../img/xomnia_logo.svg)](https://www.xomnia.com)
+[![Xomnia](https://raw.githubusercontent.com/ritchie46/img/master/polars/xomnia_logo.png)](https://www.xomnia.com)
