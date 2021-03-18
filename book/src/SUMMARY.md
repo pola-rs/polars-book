@@ -16,4 +16,4 @@
     * [Split/ apply / combine](how_can_i/split_apply_combine.md)
 - [Numpy interop](numpy.md)
 - [Reference guide](reference.md)
-- [Micro benchmarks](micro_benchmarks.md)
+- [Performance](performance.md)

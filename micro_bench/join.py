@@ -1,7 +1,7 @@
 import pandas as pd
 import datetime
 import numpy as np
-import pypolars as pl
+import polars as pl
 
 left = pd.read_csv("data/join_left_80000.csv")
 right = pd.read_csv("data/join_right_80000.csv")

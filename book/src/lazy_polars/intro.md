@@ -5,7 +5,7 @@ containing 69+ Million rows and a [runescape username dataset](https://github.co
 55+ Million rows.
 
 Let's write our first lines of Polars and see what kind of data we got. If you haven't done this already you can install
-the py-polars from PyPi: `$ pip install --upgrade py-polars`
+polars from PyPi: `$ pip install --upgrade polars`
 
 ## Reddit data
 ```python
@@ -28,7 +28,7 @@ the py-polars from PyPi: `$ pip install --upgrade py-polars`
 As we can see, Polars pretty prints the DataFrames and includes a header with column names and the data type of that column.
 If you want to learn more about the data types Polars supports, 
 see the [Rust reference](https://ritchie46.github.io/polars/polars/datatypes/enum.AnyType.html#variants) for a proper
-description and the [Python reference](https://ritchie46.github.io/polars/pypolars/datatypes.html) for the wrappers in Python.
+description and the [Python reference](https://ritchie46.github.io/polars/polars/datatypes.html) for the wrappers in Python.
 
 Ok, that's easy enough. Next section we get into more interesting stuff. We will take a look at some optimizations Polars 
 does regarding predicates.
