@@ -1,5 +1,5 @@
 import polars as pl
-from polars.lazy import *
+from polars.lazy import col
 
 df = pl.DataFrame({"shakespeare": "All that glitters is not gold".split(" ")})
 

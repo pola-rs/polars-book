@@ -1,5 +1,5 @@
 import polars as pl
-from polars.lazy import *
+from polars.lazy import col
 
 df = pl.DataFrame(
     {"date": ["2020-01-02", "2020-01-03", "2020-01-04"], "index": [1, 2, 3]}
