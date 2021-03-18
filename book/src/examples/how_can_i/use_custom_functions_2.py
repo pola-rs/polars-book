@@ -1,5 +1,5 @@
-import pypolars as pl
-from pypolars.lazy import *
+import polars as pl
+from polars.lazy import *
 
 my_map = {1: "foo", 2: "bar", 3: "ham", 4: "spam", 5: "eggs"}
 

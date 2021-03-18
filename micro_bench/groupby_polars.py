@@ -1,5 +1,5 @@
 from utils import peak_memory, gb_data_files, simple_bench
-import pypolars as pl
+import polars as pl
 
 
 files = gb_data_files()
