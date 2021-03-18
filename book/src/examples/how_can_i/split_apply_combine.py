@@ -1,5 +1,5 @@
 import polars as pl
-from polars.lazy import *
+from polars.lazy import col, lit
 import numpy as np
 
 uid = [item for sublist in [4 * [r] for r in range(3)] for item in sublist]

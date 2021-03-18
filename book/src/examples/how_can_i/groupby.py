@@ -1,10 +1,10 @@
 import polars as pl
-from polars.lazy import *
+from polars.lazy import col
 
 reddit = (
     pl.scan_csv("data/reddit.csv")
     .groupby("comment_karma")
-    .agg([col("name").n_unique().alias("unique_names"), col("link_karma").max()])
+    .agg([col("name").n_unique().alias("unique_names"), pl.max("link_karma")])
     .sort(by_column="unique_names", reverse=True)
 )
 
