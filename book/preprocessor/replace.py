@@ -4,7 +4,7 @@ import json
 import sys
 
 if len(sys.argv) > 1:
-    if sys.argv[1] == 'supports':
+    if sys.argv[1] == "supports":
         # sys.argv[2] is the renderer name
         sys.exit(0)
 
@@ -18,7 +18,5 @@ substitute = preprocessor["substitute"]
 content = json.dumps(book)
 
 content = content.replace(replace_token, substitute)
-# print(content, file=sys.stderr)
 
 sys.stdout.write(content)
-
