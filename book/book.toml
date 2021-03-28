@@ -15,3 +15,9 @@ mathjax-support = true
 # toggle this to fold side tabs
 enable = true
 level = 1
+
+# custom preprocessor to insert the API link
+[preprocessor.replace]
+command = "python3 preprocessor/replace.py"
+replace_token = "POLARS_API_LINK"
+substitute = "https://ritchie46.github.io/polars/python/polars"
