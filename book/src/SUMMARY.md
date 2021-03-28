@@ -1,6 +1,10 @@
 # Summary
 
 - [Introduction](introduction/introduction.md)
+- [Getting started](getting_started.md)
+- [IO](#)
+    * [File IO](io/files.md)
+    * [aws](io/aws.md)
 - [Lazy Polars](lazy_polars/intro.md)
     * [Predicate pushdown](lazy_polars/predicate_pushdown.md)
     * [Projection pushdown](lazy_polars/projection_pushdown.md)

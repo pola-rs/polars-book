@@ -10,3 +10,8 @@ default-theme = "Ayu"
 mathjax-support = true
 
 #[output.linkcheck] # validate links
+
+[output.html.fold]
+# toggle this to fold side tabs
+enable = true
+level = 1
