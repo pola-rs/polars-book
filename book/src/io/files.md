@@ -15,9 +15,9 @@ df = pl.read_csv("path.csv")
 ```
 
 CSV files come in many different flavors, so make sure to check the 
-[read_CSV API](https://ritchie46.github.io/polars/python/polars/functions.html#polars.functions.read_CSV)
+[read_csv API](POLARS_API_LINK/functions.html#polars.functions.read_csv).
 
-Writing to a CSV file can be done with [to_csv](https://ritchie46.github.io/polars/python/polars/frame.html#polars.frame.DataFrame.to_csv)
+Writing to a CSV file can be done with [to_csv](POLARS_API_LINK/frame.html#polars.frame.DataFrame.to_csv).
 
 ### Write CSV
 ```python

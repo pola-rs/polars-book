@@ -27,8 +27,8 @@ polars from PyPi: `$ pip install --upgrade polars`
 
 As we can see, Polars pretty prints the DataFrames and includes a header with column names and the data type of that column.
 If you want to learn more about the data types Polars supports, 
-see the [Rust reference](https://ritchie46.github.io/polars/polars/datatypes/enum.AnyType.html#variants) for a proper
-description and the [Python reference](https://ritchie46.github.io/polars/polars/datatypes.html) for the wrappers in Python.
+see the [Rust reference](POLARS_API_LINK/datatypes/enum.AnyType.html#variants) for a proper
+description and the [Python reference](POLARS_API_LINK/datatypes.html) for the wrappers in Python.
 
 Ok, that's easy enough. Next section we get into more interesting stuff. We will take a look at some optimizations Polars 
 does regarding predicates.
