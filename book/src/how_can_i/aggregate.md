@@ -5,20 +5,19 @@ Aggregations can be done in a `.select` or a `.with_column`/`with_columns` metho
 If you want to do a specific aggregation on all columns you can use the wildcard expression: `.select(col("*").sum())`
 
 The aggregation functions available are (may be outdated):
-* [avg](https://ritchie46.github.io/polars/polars/lazy/index.html#polars.lazy.avg)
-* [count](https://ritchie46.github.io/polars/polars/lazy/index.html#polars.lazy.avg)
-* [first](https://ritchie46.github.io/polars/polars/lazy/index.html#polars.lazy.avg)
-* [last](https://ritchie46.github.io/polars/polars/lazy/index.html#polars.lazy.avg)
-* [list](https://ritchie46.github.io/polars/polars/lazy/index.html#polars.lazy.avg)
-* [mean](https://ritchie46.github.io/polars/polars/lazy/index.html#polars.lazy.avg)
-* [median](https://ritchie46.github.io/polars/polars/lazy/index.html#polars.lazy.avg)
-* [n_unique](https://ritchie46.github.io/polars/polars/lazy/index.html#polars.lazy.avg)
-* [min](https://ritchie46.github.io/polars/polars/lazy/index.html#polars.lazy.avg)
-* [max](https://ritchie46.github.io/polars/polars/lazy/index.html#polars.lazy.avg)
-* [sum](https://ritchie46.github.io/polars/polars/lazy/index.html#polars.lazy.avg)
-* [var](https://ritchie46.github.io/polars/polars/lazy/index.html#polars.lazy.avg)
-* [std](https://ritchie46.github.io/polars/polars/lazy/index.html#polars.lazy.avg)
-* [quantile](https://ritchie46.github.io/polars/polars/lazy/index.html#polars.lazy.LazyFrame.quantile)
+* [count](POLARS_API_LINK/lazy/index.html#polars.lazy.Expr.count)
+* [first](POLARS_API_LINK/lazy/index.html#polars.lazy.Expr.first)
+* [last](POLARS_API_LINK/lazy/index.html#polars.lazy.Expr.last)
+* [list](POLARS_API_LINK/lazy/index.html#polars.lazy.Expr.list)
+* [mean](POLARS_API_LINK/lazy/index.html#polars.lazy.Expr.mean)
+* [median](POLARS_API_LINK/lazy/index.html#polars.lazy.Expr.median)
+* [n_unique](POLARS_API_LINK/lazy/index.html#polars.lazy.Expr.n_unique)
+* [min](POLARS_API_LINK/lazy/index.html#polars.lazy.Expr.min)
+* [max](POLARS_API_LINK/lazy/index.html#polars.lazy.Expr.max)
+* [sum](POLARS_API_LINK/lazy/index.html#polars.lazy.Expr.sum)
+* [var](POLARS_API_LINK/lazy/index.html#polars.lazy.Expr.var)
+* [std](POLARS_API_LINK/lazy/lazy/index.html#polars.lazy.Expr.std)
+* [quantile](POLARS_API_LINK/lazy/index.html#polars.lazy.LazyFrame.quantile)
 
 
 ## Examples
