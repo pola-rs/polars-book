@@ -50,7 +50,7 @@ df = pl.DataFrame({
     "bar": [None, "egg", "spam"]
 })
 
-df.to_parquet("path.csv")
+df.to_parquet("path.parquet")
 ```
 
 ## Scanning files
@@ -62,7 +62,7 @@ holder, called a `LazyFrame`. If you want to know why you'd want this (and you d
 import polars as pl
 
 # start a lazy query from a csv file.
-lf = pl.scan_csv("path.csv")
+lf = pl.scan_csv("path.parquet")
 
 
 # start a lazy query from a parquet file.
