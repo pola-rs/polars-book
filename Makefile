@@ -38,3 +38,4 @@ run: .venv
 	$(PYTHON) -m book.src.examples.how_can_i.process_strings
 	$(PYTHON) -m book.src.examples.how_can_i.apply_window_functions
 	$(PYTHON) -m book.src.examples.how_can_i.split_apply_combine
+	$(PYTHON) -m book.src.examples.groupby.dsl
