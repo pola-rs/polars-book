@@ -21,6 +21,7 @@
     * [Apply window functions](how_can_i/apply_window_functions.md)
     * [Split/ apply / combine](how_can_i/split_apply_combine.md)
 - [Numpy interop](numpy.md)
+- [Arrow interop](arrow.md)
 - [Reference guide](reference.md)
 - [Performance](performance/intro.md)
     * [Performance and string data](performance/string_data.md)
