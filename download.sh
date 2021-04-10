@@ -1,9 +1,8 @@
 #!/bin/bash
 
 mkdir "data"
-wget https://github.com/RuneStar/name-cleanup-2014/releases/download/1.1/name-cleanup-2014.zip -O data/runescape.zip
-unzip -p data/runescape.zip > data/runescape.csv
+wget https://github.com/ritchie46/static/releases/download/0.0.1/reddit100k.tar.gz -O data/reddit.tar.gz
+tar -xf data/reddit.tar.gz -O > data/reddit.csv
 
-wget https://files.pushshift.io/reddit/69M_reddit_accounts.csv.gz -O data/reddit.gz
-gunzip -c data/reddit.gz > data/reddit.csv
-
+wget https://github.com/ritchie46/static/releases/download/0.0.1/runescape100k.tar.gz -O data/runescape.tar.gz
+tar -xf data/runescape.tar.gz -O > data/runescape.csv
