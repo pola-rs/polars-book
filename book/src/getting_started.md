@@ -142,8 +142,8 @@ If you want to dive right into the API docs, follow one of these links.
 
 ### Eager API
 The eager API is similar to pandas. Operations are executed directly in an imperative manner. 
-The important data structures are [DataFrame's](https://ritchie46.github.io/polars/python/polars/frame.html#polars.frame.DataFrame) 
-and [Series](https://ritchie46.github.io/polars/python/polars/series.html#polars.series.Series)
+The important data structures are [DataFrame's](POLARS_API_LINK/frame.html#polars.frame.DataFrame) 
+and [Series](POLARS_API_LINK/series.html#polars.series.Series)
 
 ### Lazy API
 The lazy API builds a query plan. Nothing is executed until you explicitly ask polars to execute the query 
@@ -152,10 +152,10 @@ for optimizations and choosing the fastest algorithm given that context.
 
 #### LazyFrame
 A `LazyFrame` is a `DataFrame` abstraction that lazily keeps track of the query plan. 
-Read more about the [Lazy DataFrame operations](https://ritchie46.github.io/polars/python/polars/lazy/index.html#polars.lazy.LazyFrame).
+Read more about the [Lazy DataFrame operations](POLARS_API_LINK/lazy/index.html#polars.lazy.LazyFrame).
 
 #### Expr
 The arguments given to a `LazyFrame` can be constructed by building simple or complex queries. See the examples in the 
 [how can I? section in the book](https://ritchie46.github.io/polars-book/how_can_i/intro.html).
 
-The API of the [Expr can be found here](https://ritchie46.github.io/polars/python/polars/lazy/index.html#polars.lazy.Expr).
+The API of the [Expr can be found here](POLARS_API_LINK/lazy/index.html#polars.lazy.Expr).
