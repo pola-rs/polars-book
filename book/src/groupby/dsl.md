@@ -1,6 +1,6 @@
 # GroupBy DSL
 
-_This is available on any polars version >= `0.7.6-beta.1`_
+_Note that this fresh! this is currently available on any polars version >= `0.7.6-beta.2`_
 
 In the introduction on previous page we discussed that using custom Python functions, killed parallelization, and
 that we can use the DSL of the lazy API to mitigate this. Let's take a look at what that means.
