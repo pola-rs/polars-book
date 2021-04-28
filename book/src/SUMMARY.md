@@ -19,7 +19,7 @@
     * [Use custom functions](how_can_i/use_custom_functions.md)
     * [Process strings](how_can_i/process_strings.md)
     * [Apply window functions](how_can_i/apply_window_functions.md)
-    * [Split/ apply / combine](how_can_i/split_apply_combine.md)
+    * [Determine group statistics](how_can_i/det_group_statistics.md)
 - [Numpy interop](numpy.md)
 - [Arrow interop](arrow.md)
 - [Reference guide](reference.md)

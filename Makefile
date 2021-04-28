@@ -8,21 +8,22 @@ PYTHON=.venv/bin/python
 
 .PHONY: data
 data: .venv
-	-@mkdir "data"
+	@bash download.sh
 	@$(PYTHON) create_data.py
-	$(PYTHON) -m micro_bench.csv_read
-	$(PYTHON) -m micro_bench.groupby_pandas
-	$(PYTHON) -m micro_bench.groupby_polars
-	$(PYTHON) -m micro_bench.join
+#	$(PYTHON) -m micro_bench.csv_read
+#	$(PYTHON) -m micro_bench.groupby_pandas
+#	$(PYTHON) -m micro_bench.groupby_polars
+#	$(PYTHON) -m micro_bench.join
 
 .PHONY: clean
+clean:
 	@rm -r .venv
 	@rm -r data
 
 
 run: .venv
 	@mkdir -p book/src/outputs
-	$(PYTHON) -m micro_bench.plot_results
+	#$(PYTHON) -m micro_bench.plot_results
 	$(PYTHON) -m book.src.examples.lazy_chapter.data_head
 	$(PYTHON) -m book.src.examples.lazy_chapter.predicate_pushdown_0
 	$(PYTHON) -m book.src.examples.lazy_chapter.predicate_pushdown_1
@@ -37,5 +38,5 @@ run: .venv
 	$(PYTHON) -m book.src.examples.how_can_i.use_custom_functions_3
 	$(PYTHON) -m book.src.examples.how_can_i.process_strings
 	$(PYTHON) -m book.src.examples.how_can_i.apply_window_functions
-	$(PYTHON) -m book.src.examples.how_can_i.split_apply_combine
+	$(PYTHON) -m book.src.examples.how_can_i.det_group_statistics
 	$(PYTHON) -m book.src.examples.groupby.dsl
