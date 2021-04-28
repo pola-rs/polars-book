@@ -31,8 +31,6 @@ jobs:
 
       - name: Run examples
         run: |
-          bash download.sh
-          make .venv
           make data
           make run
 
