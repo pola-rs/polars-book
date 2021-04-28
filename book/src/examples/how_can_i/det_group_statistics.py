@@ -93,4 +93,4 @@ if __name__ == "__main__":
     with open("book/src/outputs/det_group_statistics_3.txt", "w") as f:
         f.write(str(out1.collect()))
     with open("book/src/outputs/det_group_statistics_4.txt", "w") as f:
-        f.write(str(out1.collect()))
+        f.write(str(out2.collect()))
