@@ -10,10 +10,6 @@ PYTHON=.venv/bin/python
 data: .venv
 	@bash download.sh
 	@$(PYTHON) create_data.py
-#	$(PYTHON) -m micro_bench.csv_read
-#	$(PYTHON) -m micro_bench.groupby_pandas
-#	$(PYTHON) -m micro_bench.groupby_polars
-#	$(PYTHON) -m micro_bench.join
 
 .PHONY: clean
 clean:
@@ -23,7 +19,6 @@ clean:
 
 run: .venv
 	@mkdir -p book/src/outputs
-	#$(PYTHON) -m micro_bench.plot_results
 	$(PYTHON) -m book.src.examples.lazy_chapter.data_head
 	$(PYTHON) -m book.src.examples.lazy_chapter.predicate_pushdown_0
 	$(PYTHON) -m book.src.examples.lazy_chapter.predicate_pushdown_1
