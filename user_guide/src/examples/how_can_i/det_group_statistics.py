@@ -1,6 +1,6 @@
-import numpy as np
 import polars as pl
 from polars.lazy import col, lit
+import numpy as np
 
 country = [
     item
