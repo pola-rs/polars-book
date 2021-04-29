@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    name: Docs
+    name: docs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,14 +19,15 @@ jobs:
 
       - name: Install dependencies
         run: |
+          pip install ghp-import
           sudo apt-get install --no-install-recommends -y graphviz make wget
           wget https://github.com/rust-lang/mdBook/releases/download/v0.4.7/mdbook-v0.4.7-x86_64-unknown-linux-gnu.tar.gz -O - | sudo tar -xzf - -C /usr/bin/
 
-      - name: Run examples
+      - name: Run snippets
         run: |
           make run
 
-      - name: deploy docs
+      - name: Deploy docs
         run: |
           mdbook build --dest-dir ../docs user_guide
           ghp-import --no-jekyll docs
