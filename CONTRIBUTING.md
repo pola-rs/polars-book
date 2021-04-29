@@ -88,12 +88,15 @@ The `Markdown` file should roughly match the following structure:
 3. The code example itself, included using the `{{#include .../_examples/<MODULE>}}` syntax.
 4. The output of the example, if applicable (follow the same syntax to include the file).
 5. A longer explanation if required.
+6. If applicable, provide both eager and lazy examples.
 
 ````text
 <> (commented line)
 # Do this
 
-The code snippet below allows to do this.
+## Eager API
+
+The code snippet below allows to do...
 
 ```python
 {{#include .../_examples/template/snippet.py}}
@@ -106,6 +109,10 @@ returning:
 ```
 
 On line 3 we can see that...
+
+## Lazy API
+
+...
 ````
 
 ### Snippet
