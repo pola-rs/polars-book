@@ -18,7 +18,7 @@ We use GitHub to host code, to track issues and feature requests, as well as acc
 3. Add the upstream remote with `git remote add upstream https://github.com/ritchie46/polars-book.git`
 4. All branches should derive from `master`, you can `git checkout -b <YOUR-BRANCH>` and write away.
 5. Commit/push to your own repo.
-6. Open a pull request as you would usually do, making sure the "base repository" is your own (`<YOUR-BRANH>` branch) and the "head repository" the upstream repo (`master` branch).
+6. Open a pull request as you would usually do, making sure the "base repository" is your own (`<YOUR-BRANCH>` branch) and the "head repository" the upstream repo (`master` branch).
 
 To update your own repo with code pushed on the upstream repo:
 
@@ -93,13 +93,13 @@ The `Markdown` file should roughly match the following structure:
 
 Each code example should:
 
-- run as a independent `Python` module,
-- find itself in its own folder within the `user_guide/src/_examples/...` directory,
-- try to make use of the toy datasets defined in the `user_guide/src/_examples/datasets.py` module (if applicable; add your own if needed),
-- write any output to a file within the `user_guide/src/_outputs/...` directory (under the same folder-tree),
-- be registered in the `run` recipe of the `Makefile` present at the root of the repo.
+- Run as a independent `Python` module.
+- Find itself in its own folder within the `user_guide/src/_examples/...` directory.
+- Try to make use of the toy datasets defined in the `user_guide/src/_examples/datasets.py` module (if applicable; add your own if needed).
+- Write any output to a file within the `user_guide/src/_outputs/...` directory (under the same folder-tree).
+- Be registered in the `run` recipe of the `Makefile` present at the root of the repo.
 
-For instance the core of the example without any extras:
+For instance, the core of the example without any extras:
 
 ```python
 # user_guide/src/_examples/template/example.py
