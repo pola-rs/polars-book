@@ -89,7 +89,7 @@ The `Markdown` file should roughly match the following structure:
 4. The output of the example, if applicable (follow the same syntax to include the file).
 5. A longer explanation if required.
 
-````markdown
+````text
 <> (commented line)
 # Do this
 
