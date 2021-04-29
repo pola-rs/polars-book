@@ -89,6 +89,25 @@ The `Markdown` file should roughly match the following structure:
 4. The output of the example, if applicable (follow the same syntax to include the file).
 5. A longer explanation if required.
 
+````markdown
+<> (commented line)
+# Do this
+
+The code snippet below allows to do this.
+
+```python
+{{#include .../_examples/template/snippet.py}}
+```
+
+returning:
+
+```text
+{{#include .../_outputs/template/output.py}}
+```
+
+On line 3 we can see that...
+````
+
 ### Snippet
 
 Each code example should:
