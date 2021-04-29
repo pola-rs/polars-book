@@ -12,7 +12,7 @@ $ docker run --entrypoint /bin/bash -it --rm -v `pwd`:/usr/src -p 8000:8000 --wo
 should get you there.
 (Note the `mdBook` executable is downloaded and *not* compiled to fasten the building of the image.)
 
-## Status
+### Status of the code snippets
 
 | Example                                | `Python` |
 |----------------------------------------|----------|
