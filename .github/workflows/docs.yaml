@@ -33,7 +33,7 @@ jobs:
 
       - name: Run examples
         run: |
-          make data
+#          make data
           make run
 
       - name: deploy docs
