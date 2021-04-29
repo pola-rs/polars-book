@@ -5,7 +5,7 @@ on:
 
 jobs:
   test:
-    name: test
+    name: tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,6 +19,6 @@ jobs:
         run: |
           sudo apt-get install --no-install-recommends -y graphviz make wget
 
-      - name: Run examples
+      - name: Run snippets
         run: |
           make run
