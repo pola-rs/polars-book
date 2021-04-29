@@ -18,7 +18,7 @@ We use GitHub to host code, to track issues and feature requests, as well as acc
 3. Add the upstream remote with `git remote add upstream https://github.com/ritchie46/polars-book.git`
 4. All branches should derive from `master`, you can `git checkout -b <YOUR-BRANCH>` and write away.
 5. Commit/push to your own repo.
-6. Open a pull request as you would usually do, making sure the "base repository" is your own (`<YOUR-BRANCH>` branch) and the "head repository" the upstream repo (`master` branch).
+6. Open a pull request as you would usually do, making sure the "base repository" is the upstream repo (`master` branch) and the "head repository" your own (`<YOUR-BRANCH>` branch).
 
 To update your own repo with code pushed on the upstream repo:
 
@@ -44,7 +44,6 @@ Feel free to contact the maintainers if that is a concern.
 ### Report bugs using GitHub Issues
 
 Do not hesitate to [open a new issue](https://github.com/ritchie46/polars-book/issues/new/choose).
-
 **Great Issues** tend to have:
 
 - A quick summary and/or background.
