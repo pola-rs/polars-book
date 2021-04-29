@@ -91,7 +91,7 @@ The `Markdown` file should roughly match the following structure:
 6. If applicable, provide both eager and lazy examples.
 
 ````text
-<> (commented line)
+<> (this is a commented line)
 # Do this
 
 ## Eager API
@@ -128,7 +128,7 @@ Each code example should:
 For instance, the core of an example without any extras:
 
 ```python
-# user_guide/src/_examples/template/example.py
+# user_guide/src/_examples/template/snippet.py
 import polars as pl
 
 dataset = pl.scan_csv("path.csv")
@@ -140,14 +140,14 @@ Writing to an output file, or any other step required but not needed in the code
 
 ```python
 # user_guide/src/_examples/template/__main__.py
-from .example import df
+from .snippet import df
 from ..constants import OUTPUT_BASE_DIR
 
 with open(f"{OUTPUT_BASE_DIR}/template/output.txt") as f:
     f.write(f"{df}\n")
 ```
 
-Simply importing the `example.py` in the `__main__.py` module will ensure that it is ran.
+Simply importing the `snippet.py` in the `__main__.py` module will ensure that it is ran.
 Finally, registering the example in the `Makefile` to make sure it is tested next time the User Guide is built:
 
 ```makefile
