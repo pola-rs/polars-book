@@ -1,6 +1,7 @@
-data/
-__pycache__/
-.venv/
-.idea/
+data
+outputs
+__pycache__
+.idea
+.venv
 *.png
-outputs/
+*.swp

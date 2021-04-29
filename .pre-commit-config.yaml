@@ -1,0 +1,28 @@
+default_language_version:
+    python: python3.8
+exclude: ^\..*
+files: ^.*\.py$
+repos:
+  - repo: https://github.com/pycqa/isort
+    rev: 5.8.0
+    hooks:
+    - id: isort
+      # https://pycqa.github.io/isort/docs/configuration/options/
+      args: [
+        --multi-line=3,
+        --profile=black,
+      ]
+  - repo: https://github.com/psf/black
+    rev: 20.8b1
+    hooks:
+    - id: black
+  - repo: https://github.com/pycqa/flake8
+    rev: 3.9.0
+    hooks:
+    - id: flake8
+      # https://flake8.pycqa.org/en/latest/user/options.html
+      # https://flake8.pycqa.org/en/latest/user/error-codes.html  
+      args: [
+        --max-doc-length=88,
+        --max-line-length=88,
+      ]
