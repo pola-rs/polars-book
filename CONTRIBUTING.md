@@ -99,7 +99,7 @@ Each code example should:
 - Write any output to a file within the `user_guide/src/_outputs/...` directory (under the same folder-tree).
 - Be registered in the `run` recipe of the `Makefile` present at the root of the repo.
 
-For instance, the core of the example without any extras:
+For instance, the core of an example without any extras:
 
 ```python
 # user_guide/src/_examples/template/example.py
@@ -121,7 +121,7 @@ with open(f"{OUTPUT_BASE_DIR}/template/output.txt") as f:
     f.write(f"{df}\n")
 ```
 
-Simply importing the `example.py` in the `__main__.py` file will ensure that it is ran.
+Simply importing the `example.py` in the `__main__.py` module will ensure that it is ran.
 Finally, registering the example in the `Makefile` to make sure it is tested next time the User Guide is built:
 
 ```makefile
