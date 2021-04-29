@@ -24,11 +24,6 @@ jobs:
 
       - name: Run examples
         run: |
-          sudo apt-get install --no-install-recommends -y graphviz make wget
-          wget https://github.com/rust-lang/mdBook/releases/download/v0.4.7/mdbook-v0.4.7-x86_64-unknown-linux-gnu.tar.gz -O - | sudo tar -xzf - -C /usr/bin/
-
-      - name: Run examples
-        run: |
           make run
 
       - name: deploy docs
