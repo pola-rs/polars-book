@@ -1,7 +1,8 @@
-name: Docs
+name: Polars User Guide code snippets
 
 on:
   - pull_request
+
 jobs:
   test:
     name: test
@@ -9,23 +10,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.7
+          python-version: 3.8
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          sudo apt install graphviz
+          sudo apt-get install --no-install-recommends -y graphviz make wget
 
       - name: Run examples
         run: |
-          make data
           make run
