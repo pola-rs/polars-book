@@ -93,7 +93,7 @@ The `Markdown` file should roughly match the following structure:
 
 Each code example should:
 
-- Run as a independent `Python` module.
+- Run as an independent `Python` module.
 - Find itself in its own folder within the `user_guide/src/_examples/...` directory.
 - Try to make use of the toy datasets defined in the `user_guide/src/_examples/datasets.py` module (if applicable; add your own if needed).
 - Write any output to a file within the `user_guide/src/_outputs/...` directory (under the same folder-tree).
