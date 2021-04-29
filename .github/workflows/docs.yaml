@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install ghp-import py-polars pandas matplotlib
+          pip install ghp-import polars pandas matplotlib
           sudo apt install graphviz
           cargo install mdbook --vers "^0.4"
 #          cargo install mdbook-linkcheck --vers "^0.7"
@@ -36,6 +36,6 @@ jobs:
 
       - name: deploy docs
         run: |
-          mdbook build --dest-dir ../docs book
+          mdbook build --dest-dir ../docs user_guide
           ghp-import --no-jekyll docs
           git push -qf https://${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git gh-pages
