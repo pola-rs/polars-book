@@ -1,9 +1,7 @@
 name: Polars User Guide code snippets
 
 on:
-  push:
-    branches:
-      - master
+  - pull_request
 
 jobs:
   test:
