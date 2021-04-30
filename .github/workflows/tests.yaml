@@ -19,17 +19,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y graphviz make wget
-          python -m pip install ghp-import
-          wget https://github.com/rust-lang/mdBook/releases/download/v0.4.7/mdbook-v0.4.7-x86_64-unknown-linux-gnu.tar.gz -O - | sudo tar -xzf - -C /usr/bin/
 
       - name: Run snippets
         run: |
           make run
-
-      - name: Deploy docs
-        run: |
-          cd user_guide
-          mdbook build --dest-dir ../docs .
-          cd ..
-          ghp-import --no-jekyll docs
-          # git push -qf https://${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git gh-pages
