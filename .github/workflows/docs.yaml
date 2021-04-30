@@ -30,6 +30,8 @@ jobs:
 
       - name: Deploy docs
         run: |
-          mdbook build --dest-dir ../docs user_guide
+          cd user_guide
+          mdbook build --dest-dir ../docs .
+          cd ..
           ghp-import --no-jekyll docs
           git push -qf https://${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git gh-pages
