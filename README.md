@@ -19,8 +19,8 @@ should get you there.
 | CSV files                              | ✔        |
 | Parquet files                          | ✔        |
 | Interact with an AWS bucket            | ✔        |
-| Interact with an Azure Blob Storage    | ✔        |
-| Interact with a GCP Storage            | ✔        |
+| Interact with an Azure Blob Storage    | ✗        |
+| Interact with a GCP Storage            | ✗        |
 | Interact with a database               | ✗        |
 | Process strings                        | ✔        |
 | Process timestamps                     | ✔        |
@@ -28,19 +28,19 @@ should get you there.
 | Process nested values (explode)        | ✗        |
 | Rename columns and other manipulations | ✗        |
 | Column/row selection                   | ✗        |
-| Filter                                 | ✔        |
+| Filter                                 | ✗        |
 | Group                                  | ✔        |
-| Join                                   | ✔        |
-| Sort                                   | ✔        |
+| Join                                   | ✗        |
+| Sort                                   | ✗        |
 | Pivot/melt                             | ✗        |
 | Aggregate                              | ✔        |
+| Conditionally apply                    | ✔        |
 | Stacking                               | ✗        |
 | Sampling                               | ✗        |
 | `Arrow` interoperability               | ✔        |
 | `NumPy` interoperability               | ✔        |
 | Apply `NumPy` universal functions      | ✗        |
-| Apply custom functions                 | ✔        |
+| Apply custom functions (UDFs)          | ✔        |
 | Apply window functions                 | ✔        |
 | Apply rolling-window functions         | ✗        |
-| Conditionally apply                    | ✔        |
-| Manual split/apply/combine             | ✔        |
+| Group statistics                       | ✔        |
