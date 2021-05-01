@@ -9,14 +9,12 @@ dataset = pl.DataFrame(
     }
 )
 
-df = (
-    dataset.lazy()
-    .with_columns(
-        [
-            pl.sum("A").over("fruits").alias("fruit_sum_A"),
-            pl.first("B").over("fruits").alias("fruit_first_B"),
-            pl.max("B").over("cars").alias("cars_max_B"),
-        ]
-    )
-    .collect()
+q = dataset.lazy().with_columns(
+    [
+        pl.sum("A").over("fruits").alias("fruit_sum_A"),
+        pl.first("B").over("fruits").alias("fruit_first_B"),
+        pl.max("B").over("cars").alias("cars_max_B"),
+    ]
 )
+
+df = q.collect()

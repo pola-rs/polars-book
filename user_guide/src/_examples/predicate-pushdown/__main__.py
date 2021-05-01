@@ -1,12 +1,12 @@
 from ..paths import OUTPUT_BASE_DIR, create_if_not_exists
-from .snippet1 import dataset as dataset1
 from .snippet1 import df1
-from .snippet2 import dataset as dataset2
+from .snippet1 import q as q1
 from .snippet2 import df as df2
+from .snippet2 import q as q2
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/predicate-pushdown")
 
-for n, x in enumerate([dataset1, dataset2]):
+for n, x in enumerate([q1, q2]):
     x.show_graph(optimized=False, show=False, output_path=f"{path}/graph{n + 1}.png")
     x.show_graph(
         optimized=True, show=False, output_path=f"{path}/graph{n + 1}-optimized.png"

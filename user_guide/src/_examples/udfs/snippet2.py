@@ -15,4 +15,4 @@ my_udf = pl.udf(my_custom_func, output_type=pl.Float64)
 
 q = dataset.lazy().filter(pl.col("bar").map(my_udf) > -1)
 
-df = dataset.collect()
+df = q.collect()

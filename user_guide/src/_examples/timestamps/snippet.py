@@ -4,8 +4,8 @@ dataset = pl.DataFrame(
     {"date": ["2020-01-02", "2020-01-03", "2020-01-04"], "index": [1, 2, 3]}
 )
 
-df = (
-    dataset.lazy()
-    .with_column(pl.col("date").str_parse_date(pl.datatypes.Date32, "%Y-%m-%d"))
-    .collect()
+q = dataset.lazy().with_column(
+    pl.col("date").str_parse_date(pl.datatypes.Date32, "%Y-%m-%d")
 )
+
+df = q.collect()
