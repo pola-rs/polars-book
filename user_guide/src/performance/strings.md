@@ -10,12 +10,12 @@ The array `["foo", "bar", "ham"]` is encoded by :
   * an offset array indicating the start (and end) of each string `[0, 2, 5, 8]`,
   * a null bitmap, indicating null values.
 
-![](../_images/arrow-strings.svg)
+![](https://raw.githubusercontent.com/ritchie46/static/master/polars/arrow-string.svg)
 
 This memory structure is very cache-efficient if we are to read the string values.
 Especially if we compare it to a `Vec<String>` (an array of heap allocated string data in `Rust`).
 
-![](../_images/pandas-strings.svg)
+![](https://raw.githubusercontent.com/ritchie46/static/master/polars/pandas-string.svg)
 
 However, if we need to reorder the `Arrow` `UTF8` array, we need to swap around all the bytes of the string values, which can become very expensive when dealing with large strings.
 On the other hand, for the `Vec<String>`, we only need to swap pointers around which is only 8 bytes data that have to be moved with little cost.
