@@ -1,6 +1,7 @@
 data
-outputs
+_outputs
 __pycache__
+.devcontainer
 .idea
 .venv
 *.png
