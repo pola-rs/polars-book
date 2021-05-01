@@ -10,11 +10,11 @@ Most specifically, both the "split" and "apply" phases are executed in a multith
 
 A simple grouping operation is taken below as an example to illustrate this approach:
 
-![](../_images/polars-split-apply-combine.svg)
+![](https://raw.githubusercontent.com/ritchie46/static/master/polars/split-apply-combine-par.svg)
 
 For the hashing operations performed during the "split" phase, `Polars` uses a multithreaded lock-free approach that can is illustrated on the following schema:
 
-![](../_images/polars-lock-free-hash.svg)
+![](https://raw.githubusercontent.com/ritchie46/static/master/polars/lock-free-hash.svg)
 
 This parallelization allows the grouping and joining operations (for instance) to be blazingly fast!
 
