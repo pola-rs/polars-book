@@ -60,7 +60,7 @@ So let's start very simple and see how we can use the DSL to do increasingly com
 Let's start with a simple dataset [US congress dataset](https://github.com/unitedstates/congress-legislators).
 
 ```python
-{{#include ../_examples/groupby-dsl/snippet1.py}}
+{{#include ../examples/groupby_dsl/snippet1.py}}
 ```
 
 #### Basic aggregations
@@ -83,11 +83,11 @@ Per GROUP `"first_name"` we
 Besides the aggregation, we immediately sort the result and limit to the top 5 so that we have a nice summary overview.
 
 ```python
-{{#include ../_examples/groupby-dsl/snippet1.py}}
+{{#include ../examples/groupby_dsl/snippet1.py}}
 ```
 
 ```text
-{{#include ../_outputs/groupby-dsl/output1.txt}}
+{{#include ../outputs/groupby_dsl/output1.txt}}
 ```
 
 #### Conditionals
@@ -97,19 +97,19 @@ the DataFrame.
 
 
 ```python
-{{#include ../_examples/groupby-dsl/snippet2.py}}
+{{#include ../examples/groupby_dsl/snippet2.py}}
 ```
 ```text
-{{#include ../_outputs/groupby-dsl/output2.txt}}
+{{#include ../outputs/groupby_dsl/output2.txt}}
 ```
 
 Something similar could of course also be done with a nested GROUPBY, but that would not allow me showing these nice features. 😉
 
 ```python
-{{#include ../_examples/groupby-dsl/snippet3.py}}
+{{#include ../examples/groupby_dsl/snippet3.py}}
 ```
 ```text
-{{#include ../_outputs/groupby-dsl/output3.txt}}
+{{#include ../outputs/groupby_dsl/output3.txt}}
 ```
 
 #### Filtering
@@ -122,10 +122,10 @@ during runtime of the query.
 
 
 ```python
-{{#include ../_examples/groupby-dsl/snippet4.py}}
+{{#include ../examples/groupby_dsl/snippet4.py}}
 ```
 ```text
-{{#include ../_outputs/groupby-dsl/output4.txt}}
+{{#include ../outputs/groupby_dsl/output4.txt}}
 ```
 
 
@@ -137,10 +137,10 @@ we could SORT and GROUPBY.
 
 
 ```python
-{{#include ../_examples/groupby-dsl/snippet5.py}}
+{{#include ../examples/groupby_dsl/snippet5.py}}
 ```
 ```text
-{{#include ../_outputs/groupby-dsl/output5.txt}}
+{{#include ../outputs/groupby_dsl/output5.txt}}
 ```
 
 
@@ -149,10 +149,10 @@ groupby context separate from the `DataFrame`.
 
 
 ```python
-{{#include ../_examples/groupby-dsl/snippet6.py}}
+{{#include ../examples/groupby_dsl/snippet6.py}}
 ```
 ```text
-{{#include ../_outputs/groupby-dsl/output6.txt}}
+{{#include ../outputs/groupby_dsl/output6.txt}}
 ```
 
 We can even sort by another column in the GROUPBY context. If we want to know if the alphabetically sorted name is male or
@@ -160,10 +160,10 @@ female we could add `col("gender").sort_by("first_name").first().alias("gender")
 
 
 ```python
-{{#include ../_examples/groupby-dsl/snippet7.py}}
+{{#include ../examples/groupby_dsl/snippet7.py}}
 ```
 ```text
-{{#include ../_outputs/groupby-dsl/output7.txt}}
+{{#include ../outputs/groupby_dsl/output7.txt}}
 ```
 
 ### Conclusion

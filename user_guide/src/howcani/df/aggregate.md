@@ -23,11 +23,11 @@ The available aggregation functions:
 For instance:
 
 ```python
-{{#include ../../_examples/aggregate/snippet.py}}
+{{#include ../../examples/aggregate/snippet.py}}
 ```
 
 yielding:
 
 ```text
-{{#include ../../_outputs/aggregate/output.txt}}
+{{#include ../../outputs/aggregate/output.txt}}
 ```

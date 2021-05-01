@@ -20,19 +20,19 @@ data: .venv
 
 run: data
 	-@mkdir -p user_guide/src/_outputs
-	$(PYTHON) -m user_guide.src._examples.aggregate
-	$(PYTHON) -m user_guide.src._examples.conditionally-apply
-	$(PYTHON) -m user_guide.src._examples.groupby
-	$(PYTHON) -m user_guide.src._examples.groupby-dsl
-	$(PYTHON) -m user_guide.src._examples.group-statistics
-	$(PYTHON) -m user_guide.src._examples.head
-	$(PYTHON) -m user_guide.src._examples.predicate-pushdown
-	$(PYTHON) -m user_guide.src._examples.projection-pushdown
-	$(PYTHON) -m user_guide.src._examples.strings
-	$(PYTHON) -m user_guide.src._examples.strings-performance
-	$(PYTHON) -m user_guide.src._examples.timestamps
-	$(PYTHON) -m user_guide.src._examples.udfs
-	$(PYTHON) -m user_guide.src._examples.window-functions
+	$(PYTHON) -m user_guide.src.examples.aggregate
+	$(PYTHON) -m user_guide.src.examples.conditionally_apply
+	$(PYTHON) -m user_guide.src.examples.groupby
+	$(PYTHON) -m user_guide.src.examples.groupby_dsl
+	$(PYTHON) -m user_guide.src.examples.group_statistics
+	$(PYTHON) -m user_guide.src.examples.head
+	$(PYTHON) -m user_guide.src.examples.predicate_pushdown
+	$(PYTHON) -m user_guide.src.examples.projection_pushdown
+	$(PYTHON) -m user_guide.src.examples.strings
+	$(PYTHON) -m user_guide.src.examples.strings_performance
+	$(PYTHON) -m user_guide.src.examples.timestamps
+	$(PYTHON) -m user_guide.src.examples.udfs
+	$(PYTHON) -m user_guide.src.examples.window_functions
 
 clean:
 	-@rm -fr .venv

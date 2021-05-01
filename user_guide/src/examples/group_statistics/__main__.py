@@ -4,7 +4,7 @@ from .snippet1 import df as df1
 from .snippet2 import df as df2
 from .snippet3 import df as df3
 
-path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/group-statistics")
+path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/group_statistics")
 
 with open(f"{path}/dataset.txt", "w") as f:
     f.write(f"{dataset}\n")

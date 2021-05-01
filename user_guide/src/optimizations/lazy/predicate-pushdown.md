@@ -9,7 +9,7 @@ table.
 So let's see if we can load some Reddit data and filter on a few predicates.
 
 ```python
-{{#include ../../_examples/predicate-pushdown/snippet1.py}}
+{{#include ../../examples/predicate_pushdown/snippet1.py}}
 ```
 
 If we were to run this query above, nothing would happen! This due to the lazyness, nothing will happend until specifically
@@ -26,7 +26,7 @@ reddit.fetch(n_rows=int(1e7))
 ```
 
 ```text
-{{#include ../../_outputs/predicate-pushdown/output1.txt}}
+{{#include ../../outputs/predicate_pushdown/output1.txt}}
 ```
 
 Above we see that from the 10 Million rows, 61503 rows match our predicate. 
@@ -39,7 +39,7 @@ In Polars we can visualize the query plan. Let's take a look.
 reddit.show_graph(optimized=False)
 ```
 
-![](../../_outputs/predicate-pushdown/graph1.png)
+![](../../outputs/predicate_pushdown/graph1.png)
 
 The astute reader maybe would notice that our query is not very optimal because we have 3 separate *FILTER* nodes. 
 That means that after every *FILTER* a new DataFrame is allocated, which will be input to the next *FILTER* and then 
@@ -47,7 +47,7 @@ deleted from memory, that must be redundant.
 And you know what.. He/she is right, the predicates should be combined, we should have written this query:
 
 ```python
-{{#include ../../_examples/predicate-pushdown/snippet2.py}}
+{{#include ../../examples/predicate_pushdown/snippet2.py}}
 ```
 
 That would translate to:
@@ -56,7 +56,7 @@ That would translate to:
 reddit_2.show_graph(optimized=False)
 ```
 
-![](../../_outputs/predicate-pushdown/graph2.png)
+![](../../outputs/predicate_pushdown/graph2.png)
 
 As we can see the predicates are combined. This would lead to less copying of data 
 
@@ -70,7 +70,7 @@ predicates down to the scan level! Let's see how our optimized query looks.
 reddit.show_graph(optimized=True)
 ```
 
-![](../../_outputs/predicate-pushdown/graph1-optimized.png)
+![](../../outputs/predicate_pushdown/graph1-optimized.png)
 
 It may be hard to see, but what is clear is that there is only a single node; the *CSV SCAN*. The predicate filtering
 is done during the reading of the csv. This means that this query's memory overhead is reduced by filtering factor!
