@@ -1,7 +1,7 @@
 from ..paths import OUTPUT_BASE_DIR, create_if_not_exists
 from .snippet import df
 
-path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/conditionally-apply")
+path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/conditionally_apply")
 
 with open(f"{path}/output.txt", "w") as f:
     f.write(f"{df}\n")

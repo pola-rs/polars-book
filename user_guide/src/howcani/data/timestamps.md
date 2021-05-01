@@ -17,11 +17,11 @@ For instance (check [this link](https://strftime.org/) for an comprehensive list
 Below a quick example:
 
 ```python
-{{#include ../../_examples/timestamps/snippet.py}}
+{{#include ../../examples/timestamps/snippet.py}}
 ```
 
 returning:
 
 ```text
-{{#include ../../_outputs/timestamps/output.txt}}
+{{#include ../../outputs/timestamps/output.txt}}
 ```

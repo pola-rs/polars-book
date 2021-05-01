@@ -8,11 +8,11 @@ Aggregation on all columns can be performed using the wildcard expression: `.agg
 A quick (lazy) example:
 
 ```python
-{{#include ../../_examples/groupby/snippet.py}}
+{{#include ../../examples/groupby/snippet.py}}
 ```
 
 that would return:
 
 ```text
-{{#include ../../_outputs/groupby/output.txt}}
+{{#include ../../outputs/groupby/output.txt}}
 ```

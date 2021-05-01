@@ -11,13 +11,13 @@ Let's say we want to apply a mapping operation to a `Polars` `Series` in a eager
 This could be done as shown below:
 
 ```python
-{{#include ../../_examples/udfs/snippet1.py}}
+{{#include ../../examples/udfs/snippet1.py}}
 ```
 
 returning:
 
 ```text
-{{#include ../../_outputs/udfs/output1.txt}}
+{{#include ../../outputs/udfs/output1.txt}}
 ```
 
 There are a few gotchas however, due to the fact `Polars` `Series` can only contain a single datatype.
@@ -47,13 +47,13 @@ When a custom function is used, the output datatype *must* be provided as the sc
 See:
 
 ```python
-{{#include ../../_examples/udfs/snippet2.py}}
+{{#include ../../examples/udfs/snippet2.py}}
 ```
 
 yielding:
 
 ```text
-{{#include ../../_outputs/udfs/output2.txt}}
+{{#include ../../outputs/udfs/output2.txt}}
 ```
 
 Above is defined a custom function that was added to the lazy query and ran during execution of the physical plan.
@@ -70,13 +70,13 @@ Many UDFs have thus to be run sequentially.
 An implementation similar to the eager example (applying a `lambda` function on the elements of a `Series`) could be:
 
 ```python
-{{#include ../../_examples/udfs/snippet3.py}}
+{{#include ../../examples/udfs/snippet3.py}}
 ```
 
 returning:
 
 ```text
-{{#include ../../_outputs/udfs/output3.txt}}
+{{#include ../../outputs/udfs/output3.txt}}
 ```
 
 #### GroupBy
@@ -85,11 +85,11 @@ One can also use custom functions in a grouping context.
 Below are shown three different ways to get the length of each group, two using custom functions:
 
 ```python
-{{#include ../../_examples/udfs/snippet4.py}}
+{{#include ../../examples/udfs/snippet4.py}}
 ```
 
 And the respective outputs:
 
 ```text
-{{#include ../../_outputs/udfs/output4.txt}}
+{{#include ../../outputs/udfs/output4.txt}}
 ```

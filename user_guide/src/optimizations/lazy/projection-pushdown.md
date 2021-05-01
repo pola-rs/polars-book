@@ -9,11 +9,11 @@ we are all interested in!
 The query that does so may look like this.
 
 ```python
-{{#include ../../_examples/projection-pushdown/snippet.py}}
+{{#include ../../examples/projection_pushdown/snippet.py}}
 ```
 And yields the following DataFrame.
 ```text
-{{#include ../../_outputs/projection-pushdown/output.txt}}
+{{#include ../../outputs/projection_pushdown/output.txt}}
 ```
 
 ## Break it down
@@ -24,7 +24,7 @@ Again, let's take a look the query plan.
 dataset.show_graph(optimized=False)
 ```
 
-![](./../_outputs/projection-pushdown/graph.png)
+![](./../outputs/projection_pushdown/graph.png)
 
 Now were focussed on the projection's indicated with π. The first node shows π 3/6, indicating that
 we select 3 out of 6 columns in the DataFrame. If we look the csv scans we see a wildcard π */6 and π */1 meaning that 
@@ -43,7 +43,7 @@ Let's see how Polars optimizes this query.
 dataset.show_graph(optimized=True)
 ```
 
-![](./../_outputs/projection-pushdown/graph-optimized.png)
+![](./../outputs/projection_pushdown/graph-optimized.png)
 
 The projections are pushed down the join operation all the way to the csv scans. This  means that both the scanning and 
 join operation have become cheaper due to the query optimization.

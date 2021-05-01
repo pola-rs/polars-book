@@ -16,7 +16,7 @@ as root and one path with `data/runescape.csv` as root. Polars can observe that 
 two DataFrame and will read both files in parallel. If other operations are done before the join (e.g. groupby, filters, etc.)
 they are also executed in parallel.
 
-![](../../_outputs/projection-pushdown/graph-optimized.png)
+![](../../outputs/projection_pushdown/graph-optimized.png)
 
 ## Simplify expressions
 
