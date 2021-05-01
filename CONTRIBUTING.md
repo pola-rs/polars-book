@@ -52,9 +52,10 @@ Do not hesitate to [open a new issue](https://github.com/ritchie46/polars-book/i
 - What actually happens.
 - Notes (possibly including why you think this might be happening, or stuff you tried that did not work).
 
-### Code formatting
+### Content formatting
 
 The `Python` code is checked and linted using [`black`](https://github.com/psf/black), [`flake8`](https://gitlab.com/pycqa/flake8) and [`isort`](https://pycqa.github.io/isort/).
+The `Markdown` files are formatted using [`mdformat`](https://github.com/executablebooks/mdformat).
 The recommended way is to use [`pre-commit`](https://pre-commit.com/) before commiting your code:
 
 ```shell
@@ -68,6 +69,7 @@ Another way is to run each manually:
 ```shell
 $ black .
 $ flake8 --max-doc-length=88 .  # max-line-length is imposed by black
+$ mdformat --wrap=88 user_guide/src/references.md
 ```
 
 for instance (check the linter package versions in the `.pre-commit-config.yaml`).
@@ -90,7 +92,6 @@ The `Markdown` file should roughly match the following structure:
 6. If applicable, provide both eager and lazy examples.
 
 ````text
-<> (this is a commented line)
 # Do this
 
 ## Eager API

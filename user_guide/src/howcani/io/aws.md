@@ -8,7 +8,8 @@ To read from or write to an AWS bucket, additional dependencies are needed:
 $ pip install s3fs
 ```
 
-In the next few snippets, we take the example of interacting with a `Parquet` file located on an AWS bucket.
+In the next few snippets, we take the example of interacting with a `Parquet` file
+located on an AWS bucket.
 
 ## Read
 

@@ -2,14 +2,22 @@
 
 # Introduction
 
-This book is an introduction to the [`Polars` DataFrame library](https://github.com/ritchie46/polars).
-Its goal is to explain the inner workings of `Polars` by going through examples and compare it to other solutions.
-Some design choices are here introduced, and the optimal use of `Polars` described.
+This book is an introduction to the
+[`Polars` DataFrame library](https://github.com/ritchie46/polars). Its goal is to
+explain the inner workings of `Polars` by going through examples and compare it to other
+solutions. Some design choices are here introduced, and the optimal use of `Polars`
+described.
 
-Even though `Polars` is completely written in [`Rust`](https://www.rust-lang.org/) (no runtime overhead!) and uses [`Arrow`](https://arrow.apache.org/) -the [native `Rust` implementation](https://docs.rs/crate/arrow/3.0.0)- at its fundation, the examples presented in this guide will be mostly using its higher-level language bindings.
-Those latter are merely a thin wrapper that will not offer more functionalities than the core library does.
+Even though `Polars` is completely written in [`Rust`](https://www.rust-lang.org/) (no
+runtime overhead!) and uses [`Arrow`](https://arrow.apache.org/) -the
+[native `Rust` implementation](https://docs.rs/crate/arrow/3.0.0)- at its fundation, the
+examples presented in this guide will be mostly using its higher-level language
+bindings. Those latter are merely a thin wrapper that will not offer more
+functionalities than the core library does.
 
-For people used to [`Pandas`](https://pandas.pydata.org/), the [`Python`](https://www.python.org/) bindings are the easiest to get started with `Polars`, allowing easier experimentation.
+For people used to [`Pandas`](https://pandas.pydata.org/), the
+[`Python`](https://www.python.org/) bindings are the easiest to get started with
+`Polars`, allowing easier experimentation.
 
 ## Goals and non-goals
 
@@ -32,36 +40,37 @@ Because the whole query context is known to the optimizer and executors of the l
 Below a concise list of the features allowing `Polars` to meet its goals:
 
 - [Copy-on-write](https://en.wikipedia.org/wiki/Copy-on-write) (COW) semantics
-    - "Free" clones
-    - Cheap appends
+  - "Free" clones
+  - Cheap appends
 - Appending without clones
-- Column oriented data storage 
-    - No block manager (-i.e.- predictable performance)
+- Column oriented data storage
+  - No block manager (-i.e.- predictable performance)
 - Missing values indicated with bitmask
-    - NaN are different from missing
-    - Bitmask optimizations
+  - NaN are different from missing
+  - Bitmask optimizations
 - Efficient algorithms (non-exhaustive list!):
-    - GroupBy
-    - Join
-    - Sort
-    - Melt
-    - Explode
-    - Pivot
+  - GroupBy
+  - Join
+  - Sort
+  - Melt
+  - Explode
+  - Pivot
 - [Query optimizations](lazy/intro.md)
-    - Predicate pushdown
-        - Filtering at scan level
-    - Projection pushdown
-        - Projection at scan level
-    - Simplify expressions
-    - Parallel execution of physical plan
+  - Predicate pushdown
+    - Filtering at scan level
+  - Projection pushdown
+    - Projection at scan level
+  - Simplify expressions
+  - Parallel execution of physical plan
 - SIMD vectorization
 - [`NumPy` universal functions](https://numpy.org/doc/stable/reference/ufuncs.html)
-    
+
 ### In the work
 
 - `JavaScript` bindings
 - Memory mapped files
-    - [Out-of-core](https://en.wikipedia.org/wiki/External_memory_algorithm) analysis with [`DataFusion`](https://github.com/apache/arrow/tree/master/rust/datafusion)
+  - [Out-of-core](https://en.wikipedia.org/wiki/External_memory_algorithm) analysis with
+    [`DataFusion`](https://github.com/apache/arrow/tree/master/rust/datafusion)
 
 ## Acknowledgements
 

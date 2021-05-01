@@ -1,7 +1,6 @@
 default_language_version:
     python: python3.8
 exclude: ^\..*
-files: ^.*\.py$
 repos:
   - repo: https://github.com/pycqa/isort
     rev: 5.8.0
@@ -12,10 +11,12 @@ repos:
         --multi-line=3,
         --profile=black,
       ]
+      files: ^.*\.py$
   - repo: https://github.com/psf/black
     rev: 20.8b1
     hooks:
     - id: black
+      files: ^.*\.py$
   - repo: https://github.com/pycqa/flake8
     rev: 3.9.0
     hooks:
@@ -26,3 +27,13 @@ repos:
         --max-doc-length=88,
         --max-line-length=88,
       ]
+      files: ^.*\.py$
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.5  # Use the ref you want to point at
+    hooks:
+    - id: mdformat
+      args: [
+        --wrap=88,
+      ]
+      files: ^user_guide/src/.*\.md$
+      exclude: ^user_guide/src/SUMMARY.md$
