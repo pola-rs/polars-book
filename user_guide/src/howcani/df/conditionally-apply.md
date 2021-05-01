@@ -7,11 +7,11 @@ As they are basically a full English sentence, they need no further explanation.
 See:
 
 ```python
-{{#include ../../_examples/conditionally-apply/snippet.py}}
+{{#include ../../examples/conditionally_apply/snippet.py}}
 ```
 
 yielding:
 
 ```text
-{{#include ../../_outputs/conditionally-apply/output.txt}}
+{{#include ../../outputs/conditionally_apply/output.txt}}
 ```

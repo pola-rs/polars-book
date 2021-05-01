@@ -8,13 +8,13 @@ Let's determine the differences, *e.g.* the increase of COVID cases per day, per
 ## Dataset
 
 ```python
-{{#include ../../_examples/group-statistics/dataset.py}}
+{{#include ../../examples/group_statistics/dataset.py}}
 ```
 
 providing:
 
 ```text
-{{#include ../../_outputs/group-statistics/dataset.txt}}
+{{#include ../../outputs/group_statistics/dataset.txt}}
 ```
 
 ## Self join
@@ -22,13 +22,13 @@ providing:
 The most straightforward way to compute what we want:
 
 ```python
-{{#include ../../_examples/group-statistics/snippet1.py}}
+{{#include ../../examples/group_statistics/snippet1.py}}
 ```
 
 yielding:
 
 ```text
-{{#include ../../_outputs/group-statistics/output1.txt}}
+{{#include ../../outputs/group_statistics/output1.txt}}
 ```
 
 ## Window functions
@@ -40,13 +40,13 @@ A window function determines an aggregation per group before joining the result 
 Let's first see how we can replace the join with a window function:
 
 ```python
-{{#include ../../_examples/group-statistics/snippet2.py}}
+{{#include ../../examples/group_statistics/snippet2.py}}
 ```
 
 returning:
 
 ```text
-{{#include ../../_outputs/group-statistics/output2.txt}}
+{{#include ../../outputs/group_statistics/output2.txt}}
 ```
 
 Let's break it down:
@@ -62,11 +62,11 @@ Window functions can be used within a `.with_columns()` statement, or `.select()
 This can be used to extend the previous snippet and create different group statistics in one go:
 
 ```python
-{{#include ../../_examples/group-statistics/snippet3.py}}
+{{#include ../../examples/group_statistics/snippet3.py}}
 ```
 
 returning full blown statistics:
 
 ```text
-{{#include ../../_outputs/group-statistics/output3.txt}}
+{{#include ../../outputs/group_statistics/output3.txt}}
 ```
