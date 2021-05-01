@@ -86,9 +86,7 @@ As we have seen there were ~ 62,000 rows left after the *FILTER*. That means tha
 
 At the time of writing this, the predicate pushdown also increased the query time performance.
 
-**without optimization**
-
-`$ time python -m user_guide.src.examples.lazy_chapter.predicate_pushdown_0_timing False`
+**Without optimization**, `predicate_pushdown=False` flag:
 
 ```text
 real	0m2,401s
@@ -96,9 +94,7 @@ user	0m5,457s
 sys	0m0,894s
 ```
 
-**with optimization**
-
-`$ time python -m user_guide.src.examples.lazy_chapter.predicate_pushdown_0_timing True`
+**with optimization**, `predicate_pushdown=True` flag:
 
 ```text
 real	0m1,597s
