@@ -1,6 +1,6 @@
 import polars as pl
 
-src_df = pl.DataFrame(
+dataset = pl.DataFrame(
     {
         "A": [1, 2, 3, 4, 5],
         "fruits": ["banana", "banana", "apple", "apple", "banana"],
@@ -10,8 +10,8 @@ src_df = pl.DataFrame(
 )
 
 # three ways to determine the length groups
-dataset = (
-    src_df.lazy()
+q = (
+    dataset.lazy()
     .groupby("fruits")
     .agg(
         [
@@ -22,4 +22,4 @@ dataset = (
     )
 )
 
-df = dataset.collect()
+df = q.collect()

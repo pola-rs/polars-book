@@ -18,7 +18,7 @@ data: .venv
 	wget -q $(DATA_SRC)/reddit100k.tar.gz -O - | tar -xzf - -O > $(DATA_DIR)/reddit.csv
 	wget -q $(DATA_SRC)/runescape100k.tar.gz -O - | tar -xzf - -O > $(DATA_DIR)/runescape.csv
 
-run: #data
+run: data
 	-@mkdir -p user_guide/src/_outputs
 	$(PYTHON) -m user_guide.src._examples.aggregate
 	$(PYTHON) -m user_guide.src._examples.conditionally-apply
