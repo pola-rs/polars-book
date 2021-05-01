@@ -52,9 +52,10 @@ Do not hesitate to [open a new issue](https://github.com/ritchie46/polars-book/i
 - What actually happens.
 - Notes (possibly including why you think this might be happening, or stuff you tried that did not work).
 
-### Code formatting
+### Content formatting
 
 The `Python` code is checked and linted using [`black`](https://github.com/psf/black), [`flake8`](https://gitlab.com/pycqa/flake8) and [`isort`](https://pycqa.github.io/isort/).
+The `Markdown` files are formatted using [`mdformat`](https://github.com/executablebooks/mdformat).
 The recommended way is to use [`pre-commit`](https://pre-commit.com/) before commiting your code:
 
 ```shell
@@ -68,6 +69,7 @@ Another way is to run each manually:
 ```shell
 $ black .
 $ flake8 --max-doc-length=88 .  # max-line-length is imposed by black
+$ mdformat --wrap=88 user_guide/src/references.md
 ```
 
 for instance (check the linter package versions in the `.pre-commit-config.yaml`).
@@ -90,7 +92,6 @@ The `Markdown` file should roughly match the following structure:
 6. If applicable, provide both eager and lazy examples.
 
 ````text
-<> (this is a commented line)
 # Do this
 
 ## Eager API
@@ -98,13 +99,13 @@ The `Markdown` file should roughly match the following structure:
 The code snippet below allows to do...
 
 ```python
-{{#include .../_examples/template/snippet.py}}
+{{#include .../examples/template/snippet.py}}
 ```
 
 returning:
 
 ```text
-{{#include .../_outputs/template/output.py}}
+{{#include .../outputs/template/output.py}}
 ```
 
 On line 3 we can see that...
@@ -119,14 +120,14 @@ Using the lazy approach presented below one can...
 Each code example should:
 
 - Run as an independent `Python` module.
-- Find itself in its own folder within the `user_guide/src/_examples/...` directory.
-- Write any output to a file within the `user_guide/src/_outputs/...` directory (under the same folder-tree).
+- Find itself in its own folder within the `user_guide/src/examples/...` directory.
+- Write any output to a file within the `user_guide/src/outputs/...` directory (under the same folder-tree).
 - Be registered in the `run` recipe of the `Makefile` present at the root of the repo.
 
 For instance, the core of an example without any extras:
 
 ```python
-# user_guide/src/_examples/template/snippet.py
+# user_guide/src/examples/template/snippet.py
 import polars as pl
 
 dataset = pl.scan_csv("path.csv")
@@ -137,7 +138,7 @@ If there are multiple steps to your example, split them in separate modules.
 Writing to an output file, or any other step required but not needed in the code snippet showcasing the functionality:
 
 ```python
-# user_guide/src/_examples/template/__main__.py
+# user_guide/src/examples/template/__main__.py
 from .snippet import df
 from ..paths import OUTPUT_BASE_DIR, create_if_not_exists
 
@@ -148,7 +149,7 @@ with open(f"{path}/output.txt") as f:
 ```
 
 Simply importing the `snippet.py` in the `__main__.py` module will ensure that it is ran.
-Including the content of any file to the `Markdown` is done through the `{{#include user_guide/src/_examples/template/snippet.py}}` (for instance) syntax.
+Including the content of any file to the `Markdown` is done through the `{{#include user_guide/src/examples/template/snippet.py}}` (for instance) syntax.
 Finally, registering the example in the `Makefile` to make sure it is tested next time the User Guide is built:
 
 ```makefile
@@ -156,8 +157,8 @@ Finally, registering the example in the `Makefile` to make sure it is tested nex
 
 run: data
 	# [...]
-	$(PYTHON) -m user_guide.src._examples.template
+	$(PYTHON) -m user_guide.src.examples.template
 ```
 
 (Note this is pointing to the folder name; this will work only if a `__main__.py` file is present.)
-Check the code snippets themselves in the `user_guide/src/_examples/` folder for more inspiration.
+Check the code snippets themselves in the `user_guide/src/examples/` folder for more inspiration.
