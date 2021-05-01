@@ -35,6 +35,7 @@ should get you there.
 | Pivot/melt                             | ✗        |
 | Aggregate                              | ✔        |
 | Conditionally apply                    | ✔        |
+| Horizontal fold                        | ✗        |
 | Stacking                               | ✗        |
 | Sampling                               | ✗        |
 | `Arrow` interoperability               | ✔        |
