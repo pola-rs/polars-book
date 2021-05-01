@@ -139,13 +139,16 @@ Writing to an output file, or any other step required but not needed in the code
 ```python
 # user_guide/src/_examples/template/__main__.py
 from .snippet import df
-from ..constants import OUTPUT_BASE_DIR
+from ..paths import OUTPUT_BASE_DIR, create_if_not_exists
 
-with open(f"{OUTPUT_BASE_DIR}/template/output.txt") as f:
+path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/template")
+
+with open(f"{path}/output.txt") as f:
     f.write(f"{df}\n")
 ```
 
 Simply importing the `snippet.py` in the `__main__.py` module will ensure that it is ran.
+Including the content of any file to the `Markdown` is done through the `{{#include user_guide/src/_examples/template/snippet.py}}` (for instance) syntax.
 Finally, registering the example in the `Makefile` to make sure it is tested next time the User Guide is built:
 
 ```makefile
@@ -157,3 +160,4 @@ run: data
 ```
 
 (Note this is pointing to the folder name; this will work only if a `__main__.py` file is present.)
+Check the code snippets themselves in the `user_guide/src/_examples/` folder for more inspiration.
