@@ -17,23 +17,23 @@ The string processing functions available in `Polars` are:
 A few examples below. To compute string lengths:
 
 ```python
-{{#include ../../_examples/strings/snippet1.py}}
+{{#include ../../examples/strings/snippet1.py}}
 ```
 
 returning:
 
 ```text
-{{#include ../../_outputs/strings/output1.txt}}
+{{#include ../../outputs/strings/output1.txt}}
 ```
 
 And below a regex pattern to filter out articles (`the`, `a`, `and`, *etc.*) from a sentence:
 
 ```python
-{{#include ../../_examples/strings/snippet2.py}}
+{{#include ../../examples/strings/snippet2.py}}
 ```
 
 yielding:
 
 ```text
-{{#include ../../_outputs/strings/output2.txt}}
+{{#include ../../outputs/strings/output2.txt}}
 ```

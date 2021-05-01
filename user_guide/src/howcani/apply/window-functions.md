@@ -7,9 +7,9 @@
 We can apply multiple functions over multiple columns in a single expression!
 
 ```python
-{{#include ../../_examples/window-functions/snippet.py}}
+{{#include ../../examples/window_functions/snippet.py}}
 ```
 
 ```text
-{{#include ../../_outputs/window-functions/output.txt}}
+{{#include ../../outputs/window_functions/output.txt}}
 ```

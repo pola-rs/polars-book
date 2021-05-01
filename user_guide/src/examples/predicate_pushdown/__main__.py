@@ -4,7 +4,7 @@ from .snippet1 import q as q1
 from .snippet2 import df as df2
 from .snippet2 import q as q2
 
-path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/predicate-pushdown")
+path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/predicate_pushdown")
 
 for n, x in enumerate([q1, q2]):
     x.show_graph(optimized=False, show=False, output_path=f"{path}/graph{n + 1}.png")

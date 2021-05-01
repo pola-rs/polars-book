@@ -43,7 +43,7 @@ This will synchronize all seen string values for the duration of that context ma
 If you want the global string cache to be existent during the whole run, you can set `toggle_string_cache` to `True`.
 
 ```python
-{{#include ../_examples/strings-performance/snippet1.py}}
+{{#include ../examples/strings_performance/snippet1.py}}
 ```
 
 ### Lazy join multiple DataFrames on Categorical data
@@ -52,5 +52,5 @@ A lazy query always has a global string cache (unless you opt-out) for the durat
 The example below shows how you could join two DataFrames with `Categorical` types.
 
 ```python
-{{#include ../_examples/strings-performance/snippet2.py}}
+{{#include ../examples/strings_performance/snippet2.py}}
 ```

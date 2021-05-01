@@ -1,8 +1,8 @@
 import os
 
 DATA_DIR = "data"
-EXAMPLE_BASE_DIR = "user_guide/src/_examples"
-OUTPUT_BASE_DIR = "user_guide/src/_outputs"
+EXAMPLE_BASE_DIR = "user_guide/src/examples"
+OUTPUT_BASE_DIR = "user_guide/src/outputs"
 
 
 def create_if_not_exists(path: str) -> str:
