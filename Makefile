@@ -18,9 +18,9 @@ data: .venv
 	wget -q $(DATA_SRC)/runescape100k.tar.gz -O - | tar -xzf - -O > $(DATA_DIR)/runescape.csv
 
 run: data
-	-@mkdir -p user_guide/src/_outputs
 	$(PYTHON) -m user_guide.src.examples.aggregate
 	$(PYTHON) -m user_guide.src.examples.conditionally_apply
+	$(PYTHON) -m user_guide.src.examples.expressions
 	$(PYTHON) -m user_guide.src.examples.groupby
 	$(PYTHON) -m user_guide.src.examples.groupby_dsl
 	$(PYTHON) -m user_guide.src.examples.group_statistics
@@ -32,11 +32,10 @@ run: data
 	$(PYTHON) -m user_guide.src.examples.timestamps
 	$(PYTHON) -m user_guide.src.examples.udfs
 	$(PYTHON) -m user_guide.src.examples.window_functions
-	$(PYTHON) -m user_guide.src.examples.expressions
 
 clean:
 	-@rm -fr .venv
 	-@rm -fr data
-	-@rm -fr user_guide/src/_outputs
+	-@rm -fr user_guide/src/outputs
 	-@rm -fr `find . -name __pycache__`
 	-@cd user_guide; mdbook clean
