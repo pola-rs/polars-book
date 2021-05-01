@@ -1,9 +1,10 @@
 data
-_outputs
 outputs
 __pycache__
 .devcontainer
 .idea
 .venv
+*.csv
 *.png
 *.swp
+*.txt

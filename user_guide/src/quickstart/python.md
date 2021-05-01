@@ -12,9 +12,10 @@ All binaries are pre-built for `Python` v3.6+.
 
 ## Quick start
 
-Below we show a simple snippet that parses a CSV file, filters it, and finishes with a groupby operation.
-As mentioned before the eager API must feel very similar to users familiar to `Pandas`.
-The lazy API is more declarative, and describes *what one wants* instead of *how one wants it*. 
+Below we show a simple snippet that parses a CSV file, filters it, and finishes with a
+groupby operation. As mentioned before the eager API must feel very similar to users
+familiar to `Pandas`. The lazy API is more declarative, and describes *what one wants*
+instead of *how one wants it*.
 
 ```python
 import polars as pl
@@ -56,25 +57,33 @@ shape: (3, 5)
 ╰──────────────┴──────────────────┴─────────────────┴──────────────────┴─────────────────╯
 ```
 
-As we can see, `Polars` pretty-prints the output object, including the column name and datatype as headers.
+As we can see, `Polars` pretty-prints the output object, including the column name and
+datatype as headers.
 
 ## References
 
-If you want to dive right into the `Python` API docs, refer to [the index](POLARS_PY_REF_GUIDE) or follow one of the following direct links:
+If you want to dive right into the `Python` API docs, refer to
+[the index](POLARS_PY_REF_GUIDE) or follow one of the following direct links:
 
 ### Eager API
 
-The eager API is very similar to [`Pandas`](https://pandas.pydata.org/).
-Operations are executed directly in an imperative manner.
-The important data structures are the [`DataFrame`](POLARS_PY_REF_GUIDE/frame.html#polars.frame.DataFrame) and the [`Series`](POLARS_PY_REF_GUIDE/series.html#polars.series.Series)
+The eager API is very similar to [`Pandas`](https://pandas.pydata.org/). Operations are
+executed directly in an imperative manner. The important data structures are the
+[`DataFrame`](POLARS_PY_REF_GUIDE/frame.html#polars.frame.DataFrame) and the
+[`Series`](POLARS_PY_REF_GUIDE/series.html#polars.series.Series)
 
 ### Lazy API
 
-The lazy API builds a query plan.
-Nothing is executed until you explicitly ask `Polars` to execute the query (via `LazyFrame.collect()`, or `LazyFrame.fetch()`).
-This provides `Polars` with the entire context of the query, allowing optimizations and choosing the fastest algorithm given that context.
+The lazy API builds a query plan. Nothing is executed until you explicitly ask `Polars`
+to execute the query (via `LazyFrame.collect()`, or `LazyFrame.fetch()`). This provides
+`Polars` with the entire context of the query, allowing optimizations and choosing the
+fastest algorithm given that context.
 
-The important data structure is here the [`LazyFrame`](POLARS_PY_REF_GUIDE/lazy/index.html#polars.lazy.LazyFrame), a `DataFrame` abstraction lazily keeping track of the query plan.
+The important data structure is here the
+[`LazyFrame`](POLARS_PY_REF_GUIDE/lazy/index.html#polars.lazy.LazyFrame), a `DataFrame`
+abstraction lazily keeping track of the query plan.
 
-Arguments given to a `LazyFrame` can be constructed by building simple to complex queries following the [`Expr` API](POLARS_PY_REF_GUIDE/lazy/index.html#polars.lazy.Expr).
-See the examples in the [How can I?](/howcani/intro.html) section of the guide.
+Arguments given to a `LazyFrame` can be constructed by building simple to complex
+queries following the
+[`Expr` API](POLARS_PY_REF_GUIDE/lazy/index.html#polars.lazy.Expr). See the examples in
+the [How can I?](/howcani/intro.html) section of the guide.
