@@ -1,9 +1,9 @@
 # Apply custom functions
 
-There will always be an operation so sketchy, so dirty, so grotesque, that you cannot do with the public API of `Polars`.
-Luckily we support the use User Defined Functions (UDFs).
-This means you can define a `Python` function (or `lambda`) and pass it to the logical plan.
-You can use custom functions in both the eager and the lazy API. 
+There will always be an operation so sketchy that one cannot do with the public API of `Polars`.
+Luckily this latter supports User Defined Functions (UDFs).
+This means one can define a `Python` function (or `lambda`) and pass it to the logical plan.
+Custom functions can be used in both the eager and the lazy API. 
 
 ## Eager
 
