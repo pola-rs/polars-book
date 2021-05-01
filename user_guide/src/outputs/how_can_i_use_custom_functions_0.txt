@@ -1,8 +1,0 @@
-Series: 'a' [str]
-[
-	"foo"
-	"bar"
-	"ham"
-	"spam"
-	"eggs"
-]
