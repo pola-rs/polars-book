@@ -31,12 +31,10 @@ This approach is still supported by `Polars`, but keeping in mind bytecode AND t
 
 To mitigate this, `Polars` implements a powerful syntax defined not only in its lazy, but also in its eager API.
 
-## DSL
-
-> This is fresh! Currently only available `Polars` **0.7.6-beta.2** and above.
+## Polars Expressions
 
 In the introduction on previous page we discussed that using custom Python functions, killed parallelization, and
-that we can use the DSL of the lazy API to mitigate this. Let's take a look at what that means.
+that we can use the expressions of the lazy API to mitigate this. Let's take a look at what that means.
 
 ### Eager and Lazy
 For groupby operations you can use the lazy API in Polars eager. That means that if you run this snippet of code
