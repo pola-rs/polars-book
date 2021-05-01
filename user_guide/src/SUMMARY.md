@@ -10,7 +10,7 @@
         - [Predicate pushdown](optimizations/lazy/predicate_pushdown.md)
         - [Projection pushdown](optimizations/lazy/projection_pushdown.md)
         - [Other optimizations](optimizations/lazy/other-optimizations.md)
-- [Domain Specific Language](dsl/intro.md)
+- [Polars expressions](dsl/intro.md)
 <> (    - [Expressions](dsl/expressions.md))
 <> (    - [Eager API](dsl/eager.md))
 <> (    - [Lazy API](dsl/lazy.md))

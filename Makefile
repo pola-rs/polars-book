@@ -11,7 +11,6 @@ DATA_DIR=data
 serve:
 	cd /usr/src/user_guide; mdbook serve --hostname 0.0.0.0 --port 8000
 
-.PHONY: data
 data: .venv
 	@mkdir -p $(DATA_DIR)
 	$(PYTHON) generate_data.py
@@ -33,6 +32,7 @@ run: data
 	$(PYTHON) -m user_guide.src.examples.timestamps
 	$(PYTHON) -m user_guide.src.examples.udfs
 	$(PYTHON) -m user_guide.src.examples.window_functions
+	$(PYTHON) -m user_guide.src.examples.expressions
 
 clean:
 	-@rm -fr .venv
