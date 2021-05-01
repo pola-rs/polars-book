@@ -21,17 +21,24 @@ For people used to [`Pandas`](https://pandas.pydata.org/), the
 
 ## Goals and non-goals
 
-The goal of `Polars` is being a lightning fast DataFrame library that utilizes all available cores on your machine.
-Its ideal use case lies in data too *big* for `Pandas` but too *small* for [`Spark`](https://spark.apache.org/).
-If you need to process data that does not fit in memory of a single machine (even after filtering), `Polars` is not the solution to your problem.
+The goal of `Polars` is being a lightning fast DataFrame library that utilizes all
+available cores on your machine. Its ideal use case lies in data too *big* for `Pandas`
+but too *small* for [`Spark`](https://spark.apache.org/). If you need to process data
+that does not fit in memory of a single machine (even after filtering), `Polars` is not
+the solution to your problem.
 
-`Polars` consists of an ***eager* API** that is similar to `Pandas`: any operation is immediately executed and produces a result.
-In addition, and similarly to `Spark`, `Polars` comes with a *query planner* (also refered as ***lazy* API**) that may -and probably will- optimize your data processing, decreasing the time spent running the workload and reducing memory usage. 
+`Polars` consists of an ***eager* API** that is similar to `Pandas`: any operation is
+immediately executed and produces a result. In addition, and similarly to `Spark`,
+`Polars` comes with a *query planner* (also refered as ***lazy* API**) that may -and
+probably will- optimize your data processing, decreasing the time spent running the
+workload and reducing memory usage.
 
-The lazy API processes an interpretation of your query called a *logical plan*.
-This plan is optimized and reordered before running it.
-When a result is requested `Polars` distributes the available work to different *executors* that use the algorithm available in the eager API to come up with the result.
-Because the whole query context is known to the optimizer and executors of the logical plan, processes dependent on separate data sources can be parallelized on the fly.
+The lazy API processes an interpretation of your query called a *logical plan*. This
+plan is optimized and reordered before running it. When a result is requested `Polars`
+distributes the available work to different *executors* that use the algorithm available
+in the eager API to come up with the result. Because the whole query context is known to
+the optimizer and executors of the logical plan, processes dependent on separate data
+sources can be parallelized on the fly.
 
 ![](https://raw.githubusercontent.com/ritchie46/static/master/polars/api.svg)
 

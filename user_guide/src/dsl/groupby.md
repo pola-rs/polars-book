@@ -42,8 +42,9 @@ but also in its eager API.
 
 ## Polars Expressions
 
-In the introduction on previous page we discussed that using custom Python functions, killed parallelization, and
-that we can use the expressions of the lazy API to mitigate this. Let's take a look at what that means.
+In the introduction on previous page we discussed that using custom Python functions,
+killed parallelization, and that we can use the expressions of the lazy API to mitigate
+this. Let's take a look at what that means.
 
 ### Eager and Lazy
 
