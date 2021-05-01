@@ -21,7 +21,7 @@ And yields the following DataFrame.
 Again, let's take a look the query plan. 
 
 ``` python
-joined.show_graph(optimized=False)
+dataset.show_graph(optimized=False)
 ```
 
 ![](./../_outputs/projection-pushdown/graph.png)
@@ -40,7 +40,7 @@ redundant work that is done can be huge.
 Let's see how Polars optimizes this query.
 
 ``` python
-joined.show_graph(optimized=True)
+dataset.show_graph(optimized=True)
 ```
 
 ![](./../_outputs/projection-pushdown/graph-optimized.png)
@@ -52,9 +52,7 @@ join operation have become cheaper due to the query optimization.
 
 Let's time the result before and after optimization.
 
-**without optimization**
-
-`$ time python -m user_guide.src.examples.lazy_chapter.projection_pushdown_0_timing False`
+**without optimization**, `predicate_pushdown=False` and `projection_pushdown=False`.
 
 ```text
 real	0m3,273s
@@ -63,9 +61,7 @@ sys	0m1,081s
 ```
 
 
-**with optimization**
-
-`$ time python -m user_guide.src.examples.lazy_chapter.projection_pushdown_0_timing True`
+**with optimization**, `predicate_pushdown` and `projection_pushdown` flags both to `True`.
 
 ```text
 real	0m1,732s

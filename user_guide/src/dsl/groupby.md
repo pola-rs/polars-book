@@ -84,8 +84,6 @@ Besides the aggregation, we immediately sort the result and limit to the top 5 s
 
 ```python
 {{#include ../_examples/groupby-dsl/snippet1.py}}
-
-print(q.collect())
 ```
 
 ```text
@@ -100,8 +98,6 @@ the DataFrame.
 
 ```python
 {{#include ../_examples/groupby-dsl/snippet2.py}}
-
-print(q1.collect())
 ```
 ```text
 {{#include ../_outputs/groupby-dsl/output2.txt}}
@@ -111,8 +107,6 @@ Something similar could of course also be done with a nested GROUPBY, but that w
 
 ```python
 {{#include ../_examples/groupby-dsl/snippet3.py}}
-
-print(q2.collect())
 ```
 ```text
 {{#include ../_outputs/groupby-dsl/output3.txt}}
@@ -129,8 +123,6 @@ during runtime of the query.
 
 ```python
 {{#include ../_examples/groupby-dsl/snippet4.py}}
-
-print(q3.collect())
 ```
 ```text
 {{#include ../_outputs/groupby-dsl/output4.txt}}
@@ -146,8 +138,6 @@ we could SORT and GROUPBY.
 
 ```python
 {{#include ../_examples/groupby-dsl/snippet5.py}}
-
-print(q4.collect())
 ```
 ```text
 {{#include ../_outputs/groupby-dsl/output5.txt}}
@@ -160,8 +150,6 @@ groupby context separate from the `DataFrame`.
 
 ```python
 {{#include ../_examples/groupby-dsl/snippet6.py}}
-
-print(q5.collect())
 ```
 ```text
 {{#include ../_outputs/groupby-dsl/output6.txt}}
@@ -173,8 +161,6 @@ female we could add `col("gender").sort_by("first_name").first().alias("gender")
 
 ```python
 {{#include ../_examples/groupby-dsl/snippet7.py}}
-
-print(q6.collect())
 ```
 ```text
 {{#include ../_outputs/groupby-dsl/output7.txt}}
