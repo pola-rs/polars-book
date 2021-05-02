@@ -19,7 +19,14 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y graphviz make wget
+          python -m pip install black==20.8b1 mdformat==0.7.5
+
+      - name: Check fmt
+        run: |
+          mdformat --check .
+          black --check .
 
       - name: Run snippets
         run: |
           make run
+

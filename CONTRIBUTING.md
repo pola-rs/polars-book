@@ -14,17 +14,17 @@ We love your input! We want to make contributing to this project as easy and tra
 We use GitHub to host code, to track issues and feature requests, as well as accept pull requests.
 
 1. Fork the [repo](https://github.com/ritchie46/polars-book.git) in your own GitHub account.
-2. Clone your own version of the repo locally, and `cd` into it.
-3. Add the upstream remote with `git remote add upstream https://github.com/ritchie46/polars-book.git`
-4. All branches should derive from `master`, you can `git checkout -b <YOUR-BRANCH>` and write away.
-5. Commit/push to your own repo.
-6. Open a pull request as you would usually do, making sure the "base repository" is the upstream repo (`master` branch) and the "head repository" your own (`<YOUR-BRANCH>` branch).
+1. Clone your own version of the repo locally, and `cd` into it.
+1. Add the upstream remote with `git remote add upstream https://github.com/ritchie46/polars-book.git`
+1. All branches should derive from `master`, you can `git checkout -b <YOUR-BRANCH>` and write away.
+1. Commit/push to your own repo.
+1. Open a pull request as you would usually do, making sure the "base repository" is the upstream repo (`master` branch) and the "head repository" your own (`<YOUR-BRANCH>` branch).
 
 To update your own repo with code pushed on the upstream repo:
 
 1. `git checkout <BRANCH>`
-2. `git pull upstream <BRANCH>`
-3. `git push origin <BRANCH>`
+1. `git pull upstream <BRANCH>`
+1. `git push origin <BRANCH>`
 
 A few rules:
 
@@ -38,7 +38,7 @@ For those there is also a [channel on Gitter](https://gitter.im/polars-rs/commun
 
 ### All contributions are under the MIT Software License
 
-When contributing any content your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project. 
+When contributing any content your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project.
 Feel free to contact the maintainers if that is a concern.
 
 ### Report bugs using GitHub Issues
@@ -85,11 +85,11 @@ The description of the code example should be placed within the *How can I?* sec
 The `Markdown` file should roughly match the following structure:
 
 1. A clear title (for example: "*Interact with an AWS bucket*").
-2. A one-ish-liner to introduce the code snippet.
-3. The code example itself, included using the `{{#include .../examples/<MODULE>}}` syntax.
-4. The output of the example, if applicable (follow the same syntax to include the file).
-5. A longer explanation if required.
-6. If applicable, provide both eager and lazy examples.
+1. A one-ish-liner to introduce the code snippet.
+1. The code example itself, included using the `{{#include .../examples/<MODULE>}}` syntax.
+1. The output of the example, if applicable (follow the same syntax to include the file).
+1. A longer explanation if required.
+1. If applicable, provide both eager and lazy examples.
 
 ````text
 # Do this
