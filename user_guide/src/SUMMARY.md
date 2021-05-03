@@ -9,6 +9,7 @@
   \<> (    - [Expressions](dsl/expressions.md))
   \<> (    - [Eager API](dsl/eager.md))
   \<> (    - [Lazy API](dsl/lazy.md))
+  - [Contexts](dsl/contexts.md)
   - [GroupBy](dsl/groupby.md)
 - [Performance](performance/intro.md)
   - [Strings](performance/strings.md)
