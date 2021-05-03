@@ -1,1 +1,0 @@
-# Apply window functions
