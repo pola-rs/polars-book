@@ -32,7 +32,7 @@ You can do a lot with expressions. They are so expressive that you sometimes hav
 multiple ways to get the same results. To get a feel for them let's go through some
 examples.
 
-### count unique values
+### Count unique values
 
 We can count the unique values in a column. Note that we are creating the same result in
 a different ways. To not have duplicate column names in the `DataFrame`, we use an
@@ -47,7 +47,7 @@ print(df)
 {{#include ../outputs/expressions/example_1.txt}}
 ```
 
-### various aggregations
+### Various aggregations
 
 We can do various aggregations. Below we show some of them, but there are more, such as
 `median`, `mean`, `first` etc.
@@ -61,7 +61,7 @@ print(df)
 {{#include ../outputs/expressions/example_2.txt}}
 ```
 
-### filter and conditionals
+### Filter and conditionals
 
 We can also do quite some complex things. In the next snippet we count all names ending
 with the string `"am"`.
@@ -96,6 +96,24 @@ print(df)
 ```text
 {{#include ../outputs/expressions/example_4.txt}}
 ```
+
+### Window expressions (split-apply-combine)
+
+A polars expression can also do a do an implicit GROUPBY, AGGREGATION, and JOIN in a single expression.
+In the examples below we do a GROUPBY OVER `"groups"` and AGGREGATE SUM of `"random"`, and in the next expression
+we GROUPBY OVER `"names"` and AGGREGATE a LIST of `"random"`. These window functions can be combined with other expressions,
+and are an efficient way to determine group statistics. See more of those [group statistics here](../../howcani/misc/group-statistics.md)
+
+```python
+{{#include ../examples/expressions/window.py:5:}}
+print(df)
+```
+
+```text
+{{#include ../outputs/expressions/window_1.txt}}
+```
+
+## Conclusion
 
 This is only, a small tip of the possible expressions, there are a ton more, and they
 can be combined myriad ways.
