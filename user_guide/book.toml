@@ -10,7 +10,7 @@ default-theme = "Ayu"
 mathjax-support = true
 
 [output.html.fold]
-enable = true
+enable = false
 level = 1
 
 # custom preprocessor to insert the reference guide links
