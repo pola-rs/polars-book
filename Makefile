@@ -39,3 +39,7 @@ clean:
 	-@rm -fr user_guide/src/outputs
 	-@rm -fr `find . -name __pycache__`
 	-@cd user_guide; mdbook clean
+
+fmt:
+	mdformat .
+	black .
