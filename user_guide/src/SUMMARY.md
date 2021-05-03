@@ -10,6 +10,7 @@
   - [Contexts](dsl/contexts.md)
   - [GroupBy](dsl/groupby.md)
   - [API](dsl/api.md)
+- [Data Types](datatypes.md)
 - [Performance](performance/intro.md)
   - [Strings](performance/strings.md)
     \<> (    - [Gotchas](performance/gotchas.md))
