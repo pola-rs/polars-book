@@ -11,7 +11,7 @@ content = json.dumps(book)
 
 substitutes = (
     ("POLARS_RS_REF_GUIDE", "https://docs.rs/polars"),
-    ("POLARS_PY_REF_GUIDE", "https://ritchie46.github.io/polars/python/polars"),
+    ("POLARS_PY_REF_GUIDE", "https://pola-rs.github.io/polars-book/"),
 )
 
 for old, new in substitutes:
