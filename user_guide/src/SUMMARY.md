@@ -35,7 +35,7 @@
       \<> (        - [Process nested values (explode)](howcani/explode.md))
   - [Manipulate a DataFrame](howcani/df/intro.md)
     \<> (        - [Common manipulations](howcani/df/common-manipulations.md))
-    \<> (        - [Filter](howcani/df/filter.md))
+    - [Filter](howcani/df/filter.md)
     - [GroupBy](howcani/df/groupby.md)
       \<> (        - [Join](howcani/df/join.md))
       \<> (        - [Sort](howcani/df/sort.md))
