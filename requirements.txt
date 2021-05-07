@@ -1,4 +1,3 @@
 pandas
 polars
-datatable
 matplotlib
