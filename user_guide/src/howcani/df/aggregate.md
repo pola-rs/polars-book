@@ -1,12 +1,12 @@
 # Aggregate
 
-Aggregations can be done via a `.select()` or the `.with_column()`/`.with_columns()`
-methods.
+Column Aggregations can be done via a `.select()` or the `.with_column()`/`.with_columns()`
+context.
 
 Aggregation on all columns can be performed using the wildcard expression:
 `.select(col("*").sum())`.
 
-The available aggregation functions:
+Some of the available aggregation functions:
 
 - [`.count()`](POLARS_PY_REF_GUIDE/lazy/index.html#polars.lazy.Expr.count)
 - [`.first()`](POLARS_PY_REF_GUIDE/lazy/index.html#polars.lazy.Expr.first)
@@ -21,6 +21,8 @@ The available aggregation functions:
 - [`.var()`](POLARS_PY_REF_GUIDE/lazy/index.html#polars.lazy.Expr.var)
 - [`.std()`](POLARS_PY_REF_GUIDE/lazy/lazy/index.html#polars.lazy.Expr.std)
 - [`.quantile()`](POLARS_PY_REF_GUIDE/lazy/index.html#polars.lazy.LazyFrame.quantile)
+
+See more in the [API docs of Expr](https://pola-rs.github.io/polars/python/polars)
 
 For instance:
 
