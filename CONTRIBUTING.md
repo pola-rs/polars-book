@@ -127,7 +127,7 @@ Each code example should:
 For instance, the core of an example without any extras:
 
 ```python
-# user_guide/src/examples/template/snippet.py
+# user_guide/src/examples/template/lazy.py
 import polars as pl
 
 dataset = pl.scan_csv("path.csv")

@@ -19,7 +19,7 @@ data: .venv
 
 run: data
 	$(PYTHON) -m user_guide.src.examples.aggregate
-	$(PYTHON) -m user_guide.src.examples.conditionally_apply
+	$(PYTHON) -m user_guide.src.examples.how_can_i.conditionally_apply
 	$(PYTHON) -m user_guide.src.examples.expressions
 	$(PYTHON) -m user_guide.src.examples.groupby
 	$(PYTHON) -m user_guide.src.examples.groupby_dsl
