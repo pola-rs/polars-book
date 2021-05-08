@@ -38,7 +38,7 @@
     - [Filter](howcani/df/filter.md)
     - [Sorting](howcani/df/sorting.md)
     - [GroupBy](howcani/df/groupby.md)
-      \<> (        - [Join](howcani/df/join.md))
+    - [Join DataFrames](howcani/df/join.md)
       \<> (        - [Pivot/melt](howcani/df/pivot-melt.md))
     - [Aggregate](howcani/df/aggregate.md)
     - [Conditionally apply](howcani/df/conditionally-apply.md)
