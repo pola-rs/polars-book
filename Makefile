@@ -8,14 +8,17 @@ DATA_DIR=data
 	@.venv/bin/pip install -U pip
 	@.venv/bin/pip install --no-cache-dir -r requirements.txt
 
-serve:
-	cd /usr/src/user_guide; mdbook serve --hostname 0.0.0.0 --port 8000
-
 data: .venv
 	@mkdir -p $(DATA_DIR)
 	$(PYTHON) generate_data.py
 	wget -q $(DATA_SRC)/reddit100k.tar.gz -O - | tar -xzf - -O > $(DATA_DIR)/reddit.csv
 	wget -q $(DATA_SRC)/runescape100k.tar.gz -O - | tar -xzf - -O > $(DATA_DIR)/runescape.csv
+
+# adding the download of astdocs here (instead of in the .venv recipe) as it might still change fairly often
+docs: .venv
+	@wget -q https://raw.githubusercontent.com/carnarez/astdocs/master/astdocs.py -O .venv/lib/python3.8/site-packages/astdocs.py
+	-@rm -fr reference_guide_python/src
+	ASTDOCS_SPLIT_BY=mc ASTDOCS_WITH_LINENOS=on $(PYTHON) generate_ref_guide_python.py
 
 run: data
 	$(PYTHON) -m user_guide.src.examples.aggregate
@@ -34,13 +37,23 @@ run: data
 	$(PYTHON) -m user_guide.src.examples.window_functions
 	$(PYTHON) -m user_guide.src.examples.how_can_i.filter
 
+serve: run docs
+	cd /usr/src/user_guide; mdbook serve --hostname 0.0.0.0 --port 8000
+	cd /usr/src/reference_guide_python; mdbook serve --hostname 0.0.0.0 --port 8001
+
 clean:
 	-@rm -fr .venv
 	-@rm -fr data
 	-@rm -fr user_guide/src/outputs
 	-@rm -fr `find . -name __pycache__`
 	-@cd user_guide; mdbook clean
+	-@cd reference_guide_python; mdbook clean
+	-@rm -fr reference_guide_python/src
 
-fmt:
-	mdformat .
+# should really be off-loaded to pre-commit:
+# - isort is not ran
+# - running mdformat here is dangerous, some files *should* be excluded
+format:
 	black .
+	flake8 --max-line-length=88 --max-doc-length=88 .
+	mdformat .  # could add --wrap=88

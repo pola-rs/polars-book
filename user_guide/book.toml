@@ -3,7 +3,7 @@ authors = ["ritchie46"]
 language = "en"
 multilingual = false
 src = "src"
-title = "Polars User Guide"
+title = "Polars - User Guide"
 
 [output.html]
 default-theme = "Ayu"

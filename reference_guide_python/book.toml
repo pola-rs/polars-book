@@ -1,0 +1,14 @@
+[book]
+authors = ["ritchie46"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Polars - Python Reference Guide"
+
+[output.html]
+default-theme = "Ayu"
+mathjax-support = true
+
+[output.html.fold]
+enable = true
+level = 0
