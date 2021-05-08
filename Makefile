@@ -37,9 +37,13 @@ run: data
 	$(PYTHON) -m user_guide.src.examples.window_functions
 	$(PYTHON) -m user_guide.src.examples.how_can_i.filter
 
-serve: run docs
+serve_user_guide: run
 	cd /usr/src/user_guide; mdbook serve --hostname 0.0.0.0 --port 8000
-	cd /usr/src/reference_guide_python; mdbook serve --hostname 0.0.0.0 --port 8001
+
+serve_ref_guide_python: docs
+	cd /usr/src/reference_guide_python; mdbook serve --hostname 0.0.0.0 --port 8000
+
+serve: serve_user_guide
 
 clean:
 	-@rm -fr .venv

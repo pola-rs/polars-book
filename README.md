@@ -9,11 +9,10 @@ To ease the few steps, a `Makefile` is provided; and a `Dockerfile` to build the
 
 ```shell
 $ docker build --build-arg uid=$UID -t polars-guides .
-$ docker run --entrypoint /bin/bash -it --rm -v `pwd`:/usr/src -p 8000-8001:8000-8001 --workdir /usr/src polars-guides
+$ docker run --entrypoint /bin/bash -it --rm -v `pwd`:/usr/src -p 8000:8000 --workdir /usr/src polars-guides
 ```
 
 should get you there.
-The User Guide is exposed on the port 8000; adding to this number gets you through the various Reference Guides.
 (Note the `mdBook` executable is downloaded and *not* compiled to fasten the building of the image.)
 
 ## User Guide
