@@ -54,10 +54,6 @@ clean:
 	-@cd reference_guide_python; mdbook clean
 	-@rm -fr reference_guide_python/src
 
-# should really be off-loaded to pre-commit:
-# - isort is not ran
-# - running mdformat here is dangerous, some files *should* be excluded
 format:
 	black .
-	flake8 --max-line-length=88 --max-doc-length=88 .
-	mdformat .  # could add --wrap=88
+	mdformat `find user_guide/src -name "*.md" | grep -v SUMMARY.md`

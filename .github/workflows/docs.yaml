@@ -33,11 +33,12 @@ jobs:
 
       - name: Deploy docs
         run: |
+          mkdir -p docs
           cd user_guide
-          mdbook build --dest-dir ../docs_user-guide .
+          mdbook build --dest-dir ../docs/user_guide .
           cd ..
           cd reference_guide_python
-          mdbook2 build --dest-dir ../docs_ref-guide-python .
+          mdbook2 build --dest-dir ../docs/api_python .
           cd ..
           ghp-import --no-jekyll docs
           git push -qf https://${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git gh-pages

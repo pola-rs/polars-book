@@ -24,9 +24,7 @@ jobs:
       - name: Check formatting
         run: |
           black --check .
-          flake8 --max-doc-length=88 --max-line-length=88 .
-          isort --check-only --multi-line=3 --profile=black .
-          mdformat --check --wrap=88 .
+          mdformat --check $(find user_guide/src -name "*.md" | grep -v SUMMARY.md)
 
       - name: Run snippets
         run: |
