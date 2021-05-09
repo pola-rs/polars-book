@@ -40,5 +40,6 @@ jobs:
           cd reference_guide_python
           mdbook2 build --dest-dir ../docs/api_python .
           cd ..
+          echo '<meta http-equiv=refresh content=0;url=/polars-book/user_guide/index.html>' > docs/index.html && \
           ghp-import --no-jekyll docs
           git push -qf https://${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git gh-pages
