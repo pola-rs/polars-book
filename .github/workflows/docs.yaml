@@ -22,9 +22,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y graphviz make wget
           python -m pip install ghp-import
-          wget https://github.com/rust-lang/mdBook/releases/download/v0.4.7/mdbook-v0.4.7-x86_64-unknown-linux-gnu.tar.gz -O - | sudo tar -xzf - -C /usr/bin/
-          wget https://github.com/ritchie46/mdBook/releases/download/api-0.0.1/mdbook -O /usr/bin/mdbook2
-          chmod +x /usr/bin/mdbook2
+          sudo wget https://github.com/rust-lang/mdBook/releases/download/v0.4.7/mdbook-v0.4.7-x86_64-unknown-linux-gnu.tar.gz -O - | sudo tar -xzf - -C /usr/bin/
+          sudo wget https://github.com/ritchie46/mdBook/releases/download/api-0.0.1/mdbook -O /usr/bin/mdbook2
+          sudo chmod +x /usr/bin/mdbook2
 
       - name: Run snippets
         run: |
