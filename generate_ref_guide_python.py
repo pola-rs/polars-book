@@ -13,8 +13,8 @@ import astdocs
 
 # BRACE FOR THE PATH JUGGLING MATE
 # all unix paths, ftw
-OUT = "reference_guide_python/src".rstrip("/")         # where do we want the markdown
-PKG = "polars".rstrip("/")                             # package (folder) to process
+OUT = "reference_guide_python/src".rstrip("/")  # where do we want the markdown
+PKG = "polars".rstrip("/")  # package (folder) to process
 SRC = ".venv/lib/python3.8/site-packages".rstrip("/")  # where it that package
 
 # make them absolute
@@ -30,10 +30,9 @@ def mdbook_includes(md: str) -> str:
     """
     # two passes to make it cleaner, if not clearer
     # would break if those markers are in the code, but...
-    return (
-        re.sub(r"\n\.\. include:: (.*)", r"\n{{#include %%%SRCPKG%%%\1}}", md)
-        .replace("include %%%SRCPKG%%%", f"include {SRC}/{PKG}/")
-    )
+    return re.sub(
+        r"\n\.\. include:: (.*)", r"\n{{#include %%%SRCPKG%%%\1}}", md
+    ).replace("include %%%SRCPKG%%%", f"include {SRC}/{PKG}/")
 
 
 def mdbook_raw_includes(md: str) -> str:
@@ -69,7 +68,7 @@ def mdbook_raw_includes(md: str) -> str:
         re.sub(
             r"\n%%%SOURCE (.*)",
             r"\n%%%PREFIX%%%{{#include %%%SRC%%%\1}}\n%%%SUFFIX%%%",
-            md
+            md,
         )
         .replace(
             "%%%PREFIX%%%",
@@ -84,12 +83,7 @@ def mdbook_raw_includes(md: str) -> str:
         .replace("include %%%SRC%%%", f"include {SRC}/")
         .replace(
             "%%%SUFFIX%%%",
-            (
-                "```\n"
-                "<raw>\n"
-                "</details>\n"
-                "</raw>\n"
-            ),
+            ("```\n" "<raw>\n" "</details>\n" "</raw>\n"),
         )
     )
 
