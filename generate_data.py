@@ -1,3 +1,6 @@
+"""Small `Python` snippet to generate mock datasets (in CSV format) to be used by the
+code examples included in the User Guide."""
+
 import numpy as np
 import pandas as pd
 import polars as pl

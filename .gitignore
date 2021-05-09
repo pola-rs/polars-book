@@ -1,5 +1,7 @@
+astdocs.py
 data
 outputs
+reference_guide_python/src
 __pycache__
 .devcontainer
 .idea
