@@ -36,6 +36,7 @@ run: data
 	$(PYTHON) -m user_guide.src.examples.how_can_i.sorting
 	$(PYTHON) -m user_guide.src.examples.how_can_i.joins
 	$(PYTHON) -m user_guide.src.examples.how_can_i.melt
+	$(PYTHON) -m user_guide.src.examples.how_can_i.pivot
 
 clean:
 	-@rm -fr .venv
