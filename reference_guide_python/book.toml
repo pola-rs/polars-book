@@ -8,6 +8,7 @@ title = "Polars - Python Reference Guide"
 [output.html]
 default-theme = "Ayu"
 mathjax-support = true
+additional-css = ["theme/css/style.css"]
 
 [output.html.fold]
 enable = true
