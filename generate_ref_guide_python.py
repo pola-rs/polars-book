@@ -23,10 +23,11 @@ OUT = f"{cwd}/{OUT}"
 SRC = f"{cwd}/{SRC}"
 
 # compile regexes
-START_FN = re.compile(r"%%%START FUNCTIONDEF.*\n")
-END_FN = re.compile(r"%%%END FUNCTIONDEF.*\n*")
-START_ANY = re.compile(r"%%%START.*")
-END_ANY = re.compile(r"%%%END.*")
+RE_START_FN = re.compile(r"%%%START FUNCTIONDEF.*\n")
+RE_END_FN = re.compile(r"%%%END FUNCTIONDEF.*\n*")
+RE_START_ANY = re.compile(r"%%%START.*")
+RE_END_ANY = re.compile(r"%%%END.*")
+RE_MODULE_FFI = re.compile(r"%%%BEGIN MODULE polars.ffi.*%%%END_MODULE polars.ffi")
 
 
 def mdbook_includes(md: str) -> str:
@@ -101,12 +102,12 @@ def path_cleanup(md: str) -> str:
 
 
 def encapsulate_funcs(md: str) -> str:
-    md = START_FN.sub("<raw><div class='function-wrap'></raw>\n", md)
-    md = END_FN.sub("<raw></div></raw>\n", md)
+    md = RE_START_FN.sub("<raw><div class='function-wrap'></raw>\n", md)
+    md = RE_END_FN.sub("<raw></div></raw>\n", md)
 
     # remove other start/ends
-    md = START_ANY.sub("\n", md)
-    md = END_ANY.sub("\n", md)
+    md = RE_START_ANY.sub("\n", md)
+    md = RE_END_ANY.sub("\n", md)
     return md
 
 
