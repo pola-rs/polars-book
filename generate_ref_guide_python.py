@@ -70,7 +70,7 @@ def mdbook_raw_includes(md: str) -> str:
     """
     # several passes to make it cleaner, if not clearer
     # would break if those markers are in the code, but...
-    return (
+    md = (
         re.sub(
             r"\n%%%SOURCE (.*)",
             r"\n%%%PREFIX%%%{{#include %%%SRC%%%\1}}\n%%%SUFFIX%%%",
@@ -79,7 +79,7 @@ def mdbook_raw_includes(md: str) -> str:
         .replace(
             "%%%PREFIX%%%",
             (
-                "<raw>\n"
+                "\n\n<raw>\n"
                 "<details>\n"
                 '  <summary style="text-align:right">source</summary>\n'
                 "</raw>\n"
@@ -92,6 +92,7 @@ def mdbook_raw_includes(md: str) -> str:
             ("```\n" "<raw>\n" "</details>\n" "</raw>\n"),
         )
     )
+    return md
 
 
 def path_cleanup(md: str) -> str:
