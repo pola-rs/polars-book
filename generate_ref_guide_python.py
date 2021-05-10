@@ -22,6 +22,12 @@ cwd = os.getcwd()
 OUT = f"{cwd}/{OUT}"
 SRC = f"{cwd}/{SRC}"
 
+# compile regexes
+START_FN = re.compile(r"%%%START FUNCTIONDEF.*\n")
+END_FN = re.compile(r"%%%END FUNCTIONDEF.*\n*")
+START_ANY = re.compile(r"%%%START.*")
+END_ANY = re.compile(r"%%%END.*")
+
 
 def mdbook_includes(md: str) -> str:
     """Convert the `reStructuredText` to `mdBook` syntax.
@@ -93,9 +99,20 @@ def path_cleanup(md: str) -> str:
     return md.replace("/./", "/").replace("//", "/")
 
 
+def encapsulate_funcs(md: str) -> str:
+    md = START_FN.sub("<raw><div class='function-wrap'></raw>\n", md)
+    md = END_FN.sub("<raw></div></raw>\n", md)
+
+    # remove other start/ends
+    md = START_ANY.sub("\n", md)
+    md = END_ANY.sub("\n", md)
+    return md
+
+
 @astdocs.postrender(mdbook_includes)
 @astdocs.postrender(mdbook_raw_includes)
 @astdocs.postrender(path_cleanup)
+@astdocs.postrender(encapsulate_funcs)
 def render():
     """Simple wrapper funtion to allow decorators."""
     return astdocs.render_recursively(f"{SRC}/{PKG}", f"{SRC}/")
