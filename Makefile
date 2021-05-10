@@ -18,7 +18,7 @@ data: .venv
 docs: .venv
 	@wget -q https://raw.githubusercontent.com/carnarez/astdocs/master/astdocs.py -O .venv/lib/python3.8/site-packages/astdocs.py
 	-@rm -fr reference_guide_python/src
-	ASTDOCS_BOUND_OBJECTS=1 ASTDOCS_SPLIT_BY=mc ASTDOCS_WITH_LINENOS=on $(PYTHON) generate_ref_guide_python.py
+	ASTDOCS_FOLD_ARGS_AFTER=60 ASTDOCS_BOUND_OBJECTS=1 ASTDOCS_SPLIT_BY=mc ASTDOCS_WITH_LINENOS=on $(PYTHON) generate_ref_guide_python.py
 
 run: data
 	$(PYTHON) -m user_guide.src.examples.aggregate

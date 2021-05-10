@@ -27,7 +27,9 @@ RE_START_FN = re.compile(r"%%%START FUNCTIONDEF.*\n")
 RE_END_FN = re.compile(r"%%%END FUNCTIONDEF.*\n*")
 RE_START_ANY = re.compile(r"%%%START.*")
 RE_END_ANY = re.compile(r"%%%END.*")
-RE_MODULE_FFI = re.compile(r"%%%BEGIN MODULE polars.ffi.*%%%END_MODULE polars.ffi")
+RE_MODULE_FFI = re.compile(
+    r"%%%BEGIN MODULE polars.ffi.*%%%END MODULE polars.ffi", flags=re.S
+)
 
 
 def mdbook_includes(md: str) -> str:
@@ -105,9 +107,16 @@ def encapsulate_funcs(md: str) -> str:
     md = RE_START_FN.sub("<raw><div class='function-wrap'></raw>\n", md)
     md = RE_END_FN.sub("<raw></div></raw>\n", md)
 
+    md = RE_MODULE_FFI.sub("", md)
     # remove other start/ends
     md = RE_START_ANY.sub("\n", md)
     md = RE_END_ANY.sub("\n", md)
+    return md
+
+
+def remove_elements(md: str) -> str:
+    # remove ffi module
+    md = RE_MODULE_FFI.sub("", md)
     return md
 
 
@@ -115,6 +124,7 @@ def encapsulate_funcs(md: str) -> str:
 @astdocs.postrender(mdbook_raw_includes)
 @astdocs.postrender(path_cleanup)
 @astdocs.postrender(encapsulate_funcs)
+@astdocs.postrender(remove_elements)
 def render():
     """Simple wrapper funtion to allow decorators."""
     return astdocs.render_recursively(f"{SRC}/{PKG}", f"{SRC}/")
