@@ -102,7 +102,7 @@ print(df)
 A polars expression can also do a do an implicit GROUPBY, AGGREGATION, and JOIN in a single expression.
 In the examples below we do a GROUPBY OVER `"groups"` and AGGREGATE SUM of `"random"`, and in the next expression
 we GROUPBY OVER `"names"` and AGGREGATE a LIST of `"random"`. These window functions can be combined with other expressions,
-and are an efficient way to determine group statistics. See more of those [group statistics here](../../howcani/misc/group-statistics.md)
+and are an efficient way to determine group statistics. See more of those [group statistics here](/howcani/misc/group-statistics.md)
 
 ```python
 {{#include ../examples/expressions/window.py:5:}}
