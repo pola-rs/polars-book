@@ -1,9 +1,15 @@
 .function-wrap {
     background-color: #14191F;
-    border-radius: 5px;
-    margin: 40px;
-    padding: 4px 40px 10px;
-    border: 1px solid white;
+    border-radius: 0 5px 5px 0;
+    /*margin: 40px;*/
+    /*padding: 4px 40px 10px;*/
+    border-left: 1px solid #FFB454;
 }
 
+@media (min-width: 600px) {
+    .function-wrap {
+        margin: 40px;
+        padding: 4px 40px 10px;
+    }
 
+}
