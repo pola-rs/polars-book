@@ -10,6 +10,7 @@ import os
 import re
 
 import astdocs
+from .postprocess import remove_elements, encapsulate_funcs
 
 # BRACE FOR THE PATH JUGGLING MATE
 # all unix paths, ftw
@@ -21,15 +22,6 @@ SRC = ".venv/lib/python3.8/site-packages".rstrip("/")  # where it that package
 cwd = os.getcwd()
 OUT = f"{cwd}/{OUT}"
 SRC = f"{cwd}/{SRC}"
-
-# compile regexes
-RE_START_FN = re.compile(r"%%%START FUNCTIONDEF.*\n")
-RE_END_FN = re.compile(r"%%%END FUNCTIONDEF.*\n*")
-RE_START_ANY = re.compile(r"%%%START.*")
-RE_END_ANY = re.compile(r"%%%END.*")
-RE_MODULE_FFI = re.compile(
-    r"%%%BEGIN MODULE polars.ffi.*%%%END MODULE polars.ffi", flags=re.S
-)
 
 
 def mdbook_includes(md: str) -> str:
@@ -101,23 +93,6 @@ def mdbook_raw_includes(md: str) -> str:
 def path_cleanup(md: str) -> str:
     """Remove included path mishaps and clumsiness."""
     return md.replace("/./", "/").replace("//", "/")
-
-
-def encapsulate_funcs(md: str) -> str:
-    md = RE_START_FN.sub("<raw><div class='function-wrap'></raw>\n", md)
-    md = RE_END_FN.sub("<raw></div></raw>\n", md)
-
-    md = RE_MODULE_FFI.sub("", md)
-    # remove other start/ends
-    md = RE_START_ANY.sub("\n", md)
-    md = RE_END_ANY.sub("\n", md)
-    return md
-
-
-def remove_elements(md: str) -> str:
-    # remove ffi module
-    md = RE_MODULE_FFI.sub("", md)
-    return md
 
 
 @astdocs.postrender(mdbook_includes)
