@@ -31,7 +31,7 @@ should get you there.
 | Process timestamps                     | ✗      | ✔        |
 | Process missing values                 | ✗      | ✗        |
 | Process nested values (explode)        | ✗      | ✗        |
-| Rename columns and other manipulations | ✗      | ✗        |
+| Rename columns and other manipulations | ✗      | ✔        |
 | Column/row selection                   | ✗      | ✗        |
 | Filter                                 | ✗      | ✗        |
 | Group                                  | ✗      | ✔        |
