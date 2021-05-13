@@ -16,7 +16,7 @@ data: .venv
 
 # adding the download of astdocs here (instead of in the .venv recipe) as it might still change fairly often
 docs: .venv
-	@wget -q https://raw.githubusercontent.com/carnarez/astdocs/master/astdocs.py -O .venv/lib/python3.8/site-packages/astdocs.py
+	@.venv/bin/pip install --no-cache-dir git+https://github.com/carnarez/astdocs@master
 	-@rm -fr reference_guide_python/src
 	ASTDOCS_FOLD_ARGS_AFTER=60 ASTDOCS_BOUND_OBJECTS=1 ASTDOCS_SPLIT_BY=mc ASTDOCS_WITH_LINENOS=on $(PYTHON) -m reference_guide_python
 
