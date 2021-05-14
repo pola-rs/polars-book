@@ -1,8 +1,8 @@
 # Common manipulations
 
 Like other DataFrame libaries, Polars provides a wide range of common functions to
-manipulate a Datframe. Users that are familiar with Dataframes will see many
-similarities.
+manipulate a Dataframe. Users that are familiar with Dataframes will see many
+similarities with `Pandas` or `R` implementations..
 
 ## Add columns
 
@@ -15,6 +15,9 @@ similarities.
 ```
 
 ## Type casting
+
+In this example we use Python datatypes, but we can also cast with Polars dtypes like
+`pl.Float32` or `pl.Float64`
 
 ```python
 {{#include ../../examples/df_manipulations/casting.py}}
@@ -64,7 +67,7 @@ Other strategies:
 - `max`
 
 ```python
-df.fill_none('forward')
+df.fill_none("forward")
 ```
 
 ```text
@@ -94,7 +97,7 @@ df.null_count()
 ## Sort columns
 
 ```python
-df.sort('a', reverse=True)
+df.sort("a", reverse=True)
 ```
 
 ```text
