@@ -6,32 +6,32 @@ by one or multiple columns and in multiple/different orders.
 ## Dataset
 
 ```python
-{{#include ../../examples/how_can_i/sorting/dataset.py}}
+{{#include ../../examples/sorting/dataset.py}}
 print(df)
 ```
 
 ```text
-{{#include ../../outputs/how_can_i/sorting/dataset.txt}}
+{{#include ../../outputs/sorting/dataset.txt}}
 ```
 
 ## Eager
 
 ```python
-{{#include ../../examples/how_can_i/sorting/eager.py:4:}}
+{{#include ../../examples/sorting/eager.py:3:}}
 print(out)
 ```
 
 ```text
-{{#include ../../outputs/how_can_i/sorting/eager.txt}}
+{{#include ../../outputs/sorting/eager.txt}}
 ```
 
 ## Lazy
 
 ```python
-{{#include ../../examples/how_can_i/sorting/lazy.py:3:}}
+{{#include ../../examples/sorting/lazy.py:2:}}
 print(out)
 ```
 
 ```text
-{{#include ../../outputs/how_can_i/sorting/lazy.txt}}
+{{#include ../../outputs/sorting/lazy.txt}}
 ```

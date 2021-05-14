@@ -22,24 +22,24 @@ docs: .venv
 
 run: data
 	$(PYTHON) -m user_guide.src.examples.aggregate
-	$(PYTHON) -m user_guide.src.examples.how_can_i.conditionally_apply
+	$(PYTHON) -m user_guide.src.examples.conditionally_apply
 	$(PYTHON) -m user_guide.src.examples.expressions
+	$(PYTHON) -m user_guide.src.examples.filter
 	$(PYTHON) -m user_guide.src.examples.groupby
 	$(PYTHON) -m user_guide.src.examples.groupby_dsl
 	$(PYTHON) -m user_guide.src.examples.group_statistics
 	$(PYTHON) -m user_guide.src.examples.head
+	$(PYTHON) -m user_guide.src.examples.join
+	$(PYTHON) -m user_guide.src.examples.melt
+	$(PYTHON) -m user_guide.src.examples.pivot
 	$(PYTHON) -m user_guide.src.examples.predicate_pushdown
 	$(PYTHON) -m user_guide.src.examples.projection_pushdown
+	$(PYTHON) -m user_guide.src.examples.sorting
 	$(PYTHON) -m user_guide.src.examples.strings
 	$(PYTHON) -m user_guide.src.examples.strings_performance
 	$(PYTHON) -m user_guide.src.examples.timestamps
 	$(PYTHON) -m user_guide.src.examples.udfs
 	$(PYTHON) -m user_guide.src.examples.window_functions
-	$(PYTHON) -m user_guide.src.examples.how_can_i.filter
-	$(PYTHON) -m user_guide.src.examples.how_can_i.sorting
-	$(PYTHON) -m user_guide.src.examples.how_can_i.joins
-	$(PYTHON) -m user_guide.src.examples.how_can_i.melt
-	$(PYTHON) -m user_guide.src.examples.how_can_i.pivot
 
 serve_user_guide: run
 	cd /usr/src/user_guide; mdbook serve --hostname 0.0.0.0 --port 8000
@@ -54,8 +54,8 @@ clean:
 	-@rm -fr data
 	-@rm -fr user_guide/src/outputs
 	-@rm -fr `find . -name __pycache__`
-	-@cd user_guide; mdbook clean
-	-@cd reference_guide_python; mdbook clean
+	-@cd user_guide; mdbook clean &>/dev/null
+	-@cd reference_guide_python; mdbook clean &>/dev/null
 	-@rm -fr reference_guide_python/src
 
 format:
