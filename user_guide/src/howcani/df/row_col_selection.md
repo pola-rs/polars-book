@@ -5,7 +5,7 @@ Selection of rows and columns is similar to other DataFrame libraries.
 ## Column selection
 
 ```python
-df[['a','b']]
+df[["a", "b"]]
 ```
 
 ```text
