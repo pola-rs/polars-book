@@ -33,11 +33,11 @@ should get you there.
 | Process nested values (explode)        | ✗      | ✗        |
 | Rename columns and other manipulations | ✗      | ✔        |
 | Column/row selection                   | ✗      | ✗        |
-| Filter                                 | ✗      | ✗        |
+| Filter                                 | ✗      | ✔        |
 | Group                                  | ✗      | ✔        |
-| Join                                   | ✗      | ✗        |
-| Sort                                   | ✗      | ✗        |
-| Pivot/melt                             | ✗      | ✗        |
+| Join                                   | ✗      | ✔        |
+| Sort                                   | ✗      | ✔        |
+| Pivot/melt                             | ✗      | ✔        |
 | Aggregate                              | ✗      | ✔        |
 | Conditionally apply                    | ✗      | ✔        |
 | Horizontal fold                        | ✗      | ✗        |

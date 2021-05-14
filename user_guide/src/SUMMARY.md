@@ -13,7 +13,7 @@
 - [Data Types](datatypes.md)
 - [How can I?](howcani/intro.md)
   - [Manipulate a DataFrame](howcani/df/intro.md)
-    \<> (        - [Common manipulations](howcani/df/common-manipulations.md))
+    - [Common manipulations](howcani/df/common-manipulations.md)
     - [Filter](howcani/df/filter.md)
     - [Sorting](howcani/df/sorting.md)
     - [GroupBy](howcani/df/groupby.md)
