@@ -23,6 +23,7 @@ docs: .venv
 run: data
 	$(PYTHON) -m user_guide.src.examples.aggregate
 	$(PYTHON) -m user_guide.src.examples.conditionally_apply
+	$(PYTHON) -m user_guide.src.examples.df_manipulations
 	$(PYTHON) -m user_guide.src.examples.expressions
 	$(PYTHON) -m user_guide.src.examples.filter
 	$(PYTHON) -m user_guide.src.examples.groupby
