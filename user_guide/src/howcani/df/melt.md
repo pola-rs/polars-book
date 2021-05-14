@@ -5,12 +5,12 @@ Melt operations unpivot a DataFrame from wide format to long format
 ## Dataset
 
 ```python
-{{#include ../../examples/how_can_i/melt/dataset.py}}
+{{#include ../../examples/melt/dataset.py}}
 print(df)
 ```
 
 ```text
-{{#include ../../outputs/how_can_i/melt/dataset.txt}}
+{{#include ../../outputs/melt/dataset.txt}}
 ```
 
 ## Eager + Lazy
@@ -18,10 +18,10 @@ print(df)
 `Eager` and `lazy` have the same API.
 
 ```python
-{{#include ../../examples/how_can_i/melt/eager.py:4:}}
+{{#include ../../examples/melt/eager.py:3:}}
 print(out)
 ```
 
 ```text
-{{#include ../../outputs/how_can_i/melt/eager.txt}}
+{{#include ../../outputs/melt/eager.txt}}
 ```

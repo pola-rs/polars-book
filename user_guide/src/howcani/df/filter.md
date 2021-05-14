@@ -5,7 +5,7 @@
 Filter operation in Eager are very similar to what you are used in `Pandas`.
 
 ```python
-{{#include ../../examples/how_can_i/filter/eager_1.py}}
+{{#include ../../examples/filter/eager.py}}
 ```
 
 or in more idiomatic `Polars` way:
@@ -19,11 +19,11 @@ df.filter(col("a") > 2)
 Filters operations in Lazy are expressed as:
 
 ```python
-{{#include ../../examples/how_can_i/filter/lazy.py:5:}}
+{{#include ../../examples/filter/lazy.py:2:}}
 ```
 
 Both result in:
 
 ```text
-{{#include ../../outputs/howcani/filter/filter.txt}}
+{{#include ../../outputs/filter/filter.txt}}
 ```

@@ -10,12 +10,12 @@ Polars supports sorting behavior similar to other DataFrame libraries.
 ## Dataset
 
 ```python
-{{#include ../../examples/how_can_i/joins/dataset.py}}
+{{#include ../../examples/join/dataset.py}}
 print(df_a)
 ```
 
 ```text
-{{#include ../../outputs/how_can_i/joins/dataset_a.txt}}
+{{#include ../../outputs/join/dataset_a.txt}}
 ```
 
 ```python
@@ -23,27 +23,27 @@ print(df_b)
 ```
 
 ```text
-{{#include ../../outputs/how_can_i/joins/dataset_b.txt}}
+{{#include ../../outputs/join/dataset_b.txt}}
 ```
 
 ## Eager
 
 ```python
-{{#include ../../examples/how_can_i/joins/eager.py:4:}}
+{{#include ../../examples/join/eager.py:2:}}
 print(out)
 ```
 
 ```text
-{{#include ../../outputs/how_can_i/joins/eager.txt}}
+{{#include ../../outputs/join/eager.txt}}
 ```
 
 ## Lazy
 
 ```python
-{{#include ../../examples/how_can_i/joins/lazy.py:5:}}
+{{#include ../../examples/join/lazy.py:2:}}
 print(out)
 ```
 
 ```text
-{{#include ../../outputs/how_can_i/joins/lazy.txt}}
+{{#include ../../outputs/join/lazy.txt}}
 ```

@@ -9,22 +9,22 @@ Modifying a `Series` or a column in a `DataFrame` consists of two steps.
 ## Dataset
 
 ```python
-{{#include ../../examples/how_can_i/conditionally_apply/dataset.py}}
+{{#include ../../examples/conditionally_apply/dataset.py}}
 df.head()
 ```
 
 ```text
-{{#include ../../outputs/how_can_i/conditionally_apply/dataset.txt}}
+{{#include ../../outputs/conditionally_apply/dataset.txt}}
 ```
 
 ## Eager
 
 ```python
-{{#include ../../examples/how_can_i/conditionally_apply/eager.py:6:}}
+{{#include ../../examples/conditionally_apply/eager.py:2:}}
 ```
 
 ```text
-{{#include ../../outputs/how_can_i/conditionally_apply/eager.txt}}
+{{#include ../../outputs/conditionally_apply/eager.txt}}
 ```
 
 ## Lazy
@@ -38,10 +38,10 @@ In lazy we can use the `.when()`/`.then()`/`.otherwise()` expressions.
 See:
 
 ```python
-{{#include ../../examples/how_can_i/conditionally_apply/lazy.py:4:}}
+{{#include ../../examples/conditionally_apply/lazy.py:4:}}
 print(df)
 ```
 
 ```text
-{{#include ../../outputs/how_can_i/conditionally_apply/lazy.txt}}
+{{#include ../../outputs/conditionally_apply/lazy.txt}}
 ```
