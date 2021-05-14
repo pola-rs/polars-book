@@ -32,7 +32,7 @@ should get you there.
 | Process missing values                 | ✗      | ✗        |
 | Process nested values (explode)        | ✗      | ✗        |
 | Rename columns and other manipulations | ✗      | ✔        |
-| Column/row selection                   | ✗      | ✗        |
+| Column/row selection                   | ✗      | ✔        |
 | Filter                                 | ✗      | ✔        |
 | Group                                  | ✗      | ✔        |
 | Join                                   | ✗      | ✔        |
