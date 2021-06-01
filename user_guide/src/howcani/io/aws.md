@@ -13,7 +13,7 @@ located on an AWS bucket.
 
 ## Read
 
-On can load a `.parquet` file using:
+One can load a `.parquet` file using:
 
 ```python
 import polars as pl
