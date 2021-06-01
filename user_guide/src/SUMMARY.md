@@ -27,6 +27,7 @@
     - [CSV files](howcani/io/csv.md)
     - [Parquet files](howcani/io/parquet.md)
     - [Interact with AWS](howcani/io/aws.md)
+    - [Interact with Google BigQuery](howcani/io/google-big-query.md)
       \<> (        - [Interact with a database](howcani/io/database.md))
   - [Interoperability](howcani/interop/intro.md)
     - [Arrow](howcani/interop/arrow.md)
