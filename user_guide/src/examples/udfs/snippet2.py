@@ -11,7 +11,7 @@ def my_custom_func(s: pl.Series) -> pl.Series:
 
 
 # simple wrapper that take a function and sets output type
-my_udf = pl.udf(my_custom_func, output_type=pl.Float64)
+my_udf = pl.udf(my_custom_func, return_dtype=pl.Float64)
 
 q = dataset.lazy().filter(pl.col("bar").map(my_udf) > -1)
 
