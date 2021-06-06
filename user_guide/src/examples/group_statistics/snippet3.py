@@ -20,7 +20,7 @@ q = dataset.with_columns(
         pl.sum("cumcases").over("date").alias("sum_cases/day"),
         pl.min("cumcases").over("date").alias("min_cases/day"),
         pl.max("cumcases").over("date").alias("max_cases/day"),
-        pl.sum("cumcases").over(pl.col("date").year()).alias("cases/year"),
+        pl.sum("cumcases").over(pl.col("date").dt.year()).alias("cases/year"),
     ]
 )
 

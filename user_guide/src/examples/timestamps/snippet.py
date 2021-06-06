@@ -5,7 +5,7 @@ dataset = pl.DataFrame(
 )
 
 q = dataset.lazy().with_column(
-    pl.col("date").str_parse_date(pl.datatypes.Date32, "%Y-%m-%d")
+    pl.col("date").str.parse_date(pl.datatypes.Date32, "%Y-%m-%d")
 )
 
 df = q.collect()

@@ -3,12 +3,12 @@
 Thanks to its `Arrow` backend `Polars` string operations are much faster compared to the
 same operations performed with `NumPy` or `Pandas`. In the latter, strings are stored as
 `Python` objects and while traversing the `np.array` or the `pd.Series` the CPU needs to
-follow all the string pointers, and jump through many different memory locations; which
-is, as expected, quite computationally expensive. In `Polars` (*e.g.*, `Arrow` data
+follow all the string pointers, and jump to many random memory locations; which
+is very cache inefficient. In `Polars` (*e.g.*, `Arrow` data
 structure) strings are contiguous in memory and traversing is cache-optimal and
 predictable for the CPU.
 
-The string processing functions available in `Polars` are:
+The string processing functions available in `Polars` are available in :
 
 - [`.str_parse_date()`](POLARS_PY_REF_GUIDE/lazy/index.html#polars.lazy.Expr.str_parse_date)
 - [`.str_contains()`](POLARS_PY_REF_GUIDE/lazy/index.html#polars.lazy.Expr.str_contains)
