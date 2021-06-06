@@ -22,7 +22,7 @@ raw_data = pl.DataFrame(
 # sort all values on the sorting key so that
 parsed_sorted = (
     raw_data.lazy()
-    .with_column(pl.col("date").str_parse_date(pl.Date32))
+    .with_column(pl.col("date").str.parse_date(pl.Date32))
     .with_column(
         (pl.col("country").cast(str) + pl.lit("-") + pl.col("date").cast(int)).alias(
             "sort_key"

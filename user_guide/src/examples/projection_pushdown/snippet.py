@@ -6,7 +6,7 @@ reddit = (
     pl.scan_csv(f"{DATA_DIR}/reddit.csv")
     .filter(pl.col("comment_karma") > 0)
     .filter(pl.col("link_karma") > 0)
-    .filter(pl.col("name").str_contains(r"^a"))
+    .filter(pl.col("name").str.contains(r"^a"))
 )
 
 runescape = pl.scan_csv("data/runescape.csv", has_headers=False).select(
