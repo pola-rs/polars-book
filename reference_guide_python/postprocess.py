@@ -26,7 +26,7 @@ def remove_elements(md: str) -> str:
     md = remove("polars.series.IdentityDict", "CLASSDEF", md)
     md = remove("polars.series.SeriesIter", "CLASSDEF", md)
     md = remove("polars.series.SeriesIter", "CLASSDEF", md)
-    md = empty_module("polars.series", md)
+    # md = empty_module("polars.series", md)
     md = remove("polars.lazy.wrap_ldf", "FUNCTIONDEF", md)
     md = remove("polars.lazy.wrap_expr", "FUNCTIONDEF", md)
     md = remove("polars.lazy.expr_to_lit_or_expr", "FUNCTIONDEF", md)
