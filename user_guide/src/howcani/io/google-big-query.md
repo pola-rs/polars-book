@@ -28,3 +28,5 @@ df = pl.from_arrow(rows.to_arrow())
 ```
 
 ## Write
+
+> In redaction
