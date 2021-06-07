@@ -28,7 +28,7 @@
     - [Parquet files](howcani/io/parquet.md)
     - [Interact with AWS](howcani/io/aws.md)
     - [Interact with Google BigQuery](howcani/io/google-big-query.md)
-      \<> (        - [Interact with a database](howcani/io/database.md))
+    - [Interact with Postgres](howcani/io/postgres.md)
   - [Interoperability](howcani/interop/intro.md)
     - [Arrow](howcani/interop/arrow.md)
     - [NumPy](howcani/interop/numpy.md)
