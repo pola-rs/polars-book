@@ -14,6 +14,8 @@ The data types are:
 - `UInt16`: 16-bit unsigned integer.
 - `UInt32`: 32-bit unsigned integer.
 - `UInt64`: 64-bit unsigned integer.
+- `Float32`: 32-bit floating point.
+- `Float64`: 64-bit floating point.
 - `Boolean`: Boolean type effectively bit packed.
 - `Utf8`: String data (this is actually Arrow `LargeUtf8` internally).
 - `List`: A list array contains a child array containing the list values and an offset array. (this is actually Arrow `LargeList` internally).
