@@ -8,6 +8,9 @@ from .expressions_examples_4 import df as e4
 from .agg_context_1 import df as ac1
 from .with_column_context_1 import df as c2
 from .window import df as w1
+from .fold_1 import out as fold_out_1
+from .fold_2 import out as fold_out_2
+from .fold_3 import out as fold_out_3
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/expressions")
 
@@ -37,3 +40,12 @@ with open(f"{path}/wc_context_1.txt", "w") as f:
 
 with open(f"{path}/window_1.txt", "w") as f:
     f.write(f"{w1}\n")
+
+with open(f"{path}/folds_1.txt", "w") as f:
+    f.write(f"{fold_out_1}\n")
+
+with open(f"{path}/folds_2.txt", "w") as f:
+    f.write(f"{fold_out_2}\n")
+
+with open(f"{path}/folds_3.txt", "w") as f:
+    f.write(f"{fold_out_3}\n")
