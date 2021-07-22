@@ -1,16 +1,29 @@
 # Interact with Postgres
 
-To read/write form postgres, additional dependencies are needed:
+## Read
+
+To read from postgres, additional dependencies are needed:
+
+```shell
+$  pip install connectorx>=0.2.0a3
+```
+
+```python
+import polars as pl
+
+conn = "postgresql://username:password@server:port/database"
+query = "SELECT * FROM foo"
+
+pl.read_sql(query, conn)
+```
+
+## Write
+
+To write to postgres, additional dependencies are needed:
 
 ```shell
 $ pip install psycopg2-binary
 ```
-
-## Read
-
-> In redaction
-
-## Write
 
 For writing to a postgres database with `psycopg2`, we utilize `execute_batch`. This will limit the needed round trips
 to the server.
