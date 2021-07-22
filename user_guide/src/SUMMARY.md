@@ -27,6 +27,7 @@
   - [IO](howcani/io/intro.md)
     - [CSV files](howcani/io/csv.md)
     - [Parquet files](howcani/io/parquet.md)
+    - [Read from a database](howcani/io/read_db.md)
     - [Interact with AWS](howcani/io/aws.md)
     - [Interact with Google BigQuery](howcani/io/google-big-query.md)
     - [Interact with Postgres](howcani/io/postgres.md)
