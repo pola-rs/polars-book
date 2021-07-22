@@ -21,11 +21,11 @@ docs: .venv
 	ASTDOCS_FOLD_ARGS_AFTER=60 ASTDOCS_BOUND_OBJECTS=1 ASTDOCS_SPLIT_BY=mc ASTDOCS_WITH_LINENOS=on $(PYTHON) -m reference_guide_python
 
 run: data
+	$(PYTHON) -m user_guide.src.examples.expressions
 	$(PYTHON) -m user_guide.src.examples.aggregate
 	$(PYTHON) -m user_guide.src.examples.column_row_selection
 	$(PYTHON) -m user_guide.src.examples.conditionally_apply
 	$(PYTHON) -m user_guide.src.examples.df_manipulations
-	$(PYTHON) -m user_guide.src.examples.expressions
 	$(PYTHON) -m user_guide.src.examples.filter
 	$(PYTHON) -m user_guide.src.examples.groupby
 	$(PYTHON) -m user_guide.src.examples.groupby_dsl

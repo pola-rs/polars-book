@@ -9,6 +9,7 @@
   - [Expressions](dsl/intro.md)
   - [Contexts](dsl/contexts.md)
   - [GroupBy](dsl/groupby.md)
+  - [Folds](dsl/folds.md)
   - [API](dsl/api.md)
 - [Data Types](datatypes.md)
 - [How can I?](howcani/intro.md)
