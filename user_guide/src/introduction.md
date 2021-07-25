@@ -77,7 +77,7 @@ Below a concise list of the features allowing `Polars` to meet its goals:
 - `JavaScript` bindings
 - Memory mapped files
   - [Out-of-core](https://en.wikipedia.org/wiki/External_memory_algorithm) analysis with
-    [`DataFusion`](https://github.com/apache/arrow/tree/master/rust/datafusion)
+    [`DataFusion`](https://github.com/apache/arrow-datafusion)
 
 ## Acknowledgements
 
