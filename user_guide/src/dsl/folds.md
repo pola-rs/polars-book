@@ -1,7 +1,7 @@
 # Folds
 
-Polars provides expressions/methods for horizontal aggregations like, [sum](POLARS_PY_REF_GUIDE/polars/eager/frame/DataFrame.html#polarseagerframedataframesum),
-[min](POLARS_PY_REF_GUIDE/polars/eager/frame/DataFrame.html#polarseagerframedataframemin), [mean](POLARS_PY_REF_GUIDE/polars/eager/frame/DataFrame.html#polarseagerframedataframemean),
+Polars provides expressions/methods for horizontal aggregations like, [sum](POLARS_PY_REF_GUIDE/api/polars.DataFrame.sum.html),
+[min](POLARS_PY_REF_GUIDE/api/polars.DataFrame.min.html), [mean](POLARS_PY_REF_GUIDE/api/polars.DataFrame.mean.html),
 etc. by setting the argument `axis=1`. However, when you need a more complex aggregation the default ones provided by the
 polars library may not be sufficient. That's when `folds` come in handy. Polars' `fold` expression operates on columns and
 can therefore be really fast. It utilizes the data layout most efficiently and often has vectorized execution.

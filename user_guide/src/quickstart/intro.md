@@ -69,10 +69,10 @@ If you want to dive right into the `Python` API docs, refer to
 
 ### Eager API
 
-The eager API is very similar to [`Pandas`](https://pandas.pydata.org/). Operations are
+In the eager API, Operations are
 executed directly in an imperative manner. The important data structures are the
-[`DataFrame`](POLARS_PY_REF_GUIDE/polars/eager/frame/DataFrame.html) and the
-[`Series`](POLARS_PY_REF_GUIDE/polars/eager/series/Series.html)
+[`DataFrame`](POLARS_PY_REF_GUIDE/dataframe.html) and the
+[`Series`](POLARS_PY_REF_GUIDE/series.html)
 
 ### Lazy API
 
@@ -82,10 +82,10 @@ to execute the query (via `LazyFrame.collect()`, or `LazyFrame.fetch()`). This p
 fastest algorithm given that context.
 
 The important data structure is here the
-[`LazyFrame`](POLARS_PY_REF_GUIDE/polars/lazy/frame/LazyFrame.html), a `DataFrame`
+[`LazyFrame`](POLARS_PY_REF_GUIDE/lazyframe.html), a `DataFrame`
 abstraction lazily keeping track of the query plan.
 
 Arguments given to a `LazyFrame` can be constructed by building simple to complex
 queries following the
-[`Expr` API](POLARS_PY_REF_GUIDE/polars/lazy/expr/Expr.html). See the examples in
+[`Expr` API](POLARS_PY_REF_GUIDE/expression.html). See the examples in
 the [Expressions?](/dsl/intro.html) section of the guide.

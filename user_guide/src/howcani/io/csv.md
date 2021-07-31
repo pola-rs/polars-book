@@ -9,10 +9,10 @@ df = pl.read_csv("path.csv")
 ```
 
 CSV files come in many different flavors, so make sure to check the
-[`read_csv()`](POLARS_PY_REF_GUIDE/functions.html#polars.functions.read_csv) API.
+[`read_csv()`](POLARS_PY_REF_GUIDE/api/polars.read_csv.html) API.
 
 Writing to a CSV file can be done with the
-[`to_csv()`](POLARS_PY_REF_GUIDE/frame.html#polars.frame.DataFrame.to_csv) method.
+[`to_csv()`](POLARS_PY_REF_GUIDE/api/polars.DataFrame.to_csv.html) method.
 
 ```python
 df = pl.DataFrame({"foo": [1, 2, 3], "bar": [None, "bak", "baz"]})

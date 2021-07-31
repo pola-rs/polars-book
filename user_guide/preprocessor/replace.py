@@ -10,9 +10,11 @@ context, book = json.load(sys.stdin)
 content = json.dumps(book)
 
 substitutes = (
-    ("POLARS_PY_REF_GUIDE_V2", "https://pola-rs.github.io/polars-book/api-python"),
     ("POLARS_RS_REF_GUIDE", "https://docs.rs/polars"),
-    ("POLARS_PY_REF_GUIDE", "https://pola-rs.github.io/polars-book/api-python"),
+    (
+        "POLARS_PY_REF_GUIDE",
+        "https://pola-rs.github.io/polars/py-polars/html/reference",
+    ),
 )
 
 for old, new in substitutes:
