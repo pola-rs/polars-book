@@ -2,9 +2,6 @@
 
 - [Introduction](introduction.md)
 - [Getting started](quickstart/intro.md)
-  \<> (    - [Rust](quickstart/rust.md))
-  - [Python](quickstart/python.md)
-    \<> (- [Polars datatypes](datatypes.md))
 - [Polars expressions](dsl/intro.md)
   - [Expressions](dsl/intro.md)
   - [Contexts](dsl/contexts.md)
