@@ -32,8 +32,8 @@ for size in np.array([1e4, 1e5, 1e6, 1e7], dtype=int):
 print("Join data:")
 
 N = 10000
-indices = np.array([pd._testing.rands(10) for _ in range(N)], dtype="O")
-indices2 = np.array([pd._testing.rands(10) for _ in range(N)], dtype="O")
+indices = np.array([pd._testing.rands(10) for _ in range(N)], dtype=str)
+indices2 = np.array([pd._testing.rands(10) for _ in range(N)], dtype=str)
 key = np.tile(indices[:8000], 10)
 key2 = np.tile(indices2[:8000], 10)
 
