@@ -8,6 +8,7 @@
   - [GroupBy](dsl/groupby.md)
   - [Folds](dsl/folds.md)
   - [API](dsl/api.md)
+- [Indexing](indexing.md)
 - [Data Types](datatypes.md)
 - [How can I?](howcani/intro.md)
   - [Manipulate a DataFrame](howcani/df/intro.md)

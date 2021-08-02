@@ -60,6 +60,8 @@ clean:
 	-@cd reference_guide_python; mdbook clean &>/dev/null
 	-@rm -fr reference_guide_python/src
 
+fmt: format
+
 format:
 	black .
 	mdformat `find user_guide/src -name "*.md" | grep -v SUMMARY.md`
