@@ -29,7 +29,6 @@ run: data
 	$(PYTHON) -m user_guide.src.examples.filter
 	$(PYTHON) -m user_guide.src.examples.groupby
 	$(PYTHON) -m user_guide.src.examples.groupby_dsl
-	$(PYTHON) -m user_guide.src.examples.group_statistics
 	$(PYTHON) -m user_guide.src.examples.head
 	$(PYTHON) -m user_guide.src.examples.join
 	$(PYTHON) -m user_guide.src.examples.melt
@@ -42,6 +41,7 @@ run: data
 	$(PYTHON) -m user_guide.src.examples.timestamps
 	$(PYTHON) -m user_guide.src.examples.udfs
 	$(PYTHON) -m user_guide.src.examples.window_functions
+	cd notebooks && ../.venv/bin/python ../.venv/bin/jupyter nbconvert --to python introduction_polars.ipynb && ../.venv/bin/python introduction_polars.py
 
 serve_user_guide: run
 	cd /usr/src/user_guide; mdbook serve --hostname 0.0.0.0 --port 8000

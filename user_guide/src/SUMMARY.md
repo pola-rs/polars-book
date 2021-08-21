@@ -41,8 +41,6 @@
     \<> (        - [Apply NumPy universal functions](howcani/apply/numpy-ufuncs.md)
     - [Use custom functions](howcani/apply/udfs.md)
     - [Apply window functions](howcani/apply/window-functions.md)
-  - [Miscellaneous](howcani/misc/intro.md)
-    - [Group statistics](howcani/misc/group-statistics.md)
 - [Performance](performance/intro.md)
   - [Strings](performance/strings.md)
     \<> (    - [Gotchas](performance/gotchas.md))
