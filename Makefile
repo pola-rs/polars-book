@@ -41,7 +41,8 @@ run: data
 	$(PYTHON) -m user_guide.src.examples.timestamps
 	$(PYTHON) -m user_guide.src.examples.udfs
 	$(PYTHON) -m user_guide.src.examples.window_functions
-	cd notebooks && ../.venv/bin/python ../.venv/bin/jupyter nbconvert --to python introduction_polars.ipynb && ../.venv/bin/python introduction_polars.py
+	./tasks.sh process_nbook introduction_polars
+
 
 serve_user_guide: run
 	cd /usr/src/user_guide; mdbook serve --hostname 0.0.0.0 --port 8000
