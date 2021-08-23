@@ -25,7 +25,7 @@ import polars as pl
 
 ```python
 df = pl.read_csv("https://j.mp/iriscsv")
-df = (df.filter([pl.col("sepal_length") > 5])
+df = (df.filter(pl.col("sepal_length") > 5)
       .groupby("species")
       .sum())
 ```
