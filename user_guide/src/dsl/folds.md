@@ -12,7 +12,7 @@ Let's start with an example by implement the `sum` operation ourselves, with a `
 
 ```python
 {{#include ../examples/expressions/fold_1.py:4:}}
-print(df)
+print(out)
 ```
 
 ```text
@@ -29,7 +29,7 @@ a very concise way to express this.
 
 ```python
 {{#include ../examples/expressions/fold_2.py:4:}}
-print(df)
+print(out)
 ```
 
 ```text
@@ -47,7 +47,7 @@ Therefore, we recommend using the `concat_str` expression for this.
 
 ```python
 {{#include ../examples/expressions/fold_3.py:3:}}
-print(df)
+print(out)
 ```
 
 ```text
