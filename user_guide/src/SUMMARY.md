@@ -7,6 +7,7 @@
   - [Contexts](dsl/contexts.md)
   - [GroupBy](dsl/groupby.md)
   - [Folds](dsl/folds.md)
+  - [Window functions](dsl/window_functions.md)
   - [Examples](notebooks/introduction_polars.md)
   - [API](dsl/api.md)
 - [Indexing](indexing.md)
