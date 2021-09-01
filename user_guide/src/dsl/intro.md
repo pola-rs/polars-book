@@ -110,7 +110,7 @@ print(df)
 ```
 
 ```text
-{{#include ../outputs/expressions/window_1.txt}}
+{{#include ../outputs/expressions/window_0.txt}}
 ```
 
 ## Conclusion
