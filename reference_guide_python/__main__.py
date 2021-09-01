@@ -31,9 +31,9 @@ def mdbook_includes(md: str) -> str:
     """
     # two passes to make it cleaner, if not clearer
     # would break if those markers are in the code, but...
-    return re.sub(
-        r"\n\.\. include:: (.*)", r"\n{{#include %%%SRCPKG%%%\1}}", md
-    ).replace("include %%%SRCPKG%%%", f"include {SRC}/{PKG}/")
+    return re.sub(r"\n\.\. include:: (.*)", r"\n{{#include %%%SRCPKG%%%\1}}", md).replace(
+        "include %%%SRCPKG%%%", f"include {SRC}/{PKG}/"
+    )
 
 
 def mdbook_raw_includes(md: str) -> str:
