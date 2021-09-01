@@ -5,9 +5,7 @@ RE_START_FN = re.compile(r"%%%START FUNCTIONDEF.*\n")
 RE_END_FN = re.compile(r"%%%END FUNCTIONDEF.*\n*")
 RE_START_ANY = re.compile(r"%%%START.*")
 RE_END_ANY = re.compile(r"%%%END.*")
-RE_MODULE_FFI = re.compile(
-    r"%%%BEGIN MODULE polars.ffi.*%%%END MODULE polars.ffi", flags=re.S
-)
+RE_MODULE_FFI = re.compile(r"%%%BEGIN MODULE polars.ffi.*%%%END MODULE polars.ffi", flags=re.S)
 
 
 def encapsulate_funcs(md: str) -> str:
@@ -73,9 +71,7 @@ def remove(name: str, type_: str, md: str) -> str:
     if type_ == "FUNCTIONDEF":
         keyword = name.split(".")[-1]
         md = re.sub(rf"\* \[`{keyword}\(\)`\].*\)\n*", "", md)
-        return re.sub(
-            rf"%%%START {type_} {name}.*%%%END {type_} {name}", "", md, flags=re.S
-        )
+        return re.sub(rf"%%%START {type_} {name}.*%%%END {type_} {name}", "", md, flags=re.S)
 
     return re.sub(
         rf"%%%BEGIN {type_} {name}.*%%%END {type_} {name}",
