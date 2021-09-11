@@ -10,7 +10,7 @@ described.
 
 Even though `Polars` is completely written in [`Rust`](https://www.rust-lang.org/) (no
 runtime overhead!) and uses [`Arrow`](https://arrow.apache.org/) -the
-[native `Rust` implementation](https://docs.rs/crate/arrow/3.0.0)- at its fundation, the
+[native `Rust` implementation](https://docs.rs/crate/arrow/3.0.0)- at its foundation, the
 examples presented in this guide will be mostly using its higher-level language
 bindings. Those latter are merely a thin wrapper that will not offer more
 functionalities than the core library does.
@@ -25,7 +25,7 @@ The goal of `Polars` is being a lightning fast DataFrame library that utilizes a
 available cores on your machine.
 
 `Polars` is semi-lazy. It allows you to do most of your work eagerly, similar to `pandas`, but
-it does provide you with a powerfull expression syntax that will be optimized executed on polars' query engine.
+it does provide you with a powerful expression syntax that will be optimized executed on polars' query engine.
 
 `Polars` also supports full lazy query execution that allows for more query optimization.
 
