@@ -192,4 +192,4 @@ so we delay the use of custom python functions that slow down the queries (by th
 nature of Python AND the GIL).
 
 If you think there is a type expression missing, let me know and open a
-[feature request](https://github.com/ritchie46/polars/issues/new/choose).
+[feature request](https://github.com/pola-rs/polars/issues/new/choose).

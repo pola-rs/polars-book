@@ -25,5 +25,5 @@ groupby, filters, etc.) they are also executed in parallel.
 Some other optimizations that are done are expression simplifications. The impact of
 these optimizations is less than that of predicate and projection pushdown, but they
 likely add up. You can
-[track this issue](https://github.com/ritchie46/polars/issues/139) to see the latest
+[track this issue](https://github.com/pola-rs/polars/issues/139) to see the latest
 status of those.

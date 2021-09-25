@@ -3,7 +3,7 @@
 # Introduction
 
 This book is an introduction to the
-[`Polars` DataFrame library](https://github.com/ritchie46/polars). Its goal is to
+[`Polars` DataFrame library](https://github.com/pola-rs/polars). Its goal is to
 explain the inner workings of `Polars` by going through examples and compare it to other
 solutions. Some design choices are here introduced, and the optimal use of `Polars`
 described.
