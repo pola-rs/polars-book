@@ -36,7 +36,7 @@ in the eager API to come up with the result. Because the whole query context is 
 the optimizer and executors of the logical plan, processes dependent on separate data
 sources can be parallelized on the fly.
 
-![](https://raw.githubusercontent.com/ritchie46/static/master/polars/api.svg)
+![](https://raw.githubusercontent.com/pola-rs/polars-static/master/docs/api.svg)
 
 ### Performance 🚀🚀
 

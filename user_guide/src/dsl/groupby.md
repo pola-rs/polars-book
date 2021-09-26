@@ -12,12 +12,12 @@ fashion.
 
 A simple grouping operation is taken below as an example to illustrate this approach:
 
-![](https://raw.githubusercontent.com/ritchie46/static/master/polars/split-apply-combine-par.svg)
+![](https://raw.githubusercontent.com/pola-rs/polars-static/master/docs/split-apply-combine.svg)
 
 For the hashing operations performed during the "split" phase, `Polars` uses a
 multithreaded lock-free approach that can is illustrated on the following schema:
 
-![](https://raw.githubusercontent.com/ritchie46/static/master/polars/lock-free-hash.svg)
+![](https://raw.githubusercontent.com/pola-rs/polars-static/master/docs/lock-free-hash.svg)
 
 This parallelization allows the grouping and joining operations (for instance) to be
 blazingly fast!
