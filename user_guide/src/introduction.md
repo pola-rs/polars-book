@@ -1,4 +1,4 @@
-<div style="text-align:center;margin-top:30px"><img src="https://raw.githubusercontent.com/ritchie46/static/master/polars/polars_logo_white_circle.png" width="200px" /></div>
+<div style="margin: 30px auto; background-color: white; border-radius: 50%; width: 200px; height: 200px;"><img src="https://raw.githubusercontent.com/pola-rs/polars-static/master/logos/polars-logo-dark.svg" alt="Polars logo" style="width: 168px; height: 168px; padding: 10px 20px;"></div>
 
 # Introduction
 
