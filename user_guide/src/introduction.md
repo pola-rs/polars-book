@@ -73,4 +73,4 @@ Below a concise list of the features allowing `Polars` to meet its goals:
 
 Development of `Polars` is proudly powered by
 
-[![Xomnia](https://raw.githubusercontent.com/ritchie46/static/master/polars/xomnia_logo.png)](https://www.xomnia.com)
+[![Xomnia](https://raw.githubusercontent.com/pola-rs/polars-static/master/sponsors/xomnia.png)](https://www.xomnia.com)
