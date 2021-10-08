@@ -13,12 +13,12 @@ raw_data = pl.DataFrame(
     }
 )
 
-# first parse column as date32
+# first parse column as date
 # next create a sorting key defined by the group uid + date_integer
 # sort all values on the sorting key so that
 parsed_sorted = (
     raw_data.lazy()
-    .with_column(pl.col("date").str.parse_date(pl.Date32))
+    .with_column(pl.col("date").str.parse_date(pl.Date))
     .with_column((pl.col("country").cast(str) + pl.lit("-") + pl.col("date").cast(int)).alias("sort_key"))
     .sort("sort_key")
 )
