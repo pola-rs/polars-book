@@ -2,9 +2,9 @@
 
 `Polars` offers two time datatypes:
 
-- `pl.Date32`, to be used for **date** objects: the number of days since the UNIX epoch as
+- `pl.Date`, to be used for **date** objects: the number of days since the UNIX epoch as
   a 32 bit signed integer.
-- `pl.Date64`, to be used of **datetime** ojects: the number of milliseconds since the
+- `pl.Datetime`, to be used of **datetime** ojects: the number of milliseconds since the
   UNIX epoch as a 64 bit signed integer.
 
 `Polars` string (`pl.Utf8`) datatypes can be parsed as either of them. One can let

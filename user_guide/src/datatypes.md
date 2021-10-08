@@ -19,9 +19,8 @@ The data types are:
 - `Boolean`: Boolean type effectively bit packed.
 - `Utf8`: String data (this is actually Arrow `LargeUtf8` internally).
 - `List`: A list array contains a child array containing the list values and an offset array. (this is actually Arrow `LargeList` internally).
-- `Date32`: Date representation, internally represented as days since UNIX epoch encoded by a 32-bit signed integer.
-- `Date64`: Datetime representation, internally represented as milliseconds since UNIX epoch encoded by a 64-bit signed integer.
-- `Time64`: A 64-bit time representing the elapsed time since midnight in several units.
+- `Date`: Date representation, internally represented as days since UNIX epoch encoded by a 32-bit signed integer.
+- `Datetime`: Datetime representation, internally represented as milliseconds since UNIX epoch encoded by a 64-bit signed integer.
 - `Object`: A limited supported data type that can be any value.
 
 To learn more about the internal representation of these data types, check the [Arrow columnar format](https://arrow.apache.org/docs/format/Columnar.html).

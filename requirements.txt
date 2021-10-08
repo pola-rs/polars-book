@@ -3,3 +3,4 @@ polars
 matplotlib
 nbconvert==5.6.1
 jupyterlab
+pyarrow
