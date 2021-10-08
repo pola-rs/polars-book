@@ -1,9 +1,9 @@
-<div style="text-align:center;margin-top:30px"><img src="https://raw.githubusercontent.com/ritchie46/static/master/polars/polars_logo_white_circle.png" width="200px" /></div>
+<div style="margin: 30px auto; background-color: white; border-radius: 50%; width: 200px; height: 200px;"><img src="https://raw.githubusercontent.com/pola-rs/polars-static/master/logos/polars-logo-dark.svg" alt="Polars logo" style="width: 168px; height: 168px; padding: 10px 20px;"></div>
 
 # Introduction
 
 This book is an introduction to the
-[`Polars` DataFrame library](https://github.com/ritchie46/polars). Its goal is to
+[`Polars` DataFrame library](https://github.com/pola-rs/polars). Its goal is to
 explain the inner workings of `Polars` by going through examples and compare it to other
 solutions. Some design choices are here introduced, and the optimal use of `Polars`
 described.
@@ -36,7 +36,7 @@ in the eager API to come up with the result. Because the whole query context is 
 the optimizer and executors of the logical plan, processes dependent on separate data
 sources can be parallelized on the fly.
 
-![](https://raw.githubusercontent.com/ritchie46/static/master/polars/api.svg)
+![](https://raw.githubusercontent.com/pola-rs/polars-static/master/docs/api.svg)
 
 ### Performance 🚀🚀
 
@@ -73,4 +73,4 @@ Below a concise list of the features allowing `Polars` to meet its goals:
 
 Development of `Polars` is proudly powered by
 
-[![Xomnia](https://raw.githubusercontent.com/ritchie46/static/master/polars/xomnia_logo.png)](https://www.xomnia.com)
+[![Xomnia](https://raw.githubusercontent.com/pola-rs/polars-static/master/sponsors/xomnia.png)](https://www.xomnia.com)

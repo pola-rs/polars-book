@@ -13,9 +13,9 @@ We love your input! We want to make contributing to this project as easy and tra
 
 We use GitHub to host code, to track issues and feature requests, as well as accept pull requests.
 
-1. Fork the [repo](https://github.com/ritchie46/polars-book.git) in your own GitHub account.
+1. Fork the [repo](https://github.com/pola-rs/polars-book.git) in your own GitHub account.
 1. Clone your own version of the repo locally, and `cd` into it.
-1. Add the upstream remote with `git remote add upstream https://github.com/ritchie46/polars-book.git`
+1. Add the upstream remote with `git remote add upstream https://github.com/pola-rs/polars-book.git`
 1. All branches should derive from `master`, you can `git checkout -b <YOUR-BRANCH>` and write away.
 1. Commit/push to your own repo.
 1. Open a pull request as you would usually do, making sure the "base repository" is the upstream repo (`master` branch) and the "head repository" your own (`<YOUR-BRANCH>` branch).
@@ -43,7 +43,7 @@ Feel free to contact the maintainers if that is a concern.
 
 ### Report bugs using GitHub Issues
 
-Do not hesitate to [open a new issue](https://github.com/ritchie46/polars-book/issues/new/choose).
+Do not hesitate to [open a new issue](https://github.com/pola-rs/polars-book/issues/new/choose).
 **Great Issues** tend to have:
 
 - A quick summary and/or background.

@@ -1,6 +1,6 @@
 # `Polars` documentation
 
-In this repo one can find the source of the [User Guide](https://pola-rs.github.io/polars-book/) of the [`Polars` DataFrame library](https://github.com/ritchie46/polars).
+In this repo one can find the source of the [User Guide](https://pola-rs.github.io/polars-book/) of the [`Polars` DataFrame library](https://github.com/pola-rs/polars).
 
 To build the benchmarks and `Python` code examples, `Graphviz`, `make`, `wget` as well as the `Python` packages listed in `requirements.txt` need to be present on the system.
 To build the User Guide, the `Rust`-based [`mdBook`](https://github.com/rust-lang/mdBook) executable should also be downloaded/compiled and accessible (in the `PATH`).
