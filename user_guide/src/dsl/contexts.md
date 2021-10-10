@@ -53,7 +53,7 @@ print(df)
 
 ## Split-apply-combine context
 
-You can use expression during `groupby` aggregations in lazy as wel as eager:
+You can use expression during `groupby` aggregations in lazy as well as eager:
 
 #### Lazy aggregation
 
@@ -74,7 +74,7 @@ print(df)
 
 ## Add columns context
 
-And finally you can use expression to add column to an existing `DataFrame`
+And finally you can use expressions to add one or multiple columns to an existing `DataFrame`
 
 #### Lazy add columns
 

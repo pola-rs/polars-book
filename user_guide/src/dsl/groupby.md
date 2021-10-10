@@ -15,7 +15,7 @@ A simple grouping operation is taken below as an example to illustrate this appr
 ![](https://raw.githubusercontent.com/pola-rs/polars-static/master/docs/split-apply-combine.svg)
 
 For the hashing operations performed during the "split" phase, `Polars` uses a
-multithreaded lock-free approach that can is illustrated on the following schema:
+multithreaded lock-free approach that is illustrated on the following schema:
 
 ![](https://raw.githubusercontent.com/pola-rs/polars-static/master/docs/lock-free-hash.svg)
 
@@ -63,13 +63,13 @@ It actually desugars to:
 
 That means you don't have to go to lazy by yourself if you need the more powerful API.
 
-### Why would you want this.
+### Why would you want this?
 
 As discussed earlier, this allows us to delay the need of grabbing Python `lambdas` to
 do a more complex aggregation. So let's start very simple and see how we can use the DSL
 to do increasingly complex queries.
 
-Let's start with a simple dataset
+Let's start with the simple 
 [US congress dataset](https://github.com/unitedstates/congress-legislators).
 
 ```python
@@ -106,7 +106,7 @@ we have a nice summary overview.
 
 #### Conditionals
 
-Ok, that was pretty easy right. Let turn it up a notch. Let's say we want to know how
+Ok, that was pretty easy right. Let's turn it up a notch. Let's say we want to know how
 many delegates of a "state" are "Pro" or "Anti" administration we could directly query
 that in the aggregation without the need of `lambda` or grooming the DataFrame.
 
