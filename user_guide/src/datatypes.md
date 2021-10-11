@@ -1,7 +1,7 @@
 # Data types
 
 Polars is entirely based on Arrow data types and backed by Arrow memory arrays. This makes data processing
-cache-efficient and well-supported for Inter Process Communication. Most data types are follow the exact implementation
+cache-efficient and well-supported for Inter Process Communication. Most data types follow the exact implementation
 from Arrow, with exception of `Utf8` (this is actually `LargeUtf8`), `Categorical`, and `Object` (support is limited).
 
 The data types are:

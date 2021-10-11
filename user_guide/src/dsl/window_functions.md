@@ -31,15 +31,15 @@ as the original.
 
 ## Operations per group
 
-In case we want to do something on a group level, we can also use windows functions. Below we flex our muscles using them:
+In case we want to do something on a group level, we can also use window functions. Below we flex our muscles using them:
 
 We:
 
 - sort all pokemon by type
 - select the first 3 pokemon per type as `"Type 1"`
-- sort the pokemon within a type by speed and select the first 3 as `"fastsest/group"`
+- sort the pokemon within a type by speed and select the first 3 as `"fastest/group"`
 - sort the pokemon within a type by attack and select the first 3 as `"strongest/group"`
-- sort the pokemon by name within a type and select as the first 3 as `"sorted_by_alphabet"`
+- sort the pokemon by name within a type and select the first 3 as `"sorted_by_alphabet"`
 
 ```python
 {{#include ../examples/expressions/window_3.py:5:}}

@@ -1,7 +1,7 @@
 # Polars Expressions
 
 Polars has a powerful concept called expressions. Polars expressions can be used in
-various context and produce Series. That may sound a bit strange, so lets give an
+various contexts and produce Series. That may sound a bit strange, so lets give an
 example.
 
 The following is an expression:
@@ -35,7 +35,7 @@ examples.
 ### Count unique values
 
 We can count the unique values in a column. Note that we are creating the same result in
-a different ways. To not have duplicate column names in the `DataFrame`, we use an
+different ways. To not have duplicate column names in the `DataFrame`, we use an
 `alias` expression, which renames an expression.
 
 ```python
@@ -79,9 +79,9 @@ print(df)
 
 In the example below we use a conditional to create a new expression in the following
 `when -> then -> otherwise` construct. The `when()` function requires a predicate
-expression (and thus leads to a `boolean` `Series`), the `then` requires expects an
+expression (and thus leads to a `boolean` `Series`), the `then` expects an
 expression that will be used in case the predicate evaluates `true`, and the `otherwise`
-expects and expression that will be used in case the predicate evaluates `false`.
+expects an expression that will be used in case the predicate evaluates `false`.
 
 Note that you can pass any expression, or just base expressions like `col("foo")`,
 `lit(3)`, `lit("bar")`, etc.
@@ -99,7 +99,7 @@ print(df)
 
 ### Window expressions (split-apply-combine)
 
-A polars expression can also do a do an implicit GROUPBY, AGGREGATION, and JOIN in a single expression.
+A polars expression can also do an implicit GROUPBY, AGGREGATION, and JOIN in a single expression.
 In the examples below we do a GROUPBY OVER `"groups"` and AGGREGATE SUM of `"random"`, and in the next expression
 we GROUPBY OVER `"names"` and AGGREGATE a LIST of `"random"`. These window functions can be combined with other expressions,
 and are an efficient way to determine group statistics. See more of those [group statistics here](/howcani/misc/group-statistics.md)
@@ -116,8 +116,8 @@ print(df)
 ## Conclusion
 
 This is only, a small tip of the possible expressions, there are a ton more, and they
-can be combined myriad ways.
+can be combined in myriad ways.
 
 This page was an introduction to Polars expressions and gave a glimpse of what's
-possible with them. Next page we see in which contexts we can use expressions. And later we'll go through expressions
+possible with them. In the next page we see in which contexts we can use expressions. And later we'll go through expressions
 in various groupby contexts and by doing that keep Polars execution parallel.
