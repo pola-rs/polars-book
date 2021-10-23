@@ -1,3 +1,4 @@
 from .dataset import df
+import polars as pl
 
-df["a"] = df["a"].cast(float)
+df.with_column(pl.col("a").cast(float))

@@ -69,7 +69,7 @@ As discussed earlier, this allows us to delay the need of grabbing Python `lambd
 do a more complex aggregation. So let's start very simple and see how we can use the DSL
 to do increasingly complex queries.
 
-Let's start with the simple 
+Let's start with the simple
 [US congress dataset](https://github.com/unitedstates/congress-legislators).
 
 ```python

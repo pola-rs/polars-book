@@ -7,7 +7,7 @@ similarities with `Pandas` or `R` implementations..
 ## Add columns
 
 ```python
-{{#include ../../examples/df_manipulations/add_column.py}}
+{{#include ../../examples/df_manipulations/add_column.py:4:}}
 ```
 
 ```text
@@ -20,7 +20,7 @@ In this example we use Python datatypes, but we can also cast with Polars dtypes
 `pl.Float32` or `pl.Float64`
 
 ```python
-{{#include ../../examples/df_manipulations/casting.py}}
+{{#include ../../examples/df_manipulations/casting.py:4:}}
 ```
 
 ```text
@@ -40,7 +40,7 @@ In this example we use Python datatypes, but we can also cast with Polars dtypes
 ## Drop column
 
 ```python
-{{#include ../../examples/df_manipulations/drop_column.py}}
+{{#include ../../examples/df_manipulations/drop_column.py:3:}}
 ```
 
 ```text

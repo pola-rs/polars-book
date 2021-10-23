@@ -65,4 +65,4 @@ fmt: format
 
 format:
 	black .
-	mdformat `find user_guide/src -name "*.md" | grep -v SUMMARY.md`
+	$(PYTHON) -m mdformat `find user_guide/src -name "*.md" | grep -v SUMMARY.md`

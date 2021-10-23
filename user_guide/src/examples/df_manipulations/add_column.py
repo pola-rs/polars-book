@@ -1,3 +1,4 @@
 from .dataset import df
+import polars as pl
 
-df["e"] = ["p", "q", "r", "s", "t"]
+df.with_column(pl.Series(["p", "q", "r", "s", "t"]).alias("e"))
