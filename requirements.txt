@@ -4,3 +4,4 @@ matplotlib
 nbconvert==5.6.1
 jupyterlab
 pyarrow
+mdformat==0.7.5
