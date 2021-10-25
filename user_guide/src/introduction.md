@@ -59,7 +59,7 @@ Below a concise list of the features allowing `Polars` to meet its goals:
   - NaN are different from missing
   - Bitmask optimizations
 - Efficient algorithms
-- [Query optimizations](lazy/intro.md)
+- [Query optimizations](optimizations/lazy/intro.md)
   - Predicate pushdown
     - Filtering at scan level
   - Projection pushdown
