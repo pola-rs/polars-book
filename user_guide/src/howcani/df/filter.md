@@ -11,7 +11,7 @@ Filter operation in Eager are very similar to what you are used in `Pandas`.
 or in more idiomatic `Polars` way:
 
 ```python
-df.filter(col("a") > 2)
+df.filter(pl.col("a") > 2)
 ```
 
 ## Lazy

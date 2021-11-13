@@ -54,9 +54,9 @@ This can be used to do some pretty exotic selections.
 
 ```python
 df[[
-    col("A").head(5),  # get first of "A"
-    col("B").tail(5).reverse(), # get last of "B" in reversed order
-    col("B").filter(col("B") > 5).head(5), # get first of "B" that fulfils predicate
+    pl.col("A").head(5),  # get first of "A"
+    pl.col("B").tail(5).reverse(), # get last of "B" in reversed order
+    pl.col("B").filter(pl.col("B") > 5).head(5), # get first of "B" that fulfils predicate
     pl.sum("A").over("B").head(5) # get the sum aggregation of "A" over the groups of "B" and return the first 5
 ]]
 ```
