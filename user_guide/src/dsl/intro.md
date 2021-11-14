@@ -6,7 +6,7 @@ example.
 
 The following is an expression:
 
-`col("foo").sort().head(2)`
+`pl.col("foo").sort().head(2)`
 
 The snippet above says on `select column "foo" -> sort -> take first 2 values`. The
 power of expressions is that every expression produces a new expression and that they
@@ -83,8 +83,8 @@ expression (and thus leads to a `boolean` `Series`), the `then` expects an
 expression that will be used in case the predicate evaluates `true`, and the `otherwise`
 expects an expression that will be used in case the predicate evaluates `false`.
 
-Note that you can pass any expression, or just base expressions like `col("foo")`,
-`lit(3)`, `lit("bar")`, etc.
+Note that you can pass any expression, or just base expressions like `pl.col("foo")`,
+`pl.lit(3)`, `pl.lit("bar")`, etc.
 
 Finally, we multiply this with result of a sum expression.
 

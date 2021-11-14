@@ -1,5 +1,4 @@
 import polars as pl
-from polars import col
 import numpy as np
 
 np.random.seed(12)

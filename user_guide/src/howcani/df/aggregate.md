@@ -4,7 +4,7 @@ Column Aggregations can be within via a `.select()` or the `.with_column()`/`.wi
 context.
 
 Aggregation on all columns can be performed using the wildcard expression:
-`.select(col("*").sum())`.
+`.select(pl.col("*").sum())`.
 
 For instance:
 

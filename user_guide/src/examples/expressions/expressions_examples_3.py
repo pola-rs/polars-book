@@ -1,5 +1,4 @@
 from .dataset import df
 import polars as pl
-from polars import col
 
-df = df[[col("names").filter(col("names").str.contains(r"am$")).count()]]
+df = df[[pl.col("names").filter(pl.col("names").str.contains(r"am$")).count()]]

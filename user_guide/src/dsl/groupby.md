@@ -86,12 +86,12 @@ Per GROUP `"first_name"` we
 
 - count the number of rows in the group:
   - short form: `pl.count("party")`
-  - full form: `col("party").count()`
+  - full form: `pl.col("party").count()`
 - aggregate the gender values group to a list:
-  - full form: `col("gender").list()`
+  - full form: `pl.col("gender").list()`
 - get the first value of column `"last_name"` in the group:
   - short form: `pl.first("last_name")`
-  - full form: `col("last_name").first()`
+  - full form: `pl.col("last_name").first()`
 
 Besides the aggregation, we immediately sort the result and limit to the top 5 so that
 we have a nice summary overview.
@@ -175,7 +175,7 @@ breaks. Luckily we can sort in a groupby context separate from the `DataFrame`.
 
 We can even sort by another column in the GROUPBY context. If we want to know if the
 alphabetically sorted name is male or female we could add
-`col("gender").sort_by("first_name").first().alias("gender")`
+`pl.col("gender").sort_by("first_name").first().alias("gender")`
 
 ```python
 {{#include ../examples/groupby_dsl/snippet7.py}}
