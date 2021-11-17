@@ -39,7 +39,7 @@ different ways. To not have duplicate column names in the `DataFrame`, we use an
 `alias` expression, which renames an expression.
 
 ```python
-{{#include ../examples/expressions/expressions_examples_1.py:5:}}
+{{#include ../examples/expressions/expressions_examples_1.py:4:}}
 print(df)
 ```
 
@@ -53,7 +53,7 @@ We can do various aggregations. Below we show some of them, but there are more, 
 `median`, `mean`, `first` etc.
 
 ```python
-{{#include ../examples/expressions/expressions_examples_2.py:5:}}
+{{#include ../examples/expressions/expressions_examples_2.py:4:}}
 print(df)
 ```
 
@@ -67,7 +67,7 @@ We can also do quite some complex things. In the next snippet we count all names
 with the string `"am"`.
 
 ```python
-{{#include ../examples/expressions/expressions_examples_3.py:5:}}
+{{#include ../examples/expressions/expressions_examples_3.py:4:}}
 print(df)
 ```
 
@@ -89,7 +89,7 @@ Note that you can pass any expression, or just base expressions like `pl.col("fo
 Finally, we multiply this with result of a sum expression.
 
 ```python
-{{#include ../examples/expressions/expressions_examples_4.py:5:}}
+{{#include ../examples/expressions/expressions_examples_4.py:4:}}
 print(df)
 ```
 
@@ -105,7 +105,7 @@ we GROUPBY OVER `"names"` and AGGREGATE a LIST of `"random"`. These window funct
 and are an efficient way to determine group statistics. See more of those [group statistics here](POLARS_PY_REF_GUIDE/expression.html#aggregation)
 
 ```python
-{{#include ../examples/expressions/window.py:5:}}
+{{#include ../examples/expressions/window.py:4:}}
 print(df)
 ```
 
