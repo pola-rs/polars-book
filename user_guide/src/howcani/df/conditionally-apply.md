@@ -20,7 +20,7 @@ df.head()
 ## Eager
 
 ```python
-{{#include ../../examples/conditionally_apply/eager.py:2:}}
+{{#include ../../examples/conditionally_apply/eager.py:1:}}
 ```
 
 ```text

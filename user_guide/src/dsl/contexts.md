@@ -31,19 +31,19 @@ select the column `"foo"` to start with.
 #### Select in eager as bracket expressions
 
 ```python
-{{#include ../examples/expressions/select_context_1.py:5:}}
+{{#include ../examples/expressions/select_context_1.py:4:}}
 ```
 
 #### Select in eager via select
 
 ```python
-{{#include ../examples/expressions/select_context_2.py:5:}}
+{{#include ../examples/expressions/select_context_2.py:4:}}
 ```
 
 #### Select in lazy via select
 
 ```python
-{{#include ../examples/expressions/select_context_3.py:5:}}
+{{#include ../examples/expressions/select_context_3.py:4:}}
 print(df)
 ```
 
@@ -58,13 +58,13 @@ You can use expression during `groupby` aggregations in lazy as well as eager:
 #### Lazy aggregation
 
 ```python
-{{#include ../examples/expressions/agg_context_2.py:5:}}
+{{#include ../examples/expressions/agg_context_2.py:4:}}
 ```
 
 #### Eager aggregation
 
 ```python
-{{#include ../examples/expressions/agg_context_1.py:5:}}
+{{#include ../examples/expressions/agg_context_1.py:4:}}
 print(df)
 ```
 
@@ -79,13 +79,13 @@ And finally you can use expressions to add one or multiple columns to an existin
 #### Lazy add columns
 
 ```python
-{{#include ../examples/expressions/with_column_context_2.py:5:}}
+{{#include ../examples/expressions/with_column_context_2.py:4:}}
 ```
 
 #### Eager aggregation
 
 ```python
-{{#include ../examples/expressions/with_column_context_1.py:5:}}
+{{#include ../examples/expressions/with_column_context_1.py:4:}}
 print(df)
 ```
 
