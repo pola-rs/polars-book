@@ -8,6 +8,7 @@
   - [GroupBy](dsl/groupby.md)
   - [Folds](dsl/folds.md)
   - [Window functions](dsl/window_functions.md)
+  - [Numpy universal functions](dsl/numpy.md)
   - [Examples](notebooks/introduction_polars.md)
   - [API](dsl/api.md)
 - [Indexing](indexing.md)
