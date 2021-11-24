@@ -14,6 +14,7 @@ from .fold_3 import out as fold_out_3
 from .window_1 import df as w1
 from .window_2 import out as w2
 from .window_3 import out as w3
+from .numpy_ufunc import out as np_uf1
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/expressions")
 
@@ -61,3 +62,6 @@ with open(f"{path}/window_2.txt", "w") as f:
 
 with open(f"{path}/window_3.txt", "w") as f:
     f.write(f"{w3}\n")
+
+with open(f"{path}/np_ufunc_1.txt", "w") as f:
+    f.write(f"{np_uf1}\n")
