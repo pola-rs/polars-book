@@ -1,6 +1,6 @@
 # Apply custom functions
 
-There will always be an operation so sketchy that one cannot do with the public API of
+There will always be an operation that is so particular that one cannot do it with the public API of
 `Polars`. Luckily polars allows you to apply custom functions. This means one can
 define a `Python` function (or `lambda`) and pass it to the logical plan.
 
