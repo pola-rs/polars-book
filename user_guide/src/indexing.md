@@ -3,7 +3,7 @@
 Polars DataFrames don't have an index and therefore indexing behavior can be consistent without the need of a `df.loc`,
 `df.iloc`, or a `df.at` operation.
 
-The rules are as follows, depending of the datatypes of the index values:
+The rules are as follows, depending on the datatypes of the index values:
 
 - **numeric**
 
