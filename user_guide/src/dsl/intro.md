@@ -15,7 +15,7 @@ parallel**!
 
 ## Expression examples
 
-In the next section we will go through some examples, but first create a dataset:
+In this section we will go through some examples, but first let's create a dataset:
 
 ```python
 {{#include ../examples/expressions/dataset.py}}
@@ -26,9 +26,7 @@ print(df)
 {{#include ../outputs/expressions/dataset.txt}}
 ```
 
-## Some more examples.
-
-You can do a lot with expressions. They are so expressive that you sometimes have got
+You can do a lot with expressions. They are so expressive that you sometimes have
 multiple ways to get the same results. To get a feel for them let's go through some
 examples.
 
@@ -50,7 +48,7 @@ print(df)
 ### Various aggregations
 
 We can do various aggregations. Below we show some of them, but there are more, such as
-`median`, `mean`, `first` etc.
+`median`, `mean`, `first`, etc.
 
 ```python
 {{#include ../examples/expressions/expressions_examples_2.py:4:}}
@@ -63,7 +61,7 @@ print(df)
 
 ### Filter and conditionals
 
-We can also do quite some complex things. In the next snippet we count all names ending
+We can also do some pretty complex things. In the next snippet we count all names ending
 with the string `"am"`.
 
 ```python
@@ -102,7 +100,7 @@ print(df)
 A polars expression can also do an implicit GROUPBY, AGGREGATION, and JOIN in a single expression.
 In the examples below we do a GROUPBY OVER `"groups"` and AGGREGATE SUM of `"random"`, and in the next expression
 we GROUPBY OVER `"names"` and AGGREGATE a LIST of `"random"`. These window functions can be combined with other expressions,
-and are an efficient way to determine group statistics. See more of those [group statistics here](POLARS_PY_REF_GUIDE/expression.html#aggregation)
+and are an efficient way to determine group statistics. See more of those [group statistics here](POLARS_PY_REF_GUIDE/expression.html#aggregation).
 
 ```python
 {{#include ../examples/expressions/window.py:4:}}
@@ -115,9 +113,9 @@ print(df)
 
 ## Conclusion
 
-This is only, a small tip of the possible expressions, there are a ton more, and they
+This is the tip of the iceberg in terms of possible expressions, there are a ton more, and they
 can be combined in myriad ways.
 
 This page was an introduction to Polars expressions and gave a glimpse of what's
-possible with them. In the next page we see in which contexts we can use expressions. And later we'll go through expressions
+possible with them. In the next page, we see in which contexts we can use expressions. And later we'll go through expressions
 in various groupby contexts and by doing that keep Polars execution parallel.

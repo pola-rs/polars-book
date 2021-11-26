@@ -4,7 +4,7 @@
 support for `Arrow` is growing rapidly, in languages and in tools. Due to the great
 effort that is being put in the format, using `Arrow` is now likely the fastest way to:
 
-- Read en write `Parquet` formatted files.
+- Read and write `Parquet` formatted files.
 - Read CSV into columnar data.
 - Exchanging columnar data.
 

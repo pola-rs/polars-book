@@ -2,7 +2,7 @@
 
 Like other DataFrame libaries, Polars provides a wide range of common functions to
 manipulate a Dataframe. Users that are familiar with Dataframes will see many
-similarities with `Pandas` or `R` implementations..
+similarities with `Pandas` or `R` implementations.
 
 ## Add columns
 
