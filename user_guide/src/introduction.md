@@ -4,15 +4,15 @@
 
 This book is an introduction to the
 [`Polars` DataFrame library](https://github.com/pola-rs/polars). Its goal is to
-explain the inner workings of `Polars` by going through examples and compare it to other
-solutions. Some design choices are here introduced, and the optimal use of `Polars`
+explain the inner workings of `Polars` by going through examples and comparing it to other
+solutions. Some design choices are introduced here, and the optimal use of `Polars`
 described.
 
 Even though `Polars` is completely written in [`Rust`](https://www.rust-lang.org/) (no
 runtime overhead!) and uses [`Arrow`](https://arrow.apache.org/) -the
 [native `Rust` implementation](https://docs.rs/crate/arrow/3.0.0)- at its foundation, the
 examples presented in this guide will be mostly using its higher-level language
-bindings. Those latter are merely a thin wrapper that will not offer more
+bindings. The latter are merely a thin wrapper that will not offer more
 functionalities than the core library does.
 
 For people used to [`Pandas`](https://pandas.pydata.org/), the
@@ -25,7 +25,7 @@ The goal of `Polars` is being a lightning fast DataFrame library that utilizes a
 available cores on your machine.
 
 `Polars` is semi-lazy. It allows you to do most of your work eagerly, similar to `pandas`, but
-it does provide you with a powerful expression syntax that will be optimized executed on polars' query engine.
+it does provide you with a powerful expression syntax that will be optimized and executed on polars' query engine.
 
 `Polars` also supports full lazy query execution that allows for more query optimization.
 
