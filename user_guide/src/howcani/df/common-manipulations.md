@@ -8,6 +8,7 @@ similarities with `Pandas` or `R` implementations.
 
 ```python
 {{#include ../../examples/df_manipulations/add_column.py:4:}}
+print(out)
 ```
 
 ```text
@@ -21,6 +22,7 @@ In this example we use Python datatypes, but we can also cast with Polars dtypes
 
 ```python
 {{#include ../../examples/df_manipulations/casting.py:4:}}
+print(out)
 ```
 
 ```text
