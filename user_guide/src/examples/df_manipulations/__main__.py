@@ -1,8 +1,8 @@
 from ..paths import OUTPUT_BASE_DIR, create_if_not_exists
-from .add_column import df as add_df
-from .casting import df as cast_df
+from .add_column import out as add_df
+from .casting import out as cast_df
 from .dataset import df
-from .drop_column import df as drop_df
+from .drop_column import out as drop_df
 from .rename_column import df as rename_df
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/df_manipulations")
