@@ -13,6 +13,7 @@
   - [API](dsl/api.md)
 - [Indexing](indexing.md)
 - [Data Types](datatypes.md)
+- [Coming from Pandas](coming_from_pandas.md)
 - [How can I?](howcani/intro.md)
   - [Manipulate a DataFrame](howcani/df/intro.md)
     - [Common manipulations](howcani/df/common-manipulations.md)
