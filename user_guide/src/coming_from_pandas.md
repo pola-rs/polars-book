@@ -30,6 +30,29 @@ df.with_columns([
 ])
 ```
 
+## Column asignment based on predicate
+
+**pandas**
+
+```python
+df[df["c"] == 2, "a"] = df[df["c"] == 2, "b"]
+```
+
+**polars**
+
+```python
+df.with_column(
+    pl.when(pl.col("c") == 2)
+    .then(pl.col("c"))
+    .otherwise(pl.col("a")).alias("a")
+)
+```
+
+Not that polars way is pure (the original DataFrame) is not modified. The `mask` is also not computed twice as in `pandas`.
+You could prevent this in `pandas`, but that would require setting a temporary variable.
+Additionally polars can compute every branch of an `if -> then -> otherwise` in parallel. This is valuable, when the branches
+get more expensive to compute.
+
 ## Filtering
 
 **pandas**
