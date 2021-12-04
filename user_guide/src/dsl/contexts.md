@@ -79,7 +79,7 @@ And finally you can use expressions to add one or multiple columns to an existin
 #### Eager aggregation
 
 ```python
-{{#include ../examples/expressions/with_column_context_1.py:5:}}
+{{#include ../examples/expressions/with_column_context_1.py:4:}}
 print(df)
 ```
 
