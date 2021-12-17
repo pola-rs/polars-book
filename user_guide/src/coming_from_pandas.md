@@ -26,7 +26,7 @@ df["c"] = df["b"] * 100
 # executes in parallel
 df.with_columns([
     (pl.col("b") * 10).alias("a"),
-    (pl.col("b") * 100).alias("b"),
+    (pl.col("b") * 100).alias("c"),
 ])
 ```
 
