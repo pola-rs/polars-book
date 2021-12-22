@@ -4,7 +4,7 @@
 
 Predicate pushdown is an optimization Polars does that reduces query times and memory
 usage. A predicate is database jargon for applying a filter on some table and thereby
-reducing number the number of rows on that table.
+reducing the number of rows on that table.
 
 So let's see if we can load some Reddit data and filter on a few predicates.
 
@@ -12,8 +12,8 @@ So let's see if we can load some Reddit data and filter on a few predicates.
 {{#include ../../examples/predicate_pushdown/snippet1.py}}
 ```
 
-If we were to run this query above, nothing would happen! This due to the lazyness,
-nothing will happend until specifically requested. This allows Polars to see the whole
+If we were to run this query above, nothing would happen! This due to the lazy evaluation,
+nothing will happen until specifically requested. This allows Polars to see the whole
 context of a query and optimize just in time for execution.
 
 Execution is requested by the `.collect` method. This would query all available data.
@@ -118,5 +118,5 @@ projection (database jargon for column selection), but we'll get to that later.
 ## Cheaper joins
 
 Predicate pushdown optimization will generally also lead to cheaper join's. A join is
-quite an expensive operation the less rows we through at a join operation, the cheaper
-it becomes.
+an expensive operation, the fewer rows we have in a join operation the cheaper
+it will become.
