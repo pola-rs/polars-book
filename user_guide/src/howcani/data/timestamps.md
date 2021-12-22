@@ -1,11 +1,12 @@
 # Timestamp parsing
 
-`Polars` offers two time datatypes:
+`Polars` offers 3 time datatypes:
 
 - `pl.Date`, to be used for **date** objects: the number of days since the UNIX epoch as
   a 32 bit signed integer.
-- `pl.Datetime`, to be used of **datetime** ojects: the number of milliseconds since the
+- `pl.Datetime`, to be used of **datetime** ojects: the number of nanoseconds since the
   UNIX epoch as a 64 bit signed integer.
+- `pl.Time`, encoded as the number of nanoseconds since midnight.
 
 `Polars` string (`pl.Utf8`) datatypes can be parsed as either of them. One can let
 `Polars` try to guess the format of the date\[time\], or explicitly provide a `fmt`
