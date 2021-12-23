@@ -14,6 +14,7 @@
 - [Indexing](indexing.md)
 - [Data Types](datatypes.md)
 - [Coming from Pandas](coming_from_pandas.md)
+- [Time-series](time-series.md)
 - [How can I?](howcani/intro.md)
   - [IO](howcani/io/intro.md)
     - [CSV files](howcani/io/csv.md)
