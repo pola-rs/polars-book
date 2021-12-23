@@ -13,36 +13,19 @@ All binaries are pre-built for `Python` v3.6+.
 ## Quick start
 
 Below we show a simple snippet that parses a CSV file, filters it, and finishes with a
-groupby operation. As mentioned before the eager API must feel very similar to users
-familiar to `Pandas`. The lazy API is more declarative, and describes *what one wants*
-instead of *how one wants it*.
+groupby operation.
 
 ```python
 import polars as pl
-```
 
-### Eager quickstart
-
-```python
 df = pl.read_csv("https://j.mp/iriscsv")
 df = (df.filter(pl.col("sepal_length") > 5)
       .groupby("species")
-      .sum())
-```
-
-### Lazy quickstart
-
-```python
-q = (
-    pl.scan_csv("iris.csv")
-    .filter(pl.col("sepal_length") > 5)
-    .groupby("species")
-    .agg(pl.col("*").sum())
+      .agg(pl.all().sum())
 )
-df = q.collect()
 ```
 
-In both cases, the snippet will output:
+The snippet above will output:
 
 ```text
 shape: (3, 5)
@@ -62,17 +45,24 @@ shape: (3, 5)
 As we can see, `Polars` pretty-prints the output object, including the column name and
 datatype as headers.
 
+## Lazy quick start
+
+If we want to run this query in `lazy polars` we'd write:
+
+```python
+import polars as pl
+
+df = (pl.scan_scv("https://j.mp/iriscsv")
+      .filter(pl.col("sepal_length") > 5)
+      .groupby("species")
+      .agg(pl.all().sum())
+      .collect()
+)
+```
+
 ## References
 
-If you want to dive right into the `Python` API docs, refer to
-[the index](POLARS_PY_REF_GUIDE) or follow one of the following direct links:
-
-### Eager API
-
-In the eager API, Operations are
-executed directly in an imperative manner. The important data structures are the
-[`DataFrame`](POLARS_PY_REF_GUIDE/dataframe.html) and the
-[`Series`](POLARS_PY_REF_GUIDE/series.html)
+If you want to dive right into the `Python` API docs, check the [the index](POLARS_PY_REF_GUIDE).
 
 ### Lazy API
 
@@ -81,11 +71,15 @@ to execute the query (via `LazyFrame.collect()`, or `LazyFrame.fetch()`). This p
 `Polars` with the entire context of the query, allowing optimizations and choosing the
 fastest algorithm given that context.
 
-The important data structure is here the
-[`LazyFrame`](POLARS_PY_REF_GUIDE/lazyframe.html), a `DataFrame`
-abstraction lazily keeping track of the query plan.
+Going from eager to lazy is often as simple as starting your query with `.lazy()` and ending with `.collect()`.
 
-Arguments given to a `LazyFrame` can be constructed by building simple to complex
-queries following the
-[`Expr` API](POLARS_PY_REF_GUIDE/expression.html). See the examples in
-the [Expressions?](/dsl/intro.html) section of the guide.
+So the eager snippet above would become:
+
+```python
+(df.lazy()
+    .filter(pl.col("sepal_length") > 5)
+    .groupby("species")
+    .agg(pl.all().sum())
+    .collect()
+)
+```
