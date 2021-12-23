@@ -17,19 +17,7 @@ df.head()
 {{#include ../../outputs/conditionally_apply/dataset.txt}}
 ```
 
-## Eager
-
-```python
-{{#include ../../examples/conditionally_apply/eager.py:2:}}
-```
-
-```text
-{{#include ../../outputs/conditionally_apply/eager.txt}}
-```
-
-## Lazy
-
-In lazy we can use the `.when()`/`.then()`/`.otherwise()` expressions.
+We can use the `.when()`/`.then()`/`.otherwise()` expressions.
 
 - `when` - accepts a predicate expression
 - `then` - expression to use when `predicate == True`
