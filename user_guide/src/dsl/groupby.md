@@ -7,7 +7,7 @@
 One of the most efficient way to process tabular data is to parallelize its processing
 via the "split-apply-combine" approach. This operation is at the core of `Polars`
 grouping implementation, allowing it to attain lightning-fast operations. Most
-specifically, both the "split" and "apply" phases are executed in a multithreaded
+specifically, both the "split" and "apply" phases are executed in a multi-threaded
 fashion.
 
 A simple grouping operation is taken below as an example to illustrate this approach:
@@ -45,29 +45,6 @@ but also in its eager API.
 In the introduction on previous page we discussed that using custom Python functions,
 killed parallelization, and that we can use the expressions of the lazy API to mitigate
 this. Let's take a look at what that means.
-
-### Eager and Lazy
-
-For groupby operations you can use the lazy API in Polars eager. That means that if you
-run this snippet of code
-
-```python
-df.groupby("foo").agg([pl.col("bar").sum()])
-```
-
-It actually desugars to:
-
-```python
-(df.lazy().groupby("foo").agg([pl.col("bar").sum()])).collect()
-```
-
-That means you don't have to go to lazy by yourself if you need the more powerful API.
-
-### Why would you want this?
-
-As discussed earlier, this allows us to delay the need of grabbing Python `lambdas` to
-do a more complex aggregation. So let's start very simple and see how we can use the DSL
-to do increasingly complex queries.
 
 Let's start with the simple
 [US congress dataset](https://github.com/unitedstates/congress-legislators).

@@ -1,17 +1,31 @@
 # Polars Expressions
 
 Polars has a powerful concept called expressions. Polars expressions can be used in
-various contexts and produce Series. That may sound a bit strange, so lets give an
+various contexts and are a functional mapping of `Fn(Series) -> Series`, meaning that they have `Series` as input and
+`Series` as output. By looking at this functional definition, we can see that the output of an `Expr` also can serve
+as the input of an `Expr`.
+
+That may sound a bit strange, so lets give an
 example.
 
 The following is an expression:
 
 `pl.col("foo").sort().head(2)`
 
-The snippet above says on `select column "foo" -> sort -> take first 2 values`. The
+The snippet above says `select column "foo" then sort this column and then take first 2 values of the sorted output`. The
 power of expressions is that every expression produces a new expression and that they
-can be `piped` together. Besides, being very expressive, they are also **embarrassingly
-parallel**!
+can be `piped` together. You can run an expression by passing them on one of polars execution contexts. Here we run
+two expressions by running `df.select`:
+
+```python
+df.select([
+    pl.col("foo").sort().head(2),
+    pl.col("bar").filter(pl.col("foo") == 1).sum()
+])
+```
+
+All expressions are ran in parallel, meaning that separate polars expressions are **embarrassingly
+parallel**. (Note that within an expression there may be more parallelization going on).
 
 ## Expression examples
 
@@ -95,7 +109,7 @@ print(df)
 {{#include ../outputs/expressions/example_4.txt}}
 ```
 
-### Window expressions (split-apply-combine)
+### Window expressions
 
 A polars expression can also do an implicit GROUPBY, AGGREGATION, and JOIN in a single expression.
 In the examples below we do a GROUPBY OVER `"groups"` and AGGREGATE SUM of `"random"`, and in the next expression

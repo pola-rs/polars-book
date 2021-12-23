@@ -2,9 +2,9 @@
 
 You cannot use an expression anywhere. An expression needs a context, the available contexts are:
 
-- select
-- split-apply-combine
-- hstack/ add columns
+- selection: `df.select([..])`
+- groupy aggregation: `df.groupby(..).agg([..])`
+- hstack/ add columns: `df.with_columns([..])`
 
 ## Syntactic sugar
 
@@ -28,34 +28,15 @@ This allows Polars to push the expression into the query engine, do optimization
 You cannot use an expression everywhere. An expression needs a context from which it can
 select the column `"foo"` to start with.
 
-#### Select in eager
+#### Selection context
 
 ```python
 {{#include ../examples/expressions/select_context_2.py:4:}}
 ```
 
-#### Select in lazy
-
-```python
-{{#include ../examples/expressions/select_context_3.py:4:}}
-print(df)
-```
-
-```text
-{{#include ../outputs/expressions/select_context_1.txt}}
-```
-
 ## Groupby context
 
-You can use expression during `groupby` aggregations in lazy as well as eager:
-
-#### Lazy aggregation
-
-```python
-{{#include ../examples/expressions/agg_context_2.py:4:}}
-```
-
-#### Eager aggregation
+You can use expression during `groupby` aggregations:
 
 ```python
 {{#include ../examples/expressions/agg_context_1.py:4:}}
@@ -69,14 +50,6 @@ print(df)
 ## Add columns context
 
 And finally you can use expressions to add one or multiple columns to an existing `DataFrame`
-
-#### Lazy add columns
-
-```python
-{{#include ../examples/expressions/with_column_context_2.py:4:}}
-```
-
-#### Eager aggregation
 
 ```python
 {{#include ../examples/expressions/with_column_context_1.py:4:}}
