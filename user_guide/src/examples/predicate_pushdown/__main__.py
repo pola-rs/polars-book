@@ -1,6 +1,6 @@
 from ..paths import OUTPUT_BASE_DIR, create_if_not_exists
-from .snippet1 import q as q1
-from .snippet2 import q as q2
+from .snippet1 import q1 as q1
+from .snippet2 import q2 as q2
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/predicate_pushdown")
 
