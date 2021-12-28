@@ -8,6 +8,3 @@ q = (
     .filter(pl.col("link_karma") > 0)
     .filter(pl.col("name").str.contains(r"^a"))  # filter name that start with an "a"
 )
-
-df1 = q.fetch(int(1e7))
-df2 = q.fetch(int(1e7), predicate_pushdown=True)
