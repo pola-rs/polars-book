@@ -25,7 +25,7 @@ given though).
 So let's "fetch" ~10 Million rows from the source file and apply the predicates.
 
 ```python
-reddit.fetch(n_rows=int(1e7))
+q1.fetch(n_rows=int(1e7))
 ```
 
 ```text
@@ -39,7 +39,7 @@ Above we see that from the 10 Million rows, 61503 rows match our predicate.
 In Polars we can visualize the query plan. Let's take a look.
 
 ```python
-reddit.show_graph(optimized=False)
+q1.show_graph(optimized=False)
 ```
 
 ![](../../outputs/predicate_pushdown/graph1.png)
@@ -57,7 +57,7 @@ combined, we should have written this query:
 That would translate to:
 
 ```python
-reddit_2.show_graph(optimized=False)
+q2.show_graph(optimized=False)
 ```
 
 ![](../../outputs/predicate_pushdown/graph2.png)
@@ -71,7 +71,7 @@ for you. Besides that, it pushes predicates down to the scan level! Let's see ho
 optimized query looks.
 
 ```python
-reddit.show_graph(optimized=True)
+q1.show_graph(optimized=True)
 ```
 
 ![](../../outputs/predicate_pushdown/graph1-optimized.png)
