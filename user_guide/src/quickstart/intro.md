@@ -19,9 +19,7 @@ groupby operation.
 import polars as pl
 
 df = pl.read_csv("https://j.mp/iriscsv")
-df = (df.filter(pl.col("sepal_length") > 5)
-      .groupby("species")
-      .agg(pl.all().sum())
+print(df.filter(pl.col("sepal_length") > 5).groupby("species").agg(pl.all().sum()))
 )
 ```
 
@@ -52,13 +50,17 @@ If we want to run this query in `lazy polars` we'd write:
 ```python
 import polars as pl
 
-df = (pl.scan_scv("https://j.mp/iriscsv")
-      .filter(pl.col("sepal_length") > 5)
-      .groupby("species")
-      .agg(pl.all().sum())
-      .collect()
+print(
+    pl.read_csv("https://j.mp/iriscsv")
+    .lazy()
+    .filter(pl.col("sepal_length") > 5)
+    .groupby("species")
+    .agg(pl.all().sum())
+    .collect()
 )
 ```
+
+When the data is not stored on the internet, we can also use `scan_csv` to run the query in lazy polars.
 
 ## References
 
@@ -76,7 +78,8 @@ Going from eager to lazy is often as simple as starting your query with `.lazy()
 So the eager snippet above would become:
 
 ```python
-(df.lazy()
+(
+    df.lazy()
     .filter(pl.col("sepal_length") > 5)
     .groupby("species")
     .agg(pl.all().sum())
