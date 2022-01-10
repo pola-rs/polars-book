@@ -6,7 +6,7 @@ from .dataset import dataset
 
 
 def compute_age() -> pl.Expr:
-    return (date(2021, 1, 1).year - pl.col("birthday")).dt.year()
+    return date(2021, 1, 1).year - pl.col("birthday").dt.year()
 
 
 def avg_birthday(gender: str) -> pl.Expr:
