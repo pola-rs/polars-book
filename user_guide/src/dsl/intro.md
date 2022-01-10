@@ -52,7 +52,7 @@ different ways. To not have duplicate column names in the `DataFrame`, we use an
 
 ```python
 {{#include ../examples/expressions/expressions_examples_1.py:4:}}
-print(df)
+print(out)
 ```
 
 ```text
@@ -66,7 +66,7 @@ We can do various aggregations. Below we show some of them, but there are more, 
 
 ```python
 {{#include ../examples/expressions/expressions_examples_2.py:4:}}
-print(df)
+print(out)
 ```
 
 ```text
