@@ -1,7 +1,7 @@
 from .dataset import df
 import polars as pl
 
-df = df[
+out = df.select(
     [
         pl.sum("random").alias("sum"),
         pl.min("random").alias("min"),
@@ -10,4 +10,4 @@ df = df[
         pl.std("random").alias("std dev"),
         pl.var("random").alias("variance"),
     ]
-]
+)
