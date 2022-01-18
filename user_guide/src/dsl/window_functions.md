@@ -22,7 +22,7 @@ are projected back to the original rows. A window function will therefore always
 as the original.
 
 ```python
-{{#include ../examples/expressions/window_2.py:5:}}
+{{#include ../examples/expressions/window_2.py:3:}}
 ```
 
 ```text
@@ -42,9 +42,21 @@ We:
 - sort the pokemon by name within a type and select the first 3 as `"sorted_by_alphabet"`
 
 ```python
-{{#include ../examples/expressions/window_3.py:5:}}
+{{#include ../examples/expressions/window_3.py:3:}}
 ```
 
 ```text
 {{#include ../outputs/expressions/window_3.txt}}
 ```
+
+## Flattened window function
+
+If we have a window function that aggregates to a `list` like we did above with the following expression:
+`pl.col("Name").sort_by(pl.col("Speed")).head(3).over("Type 1")` we could just leave it like that, but that
+would give us a column type `List` which is often not what we want (and it increases our memory usage a lot!).
+
+Instead we could `flatten`. This just turns our 2D list into a 1D array and projects that array/column back to our DataFrame.
+This is very fast, because the reshape is often free and adding the column back the the original DataFrame is also a lot cheaper,
+because we don't require a join like in a normal window function.
+
+For this operation to make sense however, it is important that the columns used in `over([..])` are sorted!
