@@ -14,6 +14,7 @@
 - [Indexing](indexing.md)
 - [Data Types](datatypes.md)
 - [Coming from Pandas](coming_from_pandas.md)
+- [Coming from Apache Spark](coming_from_spark.md)
 - [Time-series](time-series.md)
 - [How can I?](howcani/intro.md)
   - [IO](howcani/io/intro.md)
