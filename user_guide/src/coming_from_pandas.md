@@ -43,7 +43,7 @@ df[df["c"] == 2, "a"] = df[df["c"] == 2, "b"]
 ```python
 df.with_column(
     pl.when(pl.col("c") == 2)
-    .then(pl.col("c"))
+    .then(pl.col("b"))
     .otherwise(pl.col("a")).alias("a")
 )
 ```
