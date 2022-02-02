@@ -1,12 +1,12 @@
 from ..paths import OUTPUT_BASE_DIR, create_if_not_exists
 from .dataset import df as dataset
-from .select_context_1 import df as sc1
-from .select_context_2 import df as sc2
+from .select_context_1 import out as sc1
+from .select_context_2 import out as sc2
 from .expressions_examples_1 import out as e1
 from .expressions_examples_2 import out as e2
 from .expressions_examples_3 import out as e3
 from .expressions_examples_4 import out as e4
-from .agg_context_1 import df as ac1
+from .agg_context_1 import out as ac1
 from .with_column_context_1 import df as c2
 from .window import df as w0
 from .fold_1 import out as fold_out_1
