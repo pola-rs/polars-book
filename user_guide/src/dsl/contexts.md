@@ -25,18 +25,39 @@ This allows Polars to push the expression into the query engine, do optimization
 
 ## Select context
 
-You cannot use an expression everywhere. An expression needs a context from which it can
-select the column `"foo"` to start with.
+In the `select context` the selection applies expressions over columns. The expressions in this context must produce `Series` that are all
+the same length or have a length of `1`.
+
+`Series` of a length of 1 will be broadcasted to match the height of the `DataFrame`.
+Note that a `select` may produce new columns that are aggregations, combinations of expressions or literals
 
 #### Selection context
 
 ```python
 {{#include ../examples/expressions/select_context_2.py:4:}}
+print(out)
+```
+
+```text
+{{#include ../outputs/expressions/select_context_2.txt}}
+```
+
+**Add columns**
+
+Adding columns to a `DataFrame` with `with_columns` is also the `selection context`
+
+```python
+{{#include ../examples/expressions/with_column_context_1.py:4:}}
+print(df)
+```
+
+```text
+{{#include ../outputs/expressions/wc_context_1.txt}}
 ```
 
 ## Groupby context
 
-You can use expression during `groupby` aggregations:
+In the `groupby` context expressions work on groups and thus may yield results of any length (a group may have many members).
 
 ```python
 {{#include ../examples/expressions/agg_context_1.py:4:}}
@@ -47,15 +68,4 @@ print(df)
 {{#include ../outputs/expressions/agg_context_1.txt}}
 ```
 
-## Add columns context
-
-And finally you can use expressions to add one or multiple columns to an existing `DataFrame`
-
-```python
-{{#include ../examples/expressions/with_column_context_1.py:4:}}
-print(df)
-```
-
-```text
-{{#include ../outputs/expressions/wc_context_1.txt}}
-```
+Besides the standard `groupby`, `groupby_dynamic`, and `groupby_rolling` are also entrances to the `groupby context`.

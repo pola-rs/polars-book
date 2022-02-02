@@ -1,6 +1,7 @@
 from ..paths import OUTPUT_BASE_DIR, create_if_not_exists
 from .dataset import df as dataset
 from .select_context_1 import df as sc1
+from .select_context_2 import df as sc2
 from .expressions_examples_1 import out as e1
 from .expressions_examples_2 import out as e2
 from .expressions_examples_3 import out as e3
@@ -23,6 +24,9 @@ with open(f"{path}/dataset.txt", "w") as f:
 
 with open(f"{path}/select_context_1.txt", "w") as f:
     f.write(f"{sc1}\n")
+
+with open(f"{path}/select_context_2.txt", "w") as f:
+    f.write(f"{sc2}\n")
 
 with open(f"{path}/example_1.txt", "w") as f:
     f.write(f"{e1}\n")
