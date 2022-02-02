@@ -1,7 +1,7 @@
 from .dataset import df
 import polars as pl
 
-df = df.groupby("groups").agg(
+out = df.groupby("groups").agg(
     [
         pl.sum("nrs"),  # sum nrs by groups
         pl.col("random").count().alias("count"),  # count group members
