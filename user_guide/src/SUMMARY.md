@@ -11,6 +11,7 @@
   - [Numpy universal functions](dsl/numpy.md)
   - [Examples](notebooks/introduction_polars.md)
   - [API](dsl/api.md)
+  - [Video introduction](dsl/video_intro.md)
 - [Indexing](indexing.md)
 - [Data Types](datatypes.md)
 - [Coming from Pandas](coming_from_pandas.md)
