@@ -44,7 +44,7 @@ Below we show an example where we use **groupby_dynamic** to compute:
 
 ```python
 {{#include ../examples/time_series/days_month.py:4:}}
-print(df)
+print(out)
 ```
 
 ```text
@@ -128,7 +128,7 @@ Below we show an example with a dynamic groupby.
 
 ```python
 {{#include ../examples/time_series/dynamic_ds.py:0:}}
-print(df)
+print(out)
 ```
 
 ```text
