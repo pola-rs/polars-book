@@ -48,7 +48,7 @@ Adding columns to a `DataFrame` with `with_columns` is also the `selection conte
 
 ```python
 {{#include ../examples/expressions/with_column_context_1.py:4:}}
-print(df)
+print(out)
 ```
 
 ```text
@@ -61,7 +61,7 @@ In the `groupby` context expressions work on groups and thus may yield results o
 
 ```python
 {{#include ../examples/expressions/agg_context_1.py:4:}}
-print(df)
+print(out)
 ```
 
 ```text
