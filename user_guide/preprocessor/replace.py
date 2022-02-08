@@ -10,7 +10,7 @@ context, book = json.load(sys.stdin)
 content = json.dumps(book)
 
 substitutes = (
-    ("POLARS_ROOT", "/polars-book"),
+    ("POLARS_ROOT", "/polars-book/user-guide"),
     ("POLARS_RS_REF_GUIDE", "https://docs.rs/polars"),
     (
         "POLARS_PY_REF_GUIDE",
