@@ -37,7 +37,6 @@ The rules are as follows, depending on the datatypes of the index values:
 | select several rows by their indices<br> `df.iloc[[2, 5, 6]]`         | `df[[2, 5, 6], :]`            |
 | select slice of rows<br> `df.iloc[2:6]`                               | `df[2:6, :]`                  |
 | select rows using a boolean mask<br> `df.iloc[True, True, False]`     | `df[[True, True, False]]`     |
-| select slice of rows<br> `df.iloc[2:6]`                               | `df[2:6, :]`                  |
 | select rows by a predicate condition<br> `df.loc[df["A"] > 3]`        | `df[df["A"] > 3]`             |
 | select slice of columns<br> `df.iloc[:, 1:3]`                         | `df[:, 1:3]`                  |
 | select slice of columns by string order<br> `df.loc[:, "A":"Z"]`      | `df[:, "A":"Z"]`              |

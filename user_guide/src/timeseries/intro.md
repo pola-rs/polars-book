@@ -55,7 +55,7 @@ A dynamic window is defined by a:
 
 - **every** indicates the interval of the window
 - **period** indicates the duration of the window
-- **offset** can used to offset the start of the windows
+- **offset** can be used to offset the start of the windows
 
 Because **every** does not have to be equal to **period** we can create many groups in a very flexible way. They may overlap
 or leave boundaries between them.
@@ -64,8 +64,8 @@ Let's see how the windows for some parameter combinations would look. Let's star
 
 >
 
-- every:  1 day -> `"1d"`
-- period:  1 day -> `"1d"`
+- every: 1 day -> `"1d"`
+- period: 1 day -> `"1d"`
 
 ```text
 this creates adjacent windows of the same size
@@ -76,11 +76,11 @@ this creates adjacent windows of the same size
 
 >
 
-- every:  1 day -> `"1d"`
-- period:  2 days -> `"2d"`
+- every: 1 day -> `"1d"`
+- period: 2 days -> `"2d"`
 
 ```text
-these windows have an overlap of 1 day 
+these windows have an overlap of 1 day
 |----|
    |----|
       |----|
@@ -88,8 +88,8 @@ these windows have an overlap of 1 day
 
 >
 
-- every:  2 days -> `"2d"`
-- period:  1 day -> `"1d"`
+- every: 2 days -> `"2d"`
+- period: 1 day -> `"1d"`
 
 ```text
 this would leave gaps between the windows
@@ -112,9 +112,9 @@ windows:
 
 2021-01-01   2021-01-06
     |----------|
-               
+
        2021-01-05   2021-01-10
-             |----------| 
+             |----------|
 ```
 
 Because the windows of a rolling groupby are always determined by the values in the `DataFrame` column, the number of
