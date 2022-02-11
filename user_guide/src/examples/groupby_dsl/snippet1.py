@@ -7,12 +7,12 @@ q = (
     .groupby("first_name")
     .agg(
         [
-            pl.count("party"),
+            pl.count(),
             pl.col("gender").list(),
             pl.first("last_name"),
         ]
     )
-    .sort("party_count", reverse=True)
+    .sort("count", reverse=True)
     .limit(5)
 )
 

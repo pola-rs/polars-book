@@ -7,4 +7,4 @@ out = df.groupby_dynamic(
     closed="both",
     by="groups",
     include_boundaries=True,
-).agg([pl.col("time").count()])
+).agg([pl.count()])
