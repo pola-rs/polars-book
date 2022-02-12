@@ -21,6 +21,7 @@ docs: .venv
 	ASTDOCS_FOLD_ARGS_AFTER=60 ASTDOCS_BOUND_OBJECTS=1 ASTDOCS_SPLIT_BY=mc ASTDOCS_WITH_LINENOS=on $(PYTHON) -m reference_guide_python
 
 run: data
+	./tasks.sh process_nbook introduction_polars
 	$(PYTHON) -m user_guide.src.examples.multiple_files
 	$(PYTHON) -m user_guide.src.examples.time_series
 	$(PYTHON) -m user_guide.src.examples.expressions
@@ -43,7 +44,6 @@ run: data
 	$(PYTHON) -m user_guide.src.examples.timestamps
 	$(PYTHON) -m user_guide.src.examples.udfs
 	$(PYTHON) -m user_guide.src.examples.window_functions
-	./tasks.sh process_nbook introduction_polars
 
 
 serve_user_guide: run
