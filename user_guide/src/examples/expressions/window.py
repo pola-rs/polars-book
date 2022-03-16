@@ -1,7 +1,7 @@
 from .dataset import df
 import polars as pl
 
-df = df[
+out = df[
     [
         pl.col("*"),  # select all
         pl.col("random").sum().over("groups").alias("sum[random]/groups"),
