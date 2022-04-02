@@ -22,7 +22,7 @@ are projected back to the original rows. A window function will therefore always
 as the original.
 
 Note how we call over on `.over("Type 1")` and on `.over(["Type 1", "Type 2"])`. Using window functions we can aggregate
-over different groups in a sinle `select` call!
+over different groups in a single `select` call!
 
 The best thing is, this won't cost you anything. The computed groups are cached and shared between different `window` expressions.
 
