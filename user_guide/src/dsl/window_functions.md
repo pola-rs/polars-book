@@ -1,6 +1,6 @@
 # Window functions 🚀🚀
 
-Window functions are expressions with superpowers. They allow you to do aggregation on groups in the
+Window functions are expressions with superpowers. They allow you to do aggregations on groups in the
 **select** context. Let's get a feel of what that means. First we create a dataset. The dataset loaded in the
 snippet below contains information about pokemon and has the following columns:
 
