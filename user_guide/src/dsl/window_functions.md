@@ -16,7 +16,7 @@ snippet below contains information about pokemon and has the following columns:
 
 ## Groupby Aggregations in selection
 
-Below we show how we use window function to group over different columns and do an aggregation on them.
+Below we show how we use window functions to group over different columns and do an aggregation on them.
 Doing so, allows us to do multiple groupby operations in parallel in a single query. The results of the aggregation
 are projected back to the original rows. A window function will therefore always lead to a DataFrame with the same size
 as the original.
