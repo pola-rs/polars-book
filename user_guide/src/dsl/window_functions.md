@@ -36,7 +36,7 @@ The best thing is, this won't cost you anything. The computed groups are cached 
 
 ## Operations per group
 
-Window functions can do more than aggregation. They can also be seen as an operation with a groups. If for instance you
+Window functions can do more than aggregation. They can also be seen as an operation within a group. If for instance you
 want to `sort` the values within a `group`, you can write `col("value").sort().over("group")` and voila, sorted by group.
 
 Let's see filter out some rows to make this more clear.
@@ -50,7 +50,7 @@ print(filtered)
 {{#include ../outputs/expressions/window_group_1.txt}}
 ```
 
-Observe that the group `Water` of column `Type 1` is not contiguous. There are two rows of `Grass` in between. Als no
+Observe that the group `Water` of column `Type 1` is not contiguous. There are two rows of `Grass` in between. Also note
 that the pokemon within a group are ordered by `Speed` in `ascending` order. I don't like that. I want them ordered in
 `descending` speed order. Luckily with window functions, this is a breeze.
 
