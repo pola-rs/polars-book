@@ -36,7 +36,7 @@ The best thing is, this won't cost you anything. The computed groups are cached 
 
 ## Operations per group
 
-Window functions can do more that aggregation. They can also be seen as an operation with a groups. If you for instance
+Window functions can do more than aggregation. They can also be seen as an operation with a groups. If you for instance
 want to `sort` the values within a `group`, you can write `col("value").sort().over("group")` and voila, sorted by group.
 
 Let's see filter out some rows to make this more clear.
