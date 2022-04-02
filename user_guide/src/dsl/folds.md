@@ -6,7 +6,7 @@ etc. by setting the argument `axis=1`. However, when you need a more complex agg
 polars library may not be sufficient. That's when `folds` come in handy. Polars' `fold` expression operates on columns and
 can therefore be really fast. It utilizes the data layout most efficiently and often has vectorized execution.
 
-Let's start with an example by implement the `sum` operation ourselves, with a `fold`
+Let's start with an example by implementing the `sum` operation ourselves, with a `fold`
 
 ## Manual Sum
 
