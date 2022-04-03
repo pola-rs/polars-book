@@ -39,7 +39,7 @@ The best thing is, this won't cost you anything. The computed groups are cached 
 Window functions can do more than aggregation. They can also be seen as an operation within a group. If for instance you
 want to `sort` the values within a `group`, you can write `col("value").sort().over("group")` and voila, sorted by group.
 
-Let's see filter out some rows to make this more clear.
+Let's filter out some rows to make this more clear.
 
 ```python
 {{#include ../examples/expressions/window_group_1.py:4:}}
@@ -51,7 +51,7 @@ print(filtered)
 ```
 
 Observe that the group `Water` of column `Type 1` is not contiguous. There are two rows of `Grass` in between. Also note
-that the pokemon within a group are ordered by `Speed` in `ascending` order. I don't like that. I want them ordered in
+that the pokemons within a group are ordered by `Speed` in `ascending` order. I don't like that. I want them ordered in
 `descending` speed order. Luckily with window functions, this is a breeze.
 
 ```python
@@ -64,18 +64,18 @@ print(out)
 {{#include ../outputs/expressions/window_group_2.txt}}
 ```
 
-Polars keeps track of the groups locations and maps the expressions to the proper row locations. Also this could be done
-over different groups in a single `select` it will work.
+Polars keeps track of the groups locations and maps the expressions to the proper row locations. This will also work
+over different groups in a single `select`.
 
 The power of window expressions is that you often don't need a `groupby -> explode` combination, but you can put the logic in a
-single expressions. It also makes the API cleaner. If proper used a:
+single expression. It also makes the API cleaner. If properly used a:
 
 - `groupby` -> marks that groups are aggregated and we expect a `DataFrame` of size `n_groups`
 - `.over()` -> marks that we want to compute something within a group, but that we don't modify the original size of the `DataFrame`
 
 ## Window expression rules
 
-The evaluation of window expressions are as followed (assuming we apply on `pl.Int32` column):
+The evaluation of window expressions are as follows (assuming we apply on `pl.Int32` column):
 
 ```python
 # aggregate and broadcast within a group
@@ -102,7 +102,7 @@ pl.sum("foo").over("groups")
 
 ## More examples
 
-Below we flex our muscles with window function to compute:
+Below we flex our muscles with window functions to compute:
 
 - sort all pokemon by type
 - select the first 3 pokemon per type as `"Type 1"`
