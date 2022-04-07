@@ -35,7 +35,7 @@ df.with_columns([
 **pandas**
 
 ```python
-df[df["c"] == 2, "a"] = df[df["c"] == 2, "b"]
+df.loc[df["c"] == 2, "a"] = df.loc[df["c"] == 2, "b"]
 ```
 
 **polars**
