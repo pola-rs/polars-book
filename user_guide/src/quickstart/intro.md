@@ -47,7 +47,7 @@ datatype as headers.
 
 ## Lazy quick start
 
-If we want to run this query in `lazy polars` we'd write:
+If we want to run this query in `lazy Polars` we'd write:
 
 ```python
 import polars as pl
@@ -62,11 +62,11 @@ print(
 )
 ```
 
-When the data is not stored on the internet, we can also use `scan_csv` to run the query in lazy polars.
+When the data is stored locally, we can also use `scan_csv` to run the query in lazy polars.
 
 ## References
 
-If you want to dive right into the `Python` API docs, check the [the index](POLARS_PY_REF_GUIDE).
+If you want to dive right into the `Python` API docs, check the [the reference docs](POLARS_PY_REF_GUIDE).
 
 ### Lazy API
 
