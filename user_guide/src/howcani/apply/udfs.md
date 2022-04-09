@@ -1,10 +1,10 @@
 # Apply custom functions
 
-There will always be an operation that is so particular that one cannot do it with the public API of
-`Polars`. Luckily polars allows you to apply custom functions. This means one can
+For instances where a desired operation is not covered by the public API of
+`Polars`, polars allows you to apply custom functions. Simply
 define a `Python` function (or `lambda`) and pass it to the logical plan.
 
-Let's say we want to apply a mapping operation to a `Polars` `Series` in a eager
+Let's say we want to apply a mapping operation to a `Polars` `Series` in an eager
 fashion. This could be done as shown below:
 
 ```python
@@ -17,7 +17,7 @@ returning:
 {{#include ../../outputs/udfs/output1.txt}}
 ```
 
-There are a few gotchas however, due to the fact `Polars` `Series` can only contain a
+However there are a few gotchas due to the fact `Polars` `Series` can only contain a
 single datatype.
 
 In the `.apply()` method above we did not specify the datatype the `Series` should
@@ -32,9 +32,9 @@ Note it is possible to change datatype as a result of applying a function: the `
 we used above got an integer as input and returned a string (`pl.Utf8`) after finding
 the right key in the `my_map` dictionary.
 
-# to map or to apply?
+# To map or to apply?
 
-There are two way to use custom function, either by using `map`, or by using `apply`. Which one you need depends on
+There are two ways to use custom function: either by using `map` or `apply`. Deciding between the two methods depends on
 the context where the custom functions are used:
 
 - `apply`

@@ -1,6 +1,6 @@
 # Conditionally apply
 
-Modifying a `Series` or a column in a `DataFrame` consists of two steps.
+Modifying a `Series` or a column in a `DataFrame` consists of two to three steps, depending on the API that is used.
 
 1. Creating a `boolean` `mask` based on some predicate.
 1. Replace the values where the `mask` evaluates `True`

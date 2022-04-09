@@ -1,6 +1,6 @@
 # Melts
 
-Melt operations unpivot a DataFrame from wide format to long format
+Melt operations unpivot a DataFrame from wide format to long format.
 
 ## Dataset
 

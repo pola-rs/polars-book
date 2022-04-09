@@ -1,6 +1,6 @@
 # Joins
 
-Polars supports sorting behavior similar to other DataFrame libraries.
+Polars supports join behavior similar to other DataFrame libraries.
 
 - Join on a single or multiple column(s)
 - Left join

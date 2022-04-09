@@ -2,7 +2,7 @@
 
 ## Eager & Lazy
 
-Groupby syntax is similar in both API's as both can use the expressions.
+Groupby syntax is similar in both APIs as both can use the expressions.
 Grouping operations are done with the `.groupby()` method following by the `.agg()`
 method.
 
