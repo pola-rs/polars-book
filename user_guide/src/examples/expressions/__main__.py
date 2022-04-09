@@ -7,8 +7,8 @@ from .expressions_examples_2 import out as e2
 from .expressions_examples_3 import out as e3
 from .expressions_examples_4 import out as e4
 from .agg_context_1 import out as ac1
-from .with_column_context_1 import df as c2
-from .window import df as w0
+from .with_column_context_1 import out as c2
+from .window import out as w0
 from .fold_1 import out as fold_out_1
 from .fold_2 import out as fold_out_2
 from .fold_3 import out as fold_out_3
