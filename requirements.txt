@@ -1,7 +1,7 @@
 pandas
 polars
 matplotlib
-nbconvert==5.6.1
+nbconvert==6.4.5
 jupyterlab
 pyarrow
 mdformat==0.7.5
