@@ -25,11 +25,11 @@ This allows Polars to push the expression into the query engine, do optimization
 
 ## Select context
 
-In the `select context` the selection applies expressions over columns. The expressions in this context must produce `Series` that are all
+In the `select` context the selection applies expressions over columns. The expressions in this context must produce `Series` that are all
 the same length or have a length of `1`.
 
-`Series` of a length of 1 will be broadcasted to match the height of the `DataFrame`.
-Note that a `select` may produce new columns that are aggregations, combinations of expressions or literals
+A `Series` of a length of `1` will be broadcasted to match the height of the `DataFrame`.
+Note that a `select` may produce new columns that are aggregations, combinations of expressions, or literals.
 
 #### Selection context
 
@@ -44,7 +44,7 @@ print(out)
 
 **Add columns**
 
-Adding columns to a `DataFrame` with `with_columns` is also the `selection context`
+Adding columns to a `DataFrame` using `with_columns` is also the `selection` context.
 
 ```python
 {{#include ../examples/expressions/with_column_context_1.py:4:}}

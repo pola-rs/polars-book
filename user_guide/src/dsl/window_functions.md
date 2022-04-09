@@ -1,7 +1,7 @@
 # Window functions 🚀🚀
 
-Window functions are expressions with superpowers. They allow you to do aggregations on groups in the
-**select** context. Let's get a feel of what that means. First we create a dataset. The dataset loaded in the
+Window functions are expressions with superpowers. They allow you to perform aggregations on groups in the
+`select` context. Let's get a feel of what that means. First we create a dataset. The dataset loaded in the
 snippet below contains information about pokemon and has the following columns:
 
 `['#',  'Name',  'Type 1',  'Type 2',  'Total',  'HP',  'Attack',  'Defense',  'Sp. Atk',  'Sp. Def',  'Speed',  'Generation',  'Legendary']`
@@ -16,15 +16,15 @@ snippet below contains information about pokemon and has the following columns:
 
 ## Groupby Aggregations in selection
 
-Below we show how we use window functions to group over different columns and do an aggregation on them.
-Doing so, allows us to do multiple groupby operations in parallel in a single query. The results of the aggregation
-are projected back to the original rows. A window function will therefore always lead to a DataFrame with the same size
+Below we show how to use window functions to group over different columns and perform an aggregation on them.
+Doing so allows us to use multiple groupby operations in parallel, using a single query. The results of the aggregation
+are projected back to the original rows. Therefore, a window function will always lead to a `DataFrame` with the same size
 as the original.
 
-Note how we call over on `.over("Type 1")` and on `.over(["Type 1", "Type 2"])`. Using window functions we can aggregate
+Note how we call `.over("Type 1")` and `.over(["Type 1", "Type 2"])`. Using window functions we can aggregate
 over different groups in a single `select` call!
 
-The best thing is, this won't cost you anything. The computed groups are cached and shared between different `window` expressions.
+The best part is, this won't cost you anything. The computed groups are cached and shared between different `window` expressions.
 
 ```python
 {{#include ../examples/expressions/window_2.py:3:}}
@@ -36,8 +36,8 @@ The best thing is, this won't cost you anything. The computed groups are cached 
 
 ## Operations per group
 
-Window functions can do more than aggregation. They can also be seen as an operation within a group. If for instance you
-want to `sort` the values within a `group`, you can write `col("value").sort().over("group")` and voila, sorted by group.
+Window functions can do more than aggregation. They can also be viewed as an operation within a group. If, for instance, you
+want to `sort` the values within a `group`, you can write `col("value").sort().over("group")` and voilà! We sorted by group!
 
 Let's filter out some rows to make this more clear.
 
@@ -51,8 +51,8 @@ print(filtered)
 ```
 
 Observe that the group `Water` of column `Type 1` is not contiguous. There are two rows of `Grass` in between. Also note
-that the pokemons within a group are ordered by `Speed` in `ascending` order. I don't like that. I want them ordered in
-`descending` speed order. Luckily with window functions, this is a breeze.
+that each pokemon within a group are sorted by `Speed` in `ascending` order. Unfortunately, for this example we want them sorted in
+`descending` speed order. Luckily with window functions this is easy to accomplish.
 
 ```python
 {{#include ../examples/expressions/window_group_2.py:4:}}
@@ -64,18 +64,18 @@ print(out)
 {{#include ../outputs/expressions/window_group_2.txt}}
 ```
 
-Polars keeps track of the groups locations and maps the expressions to the proper row locations. This will also work
+`Polars` keeps track of each group's location and maps the expressions to the proper row locations. This will also work
 over different groups in a single `select`.
 
 The power of window expressions is that you often don't need a `groupby -> explode` combination, but you can put the logic in a
 single expression. It also makes the API cleaner. If properly used a:
 
 - `groupby` -> marks that groups are aggregated and we expect a `DataFrame` of size `n_groups`
-- `.over()` -> marks that we want to compute something within a group, but that we don't modify the original size of the `DataFrame`
+- `over` -> marks that we want to compute something within a group, but that we doesn't modify the original size of the `DataFrame`
 
 ## Window expression rules
 
-The evaluation of window expressions are as follows (assuming we apply on `pl.Int32` column):
+The evaluations of window expressions are as follows (assuming we apply to a `pl.Int32` column):
 
 ```python
 # aggregate and broadcast within a group
@@ -102,13 +102,13 @@ pl.sum("foo").over("groups")
 
 ## More examples
 
-Below we flex our muscles with window functions to compute:
+For more exercise, below are some window functions for us to compute:
 
 - sort all pokemon by type
-- select the first 3 pokemon per type as `"Type 1"`
-- sort the pokemon within a type by speed and select the first 3 as `"fastest/group"`
-- sort the pokemon within a type by attack and select the first 3 as `"strongest/group"`
-- sort the pokemon by name within a type and select the first 3 as `"sorted_by_alphabet"`
+- select the first `3` pokemon per type as `"Type 1"`
+- sort the pokemon within a type by speed and select the first `3` as `"fastest/group"`
+- sort the pokemon within a type by attack and select the first `3` as `"strongest/group"`
+- sort the pokemon by name within a type and select the first `3` as `"sorted_by_alphabet"`
 
 ```python
 {{#include ../examples/expressions/window_3.py:3:}}
@@ -120,12 +120,14 @@ Below we flex our muscles with window functions to compute:
 
 ## Flattened window function
 
-If we have a window function that aggregates to a `list` like we did above with the following expression:
-`pl.col("Name").sort_by(pl.col("Speed")).head(3).list().over("Type 1")` we could just leave it like that, but that
-would give us a column type `List` which is often not what we want (and it increases our memory usage a lot!).
+If we have a window function that aggregates to a `list` like the example above with the following expression:
 
-Instead we could `flatten`. This just turns our 2D list into a 1D array and projects that array/column back to our DataFrame.
-This is very fast, because the reshape is often free and adding the column back the the original DataFrame is also a lot cheaper,
-because we don't require a join like in a normal window function.
+`pl.col("Name").sort_by(pl.col("Speed")).head(3).list().over("Type 1")` 
 
-For this operation to make sense however, it is important that the columns used in `over([..])` are sorted!
+This still works, but that
+would give us a column type `List` which might not be what we want (this would significantly increase our memory usage!).
+
+Instead we could `flatten`. This just turns our 2D list into a 1D array and projects that array/column back to our `DataFrame`.
+This is very fast because the reshape is often free, and adding the column back the the original `DataFrame` is also a lot cheaper (since we don't require a join like in a normal window function).
+
+However, for this operation to make sense, it is important that the columns used in `over([..])` are sorted!
