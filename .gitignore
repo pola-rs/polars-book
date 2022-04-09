@@ -10,3 +10,4 @@ __pycache__
 *.png
 *.swp
 *.txt
+.python-version
