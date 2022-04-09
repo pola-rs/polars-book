@@ -1,19 +1,20 @@
-# `Polars` documentation
+# `Polars` Documentation
 
-In this repo one can find the source of the [User Guide](https://pola-rs.github.io/polars-book/) of the [`Polars` DataFrame library](https://github.com/pola-rs/polars).
+This repo contains the [User Guide](https://pola-rs.github.io/polars-book/) for the [`Polars` DataFrame library](https://github.com/pola-rs/polars).
+
+## Getting Started
 
 To build the benchmarks and `Python` code examples, `Graphviz`, `make`, `wget` as well as the `Python` packages listed in `requirements.txt` need to be present on the system.
+
 To build the User Guide, the `Rust`-based [`mdBook`](https://github.com/rust-lang/mdBook) executable should also be downloaded/compiled and accessible (in the `PATH`).
+
 To build the Reference Guide, a custom `mdBook` executable should also be downloaded from [here](https://github.com/ritchie46/mdBook/releases/download/api-0.0.1/mdbook) and made accessible as `mdbook2` in the `PATH`.
-To ease the few steps, a `Makefile` is provided; and a `Dockerfile` to build the complete environment:
 
-```shell
-$ docker build --build-arg uid=$UID -t polars-guides .
-$ docker run --entrypoint /bin/bash -it --rm -v `pwd`:/usr/src -p 8000:8000 --workdir /usr/src polars-guides
-```
+### Using the *Makefile*
 
-should get you there.
-(Note the `mdBook` executable is downloaded and *not* compiled to fasten the building of the image.)
+The reference guide requires a specific Python version to be used. Make sure to check `__main__.SRC` for reference guide work.
+
+Use `make serve` to serve the user guide.
 
 ## User Guide
 
@@ -31,25 +32,27 @@ should get you there.
 | Process timestamps                     | ✗      | ✔        |
 | Process missing values                 | ✗      | ✗        |
 | Process nested values (explode)        | ✗      | ✗        |
-| Rename columns and other manipulations | ✗      | ✔        |
-| Column/row selection                   | ✗      | ✔        |
-| Filter                                 | ✗      | ✔        |
-| Group                                  | ✗      | ✔        |
-| Join                                   | ✗      | ✔        |
-| Sort                                   | ✗      | ✔        |
-| Pivot/melt                             | ✗      | ✔        |
-| Aggregate                              | ✗      | ✔        |
-| Conditionally apply                    | ✗      | ✔        |
+| Rename columns and other manipulations*| ✗      | ✔        |
+| Column/row selection*                  | ✗      | ✔        |
+| Filter*                                | ✗      | ✔        |
+| GroupBy*                               | ✗      | ✔        |
+| Join                                   | ✗      | ✗        |
+| Sort                                   | ✗      | ✗        |
+| Pivot/melt                             | ✗      | ✗        |
+| Aggregate*                             | ✗      | ✔        |
+| Conditionally apply*                   | ✗      | ✔        |
 | Horizontal fold                        | ✗      | ✗        |
 | Stacking                               | ✗      | ✗        |
 | Sampling                               | ✗      | ✗        |
 | `Arrow` interoperability               | ✗      | ✔        |
 | `NumPy` interoperability               | ✗      | ✔        |
-| Apply `NumPy` universal functions      | ✗      | ✗        |
-| Apply custom functions (UDFs)          | ✗      | ✔        |
-| Apply window functions                 | ✗      | ✔        |
+| Apply `NumPy` universal functions*     | ✗      | ✔        |
+| Apply custom functions (UDFs)          | ✗      | ✗        |
+| Apply window functions*                | ✗      | ✔        |
 | Apply rolling-window functions         | ✗      | ✗        |
 | Group statistics                       | ✗      | ✔        |
+
+_* Some How Can I code examples not included but topic introduced elsewhere._
 
 ## Reference Guides
 
