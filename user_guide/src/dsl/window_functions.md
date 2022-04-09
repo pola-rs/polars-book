@@ -122,7 +122,7 @@ For more exercise, below are some window functions for us to compute:
 
 If we have a window function that aggregates to a `list` like the example above with the following expression:
 
-`pl.col("Name").sort_by(pl.col("Speed")).head(3).list().over("Type 1")` 
+`pl.col("Name").sort_by(pl.col("Speed")).head(3).list().over("Type 1")`
 
 This still works, but that
 would give us a column type `List` which might not be what we want (this would significantly increase our memory usage!).

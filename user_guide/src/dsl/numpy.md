@@ -1,10 +1,10 @@
 # Numpy interop
 
-Polars expression support numpy [ufuncs](https://numpy.org/doc/stable/reference/ufuncs.html). See [here](https://numpy.org/doc/stable/reference/ufuncs.html#available-ufuncs)
+`Polars` expressions support `NumPy` [ufuncs](https://numpy.org/doc/stable/reference/ufuncs.html). See [here](https://numpy.org/doc/stable/reference/ufuncs.html#available-ufuncs)
 for a list on all supported numpy functions.
 
-This means that if a function is not provided by polars, we can use numpy and we still have fast columnar operation through
-the numpy API.
+This means that if a function is not provided by `Polars`, we can use `NumPy` and we still have fast columnar operation through
+the `NumPy` API.
 
 ## Example
 
@@ -19,4 +19,4 @@ print(out)
 
 ## Gotcha's
 
-Read more about the [gotcha's here](POLARS_ROOT/howcani/interop/numpy.html)
+Read more about the [gotcha's here](POLARS_ROOT/howcani/interop/numpy.html).
