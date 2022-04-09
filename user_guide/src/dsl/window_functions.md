@@ -1,6 +1,6 @@
 # Window functions 🚀🚀
 
-Window functions are expressions with superpowers. They allow you to do aggregation on groups in the
+Window functions are expressions with superpowers. They allow you to do aggregations on groups in the
 **select** context. Let's get a feel of what that means. First we create a dataset. The dataset loaded in the
 snippet below contains information about pokemon and has the following columns:
 
@@ -16,13 +16,13 @@ snippet below contains information about pokemon and has the following columns:
 
 ## Groupby Aggregations in selection
 
-Below we show how we use window function to group over different columns and do an aggregation on them.
+Below we show how we use window functions to group over different columns and do an aggregation on them.
 Doing so, allows us to do multiple groupby operations in parallel in a single query. The results of the aggregation
 are projected back to the original rows. A window function will therefore always lead to a DataFrame with the same size
 as the original.
 
 Note how we call over on `.over("Type 1")` and on `.over(["Type 1", "Type 2"])`. Using window functions we can aggregate
-over different groups in a sinle `select` call!
+over different groups in a single `select` call!
 
 The best thing is, this won't cost you anything. The computed groups are cached and shared between different `window` expressions.
 
@@ -36,10 +36,10 @@ The best thing is, this won't cost you anything. The computed groups are cached 
 
 ## Operations per group
 
-Window functions can do more that aggregation. They can also be seen as an operation with a groups. If you for instance
+Window functions can do more than aggregation. They can also be seen as an operation within a group. If for instance you
 want to `sort` the values within a `group`, you can write `col("value").sort().over("group")` and voila, sorted by group.
 
-Let's see filter out some rows to make this more clear.
+Let's filter out some rows to make this more clear.
 
 ```python
 {{#include ../examples/expressions/window_group_1.py:4:}}
@@ -50,8 +50,8 @@ print(filtered)
 {{#include ../outputs/expressions/window_group_1.txt}}
 ```
 
-Observe that the group `Water` of column `Type 1` is not contiguous. There are two rows of `Grass` in between. Als no
-that the pokemon within a group are ordered by `Speed` in `ascending` order. I don't like that. I want them ordered in
+Observe that the group `Water` of column `Type 1` is not contiguous. There are two rows of `Grass` in between. Also note
+that the pokemons within a group are ordered by `Speed` in `ascending` order. I don't like that. I want them ordered in
 `descending` speed order. Luckily with window functions, this is a breeze.
 
 ```python
@@ -64,18 +64,18 @@ print(out)
 {{#include ../outputs/expressions/window_group_2.txt}}
 ```
 
-Polars keeps track of the groups locations and maps the expressions to the proper row locations. Also this could be done
-over different groups in a single `select` it will work.
+Polars keeps track of the groups locations and maps the expressions to the proper row locations. This will also work
+over different groups in a single `select`.
 
 The power of window expressions is that you often don't need a `groupby -> explode` combination, but you can put the logic in a
-single expressions. It also makes the API cleaner. If proper used a:
+single expression. It also makes the API cleaner. If properly used a:
 
 - `groupby` -> marks that groups are aggregated and we expect a `DataFrame` of size `n_groups`
 - `.over()` -> marks that we want to compute something within a group, but that we don't modify the original size of the `DataFrame`
 
 ## Window expression rules
 
-The evaluation of window expressions are as followed (assuming we apply on `pl.Int32` column):
+The evaluation of window expressions are as follows (assuming we apply on `pl.Int32` column):
 
 ```python
 # aggregate and broadcast within a group
@@ -102,7 +102,7 @@ pl.sum("foo").over("groups")
 
 ## More examples
 
-Below we flex our muscles with window function to compute:
+Below we flex our muscles with window functions to compute:
 
 - sort all pokemon by type
 - select the first 3 pokemon per type as `"Type 1"`
