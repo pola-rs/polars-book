@@ -14,8 +14,8 @@ The following is an expression:
 The snippet above says:
 
 1. Select column "foo"
-2. Then sort the column
-3. Then take the first two values of the sorted output
+1. Then sort the column
+1. Then take the first two values of the sorted output
 
 The power of expressions is that every expression produces a new expression, and that they
 can be *piped* together. You can run an expression by passing them to one of `Polars` execution contexts.
