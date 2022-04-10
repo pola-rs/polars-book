@@ -1,6 +1,6 @@
 # Timestamp parsing
 
-`Polars` offers `3` time datatypes:
+`Polars` offers `4` time datatypes:
 
 - `pl.Date`, to be used for **date** objects: the number of days since the UNIX epoch as
   a 32 bit signed integer.

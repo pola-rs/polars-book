@@ -22,7 +22,7 @@ df.select([
 ])
 ```
 
-All expressions are ran in parallel, meaning that separate `Polars` expressions are **incredibly
+All expressions are ran in parallel, meaning that separate `Polars` expressions are **embarrassingly
 parallel**. Note that within an expression there may be more parallelization going on.
 
 ## Expression examples

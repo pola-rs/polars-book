@@ -35,7 +35,7 @@ pl.scan_csv("my_many_files_*.csv").show_graph()
 If your files don't have to be in a single table you can also build a query plan for each file and execute them in paralllel
 on the `Polars` thread pool.
 
-All query plan execution is incredibly parallel and doesn't require any communication.
+All query plan execution is embarrassingly parallel and doesn't require any communication.
 
 ```python
 {{#include ../examples/multiple_files/multiple_queries.py:1:}}

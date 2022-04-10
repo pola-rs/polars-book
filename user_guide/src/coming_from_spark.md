@@ -2,7 +2,7 @@
 
 ## Column-based API vs. Row-based API
 
-While the `Spark` `DataFrame` is analogous to a collection of rows, a `Polars` `DataFrame` is closer to a collection of columns. This means that you can combine columns in `Polars` in ways that are not possible in `Spark`, because `Spark` preserves the relationship of the data in each row.
+Whereas the `Spark` `DataFrame` is analogous to a collection of rows, a `Polars` `DataFrame` is closer to a collection of columns. This means that you can combine columns in `Polars` in ways that are not possible in `Spark`, because `Spark` preserves the relationship of the data in each row.
 
 Consider this sample dataset:
 

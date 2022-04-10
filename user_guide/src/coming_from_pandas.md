@@ -71,9 +71,9 @@ df.filter(
 
 > This content is under construction. Missing something? Submit a PR! 🙂
 
-## Indexes
+## No Indexes
 
-They don't exist here! Not having them makes things easier. Convince us otherwise!
+They are not needed! Not having them makes things easier. Convince us otherwise!
 
 ## Pandas transform
 
@@ -142,7 +142,7 @@ Because we can store the whole operation in a single expression, we can combine 
 even combine different groups!
 
 `Polars` will cache window expressions that are applied over the same group, so storing them in a single `select` is not only
-convenient but optimal.
+convenient but also optimal.
 
 ```python
 df.select([
