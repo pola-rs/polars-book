@@ -23,8 +23,12 @@ For [`Pandas`](https://pandas.pydata.org/) users, our
 The goal of `Polars` is to provide a lightning fast `DataFrame` library that utilizes all
 available cores on your machine. Unlike tools such as dask -- which tries to parallelize existing single-threaded libraries
 like `NumPy` and `Pandas` -- `Polars` is written from the ground up, designed for parallelization of queries on `DataFrame`s.
-`Polars` goes to great lengths to reduce redundant copies while traversing memory cache efficiently, which creates minimal contention in
-parallelism.
+
+`Polars` goes to great lengths to:
+
+- Reduce redundant copies
+- Traverse memory cache efficiently
+- Minimize contention in parallelism
 
 `Polars` is lazy and semi-lazy. It allows you to do most of your work eagerly, similar to `Pandas`, but
 it also provides a powerful expression syntax that will be optimized and executed on within the query engine.
