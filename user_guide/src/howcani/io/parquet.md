@@ -14,7 +14,7 @@ df = pl.read_parquet("path.parquet")
 
 ```python
 df = pl.DataFrame({"foo": [1, 2, 3], "bar": [None, "bak", "baz"]})
-df.to_parquet("path.parquet")
+df.write_parquet("path.parquet")
 ```
 
 ## Scan
