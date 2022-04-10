@@ -21,7 +21,7 @@ For [`Pandas`](https://pandas.pydata.org/) users, our
 ## Goals and non-goals
 
 The goal of `Polars` is to provide a lightning fast `DataFrame` library that utilizes all
-available cores on your machine. Unlike tools such as dask -- which that tries to parallelize existing single-threaded libraries
+available cores on your machine. Unlike tools such as dask -- which tries to parallelize existing single-threaded libraries
 like `NumPy` and `Pandas` -- `Polars` is written from the ground up, designed for parallelization of queries on `DataFrame`s.
 The library emphaizes the objective of reducing redundant copies, thus traversing memory cache efficiently has minimal contention in
 parallelism.

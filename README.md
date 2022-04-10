@@ -37,7 +37,7 @@ Use `make serve` to serve the user guide.
 | Filter*                                | ✗      | ✔        |
 | GroupBy*                               | ✗      | ✔        |
 | Join                                   | ✗      | ✗        |
-| Sort                                   | ✗      | ✗        |
+| Sort*                                  | ✗      | ✔        |
 | Pivot/melt                             | ✗      | ✗        |
 | Aggregate*                             | ✗      | ✔        |
 | Conditionally apply*                   | ✗      | ✔        |

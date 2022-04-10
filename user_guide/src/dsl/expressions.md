@@ -126,7 +126,7 @@ print(df)
 ## Conclusion
 
 This is the tip of the iceberg in terms of possible expressions. There are a ton more, and they
-can be combined in variety ways.
+can be combined in a variety ways.
 
 This page was an introduction to `Polars` expressions, and gave a glimpse of what's
 possible with them. In the next page we'll discuss in which contexts expressions can be used. Later in the guide we'll go through expressions in various groupby contexts, all while keeping `Polars` execution parallel.

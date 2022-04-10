@@ -11,7 +11,7 @@ predictable for the CPU.
 The string processing functions available in `Polars` are available in the
 [`str` namespace](POLARS_PY_REF_GUIDE/series.html#strings).
 
-Bellow are a few examples. To compute string lengths:
+Below are a few examples. To compute string lengths:
 
 ```python
 {{#include ../../examples/strings/snippet1.py}}

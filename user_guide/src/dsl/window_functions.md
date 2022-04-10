@@ -71,11 +71,11 @@ The power of window expressions is that you often don't need a `groupby -> explo
 single expression. It also makes the API cleaner. If properly used a:
 
 - `groupby` -> marks that groups are aggregated and we expect a `DataFrame` of size `n_groups`
-- `over` -> marks that we want to compute something within a group, but that we doesn't modify the original size of the `DataFrame`
+- `over` -> marks that we want to compute something within a group, but doesn't modify the original size of the `DataFrame`
 
 ## Window expression rules
 
-The evaluations of window expressions are as follows (assuming we apply to a `pl.Int32` column):
+The evaluations of window expressions are as follows (assuming we apply it to a `pl.Int32` column):
 
 ```python
 # aggregate and broadcast within a group

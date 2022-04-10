@@ -1,6 +1,6 @@
 # GroupBy
 
-> The GroupBy page is under construction
+> The GroupBy page is under construction.
 
 ## A multithreaded approach
 
