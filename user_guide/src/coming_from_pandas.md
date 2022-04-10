@@ -141,8 +141,8 @@ shape: (7, 3)
 Because we can store the whole operation in a single expression, we can combine several `window` functions and
 even combine different groups!
 
-`Polars` will cache window expressions that are applied over the same group, so storing them in a single `select` is not only
-convenient but also optimal.
+`Polars` will cache window expressions that are applied over the same group, so storing them in a single `select` is both
+convenient **and** optimal.
 
 ```python
 df.select([
