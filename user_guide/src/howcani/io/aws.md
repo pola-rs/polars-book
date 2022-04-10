@@ -1,6 +1,6 @@
 # Interact with AWS
 
-> In redaction
+> The Interact with AWS page is under construction.
 
 To read from or write to an AWS bucket, additional dependencies are needed:
 
@@ -8,12 +8,12 @@ To read from or write to an AWS bucket, additional dependencies are needed:
 $ pip install s3fs
 ```
 
-In the next few snippets, we take the example of interacting with a `Parquet` file
+In the next few snippets we'll demonstrate interacting with a `Parquet` file
 located on an AWS bucket.
 
 ## Read
 
-One can load a `.parquet` file using:
+Load a `.parquet` file using:
 
 ```python
 import polars as pl
@@ -29,3 +29,5 @@ df = pl.from_arrow(dataset.read())
 ```
 
 ## Write
+
+> This content is under construction.

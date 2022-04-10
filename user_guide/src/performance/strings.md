@@ -1,6 +1,6 @@
 # Strings
 
-Understanding the memory format used by `Arrow`/`Polars` can really increase performance
+Understanding the memory format used by `Arrow` and `Polars` can really increase performance
 of your queries. This is especially true for large string data. The figure below shows
 how an `Arrow` `UTF8` array is laid out in memory.
 
@@ -20,7 +20,7 @@ in `Rust`).
 
 However, if we need to reorder the `Arrow` `UTF8` array, we need to swap around all the
 bytes of the string values, which can become very expensive when dealing with large
-strings. On the other hand, for the `Vec<String>`, we only need to swap pointers around
+strings. On the other hand for `Vec<String>`, we only need to swap pointers around,
 which is only 8 bytes data that have to be moved with little cost.
 
 Reordering a `DataFrame` embedding a large number of `Utf8` `Series` due to an operation
@@ -30,9 +30,9 @@ Reordering a `DataFrame` embedding a large number of `Utf8` `Series` due to an o
 
 For this reason `Polars` has a `CategoricalType`. A `Categorical` `Series` is an array
 filled with `u32` values that each represent a unique string value. Thereby maintaining
-cache efficiency, whilst keeping cheap to move values around.
+cache efficiency whilst remaining cheap to move values around.
 
-In the example below we show how you can cast an `Utf8` `Series` column to a
+In the example below we demonstrate how you can cast a `Utf8` `Series` column to a
 `Categorical` `Series`.
 
 ```python
@@ -43,11 +43,11 @@ df["utf8-column"].cast(pl.Categorical)
 
 ### Eager join multiple DataFrames on Categorical data
 
-When two DataFrames need to be joined based on string data the `Categorical` data needs
+When two `DataFrames` need to be joined based on string data the `Categorical` data needs
 to be synchronized (data in column `A` of `df1` needs to point to the same underlying
 string data as column `B` in `df2`). One can do so by casting data in the `StringCache`
-context manager. This will synchronize all seen string values for the duration of that
-context manager. If you want the global string cache to be existent during the whole
+context manager. This will synchronize all discoverable string values for the duration of that
+context manager. If you want the global string cache to exist during the whole
 run, you can set `toggle_string_cache` to `True`.
 
 ```python
@@ -58,7 +58,7 @@ run, you can set `toggle_string_cache` to `True`.
 
 A lazy query always has a global string cache (unless you opt-out) for the duration of
 that query (until `.collect()` is called). The example below shows how you could join
-two DataFrames with `Categorical` types.
+two `DataFrames` with `Categorical` types.
 
 ```python
 {{#include ../examples/strings_performance/snippet2.py}}
