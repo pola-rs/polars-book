@@ -1,6 +1,6 @@
 # Interact with Google BigQuery
 
-To read/write form GBQ, additional dependencies are needed:
+To read or write from GBQ, additional dependencies are needed:
 
 ```shell
 $ pip install google-cloud-bigquery
@@ -8,7 +8,7 @@ $ pip install google-cloud-bigquery
 
 ## Read
 
-We can load a query into a DataFrame like this:
+We can load a query into a `DataFrame` like this:
 
 ```python
 import polars as pl
@@ -29,4 +29,4 @@ df = pl.from_arrow(rows.to_arrow())
 
 ## Write
 
-> In redaction
+> This content is under construction.

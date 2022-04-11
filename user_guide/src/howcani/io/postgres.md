@@ -25,7 +25,7 @@ To write to postgres, additional dependencies are needed:
 $ pip install psycopg2-binary
 ```
 
-For writing to a postgres database with `psycopg2`, we utilize `execute_batch`. This will limit the needed round trips
+For writing to a postgres database with `psycopg2`, we utilize `execute_batch`. This will limit round trips needed
 to the server.
 
 We first make sure that all our dtypes are in a format that `psycopg2` recognizes, and then we use `DataFrame.rows` to

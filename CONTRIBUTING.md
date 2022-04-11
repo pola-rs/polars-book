@@ -34,7 +34,7 @@ A few rules:
 ### Want to discuss something?
 
 Some questions will not fit an issue.
-For those there is also a [channel on Gitter](https://gitter.im/polars-rs/community).
+For those we have [the Discord server](https://discord.gg/RhCg7uQCjQ).
 
 ### All contributions are under the MIT Software License
 

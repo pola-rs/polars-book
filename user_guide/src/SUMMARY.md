@@ -3,7 +3,7 @@
 - [Introduction](introduction.md)
 - [Getting started](quickstart/intro.md)
 - [Polars expressions](dsl/intro.md)
-  - [Expressions](dsl/intro.md)
+  - [Expressions](dsl/expressions.md)
   - [Contexts](dsl/contexts.md)
   - [GroupBy](dsl/groupby.md)
   - [Folds](dsl/folds.md)

@@ -1,18 +1,18 @@
 # Coming from pandas
 
-Users coming from `pandas` generally need to know one thing...
+Users coming from `Pandas` generally need to know one thing...
 
 ```
 polars != pandas
 ```
 
-If your polars code looks like it could be pandas code, it might run, but it likely runs slower than it has to be.
+If your `Polars` code looks like it could be `Pandas` code, it might run, but it likely runs slower than it should.
 
-Let's go through some typical pandas code and see how we might write that in polars
+Let's go through some typical `Pandas` code and see how we might write that in `Polars`.
 
 ## Column assignment
 
-**pandas**
+### `Pandas`
 
 ```python
 # executes sequential
@@ -20,7 +20,7 @@ df["a"] = df["b"] * 10
 df["c"] = df["b"] * 100
 ```
 
-**polars**
+### `Polars`
 
 ```python
 # executes in parallel
@@ -32,13 +32,13 @@ df.with_columns([
 
 ## Column asignment based on predicate
 
-**pandas**
+### `Pandas`
 
 ```python
 df.loc[df["c"] == 2, "a"] = df.loc[df["c"] == 2, "b"]
 ```
 
-**polars**
+### `Polars`
 
 ```python
 df.with_column(
@@ -48,20 +48,20 @@ df.with_column(
 )
 ```
 
-Note that polars way is pure (the original DataFrame) is not modified. The `mask` is also not computed twice as in `pandas`.
-You could prevent this in `pandas`, but that would require setting a temporary variable.
+Note that `Polars` way is pure, thus the original `DataFrame` is not modified. The `mask` is also not computed twice as in `Pandas`.
+You could prevent this in `Pandas`, but that would require setting a temporary variable.
 Additionally polars can compute every branch of an `if -> then -> otherwise` in parallel. This is valuable, when the branches
 get more expensive to compute.
 
 ## Filtering
 
-**pandas**
+### `Pandas`
 
 ```python
 df.loc[(df['sqft_living'] > 2500) & (df['price'] < 300000)]
 ```
 
-**polars**
+### `Polars`
 
 ```python
 df.filter(
@@ -69,18 +69,17 @@ df.filter(
 )
 ```
 
-> More in redaction. Miss something? make a PR :).
+> This content is under construction. Missing something? Submit a PR! 🙂
 
-## No index
+## No Indexes
 
-They are not needed. Not having them makes things easier. Convince me otherwise
+They are not needed! Not having them makes things easier. Convince us otherwise!
 
-## Pandas Transform
+## Pandas transform
 
-The pandas documentation shows an operation on a groupby called `transform`. They show the following
-example:
+The `Pandas` documentation demonstrates an operation on a groupby called `transform`.
 
-**pandas**
+### `Pandas`
 
 ```python
 df = pd.DataFrame({
@@ -91,7 +90,7 @@ df = pd.DataFrame({
 df["size"] = df.groupby("c")["type"].transform(len)
 ```
 
-Here they groupby `"c"` take `column "type"`, compute the group `len` and then join the result back to the original `DataFrame`
+Here `Pandas` does a groupby on `"c"`, takes column `"type"`, computes the group `len`, and then joins the result back to the original `DataFrame`
 producing:
 
 ```
@@ -105,9 +104,9 @@ producing:
 6  2    n    4
 ```
 
-**polars**
+### `Polars`
 
-In polars the same can be achieved with `window functions`.
+In `Polars` the same can be achieved with `window` functions.
 
 ```python
 df.select([
@@ -139,11 +138,11 @@ shape: (7, 3)
 └─────┴──────┴──────┘
 ```
 
-Because we can store the whole operation in a single expression we can combine several `window`functions and
+Because we can store the whole operation in a single expression, we can combine several `window` functions and
 even combine different groups!
 
-Polars will cache window expression that are applied over the same group, so storing them in single `select` is not only
-convenient, but also optimal.
+`Polars` will cache window expressions that are applied over the same group, so storing them in a single `select` is both
+convenient **and** optimal.
 
 ```python
 df.select([

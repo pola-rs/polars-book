@@ -47,10 +47,10 @@ run: data
 
 
 serve_user_guide: run
-	cd /usr/src/user_guide; mdbook serve --hostname 0.0.0.0 --port 8000
+	cd ./user_guide; mdbook serve --hostname 0.0.0.0 --port 8000
 
 serve_ref_guide_python: docs
-	cd /usr/src/reference_guide_python; mdbook serve --hostname 0.0.0.0 --port 8000
+	cd ./reference_guide_python; mdbook serve --hostname 0.0.0.0 --port 8000
 
 serve: serve_user_guide
 

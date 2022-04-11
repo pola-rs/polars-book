@@ -1,9 +1,9 @@
 # Time Series
 
-For time-series resampling polars offers a powerful API to resample data. I think everybody gives pandas credit for
-their resampling functionality via `df.resample`.
+For `time-series` resampling `Polars` offers a powerful API to resample data. `Pandas` is well known for
+its resampling functionality via `df.resample`.
 
-Polars make the distinction between
+`Polars` make the distinction between
 
 - upsampling
 - downsampling
@@ -11,14 +11,14 @@ Polars make the distinction between
 ## Upsampling
 
 An upsample operation is actually nothing more than left joining a date range with your dataset and filling the blanks.
-Polars provides wrapper methods for this operations and we will show an example later.
+`Polars` provides wrapper methods for this operation. Later on we'll discuss an example.
 
 ## Downsampling
 
-Downsampling is the interesting part. How do you deal with date intervals, window durations, aggregations etc.
+Downsampling is interesting. Here you deal with date intervals, window durations, aggregations etc.
 
-Polars sees downsampling as special case of the **groupby** operation and therefore has two extra entrances in the
-expression API with the `groupby context`:
+`Polars` views downsampling as a special case of the **groupby** operation and therefore has two extra entrances in the
+expression API with the `groupby` context:
 
 - [groupby_dynamic](POLARS_PY_REF_GUIDE/api/polars.DataFrame.groupby_dynamic.html)
 - [groupby_rolling](POLARS_PY_REF_GUIDE/api/polars.DataFrame.groupby_rolling.html)
@@ -31,9 +31,9 @@ Let's go through some examples and see what that means.
 
 In the snippet below we create a `date range` with every **day** (`"1d"`) in 2021 and turn this into a `DataFrame`.
 
-Then we we create dynamic windows that starts every **month** (`"1mo"`) and has a window length of 1 month. Dynamic windows
+Then we we create dynamic windows that starts every **month** (`"1mo"`) and has a window length of `1` month. Dynamic windows
 don't have a size thats fixed by the number of rows in a `DataFrame`, instead they are fixed by a temporal unit. This can
-be a day (`"1d"`), 3 weeks (`"3w"`), 5 nanoseconds (`"5ns"`) you get the idea.
+be a day (`"1d"`), `3` weeks (`"3w"`) or `5` nanoseconds (`"5ns"`) ... you get the idea.
 
 The values that match these dynamic windows are then assigned to that group and can be aggregated with the powerful expression API.
 
@@ -53,14 +53,14 @@ print(out)
 
 A dynamic window is defined by a:
 
-- **every** indicates the interval of the window
-- **period** indicates the duration of the window
-- **offset** can be used to offset the start of the windows
+- **every**: indicates the interval of the window
+- **period**: indicates the duration of the window
+- **offset**: can be used to offset the start of the windows
 
-Because **every** does not have to be equal to **period** we can create many groups in a very flexible way. They may overlap
+Because _**every**_ does not have to be equal to _**period**_, we can create many groups in a very flexible way. They may overlap
 or leave boundaries between them.
 
-Let's see how the windows for some parameter combinations would look. Let's start boring:
+Let's see how the windows for some parameter combinations would look. Let's start out boring. 🥱
 
 >
 
@@ -99,9 +99,9 @@ data points that in these gaps will not be a member of any group
               |--|
 ```
 
-## Rolling groupby
+## Rolling GroupBy
 
-The rolling groupby is another entrance to the `groupby context`. But different from the `groupby_dynamic` the windows are
+The rolling groupby is another entrance to the `groupby` context. But different from the `groupby_dynamic` the windows are
 not fixed by a parameter `every` and `period`. In a rolling groupby the windows are not fixed at all! They are determined
 by the values in the `index_column`.
 
@@ -120,11 +120,11 @@ windows:
 Because the windows of a rolling groupby are always determined by the values in the `DataFrame` column, the number of
 groups is always equal to the original `DataFrame`.
 
-## Combining Groupby + Dynamic / Rolling
+## Combining Groupby and Dynamic / Rolling
 
 Rolling and dynamic groupby's can be combined with normal groupby operations.
 
-Below we show an example with a dynamic groupby.
+Below is an example with a dynamic groupby.
 
 ```python
 {{#include ../examples/time_series/dynamic_ds.py:0:}}
@@ -146,4 +146,4 @@ print(out)
 
 ## Upsample
 
-> in redaction
+> This content is under construction.

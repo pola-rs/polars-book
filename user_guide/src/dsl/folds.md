@@ -1,12 +1,13 @@
 # Folds
 
-Polars provides expressions/methods for horizontal aggregations like, [sum](POLARS_PY_REF_GUIDE/api/polars.DataFrame.sum.html),
-[min](POLARS_PY_REF_GUIDE/api/polars.DataFrame.min.html), [mean](POLARS_PY_REF_GUIDE/api/polars.DataFrame.mean.html),
-etc. by setting the argument `axis=1`. However, when you need a more complex aggregation the default ones provided by the
-polars library may not be sufficient. That's when `folds` come in handy. Polars' `fold` expression operates on columns and
-can therefore be really fast. It utilizes the data layout most efficiently and often has vectorized execution.
+`Polars` provides expressions/methods for horizontal aggregations like [`sum`](POLARS_PY_REF_GUIDE/api/polars.DataFrame.sum.html),
+[`min`](POLARS_PY_REF_GUIDE/api/polars.DataFrame.min.html), [`mean`](POLARS_PY_REF_GUIDE/api/polars.DataFrame.mean.html),
+etc. by setting the argument `axis=1`. However, when you need a more complex aggregation the default methods provided by the
+`Polars` library may not be sufficient. That's when `folds` come in handy.
 
-Let's start with an example by implementing the `sum` operation ourselves, with a `fold`
+The `Polars` `fold` expression operates on columns for maximum speed. It utilizes the data layout very efficiently and often has vectorized execution.
+
+Let's start with an example by implementing the `sum` operation ourselves, with a `fold`.
 
 ## Manual Sum
 
@@ -20,7 +21,7 @@ print(out)
 ```
 
 The snippet above recursively applies the function `f(acc, x) -> acc` to an accumulator `acc` and a new column `x`.
-The function operations on columns at a time and can take advantage from cache efficiency and vectorization.
+The function operates on columns individually and can take advantage of cache efficiency and vectorization.
 
 ## Conditional
 
@@ -36,7 +37,7 @@ print(out)
 {{#include ../outputs/expressions/folds_2.txt}}
 ```
 
-In the snippet we filter all rows that have **ALL** values > 1.
+In the snippet we filter all rows where **each** column value is `>` `1`.
 
 ## Folds and string data
 
