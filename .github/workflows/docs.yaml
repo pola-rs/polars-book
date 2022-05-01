@@ -28,7 +28,6 @@ jobs:
 
       - name: Run snippets
         run: |
-          make docs
           make run
 
       - name: Deploy docs

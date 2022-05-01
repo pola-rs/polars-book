@@ -14,12 +14,6 @@ data: .venv
 	wget -q $(DATA_SRC)/reddit100k.tar.gz -O - | tar -xzf - -O > $(DATA_DIR)/reddit.csv
 	wget -q $(DATA_SRC)/runescape100k.tar.gz -O - | tar -xzf - -O > $(DATA_DIR)/runescape.csv
 
-# adding the download of astdocs here (instead of in the .venv recipe) as it might still change fairly often
-docs: .venv
-	@.venv/bin/pip install --no-cache-dir git+https://github.com/carnarez/astdocs@d5ce0a73936a8731c710cbd342839cf782e1a364
-	-@rm -fr reference_guide_python/src
-	ASTDOCS_FOLD_ARGS_AFTER=60 ASTDOCS_BOUND_OBJECTS=1 ASTDOCS_SPLIT_BY=mc ASTDOCS_WITH_LINENOS=on $(PYTHON) -m reference_guide_python
-
 run: data
 	./tasks.sh process_nbook introduction_polars
 	$(PYTHON) -m user_guide.src.examples.multiple_files

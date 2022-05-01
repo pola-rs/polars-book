@@ -11,7 +11,6 @@ q = (
             (pl.col("party") == "Pro-Administration").sum().alias("pro"),
         ]
     )
-    .inspect()
     .sort("pro", reverse=True)
     .limit(5)
 )
