@@ -2,6 +2,8 @@ import polars as pl
 
 from .dataset import dataset
 
+print(dataset[["state", "party"]].head(10).to_dict(False))
+
 q = (
     dataset.lazy()
     .groupby("state")
@@ -11,6 +13,7 @@ q = (
             (pl.col("party") == "Pro-Administration").sum().alias("pro"),
         ]
     )
+    .inspect()
     .sort("pro", reverse=True)
     .limit(5)
 )
