@@ -2,8 +2,6 @@ import polars as pl
 
 from .dataset import dataset
 
-print(dataset[["state", "party"]].head(10).to_dict(False))
-
 q = (
     dataset.lazy()
     .groupby("state")

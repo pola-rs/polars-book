@@ -8,6 +8,7 @@
   - [GroupBy](dsl/groupby.md)
   - [Folds](dsl/folds.md)
   - [Window functions](dsl/window_functions.md)
+  - [List context and row-wise compute](dsl/list_context.md)
   - [Numpy universal functions](dsl/numpy.md)
   - [Custom functions](dsl/custom_functions.md)
   - [Examples](notebooks/introduction_polars.md)

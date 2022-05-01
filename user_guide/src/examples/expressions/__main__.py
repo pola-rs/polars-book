@@ -22,6 +22,8 @@ from .map_function_1 import out as map_fun_1
 from .apply_function_1 import out as apply_fun_1
 from .apply_function_2 import out as apply_fun_2
 from .apply_function_3 import out as apply_fun_3
+from .list_row_wise_1 import grades
+from .list_row_wise_2 import out as row_wise_2
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/expressions")
 
@@ -93,3 +95,9 @@ with open(f"{path}/apply_fun_2.txt", "w") as f:
 
 with open(f"{path}/apply_fun_3.txt", "w") as f:
     f.write(f"{apply_fun_3}\n")
+
+with open(f"{path}/list_row_wise_1.txt", "w") as f:
+    f.write(f"{grades}\n")
+
+with open(f"{path}/list_row_wise_2.txt", "w") as f:
+    f.write(f"{row_wise_2}\n")

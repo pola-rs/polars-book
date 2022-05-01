@@ -174,5 +174,5 @@ The mapping of python types to polars data types is as follows:
 - `bool` -> `Boolean`
 - `str` -> `Utf8`
 - `list[tp]` -> `List[tp]` (where the inner type is inferred with the same rules)
-- `dict[str, [tp]]` -> `struct` (where the fields are auto generated)
+- `dict[str, [tp]]` -> `struct`
 - `Any` -> `object` (Prevent this at all times)
