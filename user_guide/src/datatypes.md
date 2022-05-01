@@ -19,6 +19,7 @@ The data types are:
 - `Boolean`: Boolean type effectively bit packed.
 - `Utf8`: String data (this is actually `Arrow` `LargeUtf8` internally).
 - `List`: A list array contains a child array containing the list values and an offset array. (this is actually `Arrow` `LargeList` internally).
+- `Struct`: A struct array is represented as `Vec<Series>` and is useful to pack multiple/heterogenous values in a single column.
 - `Date`: Date representation, internally represented as days since UNIX epoch encoded by a 32-bit signed integer.
 - `Datetime`: Datetime representation, internally represented as nanoseconds since UNIX epoch encoded by a 64-bit signed integer.
 - `Duration`: A timedelate type. Created when subtracting `Date/Datetime`.

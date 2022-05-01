@@ -9,6 +9,7 @@
   - [Folds](dsl/folds.md)
   - [Window functions](dsl/window_functions.md)
   - [Numpy universal functions](dsl/numpy.md)
+  - [Custom functions](dsl/custom_functions.md)
   - [Examples](notebooks/introduction_polars.md)
   - [API](dsl/api.md)
   - [Video introduction](dsl/video_intro.md)

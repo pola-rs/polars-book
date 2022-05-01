@@ -18,6 +18,10 @@ from .window_3 import out as w3
 from .window_group_1 import filtered as wg1
 from .window_group_2 import out as wg2
 from .numpy_ufunc import out as np_uf1
+from .map_function_1 import out as map_fun_1
+from .apply_function_1 import out as apply_fun_1
+from .apply_function_2 import out as apply_fun_2
+from .apply_function_3 import out as apply_fun_3
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/expressions")
 
@@ -77,3 +81,15 @@ with open(f"{path}/window_group_2.txt", "w") as f:
 
 with open(f"{path}/np_ufunc_1.txt", "w") as f:
     f.write(f"{np_uf1}\n")
+
+with open(f"{path}/map_fun_1.txt", "w") as f:
+    f.write(f"{map_fun_1}\n")
+
+with open(f"{path}/apply_fun_1.txt", "w") as f:
+    f.write(f"{apply_fun_1}\n")
+
+with open(f"{path}/apply_fun_2.txt", "w") as f:
+    f.write(f"{apply_fun_2}\n")
+
+with open(f"{path}/apply_fun_3.txt", "w") as f:
+    f.write(f"{apply_fun_3}\n")
