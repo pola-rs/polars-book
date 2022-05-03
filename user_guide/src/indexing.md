@@ -45,17 +45,7 @@ The rules are as follows (depending on the datatypes of the values):
 | select a single value (Series/DataFrame)<br> `df.loc[2, ["A"]]`       | `df[2, ["A"]]`                |
 | select a single value (Series/DataFrame)<br> `df.iloc[2, [1]]`        | `df[2, [1]]`                  |
 
-## Expressions
+## Anti-pattern
 
-Expressions can also be used in indexing (it is syntactic sugar for `df.select`).
-
-This can be used to do some pretty exotic selections.
-
-```python
-df[[
-    pl.col("A").head(5),  # get first of "A"
-    pl.col("B").tail(5).reverse(), # get last of "B" in reversed order
-    pl.col("B").filter(pl.col("B") > 5).head(5), # get first of "B" that fulfils predicate
-    pl.sum("A").over("B").head(5) # get the sum aggregation of "A" over the groups of "B" and return the first 5
-]]
-```
+Indexing polars by boolean masks is considered an anti-pattern and the functionality may be removed in the future.
+Polars strongly favours the expression API in combination with `select` and `filter` in favor of accessing by index.
