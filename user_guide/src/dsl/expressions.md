@@ -10,9 +10,8 @@ The snippet above says:
 1. Then sort the column
 1. Then take the first two values of the sorted output
 
-The power of expressions is that every expression produces a new expression, and that
-they can be *piped* together. You can run an expression by passing them to one of
-`Polars` execution contexts.
+The power of expressions is that every expression produces a new expression, and that they
+can be *piped* together. You can run an expression by passing them to one of `Polars` execution contexts.
 
 Here we run two expressions by running `df.select`:
 
@@ -23,9 +22,8 @@ df.select([
 ])
 ```
 
-All expressions are ran in parallel, meaning that separate `Polars` expressions are
-**embarrassingly parallel**. Note that within an expression there may be more
-parallelization going on.
+All expressions are ran in parallel, meaning that separate `Polars` expressions are **embarrassingly
+parallel**. Note that within an expression there may be more parallelization going on.
 
 ## Expression examples
 
@@ -41,8 +39,8 @@ print(df)
 ```
 
 You can do a lot with expressions. They are so expressive that you sometimes have
-multiple ways to get the same results. To get a better feel for them let's go through
-some more examples.
+multiple ways to get the same results. To get a better feel for them let's go through some
+more examples.
 
 ### Count unique values
 
@@ -61,8 +59,8 @@ print(out)
 
 ### Various aggregations
 
-We can do various aggregations. Below are examples of some of them, but there are more
-such as `median`, `mean`, `first`, etc.
+We can do various aggregations. Below are examples of some of them, but there are more such as
+`median`, `mean`, `first`, etc.
 
 ```python
 {{#include ../examples/expressions/expressions_examples_2.py:4:}}
@@ -92,9 +90,8 @@ print(df)
 In the example below we use a conditional to create a new expression in the following
 `when -> then -> otherwise` construct. The `when` function requires a predicate
 expression (and thus leads to a boolean `Series`). The `then` function expects an
-expression that will be used in case the predicate evaluates to `true`, and the
-`otherwise` function expects an expression that will be used in case the predicate
-evaluates to `false`.
+expression that will be used in case the predicate evaluates to `true`, and the `otherwise`
+function expects an expression that will be used in case the predicate evaluates to `false`.
 
 Note that you can pass any expression, or just base expressions like `pl.col("foo")`,
 `pl.lit(3)`, `pl.lit("bar")`, etc.
@@ -112,12 +109,10 @@ print(df)
 
 ### Window expressions
 
-A polars expression can also do an implicit GROUPBY, AGGREGATION, and JOIN in a single
-expression. In the examples below we do a GROUPBY OVER `"groups"` and AGGREGATE SUM of
-`"random"`, and in the next expression we GROUPBY OVER `"names"` and AGGREGATE a LIST of
-`"random"`. These window functions can be combined with other expressions and are an
-efficient way to determine group statistics. See more on those group statistics
-[here](POLARS_PY_REF_GUIDE/expression.html#aggregation).
+A polars expression can also do an implicit GROUPBY, AGGREGATION, and JOIN in a single expression.
+In the examples below we do a GROUPBY OVER `"groups"` and AGGREGATE SUM of `"random"`, and in the next expression
+we GROUPBY OVER `"names"` and AGGREGATE a LIST of `"random"`. These window functions can be combined with other expressions
+and are an efficient way to determine group statistics. See more on those group statistics [here](POLARS_PY_REF_GUIDE/expression.html#aggregation).
 
 ```python
 {{#include ../examples/expressions/window.py:4:}}
@@ -130,10 +125,8 @@ print(df)
 
 ## Conclusion
 
-This is the tip of the iceberg in terms of possible expressions. There are a ton more,
-and they can be combined in a variety ways.
+This is the tip of the iceberg in terms of possible expressions. There are a ton more, and they
+can be combined in a variety ways.
 
 This page was an introduction to `Polars` expressions, and gave a glimpse of what's
-possible with them. In the next page we'll discuss in which contexts expressions can be
-used. Later in the guide we'll go through expressions in various groupby contexts, all
-while keeping `Polars` execution parallel.
+possible with them. In the next page we'll discuss in which contexts expressions can be used. Later in the guide we'll go through expressions in various groupby contexts, all while keeping `Polars` execution parallel.

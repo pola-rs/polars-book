@@ -1,6 +1,5 @@
-import polars as pl
-
 from .dataset import df
+import polars as pl
 
 df = df[
     [

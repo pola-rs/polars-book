@@ -3,8 +3,8 @@
 > The Projection pushdown page is under construction.
 
 Let's expand our query from the previous section by joining the result of the *FILTER*
-operation with the runescape data to find popular Reddit usernames that have a username
-starting with an `"a"` that also played Runescape. That must be something we are all
+operation with the runescape data to find popular Reddit usernames that have a
+username starting with an `"a"` that also played Runescape. That must be something we are all
 interested in!
 
 The query would look like this:
@@ -30,8 +30,8 @@ dataset.show_graph(optimized=False)
 ![](./../outputs/projection_pushdown/graph.png)
 
 Now were focussed on the projection's indicated with π. The first node shows π 3/6,
-indicating that we select 3 out of 6 columns in the `DataFrame`. If we look the csv
-scans we see a wildcard π \*/6 and π \*/1 meaning that we select all of 6 columns of the
+indicating that we select 3 out of 6 columns in the `DataFrame`. If we look the csv scans
+we see a wildcard π \*/6 and π \*/1 meaning that we select all of 6 columns of the
 reddit dataset and the one and only column from the runescape dataset respectively.
 
 This query is not very optimal. We select all columns from both datasets and only show
@@ -77,5 +77,5 @@ sys	0m0,783s
 
 We can see that we almost reduced query time by half on this simple query. With real
 business data often comprising of many columns, filtering missing data, doing complex
-groupby operations, and using joins we expect this difference between unoptimized
-queries and optimized queries to only grow.
+groupby operations, and using joins we expect this difference between unoptimized queries and optimized
+queries to only grow.

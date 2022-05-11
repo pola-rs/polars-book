@@ -1,5 +1,4 @@
 import polars as pl
-
 from .window_1 import df
 
 out = df.select(

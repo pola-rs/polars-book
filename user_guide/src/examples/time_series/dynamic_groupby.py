@@ -1,6 +1,5 @@
-import polars as pl
-
 from .dynamic_ds import df
+import polars as pl
 
 out = df.groupby_dynamic(
     "time",

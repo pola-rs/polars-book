@@ -1,5 +1,4 @@
 import polars as pl
-
 from .window_group_1 import filtered
 
 out = filtered.with_columns(

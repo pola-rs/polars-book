@@ -1,5 +1,5 @@
-import numpy as np
 import polars as pl
+import numpy as np
 
 np.random.seed(12)
 

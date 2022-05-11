@@ -1,5 +1,4 @@
 import polars as pl
-
 from .map_function_1 import df
 
 counter = 0

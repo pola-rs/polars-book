@@ -1,6 +1,5 @@
-import glob
-
 import polars as pl
+import glob
 
 queries = []
 for file in glob.glob("my_many_files_*.csv"):

@@ -10,9 +10,8 @@ effort behind the format, using `Arrow` is now likely the fastest way to:
 
 `Polars` uses an `Arrow` memory buffer as the most basic building block for the `Polars`
 `Series`. This means that we exchange data between `Polars` and `Arrow` **without
-copying** it. It also means that `Polars` shares the same performance gains that `Arrow`
-receives.
+copying** it. It also means that `Polars` shares the same performance gains that `Arrow` receives.
 
-Convert a `Polars` `DataFrame` or `Series` to `Arrow` using the `.to_arrow()` method.
-Similarly, importing from `Arrow` data structure can be performed with the
+Convert a `Polars` `DataFrame` or `Series` to `Arrow` using the `.to_arrow()`
+method. Similarly, importing from `Arrow` data structure can be performed with the
 `.from_arrow()` functions.

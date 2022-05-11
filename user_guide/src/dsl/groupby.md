@@ -6,8 +6,8 @@
 
 One of the most efficient ways to process tabular data is to parallelize its processing
 via the "split-apply-combine" approach. This operation is at the core of the `Polars`
-grouping implementation, allowing it to attain lightning-fast operations. Specifically,
-both the "split" and "apply" phases are executed in a multi-threaded fashion.
+grouping implementation, allowing it to attain lightning-fast operations. Specifically, both the "split" and "apply" phases are executed in a multi-threaded
+fashion.
 
 A simple grouping operation is taken below as an example to illustrate this approach:
 
@@ -21,30 +21,29 @@ multithreaded lock-free approach that is illustrated on the following schema:
 This parallelization allows the grouping and joining operations (for instance) to be
 blazingly fast!
 
-> Check out
-> [this blog post](https://www.ritchievink.com/blog/2021/02/28/i-wrote-one-of-the-fastest-dataframe-libraries/)
+> Check out [this blog post](https://www.ritchievink.com/blog/2021/02/28/i-wrote-one-of-the-fastest-dataframe-libraries/)
 > for more details.
 
 ## Do not kill the parallelization!
 
 We have all heard that `Python` is slow, and does "not scale." Besides the overhead of
 running "slow" bytecode, `Python` has to remain within the constraints of the Global
-Interpreter Lock (GIL). This means that if you were to use a `lambda` or a custom
-`Python` function to apply during a parallelized phase, `Polars` speed is capped running
-`Python` code preventing any multiple threads from executing the function.
+Interpreter Lock (GIL). This means that if you were to use a `lambda` or a custom `Python`
+function to apply during a parallelized phase, `Polars` speed is capped running `Python`
+code preventing any multiple threads from executing the function.
 
-This all feels terribly limiting, especially because we often need those `lambda`
-functions in a `.groupby()` step, for example. This approach is still supported by
-`Polars`, but keeping in mind bytecode **and** the GIL costs have to be paid.
+This all feels terribly limiting, especially because we often need those `lambda` functions in a
+`.groupby()` step, for example. This approach is still supported by `Polars`, but
+keeping in mind bytecode **and** the GIL costs have to be paid.
 
-To mitigate this, `Polars` implements a powerful syntax defined not only in its lazy
-API, but also in its eager API.
+To mitigate this, `Polars` implements a powerful syntax defined not only in its lazy API,
+but also in its eager API.
 
 ## Polars Expressions
 
-In the introduction on the previous page we discussed that using custom Python
-functions, killed parallelization, and that we can use the expressions of the lazy API
-to mitigate this. Let's take a look at what that means.
+In the introduction on the previous page we discussed that using custom Python functions,
+killed parallelization, and that we can use the expressions of the lazy API to mitigate
+this. Let's take a look at what that means.
 
 We can start with the simple
 [US congress dataset](https://github.com/unitedstates/congress-legislators).
@@ -83,9 +82,9 @@ we have a nice summary overview.
 
 #### Conditionals
 
-It's that easy! Let's turn it up a notch. Let's say we want to know how many delegates
-of a "state" are "Pro" or "Anti" administration. We could directly query that in the
-aggregation without the need of `lambda` or grooming the `DataFrame`.
+It's that easy! Let's turn it up a notch. Let's say we want to know how
+many delegates of a "state" are "Pro" or "Anti" administration. We could directly query
+that in the aggregation without the need of `lambda` or grooming the `DataFrame`.
 
 ```python
 {{#include ../examples/groupby_dsl/snippet2.py}}
@@ -95,8 +94,7 @@ aggregation without the need of `lambda` or grooming the `DataFrame`.
 {{#include ../outputs/groupby_dsl/output2.txt}}
 ```
 
-Similarly, this could also be done with a nested GROUPBY, but that doesn't help show off
-some of these nice features. 😉
+Similarly,  this could also be done with a nested GROUPBY, but that doesn't help show off some of these nice features. 😉
 
 ```python
 {{#include ../examples/groupby_dsl/snippet3.py}}
@@ -127,9 +125,8 @@ runtime of the query.
 
 #### Sorting
 
-It's common to see a `DataFrame` being sorted for the sole purpose of managing the
-ordering during a GROUPBY operation. Let's say that we want to get the names of the
-oldest and youngest politicians per state. We could SORT and GROUPBY.
+It's common to see a `DataFrame` being sorted for the sole purpose of managing the ordering during a
+GROUPBY operation. Let's say that we want to get the names of the oldest and youngest politicians per state. We could SORT and GROUPBY.
 
 ```python
 {{#include ../examples/groupby_dsl/snippet5.py}}
@@ -139,8 +136,8 @@ oldest and youngest politicians per state. We could SORT and GROUPBY.
 {{#include ../outputs/groupby_dsl/output5.txt}}
 ```
 
-However, **if** we also want to sort the names alphabetically, this breaks. Luckily we
-can sort in a `groupby` context separate from the `DataFrame`.
+However, **if** we also want to sort the names alphabetically, this
+breaks. Luckily we can sort in a `groupby` context separate from the `DataFrame`.
 
 ```python
 {{#include ../examples/groupby_dsl/snippet6.py}}
