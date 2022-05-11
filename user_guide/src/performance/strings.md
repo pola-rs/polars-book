@@ -1,8 +1,8 @@
 # Strings
 
-Understanding the memory format used by `Arrow` and `Polars` can really increase
-performance of your queries. This is especially true for large string data. The figure
-below shows how an `Arrow` `UTF8` array is laid out in memory.
+Understanding the memory format used by `Arrow` and `Polars` can really increase performance
+of your queries. This is especially true for large string data. The figure below shows
+how an `Arrow` `UTF8` array is laid out in memory.
 
 The array `["foo", "bar", "ham"]` is encoded by :
 
@@ -43,12 +43,12 @@ df["utf8-column"].cast(pl.Categorical)
 
 ### Eager join multiple DataFrames on Categorical data
 
-When two `DataFrames` need to be joined based on string data the `Categorical` data
-needs to be synchronized (data in column `A` of `df1` needs to point to the same
-underlying string data as column `B` in `df2`). One can do so by casting data in the
-`StringCache` context manager. This will synchronize all discoverable string values for
-the duration of that context manager. If you want the global string cache to exist
-during the whole run, you can set `toggle_string_cache` to `True`.
+When two `DataFrames` need to be joined based on string data the `Categorical` data needs
+to be synchronized (data in column `A` of `df1` needs to point to the same underlying
+string data as column `B` in `df2`). One can do so by casting data in the `StringCache`
+context manager. This will synchronize all discoverable string values for the duration of that
+context manager. If you want the global string cache to exist during the whole
+run, you can set `toggle_string_cache` to `True`.
 
 ```python
 {{#include ../examples/strings_performance/snippet1.py}}

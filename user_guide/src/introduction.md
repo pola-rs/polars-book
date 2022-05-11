@@ -4,27 +4,25 @@
 
 This book is an introduction to the
 [`Polars` DataFrame library](https://github.com/pola-rs/polars). Its goal is to
-introduce you to `Polars` by going through examples and comparing it to other solutions.
-Some design choices are introduced here. The guide will also introduce you to optimal
-usage of `Polars`.
+introduce you to `Polars` by going through examples and comparing it to other
+solutions. Some design choices are introduced here. The guide will also introduce you to
+optimal usage of `Polars`.
 
 Even though `Polars` is completely written in [`Rust`](https://www.rust-lang.org/) (no
 runtime overhead!) and uses [`Arrow`](https://arrow.apache.org/) -- the
-[native arrow2 `Rust` implementation](https://github.com/jorgecarleitao/arrow2) -- as
-its foundation, the examples presented in this guide will be mostly using its
-higher-level language bindings. Higher-level bindings only serve as a thin wrapper for
-functionality implemented in the core library.
+[native arrow2 `Rust` implementation](https://github.com/jorgecarleitao/arrow2) -- as its foundation, the
+examples presented in this guide will be mostly using its higher-level language
+bindings. Higher-level bindings only serve as a thin wrapper for functionality implemented in the core library.
 
 For [`Pandas`](https://pandas.pydata.org/) users, our
-[Python package](https://pypi.org/project/polars/) will offer the easiest way to get
-started with `Polars`.
+[Python package](https://pypi.org/project/polars/) will offer the easiest way to get started with
+`Polars`.
 
 ## Goals and non-goals
 
-The goal of `Polars` is to provide a lightning fast `DataFrame` library that utilizes
-all available cores on your machine. Unlike tools such as dask -- which tries to
-parallelize existing single-threaded libraries like `NumPy` and `Pandas` -- `Polars` is
-written from the ground up, designed for parallelization of queries on `DataFrame`s.
+The goal of `Polars` is to provide a lightning fast `DataFrame` library that utilizes all
+available cores on your machine. Unlike tools such as dask -- which tries to parallelize existing single-threaded libraries
+like `NumPy` and `Pandas` -- `Polars` is written from the ground up, designed for parallelization of queries on `DataFrame`s.
 
 `Polars` goes to great lengths to:
 
@@ -32,27 +30,24 @@ written from the ground up, designed for parallelization of queries on `DataFram
 - Traverse memory cache efficiently
 - Minimize contention in parallelism
 
-`Polars` is lazy and semi-lazy. It allows you to do most of your work eagerly, similar
-to `Pandas`, but it also provides a powerful expression syntax that will be optimized
-and executed on within the query engine.
+`Polars` is lazy and semi-lazy. It allows you to do most of your work eagerly, similar to `Pandas`, but
+it also provides a powerful expression syntax that will be optimized and executed on within the query engine.
 
-In lazy `Polars` we are able to do query optimization on the entire query, further
-improving performance and memory pressure.
+In lazy `Polars` we are able to do query optimization on the entire query, further improving performance and memory pressure.
 
-`Polars` keeps track of your query in a *logical plan*. This plan is optimized and
-reordered before running it. When a result is requested, `Polars` distributes the
-available work to different *executors* that use the algorithms available in the eager
-API to produce a result. Because the whole query context is known to the optimizer and
-executors of the logical plan, processes dependent on separate data sources can be
-parallelized on the fly.
+`Polars` keeps track of your query in a *logical plan*. This
+plan is optimized and reordered before running it. When a result is requested, `Polars`
+distributes the available work to different *executors* that use the algorithms available
+in the eager API to produce a result. Because the whole query context is known to
+the optimizer and executors of the logical plan, processes dependent on separate data
+sources can be parallelized on the fly.
 
 ![](https://raw.githubusercontent.com/pola-rs/polars-static/master/docs/api.svg)
 
 ### Performance 🚀🚀
 
-Polars is very fast, and in fact is one of the best performing solutions available. See
-the results in h2oai's db-benchmark. The image below shows the biggest datasets yielding
-a result.
+Polars is very fast, and in fact is one of the best performing solutions available.
+See the results in h2oai's db-benchmark. The image below shows the biggest datasets yielding a result.
 
 ![](https://www.ritchievink.com/img/post-35-polars-0.15/db-benchmark.png)
 

@@ -62,13 +62,11 @@ print(
 )
 ```
 
-When the data is stored locally, we can also use `scan_csv` to run the query in lazy
-polars.
+When the data is stored locally, we can also use `scan_csv` to run the query in lazy polars.
 
 ## References
 
-If you want to dive right into the `Python` API docs, check the
-[the reference docs](POLARS_PY_REF_GUIDE).
+If you want to dive right into the `Python` API docs, check the [the reference docs](POLARS_PY_REF_GUIDE).
 
 ### Lazy API
 
@@ -77,8 +75,7 @@ to execute the query (via `LazyFrame.collect()`, or `LazyFrame.fetch()`). This p
 `Polars` with the entire context of the query, allowing optimizations and choosing the
 fastest algorithm given that context.
 
-Going from eager to lazy is often as simple as starting your query with `.lazy()` and
-ending with `.collect()`.
+Going from eager to lazy is often as simple as starting your query with `.lazy()` and ending with `.collect()`.
 
 So the eager snippet above would become:
 
