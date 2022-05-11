@@ -31,6 +31,12 @@ A few rules:
 - Ensure the examples are added to the `Makefile`.
 - Make sure your code lints.
 
+### Building locally
+To build the documentation locally you will need
+to install, `make`, `wget` and [`mdbook`](https://github.com/rust-lang/mdBook/releases).
+
+When these are installed run `make serve` to create the virtual environment, make the datasets and run the server. You can then view the docs at http://localhost:8000/
+
 ### Want to discuss something?
 
 Some questions will not fit an issue.
