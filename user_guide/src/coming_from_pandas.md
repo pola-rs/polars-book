@@ -26,7 +26,7 @@ calculations.
 
 `Polars` can convert data to `Numpy` format with the `to_numpy` method.
 
-### `Polars` has more support for parallel operations than in `Pandas`
+### `Polars` has more support for parallel operations than `Pandas`
 
 `Polars` exploits the strong support for concurrency in Rust to run many operations in
 parallel. While some operations in `Pandas` are multi-threaded the core of the library
@@ -68,6 +68,31 @@ there is also no `SettingWithCopyWarning` in `Polars`.
 To learn more about how you select data in `Polars` see the [indexing](indexing.md)
 section.
 
+However, the best way to select data in `Polars` is to use the expression API. For
+example, if you want to select a column in `Pandas` you can do one of the following:
+
+```python
+df['a']
+df.loc[:,'a']
+```
+
+but in `Polars` you would use the `.select` method:
+
+```python
+df.select(['a'])
+```
+
+If you want to select rows based on the values then in `Polars` you use the `.filter`
+method:
+
+```python
+df.filter(pl.col('a')<10)
+```
+
+As noted in the section on expressions below, `Polars` can run operations in `.select`
+and `filter` in parallel and `Polars` can carry out query optimization on the full set
+of data selection criteria.
+
 ### Be lazy
 
 Working in lazy evaluation mode is straightforward and should be your default in
@@ -85,7 +110,7 @@ columns (`id1`) and then sum by a value column (`v1`). In `Pandas` this would be
     groupedDf = df.loc[:,['id1','v1']].groupby('id1').sum('v1')
 ```
 
-In `Polars` uou can build this query in lazy mode with query optimization and evaluate
+In `Polars` you can build this query in lazy mode with query optimization and evaluate
 it by replacing the eager `Pandas` function `read_csv` with the implicitly lazy `Polars`
 function `scan_csv`:
 
