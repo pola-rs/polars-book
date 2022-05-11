@@ -59,6 +59,6 @@ clean:
 
 fmt: format
 
-format:
-	black .
+format: .venv
+	@.venv/bin/black .
 	$(PYTHON) -m mdformat `find user_guide/src -name "*.md" | grep -v SUMMARY.md`
