@@ -12,15 +12,15 @@ So let's see if we can load some Reddit data and filter on a few predicates.
 {{#include ../../examples/predicate_pushdown/snippet1.py}}
 ```
 
-If we were to run this query above nothing would happen! This is due to the lazy evaluation.
-Nothing will happen until specifically requested. This allows Polars to see the whole
-context of a query and optimize just in time for execution.
+If we were to run this query above nothing would happen! This is due to the lazy
+evaluation. Nothing will happen until specifically requested. This allows Polars to see
+the whole context of a query and optimize just in time for execution.
 
 Execution is requested by the `.collect` method. This would query all available data.
-While you're writing, optimizing, and checking your query, this is often undesirable. Another
-method that calls for execution is the `.fetch` method. `.fetch` takes a parameter
-`n_rows` and tries to 'fetch' that number of rows at the data source (no guarantees are
-given though).
+While you're writing, optimizing, and checking your query, this is often undesirable.
+Another method that calls for execution is the `.fetch` method. `.fetch` takes a
+parameter `n_rows` and tries to 'fetch' that number of rows at the data source (no
+guarantees are given though).
 
 So let's "fetch" ~10 Million rows from the source file and apply the predicates.
 
@@ -66,9 +66,9 @@ As we can see the predicates are combined. This would lead to less copying of da
 
 ## In comes optimization
 
-`Polars` tries to save that mental overhead from the query writer and combines predicates
-for you. Besides that, it pushes predicates down to the scan level! Let's see how our
-optimized query looks.
+`Polars` tries to save that mental overhead from the query writer and combines
+predicates for you. Besides that, it pushes predicates down to the scan level! Let's see
+how our optimized query looks.
 
 ```python
 q1.show_graph(optimized=True)
@@ -117,6 +117,6 @@ projection (database jargon for column selection), but we'll get to that later.
 
 ## Cheaper joins
 
-Predicate pushdown optimization will generally also lead to cheaper join's. A join is
-an expensive operation. The fewer rows we have in a join operation the cheaper
-it will become.
+Predicate pushdown optimization will generally also lead to cheaper join's. A join is an
+expensive operation. The fewer rows we have in a join operation the cheaper it will
+become.

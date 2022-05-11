@@ -1,4 +1,5 @@
 import polars as pl
+
 from .window_1 import df
 
 out = df.sort("Type 1").select(

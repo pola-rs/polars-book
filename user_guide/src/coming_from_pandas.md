@@ -1,32 +1,51 @@
 # Coming from `Pandas`
 
-Here we set out the key points that anyone who has experience with `Pandas` and wants to try `Polars` should know. We include both differences in the concepts the libraries are built on and differences in how you should write `Polars` code compared to `Pandas` code.
-
+Here we set out the key points that anyone who has experience with `Pandas` and wants to
+try `Polars` should know. We include both differences in the concepts the libraries are
+built on and differences in how you should write `Polars` code compared to `Pandas`
+code.
 
 ## Differences in concepts between `Polars` and `Pandas`
 
 ### `Polars` does not have an index
-`Pandas` gives a label to each row with an index. `Polars` does not use an index and each row is indexed by its integer position in the table.
+
+`Pandas` gives a label to each row with an index. `Polars` does not use an index and
+each row is indexed by its integer position in the table.
 
 Indexes are not needed! Not having them makes things easier - convince us otherwise!
 
-For more detail on how you select data in `Polars` see the [indexing](indexing.md) section.
+For more detail on how you select data in `Polars` see the [indexing](indexing.md)
+section.
 
 ### `Polars` uses Apache Arrow arrays to represent data in memory while `Pandas` uses `Numpy` arrays
-`Polars` represents data in memory with Arrow arrays while `Pandas` represents data in memory in `Numpy` arrays. Apache Arrow is an emerging standard for in-memory columnar analytics that can accelerate data load times, reduce memory usage and accelerate calculations.  
+
+`Polars` represents data in memory with Arrow arrays while `Pandas` represents data in
+memory in `Numpy` arrays. Apache Arrow is an emerging standard for in-memory columnar
+analytics that can accelerate data load times, reduce memory usage and accelerate
+calculations.
 
 `Polars` can convert data to `Numpy` format with the `to_numpy` method.
 
 ### `Polars` has more support for parallel operations than in `Pandas`
-`Polars` exploits the strong support for concurrency in Rust to run many operations in parallel. While some operations in `Pandas` are multi-threaded the core of the library is single-threaded and an additional library such as `Dask` must be used to parallelise operations.
+
+`Polars` exploits the strong support for concurrency in Rust to run many operations in
+parallel. While some operations in `Pandas` are multi-threaded the core of the library
+is single-threaded and an additional library such as `Dask` must be used to parallelise
+operations.
 
 ### `Polars` can lazily evaluate queries and apply query optimization
-Eager evaluation is where code is evaluated as soon as you run the code. Lazy evaluation is
-where running a line of code means that the underlying logic is added to a query plan rather than being evaluated.
 
-`Polars` supports eager evaluation and lazy evaluation whereas `Pandas` only supports eager evaluation. The lazy evaluation mode is powerful because `Polars` carries out automatic query optimization where it examines the query plan and looks for ways to accelerate the query or reduce memory usage.
+Eager evaluation is where code is evaluated as soon as you run the code. Lazy evaluation
+is where running a line of code means that the underlying logic is added to a query plan
+rather than being evaluated.
 
-`Dask` also supports lazy evaluation where it generates a query plan. However, `Dask` does not carry out query optimization on the query plan.
+`Polars` supports eager evaluation and lazy evaluation whereas `Pandas` only supports
+eager evaluation. The lazy evaluation mode is powerful because `Polars` carries out
+automatic query optimization where it examines the query plan and looks for ways to
+accelerate the query or reduce memory usage.
+
+`Dask` also supports lazy evaluation where it generates a query plan. However, `Dask`
+does not carry out query optimization on the query plan.
 
 ## Key syntax differences
 
@@ -36,63 +55,93 @@ Users coming from `Pandas` generally need to know one thing...
 polars != pandas
 ```
 
-If your `Polars` code looks like it could be `Pandas` code, it might run, but it likely runs slower than it should.
+If your `Polars` code looks like it could be `Pandas` code, it might run, but it likely
+runs slower than it should.
 
 Let's go through some typical `Pandas` code and see how we might write that in `Polars`.
 
 ### Selecting data
-As there is no index in `Polars` there is no `.loc` or `iloc` method in `Polars` - and there is also no `SettingWithCopyWarning` in `Polars`.
 
-To learn more about how you select data in `Polars` see the [indexing](indexing.md) section.
+As there is no index in `Polars` there is no `.loc` or `iloc` method in `Polars` - and
+there is also no `SettingWithCopyWarning` in `Polars`.
+
+To learn more about how you select data in `Polars` see the [indexing](indexing.md)
+section.
 
 ### Be lazy
-Working in lazy evaluation mode is straightforward and should be your default in `Polars` as the lazy mode allows `Polars` to do query optimization.
 
-We can run in lazy mode by either using an implicitly lazy function (such as `scan_csv`) or explicitly using the `lazy` method.
+Working in lazy evaluation mode is straightforward and should be your default in
+`Polars` as the lazy mode allows `Polars` to do query optimization.
 
-Take the following simple example where we read a CSV file from disk and do a groupby. The CSV file has numerous columns but we just want to do a groupby on one of the id columns (`id1`) and then sum by a value column (`v1`). In `Pandas` this would be:
+We can run in lazy mode by either using an implicitly lazy function (such as `scan_csv`)
+or explicitly using the `lazy` method.
+
+Take the following simple example where we read a CSV file from disk and do a groupby.
+The CSV file has numerous columns but we just want to do a groupby on one of the id
+columns (`id1`) and then sum by a value column (`v1`). In `Pandas` this would be:
+
 ```python
     df = pd.read_csv(csvFile)
     groupedDf = df.loc[:,['id1','v1']].groupby('id1').sum('v1')
 ```
 
-In `Polars` uou can build this query in lazy mode with query optimization and evaluate it by replacing the eager `Pandas` function `read_csv` with the implicitly lazy `Polars` function `scan_csv`:
+In `Polars` uou can build this query in lazy mode with query optimization and evaluate
+it by replacing the eager `Pandas` function `read_csv` with the implicitly lazy `Polars`
+function `scan_csv`:
 
 ```python
     df = pl.scan_csv(csvFile)
     groupedDf = df.groupby('id1').agg(pl.col('v1').sum()).collect()
 ```
-`Polars` optimizes this query by identifying that only the `id1` and `v1` columns are relevant and so will only read these columns from the CSV. By calling the `.collect` method at the end of the second line we instruct `Polars` to eagerly evaluate the query.
 
-If you do want to run this query in eager mode you can just replace `scan_csv` with `read_csv` in the `Polars` code.
+`Polars` optimizes this query by identifying that only the `id1` and `v1` columns are
+relevant and so will only read these columns from the CSV. By calling the `.collect`
+method at the end of the second line we instruct `Polars` to eagerly evaluate the query.
 
-Read more about working with lazy evaluation in the [lazy API](optimizations/lazy/intro.html) section.
+If you do want to run this query in eager mode you can just replace `scan_csv` with
+`read_csv` in the `Polars` code.
+
+Read more about working with lazy evaluation in the
+[lazy API](optimizations/lazy/intro.html) section.
 
 ### Express yourself
-A typical `Pandas` script consists of multiple data transformations that are executed sequentially. However, in `Polars` these transformations can be executed in parallel using expressions.
+
+A typical `Pandas` script consists of multiple data transformations that are executed
+sequentially. However, in `Polars` these transformations can be executed in parallel
+using expressions.
 
 #### Column assignment
-We have a dataframe `df` with a column called `value`. We want to add two new columns, a column called `tenXValue` where the `value` column is multiplied by 10 and a column called `hundredXValue` where the `value` column is multiplied by 100.
+
+We have a dataframe `df` with a column called `value`. We want to add two new columns, a
+column called `tenXValue` where the `value` column is multiplied by 10 and a column
+called `hundredXValue` where the `value` column is multiplied by 100.
 
 In `Pandas` this would be:
+
 ```python
 df["tenXValue"] = df["value"] * 10
 df["hundredXValue"] = df["value"] * 100
 ```
+
 These column assignments are executed sequentially.
 
-In `Polars` we add columns to `df` using the `.with_column` method and name them with the `.alias` method:
+In `Polars` we add columns to `df` using the `.with_column` method and name them with
+the `.alias` method:
+
 ```python
 df.with_columns([
     (pl.col("value") * 10).alias("tenXValue"),
     (pl.col("value") * 100).alias("hundredXValue"),
 ])
 ```
+
 These column assignments are executed in parallel.
 
 #### Column asignment based on predicate
-In this case we have a dataframe `df` with columns `a`,`b` and `c`. 
-We want to re-assign the values in column `a` based on a condition. When the value in column `c` is equal to 2 then we replace the value in `a` with the value in `b`.
+
+In this case we have a dataframe `df` with columns `a`,`b` and `c`. We want to re-assign
+the values in column `a` based on a condition. When the value in column `c` is equal to
+2 then we replace the value in `a` with the value in `b`.
 
 In `Pandas` this would be:
 
@@ -110,11 +159,15 @@ df.with_column(
 )
 ```
 
-The `Polars` way is pure in that the original `DataFrame` is not modified. The `mask` is also not computed twice as in `Pandas` (you could prevent this in `Pandas`, but that would require setting a temporary variable).
+The `Polars` way is pure in that the original `DataFrame` is not modified. The `mask` is
+also not computed twice as in `Pandas` (you could prevent this in `Pandas`, but that
+would require setting a temporary variable).
 
-Additionally `Polars` can compute every branch of an `if -> then -> otherwise` in parallel. This is valuable, when the branches get more expensive to compute.
+Additionally `Polars` can compute every branch of an `if -> then -> otherwise` in
+parallel. This is valuable, when the branches get more expensive to compute.
 
 #### Filtering
+
 We want to filter the dataframe `df` with housing data based on some criteria.
 
 In `Pandas` you filter the dataframe by passing Boolean expressions to the `loc` method:
@@ -122,6 +175,7 @@ In `Pandas` you filter the dataframe by passing Boolean expressions to the `loc`
 ```python
 df.loc[(df['sqft_living'] > 2500) & (df['price'] < 300000)]
 ```
+
 while in `Polars` you call the `filter` method:
 
 ```python
@@ -130,13 +184,14 @@ df.filter(
 )
 ```
 
-The query optimizer in `Polars` can also detect if you write multiple filters separately and combine them into a single filter in the optimized plan.
-
+The query optimizer in `Polars` can also detect if you write multiple filters separately
+and combine them into a single filter in the optimized plan.
 
 ## `Pandas` transform
 
-The `Pandas` documentation demonstrates an operation on a groupby called `transform`.
-In this case we have a dataframe `df` and we want a new column showing the number of rows in each group.
+The `Pandas` documentation demonstrates an operation on a groupby called `transform`. In
+this case we have a dataframe `df` and we want a new column showing the number of rows
+in each group.
 
 In `Pandas` we have:
 
@@ -149,8 +204,8 @@ df = pd.DataFrame({
 df["size"] = df.groupby("c")["type"].transform(len)
 ```
 
-Here `Pandas` does a groupby on `"c"`, takes column `"type"`, computes the group length and then joins the result back to the original `DataFrame`
-producing:
+Here `Pandas` does a groupby on `"c"`, takes column `"type"`, computes the group length
+and then joins the result back to the original `DataFrame` producing:
 
 ```
    c type size
@@ -195,9 +250,12 @@ shape: (7, 3)
 └─────┴──────┴──────┘
 ```
 
-Because we can store the whole operation in a single expression, we can combine several `window` functions and even combine different groups!
+Because we can store the whole operation in a single expression, we can combine several
+`window` functions and even combine different groups!
 
-`Polars` will cache window expressions that are applied over the same group, so storing them in a single `select` is both convenient **and** optimal. In the following example we look at a case where we are calculating group statistics over `"c"` twice:
+`Polars` will cache window expressions that are applied over the same group, so storing
+them in a single `select` is both convenient **and** optimal. In the following example
+we look at a case where we are calculating group statistics over `"c"` twice:
 
 ```python
 df.select([

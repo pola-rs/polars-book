@@ -1,9 +1,5 @@
-from .dataset import df
 import polars as pl
 
-out = df.select(
-    [
-        pl.sum("nrs"),
-        pl.col("names").sort(),
-    ]
-)
+from .dataset import df
+
+out = df.select([pl.sum("nrs"), pl.col("names").sort(),])
