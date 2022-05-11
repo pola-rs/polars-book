@@ -37,9 +37,21 @@ indices2 = np.array([pd._testing.rands(10) for _ in range(N)], dtype=str)
 key = np.tile(indices[:8000], 10)
 key2 = np.tile(indices2[:8000], 10)
 
-left = pl.DataFrame({"key": key, "key2": key2, "value": np.random.randn(80000),})
+left = pl.DataFrame(
+    {
+        "key": key,
+        "key2": key2,
+        "value": np.random.randn(80000),
+    }
+)
 
-right = pl.DataFrame({"key": indices[2000:], "key2": indices2[2000:], "value2": np.random.randn(8000),})
+right = pl.DataFrame(
+    {
+        "key": indices[2000:],
+        "key2": indices2[2000:],
+        "value2": np.random.randn(8000),
+    }
+)
 
 left.to_csv(f"{DATA_DIR}/join_left_80000.csv")
 right.to_csv(f"{DATA_DIR}/join_right_80000.csv")

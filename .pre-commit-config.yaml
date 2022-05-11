@@ -13,7 +13,7 @@ repos:
       ]
       files: ^.*\.py$
   - repo: https://github.com/psf/black
-    rev: 21.4b2
+    rev: 22.3.0
     hooks:
     - id: black
       files: ^.*\.py$
@@ -25,7 +25,7 @@ repos:
       # https://flake8.pycqa.org/en/latest/user/error-codes.html  
       args: [
         --max-doc-length=88,
-        --max-line-length=88,
+        --max-line-length=92,
       ]
       files: ^.*\.py$
   - repo: https://github.com/executablebooks/mdformat

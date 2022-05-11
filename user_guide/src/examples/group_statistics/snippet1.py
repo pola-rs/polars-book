@@ -13,7 +13,12 @@ def mkdiff(cumcases: pl.Series) -> pl.Series:
 # the mkdiff function gets sorted values on date per group
 q = (
     dataset.groupby("country")
-    .agg([pl.col("date").list().alias("date"), pl.col("cumcases").apply(mkdiff).alias("diff"),])
+    .agg(
+        [
+            pl.col("date").list().alias("date"),
+            pl.col("cumcases").apply(mkdiff).alias("diff"),
+        ]
+    )
     .explode(["date", "diff"])
     .join(dataset, on=["country", "date"])
 )
