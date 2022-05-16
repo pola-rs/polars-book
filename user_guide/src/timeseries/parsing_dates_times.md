@@ -30,4 +30,4 @@ You can also cast a column of datetimes encoded as strings to a datetime type. Y
 ```python
 df.with_column(pl.col('Date').str.strptime(pl.Date, fmt='%Y-%m-%d'))
 ```
-This page [sets out the strptime formats](https://docs.rs/chrono/latest/chrono/format/strftime/index.html){:target="_blank"}.
+This page [sets out the strptime date formats](https://docs.rs/chrono/latest/chrono/format/strftime/index.html).
