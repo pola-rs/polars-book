@@ -2,6 +2,7 @@
 
 We can calculate temporal statistics using `groupby_dynamic` to group rows into days/months/years etc.
 
+## Annual average example
 The following simple example captures the mean features of using `groupby_dynamic`. We take a time series of Apple stock prices and want to compute the annual average of the opening price.
 
 We first load the data from CSV:
@@ -26,7 +27,7 @@ df = pl.read_csv("apple_stock.csv", parse_dates=True)
 │ 2014-07-08 ┆ 96.27 │
 └────────────┴───────┘
 ```
-Note that the dates are sorted in ascending order - if they are not the output will not be correct!
+> Note that the dates are sorted in ascending order - if they are not sorted in this manner the output will not be correct!
 
 To get the annual average we tell `groupby_dynamic` that we want to:
 - group by the `Date` column every year 
@@ -52,11 +53,16 @@ The output is then:
 │ 2014-01-01 ┆ 477.553256 │
 └────────────┴────────────┘
 ```
+### Paramters for `groupby_dynamic`
 The value for `every` sets how often the groups start. The values are not fixed - for example we could take:
 - the average over 2 year intervals by replacing `1y` with `2y`
 - the average over 18 month periods by replacing `1y` with `1y6mo`
 
-See [the API pages](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.groupby_dynamic.html) for the full range of time periods
+We can also use the `period` parameter to set how long the time period for each group is. For example, if we set the `every` parameter to be `1y` and the `period` parameter to be `2y` then we would get groups at one year intervals where each groups spanned two years.
+
+See [the API pages](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.groupby_dynamic.html) for the full range of time periods.
+
+The `truncate` is a Boolean parameter that affects the datetime value for each group in the output. In the example above the first data point is on 12th December 1980. If `truncate = True` (the default) then the date for the first year in the annual average is 1st January 1980. However, if `truncate = False` then the date for the first year in the annual average is the date of the first data point on 12th December 1980.
 
 
 In the snippet below we create a `date range` with every **day** (`"1d"`) in 2021 and turn this into a `DataFrame`.
