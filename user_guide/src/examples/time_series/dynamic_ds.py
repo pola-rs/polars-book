@@ -1,6 +1,6 @@
-import polars as pl
 from datetime import datetime
 
+import polars as pl
 
 df = pl.DataFrame(
     {

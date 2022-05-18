@@ -10,32 +10,29 @@
 - `Duration`: A timedelate type. Created when subtracting `Date/Datetime`.
 - `Time`: Time representation, internally represented as nanoseconds since midnight.
 
-## Parsing dates and times
+## Parsing dates from a file
 
-When loading from a file `Polars` can attempt to parse dates and times if the `parse_dates` flag is set to `True`.
-
+When loading from a file `Polars` attempts to parse dates and times if the `parse_dates` flag is set to `True`.
 ```python
-df = pl.read_csv("apple_stock.csv", parse_dates=True)
+{{#include ../examples/time_series/parsing_dates.py:3:3}}
+print(df)
 ```
 
+```text
+{{#include ../outputs/time_series/parse_dates_example_df.txt}}
 ```
-┌────────────┬───────┐
-│ Date       ┆ Open  │
-│ ---        ┆ ---   │
-│ date       ┆ f64   │
-╞════════════╪═══════╡
-│ 2014-07-08 ┆ 96.27 │
-├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2014-07-07 ┆ 94.14 │
-├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2014-07-03 ┆ 93.67 │
-└────────────┴───────┘
-```
+
+## Casting strings to dates
 
 You can also cast a column of datetimes encoded as strings to a datetime type. You do this by calling the string `str.strptime` method and passing the format of the date string:
 
 ```python
-df.with_column(pl.col('Date').str.strptime(pl.Date, fmt='%Y-%m-%d'))
+{{#include ../examples/time_series/cast_date_to_string.py:3:}}
+print(df)
 ```
 
-This page [sets out the strptime date formats](https://docs.rs/chrono/latest/chrono/format/strftime/index.html).
+```text
+{{#include ../outputs/time_series/cast_string_to_date_example_df.txt}}
+```
+
+[The strptime date formats can be found here.](https://docs.rs/chrono/latest/chrono/format/strftime/index.html).

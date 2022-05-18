@@ -21,7 +21,7 @@
 - [Time-series](timeseries/intro.md)
   - [Parsing dates and times](timeseries/parsing_dates_times.md)
   - [Filtering by dates](timeseries/selecting_dates.md)
-  - [Temporal groupby](timeseries/temporal_groupby.md)
+  - [Fixed and rolling temporal groupby](timeseries/temporal_groupby.md)
   - [Resampling](timeseries/resampling.md)
 
 - [How can I?](howcani/intro.md)
