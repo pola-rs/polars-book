@@ -26,6 +26,7 @@ To get the annual average closing price we tell `groupby_dynamic` that we want t
 ```python
 {{#include ../examples/time_series/parsing_dates.py:9:9}}
 ```
+
 The annual average closing price is then:
 
 ```text
@@ -39,7 +40,6 @@ A dynamic window is defined by a:
 - **every**: indicates the interval of the window
 - **period**: indicates the duration of the window
 - **offset**: can be used to offset the start of the windows
-
 
 #### `every`, `period` and `offset` parameters to control temporal window size
 
@@ -94,7 +94,6 @@ data points that in these gaps will not be a member of any group
               |--|
 ```
 
-
 See [the API pages](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.groupby_dynamic.html) for the full range of time periods.
 
 #### `truncate` parameter to set the start date for each group
@@ -122,8 +121,6 @@ print(out)
 ```text
 {{#include ../outputs/time_series/days_month.txt}}
 ```
-
-
 
 ## Grouping by rolling windows with `groupby_rolling`
 
@@ -169,4 +166,3 @@ print(out)
 ```text
 {{#include ../outputs/time_series/dyn_gb.txt}}
 ```
-

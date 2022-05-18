@@ -1,8 +1,9 @@
 # Polars Expressions
 
-`Polars` has a powerful concept called expressions that is central to its very fast performance.  
+`Polars` has a powerful concept called expressions that is central to its very fast performance.
 
 Expressions are at the core of many data science operations:
+
 - taking a sample of rows from a column
 - multiplying values in a column
 - extracting a column of years from dates
@@ -10,11 +11,13 @@ Expressions are at the core of many data science operations:
 - and so on!
 
 However, expressions are also used within other operations:
+
 - taking the mean of a group in a `groupby` operation
 - calculating the size of groups in a `groupby` operation
 - taking the sum horizontally across columns
 
 `Polars` performs these core data transformations very quickly by:
+
 - automatic query optimization on each expression
 - automatic parallelization of expressions on many columns
 
