@@ -12,7 +12,7 @@ Let's start with an example by implementing the `sum` operation ourselves, with 
 ## Manual Sum
 
 ```python
-{{#include ../examples/expressions/fold_1.py:4:}}
+{{#include ../examples/expressions/fold_1.py:3:}}
 print(out)
 ```
 
@@ -29,7 +29,7 @@ In the case where you'd want to apply a condition/predicate on all columns in a 
 a very concise way to express this.
 
 ```python
-{{#include ../examples/expressions/fold_2.py:4:}}
+{{#include ../examples/expressions/fold_2.py:3:}}
 print(out)
 ```
 
