@@ -48,7 +48,7 @@ Adding columns to a `DataFrame` using `with_columns` is also the `selection` con
 
 ```python
 {{#include ../examples/expressions/with_column_context_1.py:4:}}
-print(out)
+print(df)
 ```
 
 ```text
