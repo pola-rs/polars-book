@@ -1,6 +1,7 @@
 SHELL=/bin/bash
 PYTHON=.venv/bin/python
 DATA_SRC=https://github.com/ritchie46/static/releases/download/0.0.1
+DATA_SRC_STATIC=https://raw.githubusercontent.com/pola-rs/polars-static/master/data
 DATA_DIR=data
 
 .venv:
@@ -11,7 +12,7 @@ DATA_DIR=data
 data: .venv
 	@mkdir -p $(DATA_DIR)
 	$(PYTHON) generate_data.py
-	wget -q $(DATA_SRC)/appleStock.csv -O $(DATA_DIR)/appleStock.csv
+	wget -q --no-check-certificate --content-disposition ${DATA_SRC_STATIC}/appleStock.csv -O $(DATA_DIR)/appleStock.csv
 	wget -q $(DATA_SRC)/reddit100k.tar.gz -O - | tar -xzf - -O > $(DATA_DIR)/reddit.csv
 	wget -q $(DATA_SRC)/runescape100k.tar.gz -O - | tar -xzf - -O > $(DATA_DIR)/runescape.csv
 
