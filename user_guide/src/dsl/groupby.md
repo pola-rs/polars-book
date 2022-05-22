@@ -46,10 +46,10 @@ killed parallelization, and that we can use the expressions of the lazy API to m
 this. Let's take a look at what that means.
 
 We can start with the simple
-[US congress dataset](https://github.com/unitedstates/congress-legislators).
+[US congress `dataset`](https://github.com/unitedstates/congress-legislators).
 
 ```python
-{{#include ../examples/groupby_dsl/snippet1.py}}
+{{#include ../examples/groupby_dsl/snippet1.py:5:}}
 ```
 
 #### Basic aggregations
