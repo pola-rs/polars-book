@@ -2,17 +2,16 @@
 
 ## Datatypes
 
-`Polars` inherits the following datetime datatypes from Apache Arrow:
+`Polars` has the following datetime datatypes:
 
-- `Date`: Date representation (e.g. 2014-07-08), internally represented as days since UNIX epoch encoded by a 32-bit signed integer.
-- `Datetime`: Datetime representation (e.g. ), internally represented as nanoseconds since UNIX
-  epoch encoded by a 64-bit signed integer.
-- `Duration`: A timedelate type. Created when subtracting `Date/Datetime`.
+- `Date`: Date representation e.g. 2014-07-08. It is internally represented as days since UNIX epoch encoded by a 32-bit signed integer.
+- `Datetime`: Datetime representation e.g. 2014-07-08 07:00:00. It is internally represented as a 64 bit integer since the Unix epoch and can have different units such as ns, us, ms.
+- `Duration`: A time delta type that is created when subtracting `Date/Datetime`. Similar to `timedelta` in python.
 - `Time`: Time representation, internally represented as nanoseconds since midnight.
 
 ## Parsing dates from a file
 
-When loading from a file `Polars` attempts to parse dates and times if the `parse_dates` flag is set to `True`.
+When loading from a CSV file `Polars` attempts to parse dates and times if the `parse_dates` flag is set to `True`:
 
 ```python
 {{#include ../examples/time_series/parsing_dates.py:3:3}}
@@ -22,6 +21,8 @@ print(df)
 ```text
 {{#include ../outputs/time_series/parse_dates_example_df.txt}}
 ```
+
+On the other hand binary formats such as parquet have a schema that is respected by `Polars`.
 
 ## Casting strings to dates
 
