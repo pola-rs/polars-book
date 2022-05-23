@@ -19,6 +19,11 @@
 - [Coming from Pandas](coming_from_pandas.md)
 - [Coming from Apache Spark](coming_from_spark.md)
 - [Time-series](timeseries/intro.md)
+  - [Parsing dates and times](timeseries/parsing_dates_times.md)
+  - [Filtering by dates](timeseries/selecting_dates.md)
+  - [Fixed and rolling temporal groupby](timeseries/temporal_groupby.md)
+  - [Resampling](timeseries/resampling.md)
+
 - [How can I?](howcani/intro.md)
   - [IO](howcani/io/intro.md)
     - [CSV files](howcani/io/csv.md)
