@@ -37,4 +37,4 @@ print(df)
 {{#include ../outputs/time_series/cast_string_to_date_example_df.txt}}
 ```
 
-[The strptime date formats can be found here.](https://docs.rs/chrono/latest/chrono/format/strftime/index.html).
+[The strptime date formats can be found here](https://docs.rs/chrono/latest/chrono/format/strftime/index.html).

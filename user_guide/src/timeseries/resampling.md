@@ -31,7 +31,7 @@ In this example we upsample from the original 30 minutes to 15 minutes and then 
 
 ```python
 {{#include ../examples/time_series/resampling_example.py:12:12}}
-print(df)
+print(out1)
 ```
 
 ```text
@@ -42,7 +42,7 @@ In this example we instead fill the nulls by linear interpolation:
 
 ```python
 {{#include ../examples/time_series/resampling_example.py:14:}}
-print(df)
+print(out2)
 ```
 
 ```text
