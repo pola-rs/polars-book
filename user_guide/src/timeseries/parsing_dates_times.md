@@ -14,7 +14,7 @@
 When loading from a CSV file `Polars` attempts to parse dates and times if the `parse_dates` flag is set to `True`:
 
 ```python
-{{#include ../examples/time_series/parsing_dates.py:3:3}}
+{{#include ../examples/time_series/parsing_dates.py:4:4}}
 print(df)
 ```
 
