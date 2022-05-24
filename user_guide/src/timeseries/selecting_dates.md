@@ -2,10 +2,13 @@
 
 Filtering date columns works in the same way as with other types of columns using the `.filter` method.
 
+Polars uses pythons native `datetime`, `date` and `timedelta` for equality comparissons between the datatypes
+`pl.Datetime`, `pl.Date` and `pl.Duration`.
+
 In the following example we use a time series of Apple stock prices.
 
 ```python
-{{#include ../examples/time_series/parsing_dates.py:3:3}}
+{{#include ../examples/time_series/parsing_dates.py:1:4}}
 print(df)
 ```
 
@@ -19,7 +22,7 @@ We can filter by a single date by casting the desired date string to a `Date` ob
 in a filter expression:
 
 ```python
-{{#include ../examples/time_series/parsing_dates.py:5:5}}
+{{#include ../examples/time_series/parsing_dates.py:6:8}}
 ```
 
 ```text
@@ -33,7 +36,7 @@ Note we are using the lowercase `datetime` method rather than the uppercase `Dat
 We can filter by a range of dates using the `is_between` method in a filter expression with the start and end dates:
 
 ```python
-{{#include ../examples/time_series/parsing_dates.py:7:7}}
+{{#include ../examples/time_series/parsing_dates.py:10:12}}
 ```
 
 ```text
