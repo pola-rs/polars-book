@@ -46,15 +46,16 @@ out = grades.select([
 We can run **any** polars expression on the elements of a list with the `arr.eval` expression!
 These expressions entirely run on polars' query engine and can run in parallel so will be super fast.
 
-Let's expand the example from above with someting a little bit more interesting. Pandas allows you to compute the percentages
+Let's expand the example from above with something a little more interesting. Pandas allows you to compute the percentages
 of the `rank` values. Polars doesn't provide such a keyword argument.
 But because expressions are so versatile we can create our own percentage rank expression. Let's try that!
 
-Note that we must `select` the list's element from the context. When we apply expressions over list elements. Any `col()/first()` selection suffices.
+Note that we must `select` the list's element from the context. When we apply expressions over list elements, we use `pl.element()` to select
+the element of a list.
 
 ```python
 # the percentage rank expression
-rank_pct = pl.col("").rank(reverse=True) / pl.col("").count()
+rank_pct = pl.element().rank(reverse=True) / pl.col("").count()
 
 
 grades.with_column(
