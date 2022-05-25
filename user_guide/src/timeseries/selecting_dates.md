@@ -2,7 +2,7 @@
 
 Filtering date columns works in the same way as with other types of columns using the `.filter` method.
 
-Polars uses pythons native `datetime`, `date` and `timedelta` for equality comparissons between the datatypes
+Polars uses pythons native `datetime`, `date` and `timedelta` for equality comparisons between the datatypes
 `pl.Datetime`, `pl.Date` and `pl.Duration`.
 
 In the following example we use a time series of Apple stock prices.
