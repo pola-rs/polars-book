@@ -9,7 +9,7 @@ We can calculate temporal statistics using `groupby_dynamic` to group rows into 
 In following simple example we calculate the annual average closing price of Apple stock prices. We first load the data from CSV:
 
 ```python
-{{#include ../examples/time_series/parsing_dates.py:3:3}}
+{{#include ../examples/time_series/parsing_dates.py:4:4}}
 ```
 
 ```text
@@ -24,7 +24,7 @@ To get the annual average closing price we tell `groupby_dynamic` that we want t
 - take the mean values of the `Close` column for each year:
 
 ```python
-{{#include ../examples/time_series/parsing_dates.py:9:9}}
+{{#include ../examples/time_series/parsing_dates.py:14:17}}
 ```
 
 The annual average closing price is then:

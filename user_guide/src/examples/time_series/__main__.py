@@ -4,7 +4,7 @@ from .dynamic_ds import df as dyn_df
 from .dynamic_groupby import out as dyn_gb
 from .parsing_dates import df as parse_dates_df, filtered_df, filtered_range_df, annual_average_df, df_with_year
 from .cast_date_to_string import df as cast_date_to_string_df
-from .resampling_example import df as resample_df, upsampled_df, upsampled_interpolation_df
+from .resampling_example import df as resample_df, out1, out2
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/time_series")
 
@@ -40,7 +40,7 @@ with open(f"{path}/resample_example_df.txt", "w") as f:
     f.write(f"{resample_df}\n")
 
 with open(f"{path}/resample_upsample_output.txt", "w") as f:
-    f.write(f"{upsampled_df}\n")
+    f.write(f"{out1}\n")
 
 with open(f"{path}/resample_upsample_interpolation.txt", "w") as f:
-    f.write(f"{upsampled_interpolation_df}\n")
+    f.write(f"{out2}\n")
