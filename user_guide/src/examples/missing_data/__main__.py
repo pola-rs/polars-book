@@ -1,6 +1,6 @@
 from ..paths import OUTPUT_BASE_DIR, create_if_not_exists
 from .missing_types import df, nullCountDf, isNullSeries, dfNaN
-from .fill_strategies import df as fillDf, fillLiteral, fillForward, fillMedian, fillInterpolation
+from .fill_strategies import df as fillDf, fillLiteral, fillForward, fillMedian, fillInterpolation, meanNaN
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/missing_data")
 
@@ -14,6 +14,7 @@ variable_filename_tuples = [
     (fillForward, "fill_strategies_forward_df"),
     (fillMedian, "fill_strategies_median_df"),
     (fillInterpolation, "fill_strategies_interpolate_df"),
+    (meanNaN, "fill_strategies_mean_df"),
 ]
 
 for variable, filename in variable_filename_tuples:
