@@ -40,6 +40,7 @@ print(df)
 [The strptime date formats can be found here.](https://docs.rs/chrono/latest/chrono/format/strftime/index.html).
 
 ## Extracting date features from a date column
+
 You can extract data features such as the year or day from a date column using the `.dt` namespace on a date column:
 
 ```python
