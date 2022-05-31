@@ -4,8 +4,7 @@ This page sets out how missing data is represented in `Polars` and how missing d
 
 ## `null` and `NaN` values
 
-Each `Series` or column in a `DataFrame` is an Arrow array based on the Apache Arrow format.
-Missing data is represented in Arrow and `Polars` with a `null` value. This `null` missing value applies for all data types including numerical values.
+Each column in a `DataFrame` (or equivalently a `Series`) is an Arrow array or a collection of Arrow arrays [based on the Apache Arrow format](https://arrow.apache.org/docs/format/Columnar.html#null-count). Missing data is represented in Arrow and `Polars` with a `null` value. This `null` missing value applies for all data types including numerical values.
 
 `Polars` also allows `NotaNumber` or `NaN` values for float columns. These `NaN` values are considered to be a type of floating point data rather than missing data. We discuss `NaN` values separately below.
 
@@ -24,37 +23,36 @@ print(df)
 
 ## Missing data metadata
 
-The Arrow arrays used by `Polars` for each column in a `DataFrame` store metadata related to missing data.
+Each Arrow array used by `Polars` stores two kinds of metadata related to missing data. This metadata allows `Polars` to quickly show how many missing values there are and which values are missing.
 
-Firstly, there is the `null_count`: this is the number of rows with `null` values in the column.
-
-Secondly, if the `null_count` is greater than 0 there is a *validity bitmap*. The validity bitmap is an array that tells you whether each value is present or missing. The validity bitmap is part of the Arrow array for each column.
-
-You can access the `null_count` for a `DataFrame` with the `null_count` method:
+The first piece of metadata is the `null_count` - this is the number of rows with `null` values in the column:
 
 ```python
 {{#include examples/missing_data/missing_types.py:6:6}}
-print(nullCountDf)
+print(null_count_df)
 ```
 
 ```text
 {{#include outputs/missing_data/null_count_df.txt}}
 ```
 
-Although `null_count` is a method in python-polars this is a cheap operation as `null_count` is already calculated for the underlying Arrow array for that column.
+The `null_count` method can be called on a `DataFrame`, a column from a `DataFrame` or a `Series`. The `null_count`method is a cheap operation as `null_count` is already calculated for the underlying Arrow array.
 
-You can access a `Series` based on the validity bitmap for a column with the `is_null` method:
+The second piece of metadata is an array called a *validity bitmap* that indicates whether each data value is valid or missing.
+The validity bitmap is memory efficient as it is bit encoded - each value is either a 0 or a 1. This bit encoding means the memory overhead per array is only (array length / 8) bytes. The validity bitmap is used by the `is_null` method in `Polars`.
+
+You can return a `Series` based on the validity bitmap for a column in a `DataFrame` or a `Series` with the `is_null` method:
 
 ```python
 {{#include examples/missing_data/missing_types.py:8:8}}
-print(isNullSeries)
+print(is_null_series)
 ```
 
 ```text
 {{#include outputs/missing_data/isnull_series.txt}}
 ```
 
-As for `null_count` the `is_null` method is a cheap operation as the validity bitmap is already calculated for the Arrow array for each column.
+The `is_null` method is a cheap operation that does not require scanning the full column for `null` values. This is because the validity bitmap already exists and can be returned as a Boolean array.
 
 ## Filling missing data
 
@@ -65,7 +63,7 @@ Missing data in a `Series` can be filled with the `fill_null` method. You have t
 - an expression such as replacing with values from another column
 - interpolation
 
-We illustrate these by defining a simple `DataFrame` with a missing value in `col2`:
+We illustrate each way to fill nulls by defining a simple `DataFrame` with a missing value in `col2`:
 
 ```python
 {{#include examples/missing_data/fill_strategies.py:3:3}}
@@ -82,7 +80,7 @@ We can fill the missing data with a specified literal value with `pl.lit`:
 
 ```python
 {{#include examples/missing_data/fill_strategies.py:5:5}}
-print(fillLiteral)
+print(fill_literal_df)
 ```
 
 ```text
@@ -95,7 +93,7 @@ We can fill the missing data with a strategy such as filling forward:
 
 ```python
 {{#include examples/missing_data/fill_strategies.py:7:7}}
-print(fillForward)
+print(fill_forward_df)
 ```
 
 ```text
@@ -111,7 +109,7 @@ to fill nulls with the median value from that column:
 
 ```python
 {{#include examples/missing_data/fill_strategies.py:9:9}}
-print(fillMedian)
+print(fill_median_df)
 ```
 
 ```text
@@ -126,7 +124,7 @@ In addition, we can fill nulls with interpolation (without using the `fill_null`
 
 ```python
 {{#include examples/missing_data/fill_strategies.py:11:11}}
-print(fillInterpolation)
+print(fill_interpolation)
 ```
 
 ```text
@@ -135,35 +133,31 @@ print(fillInterpolation)
 
 ## `NotaNumber` or `NaN` values
 
-Missing data in a `Series` has a `null` value. However, you can use `NotaNumber` or `NaN` values in columns with *float* datatypes. These `NaN` values can be based on Numpy's `np.nan` or the native python `float('nan')`:
+Missing data in a `Series` has a `null` value. However, you can use `NotaNumber` or `NaN` values in columns with float datatypes. These `NaN` values can be created from Numpy's `np.nan` or the native python `float('nan')`:
 
 ```python
 {{#include examples/missing_data/missing_types.py:10:10}}
-print(dfNaN)
+print(nan_df)
 ```
 
 ```text
 {{#include outputs/missing_data/nan_missing_value_df.txt}}
 ```
 
-However, if you try to include a `NaN` value in an integer column it will raise an exception - only float column can have `NaN` values.
+> In `Pandas` by default a `NaN` value in an integer column causes the column to be cast to float. This does not happen in `Polars` - instead an exception is raised.
 
-> In `Pandas` a `NaN` value in an integer column causes the column to be cast to float. This does not happen in `Polars` - instead an exception is raised.
-
-`NaN` values are considered to be a type of floating point data and are **not** considered missing data in `Polars`. This means:
+`NaN` values are considered to be a type of floating point data and are **not considered to be missing data** in `Polars`. This means:
 
 - `NaN` values are **not** counted with the `null_count` method
 - `NaN` values are filled when you use `fill_nan` method but are **not** filled with the `fill_null` method
 
-`Polars` has `is_nan` and `fill_nan` methods which work in a similar way to the `is_null` and `fill_null` methods. The main difference is that the underlying Arrow array for a `Series` or a column in a `DataFrame` do not have a pre-computed validity bitmask for `NaN` values so this has to be computed for `is_nan`.
+`Polars` has `is_nan` and `fill_nan` methods which work in a similar way to the `is_null` and `fill_null` methods. The underlying Arrow arrays do not have a pre-computed validity bitmask for `NaN` values so this has to be computed for the `is_nan` method.
 
-One further difference between `null` and `NaN` values is that taking the `mean` of a column with `null` values excludes the `null` values from the calculation but with `NaN` values taking the mean results in a `NaN`.
-
-This can be avoided by replacing the `NaN` values with `null` values;
+One further difference between `null` and `NaN` values is that taking the `mean` of a column with `null` values excludes the `null` values from the calculation but with `NaN` values taking the mean results in a `NaN`. This behaviour can be avoided by replacing the `NaN` values with `null` values;
 
 ```python
 {{#include examples/missing_data/fill_strategies.py:13:14}}
-print(meanNaN)
+print(mean_nan_df)
 ```
 
 ```text
