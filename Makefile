@@ -19,6 +19,7 @@ data: .venv
 run: data
 	./tasks.sh process_nbook introduction_polars
 	$(PYTHON) -m user_guide.src.examples.multiple_files
+	$(PYTHON) -m user_guide.src.examples.missing_data
 	$(PYTHON) -m user_guide.src.examples.time_series
 	$(PYTHON) -m user_guide.src.examples.expressions
 	$(PYTHON) -m user_guide.src.examples.aggregate

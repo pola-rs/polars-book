@@ -2,7 +2,7 @@ from ..paths import OUTPUT_BASE_DIR, create_if_not_exists
 from .days_month import out as days_month
 from .dynamic_ds import df as dyn_df
 from .dynamic_groupby import out as dyn_gb
-from .parsing_dates import df as parse_dates_df, filtered_df, filtered_range_df, annual_average_df
+from .parsing_dates import df as parse_dates_df, filtered_df, filtered_range_df, annual_average_df, df_with_year
 from .cast_date_to_string import df as cast_date_to_string_df
 from .resampling_example import df as resample_df, out1, out2
 
@@ -31,6 +31,9 @@ with open(f"{path}/parse_dates_filtered_range_df.txt", "w") as f:
 
 with open(f"{path}/parse_dates_annual_average_df.txt", "w") as f:
     f.write(f"{annual_average_df}\n")
+
+with open(f"{path}/parse_dates_with_year.txt", "w") as f:
+    f.write(f"{df_with_year}\n")
 
 
 with open(f"{path}/resample_example_df.txt", "w") as f:

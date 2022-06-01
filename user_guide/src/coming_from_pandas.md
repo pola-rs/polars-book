@@ -314,3 +314,13 @@ shape: (7, 5)
 └─────┴──────┴──────┴─────┴──────────────┘
 
 ```
+
+## Missing data
+
+`Pandas` uses `NaN` and/or `None` values to indicate missing values depending on the dtype of the column. In addition the behaviour in `Pandas` varies depending on whether the default dtypes or optional nullable arrays are used. In `Polars` missing data corresponds to a `null` value for all data types.
+
+For float columns `Polars` permits the use of `NaN` values. These `NaN` values are not considered to be missing data but instead a special floating point value.
+
+In `Pandas` an integer column with missing values is cast to be a float column with `NaN` values for the missing values (unless using optional nullable integer dtypes). In `Polars` any missing values in an integer column are simply `null` values and the column remains an integer column.
+
+See the [missing data](/missing_data.md) section for more details.

@@ -37,4 +37,20 @@ print(df)
 {{#include ../outputs/time_series/cast_string_to_date_example_df.txt}}
 ```
 
-[The strptime date formats can be found here](https://docs.rs/chrono/latest/chrono/format/strftime/index.html).
+[The strptime date formats can be found here.](https://docs.rs/chrono/latest/chrono/format/strftime/index.html).
+
+## Extracting date features from a date column
+
+You can extract data features such as the year or day from a date column using the `.dt` namespace on a date column:
+
+```python
+{{#include ../examples/time_series/parsing_dates.py:11:11}}
+print(df_with_year)
+```
+
+```text
+{{#include ../outputs/time_series/parse_dates_with_year.txt}}
+```
+
+See the [API docs](https://pola-rs.github.io/polars/py-polars/html/reference/series.html#timeseries)
+for more date feature options.

@@ -16,6 +16,7 @@
   - [Video introduction](dsl/video_intro.md)
 - [Indexing](indexing.md)
 - [Data Types](datatypes.md)
+- [Missing data](missing_data.md)
 - [Coming from Pandas](coming_from_pandas.md)
 - [Coming from Apache Spark](coming_from_spark.md)
 - [Time-series](timeseries/intro.md)
