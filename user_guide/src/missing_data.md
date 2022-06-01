@@ -11,7 +11,7 @@ Each column in a `DataFrame` (or equivalently a `Series`) is an Arrow array or a
 You can manually define a missing value with the python `None` value:
 
 ```python
-{{#include examples/missing_data/missing_types.py:4:4}}
+{{#include examples/missing_data/missing_types.py:4:8}}
 print(df)
 ```
 
@@ -28,7 +28,7 @@ Each Arrow array used by `Polars` stores two kinds of metadata related to missin
 The first piece of metadata is the `null_count` - this is the number of rows with `null` values in the column:
 
 ```python
-{{#include examples/missing_data/missing_types.py:6:6}}
+{{#include examples/missing_data/missing_types.py:10:10}}
 print(null_count_df)
 ```
 
@@ -44,7 +44,7 @@ The validity bitmap is memory efficient as it is bit encoded - each value is eit
 You can return a `Series` based on the validity bitmap for a column in a `DataFrame` or a `Series` with the `is_null` method:
 
 ```python
-{{#include examples/missing_data/missing_types.py:8:8}}
+{{#include examples/missing_data/missing_types.py:12:14}}
 print(is_null_series)
 ```
 
@@ -66,7 +66,7 @@ Missing data in a `Series` can be filled with the `fill_null` method. You have t
 We illustrate each way to fill nulls by defining a simple `DataFrame` with a missing value in `col2`:
 
 ```python
-{{#include examples/missing_data/fill_strategies.py:3:3}}
+{{#include examples/missing_data/fill_strategies.py:3:8}}
 print(df)
 ```
 
@@ -79,7 +79,7 @@ print(df)
 We can fill the missing data with a specified literal value with `pl.lit`:
 
 ```python
-{{#include examples/missing_data/fill_strategies.py:5:5}}
+{{#include examples/missing_data/fill_strategies.py:10:16}}
 print(fill_literal_df)
 ```
 
@@ -92,7 +92,7 @@ print(fill_literal_df)
 We can fill the missing data with a strategy such as filling forward:
 
 ```python
-{{#include examples/missing_data/fill_strategies.py:7:7}}
+{{#include examples/missing_data/fill_strategies.py:18:20}}
 print(fill_forward_df)
 ```
 
@@ -108,7 +108,7 @@ For more flexibility we can fill the missing data with an expression. For exampl
 to fill nulls with the median value from that column:
 
 ```python
-{{#include examples/missing_data/fill_strategies.py:9:9}}
+{{#include examples/missing_data/fill_strategies.py:22:24}}
 print(fill_median_df)
 ```
 
@@ -123,7 +123,7 @@ In this case the column is cast from integer to float because the median is a fl
 In addition, we can fill nulls with interpolation (without using the `fill_null` function):
 
 ```python
-{{#include examples/missing_data/fill_strategies.py:11:11}}
+{{#include examples/missing_data/fill_strategies.py:26:28}}
 print(fill_interpolation)
 ```
 
@@ -136,7 +136,7 @@ print(fill_interpolation)
 Missing data in a `Series` has a `null` value. However, you can use `NotaNumber` or `NaN` values in columns with float datatypes. These `NaN` values can be created from Numpy's `np.nan` or the native python `float('nan')`:
 
 ```python
-{{#include examples/missing_data/missing_types.py:10:10}}
+{{#include examples/missing_data/missing_types.py:16:20}}
 print(nan_df)
 ```
 
@@ -156,7 +156,7 @@ print(nan_df)
 One further difference between `null` and `NaN` values is that taking the `mean` of a column with `null` values excludes the `null` values from the calculation but with `NaN` values taking the mean results in a `NaN`. This behaviour can be avoided by replacing the `NaN` values with `null` values;
 
 ```python
-{{#include examples/missing_data/fill_strategies.py:13:14}}
+{{#include examples/missing_data/fill_strategies.py:35:38}}
 print(mean_nan_df)
 ```
 
