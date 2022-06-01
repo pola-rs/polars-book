@@ -162,7 +162,7 @@ df.with_columns([
 
 These column assignments are executed in parallel.
 
-#### Column asignment based on predicate
+#### Column assignment based on predicate
 
 In this case we have a dataframe `df` with columns `a`,`b` and `c`. We want to re-assign
 the values in column `a` based on a condition. When the value in column `c` is equal to

@@ -1,6 +1,6 @@
 # Common manipulations
 
-Like other DataFrame libaries, Polars provides a wide range of common functions to
+Like other DataFrame libraries, Polars provides a wide range of common functions to
 manipulate a Dataframe. Users that are familiar with Dataframes will see many
 similarities with `Pandas` or `R` implementations.
 
