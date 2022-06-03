@@ -88,3 +88,14 @@ So the eager snippet above would become:
     .collect()
 )
 ```
+
+## Using this Cookbook
+
+If you're new to Polars we reccommend reading through this Cookbook in its entirity to properly familiarize yourself with the DataFrame library.
+
+| Step | Content     | Description |
+| ---- | ----------- | ----------- |
+| 1 | Walkthrough    | A 5 minute walkthrough of basic Polars usage introducing you to the Polars Eager API. |
+| 2 | Fundamentals   | More information on concepts to solidify your understanding of the library and important design decision Polars makes. |
+| 3 | Guides         | Additional documentation and recipes with details guiding users through various use cases for Polars. |
+| 4 | References     | More material to refer to while learning and using Polars. |
