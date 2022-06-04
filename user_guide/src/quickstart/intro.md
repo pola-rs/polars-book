@@ -207,6 +207,18 @@ res.head()
 {{#include ../outputs/dataframe/dates_groupby_res.txt}}
 ```
 
+### Read from Excel files, write to CSV files
+
+Use the Python API's `xlsx2csv` [`read_excel`](POLARS_PY_REF_GUIDE/api/polars.read_excel.html#polars.read_excel) helper method for reading Excel files or read from CSVs directly with [`read_csv`](POLARS_PY_REF_GUIDE/api/polars.read_csv.html#polars.read_csv).
+
+While various formats have IO support, writing to Excel files is not currently supported.
+
+```python
+df.write_csv("df.csv")
+```
+
 > This User Guide is under construction.
 >
-> Coming: IO behaviors and gut check.
+> Coming: walk-through revision ✨, fundamentals setup, more api documentation examples
+>
+> Submit a PR to this Cookbook [on GitHub](https://github.com/pola-rs/polars-book) 🐙
