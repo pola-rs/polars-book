@@ -6,7 +6,7 @@ N = 1000
 
 df = pl.DataFrame(
     {
-        "rank": list(range(N)),
+        "rank": range(N),
         "id": list(map(lambda x: str(x).zfill(5), range(N, 0, -1))),
         "date": my_datetime_list,
     }

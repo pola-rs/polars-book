@@ -91,20 +91,20 @@ So the eager snippet above would become:
 
 ## Using this Cookbook
 
-If you're new to `Polars` we reccommend reading through this Cookbook in its entirity to properly familiarize yourself with the `DataFrame` library.
+It's important to continue reading after the brief walk-through. There are fundamental topics for new `Polars` users to review immediately after such as *Expressions* and *Contexts*. `Polars` offers a unique `DataFrame` implementation that can only be fully realized with sufficient understanding of the library's design.
 
 | Step | Content     | Description |
 | ---- | ----------- | ----------- |
-| 1 | Walk-through   | A 5 minute walkthrough of basic `Polars` usage introducing you to the Eager API. |
-| 2 | Fundamentals   | More information on concepts to solidify your understanding of the library and important design decisions `Polars` makes. |
-| 3 | Guides         | Additional documentation and recipes with details guiding users through various use cases for `Polars`. |
+| 1 | Walk-through   | A 5 minute walk-through of basic `Polars` API usage. |
+| 2 | Fundamentals   | Foundations and fundamental concepts for new and existing `Polars` users. |
+| 3 | Guides         | Additional documentation and recipes for more `Polars` use cases. |
 | 4 | References     | More material to refer to while learning and using `Polars`. |
 
 ## Walk-through
 
-The following walk-through leverages the `Polars` Eager API to process data using common `DataFrame` library user behavior.
+The following walk-through leverages the `Polars` API to process data using common `DataFrame` library user behavior.
 
-### 1. Create a `DataFrame`
+### Create a `DataFrame`
 
 In `Polars` a `DataFrame` is a collection of columns (more specifically `Series`) containing data. See more about the columnar memory format [here](https://arrow.apache.org/docs/format/Columnar.html), as it's a fundamental topic for `Polars` users.
 
@@ -119,7 +119,7 @@ df.sample()
 {{#include ../outputs/dataframe/df.txt}}
 ```
 
-### 2. Add data to your `DataFrame`
+### Add data to your `DataFrame`
 
 Add a column to the `DataFrame`'s collection. Using [`pl.lit()`](POLARS_PY_REF_GUIDE/api/polars.lit.html?#polars.lit) we can add a new column populated with a `Literal`.
 
@@ -132,7 +132,7 @@ df.sample(3)
 {{#include ../outputs/dataframe/df_column_added.txt}}
 ```
 
-### 3. Modify your `DataFrame`
+### Modify your `DataFrame`
 
 Replace data using conditional expressions and chaining methods.
 
@@ -145,7 +145,7 @@ df.tail()
 {{#include ../outputs/dataframe/df_replaced.txt}}
 ```
 
-### 4. Update data types
+### Update data types
 
 **Use the [`Categorical`](POLARS_PY_REF_GUIDE/api/polars.datatypes.Categorical.html?#polars.datatypes.Categorical) type and do some string ops**. With the `Categorical` data type we want to plan ahead here. If we want to perform common ops like `join`s on our cats, we'll need to create this data within the [`StringCache`](POLARS_PY_REF_GUIDE/api/polars.StringCache.html#polars.StringCache) context manager.
 
@@ -183,7 +183,7 @@ df.estimated_size(), df.dtypes
 
 ### Use a `join`
 
-Becuase we're using `toggle_string_cache` to create our `Categorical` data for each `DataFrame`, we can perform a `join` to bring in the IDs for each `color`.
+Because we're using `toggle_string_cache` to create our `Categorical` data for each `DataFrame`, we can perform a `join` to bring in the IDs for each `color`.
 
 ```python
 {{#include ../examples/dataframe/cat_join.py:5:}}
@@ -196,7 +196,7 @@ color_ids
 
 ### Use a `groupby`
 
-We have `datetime`s in this `DataFrame`. Perform `groupby` operations on your `DataFrame` at **embarrassingly parallel** speeds, another fundemantal topic for a new `Polars` user.
+We have `datetime`s in this `DataFrame`. Perform `groupby` operations on your `DataFrame` at **embarrassingly parallel** speeds, another fundamental topic for a new `Polars` user.
 
 ```python
 {{#include ../examples/dataframe/date_groupby.py:5:}}
