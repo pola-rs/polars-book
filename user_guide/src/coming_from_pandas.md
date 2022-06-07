@@ -323,4 +323,4 @@ For float columns `Polars` permits the use of `NaN` values. These `NaN` values a
 
 In `Pandas` an integer column with missing values is cast to be a float column with `NaN` values for the missing values (unless using optional nullable integer dtypes). In `Polars` any missing values in an integer column are simply `null` values and the column remains an integer column.
 
-See the [missing data](/missing_data.md) section for more details.
+See the [missing data](missing_data.md) section for more details.
