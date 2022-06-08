@@ -56,3 +56,4 @@
     - [Projection pushdown](optimizations/lazy/projection-pushdown.md)
     - [Other optimizations](optimizations/lazy/other-optimizations.md)
 - [Reference guides](references.md)
+- [Contributing](contributing.md)
