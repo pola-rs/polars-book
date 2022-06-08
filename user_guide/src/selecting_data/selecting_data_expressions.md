@@ -130,10 +130,10 @@ print(expression_df)
 
 In lazy mode the query optimizer may be able to optimize the query based on the expressions.
 
-In this example we scan a CSV file with many columns using `scan_csv` and then `select` a subset of them. The query optimizer creates a query plan that causes only the selected columns to be read from the CSV - see how the `Project` part of the query plan below states that only 2 of 13 columns will be read:
+In this example we scan a CSV file with many columns using `scan_csv` and then `select` a subset of them. The query optimizer creates a query plan that causes only the selected columns to be read from the CSV - see how the `Project` part of the query plan below states that only 1 of 2 columns will be read:
 
 ```python
-{{#include ../examples/selecting_data/lazy_select_data.py:3:3}}
+{{#include ../examples/selecting_data/lazy_select_data.py:4:4}}
 print(lazy_select_df.describe_optimized_plan())
 ```
 
@@ -144,7 +144,7 @@ print(lazy_select_df.describe_optimized_plan())
 If you specify two separate filter conditions the query optimizer will combine them into a single joint condition (see the `Selection` part of the query plan below):
 
 ```python
-{{#include ../examples/selecting_data/lazy_select_data.py:8:8}}
+{{#include ../examples/selecting_data/lazy_select_data.py:8:14}}
 print(lazy_filter_df.describe_optimized_plan())
 ```
 
