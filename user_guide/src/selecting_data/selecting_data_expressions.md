@@ -1,6 +1,10 @@
 # Selecting with expressions
 
-In this page we cover use of the `filter` and `select` methods to select data, combining these expressions and optimization of these expression in lazy mode.
+In this page we cover
+
+- use of the Expression API via the `filter` and `select` methods to select data
+- combining these expressions and
+- optimization of these expression in lazy mode.
 
 To select data with expressions we use:
 
@@ -109,11 +113,24 @@ print(dtype_select_df)
 {{#include ../outputs/selecting_data/dtype_select_df.txt}}
 ```
 
+# Selecting rows and columns
+
+We can combine the `filter` and `select` methods to select rows and columns
+
+```python
+{{#include ../examples/selecting_data/indexing_selecting_examples.py:14:14}}
+print(expression_df)
+```
+
+```text
+{{#include ../outputs/selecting_data/expression_df.txt}}
+```
+
 # Query optimization
 
-In lazy mode the query optimizer will attempt to optimize your query based on the expressions.
+In lazy mode the query optimizer may be able to optimize the query based on the expressions.
 
-If you scan a CSV file with `scan_csv` with many columns and then `select` a subset of them the query optimizer will only read those columns from the CSV (see the `Project` part of the query plan below):
+In this example we scan a CSV file with many columns using `scan_csv` and then `select` a subset of them. The query optimizer creates a query plan that causes only the selected columns to be read from the CSV - see how the `Project` part of the query plan below states that only 2 of 13 columns will be read:
 
 ```python
 {{#include ../examples/selecting_data/lazy_select_data.py:3:3}}

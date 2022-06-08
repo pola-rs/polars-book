@@ -6,15 +6,15 @@ can be used to select rows and/or columns.
 ## Indexing is an anti-pattern in `Polars`
 
 Indexing polars with square brackets is considered an anti-pattern and the functionality may be removed in the future.
-Polars [strongly favours the expression API with `select` and `filter`](selecting_data_expressions.md) in favor of accessing by square bracket indexing. See the [introduction to this section](selecting_data_intro.md) for more information on this.
+Polars [strongly favours the expression API with `select` and `filter`](selecting_data_expressions.md) in favor of accessing by square bracket indexing. See the [introduction to this section](selecting_data_intro.md) for more information.
 
 ## Indexing does not work in lazy mode
 
-Selecting data by indexing only works with a `DataFrame` in eager mode. If you try to selectind data by indexing on `LazyFrame` it will raise an exception that a `LazyFrame` is not subscriptable. Instead you need to [select data using expressions](selecting_data_expressions.md).
+Selecting data by indexing only works with a `DataFrame` in eager mode. If you try to select data by indexing on a `LazyFrame` it will raise an exception that a `LazyFrame` is not subscriptable. Instead you need to [select data using expressions](selecting_data_expressions.md).
 
 ## Rules for square bracket indexing
 
-The rules are as follows (depending on the datatypes of the values):
+The rules for square bracket indexing are as follows (depending on the datatypes of the values):
 
 - **numeric**
 
