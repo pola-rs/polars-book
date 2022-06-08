@@ -1,7 +1,14 @@
+# Selecting with indexing
+
+In this page we cover use of square bracket indexing to select data. Square bracket indexing
+can be used to select rows and/or columns.
 
 
-The `Polars` `DataFrame` doesn't have an index, therefore indexing behavior can be consistent without the need of a `df.loc`,
-`df.iloc`, or a `df.at` operation.
+## Indexing is an anti-pattern in `Polars`
+
+Indexing polars by boolean masks is considered an anti-pattern and the functionality may be removed in the future.
+Polars [strongly favours the expression API in combination with `select` and `filter`](selecting_data_expressions.md) in favor of accessing by square bracket indexing.
+
 
 The rules are as follows (depending on the datatypes of the values):
 
@@ -45,7 +52,3 @@ The rules are as follows (depending on the datatypes of the values):
 | select a single value (Series/DataFrame)<br> `df.loc[2, ["A"]]`       | `df[2, ["A"]]`                |
 | select a single value (Series/DataFrame)<br> `df.iloc[2, [1]]`        | `df[2, [1]]`                  |
 
-## Anti-pattern
-
-Indexing polars by boolean masks is considered an anti-pattern and the functionality may be removed in the future.
-Polars strongly favours the expression API in combination with `select` and `filter` in favor of accessing by index.
