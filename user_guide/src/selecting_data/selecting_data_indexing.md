@@ -3,12 +3,16 @@
 In this page we cover use of square bracket indexing to select data. Square bracket indexing
 can be used to select rows and/or columns.
 
-
 ## Indexing is an anti-pattern in `Polars`
 
-Indexing polars by boolean masks is considered an anti-pattern and the functionality may be removed in the future.
-Polars [strongly favours the expression API in combination with `select` and `filter`](selecting_data_expressions.md) in favor of accessing by square bracket indexing.
+Indexing polars with square brackets is considered an anti-pattern and the functionality may be removed in the future.
+Polars [strongly favours the expression API with `select` and `filter`](selecting_data_expressions.md) in favor of accessing by square bracket indexing. See the [introduction to this section](selecting_data_intro.md) for more information on this.
 
+## Indexing does not work in lazy mode
+
+Selecting data by indexing only works with a `DataFrame` in eager mode. If you try to selectind data by indexing on `LazyFrame` it will raise an exception that a `LazyFrame` is not subscriptable. Instead you need to [select data using expressions](selecting_data_expressions.md).
+
+## Rules for square bracket indexing
 
 The rules are as follows (depending on the datatypes of the values):
 
@@ -51,4 +55,3 @@ The rules are as follows (depending on the datatypes of the values):
 | select a single value (scalar)<br> `df.iloc[2, 1]`                    | `df[2, 1]`                    |
 | select a single value (Series/DataFrame)<br> `df.loc[2, ["A"]]`       | `df[2, ["A"]]`                |
 | select a single value (Series/DataFrame)<br> `df.iloc[2, [1]]`        | `df[2, [1]]`                  |
-

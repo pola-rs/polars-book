@@ -7,7 +7,7 @@ To select data with expressions we use:
 - the `filter` method to select rows
 - the `select` method to select columns
 
-To illustrate both of these methods we define a simple `DataFrame`:
+For simplicity we deal with `DataFrame` examples throughout. The principles are the same for `Series` objects except that columns obviously cannot be selected in a `Series`. To illustrate the `filter` and `select` methods we define a simple `DataFrame`:
 
 ```python
 {{#include ../examples/selecting_data/indexing_selecting_examples.py:4:10}}
@@ -107,4 +107,30 @@ print(dtype_select_df)
 
 ```text
 {{#include ../outputs/selecting_data/dtype_select_df.txt}}
+```
+
+# Query optimization
+
+In lazy mode the query optimizer will attempt to optimize your query based on the expressions.
+
+If you scan a CSV file with `scan_csv` with many columns and then `select` a subset of them the query optimizer will only read those columns from the CSV (see the `Project` part of the query plan below):
+
+```python
+{{#include ../examples/selecting_data/lazy_select_data.py:3:3}}
+print(lazy_select_df.describe_optimized_plan())
+```
+
+```text
+{{#include ../outputs/selecting_data/lazy_select_df.txt}}
+```
+
+If you specify two separate filter conditions the query optimizer will combine them into a single joint condition (see the `Selection` part of the query plan below):
+
+```python
+{{#include ../examples/selecting_data/lazy_select_data.py:8:8}}
+print(lazy_filter_df.describe_optimized_plan())
+```
+
+```text
+{{#include ../outputs/selecting_data/lazy_filter_df.txt}}
 ```

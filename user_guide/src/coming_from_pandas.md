@@ -14,7 +14,7 @@ each row is indexed by its integer position in the table.
 
 Indexes are not needed! Not having them makes things easier - convince us otherwise!
 
-For more detail on how you select data in `Polars` see the [indexing](indexing.md)
+For more detail on how you select data in `Polars` see the [selecting data](selecting_data/selecting_data_intro.md)
 section.
 
 ### `Polars` uses Apache Arrow arrays to represent data in memory while `Pandas` uses `Numpy` arrays
@@ -65,8 +65,7 @@ Let's go through some typical `Pandas` code and see how we might write that in `
 As there is no index in `Polars` there is no `.loc` or `iloc` method in `Polars` - and
 there is also no `SettingWithCopyWarning` in `Polars`.
 
-To learn more about how you select data in `Polars` see the [indexing](indexing.md)
-section.
+To learn more about how you select data in `Polars` see the [selecting data](selecting_data/selecting_data_intro.md) section.
 
 However, the best way to select data in `Polars` is to use the expression API. For
 example, if you want to select a column in `Pandas` you can do one of the following:

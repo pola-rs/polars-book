@@ -11,6 +11,7 @@ from .indexing_selecting_examples import (
     condition_select_df,
     dtype_select_df,
 )
+from .lazy_select_data import lazy_filter_df, lazy_select_df
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/selecting_data")
 
@@ -25,6 +26,8 @@ variable_filename_tuples = [
     (boolean_list_select_df, "boolean_list_select_df"),
     (condition_select_df, "condition_select_df"),
     (dtype_select_df, "dtype_select_df"),
+    (lazy_filter_df, "lazy_filter_df"),
+    (lazy_select_df, "lazy_select_df"),
 ]
 
 for variable, filename in variable_filename_tuples:

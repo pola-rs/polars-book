@@ -1,55 +1,20 @@
 # Selecting data
 
-In this section we show how to select rows and/or columns from a `DataFrame` or rows from a `Series`.  Understanding the key concepts here is perhaps the simplest way to get started with the Expression API.
+In this section we show how to select rows and/or columns from a `DataFrame` or rows from a `Series`.
 
-For simplicity we deal with `DataFrame` examples throughout. The principles are the same for `Series` objects except that columns obviously cannot be selected in a `Series`.
+The Expression API is one of the keys to writing performant queries. The simplest way to get started with the Expression API is to get familiar with the `filter` and `select` methods in this section.
 
-In this page we introduce the two approaches for selecting data and the reasons why the expression approach is favoured. In subsequent pages we cover:
+The two approaches in this section are:
 
-- [Selecting data with expressions](selecting_data_expressions.md)
-- [Selecting data with indexing](selecting_data_indexing.md)
+- [selecting data with expressions](selecting_data_expressions.md)
+- [selecting data with square bracket indexing](selecting_data_indexing.md)
 
-## Example of selecting data
+> Although they may give the same output, selecting data with expressions or square bracket indexing **are not equivalent**. The implementation of selecting data with expressions is totally different than the implementation of selecting data with square bracket indexing.
 
-There are two ways to select rows and/or columns from a `DataFrame`:
+We **strongly recommend** selecting data with expressions for almost all use cases. Square bracket indexing is useful when doing exploratory data analysis in a terminal or notebook when you just want a quick look at a subset of data.
 
-- indexing with square brackets
-- using the Expression API via the `filter` or `select` methods
+For all other use cases we recommend using expressions to select data because:
 
-To illustrate both of these methods we define a simple `DataFrame`:
-
-```python
-{{#include ../examples/selecting_data/indexing_selecting_examples.py:4:10}}
-print(df)
-```
-
-```text
-{{#include ../outputs/selecting_data/simple_df.txt}}
-```
-
-We want to select all rows with `id` less than or equal to 2 along with the `id` and `color` columns. With indexing we can do this as follows:
-
-```python
-{{#include ../examples/selecting_data/indexing_selecting_examples.py:12:12}}
-print(indexing_df)
-```
-
-```text
-{{#include ../outputs/selecting_data/indexing_df.txt}}
-```
-
-and with the Expression API we can do this as follows:
-
-```python
-{{#include ../examples/selecting_data/indexing_selecting_examples.py:14:14}}
-print(indexing_df)
-```
-
-```text
-{{#include ../outputs/selecting_data/expression_df.txt}}
-```
-
-The use case for indexing is for exploratory data analysis when you want to look at a subset of data. We **strongly recommend** using the Expression API approach for all other use cases. This is because:
-
-- the indexing approach does not work in lazy mode and cannot be optimized
-- the Expression API approach can be parallelized in eager and lazy mode
+- expressions can be parallelized
+- the expression approach can be used in lazy and eager mode while the indexing approach can only be used in eager mode
+- in lazy mode the query optimizer can optimize expressions
