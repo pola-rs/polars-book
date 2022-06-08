@@ -1,10 +1,20 @@
 import polars as pl
 import numpy as np
 
-df = pl.DataFrame({"colName": [1, None]})
+df = pl.DataFrame(
+    {
+        "value": [1, None],
+    },
+)
 
-nullCountDf = df.null_count()
+null_count_df = df.null_count()
 
-isNullSeries = df.select(pl.col("colName").is_null())
+is_null_series = df.select(
+    pl.col("value").is_null(),
+)
 
-dfNaN = pl.DataFrame({"colName": [1.0, np.NaN, float("nan")]})
+nan_df = pl.DataFrame(
+    {
+        "value": [1.0, np.NaN, float("nan"), 3.0],
+    },
+)

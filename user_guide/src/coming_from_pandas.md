@@ -162,7 +162,7 @@ df.with_columns([
 
 These column assignments are executed in parallel.
 
-#### Column asignment based on predicate
+#### Column assignment based on predicate
 
 In this case we have a dataframe `df` with columns `a`,`b` and `c`. We want to re-assign
 the values in column `a` based on a condition. When the value in column `c` is equal to
@@ -317,8 +317,10 @@ shape: (7, 5)
 
 ## Missing data
 
-`Pandas` uses both `NaN` and `None` values to indicate missing values depending on the dtype of the column. In `Polars` missing data corresponds to a `null` value for all data types. In addition, for float columns `Polars` permits the use of `NaN` values. These `NaN` values are not considered to be missing data but instead a special value in float columns.
+`Pandas` uses `NaN` and/or `None` values to indicate missing values depending on the dtype of the column. In addition the behaviour in `Pandas` varies depending on whether the default dtypes or optional nullable arrays are used. In `Polars` missing data corresponds to a `null` value for all data types.
 
-In `Pandas` an integer column with missing values is cast to be a float column with `NaN` values for the missing values. In `Polars` any missing values in an integer column are simply `null` values and the column remains an integer column.
+For float columns `Polars` permits the use of `NaN` values. These `NaN` values are not considered to be missing data but instead a special floating point value.
 
-See the [missing data](/missing_data.md) section for more details.
+In `Pandas` an integer column with missing values is cast to be a float column with `NaN` values for the missing values (unless using optional nullable integer dtypes). In `Polars` any missing values in an integer column are simply `null` values and the column remains an integer column.
+
+See the [missing data](missing_data.md) section for more details.

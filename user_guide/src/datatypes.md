@@ -22,7 +22,7 @@ The data types are:
 - `Struct`: A struct array is represented as `Vec<Series>` and is useful to pack multiple/heterogenous values in a single column.
 - `Date`: Date representation, internally represented as days since UNIX epoch encoded by a 32-bit signed integer.
 - `Datetime`: Datetime representation, internally represented as nanoseconds since UNIX epoch encoded by a 64-bit signed integer.
-- `Duration`: A timedelate type. Created when subtracting `Date/Datetime`.
+- `Duration`: A timedelta type. Created when subtracting `Date/Datetime`.
 - `Time`: Time representation, internally represented as nanoseconds since midnight.
 - `Object`: A limited supported data type that can be any value.
 

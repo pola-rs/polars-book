@@ -32,7 +32,7 @@ pl.scan_csv("my_many_files_*.csv").show_graph()
 
 ## Reading and processing in parallel
 
-If your files don't have to be in a single table you can also build a query plan for each file and execute them in paralllel
+If your files don't have to be in a single table you can also build a query plan for each file and execute them in parallel
 on the `Polars` thread pool.
 
 All query plan execution is embarrassingly parallel and doesn't require any communication.

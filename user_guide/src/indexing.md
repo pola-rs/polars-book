@@ -1,4 +1,20 @@
-# Indexing
+# Selecting data
+
+In this page we show how to select rows and/or columns from a `DataFrame` or rows from a `Series`. In doing so we show how to use the `Polars` Expression API that is key to achieving high performance. Understanding the key concepts here is perhaps the simplest way to start with the Expression API.
+
+For simplicity we deal with `DataFrame` examples throughout. The principles are the same for `Series` objects except that columns obviously cannot be selected in a `Series`.
+
+## Indexing with square brackets and selecting data with the Expression API
+There are two ways to select rows and/or columns from a `DataFrame`:
+- indexing with square brackets
+- using the Expression API via the `filter` or `select` methods
+
+
+
+We strongly recommend that you use the Expression API approach whereever possible:
+- the indexing approach does not work in lazy mode
+- the Expression API approach can be parallelized
+
 
 The `Polars` `DataFrame` doesn't have an index, therefore indexing behavior can be consistent without the need of a `df.loc`,
 `df.iloc`, or a `df.at` operation.

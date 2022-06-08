@@ -62,7 +62,7 @@ Do not hesitate to [open a new issue](https://github.com/pola-rs/polars-book/iss
 
 The `Python` code is checked and linted using [`black`](https://github.com/psf/black), [`flake8`](https://gitlab.com/pycqa/flake8) and [`isort`](https://pycqa.github.io/isort/).
 The `Markdown` files are formatted using [`mdformat`](https://github.com/executablebooks/mdformat).
-The recommended way is to use [`pre-commit`](https://pre-commit.com/) before commiting your code:
+The recommended way is to use [`pre-commit`](https://pre-commit.com/) before committing your code:
 
 ```shell
 $ pip install pre-commit
