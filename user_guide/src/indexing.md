@@ -1,4 +1,53 @@
-# Indexing
+# Selecting data
+
+In this page we show how to select rows and/or columns from a `DataFrame` or rows from a `Series`.  Understanding the key concepts here is perhaps the simplest way to start with the Expression API.
+
+For simplicity we deal with `DataFrame` examples throughout. The principles are the same for `Series` objects except that columns obviously cannot be selected in a `Series`.
+
+## Indexing with square brackets and selecting data with the Expression API
+
+There are two ways to select rows and/or columns from a `DataFrame`:
+
+- indexing with square brackets
+- using the Expression API via the `filter` or `select` methods
+
+To illustrate both of these methods we define a simple `DataFrame`:
+
+```python
+{{#include examples/selecting_data/indexing_selecting_examples.py:4:10}}
+print(df)
+```
+
+```text
+{{#include outputs/selecting_data/simple_df.txt}}
+```
+
+We want to select all rows with `id` less than or equal to 2 along with the `id` and `color` columns. With indexing we can do this as follows:
+
+```python
+{{#include examples/selecting_data/indexing_selecting_examples.py:12:12}}
+print(indexing_df)
+```
+
+```text
+{{#include outputs/selecting_data/indexing_df.txt}}
+```
+
+and with the Expression API we can do this as follows:
+
+```python
+{{#include examples/selecting_data/indexing_selecting_examples.py:14:14}}
+print(indexing_df)
+```
+
+```text
+{{#include outputs/selecting_data/expression_df.txt}}
+```
+
+We strongly recommend that you use the Expression API approach whereever possible:
+
+- the indexing approach does not work in lazy mode and cannot be optimized
+- the Expression API approach can be parallelized in eager and lazy mode
 
 The `Polars` `DataFrame` doesn't have an index, therefore indexing behavior can be consistent without the need of a `df.loc`,
 `df.iloc`, or a `df.at` operation.

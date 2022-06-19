@@ -9,11 +9,11 @@ We can calculate temporal statistics using `groupby_dynamic` to group rows into 
 In following simple example we calculate the annual average closing price of Apple stock prices. We first load the data from CSV:
 
 ```python
-{{#include ../examples/time_series/parsing_dates.py:4:4}}
+{{#include ../../examples/time_series/parsing_dates.py:4:4}}
 ```
 
 ```text
-{{#include ../outputs/time_series/parse_dates_example_df.txt}}
+{{#include ../../outputs/time_series/parse_dates_example_df.txt}}
 ```
 
 > The dates are sorted in ascending order - if they are not sorted in this way the `groupby_dynamic` output will not be correct!
@@ -24,13 +24,13 @@ To get the annual average closing price we tell `groupby_dynamic` that we want t
 - take the mean values of the `Close` column for each year:
 
 ```python
-{{#include ../examples/time_series/parsing_dates.py:14:17}}
+{{#include ../../examples/time_series/parsing_dates.py:14:17}}
 ```
 
 The annual average closing price is then:
 
 ```text
-{{#include ../outputs/time_series/parse_dates_annual_average_df.txt}}
+{{#include ../../outputs/time_series/parse_dates_annual_average_df.txt}}
 ```
 
 ### Parameters for `groupby_dynamic`
@@ -114,12 +114,12 @@ Below we show an example where we use **groupby_dynamic** to compute:
 - the number of days in a month
 
 ```python
-{{#include ../examples/time_series/days_month.py:4:}}
+{{#include ../../examples/time_series/days_month.py:4:}}
 print(out)
 ```
 
 ```text
-{{#include ../outputs/time_series/days_month.txt}}
+{{#include ../../outputs/time_series/days_month.txt}}
 ```
 
 ## Grouping by rolling windows with `groupby_rolling`
@@ -150,19 +150,19 @@ Rolling and dynamic groupby's can be combined with normal groupby operations.
 Below is an example with a dynamic groupby.
 
 ```python
-{{#include ../examples/time_series/dynamic_ds.py:0:}}
+{{#include ../../examples/time_series/dynamic_ds.py:0:}}
 print(out)
 ```
 
 ```text
-{{#include ../outputs/time_series/dyn_df.txt}}
+{{#include ../../outputs/time_series/dyn_df.txt}}
 ```
 
 ```python
-{{#include ../examples/time_series/dynamic_groupby.py:4:}}
+{{#include ../../examples/time_series/dynamic_groupby.py:4:}}
 print(out)
 ```
 
 ```text
-{{#include ../outputs/time_series/dyn_gb.txt}}
+{{#include ../../outputs/time_series/dyn_gb.txt}}
 ```
