@@ -222,7 +222,7 @@ In `Pandas` we have:
 
 ```python
 df = pd.DataFrame({
-    "type": ["m", "n", "o", "m", "m", "n", "n"]
+    "type": ["m", "n", "o", "m", "m", "n", "n"],
     "c": [1, 1, 1, 2, 2, 2, 2],
 })
 
