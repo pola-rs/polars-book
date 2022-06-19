@@ -46,10 +46,12 @@ sources can be parallelized on the fly.
 
 ### Performance 🚀🚀
 
-Polars is very fast, and in fact is one of the best performing solutions available.
+`Polars` is very fast, and in fact is one of the best performing solutions available.
 See the results in h2oai's db-benchmark. The image below shows the biggest datasets yielding a result.
 
 ![](https://www.ritchievink.com/img/post-35-polars-0.15/db-benchmark.png)
+
+`Polars` [TPCH Benchmark results](https://www.pola.rs/benchmarks.html) are now available on the official website.
 
 ### Current status
 

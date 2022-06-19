@@ -47,9 +47,6 @@ run: data
 serve_user_guide: run
 	cd ./user_guide; mdbook serve --hostname 0.0.0.0 --port 8000
 
-serve_ref_guide_python: docs
-	cd ./reference_guide_python; mdbook serve --hostname 0.0.0.0 --port 8000
-
 serve: serve_user_guide
 
 clean:
@@ -58,8 +55,6 @@ clean:
 	-@rm -fr user_guide/src/outputs
 	-@rm -fr `find . -name __pycache__`
 	-@cd user_guide; mdbook clean &>/dev/null
-	-@cd reference_guide_python; mdbook clean &>/dev/null
-	-@rm -fr reference_guide_python/src
 
 fmt: format
 
