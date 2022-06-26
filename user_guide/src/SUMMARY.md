@@ -43,6 +43,9 @@
     - [Filtering by dates](howcani/timeseries/selecting_dates.md)
     - [Fixed and rolling temporal groupby](howcani/timeseries/temporal_groupby.md)
     - [Resampling](howcani/timeseries/resampling.md)
+  - [Combining data](howcani/combining_data/intro.md)
+    - [Concatenation](howcani/combining_data/concatenating.md)
+    - [Joining](howcani/combining_data/joining.md)
 
 
 [//]: # (  - [Apply]&#40;howcani/apply/intro.md&#41;)

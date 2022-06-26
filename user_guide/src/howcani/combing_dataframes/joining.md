@@ -39,7 +39,5 @@ The broker has another `DataFrame` `df_quotes` showing prices it has quoted.
 You want to produce a `DataFrame` showing for each trade the most recent quote provided *before* the trade. You do this with `join_asof` (using the default `strategy = backward`).
 To avoid joining between trades on one stock with a quote on another you must specify an exact preliminary join on the stock column with `by="stock"`. 
 
-If you wanted instead to find the first quote made *after* each trade you can specify `strategy = forward`.
-
-If you want to make sure that only quotes within a certain time range are joined to the trades you can specify the `tolerance` argument. In this case
+If you want to make sure that only quotes within a certain time range are joined to the trades you can specify the `tolerance` argument. In this case we want to make sure that the last preceding quote is within 5 minutes of the trade.
 

@@ -1,33 +1,42 @@
 from ..paths import OUTPUT_BASE_DIR, create_if_not_exists
-from .indexing_selecting_examples import (
-    df,
-    indexing_df,
-    expression_df,
-    filter_df,
-    multi_filter_df,
-    single_select_df,
-    list_select_df,
-    boolean_list_select_df,
-    condition_select_df,
-    dtype_select_df,
+from .combining_data_examples import (
+    df_v1,
+    df_v2,
+    df_vertical_concat,
+    df_h1,
+    df_h2,
+    df_horizontal_concat,
+    df_d1,
+    df_d2,
+    df_diagonal_concat,
+    df_cars,
+    df_repairs,
+    df_inner_join,
+    df_semi_join,
+    df_anti_join,
+    df_trades,
+    df_quotes,
 )
-from .lazy_select_data import lazy_filter_df, lazy_select_df
 
-path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/selecting_data")
+path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/combining_data")
 
 variable_filename_tuples = [
-    (df, "simple_df"),
-    (indexing_df, "indexing_df"),
-    (expression_df, "expression_df"),
-    (filter_df, "filter_df"),
-    (multi_filter_df, "multi_filter_df"),
-    (single_select_df, "single_select_df"),
-    (list_select_df, "list_select_df"),
-    (boolean_list_select_df, "boolean_list_select_df"),
-    (condition_select_df, "condition_select_df"),
-    (dtype_select_df, "dtype_select_df"),
-    (lazy_filter_df, "lazy_filter_df"),
-    (lazy_select_df, "lazy_select_df"),
+    (df_v1, "df_v1"),
+    (df_v2, "df_v2"),
+    (df_vertical_concat, "df_vertical_concat"),
+    (df_h1, "df_h1"),
+    (df_h2, "df_h2"),
+    (df_horizontal_concat, "df_horizontal_concat"),
+    (df_d1, "df_d1"),
+    (df_d2, "df_d2"),
+    (df_diagonal_concat, "df_diagonal_concat"),
+    (df_cars, "df_cars"),
+    (df_repairs, "df_repairs"),
+    (df_inner_join, "df_inner_join"),
+    (df_semi_join, "df_semi_join"),
+    (df_anti_join, "df_anti_join"),
+    (df_trades, "df_trades"),
+    (df_quotes, "df_quotes"),
 ]
 
 for variable, filename in variable_filename_tuples:
