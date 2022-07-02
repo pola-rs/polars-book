@@ -81,6 +81,7 @@ An `asof` join is like a left join except that we match on nearest key rather th
 In `Polars` we can do an asof join with the `join` method and specifying `strategy="asof"`. However, for more flexibility we can use the `join_asof` method.
 
 Consider the following scenario: a stock market broker has a `DataFrame` called `df_trades` showing transactions it has made for different stocks.
+
 ```python
 {{#include ../../examples/combining_data/combining_data_examples.py:82:95}}
 print(df_trades)
@@ -91,6 +92,7 @@ print(df_trades)
 ```
 
 The broker has another `DataFrame` called `df_quotes` showing prices it has quoted for these stocks.
+
 ```python
 {{#include ../../examples/combining_data/combining_data_examples.py:97:108}}
 print(df_quotes)
@@ -113,6 +115,7 @@ print(df_asof_join)
 ```
 
 If you want to make sure that only quotes within a certain time range are joined to the trades you can specify the `tolerance` argument. In this case we want to make sure that the last preceding quote is within 1 minute of the trade so we set `tolerance = "1m"`.
+
 ```python
 {{#include ../../examples/combining_data/combining_data_examples.py:112:112}}
 print(df_asof_tolerance_join)
@@ -121,4 +124,3 @@ print(df_asof_tolerance_join)
 ```text
 {{#include ../../outputs/combining_data/df_asof_tolerance_join.txt}}
 ```
-
