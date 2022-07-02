@@ -1,7 +1,5 @@
 # Joins
 
-Joins allow you to combine the data from a left `DataFrame` `df_left` and a right `DataFrame` `df_right`.
-
 ## Join strategies
 
 `Polars` supports the following join strategies by specifying the `strategy` argument:
@@ -42,7 +40,7 @@ print(df_repairs)
 
 You want to answer this question: which of the cars have had repairs carried out?
 
-An inner join does not answer this question directly as it produces a `DataFrame` with multiple rows for each car that has had multiple repair jobs. This `DataFrame` must be filtered to remove duplicate cars.
+An inner join does not answer this question directly as it produces a `DataFrame` with multiple rows for each car that has had multiple repair jobs:
 
 ```python
 {{#include ../../examples/combining_data/combining_data_examples.py:78:78}}
@@ -82,9 +80,9 @@ print(df_anti_join)
 An `asof` join is like a left join except that we match on nearest key rather than equal keys.
 In `Polars` we can do an asof join with the `join` method and specifying `strategy="asof"`. However, for more flexibility we can use the `join_asof` method.
 
-Consider the following scenario: a stock market broker has a `DataFrame` `df_trades` showing transactions it has made for different stocks.
+Consider the following scenario: a stock market broker has a `DataFrame` called `df_trades` showing transactions it has made for different stocks.
 ```python
-{{#include ../../examples/combining_data/combining_data_examples.py:84:95}}
+{{#include ../../examples/combining_data/combining_data_examples.py:82:95}}
 print(df_trades)
 ```
 
@@ -92,7 +90,7 @@ print(df_trades)
 {{#include ../../outputs/combining_data/df_trades.txt}}
 ```
 
-The broker has another `DataFrame` `df_quotes` showing prices it has quoted.
+The broker has another `DataFrame` called `df_quotes` showing prices it has quoted for these stocks.
 ```python
 {{#include ../../examples/combining_data/combining_data_examples.py:97:108}}
 print(df_quotes)
@@ -102,7 +100,7 @@ print(df_quotes)
 {{#include ../../outputs/combining_data/df_quotes.txt}}
 ```
 
-You want to produce a `DataFrame` showing for each trade the most recent quote provided *before* the trade. You do this with `join_asof` (using the default `strategy = backward`).
+You want to produce a `DataFrame` showing for each trade the most recent quote provided *before* the trade. You do this with `join_asof` (using the default `strategy = "backward"`).
 To avoid joining between trades on one stock with a quote on another you must specify an exact preliminary join on the stock column with `by="stock"`.
 
 ```python
@@ -114,7 +112,7 @@ print(df_asof_join)
 {{#include ../../outputs/combining_data/df_asof_join.txt}}
 ```
 
-If you want to make sure that only quotes within a certain time range are joined to the trades you can specify the `tolerance` argument. In this case we want to make sure that the last preceding quote is within 5 minutes of the trade.
+If you want to make sure that only quotes within a certain time range are joined to the trades you can specify the `tolerance` argument. In this case we want to make sure that the last preceding quote is within 1 minute of the trade so we set `tolerance = "1m"`.
 ```python
 {{#include ../../examples/combining_data/combining_data_examples.py:112:112}}
 print(df_asof_tolerance_join)

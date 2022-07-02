@@ -19,7 +19,7 @@ print(df_vertical_concat)
 {{#include ../../outputs/combining_data/df_vertical_concat.txt}}
 ```
 
-Vertical concatenation fails when the dataframes do not have the same columns.
+Vertical concatenation fails when the dataframes do not have the same column names.
 
 ## Horizontal concatenation - getting wider
 
@@ -34,7 +34,7 @@ print(df_horizontal_concat)
 {{#include ../../outputs/combining_data/df_horizontal_concat.txt}}
 ```
 
-Horizontal concatenation fails when dataframes have overlapping columns.
+Horizontal concatenation fails when dataframes have overlapping columns or a different number of rows.
 
 ## Diagonal concatenation - getting longer, wider and `null`ier
 

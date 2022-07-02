@@ -109,4 +109,4 @@ df_quotes = pl.DataFrame(
 df_asof_join = df_trades.join_asof(df_quotes, on="time", by="stock")
 # Not implemented yet
 # df_trades.join_asof(df_quotes, on="time", by="stock", strategy="forward")
-df_asof_tolerance_join = df_trades.join_asof(df_quotes, on="time", by="stock", tolerance="5m")
+df_asof_tolerance_join = df_trades.join_asof(df_quotes, on="time", by="stock", tolerance="1m")
