@@ -16,6 +16,8 @@ from .combining_data_examples import (
     df_anti_join,
     df_trades,
     df_quotes,
+    df_asof_join,
+    df_asof_tolerance_join,
 )
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/combining_data")
@@ -37,6 +39,8 @@ variable_filename_tuples = [
     (df_anti_join, "df_anti_join"),
     (df_trades, "df_trades"),
     (df_quotes, "df_quotes"),
+    (df_asof_join, "df_asof_join,"),
+    (df_asof_tolerance_join, "df_asof_tolerance_join,"),
 ]
 
 for variable, filename in variable_filename_tuples:
