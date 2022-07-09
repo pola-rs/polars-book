@@ -11,7 +11,7 @@ There are a number of ways to concatenate data from separate DataFrames:
 In a vertical concatenation you combine all of the rows from a list of `DataFrames` into a single longer `DataFrame`.
 
 ```python
-{{#include ../../examples/combining_data/combining_data_examples.py:4:22}}
+{{#include ../../examples/combining_data/vertical_concat_example.py:4:22}}
 print(df_vertical_concat)
 ```
 
@@ -26,7 +26,7 @@ Vertical concatenation fails when the dataframes do not have the same column nam
 In a horizontal concatenation you combine all of the columns from a list of `DataFrames` into a single wider `DataFrame`.
 
 ```python
-{{#include ../../examples/combining_data/combining_data_examples.py:24:43}}
+{{#include ../../examples/combining_data/horizontal_concat_example.py:4:22}}
 print(df_horizontal_concat)
 ```
 
@@ -41,7 +41,7 @@ Horizontal concatenation fails when dataframes have overlapping columns or a dif
 In a diagonal concatenation you combine all of the row and columns from a list of `DataFrames` into a single longer and/or wider `DataFrame`.
 
 ```python
-{{#include ../../examples/combining_data/combining_data_examples.py:45:64}}
+{{#include ../../examples/combining_data/diagonal_concat_example.py:3:22}}
 print(df_diagonal_concat)
 ```
 
