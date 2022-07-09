@@ -8,7 +8,7 @@ We can resample by either:
 
 ## Downsampling to a lower frequency
 
-`Polars` views downsampling as a special case of the **groupby** operation and you can do this with `groupby_dynamic` and `groupby_rolling` - [see the temporal groupby page for examples](/timeseries/temporal_groupby.md).
+`Polars` views downsampling as a special case of the **groupby** operation and you can do this with `groupby_dynamic` and `groupby_rolling` - [see the temporal groupby page for examples](temporal_groupby.md).
 
 ## Upsampling to a higher frequency
 

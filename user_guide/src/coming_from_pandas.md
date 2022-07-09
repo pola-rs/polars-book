@@ -14,7 +14,7 @@ each row is indexed by its integer position in the table.
 
 Indexes are not needed! Not having them makes things easier - convince us otherwise!
 
-For more detail on how you select data in `Polars` see the [selecting data](selecting_data/selecting_data_intro.md)
+For more detail on how you select data in `Polars` see the [selecting data](howcani/selecting_data/selecting_data_intro.md)
 section.
 
 ### `Polars` uses Apache Arrow arrays to represent data in memory while `Pandas` uses `Numpy` arrays
