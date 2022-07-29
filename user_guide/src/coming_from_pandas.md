@@ -65,7 +65,7 @@ Let's go through some typical `Pandas` code and see how we might write that in `
 As there is no index in `Polars` there is no `.loc` or `iloc` method in `Polars` - and
 there is also no `SettingWithCopyWarning` in `Polars`.
 
-To learn more about how you select data in `Polars` see the [selecting data](selecting_data/selecting_data_intro.md) section.
+To learn more about how you select data in `Polars` see the [selecting data](howcani/selecting_data/selecting_data_intro.md) section.
 
 However, the best way to select data in `Polars` is to use the expression API. For
 example, if you want to select a column in `Pandas` you can do one of the following:
@@ -322,4 +322,4 @@ For float columns `Polars` permits the use of `NaN` values. These `NaN` values a
 
 In `Pandas` an integer column with missing values is cast to be a float column with `NaN` values for the missing values (unless using optional nullable integer dtypes). In `Polars` any missing values in an integer column are simply `null` values and the column remains an integer column.
 
-See the [missing data](missing_data.md) section for more details.
+See the [missing data](howcani/missing_data.md) section for more details.
