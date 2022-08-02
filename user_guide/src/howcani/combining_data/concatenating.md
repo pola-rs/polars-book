@@ -53,6 +53,6 @@ Diagonal concatenation generates nulls when the column names do not overlap.
 
 ## Rechunking
 
-Before a concatenation we have two dataframes `df1` and `df2`. In memory each of these is a separate Arrow `Table`. By default these `Tables` are copied to a new combined table during the concatenatation - this is known as **rechunking**. Rechunking makes further operations on the concatenated `DataFrame` faster.
+Before a concatenation we have two dataframes `df1` and `df2`. In memory each of these is a separate Arrow `Table`. Each column in `df1` and `df2` is in one or more chunks in memory. By default, during concatenation the chunks in each column are copied to a single new chunk - this is known as **rechunking**. Rechunking makes the join slower but further operations on the concatenated `DataFrame` faster.
 
-If you do not want Polars to rechunk the concatenated `DataFrame` and instead to keep track of which rows point to which original `Table` you specify `rechunk = False` when doing the concatenation.
+If you do not want Polars to rechunk the concatenated `DataFrame` you specify `rechunk = False` when doing the concatenation. This approach makes the join faster but further operations on the concatenated `DataFrame` slower.
