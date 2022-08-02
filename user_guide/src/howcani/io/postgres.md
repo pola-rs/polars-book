@@ -55,7 +55,7 @@ values = sql.SQL(",").join([sql.Placeholder() for _ in df.columns])
 table_id = "mytable"
 
 # prepare the insert query
-insert_stmt = sql.SQL("INSERT INTO ({}) VALUES({});").format(
+insert_stmt = sql.SQL("INSERT INTO {} ({}) VALUES({});").format(
     sql.Identifier(table_id), columns, values
 )
 
