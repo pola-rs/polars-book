@@ -51,8 +51,10 @@ print(df_diagonal_concat)
 
 Diagonal concatenation generates nulls when the column names do not overlap.
 
+When the dataframe shapes do not match and we have an overlapping semantic key then [we can join the dataframes](joining.md) instead of concatenating them.
+
+
 ## Rechunking
 
-Before a concatenation we have two dataframes `df1` and `df2`. Each column in `df1` and `df2` is in one or more chunks in memory. By default, during concatenation the chunks in each column are copied to a single new chunk - this is known as **rechunking**. Rechunking makes the join slower but further operations on the concatenated `DataFrame` faster.
-
-If you do not want Polars to rechunk the concatenated `DataFrame` you specify `rechunk = False` when doing the concatenation. This approach makes the join faster but further operations on the concatenated `DataFrame` slower.
+Before a concatenation we have two dataframes `df1` and `df2`. Each column in `df1` and `df2` is in one or more chunks in memory. By default, during concatenation the chunks in each column are copied to a single new chunk - this is known as **rechunking**. Rechunking is an expensive operation, but is often worth it because future operations will be faster.
+If you do not want Polars to rechunk the concatenated `DataFrame` you specify `rechunk = False` when doing the concatenation. 
