@@ -20,37 +20,37 @@ Use `make serve` to serve the user guide.
 
 ### Status of the code snippets
 
-| Example                                | `Rust` | `Python` |
-|----------------------------------------|--------|----------|
-| CSV files                              | ✗      | ✔        |
-| Parquet files                          | ✗      | ✔        |
-| Interact with an AWS bucket            | ✗      | ✔        |
-| Interact with an Azure Blob Storage    | ✗      | ✗        |
-| Interact with a GCP Storage            | ✗      | ✗        |
-| Interact with a database               | ✗      | ✗        |
-| Process strings                        | ✗      | ✔        |
-| Process timestamps                     | ✗      | ✔        |
-| Process missing values                 | ✗      | ✗        |
-| Process nested values (explode)        | ✗      | ✗        |
-| Rename columns and other manipulations*| ✗      | ✔        |
-| Column/row selection*                  | ✗      | ✔        |
-| Filter*                                | ✗      | ✔        |
-| GroupBy*                               | ✗      | ✔        |
-| Join                                   | ✗      | ✗        |
-| Sort*                                  | ✗      | ✔        |
-| Pivot/melt                             | ✗      | ✗        |
-| Aggregate*                             | ✗      | ✔        |
-| Conditionally apply*                   | ✗      | ✔        |
-| Horizontal fold                        | ✗      | ✗        |
-| Stacking                               | ✗      | ✗        |
-| Sampling                               | ✗      | ✗        |
-| `Arrow` interoperability               | ✗      | ✔        |
-| `NumPy` interoperability               | ✗      | ✔        |
-| Apply `NumPy` universal functions*     | ✗      | ✔        |
-| Apply custom functions (UDFs)          | ✗      | ✗        |
-| Apply window functions*                | ✗      | ✔        |
-| Apply rolling-window functions         | ✗      | ✗        |
-| Group statistics                       | ✗      | ✔        |
+| Example                                | `Rust` | `Python` | `JavaScript` |
+|----------------------------------------|--------|----------|--------------|
+| CSV files                              | ✗      | ✔        | ✗            |
+| Parquet files                          | ✗      | ✔        | ✗            |
+| Interact with an AWS bucket            | ✗      | ✔        | ✗            |
+| Interact with an Azure Blob Storage    | ✗      | ✗        | ✗            |
+| Interact with a GCP Storage            | ✗      | ✗        | ✗            |
+| Interact with a database               | ✗      | ✗        | ✗            |
+| Process strings                        | ✗      | ✔        | ✗            |
+| Process timestamps                     | ✗      | ✔        | ✗            |
+| Process missing values                 | ✗      | ✗        | ✗            |
+| Process nested values (explode)        | ✗      | ✗        | ✗            |
+| Rename columns and other manipulations*| ✗      | ✔        | ✗            |
+| Column/row selection*                  | ✗      | ✔        | ✗            |
+| Filter*                                | ✗      | ✔        | ✗            |
+| GroupBy*                               | ✗      | ✔        | ✗            |
+| Join                                   | ✗      | ✗        | ✗            |
+| Sort*                                  | ✗      | ✔        | ✗            |
+| Pivot/melt                             | ✗      | ✗        | ✗            |
+| Aggregate*                             | ✗      | ✔        | ✗            |
+| Conditionally apply*                   | ✗      | ✔        | ✗            |
+| Horizontal fold                        | ✗      | ✗        | ✗            |
+| Stacking                               | ✗      | ✗        | ✗            |
+| Sampling                               | ✗      | ✗        | ✗            |
+| `Arrow` interoperability               | ✗      | ✔        | ✗            |
+| `NumPy` interoperability               | ✗      | ✔        | ✗            |
+| Apply `NumPy` universal functions*     | ✗      | ✔        | ✗            |
+| Apply custom functions (UDFs)          | ✗      | ✗        | ✗            |
+| Apply window functions*                | ✗      | ✔        | ✗            |
+| Apply rolling-window functions         | ✗      | ✗        | ✗            |
+| Group statistics                       | ✗      | ✔        | ✗            |
 
 _* Some How Can I code examples not included but topic introduced elsewhere._
 

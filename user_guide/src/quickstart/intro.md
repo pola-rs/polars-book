@@ -2,10 +2,15 @@
 
 ## Installation
 
-Installing `Polars` is just a simple `pip install` away.
+Installing and using `Polars` is just a simple `pip install`, `cargo add`, or `yarn add` away.
 
 ```shell
+$ # Installing for python
 $ pip install polars
+$ # Installing into a Rust project
+$ cargo add polars
+$ # Installing for Node
+$ yarn add nodejs-polars
 ```
 
 All binaries are pre-built for `Python` v3.6+.
@@ -14,6 +19,8 @@ All binaries are pre-built for `Python` v3.6+.
 
 Below we show a simple snippet that parses a CSV file, filters it, and finishes with a
 groupby operation.
+
+<div class="tabbed-blocks">
 
 ```python
 import polars as pl
@@ -24,6 +31,32 @@ print(df.filter(pl.col("sepal_length") > 5)
       .agg(pl.all().sum())
 )
 ```
+
+```rust,noplayground
+use reqwest::blocking::Client;
+use polars::{prelude::*, io::mmap::ReaderBytes};
+
+fn main() -> Result<()> { 
+    let data: Vec<u8> = Client::new()
+        .get("https://j.mp/iriscsv")
+        .send()?
+        .text()?
+        .bytes()
+        .collect();
+    
+    let mut df = CsvReader::new(Cursor::new(data))
+        .has_header(true)
+        .finish()?;
+
+    let df = df
+        .try_apply("sepal_length", |s| s.gt(5) )?
+        .groupby(["species"])?
+        .sum()?;
+    
+    println!("{:?}", df);
+```
+
+</div>
 
 The snippet above will output:
 

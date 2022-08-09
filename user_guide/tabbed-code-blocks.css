@@ -1,0 +1,33 @@
+/* Implement tabbed code blocks for mdBook. */
+/* Credit to Rob Moss who provided this code
+ * to another mdbook project.  The original
+ * commit is available here https://github.com/robmoss/git-is-my-lab-book/pull/13
+ */
+
+.tabbed-blocks ul.tab-bar {
+    padding: 0;
+    margin: 0;
+}
+
+.tabbed-blocks ul.tab-bar li {
+    display: inline-block;
+    min-width: 4em;
+    padding: 0.5em; 1em;
+    text-align: center;
+    user-select: none;
+}
+
+/* Use the background and border colours from mdbook-admonish info blocks. */
+.tabbed-blocks ul.tab-bar li.active {
+    background-color: rgba(0, 184, 212, 0.1);
+    border-top: 4px solid #00b8d4;
+}
+
+.tabbed-blocks ul.tab-bar li {
+    border-top: 4px solid rgba(127, 127, 127, 0.5);
+}
+
+/* Remove vertical space between tabs and code blocks. */
+.tabbed-blocks pre {
+    margin-top: 0;
+}
