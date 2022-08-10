@@ -33,9 +33,6 @@ print(df.filter(pl.col("sepal_length") > 5)
 ```
 
 ```rust,noplayground
-use reqwest::blocking::Client;
-use polars::{prelude::*, io::mmap::ReaderBytes};
-
 fn main() -> Result<()> { 
     let data: Vec<u8> = Client::new()
         .get("https://j.mp/iriscsv")
@@ -44,16 +41,19 @@ fn main() -> Result<()> {
         .bytes()
         .collect();
     
-    let mut df = CsvReader::new(Cursor::new(data))
+    let df = CsvReader::new(Cursor::new(data))
         .has_header(true)
         .finish()?;
 
     let df = df
-        .try_apply("sepal_length", |s| s.gt(5) )?
+        .filter(&df.column("sepal_length")?.gt(5)?)?
         .groupby(["species"])?
         .sum()?;
     
     println!("{:?}", df);
+
+    Ok(())
+}
 ```
 
 </div>
