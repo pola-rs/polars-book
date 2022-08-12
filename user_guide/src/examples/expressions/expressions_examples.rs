@@ -23,7 +23,7 @@ fn main() -> Result<()> {
 
     println!("{:?}", names);
 
-    let out = df.clone().select([
+    let aggregations = df.clone().select([
         sum("random").alias("sum"),
         min("random").alias("min"),
         max("random").alias("max"),
@@ -32,7 +32,7 @@ fn main() -> Result<()> {
         col("random").var().alias("variance"),
     ]).collect()?;
 
-    println!("{:?}", out);
+    println!("{:?}", aggregations);
     
     let am_names = df.clone().select([
         col("names").filter(col("names").str().contains("am$")).count()
@@ -46,13 +46,11 @@ fn main() -> Result<()> {
     
     println!("{:?}", randoms);
 
-    let df = df.select(
-        [
-            col("*"), // Select all
-            col("random").sum().over([col("groups")]).alias("sum[random]/groups"),
-            col("random").list().over([col("names")]).alias("random/name"),
-        ]
-    ).collect()?;
+    let df = df.select([
+        col("*"), // Select all
+        col("random").sum().over([col("groups")]).alias("sum[random]/groups"),
+        col("random").list().over([col("names")]).alias("random/name"),
+    ]).collect()?;
 
     println!("{:?}", df);
 

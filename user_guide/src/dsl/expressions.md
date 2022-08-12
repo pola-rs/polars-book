@@ -182,7 +182,7 @@ print(df)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/expressions_examples.rs:49:57}}
+{{#include ../examples/expressions/expressions_examples.rs:49:55}}
 ```
 
 </div>
