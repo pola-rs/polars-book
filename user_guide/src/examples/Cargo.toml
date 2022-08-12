@@ -1,0 +1,13 @@
+[package]
+name = "user_guide"
+version = "0.1.0"
+edition = "2021"
+
+[[example]]
+name = "expressions"
+path = "expressions/expressions_examples.rs"
+
+[dependencies]
+polars = { version = "0.23.2", features = ["lazy", "csv-file", "strings", "temporal", "dtype-duration"]}
+color-eyre = "0.6.2"
+rand = "0.8.5"
