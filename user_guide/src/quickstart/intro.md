@@ -136,4 +136,5 @@ let df = df
     .agg([col("*" ).sum()])
     .collect()?;
 ```
+
 </div>
