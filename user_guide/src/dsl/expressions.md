@@ -57,7 +57,7 @@ print(df)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/expressions_examples.rs:1:18}}
+{{#include ../examples/expressions/expressions.rs:1:18}}
 ```
 
 </div>
@@ -84,7 +84,7 @@ print(out)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/expressions_examples.rs:19:24}}
+{{#include ../examples/expressions/expressions.rs:19:24}}
 ```
 
 </div>
@@ -106,7 +106,7 @@ print(out)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/expressions_examples.rs:26:35}}
+{{#include ../examples/expressions/expressions.rs:26:35}}
 ```
 
 </div>
@@ -128,7 +128,7 @@ print(out)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/expressions_examples.rs:37:41}}
+{{#include ../examples/expressions/expressions.rs:37:41}}
 ```
 
 </div>
@@ -158,7 +158,7 @@ print(out)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/expressions_examples.rs:43:47}}
+{{#include ../examples/expressions/expressions.rs:43:47}}
 ```
 
 </div>
@@ -182,7 +182,7 @@ print(df)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/expressions_examples.rs:49:55}}
+{{#include ../examples/expressions/expressions.rs:49:55}}
 ```
 
 </div>

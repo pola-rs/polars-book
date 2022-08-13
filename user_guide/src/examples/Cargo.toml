@@ -5,7 +5,11 @@ edition = "2021"
 
 [[example]]
 name = "expressions"
-path = "expressions/expressions_examples.rs"
+path = "expressions/expressions.rs"
+
+[[example]]
+name = "contexts"
+path = "expressions/contexts.rs"
 
 [dependencies]
 polars = { version = "0.23.2", features = ["lazy", "csv-file", "strings", "temporal", "dtype-duration"]}
