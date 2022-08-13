@@ -16,43 +16,48 @@ fn main() -> Result<()> {
 
     println!("{:?}", df.clone().collect());
 
-    let names = df.clone().select([
+let out = df.clone().select(
+    [
         col("names").n_unique().alias("unique_names_1"),
         col("names").unique().count().alias("unique_names_2"),
-    ]).collect()?;
+    ]
+).collect()?;
+println!("{:?}", out);
 
-    println!("{:?}", names);
-
-    let aggregations = df.clone().select([
+let out = df.clone().select(
+    [
         sum("random").alias("sum"),
         min("random").alias("min"),
         max("random").alias("max"),
         col("random").max().alias("other_max"),
         col("random").std().alias("std dev"),
         col("random").var().alias("variance"),
-    ]).collect()?;
+    ]
+).collect()?;
+println!("{:?}", out);
 
-    println!("{:?}", aggregations);
-    
-    let am_names = df.clone().select([
+let out = df.clone().select(
+    [
         col("names").filter(col("names").str().contains("am$")).count()
-    ]).collect();
+    ]
+).collect();
+println!("{:?}", out);
 
-    println!("{:?}", am_names);
-
-    let randoms = df.clone().select([
+let out = df.clone().select(
+    [
         when(col("random").gt(0.5)).then(0).otherwise(col("random")) * sum("nrs"),
-    ]).collect()?;
-    
-    println!("{:?}", randoms);
+    ]
+).collect()?;
+println!("{:?}", out);
 
-    let df = df.select([
+let df = df.select(
+    [
         col("*"), // Select all
         col("random").sum().over([col("groups")]).alias("sum[random]/groups"),
         col("random").list().over([col("names")]).alias("random/name"),
-    ]).collect()?;
-
-    println!("{:?}", df);
+    ]
+).collect()?;
+println!("{:?}", df);
 
     Ok(())
 }
