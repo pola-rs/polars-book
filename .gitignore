@@ -14,3 +14,4 @@ __pycache__
 user_guide/src/examples/target
 .vscode
 cargo.lock
+.DS_Store
