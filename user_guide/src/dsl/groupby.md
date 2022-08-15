@@ -37,13 +37,7 @@ This all feels terribly limiting, especially because we often need those `lambda
 keeping in mind bytecode **and** the GIL costs have to be paid.
 
 To mitigate this, `Polars` implements a powerful syntax defined not only in its lazy API,
-but also in its eager API.
-
-## Polars Expressions
-
-In the introduction on the previous page we discussed that using custom Python functions,
-killed parallelization, and that we can use the expressions of the lazy API to mitigate
-this. Let's take a look at what that means.
+but also in its eager API.  Let's take a look at what that means.
 
 We can start with the simple
 [US congress `dataset`](https://github.com/unitedstates/congress-legislators).

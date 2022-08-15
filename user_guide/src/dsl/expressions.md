@@ -2,18 +2,30 @@
 
 The following is an expression:
 
-`pl.col("foo").sort().head(2)`
+<div class="tabbed-blocks">
+
+```python
+pl.col("foo").sort().head(2)
+```
+
+```rust,noplayground
+df.column("foo")?.sort(false).head(Some(2));
+```
+
+</div>
 
 The snippet above says:
 
 1. Select column "foo"
-1. Then sort the column
+1. Then sort the column (not in reversed order)
 1. Then take the first two values of the sorted output
 
 The power of expressions is that every expression produces a new expression, and that they
 can be *piped* together. You can run an expression by passing them to one of `Polars` execution contexts.
 
 Here we run two expressions by running `df.select`:
+
+<div class="tabbed-blocks">
 
 ```python
 df.select([
@@ -22,6 +34,14 @@ df.select([
 ])
 ```
 
+```rust,noplayground
+df.select([
+   col("foo").sort(Default::default()).head(Some(2)),
+   col("bar").filter(col("foo").eq(lit(1))).sum(),
+]).collect()?;
+```
+
+</div>
 All expressions are ran in parallel, meaning that separate `Polars` expressions are **embarrassingly
 parallel**. Note that within an expression there may be more parallelization going on.
 
@@ -29,10 +49,18 @@ parallel**. Note that within an expression there may be more parallelization goi
 
 In this section we will go through some examples, but first let's create a dataset:
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/expressions/dataset.py}}
 print(df)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/expressions.rs:1:17}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/expressions/dataset.txt}}
@@ -48,10 +76,18 @@ We can count the unique values in a column. Note that we are creating the same r
 different ways. To avoid duplicate column names in the `DataFrame`, we could use an
 `alias` expression that can rename the expression.
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/expressions/expressions_examples_1.py:4:}}
 print(out)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/expressions.rs:19:25}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/expressions/example_1.txt}}
@@ -62,10 +98,18 @@ print(out)
 We can do various aggregations. Below are examples of some of them, but there are more such as
 `median`, `mean`, `first`, etc.
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/expressions/expressions_examples_2.py:4:}}
 print(out)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/expressions.rs:27:37}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/expressions/example_2.txt}}
@@ -76,10 +120,18 @@ print(out)
 We can also do some pretty complex things. In the next snippet we count all names ending
 with the string `"am"`.
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/expressions/expressions_examples_3.py:4:}}
 print(out)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/expressions.rs:39:44}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/expressions/example_3.txt}}
@@ -98,10 +150,18 @@ Note that you can pass any expression, or just base expressions like `pl.col("fo
 
 Finally, we multiply this with the result of a `sum` expression:
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/expressions/expressions_examples_4.py:4:}}
 print(out)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/expressions.rs:46:51}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/expressions/example_4.txt}}
@@ -114,10 +174,18 @@ In the examples below we do a GROUPBY OVER `"groups"` and AGGREGATE SUM of `"ran
 we GROUPBY OVER `"names"` and AGGREGATE a LIST of `"random"`. These window functions can be combined with other expressions
 and are an efficient way to determine group statistics. See more on those group statistics [here](POLARS_PY_REF_GUIDE/expression.html#aggregation).
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/expressions/window.py:4:}}
 print(df)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/expressions.rs:53:60}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/expressions/window_0.txt}}
