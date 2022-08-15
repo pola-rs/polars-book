@@ -6,8 +6,10 @@ src = "src"
 title = "Polars - User Guide"
 
 [output.html]
-default-theme = "Ayu"
+default-theme   = "Ayu"
 mathjax-support = true
+additional-css  = ["tabbed-code-blocks.css"]
+additional-js   = ["tabbed-code-blocks.js"]
 
 [output.html.fold]
 enable = true

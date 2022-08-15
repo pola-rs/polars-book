@@ -10,3 +10,8 @@ __pycache__
 *.png
 *.swp
 *.txt
+
+user_guide/src/examples/target
+.vscode
+cargo.lock
+.DS_Store
