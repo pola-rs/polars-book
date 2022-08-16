@@ -30,17 +30,27 @@ fn main() -> Result<()> {
     println!("{:?}", &dataset);
 
     let df = dataset.clone().lazy()
-        .groupby(&"first_name")
-        .agg([
-            count(),
-            col("gender").list(),
-            first("last_name"),
-        ])
-        .sort("count", true)
-        .limit(5)
-        .collect();
-
+    .drop_columns([
+        "ballotpedia_id",
+        "washington_post_id",
+        "icpsr_id",
+        "wikipedia_id"
+    ]).collect()?;
+        
     println!("{:?}", df);
+
+    // let df = dataset.clone().lazy()
+    //     .groupby(&"first_name")
+    //     .agg([
+    //         count(),
+    //         col("gender").list(),
+    //         // first("last_name"),
+    //     ])
+    //     .sort("count", Default::default())
+    //     .limit(5)
+    //     .collect();
+
+    // println!("{:?}", df);
 
     Ok(())
 }

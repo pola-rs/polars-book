@@ -26,6 +26,9 @@ blazingly fast!
 
 ## Do not kill the parallelization!
 
+The following is specific to `Python`, and doesn't apply to `Rust`.  Within `Rust`,
+blocks and closures (_lambdas_) can, and will, be executed concurrently.
+
 We have all heard that `Python` is slow, and does "not scale." Besides the overhead of
 running "slow" bytecode, `Python` has to remain within the constraints of the Global
 Interpreter Lock (GIL). This means that if you were to use a `lambda` or a custom `Python`
@@ -42,9 +45,17 @@ but also in its eager API.  Let's take a look at what that means.
 We can start with the simple
 [US congress `dataset`](https://github.com/unitedstates/congress-legislators).
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/groupby_dsl/snippet1.py:5:}}
 ```
+
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs}}
+```
+
+</div>
 
 #### Basic aggregations
 
