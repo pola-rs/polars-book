@@ -22,7 +22,7 @@ for size in np.array([1e4, 1e5, 1e6, 1e7], dtype=int):
     sg = np.random.choice(str_groups, size)
     v = np.random.randn(size)
     df = pl.DataFrame({"groups": g, "values": v, "str": sg})
-    df.to_csv(f"{DATA_DIR}/{size}.csv")
+    df.write_csv(f"{DATA_DIR}/{size}.csv")
     print(f"  {int(size)} rows of GroupBy data created")
 
 # Join benchmark data
@@ -53,8 +53,8 @@ right = pl.DataFrame(
     }
 )
 
-left.to_csv(f"{DATA_DIR}/join_left_80000.csv")
-right.to_csv(f"{DATA_DIR}/join_right_80000.csv")
+left.write_csv(f"{DATA_DIR}/join_left_80000.csv")
+right.write_csv(f"{DATA_DIR}/join_right_80000.csv")
 
 print(f"  Left data created (shape: {left.shape})")
 print(f"  Right data created (shape: {right.shape})")

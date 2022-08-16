@@ -78,23 +78,12 @@ print(list_select_df)
 {{#include ../../outputs/selecting_data/list_select_df.txt}}
 ```
 
-### Select based on a Boolean list:
-
-```python
-{{#include ../../examples/selecting_data/indexing_selecting_examples.py:24:26}}
-print(boolean_list_select_df)
-```
-
-```text
-{{#include ../../outputs/selecting_data/boolean_list_select_df.txt}}
-```
-
 ### Select columns with an expression
 
 To select based on a condition on the column name:
 
 ```python
-{{#include ../../examples/selecting_data/indexing_selecting_examples.py:28:28}}
+{{#include ../../examples/selecting_data/indexing_selecting_examples.py:22:22}}
 print(condition_select_df)
 ```
 
@@ -105,7 +94,7 @@ print(condition_select_df)
 To select based on the dtype of the columns:
 
 ```python
-{{#include ../../examples/selecting_data/indexing_selecting_examples.py:30:30}}
+{{#include ../../examples/selecting_data/indexing_selecting_examples.py:24:24}}
 print(dtype_select_df)
 ```
 
