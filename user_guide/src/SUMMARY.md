@@ -60,5 +60,6 @@
     - [Predicate pushdown](optimizations/lazy/predicate-pushdown.md)
     - [Projection pushdown](optimizations/lazy/projection-pushdown.md)
     - [Other optimizations](optimizations/lazy/other-optimizations.md)
+- [Testing](testing/schema.md)
 - [Reference guides](references.md)
 - [Contributing](contributing.md)
