@@ -2,10 +2,15 @@
 
 ## Installation
 
-Installing `Polars` is just a simple `pip install` away.
+Installing and using `Polars` is just a simple `pip install`, `cargo add`, or `yarn add` away.
 
 ```shell
+$ # Installing for python
 $ pip install polars
+$ # Installing into a Rust project
+$ cargo add polars
+$ # Installing for Node
+$ yarn add nodejs-polars
 ```
 
 All binaries are pre-built for `Python` v3.6+.
@@ -13,7 +18,7 @@ All binaries are pre-built for `Python` v3.6+.
 ## Quick start
 
 Below we show a simple snippet that parses a CSV file, filters it, and finishes with a
-groupby operation.
+groupby operation.  This example is presented in python only, as the "eager" API is not the preferred model in Rust.
 
 ```python
 import polars as pl
@@ -49,6 +54,8 @@ datatype as headers.
 
 If we want to run this query in `lazy Polars` we'd write:
 
+<div class="tabbed-blocks">
+
 ```python
 import polars as pl
 
@@ -62,11 +69,41 @@ print(
 )
 ```
 
-When the data is stored locally, we can also use `scan_csv` to run the query in lazy polars.
+```rust,noplayground
+use color_eyre::{Result};
+use polars::prelude::*;
+use reqwest::blocking::Client;
+
+fn main() -> Result<()> { 
+    let data: Vec<u8> = Client::new()
+        .get("https://j.mp/iriscsv")
+        .send()?
+        .text()?
+        .bytes()
+        .collect();
+
+    let df = CsvReader::new(Cursor::new(data))
+        .has_header(true)
+        .finish()?
+        .lazy()
+        .filter(col("sepal_length").gt(5))
+        .groupby([col("species")])
+        .agg([col("*").sum()])
+        .collect()?;
+
+    println!("{:?}", df);
+
+    Ok(())
+}
+```
+
+</div>
+
+When the data is stored locally, we can also use `scan_csv` in Python, or `LazyCsvReader` in Rust to run the query in lazy polars.
 
 ## References
 
-If you want to dive right into the `Python` API docs, check the [the reference docs](POLARS_PY_REF_GUIDE).
+If you want to dive right into the `Python` API docs, check the [the reference docs](POLARS_PY_REF_GUIDE).  Alternatively, the `Rust` API docs are available on [docs.rs](https://docs.rs/polars/latest/polars/).
 
 ### Lazy API
 
@@ -79,6 +116,8 @@ Going from eager to lazy is often as simple as starting your query with `.lazy()
 
 So the eager snippet above would become:
 
+<div class="tabbed-blocks">
+
 ```python
 (
     df.lazy()
@@ -88,3 +127,14 @@ So the eager snippet above would become:
     .collect()
 )
 ```
+
+```rust,noplayground
+let df = df
+    .lazy()
+    .filter(col("sepal_length").gt(5))
+    .groupby([col("species")])
+    .agg([col("*" ).sum()])
+    .collect()?;
+```
+
+</div>
