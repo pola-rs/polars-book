@@ -1,5 +1,5 @@
 astdocs.py
-data
+./data
 outputs
 reference_guide_python/src
 __pycache__
