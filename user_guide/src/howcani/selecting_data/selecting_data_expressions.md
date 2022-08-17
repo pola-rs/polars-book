@@ -27,7 +27,7 @@ print(df)
 We can select rows by using the `filter` method. In the `filter` method we pass the condition we are using to select the rows as an expression:
 
 ```python
-{{#include ../../examples/selecting_data/indexing_selecting_examples.py:16:16}}
+{{#include ../../examples/selecting_data/indexing_selecting_examples.py:14:14}}
 print(filter_df)
 ```
 
@@ -38,7 +38,7 @@ print(filter_df)
 We can specify multiple conditions in `filter` using the `&` operator:
 
 ```python
-{{#include ../../examples/selecting_data/indexing_selecting_examples.py:18:18}}
+{{#include ../../examples/selecting_data/indexing_selecting_examples.py:16:16}}
 print(multi_filter_df)
 ```
 
@@ -59,7 +59,7 @@ We select columns using the `select` method. In the `select` method we can speci
 ### Select a single column
 
 ```python
-{{#include ../../examples/selecting_data/indexing_selecting_examples.py:20:20}}
+{{#include ../../examples/selecting_data/indexing_selecting_examples.py:18:18}}
 print(single_select_df)
 ```
 
@@ -70,7 +70,7 @@ print(single_select_df)
 ### Select a list of columns
 
 ```python
-{{#include ../../examples/selecting_data/indexing_selecting_examples.py:22:22}}
+{{#include ../../examples/selecting_data/indexing_selecting_examples.py:20:20}}
 print(list_select_df)
 ```
 
@@ -107,7 +107,7 @@ print(dtype_select_df)
 We can combine the `filter` and `select` methods to select rows and columns
 
 ```python
-{{#include ../../examples/selecting_data/indexing_selecting_examples.py:14:14}}
+{{#include ../../examples/selecting_data/indexing_selecting_examples.py:12:12}}
 print(expression_df)
 ```
 
