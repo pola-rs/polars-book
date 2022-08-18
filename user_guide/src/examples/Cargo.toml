@@ -15,8 +15,16 @@ path = "expressions/contexts.rs"
 name = "groupby"
 path = "groupby_dsl/groupby.rs"
 
+[[example]]
+name = "fold"
+path = "expressions/fold.rs"
+
+[[example]]
+name = "window"
+path = "expressions/window.rs"
+
 [dependencies]
-polars = { version = "0.23.2", features = ["lazy", "csv-file", "strings", "temporal", "dtype-duration", "dtype-categorical"]}
+polars = { version = "0.23.2", features = ["lazy", "csv-file", "strings", "temporal", "dtype-duration", "dtype-categorical", "concat_str"]}
 color-eyre = "0.6.2"
 rand = "0.8.5"
 reqwest = { version = "0.11.11", features = ["blocking"]}
