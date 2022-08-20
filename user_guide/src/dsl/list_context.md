@@ -1,7 +1,8 @@
 # List context
 
 An expression context we haven't discussed yet is the `List` context. This means simply we
-can apply any expression on the elements of a `List`.
+can apply any expression on the elements of a `List`.  A note for `Rust` users, these features
+require the `list` feature flag.
 
 # Row wise computations
 
@@ -13,10 +14,18 @@ Luckily we have a data type that has the guarantee that the rows are homogeneous
 
 Let's say we have the following data:
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/expressions/list_row_wise_1.py:3:}}
 print(grades)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/list_row_wise.rs:1:12}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/expressions/list_row_wise_1.txt}}
@@ -26,10 +35,18 @@ If we want to compute the `rank` of all the columns except for `"student"`, we c
 
 This would give:
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/expressions/list_row_wise_2.py:4:}}
 print(out)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/list_row_wise.rs:14:17}}
+```
+
+</div>
 
 ```python
 out = grades.select([
@@ -43,7 +60,7 @@ out = grades.select([
 
 ## Running polars expression on list elements
 
-We can run **any** polars expression on the elements of a list with the `arr.eval` expression!
+We can run **any** polars expression on the elements of a list with the `arr.eval` (`arr().eval` in Rust) expression!
 These expressions entirely run on polars' query engine and can run in parallel so will be super fast.
 
 Let's expand the example from above with something a little more interesting. Pandas allows you to compute the percentages
@@ -52,6 +69,10 @@ But because expressions are so versatile we can create our own percentage rank e
 
 Note that we must `select` the list's element from the context. When we apply expressions over list elements, we use `pl.element()` to select
 the element of a list.
+
+Also Note that to use `arr().eval` in Rust requires the `list_eval` feature flag.
+
+<div class="tabbed-blocks">
 
 ```python
 # the percentage rank expression
@@ -68,6 +89,12 @@ grades.with_column(
     pl.col("all_grades").arr.eval(rank_pct, parallel=True).alias("grades_rank")
 ])
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/list_row_wise.rs:19:31}}
+```
+
+</div>
 
 This outputs:
 
