@@ -48,11 +48,11 @@ We can start with the simple
 <div class="tabbed-blocks">
 
 ```python
-{{#include ../examples/groupby_dsl/snippet1.py:5:}}
+{{#include ../examples/groupby_dsl/dataset.py:5:}}
 ```
 
 ```rust,noplayground
-{{#include ../examples/groupby_dsl/groupby.rs}}
+{{#include ../examples/groupby_dsl/groupby.rs:7:28}}
 ```
 
 </div>
@@ -77,9 +77,17 @@ Per GROUP `"first_name"` we
 Besides the aggregation, we immediately sort the result and limit to the top `5` so that
 we have a nice summary overview.
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/groupby_dsl/snippet1.py}}
 ```
+
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs:32:43}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/groupby_dsl/output1.txt}}
@@ -91,9 +99,17 @@ It's that easy! Let's turn it up a notch. Let's say we want to know how
 many delegates of a "state" are "Pro" or "Anti" administration. We could directly query
 that in the aggregation without the need of `lambda` or grooming the `DataFrame`.
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/groupby_dsl/snippet2.py}}
 ```
+
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs:45:57}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/groupby_dsl/output2.txt}}
@@ -101,9 +117,17 @@ that in the aggregation without the need of `lambda` or grooming the `DataFrame`
 
 Similarly,  this could also be done with a nested GROUPBY, but that doesn't help show off some of these nice features. 😉
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/groupby_dsl/snippet3.py}}
 ```
+
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs:59:69}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/groupby_dsl/output3.txt}}
@@ -120,9 +144,17 @@ functions for clarity. These functions don't cost us anything. That is because w
 create `Polars` expressions, we don't apply a custom function over a `Series` during
 runtime of the query.
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/groupby_dsl/snippet4.py}}
 ```
+
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs:71:94}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/groupby_dsl/output4.txt}}
@@ -133,9 +165,17 @@ runtime of the query.
 It's common to see a `DataFrame` being sorted for the sole purpose of managing the ordering during a
 GROUPBY operation. Let's say that we want to get the names of the oldest and youngest politicians per state. We could SORT and GROUPBY.
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/groupby_dsl/snippet5.py}}
 ```
+
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs:96:112}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/groupby_dsl/output5.txt}}
@@ -144,9 +184,17 @@ GROUPBY operation. Let's say that we want to get the names of the oldest and you
 However, **if** we also want to sort the names alphabetically, this
 breaks. Luckily we can sort in a `groupby` context separate from the `DataFrame`.
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/groupby_dsl/snippet6.py}}
 ```
+
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs:114:127}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/groupby_dsl/output6.txt}}
@@ -156,9 +204,17 @@ We can even sort by another column in the `groupby` context. If we want to know 
 alphabetically sorted name is male or female we could add:
 `pl.col("gender").sort_by("first_name").first().alias("gender")`
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/groupby_dsl/snippet7.py}}
 ```
+
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs:129:144}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/groupby_dsl/output7.txt}}
