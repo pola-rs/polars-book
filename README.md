@@ -34,12 +34,12 @@ Use `make serve` to serve the user guide.
 | Process nested values (explode)        | ✗      | ✗        | ✗            |
 | Rename columns and other manipulations*| ✗      | ✔        | ✗            |
 | Column/row selection*                  | ✗      | ✔        | ✗            |
-| Filter*                                | ✗      | ✔        | ✗            |
-| GroupBy*                               | ✗      | ✔        | ✗            |
-| Join                                   | ✗      | ✗        | ✗            |
-| Sort*                                  | ✗      | ✔        | ✗            |
+| Filter*                                | ✔      | ✔        | ✗            |
+| GroupBy*                               | ✔      | ✔        | ✗            |
+| Join                                   | ✔      | ✗        | ✗            |
+| Sort*                                  | ✔      | ✔        | ✗            |
 | Pivot/melt                             | ✗      | ✗        | ✗            |
-| Aggregate*                             | ✗      | ✔        | ✗            |
+| Aggregate*                             | ✔      | ✔        | ✗            |
 | Conditionally apply*                   | ✗      | ✔        | ✗            |
 | Horizontal fold                        | ✗      | ✗        | ✗            |
 | Stacking                               | ✗      | ✗        | ✗            |

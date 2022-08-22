@@ -22,7 +22,7 @@ print(grades)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/list_row_wise.rs:1:12}}
+{{#include ../examples/expressions/list_row_wise.rs:6:12}}
 ```
 
 </div>
