@@ -33,10 +33,18 @@ df.with_column([
 Use cases for `map` in the `groupby` context are slim. They are only used for performance reasons, but can quite easily
 lead to incorrect results. Let me explain why.
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/expressions/map_function_1.py:3:}}
 print(df)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/map_function.rs:6:21}}
+```
+
+</div>
 
 ```
 shape: (3, 2)
@@ -96,10 +104,18 @@ That is:
 
 So with `apply` we should be able to fix our example:
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/expressions/apply_function_1.py:4:}}
 print(out)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/apply_function.rs:11:21}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/expressions/apply_fun_1.txt}}
@@ -123,10 +139,18 @@ achieve the same goals.
 In this example we create a global `counter` and then add the integer `1` to the global state at every element processed.
 Every iteration the result of the increment will be added to the element value.
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/expressions/apply_function_2.py:4:}}
 print(out)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/apply_function.rs:11:21}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/expressions/apply_fun_2.txt}}
