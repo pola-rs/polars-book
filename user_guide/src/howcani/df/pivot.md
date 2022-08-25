@@ -27,16 +27,20 @@ print(df)
 ## Eager
 
 ```python
-{{#include ../../examples/pivot/eager.py:2:}}
+{{#include ../../examples/pivot/eager.py:3:}}
 ```
 
 ## Lazy
 
-Lazy does not have a pivot in the API, to use pivots in `lazy`, we can use a `map` to
-apply an eager custom function in a `lazy` computation node.
+A polars `LazyFrame` always need to no the schema of a computation statically (before collecting the query).
+As a pivot's output schema depends on the data, and it is therefore impossible to determine the schema without
+running the query.
+
+Polars could have abstracted this fact for you just like Spark does, but we don't want you to shoot yourself in the foot
+with a shotgun. The cost should be clear up front.
 
 ```python
-{{#include ../../examples/pivot/lazy.py:2:}}
+{{#include ../../examples/pivot/lazy.py:3:}}
 print(out)
 ```
 
