@@ -26,8 +26,7 @@ blazingly fast!
 
 ## Do not kill the parallelization!
 
-The following is specific to `Python`, and doesn't apply to `Rust`.  Within `Rust`,
-blocks and closures (_lambdas_) can, and will, be executed concurrently.
+> The following is specific to `Python`, and doesn't apply to `Rust`.  Within `Rust`, blocks and closures (_lambdas_) can, and will, be executed concurrently.
 
 We have all heard that `Python` is slow, and does "not scale." Besides the overhead of
 running "slow" bytecode, `Python` has to remain within the constraints of the Global
@@ -52,7 +51,7 @@ We can start with the simple
 ```
 
 ```rust,noplayground
-{{#include ../examples/groupby_dsl/groupby.rs:7:28}}
+{{#include ../examples/groupby_dsl/groupby.rs:dataset}}
 ```
 
 </div>
@@ -71,7 +70,7 @@ Per GROUP `"first_name"` we
 - aggregate the gender values groups to a list:
   - full form: `pl.col("gender").list()`
 - get the first value of column `"last_name"` in the group:
-  - short form: `pl.first("last_name")`
+  - short form: `pl.first("last_name")` (not available in Rust)
   - full form: `pl.col("last_name").first()`
 
 Besides the aggregation, we immediately sort the result and limit to the top `5` so that
@@ -84,7 +83,7 @@ we have a nice summary overview.
 ```
 
 ```rust,noplayground
-{{#include ../examples/groupby_dsl/groupby.rs:32:43}}
+{{#include ../examples/groupby_dsl/groupby.rs:aggregation}}
 ```
 
 </div>
@@ -106,7 +105,7 @@ that in the aggregation without the need of `lambda` or grooming the `DataFrame`
 ```
 
 ```rust,noplayground
-{{#include ../examples/groupby_dsl/groupby.rs:45:57}}
+{{#include ../examples/groupby_dsl/groupby.rs:condtional}}
 ```
 
 </div>
@@ -124,7 +123,7 @@ Similarly,  this could also be done with a nested GROUPBY, but that doesn't help
 ```
 
 ```rust,noplayground
-{{#include ../examples/groupby_dsl/groupby.rs:59:69}}
+{{#include ../examples/groupby_dsl/groupby.rs:nested_groupby}}
 ```
 
 </div>
@@ -139,10 +138,9 @@ We can also filter the groups. Let's say we want to compute a mean per group, bu
 don't want to include all values from that group, and we also don't want to filter the
 rows from the `DataFrame` (because we need those rows for another aggregation).
 
-In the example below we show how that can be done. Note that we can make `Python`
-functions for clarity. These functions don't cost us anything. That is because we only
-create `Polars` expressions, we don't apply a custom function over a `Series` during
-runtime of the query.
+In the example below we show how that can be done.
+
+> Note that we can make `Python` functions for clarity. These functions don't cost us anything. That is because we only create `Polars` expressions, we don't apply a custom function over a `Series` during runtime of the query.  Of course, you can make functions that return expressions in Rust, too.
 
 <div class="tabbed-blocks">
 
@@ -151,7 +149,7 @@ runtime of the query.
 ```
 
 ```rust,noplayground
-{{#include ../examples/groupby_dsl/groupby.rs:71:94}}
+{{#include ../examples/groupby_dsl/groupby.rs:filtering}}
 ```
 
 </div>
@@ -162,8 +160,7 @@ runtime of the query.
 
 #### Sorting
 
-It's common to see a `DataFrame` being sorted for the sole purpose of managing the ordering during a
-GROUPBY operation. Let's say that we want to get the names of the oldest and youngest politicians per state. We could SORT and GROUPBY.
+It's common to see a `DataFrame` being sorted for the sole purpose of managing the ordering during a GROUPBY operation. Let's say that we want to get the names of the oldest and youngest politicians per state. We could SORT and GROUPBY.
 
 <div class="tabbed-blocks">
 
@@ -172,7 +169,7 @@ GROUPBY operation. Let's say that we want to get the names of the oldest and you
 ```
 
 ```rust,noplayground
-{{#include ../examples/groupby_dsl/groupby.rs:96:112}}
+{{#include ../examples/groupby_dsl/groupby.rs:sorting1}}
 ```
 
 </div>
@@ -181,8 +178,7 @@ GROUPBY operation. Let's say that we want to get the names of the oldest and you
 {{#include ../outputs/groupby_dsl/output5.txt}}
 ```
 
-However, **if** we also want to sort the names alphabetically, this
-breaks. Luckily we can sort in a `groupby` context separate from the `DataFrame`.
+However, **if** we also want to sort the names alphabetically, this breaks. Luckily we can sort in a `groupby` context separate from the `DataFrame`.
 
 <div class="tabbed-blocks">
 
@@ -191,7 +187,7 @@ breaks. Luckily we can sort in a `groupby` context separate from the `DataFrame`
 ```
 
 ```rust,noplayground
-{{#include ../examples/groupby_dsl/groupby.rs:114:127}}
+{{#include ../examples/groupby_dsl/groupby.rs:sorting2}}
 ```
 
 </div>
@@ -200,9 +196,7 @@ breaks. Luckily we can sort in a `groupby` context separate from the `DataFrame`
 {{#include ../outputs/groupby_dsl/output6.txt}}
 ```
 
-We can even sort by another column in the `groupby` context. If we want to know if the
-alphabetically sorted name is male or female we could add:
-`pl.col("gender").sort_by("first_name").first().alias("gender")`
+We can even sort by another column in the `groupby` context. If we want to know if the alphabetically sorted name is male or female we could add: `pl.col("gender").sort_by("first_name").first().alias("gender")`
 
 <div class="tabbed-blocks">
 
@@ -211,7 +205,7 @@ alphabetically sorted name is male or female we could add:
 ```
 
 ```rust,noplayground
-{{#include ../examples/groupby_dsl/groupby.rs:129:144}}
+{{#include ../examples/groupby_dsl/groupby.rs:sorting3}}
 ```
 
 </div>
@@ -222,9 +216,7 @@ alphabetically sorted name is male or female we could add:
 
 ### Conclusion
 
-In the examples above we've seen that we can do a lot by combining expressions. By doing
-so we delay the use of custom `Python` functions that slow down the queries (by the slow
-nature of Python AND the GIL).
+In the examples above we've seen that we can do a lot by combining expressions. By doing so we delay the use of custom `Python` functions that slow down the queries (by the slow nature of Python AND the GIL).
 
 If we are missing a type expression let us know by opening a
 [feature request](https://github.com/pola-rs/polars/issues/new/choose)!

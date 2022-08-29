@@ -4,15 +4,16 @@ use polars::prelude::*;
 use reqwest::blocking::Client;
 
 fn main() -> Result<()> { 
+// ANCHOR: dataset
 let url = "https://theunitedstates.io/congress-legislators/legislators-historical.csv";
 
 let mut schema = Schema::new();
 schema.with_column("first_name".to_string(), DataType::Categorical(None));
-schema.with_column("gender".to_string(), DataType::Categorical(None));
-schema.with_column("type".to_string(), DataType::Categorical(None));
-schema.with_column("state".to_string(), DataType::Categorical(None));
-schema.with_column("party".to_string(), DataType::Categorical(None));
-schema.with_column("birthday".to_string(), DataType::Date);
+schema.with_column(    "gender".to_string(), DataType::Categorical(None));
+schema.with_column(      "type".to_string(), DataType::Categorical(None));
+schema.with_column(     "state".to_string(), DataType::Categorical(None));
+schema.with_column(     "party".to_string(), DataType::Categorical(None));
+schema.with_column(  "birthday".to_string(), DataType::Date);
 
 let data: Vec<u8> = Client::new()
     .get(url)
@@ -27,8 +28,10 @@ let dataset = CsvReader::new(Cursor::new(data))
     .with_parse_dates(true)
     .finish()?;
 
-    println!("{:?}", &dataset);
+println!("{}", &dataset);
+// ANCHOR_END: dataset
 
+// ANCHOR: aggregation
 let df = dataset.clone().lazy()
     .groupby(["first_name"])
     .agg([
@@ -38,10 +41,12 @@ let df = dataset.clone().lazy()
     ])
     .sort("count", SortOptions { descending: true, nulls_last: true })
     .limit(5)
-    .collect();
+    .collect()?;
 
-println!("{:?}", df);
+println!("{}", df);
+// ANCHOR_END: aggregation
 
+// ANCHOR: condtional
 let df = dataset.clone().lazy()
     .groupby(["state"])
     .agg(
@@ -54,8 +59,10 @@ let df = dataset.clone().lazy()
     .limit(5)
     .collect()?;
 
-println!("{:?}", df);
+println!("{}", df);
+// ANCHOR_END: condtional
 
+// ANCHOR: nested_groupby
 let df = dataset.clone().lazy()
     .groupby(["state", "party"])
     .agg([col("party").count().alias("count")])
@@ -66,8 +73,10 @@ let df = dataset.clone().lazy()
     .limit(5)
     .collect()?;
 
-println!("{:?}", df);
+println!("{}", df);
+// ANCHOR_END: nested_groupby
 
+// ANCHOR: filtering
 fn compute_age() -> Expr {
     lit(2022) - col("birthday").dt().year()
 }
@@ -91,8 +100,10 @@ let df = dataset.clone().lazy()
     .limit(5)
     .collect()?;
 
-println!("{:?}", df);
+println!("{}", df);
+// ANCHOR_END: filtering
 
+// ANCHOR: sorting1
 fn get_person() -> Expr {
     col("first_name") + lit(" ") + col("last_name")
 }
@@ -109,8 +120,10 @@ let df = dataset.clone().lazy()
     .limit(5)
     .collect()?;
 
-println!("{:?}", df);
+println!("{}", df);
+// ANCHOR_END: sorting1
 
+// ANCHOR: sorting2
 let df = dataset.clone().lazy()
     .sort("birthday", SortOptions { descending: true, nulls_last: true })
     .groupby(["state"])
@@ -124,8 +137,10 @@ let df = dataset.clone().lazy()
     .limit(5)
     .collect()?;
 
-println!("{:?}", df);
+println!("{}", df);
+// ANCHOR_END: sorting2
 
+// ANCHOR: sorting3
 let df = dataset.clone().lazy()
     .sort("birthday", SortOptions { descending: true, nulls_last: true })
     .groupby(["state"])
@@ -141,7 +156,8 @@ let df = dataset.clone().lazy()
     .limit(5)
     .collect()?;
 
-println!("{:?}", df);
+println!("{}", df);
+// ANCHOR_END: sorting3
 
     Ok(())
 }
