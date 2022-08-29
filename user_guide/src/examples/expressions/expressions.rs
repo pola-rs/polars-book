@@ -1,7 +1,7 @@
-use color_eyre::{Result};
+// ANCHOR: dataset
+use color_eyre::Result;
 use polars::prelude::*;
 use rand::{thread_rng, Rng};
-
 
 fn main() -> Result<()> {
     let mut arr = [0f64; 5];
@@ -12,19 +12,23 @@ fn main() -> Result<()> {
         "names" => [Some("foo"), Some("ham"), Some("spam"), Some("eggs"), None],
         "random" => arr,
         "groups" => ["A", "A", "B", "C", "B"],
-    ]?.lazy();
+    ]?;
 
-    println!("{:?}", df.clone().collect());
+    println!("{}", &df);
+// ANCHOR_END: dataset
 
-let out = df.clone().select(
+// ANCHOR: count_unique
+let out = df.clone().lazy().select(
     [
         col("names").n_unique().alias("unique_names_1"),
         col("names").unique().count().alias("unique_names_2"),
     ]
 ).collect()?;
-println!("{:?}", out);
+println!("{}", out);
+// ANCHOR_END: count_unique
 
-let out = df.clone().select(
+// ANCHOR: aggregations
+let out = df.clone().lazy().select(
     [
         sum("random").alias("sum"),
         min("random").alias("min"),
@@ -34,30 +38,37 @@ let out = df.clone().select(
         col("random").var().alias("variance"),
     ]
 ).collect()?;
-println!("{:?}", out);
+println!("{}", out);
+// ANCHOR_END: aggregations
 
-let out = df.clone().select(
+// ANCHOR: conditional
+let out = df.clone().lazy().select(
     [
         col("names").filter(col("names").str().contains("am$")).count()
     ]
-).collect();
-println!("{:?}", out);
+).collect()?;
+println!("{}", out);
+// ANCHOR_END: conditional
 
-let out = df.clone().select(
+// ANCHOR: binary
+let out = df.clone().lazy().select(
     [
         when(col("random").gt(0.5)).then(0).otherwise(col("random")) * sum("nrs"),
     ]
 ).collect()?;
-println!("{:?}", out);
+println!("{}", out);
+// ANCHOR_END: binary
 
-let df = df.select(
+// ANCHOR: window
+let df = df.lazy().select(
     [
         col("*"), // Select all
         col("random").sum().over([col("groups")]).alias("sum[random]/groups"),
         col("random").list().over([col("names")]).alias("random/name"),
     ]
 ).collect()?;
-println!("{:?}", df);
+println!("{}", df);
+// ANCHOR_END: window
 
     Ok(())
 }

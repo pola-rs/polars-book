@@ -42,8 +42,7 @@ df.select([
 ```
 
 </div>
-All expressions are ran in parallel, meaning that separate `Polars` expressions are **embarrassingly
-parallel**. Note that within an expression there may be more parallelization going on.
+All expressions are ran in parallel, meaning that separate `Polars` expressions are **embarrassingly parallel**. Note that within an expression there may be more parallelization going on.
 
 ## Expression examples
 
@@ -57,7 +56,7 @@ print(df)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/expressions.rs:1:17}}
+{{#include ../examples/expressions/expressions.rs:dataset}}
 ```
 
 </div>
@@ -67,8 +66,9 @@ print(df)
 ```
 
 You can do a lot with expressions. They are so expressive that you sometimes have
-multiple ways to get the same results. To get a better feel for them let's go through some
-more examples.
+multiple ways to get the same results. To get a better feel for them let's go through some more examples.
+
+> A note for the Rust examples:  Each of these examples re-use the same dataset.  So, due to Rust's ownership rules, and the fact that all the examples run in the same context, we'll `clone()` the dataset for each example to ensure that no prior example affects the behavior of later examples.  This is the case for all Rust examples for the remainder of this book.
 
 ### Count unique values
 
@@ -84,7 +84,7 @@ print(out)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/expressions.rs:19:25}}
+{{#include ../examples/expressions/expressions.rs:count_unique}}
 ```
 
 </div>
@@ -106,7 +106,7 @@ print(out)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/expressions.rs:27:37}}
+{{#include ../examples/expressions/expressions.rs:aggregations}}
 ```
 
 </div>
@@ -128,7 +128,7 @@ print(out)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/expressions.rs:39:44}}
+{{#include ../examples/expressions/expressions.rs:conditional}}
 ```
 
 </div>
@@ -158,7 +158,7 @@ print(out)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/expressions.rs:46:51}}
+{{#include ../examples/expressions/expressions.rs:binary}}
 ```
 
 </div>
@@ -182,7 +182,7 @@ print(df)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/expressions.rs:53:60}}
+{{#include ../examples/expressions/expressions.rs:window}}
 ```
 
 </div>
