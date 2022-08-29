@@ -59,7 +59,7 @@ print(out)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/contexts.rs:19:27}}
+{{#include ../examples/expressions/contexts.rs:select}}
 ```
 
 </div>
@@ -80,7 +80,7 @@ print(df)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/contexts.rs:30:36}}
+{{#include ../examples/expressions/contexts.rs:add_columns}}
 ```
 
 </div>
@@ -101,7 +101,7 @@ print(out)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/contexts.rs:39:48}}
+{{#include ../examples/expressions/contexts.rs:groupby}}
 ```
 
 </div>
