@@ -117,8 +117,9 @@ print(out)
 
 ### Filter and conditionals
 
-We can also do some pretty complex things. In the next snippet we count all names ending
-with the string `"am"`.
+We can also do some pretty complex things. In the next snippet we count all names ending with the string `"am"`.
+
+> Note that in `Rust`, the `strings` feature must be enabled for `str` expression to be available.
 
 <div class="tabbed-blocks">
 

@@ -19,7 +19,7 @@ print(out)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/fold.rs:6:14}}
+{{#include ../examples/expressions/fold.rs:manual_sum}}
 ```
 
 </div>
@@ -44,7 +44,7 @@ print(out)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/fold.rs:16:28}}
+{{#include ../examples/expressions/fold.rs:conditional}}
 ```
 
 </div>
@@ -60,7 +60,9 @@ In the snippet we filter all rows where **each** column value is `>` `1`.
 Folds could be used to concatenate string data. However, due to the materialization of intermediate columns, this
 operation will have squared complexity.
 
-Therefore, we recommend using the `concat_str` expression for this.  Note that, in `Rust`, the `concat_str` feature must be enabled to use this expression.
+Therefore, we recommend using the `concat_str` expression for this.
+
+> Note that, in `Rust`, the `concat_str` feature must be enabled to use the `concat_str` expression.
 
 <div class="tabbed-blocks">
 
@@ -70,7 +72,7 @@ print(out)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/fold.rs:30:41}}
+{{#include ../examples/expressions/fold.rs:string}}
 ```
 
 </div>
