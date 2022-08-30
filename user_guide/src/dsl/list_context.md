@@ -1,8 +1,8 @@
 # List context
 
-An expression context we haven't discussed yet is the `List` context. This means simply we
-can apply any expression on the elements of a `List`.  A note for `Rust` users, these features
-require the `list` feature flag.
+An expression context we haven't discussed yet is the `List` context. This means simply we can apply any expression on the elements of a `List`.
+
+> A note for `Rust` users, these features require the `list` feature flag.
 
 # Row wise computations
 
@@ -22,7 +22,7 @@ print(grades)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/list_row_wise.rs:6:12}}
+{{#include ../examples/expressions/list_row_wise.rs:dataset}}
 ```
 
 </div>
@@ -43,16 +43,10 @@ print(out)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/list_row_wise.rs:14:17}}
+{{#include ../examples/expressions/list_row_wise.rs:row-wise}}
 ```
 
 </div>
-
-```python
-out = grades.select([
-    pl.concat_list(pl.all().exclude("student")).alias("all_grades")
-])
-```
 
 ```text
 {{#include ../outputs/expressions/list_row_wise_2.txt}}
@@ -60,17 +54,13 @@ out = grades.select([
 
 ## Running polars expression on list elements
 
-We can run **any** polars expression on the elements of a list with the `arr.eval` (`arr().eval` in Rust) expression!
-These expressions entirely run on polars' query engine and can run in parallel so will be super fast.
+We can run **any** polars expression on the elements of a list with the `arr.eval` (`arr().eval` in Rust) expression! These expressions run entirely on polars' query engine and can run in parallel so will be super fast.
 
-Let's expand the example from above with something a little more interesting. Pandas allows you to compute the percentages
-of the `rank` values. Polars doesn't provide such a keyword argument.
-But because expressions are so versatile we can create our own percentage rank expression. Let's try that!
+Let's expand the example from above with something a little more interesting. Pandas allows you to compute the percentages of the `rank` values. Polars doesn't provide such a keyword argument. But because expressions are so versatile we can create our own percentage rank expression. Let's try that!
 
-Note that we must `select` the list's element from the context. When we apply expressions over list elements, we use `pl.element()` to select
-the element of a list.
+Note that we must `select` the list's element from the context. When we apply expressions over list elements, we use `pl.element()` to select the element of a list.
 
-Also Note that to use `arr().eval` in Rust requires the `list_eval` feature flag.
+> Also note that to use `arr().eval` in Rust requires the `list_eval` feature flag.
 
 <div class="tabbed-blocks">
 
@@ -91,7 +81,7 @@ grades.with_column(
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/list_row_wise.rs:19:31}}
+{{#include ../examples/expressions/list_row_wise.rs:expressions}}
 ```
 
 </div>
