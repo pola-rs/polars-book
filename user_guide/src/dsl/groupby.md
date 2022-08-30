@@ -44,6 +44,8 @@ but also in its eager API.  Let's take a look at what that means.
 We can start with the simple
 [US congress `dataset`](https://github.com/unitedstates/congress-legislators).
 
+> Note to Rust users, the `dtype-categorical` feature must be enabled for the examples in this section.
+
 <div class="tabbed-blocks">
 
 ```python
