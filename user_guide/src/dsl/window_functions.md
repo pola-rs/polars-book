@@ -13,7 +13,7 @@ snippet below contains information about pokemon and has the following columns:
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/window.rs:1:15}}
+{{#include ../examples/expressions/window.rs:dataset}}
 ```
 
 </div>
@@ -29,8 +29,7 @@ Doing so allows us to use multiple groupby operations in parallel, using a singl
 are projected back to the original rows. Therefore, a window function will always lead to a `DataFrame` with the same size
 as the original.
 
-Note how we call `.over("Type 1")` and `.over(["Type 1", "Type 2"])`. Using window functions we can aggregate
-over different groups in a single `select` call!
+Note how we call `.over("Type 1")` and `.over(["Type 1", "Type 2"])`. Using window functions we can aggregate over different groups in a single `select` call!  Note that, in Rust, the type of the argument to `over()` must be a collection, so even when you're only using one column, you must provided it in an array.
 
 The best part is, this won't cost you anything. The computed groups are cached and shared between different `window` expressions.
 
@@ -41,7 +40,7 @@ The best part is, this won't cost you anything. The computed groups are cached a
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/window.rs:19:27}}
+{{#include ../examples/expressions/window.rs:select}}
 ```
 
 </div>
@@ -65,7 +64,7 @@ print(filtered)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/window.rs:31:37}}
+{{#include ../examples/expressions/window.rs:filtered}}
 ```
 
 </div>
@@ -86,7 +85,7 @@ print(out)
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/window.rs:41:46}}
+{{#include ../examples/expressions/window.rs:discontinuous}}
 ```
 
 </div>
@@ -135,7 +134,7 @@ pl.sum("foo").over("groups")
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/window.rs:66:85}}
+{{#include ../examples/expressions/window.rs:rules}}
 ```
 
 </div>
@@ -153,11 +152,11 @@ For more exercise, below are some window functions for us to compute:
 <div class="tabbed-blocks">
 
 ```python
-{{#include ../examples/expressions/window_3.py:3:}}
+{{#include ../examples/expressions/window_3.py:4:}}
 ```
 
 ```rust,noplayground
-{{#include ../examples/expressions/window.rs:48:55}}
+{{#include ../examples/expressions/window.rs:more}}
 ```
 
 </div>
@@ -174,7 +173,7 @@ If we have a window function that aggregates to a `list` like the example above 
 
 and in Rust:
 
-`col("Name").sort_by([col("Speed")], [false]).head(Some(3)).list().over([col("Type 1")])`
+`col("Name").sort_by(["Speed"], [false]).head(Some(3)).list().over(["Type 1"])`
 
 This still works, but that would give us a column type `List` which might not be what we want (this would significantly increase our memory usage!).
 
