@@ -18,7 +18,7 @@ let out = df.lazy()
     ])
     .collect()?;
 
-println!("{:?}", out);
+println!("{}", out);
 
     Ok(())
 }
