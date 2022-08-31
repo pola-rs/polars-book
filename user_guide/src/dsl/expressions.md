@@ -42,7 +42,7 @@ df.select([
 ```
 
 </div>
-All expressions are ran in parallel, meaning that separate `Polars` expressions are **embarrassingly parallel**. Note that within an expression there may be more parallelization going on.
+All expressions are run in parallel, meaning that separate `Polars` expressions are **embarrassingly parallel**. Note that within an expression there may be more parallelization going on.
 
 ## Expression examples
 
@@ -68,7 +68,7 @@ print(df)
 You can do a lot with expressions. They are so expressive that you sometimes have
 multiple ways to get the same results. To get a better feel for them let's go through some more examples.
 
-> A note for the Rust examples:  Each of these examples re-use the same dataset.  So, due to Rust's ownership rules, and the fact that all the examples run in the same context, we'll `clone()` the dataset for each example to ensure that no prior example affects the behavior of later examples.  This is the case for all Rust examples for the remainder of this book.
+> A note for the Rust examples:  Each of these examples use the same dataset.  So, due to Rust's ownership rules, and the fact that all the examples run in the same context, we'll `clone()` the dataset for each example to ensure that no prior example affects the behavior of later examples.  This is the case for all Rust examples for the remainder of this book.
 
 ### Count unique values
 
