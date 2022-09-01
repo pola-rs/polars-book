@@ -15,60 +15,73 @@ fn main() -> Result<()> {
     ]?;
 
     println!("{}", &df);
-// ANCHOR_END: dataset
+    // ANCHOR_END: dataset
 
-// ANCHOR: count_unique
-let out = df.clone().lazy().select(
-    [
-        col("names").n_unique().alias("unique_names_1"),
-        col("names").unique().count().alias("unique_names_2"),
-    ]
-).collect()?;
-println!("{}", out);
-// ANCHOR_END: count_unique
+    // ANCHOR: count_unique
+    let out = df
+        .clone()
+        .lazy()
+        .select([
+            col("names").n_unique().alias("unique_names_1"),
+            col("names").unique().count().alias("unique_names_2"),
+        ])
+        .collect()?;
+    println!("{}", out);
+    // ANCHOR_END: count_unique
 
-// ANCHOR: aggregations
-let out = df.clone().lazy().select(
-    [
-        sum("random").alias("sum"),
-        min("random").alias("min"),
-        max("random").alias("max"),
-        col("random").max().alias("other_max"),
-        col("random").std().alias("std dev"),
-        col("random").var().alias("variance"),
-    ]
-).collect()?;
-println!("{}", out);
-// ANCHOR_END: aggregations
+    // ANCHOR: aggregations
+    let out = df
+        .clone()
+        .lazy()
+        .select([
+            sum("random").alias("sum"),
+            min("random").alias("min"),
+            max("random").alias("max"),
+            col("random").max().alias("other_max"),
+            col("random").std().alias("std dev"),
+            col("random").var().alias("variance"),
+        ])
+        .collect()?;
+    println!("{}", out);
+    // ANCHOR_END: aggregations
 
-// ANCHOR: conditional
-let out = df.clone().lazy().select(
-    [
-        col("names").filter(col("names").str().contains("am$")).count()
-    ]
-).collect()?;
-println!("{}", out);
-// ANCHOR_END: conditional
+    // ANCHOR: conditional
+    let out = df
+        .clone()
+        .lazy()
+        .select([col("names")
+            .filter(col("names").str().contains("am$"))
+            .count()])
+        .collect()?;
+    println!("{}", out);
+    // ANCHOR_END: conditional
 
-// ANCHOR: binary
-let out = df.clone().lazy().select(
-    [
-        when(col("random").gt(0.5)).then(0).otherwise(col("random")) * sum("nrs"),
-    ]
-).collect()?;
-println!("{}", out);
-// ANCHOR_END: binary
+    // ANCHOR: binary
+    let out = df
+        .clone()
+        .lazy()
+        .select([when(col("random").gt(0.5)).then(0).otherwise(col("random")) * sum("nrs")])
+        .collect()?;
+    println!("{}", out);
+    // ANCHOR_END: binary
 
-// ANCHOR: window
-let df = df.lazy().select(
-    [
-        col("*"), // Select all
-        col("random").sum().over([col("groups")]).alias("sum[random]/groups"),
-        col("random").list().over([col("names")]).alias("random/name"),
-    ]
-).collect()?;
-println!("{}", df);
-// ANCHOR_END: window
+    // ANCHOR: window
+    let df = df
+        .lazy()
+        .select([
+            col("*"), // Select all
+            col("random")
+                .sum()
+                .over([col("groups")])
+                .alias("sum[random]/groups"),
+            col("random")
+                .list()
+                .over([col("names")])
+                .alias("random/name"),
+        ])
+        .collect()?;
+    println!("{}", df);
+    // ANCHOR_END: window
 
     Ok(())
 }
