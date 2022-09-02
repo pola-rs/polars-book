@@ -24,19 +24,37 @@ aggregated!
 Use cases for `map` are for instance passing the `Series` in an expression to a third party library. Below we show how
 we could use `map` to pass an expression column to a neural network model.
 
+<div class="tabbed-blocks">
+
 ```python
 df.with_column([
     pl.col("features").map(lambda s: MyNeuralNetwork.forward(s.to_numpy())).alias("activations")
 ])
 ```
 
+```rust,noplayground
+df.with_column([
+    col("features").map(|s| Ok(my_nn.forward(s))).alias("activations")
+])
+```
+
+</div>
+
 Use cases for `map` in the `groupby` context are slim. They are only used for performance reasons, but can quite easily
 lead to incorrect results. Let me explain why.
+
+<div class="tabbed-blocks">
 
 ```python
 {{#include ../examples/expressions/map_function_1.py:3:}}
 print(df)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/map_function.rs:6:21}}
+```
+
+</div>
 
 ```
 shape: (3, 2)
@@ -96,10 +114,18 @@ That is:
 
 So with `apply` we should be able to fix our example:
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/expressions/apply_function_1.py:4:}}
 print(out)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/apply_function.rs:groupby}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/expressions/apply_fun_1.txt}}
@@ -122,6 +148,8 @@ achieve the same goals.
 
 In this example we create a global `counter` and then add the integer `1` to the global state at every element processed.
 Every iteration the result of the increment will be added to the element value.
+
+> Note, this example isn't provided in Rust.  The reason is that the global `counter` value would lead to data races when this apply is evaluated in parallel.  It would be possible to wrap it in a `Mutex` to protect the variable, but that would be obscuring the point of the example.  This is a case where the Python Global Interpreter Lock's performance tradeoff provides some safety guarentees.
 
 ```python
 {{#include ../examples/expressions/apply_function_2.py:4:}}
@@ -146,12 +174,20 @@ type. This data type collects those columns as fields in the `struct`. So if we'
 ]
 ```
 
-Those would be passed as `dict` to the calling python function and can thus be indexed by `field: str`.
+In Python, those would be passed as `dict` to the calling python function and can thus be indexed by `field: str`.  In rust, you'll get a `Series` with the `Struct` type. The fields of the struct can then be indexed and downcast.
+
+<div class="tabbed-blocks">
 
 ```python
 {{#include ../examples/expressions/apply_function_3.py:4:}}
 print(out)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/apply_function.rs:as_struct}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/expressions/apply_fun_3.txt}}
@@ -176,3 +212,11 @@ The mapping of python types to polars data types is as follows:
 - `list[tp]` -> `List[tp]` (where the inner type is inferred with the same rules)
 - `dict[str, [tp]]` -> `struct`
 - `Any` -> `object` (Prevent this at all times)
+
+Rust types map as follows:
+
+- `i32` or `i64` -> `Int64`
+- `f32` or `f64` -> `Float64`
+- `bool` -> `Boolean`
+- `String` or `str` -> `Utf8`
+- `Vec<tp>` -> `List[tp]` (where the inner type is inferred with the same rules)

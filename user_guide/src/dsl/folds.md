@@ -11,10 +11,18 @@ Let's start with an example by implementing the `sum` operation ourselves, with 
 
 ## Manual Sum
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/expressions/fold_1.py:3:}}
 print(out)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/fold.rs:manual_sum}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/expressions/folds_1.txt}}
@@ -28,10 +36,18 @@ The function operates on columns individually and can take advantage of cache ef
 In the case where you'd want to apply a condition/predicate on all columns in a `DataFrame` a `fold` operation can be
 a very concise way to express this.
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/expressions/fold_2.py:3:}}
 print(out)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/fold.rs:conditional}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/expressions/folds_2.txt}}
@@ -46,10 +62,20 @@ operation will have squared complexity.
 
 Therefore, we recommend using the `concat_str` expression for this.
 
+> Note that, in `Rust`, the `concat_str` feature must be enabled to use the `concat_str` expression.
+
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/expressions/fold_3.py:3:}}
 print(out)
 ```
+
+```rust,noplayground
+{{#include ../examples/expressions/fold.rs:string}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/expressions/folds_3.txt}}

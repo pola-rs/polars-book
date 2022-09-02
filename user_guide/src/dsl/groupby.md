@@ -26,6 +26,8 @@ blazingly fast!
 
 ## Do not kill the parallelization!
 
+> The following is specific to `Python`, and doesn't apply to `Rust`.  Within `Rust`, blocks and closures (_lambdas_) can, and will, be executed concurrently.
+
 We have all heard that `Python` is slow, and does "not scale." Besides the overhead of
 running "slow" bytecode, `Python` has to remain within the constraints of the Global
 Interpreter Lock (GIL). This means that if you were to use a `lambda` or a custom `Python`
@@ -37,20 +39,24 @@ This all feels terribly limiting, especially because we often need those `lambda
 keeping in mind bytecode **and** the GIL costs have to be paid.
 
 To mitigate this, `Polars` implements a powerful syntax defined not only in its lazy API,
-but also in its eager API.
-
-## Polars Expressions
-
-In the introduction on the previous page we discussed that using custom Python functions,
-killed parallelization, and that we can use the expressions of the lazy API to mitigate
-this. Let's take a look at what that means.
+but also in its eager API.  Let's take a look at what that means.
 
 We can start with the simple
 [US congress `dataset`](https://github.com/unitedstates/congress-legislators).
 
+> Note to Rust users, the `dtype-categorical` feature must be enabled for the examples in this section.
+
+<div class="tabbed-blocks">
+
 ```python
-{{#include ../examples/groupby_dsl/snippet1.py:5:}}
+{{#include ../examples/groupby_dsl/dataset.py:5:}}
 ```
+
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs:dataset}}
+```
+
+</div>
 
 #### Basic aggregations
 
@@ -66,15 +72,23 @@ Per GROUP `"first_name"` we
 - aggregate the gender values groups to a list:
   - full form: `pl.col("gender").list()`
 - get the first value of column `"last_name"` in the group:
-  - short form: `pl.first("last_name")`
+  - short form: `pl.first("last_name")` (not available in Rust)
   - full form: `pl.col("last_name").first()`
 
 Besides the aggregation, we immediately sort the result and limit to the top `5` so that
 we have a nice summary overview.
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/groupby_dsl/snippet1.py}}
 ```
+
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs:aggregation}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/groupby_dsl/output1.txt}}
@@ -86,9 +100,17 @@ It's that easy! Let's turn it up a notch. Let's say we want to know how
 many delegates of a "state" are "Pro" or "Anti" administration. We could directly query
 that in the aggregation without the need of `lambda` or grooming the `DataFrame`.
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/groupby_dsl/snippet2.py}}
 ```
+
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs:condtional}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/groupby_dsl/output2.txt}}
@@ -96,9 +118,17 @@ that in the aggregation without the need of `lambda` or grooming the `DataFrame`
 
 Similarly,  this could also be done with a nested GROUPBY, but that doesn't help show off some of these nice features. 😉
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/groupby_dsl/snippet3.py}}
 ```
+
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs:nested_groupby}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/groupby_dsl/output3.txt}}
@@ -110,14 +140,21 @@ We can also filter the groups. Let's say we want to compute a mean per group, bu
 don't want to include all values from that group, and we also don't want to filter the
 rows from the `DataFrame` (because we need those rows for another aggregation).
 
-In the example below we show how that can be done. Note that we can make `Python`
-functions for clarity. These functions don't cost us anything. That is because we only
-create `Polars` expressions, we don't apply a custom function over a `Series` during
-runtime of the query.
+In the example below we show how that can be done.
+
+> Note that we can make `Python` functions for clarity. These functions don't cost us anything. That is because we only create `Polars` expressions, we don't apply a custom function over a `Series` during runtime of the query.  Of course, you can make functions that return expressions in Rust, too.
+
+<div class="tabbed-blocks">
 
 ```python
 {{#include ../examples/groupby_dsl/snippet4.py}}
 ```
+
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs:filtering}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/groupby_dsl/output4.txt}}
@@ -125,35 +162,55 @@ runtime of the query.
 
 #### Sorting
 
-It's common to see a `DataFrame` being sorted for the sole purpose of managing the ordering during a
-GROUPBY operation. Let's say that we want to get the names of the oldest and youngest politicians per state. We could SORT and GROUPBY.
+It's common to see a `DataFrame` being sorted for the sole purpose of managing the ordering during a GROUPBY operation. Let's say that we want to get the names of the oldest and youngest politicians per state. We could SORT and GROUPBY.
+
+<div class="tabbed-blocks">
 
 ```python
 {{#include ../examples/groupby_dsl/snippet5.py}}
 ```
 
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs:sorting1}}
+```
+
+</div>
+
 ```text
 {{#include ../outputs/groupby_dsl/output5.txt}}
 ```
 
-However, **if** we also want to sort the names alphabetically, this
-breaks. Luckily we can sort in a `groupby` context separate from the `DataFrame`.
+However, **if** we also want to sort the names alphabetically, this breaks. Luckily we can sort in a `groupby` context separate from the `DataFrame`.
+
+<div class="tabbed-blocks">
 
 ```python
 {{#include ../examples/groupby_dsl/snippet6.py}}
 ```
 
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs:sorting2}}
+```
+
+</div>
+
 ```text
 {{#include ../outputs/groupby_dsl/output6.txt}}
 ```
 
-We can even sort by another column in the `groupby` context. If we want to know if the
-alphabetically sorted name is male or female we could add:
-`pl.col("gender").sort_by("first_name").first().alias("gender")`
+We can even sort by another column in the `groupby` context. If we want to know if the alphabetically sorted name is male or female we could add: `pl.col("gender").sort_by("first_name").first().alias("gender")`
+
+<div class="tabbed-blocks">
 
 ```python
 {{#include ../examples/groupby_dsl/snippet7.py}}
 ```
+
+```rust,noplayground
+{{#include ../examples/groupby_dsl/groupby.rs:sorting3}}
+```
+
+</div>
 
 ```text
 {{#include ../outputs/groupby_dsl/output7.txt}}
@@ -161,9 +218,7 @@ alphabetically sorted name is male or female we could add:
 
 ### Conclusion
 
-In the examples above we've seen that we can do a lot by combining expressions. By doing
-so we delay the use of custom `Python` functions that slow down the queries (by the slow
-nature of Python AND the GIL).
+In the examples above we've seen that we can do a lot by combining expressions. By doing so we delay the use of custom `Python` functions that slow down the queries (by the slow nature of Python AND the GIL).
 
 If we are missing a type expression let us know by opening a
 [feature request](https://github.com/pola-rs/polars/issues/new/choose)!

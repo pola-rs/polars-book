@@ -1,0 +1,42 @@
+[package]
+name = "user_guide"
+version = "0.1.0"
+edition = "2021"
+
+[[example]]
+name = "expressions"
+path = "expressions/expressions.rs"
+
+[[example]]
+name = "contexts"
+path = "expressions/contexts.rs"
+
+[[example]]
+name = "groupby"
+path = "groupby_dsl/groupby.rs"
+
+[[example]]
+name = "fold"
+path = "expressions/fold.rs"
+
+[[example]]
+name = "window"
+path = "expressions/window.rs"
+
+[[example]]
+name = "list"
+path = "expressions/list_row_wise.rs"
+
+[[example]]
+name = "map"
+path = "expressions/map_function.rs"
+
+[[example]]
+name = "apply"
+path = "expressions/apply_function.rs"
+
+[dependencies]
+polars = { version = "0.23.2", features = ["lazy", "csv-file", "strings", "temporal", "dtype-categorical", "concat_str", "list", "list_eval", "rank", "lazy_regex", "dtype-struct", "asof_join"]}
+color-eyre = "0.6.2"
+rand = "0.8.5"
+reqwest = { version = "0.11.11", features = ["blocking"]}

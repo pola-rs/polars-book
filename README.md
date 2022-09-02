@@ -34,12 +34,12 @@ Use `make serve` to serve the user guide.
 | Process nested values (explode)        | ✗      | ✗        | ✗            |
 | Rename columns and other manipulations*| ✗      | ✔        | ✗            |
 | Column/row selection*                  | ✗      | ✔        | ✗            |
-| Filter*                                | ✗      | ✔        | ✗            |
-| GroupBy*                               | ✗      | ✔        | ✗            |
-| Join                                   | ✗      | ✗        | ✗            |
-| Sort*                                  | ✗      | ✔        | ✗            |
+| Filter*                                | ✔      | ✔        | ✗            |
+| GroupBy*                               | ✔      | ✔        | ✗            |
+| Join                                   | ✔      | ✗        | ✗            |
+| Sort*                                  | ✔      | ✔        | ✗            |
 | Pivot/melt                             | ✗      | ✗        | ✗            |
-| Aggregate*                             | ✗      | ✔        | ✗            |
+| Aggregate*                             | ✔      | ✔        | ✗            |
 | Conditionally apply*                   | ✗      | ✔        | ✗            |
 | Horizontal fold                        | ✗      | ✗        | ✗            |
 | Stacking                               | ✗      | ✗        | ✗            |
@@ -56,9 +56,7 @@ _* Some How Can I code examples not included but topic introduced elsewhere._
 
 ## Reference Guides
 
-At this point in time, only `Python` bindings are available for `Polars`.
-
-> We are actively looking for `Node` experts to implement `JavaScript` bindings!
+At this point in time, only `Python` and `NodeJS` bindings are available for `Polars`.
 
 The content of the Reference Guides is generated directly from the source code.
 In this repo one can find the scripts used to generate the `Markdown` content later rendered by `mdBook` (a custom version thereof).
