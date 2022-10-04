@@ -16,7 +16,7 @@ fill_literal_df = (
 )
 
 fill_forward_df = df.with_column(
-    pl.col("col2").fill_null("forward"),
+    pl.col("col2").fill_null(strategy="forward"),
 )
 
 fill_median_df = df.with_column(
