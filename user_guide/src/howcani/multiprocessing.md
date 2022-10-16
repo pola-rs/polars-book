@@ -97,7 +97,7 @@ The fork method is equivalent to calling `os.fork()`, which is a system call as 
 > A process shall be created with a single thread. If a multi-threaded process calls fork(), the new process shall contain a replica of the calling thread and its entire address space, possibly including the states of mutexes and other resources. Consequently, to avoid errors, the child process may only execute async-signal-safe operations until such time as one of the exec functions is called.
 
 So what happens in the code example? 
-For reading the file, `pl.read_parquet` is used, which is multithreaded.
+For reading the file, `pl.read_parquet` is used, which involves locking the file to be able to read it.
 Then `os.fork()` is called, copying the state of the parent process, including mutexes.
 Thus all child processes will copy the file lock in an acquired state, leaving them hanging indefinetely waiting for the lock to be released, which never happens.
 
