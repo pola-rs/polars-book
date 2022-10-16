@@ -134,7 +134,7 @@ Probably because of historical reasons: `spawn` was added to Python in version 3
 And because it is faster than `spawn`: `spawn` is effectively `fork` + creating a brand new Python process without the locks using [https://pubs.opengroup.org/onlinepubs/9699919799/functions/exec.html](execve). 
 Hence the warning in the Python docs that it is slower: there is more overhead to `spawn`.
 However, in almost all cases, one would like to use multiple processes to speed up computations that take multiple minutes or even hours, meaning the overhead is negligible in the grand scheme of things. 
-And more importantly, it actually works.
+And more importantly, it actually works in combination with multithreaded libraries.
 
 
 ## References
