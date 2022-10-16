@@ -15,6 +15,7 @@ use polars::prelude::*;
 
 let df = CsvReader::from_path("path.csv").unwrap().finish().unwrap();
 ```
+
 </div>
 
 CSV files come in many different flavors, so make sure to check the
@@ -52,7 +53,6 @@ file and instead returns a lazy computation holder called a `LazyFrame`.
 
 <div class="tabbed-blocks">
 
-
 ```python
 df = pl.scan_csv("path.csv")
 ```
@@ -62,6 +62,7 @@ use polars::prelude::*;
 
 let df = LazyCsvReader::new("./test.csv").finish().unwrap();
 ```
+
 </div>
 
 If you want to know why this is desirable, you can read more about those `Polars`

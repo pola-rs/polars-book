@@ -18,10 +18,11 @@ use polars::prelude::*;
 let mut file = std::fs::File::open("path.json").unwrap();
 let df = JsonReader::new(&mut file).finish().unwrap();
 ```
+
 </div>
 
-
 ### Newline Delimited JSON
+
 JSON objects that are delimited by newlines can be read into polars in a much more performant way than standard json.
 
 <div class="tabbed-blocks">
@@ -36,6 +37,7 @@ use polars::prelude::*;
 let mut file = std::fs::File::open("path.json").unwrap();
 let df = JsonLineReader::new(&mut file).finish().unwrap();
 ```
+
 </div>
 
 ## Write
@@ -83,7 +85,6 @@ file and instead returns a lazy computation holder called a `LazyFrame`.
 
 <div class="tabbed-blocks">
 
-
 ```python
 df = pl.scan_ndjson("path.json")
 ```
@@ -93,8 +94,8 @@ use polars::prelude::*;
 
 let df = LazyJsonLineReader::new("path.json".to_string()).finish().unwrap();
 ```
-</div>
 
+</div>
 
 ### Note about Rust usage
 
