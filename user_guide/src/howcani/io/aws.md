@@ -49,13 +49,13 @@ use polars::prelude::*;
 
 #[tokio::main]
 async fn main() {
-    let bucket = "polars-demo-1";
-    let key = "test.csv";
+    let bucket = "<YOUR_BUCKET>";
+    let path = "<YOUR_PATH>";
 
     let config = aws_config::from_env().load().await;
     let client = Client::new(&config);
 
-    let req = client.get_object().bucket(bucket).key(key);
+    let req = client.get_object().bucket(bucket).key(path);
 
     let res = req.clone().send().await.unwrap();
     let bytes = res.body.collect().await.unwrap();
