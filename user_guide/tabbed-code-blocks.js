@@ -22,6 +22,8 @@
     tab_names.set("language-cpp", "C++");
     tab_names.set("language-sh", "Shell");
     tab_names.set("language-shell", "Shell");
+    tab_names.set("language-shell-python", "Python");
+    tab_names.set("language-shell-rust", "Rust");
     tab_names.set("language-md", "Markdown");
     tab_names.set("language-text", "Text");
     tab_names.set("language-diff", "Diff");
