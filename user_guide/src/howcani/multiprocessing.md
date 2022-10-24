@@ -1,6 +1,6 @@
 # Combining Polars with Python's multiprocessing
 
-TLDR: if you find that using Python's built-in `multiprocessing` module together with Polars results in your program hanging, you should make sure you are using `spawn`, not `fork`, as the starting method:
+TLDR: if you find that using Python's built-in `multiprocessing` module together with Polars results in a Polars error about multiprocessing methods, you should make sure you are using `spawn`, not `fork`, as the starting method:
 
 ```python
 {{#include ../../examples/multiprocessing/recommendation.py}}
@@ -8,7 +8,7 @@ TLDR: if you find that using Python's built-in `multiprocessing` module together
 
 ## When not to use multiprocessing
 
-Before we dive into the details, it is important to emphasize that Polars has been build from the start to lever all your CPU cores.
+Before we dive into the details, it is important to emphasize that Polars has been build from the start to use all your CPU cores.
 It does this by executing computations which can be done in parallel in separate threads.
 For example, requesting two expressions in a `select` statement can be done in parallel, with the results only being combined at the end.
 Another example is aggregating a value within groups using `groupby().agg(<expr>)`, each group can be evaluated separately.
@@ -55,7 +55,8 @@ Consider the example below, which is a slightly modified example posted on the [
 {{#include ../../examples/multiprocessing/example1.py}}
 ```
 
-Using `fork` as the method, instead of `spawn`, will cause a dead lock.
+Using `fork` as the method, instead of `spawn`, will cause a dead lock. 
+Please note: Polars will not even start and raise the error on multiprocessing method being set wrong, but if the check would not be there, the deadlock would exist.
 
 The fork method is equivalent to calling `os.fork()`, which is a system call as defined in [the POSIX standard](https://pubs.opengroup.org/onlinepubs/9699919799/functions/fork.html):
 
