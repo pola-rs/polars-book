@@ -42,6 +42,7 @@ df.select([
 ```
 
 </div>
+
 All expressions are run in parallel, meaning that separate `Polars` expressions are **embarrassingly parallel**. Note that within an expression there may be more parallelization going on.
 
 ## Expression examples
