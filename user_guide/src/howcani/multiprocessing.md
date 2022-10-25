@@ -55,7 +55,7 @@ Consider the example below, which is a slightly modified example posted on the [
 {{#include ../../examples/multiprocessing/example1.py}}
 ```
 
-Using `fork` as the method, instead of `spawn`, will cause a dead lock. 
+Using `fork` as the method, instead of `spawn`, will cause a dead lock.
 Please note: Polars will not even start and raise the error on multiprocessing method being set wrong, but if the check would not be there, the deadlock would exist.
 
 The fork method is equivalent to calling `os.fork()`, which is a system call as defined in [the POSIX standard](https://pubs.opengroup.org/onlinepubs/9699919799/functions/fork.html):
