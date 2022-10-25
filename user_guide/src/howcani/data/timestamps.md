@@ -4,9 +4,11 @@
 
 - `pl.Date`, to be used for **date** objects: the number of days since the UNIX epoch as
   a 32 bit signed integer.
-- `pl.Datetime`, to be used of **datetime** objects: the number of nanoseconds since the
+- `pl.Datetime`, to be used for **datetime** objects: the number of nanoseconds since the
   UNIX epoch as a 64 bit signed integer.
 - `pl.Time`, encoded as the number of nanoseconds since midnight.
+- `pl.Duration`, to be used for **timedelta** objects: the difference between Date,
+  Datetime or Time as a 64 bit signed integer offering microsecond resolution.
 
 `Polars` string (`pl.Utf8`) datatypes can be parsed as either of them. You can let
 `Polars` try to guess the format of the date\[time\], or explicitly provide a `fmt`
