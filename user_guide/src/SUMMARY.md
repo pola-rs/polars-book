@@ -23,6 +23,7 @@
   - [IO](howcani/io/intro.md)
     - [CSV files](howcani/io/csv.md)
     - [Parquet files](howcani/io/parquet.md)
+    - [JSON files](howcani/io/json.md)
     - [Multiple files](multiple_files/intro.md)
     - [Read from a database](howcani/io/read_db.md)
     - [Interact with AWS](howcani/io/aws.md)

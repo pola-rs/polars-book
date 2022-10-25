@@ -22,13 +22,13 @@ Use `make serve` to serve the user guide.
 
 | Example                                | `Rust` | `Python` | `JavaScript` |
 |----------------------------------------|--------|----------|--------------|
-| CSV files                              | ✗      | ✔        | ✗            |
-| Parquet files                          | ✗      | ✔        | ✗            |
-| Interact with an AWS bucket            | ✗      | ✔        | ✗            |
+| CSV files                              | ✔      | ✔        | ✗            |
+| Parquet files                          | ✔      | ✔        | ✗            |
+| Interact with an AWS bucket            | ✔      | ✔        | ✗            |
 | Interact with an Azure Blob Storage    | ✗      | ✗        | ✗            |
 | Interact with a GCP Storage            | ✗      | ✗        | ✗            |
 | Interact with a database               | ✗      | ✗        | ✗            |
-| Process strings                        | ✗      | ✔        | ✗            |
+| Process strings                        | ✔      | ✔        | ✗            |
 | Process timestamps                     | ✗      | ✔        | ✗            |
 | Process missing values                 | ✗      | ✗        | ✗            |
 | Process nested values (explode)        | ✗      | ✗        | ✗            |
