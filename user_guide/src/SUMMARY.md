@@ -48,6 +48,7 @@
   - [Combining data](howcani/combining_data/intro.md)
     - [Concatenation](howcani/combining_data/concatenating.md)
     - [Joining](howcani/combining_data/joining.md)
+  - [Multiprocessing](howcani/multiprocessing.md)
 
 
 [//]: # (  - [Apply]&#40;howcani/apply/intro.md&#41;)
