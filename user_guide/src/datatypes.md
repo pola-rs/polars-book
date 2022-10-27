@@ -18,12 +18,13 @@ The data types are:
 - `Float64`: 64-bit floating point.
 - `Boolean`: Boolean type effectively bit packed.
 - `Utf8`: String data (this is actually `Arrow` `LargeUtf8` internally).
+- `Binary`: Store data as bytes.
 - `List`: A list array contains a child array containing the list values and an offset array. (this is actually `Arrow` `LargeList` internally).
 - `Struct`: A struct array is represented as `Vec<Series>` and is useful to pack multiple/heterogenous values in a single column.
-- `Date`: Date representation, internally represented as days since UNIX epoch encoded by a 32-bit signed integer.
-- `Datetime`: Datetime representation, internally represented as nanoseconds since UNIX epoch encoded by a 64-bit signed integer.
-- `Duration`: A timedelta type. Created when subtracting `Date/Datetime`.
-- `Time`: Time representation, internally represented as nanoseconds since midnight.
 - `Object`: A limited supported data type that can be any value.
+- `Date`: Date representation, internally represented as days since UNIX epoch encoded by a 32-bit signed integer.
+- `Datetime`: Datetime representation, internally represented as microseconds since UNIX epoch encoded by a 64-bit signed integer.
+- `Duration`: A timedelta type, internally represented as microseconds. Created when subtracting `Date/Datetime`.
+- `Time`: Time representation, internally represented as nanoseconds since midnight.
 
 To learn more about the internal representation of these data types, check the [`Arrow` columnar format](https://arrow.apache.org/docs/format/Columnar.html).
