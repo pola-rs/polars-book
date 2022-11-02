@@ -97,18 +97,20 @@ fn main() -> Result<()> {
 }
 ```
 
-```text
-# Rust Cargo.toml dependencies
+</div>
 
+When the data is stored locally, we can also use `scan_csv` in Python, or `LazyCsvReader` in Rust to run the query in lazy polars.
+
+### Note about Rust usage
+
+Some functionality is not enabled by default. It must be added as an additional feature. This can be enabled by directly adding it to your `Cargo.toml`
+
+```toml
 [dependencies]
 polars = { version = "0.24.3", features = ["lazy"] }
 reqwest =  { version = "0.11.12", features = ["blocking"] }
 color-eyre = "0.6"
 ```
-
-</div>
-
-When the data is stored locally, we can also use `scan_csv` in Python, or `LazyCsvReader` in Rust to run the query in lazy polars.
 
 ## References
 
