@@ -25,7 +25,7 @@ import polars as pl
 
 df = pl.read_csv("https://j.mp/iriscsv")
 print(df.filter(pl.col("sepal_length") > 5)
-      .groupby("species")
+      .groupby("species", maintain_order=True)
       .agg(pl.all().sum())
 )
 ```
@@ -41,9 +41,9 @@ shape: (3, 5)
 ╞════════════╪══════════════╪═════════════╪══════════════╪═════════════╡
 │ setosa     ┆ 116.9        ┆ 81.7        ┆ 33.2         ┆ 6.1         │
 ├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌┤
-│ virginica  ┆ 324.5        ┆ 146.2       ┆ 273.1        ┆ 99.6        │
-├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌┤
 │ versicolor ┆ 281.9        ┆ 131.8       ┆ 202.9        ┆ 63.3        │
+├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌┤
+│ virginica  ┆ 324.5        ┆ 146.2       ┆ 273.1        ┆ 99.6        │
 └────────────┴──────────────┴─────────────┴──────────────┴─────────────┘
 ```
 
@@ -63,7 +63,7 @@ print(
     pl.read_csv("https://j.mp/iriscsv")
     .lazy()
     .filter(pl.col("sepal_length") > 5)
-    .groupby("species")
+    .groupby("species", maintain_order=True)
     .agg(pl.all().sum())
     .collect()
 )
@@ -122,7 +122,7 @@ So the eager snippet above would become:
 (
     df.lazy()
     .filter(pl.col("sepal_length") > 5)
-    .groupby("species")
+    .groupby("species", maintain_order=True)
     .agg(pl.all().sum())
     .collect()
 )
