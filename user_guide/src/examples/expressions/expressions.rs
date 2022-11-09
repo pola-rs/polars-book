@@ -38,8 +38,8 @@ fn main() -> Result<()> {
             min("random").alias("min"),
             max("random").alias("max"),
             col("random").max().alias("other_max"),
-            col("random").std().alias("std dev"),
-            col("random").var().alias("variance"),
+            col("random").std(1).alias("std dev"),
+            col("random").var(1).alias("variance"),
         ])
         .collect()?;
     println!("{}", out);
