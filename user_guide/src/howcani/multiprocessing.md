@@ -3,7 +3,7 @@
 TLDR: if you find that using Python's built-in `multiprocessing` module together with Polars results in a Polars error about multiprocessing methods, you should make sure you are using `spawn`, not `fork`, as the starting method:
 
 ```python
-{{#include ../../examples/multiprocessing/recommendation.py}}
+{{#include ../examples/multiprocessing/recommendation.py}}
 ```
 
 ## When not to use multiprocessing
@@ -52,7 +52,7 @@ The problem with `fork` is in the copying of the parent's process.
 Consider the example below, which is a slightly modified example posted on the [Polars issue tracker](https://github.com/pola-rs/polars/issues/3144):
 
 ```python
-{{#include ../../examples/multiprocessing/example1.py}}
+{{#include ../examples/multiprocessing/example1.py}}
 ```
 
 Using `fork` as the method, instead of `spawn`, will cause a dead lock.
@@ -73,7 +73,7 @@ What makes debugging these issues tricky is that `fork` can work.
 Change the example to not having the call to `pl.read_parquet`:
 
 ```python
-{{#include ../../examples/multiprocessing/example2.py}}
+{{#include ../examples/multiprocessing/example2.py}}
 ```
 
 This works fine.
