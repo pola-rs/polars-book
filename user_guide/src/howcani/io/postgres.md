@@ -61,7 +61,7 @@ insert_stmt = sql.SQL("INSERT INTO {} ({}) VALUES({});").format(
 
 # make a connection
 conn = psycopg2.connect()
-cur = conn.cursort()
+cur = conn.cursor()
 
 # do the insert
 psycopg2.extras.execute_batch(cur, insert_stmt, df.rows())
