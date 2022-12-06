@@ -4,17 +4,17 @@ In this exploration guide we will go through the follow topics:
 
 - [Installation and Import](#installation-and-import)
 - [Object creation](#object-creation)
-    - [From scratch](#from-scratch)
-    - [From files](#from-files)
+  - [From scratch](#from-scratch)
+  - [From files](#from-files)
 - [Viewing data](#viewing-data)
 - [Expressions](#expressions)
-    - [Select](#select-statement)
-    - [Operations](#operations)
-    - [Join](#join)
-    - [Concat](#concat)
-    - [Groupby](#groupby)
+  - [Select](#select-statement)
+  - [Operations](#operations)
+  - [Join](#join)
+  - [Concat](#concat)
+  - [Groupby](#groupby)
 - [Lazy API](#lazy-api)
-    - [Out of memory example](#Out-of-memory-example)
+  - [Out of memory example](#out-of-memory-example)
 
 ## Installation and Import
 
@@ -25,6 +25,7 @@ pip install -U polars
 ```
 
 Import Polars and some supporting packages for this quickstart.
+
 ```python
 import polars as pl
 
@@ -37,6 +38,7 @@ import numpy as np
 ## Object creation
 
 ### From scratch
+
 Creating a simple Series or Dataframe is easy and very familiar to other packages
 
 ```python
@@ -48,13 +50,12 @@ print(series)
     shape: (5,)
     Series: 'a' [i64]
     [
-    	1
-    	2
-    	3
-    	4
-    	5
+     1
+     2
+     3
+     4
+     5
     ]
-
 
 ```python
 dataframe = pl.DataFrame({"integer": [1, 2, 3], 
@@ -108,7 +109,6 @@ print(df_csv)
     │ 3       ┆ 2022-01-03T00:00:00.000000 ┆ 6.0   │
     └─────────┴────────────────────────────┴───────┘
 
-
 ```python
 df_csv_with_dates = pl.read_csv('output.csv', parse_dates=True)
 
@@ -127,7 +127,6 @@ print(df_csv_with_dates)
     ├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
     │ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
     └─────────┴─────────────────────┴───────┘
-
 
 ### json
 
@@ -154,7 +153,6 @@ print(df_json)
     │ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
     └─────────┴─────────────────────┴───────┘
 
-
 ### parquet
 
 ```python
@@ -180,7 +178,7 @@ print(df_parquet)
     │ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
     └─────────┴─────────────────────┴───────┘
 
-[Read more about IO here](../howcani/io/intro.html) 
+[Read more about IO here](../howcani/io/intro.html)
 
 For all supported filetypes see [Python API reference guide](https://pola-rs.github.io/polars/py-polars/html/reference/io.html)
 
@@ -219,8 +217,6 @@ print(df)
     │ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  │
     └─────┴──────────┴─────────────────────┴───────┘
 
-
-
 ```python
 df.head()
 ```
@@ -241,8 +237,6 @@ df.head()
     ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
     │ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0 │
     └─────┴──────────┴─────────────────────┴─────┘
-
-
 
 ```python
 df.tail()
@@ -265,8 +259,6 @@ df.tail()
     │ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  │
     └─────┴──────────┴─────────────────────┴───────┘
 
-
-
 ```python
 df.sample(n=3)
 ```
@@ -283,7 +275,6 @@ df.sample(n=3)
     ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┤
     │ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null │
     └─────┴──────────┴─────────────────────┴──────┘
-
 
 ```python
 df.describe()
@@ -313,7 +304,6 @@ df.describe()
 ## Expressions
 
 ### Select statement
-
 
 ```python
 df.select(
@@ -393,7 +383,6 @@ df.select([
     │ 2   ┆ 0.889227 │
     └─────┴──────────┘
 
-
 ### Filter
 
 ```python
@@ -419,7 +408,6 @@ df.filter(
     │ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 │
     └─────┴──────────┴─────────────────────┴───────┘
 
-
 ```python
 df.filter(
     (pl.col('a') <= 3) & (pl.col('d').is_not_nan())
@@ -436,7 +424,6 @@ df.filter(
     ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
     │ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0 │
     └─────┴──────────┴─────────────────────┴─────┘
-
 
 ```python
 df.select([
@@ -466,7 +453,6 @@ df.select([
     ├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
     │ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  │
     └──────────┴─────────────────────┴───────┘
-
 
 ### Operations
 
@@ -503,7 +489,6 @@ df.with_columns([
     │ 7   ┆ 42.108093 ┆ 2022-12-08 00:00:00 ┆ null  ┆ 3.449961 ┆ 42.108093 │
     └─────┴───────────┴─────────────────────┴───────┴──────────┴───────────┘
 
-
 ```python
 df_x = df.with_column(
     (pl.col("a") * pl.col("b")).alias("a * b")
@@ -536,7 +521,6 @@ print(df_x)
     ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
     │ 7   ┆ 0.108093 ┆ 0.756653 │
     └─────┴──────────┴──────────┘
-
 
 #### Column operations
 
@@ -573,7 +557,6 @@ print(df_y)
     │ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ 0.756653 │
     └─────┴──────────┴─────────────────────┴──────────┘
 
-
 [Read more about Expression contexts](../user-guide/dsl/contexts.html)
 
 ### Join
@@ -609,7 +592,6 @@ print(df2)
     ├╌╌╌╌╌┼╌╌╌╌╌┤
     │ 7   ┆ X   │
     └─────┴─────┘
-
 
 ```python
 df.join(df2, left_on="a", right_on="x")
@@ -692,7 +674,6 @@ df2.groupby("y", maintain_order=True).count()
     │ X   ┆ 2     │
     └─────┴───────┘
 
-
 ```python
 df2.groupby("y", maintain_order=True).agg([
     pl.col("*").count().alias("count"),
@@ -719,7 +700,6 @@ df2.groupby("y", maintain_order=True).agg([
 
 ### Lazy API
 
-
 ```python
 # Creating a dataset to work with
 
@@ -732,11 +712,9 @@ df = pl.DataFrame({"a": np.arange(0, 1000),
 df.write_csv('example_1000.csv')
 ```
 
-
 ```python
 lazy_df = pl.scan_csv('example_1000.csv')
 ```
-
 
 ```python
 print(lazy_df.fetch(10))
@@ -767,8 +745,6 @@ print(lazy_df.fetch(10))
     │ 9   ┆ 0.044779 ┆ 2022-12-10T00:00:00.000000 ┆ T   │
     └─────┴──────────┴────────────────────────────┴─────┘
 
-
-
 ```python
 # We can run the same expressions on a LazyFrame
 # the only difference is that we need to specifically 
@@ -778,9 +754,6 @@ lazy_df.with_columns([
     (pl.col("a") * pl.col("b")).alias("a * b")
 ])
 ```
-
-
-
 
 <h4>NAIVE QUERY PLAN</h4><p>run <b>LazyFrame.show_graph()</b> to see the optimized version</p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -808,7 +781,7 @@ lazy_df.with_columns([
 σ &#45;; [(0, 1)]</title>
 <polygon fill="none" stroke="black" points="191,-53 0,-53 0,0 191,0 191,-53"/>
 <text text-anchor="middle" x="95.5" y="-37.8" font-family="Times,serif" font-size="14.00">CSV SCAN example_1000.csv;</text>
-<text text-anchor="middle" x="95.5" y="-22.8" font-family="Times,serif" font-size="14.00">π */4;</text>
+<text text-anchor="middle" x="95.5" y="-22.8" font-family="Times,serif" font-size="14.00">π*/4;</text>
 <text text-anchor="middle" x="95.5" y="-7.8" font-family="Times,serif" font-size="14.00">σ &#45;;</text>
 </g>
 <!-- WITH COLUMNS [&quot;a * b&quot;] [(0, 0)]&#45;&#45;CSV SCAN example_1000.csv;
@@ -822,10 +795,6 @@ lazy_df.with_columns([
 </g>
 </g>
 </svg>
-
-
-
-
 
 ```python
 print(lazy_df.with_columns([
@@ -858,17 +827,12 @@ print(lazy_df.with_columns([
     │ 999 ┆ 0.470928 ┆ 2025-08-26T00:00:00.000000 ┆ Q   ┆ 470.456728 │
     └─────┴──────────┴────────────────────────────┴─────┴────────────┘
 
-
-
 ```python
 lazy_df.groupby("d").agg([
     pl.col("a").count().alias("count"),
     pl.col("b").sum().alias("sum")
 ])
 ```
-
-
-
 
 <h4>NAIVE QUERY PLAN</h4><p>run <b>LazyFrame.show_graph()</b> to see the optimized version</p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -902,7 +866,7 @@ BY
 σ &#45;; [(0, 1)]</title>
 <polygon fill="none" stroke="black" points="288,-53 97,-53 97,0 288,0 288,-53"/>
 <text text-anchor="middle" x="192.5" y="-37.8" font-family="Times,serif" font-size="14.00">CSV SCAN example_1000.csv;</text>
-<text text-anchor="middle" x="192.5" y="-22.8" font-family="Times,serif" font-size="14.00">π */4;</text>
+<text text-anchor="middle" x="192.5" y="-22.8" font-family="Times,serif" font-size="14.00">π*/4;</text>
 <text text-anchor="middle" x="192.5" y="-7.8" font-family="Times,serif" font-size="14.00">σ &#45;;</text>
 </g>
 <!-- AGG [col(&quot;a&quot;).count().alias(&quot;count&quot;), col(&quot;b&quot;).sum().alias(&quot;sum&quot;)]
@@ -920,10 +884,6 @@ BY
 </g>
 </g>
 </svg>
-
-
-
-
 
 ```python
 print(lazy_df.groupby("d").agg([
@@ -953,9 +913,7 @@ print(lazy_df.groupby("d").agg([
     │ T   ┆ 152   ┆ 76.030043 │
     └─────┴───────┴───────────┘
 
-
 ### Out of memory example
-
 
 ```python
 n = 100_000
@@ -965,7 +923,6 @@ lf = pl.DataFrame({
 }).lazy()
 ```
 
-
 ```python
 (lf.join(lf, how="cross")
  .filter(
@@ -974,7 +931,6 @@ lf = pl.DataFrame({
  ).collect()
 )
 ```
-
 
     ---------------------------------------------------------------------------
 
@@ -1009,8 +965,6 @@ lf = pl.DataFrame({
 
     ComputeError: Cross joins would produce more rows than fits into 2^32.
     Consider comping with polars-big-idx feature, or set 'allow_streaming'.
-
-
 
 ```python
 print((lf.join(lf, how="cross")
