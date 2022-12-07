@@ -11,12 +11,14 @@ In this exploration guide we will go through the follow topics:
 - [Viewing data](#viewing-data)
 - [Expressions](#expressions)
   - [Select](#select-statement)
-  - [Operations](#operations)
+  - [Filter](#filter)
+  - [With_columns](#with_columns)
+  - [Groupby](#groupby)
+  - [Combining operations](#combining-operations)
+- [Combining dataframes](#combining-dataframes)  
   - [Join](#join)
   - [Concat](#concat)
-  - [Groupby](#groupby)
-- [Lazy API](#lazy-api)
-  - [Out of memory example](#out-of-memory-example)
+- [Remaining topics](#remaining-topics)
 
 ## Installation and Import
 
@@ -353,7 +355,15 @@ Additional information
 
 ## Expressions
 
+`Expressions` are the core strenght of `Polars`. The `expressions` offer a versatile structure that solves easy queries, but is easily extended to complex analyses. Below we will cover the basic components that serve as building block for all your queries.
+
+- `select`
+- `filter`
+- `with_columns`
+
 ### Select statement
+
+To select a column we need to do two things. Define the `DataFrame` we want the data from. And second, select the data that we need. In the example below you see that we select `col('*')`. The asteriks stands for all columns.
 
 ```python
 df.select(
@@ -384,6 +394,8 @@ df.select(
     │ 7   ┆ 0.848925 ┆ 2022-12-08 00:00:00 ┆ null  │
     └─────┴──────────┴─────────────────────┴───────┘
 
+You can also specify the specific columns that you want to return. There are two ways to do this. The first option is to create a `list` of column names, as seen below.
+
 ```python
 df.select(
     pl.col(['a', 'b'])
@@ -413,7 +425,11 @@ df.select(
     │ 7   ┆ 0.848925 │
     └─────┴──────────┘
 
+The second option is to specify each column within a `list` in the `select` statement. This option is shown below.
+
 ```python
+# in this example we limit the number of rows returned to 3, as the comparison is clear.
+# this also shows how easy we can extend our expression to what we need. 
 df.select([
     pl.col('a'),
     pl.col('b')
@@ -433,47 +449,7 @@ df.select([
     │ 2   ┆ 0.889227 │
     └─────┴──────────┘
 
-### Filter
-
-```python
-df.filter(
-    pl.col("c").is_between(datetime(2022, 12, 2), datetime(2022, 12, 8)),
-)
-```
-
-    shape: (5, 4)
-    ┌─────┬──────────┬─────────────────────┬───────┐
-    │ a   ┆ b        ┆ c                   ┆ d     │
-    │ --- ┆ ---      ┆ ---                 ┆ ---   │
-    │ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   │
-    ╞═════╪══════════╪═════════════════════╪═══════╡
-    │ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-    │ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-    │ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-    │ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-    │ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 │
-    └─────┴──────────┴─────────────────────┴───────┘
-
-```python
-df.filter(
-    (pl.col('a') <= 3) & (pl.col('d').is_not_nan())
-)
-```
-
-    shape: (2, 4)
-    ┌─────┬──────────┬─────────────────────┬─────┐
-    │ a   ┆ b        ┆ c                   ┆ d   │
-    │ --- ┆ ---      ┆ ---                 ┆ --- │
-    │ i64 ┆ f64      ┆ datetime[μs]        ┆ f64 │
-    ╞═════╪══════════╪═════════════════════╪═════╡
-    │ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0 │
-    └─────┴──────────┴─────────────────────┴─────┘
+If you want to exclude an entire column from your view, you can simply use `exclude` in your `select` statement.
 
 ```python
 df.select([
@@ -504,112 +480,97 @@ df.select([
     │ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  │
     └──────────┴─────────────────────┴───────┘
 
-### Operations
+Additional information
 
-#### Add columns
+- Link to `select` with `expressions` in the Polars Book: [link](../dsl/expressions.md)
+
+### Filter
+
+The `filter` option allows us to create a subset of the `DataFrame`. We use the same `DataFrame` as earlier and we filter between two specified dates.
+
+```python
+df.filter(
+    pl.col("c").is_between(datetime(2022, 12, 2), datetime(2022, 12, 8)),
+)
+```
+
+    shape: (5, 4)
+    ┌─────┬──────────┬─────────────────────┬───────┐
+    │ a   ┆ b        ┆ c                   ┆ d     │
+    │ --- ┆ ---      ┆ ---                 ┆ ---   │
+    │ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   │
+    ╞═════╪══════════╪═════════════════════╪═══════╡
+    │ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
+    │ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
+    │ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
+    │ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
+    │ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 │
+    └─────┴──────────┴─────────────────────┴───────┘
+
+With `filter` you can also create more complex filters that include multiple columns.
+
+```python
+df.filter(
+    (pl.col('a') <= 3) & (pl.col('d').is_not_nan())
+)
+```
+
+    shape: (2, 4)
+    ┌─────┬──────────┬─────────────────────┬─────┐
+    │ a   ┆ b        ┆ c                   ┆ d   │
+    │ --- ┆ ---      ┆ ---                 ┆ --- │
+    │ i64 ┆ f64      ┆ datetime[μs]        ┆ f64 │
+    ╞═════╪══════════╪═════════════════════╪═════╡
+    │ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
+    │ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0 │
+    └─────┴──────────┴─────────────────────┴─────┘
+
+Additional information
+
+- Link to filtering in `expressions` in the Polars Book: [link](../dsl/expressions.md#filter-and-conditionals)
+
+### With_columns
+
+`with_colums` allows you to create new columns for you analyses. We create to new columns `e` and `b+42`. First we sum all values from column `b` and store the results in column `e`. After that we add `42` to the values of `b`. Creating a new column `b+42` to store these results.
 
 ```python
 df.with_columns([
     pl.col('b').sum().alias('e'),
-    pl.col('b') + 42,
     (pl.col('b') + 42).alias('b+42')
 ])
 ```
 
     shape: (8, 6)
-    ┌─────┬───────────┬─────────────────────┬───────┬──────────┬───────────┐
-    │ a   ┆ b         ┆ c                   ┆ d     ┆ e        ┆ b+42      │
-    │ --- ┆ ---       ┆ ---                 ┆ ---   ┆ ---      ┆ ---       │
-    │ i64 ┆ f64       ┆ datetime[μs]        ┆ f64   ┆ f64      ┆ f64       │
-    ╞═════╪═══════════╪═════════════════════╪═══════╪══════════╪═══════════╡
-    │ 0   ┆ 42.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0   ┆ 3.449961 ┆ 42.220182 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-    │ 1   ┆ 42.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0   ┆ 3.449961 ┆ 42.750839 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-    │ 2   ┆ 42.634639 ┆ 2022-12-03 00:00:00 ┆ NaN   ┆ 3.449961 ┆ 42.634639 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-    │ 3   ┆ 42.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   ┆ 3.449961 ┆ 42.67404  │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-    │ 4   ┆ 42.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   ┆ 3.449961 ┆ 42.102818 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-    │ 5   ┆ 42.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  ┆ 3.449961 ┆ 42.896408 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-    │ 6   ┆ 42.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 ┆ 3.449961 ┆ 42.062943 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-    │ 7   ┆ 42.108093 ┆ 2022-12-08 00:00:00 ┆ null  ┆ 3.449961 ┆ 42.108093 │
-    └─────┴───────────┴─────────────────────┴───────┴──────────┴───────────┘
+    ┌─────┬──────────┬─────────────────────┬───────┬──────────┬───────────┐
+    │ a   ┆ b        ┆ c                   ┆ d     ┆ e        ┆ b+42      │
+    │ --- ┆ ---      ┆ ---                 ┆ ---   ┆ ---      ┆ ---       │
+    │ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   ┆ f64      ┆ f64       │
+    ╞═════╪══════════╪═════════════════════╪═══════╪══════════╪═══════════╡
+    │ 0   ┆ 0.606396 ┆ 2022-12-01 00:00:00 ┆ 1.0   ┆ 4.126554 ┆ 42.606396 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
+    │ 1   ┆ 0.404966 ┆ 2022-12-02 00:00:00 ┆ 2.0   ┆ 4.126554 ┆ 42.404966 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
+    │ 2   ┆ 0.619193 ┆ 2022-12-03 00:00:00 ┆ NaN   ┆ 4.126554 ┆ 42.619193 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
+    │ 3   ┆ 0.41586  ┆ 2022-12-04 00:00:00 ┆ NaN   ┆ 4.126554 ┆ 42.41586  │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
+    │ 4   ┆ 0.35721  ┆ 2022-12-05 00:00:00 ┆ 0.0   ┆ 4.126554 ┆ 42.35721  │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
+    │ 5   ┆ 0.726861 ┆ 2022-12-06 00:00:00 ┆ -5.0  ┆ 4.126554 ┆ 42.726861 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
+    │ 6   ┆ 0.201782 ┆ 2022-12-07 00:00:00 ┆ -42.0 ┆ 4.126554 ┆ 42.201782 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
+    │ 7   ┆ 0.794286 ┆ 2022-12-08 00:00:00 ┆ null  ┆ 4.126554 ┆ 42.794286 │
+    └─────┴──────────┴─────────────────────┴───────┴──────────┴───────────┘
 
-```python
-df_x = df.with_column(
-    (pl.col("a") * pl.col("b")).alias("a * b")
-).select([
-    pl.all().exclude(['c', 'd'])
-])
+### Groupby
 
-print(df_x)
-```
-
-    shape: (8, 3)
-    ┌─────┬──────────┬──────────┐
-    │ a   ┆ b        ┆ a * b    │
-    │ --- ┆ ---      ┆ ---      │
-    │ i64 ┆ f64      ┆ f64      │
-    ╞═════╪══════════╪══════════╡
-    │ 0   ┆ 0.220182 ┆ 0.0      │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-    │ 1   ┆ 0.750839 ┆ 0.750839 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-    │ 2   ┆ 0.634639 ┆ 1.269277 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-    │ 3   ┆ 0.67404  ┆ 2.022121 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-    │ 4   ┆ 0.102818 ┆ 0.41127  │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-    │ 5   ┆ 0.896408 ┆ 4.482038 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-    │ 6   ┆ 0.062943 ┆ 0.377657 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-    │ 7   ┆ 0.108093 ┆ 0.756653 │
-    └─────┴──────────┴──────────┘
-
-#### Column operations
-
-```python
-df_y = df.with_columns([
-    (pl.col("a") * pl.col("b")).alias("a * b")
-]).select([
-    pl.all().exclude('d'),
-])
-
-print(df_y)
-```
-
-    shape: (8, 4)
-    ┌─────┬──────────┬─────────────────────┬──────────┐
-    │ a   ┆ b        ┆ c                   ┆ a * b    │
-    │ --- ┆ ---      ┆ ---                 ┆ ---      │
-    │ i64 ┆ f64      ┆ datetime[μs]        ┆ f64      │
-    ╞═════╪══════════╪═════════════════════╪══════════╡
-    │ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 0.0      │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-    │ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 0.750839 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-    │ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ 1.269277 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-    │ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ 2.022121 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-    │ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.41127  │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-    │ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ 4.482038 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-    │ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ 0.377657 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-    │ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ 0.756653 │
-    └─────┴──────────┴─────────────────────┴──────────┘
-
-[Read more about Expression contexts](../user-guide/dsl/contexts.html)
-
-### Join
+We will create a new `DataFrame` for the Groupby functionality. This new `DataFrame` will include several 'groups' that we want to groupby.
 
 ```python
 df2 = pl.DataFrame({
@@ -644,68 +605,7 @@ print(df2)
     └─────┴─────┘
 
 ```python
-df.join(df2, left_on="a", right_on="x")
-```
-
-    shape: (8, 5)
-    ┌─────┬──────────┬─────────────────────┬───────┬─────┐
-    │ a   ┆ b        ┆ c                   ┆ d     ┆ y   │
-    │ --- ┆ ---      ┆ ---                 ┆ ---   ┆ --- │
-    │ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   ┆ str │
-    ╞═════╪══════════╪═════════════════════╪═══════╪═════╡
-    │ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0   ┆ A   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0   ┆ A   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN   ┆ A   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   ┆ B   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   ┆ B   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  ┆ C   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 ┆ X   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  ┆ X   │
-    └─────┴──────────┴─────────────────────┴───────┴─────┘
-
-[Read more about joins](../howcani/combining_data/joining.html)
-
-### Concat
-
-```python
-pl.concat([df,df2], how="horizontal")
-```
-
-    shape: (8, 6)
-    ┌─────┬──────────┬─────────────────────┬───────┬─────┬─────┐
-    │ a   ┆ b        ┆ c                   ┆ d     ┆ x   ┆ y   │
-    │ --- ┆ ---      ┆ ---                 ┆ ---   ┆ --- ┆ --- │
-    │ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   ┆ i64 ┆ str │
-    ╞═════╪══════════╪═════════════════════╪═══════╪═════╪═════╡
-    │ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0   ┆ 0   ┆ A   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0   ┆ 1   ┆ A   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN   ┆ 2   ┆ A   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   ┆ 3   ┆ B   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   ┆ 4   ┆ B   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  ┆ 5   ┆ C   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 ┆ 6   ┆ X   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  ┆ 7   ┆ X   │
-    └─────┴──────────┴─────────────────────┴───────┴─────┴─────┘
-
-[Read more on concatenation of dataframes](../howcani/combining_data/concatenating.html)
-
-### Groupby
-
-```python
+# without maintain_order you will get a random order back.
 df2.groupby("y", maintain_order=True).count()
 ```
 
@@ -746,281 +646,183 @@ df2.groupby("y", maintain_order=True).agg([
     │ X   ┆ 2     ┆ 13  │
     └─────┴───────┴─────┘
 
-[Read more about groupby's in Polars](../user-guide/dsl/groupby.html)
+Additional information
 
-### Lazy API
+- Link to `groupby` with `expressions` in the Polars Book: [link](../dsl/groupby.md)
+
+### Combining operations
+
+Below are some examples on how to combine operations to create the `DataFrame` you require.
 
 ```python
-# Creating a dataset to work with
+# create a new colum that multiplies column `a` and `b` from our DataFrame
+# select all the columns, but exclude column `c` and `d` from the final DataFrame
 
-df = pl.DataFrame({"a": np.arange(0, 1000), 
-                   "b": np.random.rand(1000), 
-                   "c": [datetime(2022, 12, 1) + timedelta(days=idx) for idx in range(1000)],
-                   "d": np.random.choice(["Q", "P", "R", "S", "T", "U", "W"], 1000)
+df_x = df.with_column(
+    (pl.col("a") * pl.col("b")).alias("a * b")
+).select([
+    pl.all().exclude(['c', 'd'])
+])
+
+print(df_x)
+```
+
+    shape: (8, 3)
+    ┌─────┬──────────┬──────────┐
+    │ a   ┆ b        ┆ a * b    │
+    │ --- ┆ ---      ┆ ---      │
+    │ i64 ┆ f64      ┆ f64      │
+    ╞═════╪══════════╪══════════╡
+    │ 0   ┆ 0.220182 ┆ 0.0      │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
+    │ 1   ┆ 0.750839 ┆ 0.750839 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
+    │ 2   ┆ 0.634639 ┆ 1.269277 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
+    │ 3   ┆ 0.67404  ┆ 2.022121 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
+    │ 4   ┆ 0.102818 ┆ 0.41127  │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
+    │ 5   ┆ 0.896408 ┆ 4.482038 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
+    │ 6   ┆ 0.062943 ┆ 0.377657 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
+    │ 7   ┆ 0.108093 ┆ 0.756653 │
+    └─────┴──────────┴──────────┘
+
+```python
+# only excluding column `d` in this example
+
+df_y = df.with_columns([
+    (pl.col("a") * pl.col("b")).alias("a * b")
+]).select([
+    pl.all().exclude('d')
+])
+
+print(df_y)
+```
+
+    shape: (8, 4)
+    ┌─────┬──────────┬─────────────────────┬──────────┐
+    │ a   ┆ b        ┆ c                   ┆ a * b    │
+    │ --- ┆ ---      ┆ ---                 ┆ ---      │
+    │ i64 ┆ f64      ┆ datetime[μs]        ┆ f64      │
+    ╞═════╪══════════╪═════════════════════╪══════════╡
+    │ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 0.0      │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
+    │ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 0.750839 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
+    │ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ 1.269277 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
+    │ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ 2.022121 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
+    │ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.41127  │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
+    │ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ 4.482038 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
+    │ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ 0.377657 │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
+    │ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ 0.756653 │
+    └─────┴──────────┴─────────────────────┴──────────┘
+
+Additional information
+
+- Link to contexts in `expressions` in the Polars Book: [link](../dsl/contexts.md)
+
+## Combining dataframes
+
+### Join
+
+Let's have a closer look on how to `join` two `DataFrames` to a single `DataFrame`.
+
+```python
+df = pl.DataFrame({"a": np.arange(0, 8), 
+                   "b": np.random.rand(8), 
+                   "c": [datetime(2022, 12, 1) + timedelta(days=idx) for idx in range(8)],
+                   "d": [1, 2.0, np.NaN, np.NaN, 0, -5, -42, None]
                   })
 
-df.write_csv('example_1000.csv')
+df2 = pl.DataFrame({
+                    "x": np.arange(0, 8), 
+                    "y": ['A', 'A', 'A', 'B', 'B', 'C', 'X', 'X'],
+})
 ```
+
+Our two `DataFrames` both have an 'id'-like column: `a` and `x`. We can use those columns to `join` the `DataFrames` in this example.
 
 ```python
-lazy_df = pl.scan_csv('example_1000.csv')
+df.join(df2, left_on="a", right_on="x")
 ```
+
+    shape: (8, 5)
+    ┌─────┬──────────┬─────────────────────┬───────┬─────┐
+    │ a   ┆ b        ┆ c                   ┆ d     ┆ y   │
+    │ --- ┆ ---      ┆ ---                 ┆ ---   ┆ --- │
+    │ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   ┆ str │
+    ╞═════╪══════════╪═════════════════════╪═══════╪═════╡
+    │ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0   ┆ A   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
+    │ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0   ┆ A   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
+    │ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN   ┆ A   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
+    │ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   ┆ B   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
+    │ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   ┆ B   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
+    │ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  ┆ C   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
+    │ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 ┆ X   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
+    │ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  ┆ X   │
+    └─────┴──────────┴─────────────────────┴───────┴─────┘
+
+Additional information
+
+- Link to `joins` in the Polars Book: [link](../howcani/combining_data/joining.md)
+- More information about `joins` in the Reference guide [link](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.join.html#polars.DataFrame.join)
+
+### Concat
+
+We can also `concatenate` two `DataFrames`. Vertical concatenation will make the `DataFrame` longer. Horizontal concatenation will make the `DataFrame` wider. Below you can see the result of an horizontal concatenation of our two `DataFrames`.
 
 ```python
-print(lazy_df.fetch(10))
+pl.concat([df,df2], how="horizontal")
 ```
 
-    shape: (10, 4)
-    ┌─────┬──────────┬────────────────────────────┬─────┐
-    │ a   ┆ b        ┆ c                          ┆ d   │
-    │ --- ┆ ---      ┆ ---                        ┆ --- │
-    │ i64 ┆ f64      ┆ str                        ┆ str │
-    ╞═════╪══════════╪════════════════════════════╪═════╡
-    │ 0   ┆ 0.001015 ┆ 2022-12-01T00:00:00.000000 ┆ S   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 1   ┆ 0.39667  ┆ 2022-12-02T00:00:00.000000 ┆ T   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 2   ┆ 0.114653 ┆ 2022-12-03T00:00:00.000000 ┆ S   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 3   ┆ 0.729952 ┆ 2022-12-04T00:00:00.000000 ┆ P   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ ... ┆ ...      ┆ ...                        ┆ ... │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 6   ┆ 0.039775 ┆ 2022-12-07T00:00:00.000000 ┆ U   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 7   ┆ 0.811901 ┆ 2022-12-08T00:00:00.000000 ┆ U   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 8   ┆ 0.024509 ┆ 2022-12-09T00:00:00.000000 ┆ W   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-    │ 9   ┆ 0.044779 ┆ 2022-12-10T00:00:00.000000 ┆ T   │
-    └─────┴──────────┴────────────────────────────┴─────┘
+    shape: (8, 6)
+    ┌─────┬──────────┬─────────────────────┬───────┬─────┬─────┐
+    │ a   ┆ b        ┆ c                   ┆ d     ┆ x   ┆ y   │
+    │ --- ┆ ---      ┆ ---                 ┆ ---   ┆ --- ┆ --- │
+    │ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   ┆ i64 ┆ str │
+    ╞═════╪══════════╪═════════════════════╪═══════╪═════╪═════╡
+    │ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0   ┆ 0   ┆ A   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
+    │ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0   ┆ 1   ┆ A   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
+    │ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN   ┆ 2   ┆ A   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
+    │ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   ┆ 3   ┆ B   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
+    │ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   ┆ 4   ┆ B   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
+    │ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  ┆ 5   ┆ C   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
+    │ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 ┆ 6   ┆ X   │
+    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
+    │ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  ┆ 7   ┆ X   │
+    └─────┴──────────┴─────────────────────┴───────┴─────┴─────┘
 
-```python
-# We can run the same expressions on a LazyFrame
-# the only difference is that we need to specifically 
-# request the data with .fetch() or .collect()
+Additional information
 
-lazy_df.with_columns([
-    (pl.col("a") * pl.col("b")).alias("a * b")
-])
-```
+- Link to `concatenation` in the Polars Book: [link](../howcani/combining_data/concatenating.md)
+- More information about `concatenation` in the Reference guide [link](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.concat.html#polars.concat)
 
-<h4>NAIVE QUERY PLAN</h4><p>run <b>LazyFrame.show_graph()</b> to see the optimized version</p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 7.0.0 (20221023.0053)
- -->
-<!-- Title: polars_query Pages: 1 -->
-<svg width="199pt" height="133pt"
- viewBox="0.00 0.00 199.00 133.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 129)">
-<title>polars_query</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-129 195,-129 195,4 -4,4"/>
-<!-- WITH COLUMNS [&quot;a * b&quot;] [(0, 0)] -->
-<g id="node1" class="node">
-<title>WITH COLUMNS [&quot;a * b&quot;] [(0, 0)]</title>
-<polygon fill="none" stroke="black" points="183,-125 8,-125 8,-89 183,-89 183,-125"/>
-<text text-anchor="middle" x="95.5" y="-103.3" font-family="Times,serif" font-size="14.00">WITH COLUMNS [&quot;a * b&quot;]</text>
-</g>
-<!-- CSV SCAN example_1000.csv;
-π */4;
-σ &#45;; [(0, 1)] -->
-<g id="node2" class="node">
-<title>CSV SCAN example_1000.csv;
-π */4;
-σ &#45;; [(0, 1)]</title>
-<polygon fill="none" stroke="black" points="191,-53 0,-53 0,0 191,0 191,-53"/>
-<text text-anchor="middle" x="95.5" y="-37.8" font-family="Times,serif" font-size="14.00">CSV SCAN example_1000.csv;</text>
-<text text-anchor="middle" x="95.5" y="-22.8" font-family="Times,serif" font-size="14.00">π*/4;</text>
-<text text-anchor="middle" x="95.5" y="-7.8" font-family="Times,serif" font-size="14.00">σ &#45;;</text>
-</g>
-<!-- WITH COLUMNS [&quot;a * b&quot;] [(0, 0)]&#45;&#45;CSV SCAN example_1000.csv;
-π */4;
-σ &#45;; [(0, 1)] -->
-<g id="edge1" class="edge">
-<title>WITH COLUMNS [&quot;a * b&quot;] [(0, 0)]&#45;&#45;CSV SCAN example_1000.csv;
-π */4;
-σ &#45;; [(0, 1)]</title>
-<path fill="none" stroke="black" d="M95.5,-88.58C95.5,-78.19 95.5,-64.81 95.5,-53.22"/>
-</g>
-</g>
-</svg>
+## Remaining topics
 
-```python
-print(lazy_df.with_columns([
-    (pl.col("a") * pl.col("b")).alias("a * b")
-]).collect())
-```
+This guide was a quick introduction to some of the most used functions within `Polars`. There is a lot more to explore, both in the Polars Book as in the Reference guide. Below are other common topics including a link to find more information about them.
 
-    shape: (1000, 5)
-    ┌─────┬──────────┬────────────────────────────┬─────┬────────────┐
-    │ a   ┆ b        ┆ c                          ┆ d   ┆ a * b      │
-    │ --- ┆ ---      ┆ ---                        ┆ --- ┆ ---        │
-    │ i64 ┆ f64      ┆ str                        ┆ str ┆ f64        │
-    ╞═════╪══════════╪════════════════════════════╪═════╪════════════╡
-    │ 0   ┆ 0.001015 ┆ 2022-12-01T00:00:00.000000 ┆ S   ┆ 0.0        │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌┤
-    │ 1   ┆ 0.39667  ┆ 2022-12-02T00:00:00.000000 ┆ T   ┆ 0.39667    │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌┤
-    │ 2   ┆ 0.114653 ┆ 2022-12-03T00:00:00.000000 ┆ S   ┆ 0.229305   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌┤
-    │ 3   ┆ 0.729952 ┆ 2022-12-04T00:00:00.000000 ┆ P   ┆ 2.189856   │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌┤
-    │ ... ┆ ...      ┆ ...                        ┆ ... ┆ ...        │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌┤
-    │ 996 ┆ 0.438995 ┆ 2025-08-23T00:00:00.000000 ┆ W   ┆ 437.238785 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌┤
-    │ 997 ┆ 0.613333 ┆ 2025-08-24T00:00:00.000000 ┆ Q   ┆ 611.492895 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌┤
-    │ 998 ┆ 0.867072 ┆ 2025-08-25T00:00:00.000000 ┆ S   ┆ 865.337826 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌┤
-    │ 999 ┆ 0.470928 ┆ 2025-08-26T00:00:00.000000 ┆ Q   ┆ 470.456728 │
-    └─────┴──────────┴────────────────────────────┴─────┴────────────┘
-
-```python
-lazy_df.groupby("d").agg([
-    pl.col("a").count().alias("count"),
-    pl.col("b").sum().alias("sum")
-])
-```
-
-<h4>NAIVE QUERY PLAN</h4><p>run <b>LazyFrame.show_graph()</b> to see the optimized version</p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 7.0.0 (20221023.0053)
- -->
-<!-- Title: polars_query Pages: 1 -->
-<svg width="393pt" height="150pt"
- viewBox="0.00 0.00 393.00 150.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 146)">
-<title>polars_query</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-146 389,-146 389,4 -4,4"/>
-<!-- AGG [col(&quot;a&quot;).count().alias(&quot;count&quot;), col(&quot;b&quot;).sum().alias(&quot;sum&quot;)]
-BY
-[col(&quot;d&quot;)] [(0, 0)] [(0, 0)] -->
-<g id="node1" class="node">
-<title>AGG [col(&quot;a&quot;).count().alias(&quot;count&quot;), col(&quot;b&quot;).sum().alias(&quot;sum&quot;)]
-BY
-[col(&quot;d&quot;)] [(0, 0)] [(0, 0)]</title>
-<polygon fill="none" stroke="black" points="385,-142 0,-142 0,-89 385,-89 385,-142"/>
-<text text-anchor="middle" x="192.5" y="-126.8" font-family="Times,serif" font-size="14.00">AGG [col(&quot;a&quot;).count().alias(&quot;count&quot;), col(&quot;b&quot;).sum().alias(&quot;sum&quot;)]</text>
-<text text-anchor="middle" x="192.5" y="-111.8" font-family="Times,serif" font-size="14.00">BY</text>
-<text text-anchor="middle" x="192.5" y="-96.8" font-family="Times,serif" font-size="14.00">[col(&quot;d&quot;)] [(0, 0)]</text>
-</g>
-<!-- CSV SCAN example_1000.csv;
-π */4;
-σ &#45;; [(0, 1)] -->
-<g id="node2" class="node">
-<title>CSV SCAN example_1000.csv;
-π */4;
-σ &#45;; [(0, 1)]</title>
-<polygon fill="none" stroke="black" points="288,-53 97,-53 97,0 288,0 288,-53"/>
-<text text-anchor="middle" x="192.5" y="-37.8" font-family="Times,serif" font-size="14.00">CSV SCAN example_1000.csv;</text>
-<text text-anchor="middle" x="192.5" y="-22.8" font-family="Times,serif" font-size="14.00">π*/4;</text>
-<text text-anchor="middle" x="192.5" y="-7.8" font-family="Times,serif" font-size="14.00">σ &#45;;</text>
-</g>
-<!-- AGG [col(&quot;a&quot;).count().alias(&quot;count&quot;), col(&quot;b&quot;).sum().alias(&quot;sum&quot;)]
-BY
-[col(&quot;d&quot;)] [(0, 0)] [(0, 0)]&#45;&#45;CSV SCAN example_1000.csv;
-π */4;
-σ &#45;; [(0, 1)] -->
-<g id="edge1" class="edge">
-<title>AGG [col(&quot;a&quot;).count().alias(&quot;count&quot;), col(&quot;b&quot;).sum().alias(&quot;sum&quot;)]
-BY
-[col(&quot;d&quot;)] [(0, 0)] [(0, 0)]&#45;&#45;CSV SCAN example_1000.csv;
-π */4;
-σ &#45;; [(0, 1)]</title>
-<path fill="none" stroke="black" d="M192.5,-88.87C192.5,-77.64 192.5,-64.49 192.5,-53.25"/>
-</g>
-</g>
-</svg>
-
-```python
-print(lazy_df.groupby("d").agg([
-    pl.col("a").count().alias("count"),
-    pl.col("b").sum().alias("sum")
-]).collect())
-```
-
-    shape: (7, 3)
-    ┌─────┬───────┬───────────┐
-    │ d   ┆ count ┆ sum       │
-    │ --- ┆ ---   ┆ ---       │
-    │ str ┆ u32   ┆ f64       │
-    ╞═════╪═══════╪═══════════╡
-    │ R   ┆ 148   ┆ 70.585629 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-    │ U   ┆ 126   ┆ 63.487305 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-    │ P   ┆ 154   ┆ 75.408696 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-    │ Q   ┆ 145   ┆ 70.188359 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-    │ S   ┆ 124   ┆ 63.575682 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-    │ W   ┆ 151   ┆ 75.945765 │
-    ├╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-    │ T   ┆ 152   ┆ 76.030043 │
-    └─────┴───────┴───────────┘
-
-### Out of memory example
-
-```python
-n = 100_000
-
-lf = pl.DataFrame({
-    "a": pl.arange(0, n, eager=True)
-}).lazy()
-```
-
-```python
-(lf.join(lf, how="cross")
- .filter(
-     (pl.col("a") == pl.col("a_right")) &
-     (pl.col("a") == 130)
- ).collect()
-)
-```
-
-    ---------------------------------------------------------------------------
-
-    ComputeError                              Traceback (most recent call last)
-
-    Cell In[38], line 1
-    ----> 1 (lf.join(lf, how="cross")
-          2  .filter(
-          3      (pl.col("a") == pl.col("a_right")) &
-          4      (pl.col("a") == 130)
-          5  ).collect()
-          6 )
-
-
-    File ~/Documents/dev/polars-book/.venv/lib/python3.9/site-packages/polars/utils.py:310, in deprecated_alias.<locals>.deco.<locals>.wrapper(*args, **kwargs)
-        307 @functools.wraps(fn)
-        308 def wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
-        309     _rename_kwargs(fn.__name__, kwargs, aliases)
-    --> 310     return fn(*args, **kwargs)
-
-
-    File ~/Documents/dev/polars-book/.venv/lib/python3.9/site-packages/polars/internals/lazyframe/frame.py:1164, in LazyFrame.collect(self, type_coercion, predicate_pushdown, projection_pushdown, simplify_expression, no_optimization, slice_pushdown, common_subplan_elimination, streaming)
-       1153     common_subplan_elimination = False
-       1155 ldf = self._ldf.optimization_toggle(
-       1156     type_coercion,
-       1157     predicate_pushdown,
-       (...)
-       1162     streaming,
-       1163 )
-    -> 1164 return pli.wrap_df(ldf.collect())
-
-
-    ComputeError: Cross joins would produce more rows than fits into 2^32.
-    Consider comping with polars-big-idx feature, or set 'allow_streaming'.
-
-```python
-print((lf.join(lf, how="cross")
- .filter(
-     (pl.col("a") == pl.col("a_right")) &
-     (pl.col("a") == 130)
- ).collect(allow_streaming=True)
-))
-```
+- Dealing with timeseries [link](../howcani/timeseries/intro.md)
+- Processing missing data [link](../howcani/missing_data.md)
+- Reading data from Pandas DataFrame or Numpy array [link](https://pola-rs.github.io/polars/py-polars/html/reference/functions.html#conversion)
+- Working with the Lazy API [link](../optimizations/)
