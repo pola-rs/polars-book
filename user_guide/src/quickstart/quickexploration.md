@@ -108,12 +108,12 @@ print(dataframe)
 
 Additional information
 
-- Link to Series in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/series/index.html)
-- Link to DataFrames in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html)
+- Link to `Series` in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/series/index.html)
+- Link to `DataFrames` in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html)
 
 ### From files
 
-In Polars we can also read files and create a `DataFrame`. In the following examples we write the output of the `DataFrame` from the previous part to a specific file type. After that we will read it and print the output for inspection.
+In Polars we can also read files and create a `DataFrame`. In the following examples we write the output of the `DataFrame` from the previous part to a specific file type (`csv`, `json` and `parquet`). After that we will read it and print the output for inspection.
 
 #### csv
 
@@ -213,10 +213,12 @@ print(df_parquet)
 
 Additional information
 
-- Read more about IO in the Polars Book: [link](../howcani/io/intro.html)
-- Link to IO in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/io.html)
+- Read more about `IO` in the Polars Book: [link](../howcani/io/intro.html)
+- Link to `IO` in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/io.html)
 
 ## Viewing data
+
+This part focuses on viewing data in a `DataFrame`. We first create a `DataFrame` to work with.
 
 ```python
 df = pl.DataFrame({"a": np.arange(0, 8), 
@@ -251,8 +253,10 @@ print(df)
     │ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  │
     └─────┴──────────┴─────────────────────┴───────┘
 
+The `head` function shows by default the first 5 rows of a `DataFrame`. You can specify the number of rows you want to see (e.g. `df.head(10)`).
+
 ```python
-df.head()
+df.head(5)
 ```
 
     shape: (5, 4)
@@ -272,8 +276,10 @@ df.head()
     │ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0 │
     └─────┴──────────┴─────────────────────┴─────┘
 
+The `tail` function shows the last 5 rows of a `DataFrame`. You can also specificy the number of rows you want to see, similar to `head`.
+
 ```python
-df.tail()
+df.tail(5)
 ```
 
     shape: (5, 4)
@@ -293,6 +299,8 @@ df.tail()
     │ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  │
     └─────┴──────────┴─────────────────────┴───────┘
 
+If you want to get an impression of the data of your `DataFrame`, you can also use `sample`. With `sample` you get an *n* number of random rows from the `DataFrame`.
+
 ```python
 df.sample(n=3)
 ```
@@ -309,6 +317,8 @@ df.sample(n=3)
     ├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┤
     │ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null │
     └─────┴──────────┴─────────────────────┴──────┘
+
+`Describe` returns summary statistics of your `DataFrame`. It will provide several quick statistics if possible.
 
 ```python
 df.describe()
@@ -334,6 +344,12 @@ df.describe()
     ├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
     │ median     ┆ 3.5     ┆ 0.42741  ┆ null                       ┆ 1.0   │
     └────────────┴─────────┴──────────┴────────────────────────────┴───────┘
+
+Additional information
+
+- Link to aggregations on `DataFrames` in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/aggregation.html)
+- Link to descriptive `DataFrame` functions in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/descriptive.html)
+- Link to `DataFrame` attributes in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/attributes.html)
 
 ## Expressions
 
