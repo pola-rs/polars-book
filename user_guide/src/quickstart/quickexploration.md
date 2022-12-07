@@ -1,5 +1,7 @@
 # Polars quick exploration
 
+This quick exploration guide is written for new users of Polars. The goal is to provide an overview of the most common functions and capabilities of the package. In this guide we will provide several examples. At the end of every part there is a link to relevant parts of the Polars Book with more information and the API reference guide.
+
 In this exploration guide we will go through the follow topics:
 
 - [Installation and Import](#installation-and-import)
@@ -18,20 +20,20 @@ In this exploration guide we will go through the follow topics:
 
 ## Installation and Import
 
-Install Polars in your environment with
+Install `Polars` in your (virtual) environment with the following command:
 
 ```shell
 pip install -U polars
 ```
 
-Import Polars and some supporting packages for this quickstart.
+Import `Polars` as follows:
 
 ```python
 import polars as pl
 
-# to enrich the examples with dates
+# to enrich the examples in this quickstart with dates
 from datetime import datetime, timedelta 
-# to generate data in this notebook
+# to generate data for the examples
 import numpy as np 
 ```
 
@@ -39,9 +41,12 @@ import numpy as np
 
 ### From scratch
 
-Creating a simple Series or Dataframe is easy and very familiar to other packages
+Creating a simple `Series` or `Dataframe` is easy and very familiar to other packages.
+
+You can create a `Series` in Polars by providing a `list` or a `tuple`.
 
 ```python
+# with a tuple
 series = pl.Series("a", [1, 2, 3, 4, 5])
 
 print(series)
@@ -50,12 +55,31 @@ print(series)
     shape: (5,)
     Series: 'a' [i64]
     [
-     1
-     2
-     3
-     4
-     5
+        1
+        2
+        3
+        4
+        5
     ]
+
+```python
+# with a list
+series = pl.Series([1, 2, 3, 4, 5])
+
+print(series)
+```
+
+    shape: (5,)
+    Series: '' [i64]
+    [
+        1
+        2
+        3
+        4
+        5
+    ]
+
+A `DataFrame` is created from a `dict` or a collection of `dicts`.
 
 ```python
 dataframe = pl.DataFrame({"integer": [1, 2, 3], 
@@ -82,9 +106,16 @@ print(dataframe)
     │ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
     └─────────┴─────────────────────┴───────┘
 
+Additional information
+
+- Link to Series in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/series/index.html)
+- Link to DataFrames in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html)
+
 ### From files
 
-### csv
+In Polars we can also read files and create a `DataFrame`. In the following examples we write the output of the `DataFrame` from the previous part to a specific file type. After that we will read it and print the output for inspection.
+
+#### csv
 
 ```python
 dataframe.write_csv('output.csv')
@@ -109,6 +140,8 @@ print(df_csv)
     │ 3       ┆ 2022-01-03T00:00:00.000000 ┆ 6.0   │
     └─────────┴────────────────────────────┴───────┘
 
+As we can see above, Polars made the datetimes a `string`. We can tell Polars to parse dates, when reading the csv, to ensure the date becomes a datetime. The example can be found below:
+
 ```python
 df_csv_with_dates = pl.read_csv('output.csv', parse_dates=True)
 
@@ -128,7 +161,7 @@ print(df_csv_with_dates)
     │ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
     └─────────┴─────────────────────┴───────┘
 
-### json
+#### json
 
 ```python
 dataframe.write_json('output.json')
@@ -153,7 +186,7 @@ print(df_json)
     │ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
     └─────────┴─────────────────────┴───────┘
 
-### parquet
+#### parquet
 
 ```python
 dataframe.write_parquet('output.parquet')
@@ -178,9 +211,10 @@ print(df_parquet)
     │ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
     └─────────┴─────────────────────┴───────┘
 
-[Read more about IO here](../howcani/io/intro.html)
+Additional information
 
-For all supported filetypes see [Python API reference guide](https://pola-rs.github.io/polars/py-polars/html/reference/io.html)
+- Read more about IO in the Polars Book: [link](../howcani/io/intro.html)
+- Link to IO in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/io.html)
 
 ## Viewing data
 
