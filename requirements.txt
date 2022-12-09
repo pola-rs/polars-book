@@ -7,4 +7,3 @@ pyarrow
 mdformat==0.7.14
 typing_extensions
 black==22.3.0
-
