@@ -4,14 +4,24 @@
 
 Installing and using `Polars` is just a simple `pip install`, `cargo add`, or `yarn add` away.
 
-```shell
-$ # Installing for python
+<div class="tabbed-blocks">
+
+```python
+# Installing for python
 $ pip install polars
-$ # Installing into a Rust project
+```
+
+```rust,noplayground
+// Installing into a Rust project
 $ cargo add polars
-$ # Installing for Node
+```
+
+```js
+// Installing for Node
 $ yarn add nodejs-polars
 ```
+
+</div>
 
 All binaries are pre-built for `Python` v3.6+.
 
