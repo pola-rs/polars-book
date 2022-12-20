@@ -9,7 +9,7 @@ structure) strings are contiguous in memory. Thus traversing is cache-optimal an
 predictable for the CPU.
 
 The string processing functions available in `Polars` are available in the
-[`str` namespace](POLARS_PY_REF_GUIDE/series.html#strings).
+[`str` namespace](POLARS_PY_REF_GUIDE/series/strings.html).
 
 Below are a few examples. To compute string lengths:
 
