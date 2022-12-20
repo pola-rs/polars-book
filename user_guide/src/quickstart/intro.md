@@ -35,7 +35,7 @@ import polars as pl
 
 df = pl.read_csv("https://j.mp/iriscsv")
 print(df.filter(pl.col("sepal_length") > 5)
-      .groupby("species")
+      .groupby("species", maintain_order=True)
       .agg(pl.all().sum())
 )
 ```
@@ -44,17 +44,17 @@ The snippet above will output:
 
 ```text
 shape: (3, 5)
-╭──────────────┬──────────────────┬─────────────────┬──────────────────┬─────────────────╮
-│ species      ┆ sepal_length_sum ┆ sepal_width_sum ┆ petal_length_sum ┆ petal_width_sum │
-│ ---          ┆ ---              ┆ ---             ┆ ---              ┆ ---             │
-│ str          ┆ f64              ┆ f64             ┆ f64              ┆ f64             │
-╞══════════════╪══════════════════╪═════════════════╪══════════════════╪═════════════════╡
-│ "virginica"  ┆ 324.5            ┆ 146.2           ┆ 273.1            ┆ 99.6            │
-├╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┤
-│ "versicolor" ┆ 281.9            ┆ 131.8           ┆ 202.9            ┆ 63.3            │
-├╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┤
-│ "setosa"     ┆ 116.9            ┆ 81.7            ┆ 33.2             ┆ 6.1             │
-╰──────────────┴──────────────────┴─────────────────┴──────────────────┴─────────────────╯
+┌────────────┬──────────────┬─────────────┬──────────────┬─────────────┐
+│ species    ┆ sepal_length ┆ sepal_width ┆ petal_length ┆ petal_width │
+│ ---        ┆ ---          ┆ ---         ┆ ---          ┆ ---         │
+│ str        ┆ f64          ┆ f64         ┆ f64          ┆ f64         │
+╞════════════╪══════════════╪═════════════╪══════════════╪═════════════╡
+│ setosa     ┆ 116.9        ┆ 81.7        ┆ 33.2         ┆ 6.1         │
+├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌┤
+│ versicolor ┆ 281.9        ┆ 131.8       ┆ 202.9        ┆ 63.3        │
+├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌┤
+│ virginica  ┆ 324.5        ┆ 146.2       ┆ 273.1        ┆ 99.6        │
+└────────────┴──────────────┴─────────────┴──────────────┴─────────────┘
 ```
 
 As we can see, `Polars` pretty-prints the output object, including the column name and
@@ -73,7 +73,7 @@ print(
     pl.read_csv("https://j.mp/iriscsv")
     .lazy()
     .filter(pl.col("sepal_length") > 5)
-    .groupby("species")
+    .groupby("species", maintain_order=True)
     .agg(pl.all().sum())
     .collect()
 )
@@ -143,7 +143,7 @@ So the eager snippet above would become:
 (
     df.lazy()
     .filter(pl.col("sepal_length") > 5)
-    .groupby("species")
+    .groupby("species", maintain_order=True)
     .agg(pl.all().sum())
     .collect()
 )
