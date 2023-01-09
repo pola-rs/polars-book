@@ -94,6 +94,11 @@ Hence the warning in the Python docs that it is slower: there is more overhead t
 However, in almost all cases, one would like to use multiple processes to speed up computations that take multiple minutes or even hours, meaning the overhead is negligible in the grand scheme of things.
 And more importantly, it actually works in combination with multithreaded libraries.
 
+Fourth, `spawn` starts a new process, and therefore it requires code to be importable, in contrast to `fork`.
+In particular, this means that when using `spawn` the relevant code should not be in the global scope, such as in Jupyter notebooks or in plain scripts.
+Hence in the examples above, we define functions where we spawn within, and run those functions from a `__main__` clause.
+This is not an issue for typical projects, but in quick experimentation in notebooks it could fail.
+
 ## References
 
 \[1\] https://docs.python.org/3/library/multiprocessing.html

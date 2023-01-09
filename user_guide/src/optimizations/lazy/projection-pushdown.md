@@ -27,7 +27,7 @@ Again, let's take a look the query plan.
 dataset.show_graph(optimized=False)
 ```
 
-![](./../outputs/projection_pushdown/graph.png)
+![](../../outputs/projection_pushdown/graph.png)
 
 Now were focussed on the projection's indicated with π. The first node shows π 3/6,
 indicating that we select 3 out of 6 columns in the `DataFrame`. If we look the csv scans
@@ -48,7 +48,7 @@ Let's see how `Polars` optimizes this query.
 dataset.show_graph(optimized=True)
 ```
 
-![](./../outputs/projection_pushdown/graph-optimized.png)
+![](../../outputs/projection_pushdown/graph-optimized.png)
 
 The projections are pushed down the join operation all the way to the csv scans. This
 means that both the scanning and join operation have become cheaper due to the query

@@ -9,6 +9,6 @@ df = pl.DataFrame(
         "values": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
     }
 )
-out1 = df.upsample("time", "15m").fill_null("forward")
+out1 = df.upsample(time_column="time", every="15m").fill_null("forward")
 
-out2 = df.upsample("time", "15m").interpolate().fill_null("forward")
+out2 = df.upsample(time_column="time", every="15m").interpolate().fill_null("forward")

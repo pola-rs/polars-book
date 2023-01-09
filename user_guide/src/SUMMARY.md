@@ -2,6 +2,7 @@
 
 - [Introduction](introduction.md)
 - [Getting started](quickstart/intro.md)
+  - [Polars quick exploration guide](quickstart/quick-exploration-guide.md)
 - [Polars expressions](dsl/intro.md)
   - [Expressions](dsl/expressions.md)
   - [Contexts](dsl/contexts.md)
