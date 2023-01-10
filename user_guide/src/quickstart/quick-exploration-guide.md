@@ -116,8 +116,8 @@ shape: (3, 3)
 
 Additional information
 
-- Link to `Series` in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/series/index.html)
-- Link to `DataFrames` in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html)
+- Link to `Series` in the Reference guide: [link](POLARS_PY_REF_GUIDE/series/index.html)
+- Link to `DataFrames` in the Reference guide: [link](POLARS_PY_REF_GUIDE/dataframe/index.html)
 
 ### From files
 
@@ -230,7 +230,7 @@ shape: (3, 3)
 Additional information
 
 - Read more about `IO` in the Polars Book: [link](../howcani/io/intro.html)
-- Link to `IO` in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/io.html)
+- Link to `IO` in the Reference guide: [link](POLARS_PY_REF_GUIDE/io.html)
 
 ## Viewing data
 
@@ -373,9 +373,9 @@ shape: (7, 5)
 
 Additional information
 
-- Link to aggregations on `DataFrames` in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/aggregation.html)
-- Link to descriptive `DataFrame` functions in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/descriptive.html)
-- Link to `DataFrame` attributes in the Reference guide: [link](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/attributes.html)
+- Link to aggregations on `DataFrames` in the Reference guide: [link](POLARS_PY_REF_GUIDE/dataframe/aggregation.html)
+- Link to descriptive `DataFrame` functions in the Reference guide: [link](POLARS_PY_REF_GUIDE/dataframe/descriptive.html)
+- Link to `DataFrame` attributes in the Reference guide: [link](POLARS_PY_REF_GUIDE/dataframe/attributes.html)
 
 ## Expressions
 
@@ -830,7 +830,7 @@ shape: (8, 5)
 Additional information
 
 - Link to `joins` in the Polars Book: [link](../howcani/combining_data/joining.md)
-- More information about `joins` in the Reference guide [link](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.join.html#polars.DataFrame.join)
+- More information about `joins` in the Reference guide [link](POLARS_PY_REF_GUIDE/dataframe/api/polars.DataFrame.join.html#polars.DataFrame.join)
 
 ### Concat
 
@@ -868,7 +868,7 @@ shape: (8, 6)
 Additional information
 
 - Link to `concatenation` in the Polars Book: [link](../howcani/combining_data/concatenating.md)
-- More information about `concatenation` in the Reference guide [link](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.concat.html#polars.concat)
+- More information about `concatenation` in the Reference guide [link](POLARS_PY_REF_GUIDE/api/polars.concat.html#polars.concat)
 
 ## Remaining topics
 
@@ -876,5 +876,5 @@ This guide was a quick introduction to some of the most used functions within `P
 
 - Dealing with timeseries [link](../howcani/timeseries/intro.md)
 - Processing missing data [link](../howcani/missing_data.md)
-- Reading data from Pandas DataFrame or Numpy array [link](https://pola-rs.github.io/polars/py-polars/html/reference/functions.html#conversion)
+- Reading data from Pandas DataFrame or Numpy array [link](POLARS_PY_REF_GUIDE/functions.html#conversion)
 - Working with the Lazy API [link](../optimizations/)

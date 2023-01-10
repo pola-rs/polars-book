@@ -174,7 +174,7 @@ print(out)
 A polars expression can also do an implicit GROUPBY, AGGREGATION, and JOIN in a single expression.
 In the examples below we do a GROUPBY OVER `"groups"` and AGGREGATE SUM of `"random"`, and in the next expression
 we GROUPBY OVER `"names"` and AGGREGATE a LIST of `"random"`. These window functions can be combined with other expressions
-and are an efficient way to determine group statistics. See more on those group statistics [here](POLARS_PY_REF_GUIDE/expression.html#aggregation).
+and are an efficient way to determine group statistics. See more on those group statistics [here](POLARS_PY_REF_GUIDE/expressions/aggregation.html).
 
 <div class="tabbed-blocks">
 
