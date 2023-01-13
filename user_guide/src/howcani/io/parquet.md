@@ -34,8 +34,8 @@ df.write_parquet("path.parquet")
 
 ```rust,noplayground
 let mut df = df!(
-    "foo" => [1, 2, 3],
-    "bar" => [None, Some("bak"), Some("baz")],
+    "foo" => &[1, 2, 3],
+    "bar" => &[None, Some("bak"), Some("baz")],
 )
 .unwrap();
 

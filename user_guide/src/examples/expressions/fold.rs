@@ -3,10 +3,10 @@ use polars::prelude::*;
 
 fn main() -> Result<()> {
     // ANCHOR: manual_sum
-    let df = df![
-        "a" => [1, 2, 3],
-        "b" => [10, 20, 30],
-    ]?;
+    let df = df!(
+        "a" => &[1, 2, 3],
+        "b" => &[10, 20, 30],
+    )?;
 
     let out = df
         .lazy()
@@ -16,10 +16,10 @@ fn main() -> Result<()> {
     // ANCHOR_END: manual_sum
 
     // ANCHOR: conditional
-    let df = df![
-        "a" => [1, 2, 3],
-        "b" => [0, 1, 2],
-    ]?;
+    let df = df!(
+        "a" => &[1, 2, 3],
+        "b" => &[0, 1, 2],
+    )?;
 
     let out = df
         .lazy()
@@ -33,10 +33,10 @@ fn main() -> Result<()> {
     // ANCHOR_END: conditional
 
     // ANCHOR: string
-    let df = df![
-        "a" => ["a", "b", "c"],
-        "b" => [1, 2, 3],
-    ]?;
+    let df = df!(
+        "a" => &["a", "b", "c"],
+        "b" => &[1, 2, 3],
+    )?;
 
     let out = df
         .lazy()

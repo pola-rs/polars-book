@@ -95,12 +95,12 @@ fn main() -> Result<()> {
     println!("{:?}", out);
     // ANCHOR_END: more
 
-    let df = df! [
-        "foo" => [11, 22, 33, 44, 55],
-        "groups" => [Some("foo"), Some("ham"), Some("spam"), Some("eggs"), None],
-        "x" => [1, 2, 3, 4, 5],
-        "y" => [3, 4, 5, 6, 7],
-    ]?
+    let df = df! (
+        "foo" => &[11, 22, 33, 44, 55],
+        "groups" => &[Some("foo"), Some("ham"), Some("spam"), Some("eggs"), None],
+        "x" => &[1, 2, 3, 4, 5],
+        "y" => &[3, 4, 5, 6, 7],
+    )?
     .lazy();
 
     let _temp = df

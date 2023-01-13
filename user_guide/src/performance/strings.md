@@ -71,9 +71,9 @@ use polars::prelude::*;
 
 fn main() {
     let words = "All that glitters is not gold".split(' ').collect::<Vec<_>>();
-    let df = df! {
-        "shakespear" => words
-    }.unwrap();
+    let df = df! (
+        "shakespear" => &words
+    ).unwrap();
     println!("{df}");
 }
 ```
@@ -97,16 +97,16 @@ use polars::{prelude::*, toggle_string_cache};
 
 fn main() {
     toggle_string_cache(true);
-    let lf1 = df! {
-        "a" => ["foo", "bar", "ham"],
-        "b" => [1, 2, 3]
-    }
+    let lf1 = df! (
+        "a" => &["foo", "bar", "ham"],
+        "b" => &[1, 2, 3]
+    )
     .unwrap()
     .lazy();
-    let lf2 = df! {
-        "a" => ["foo", "spam", "eggs"],
-        "b" => [3,2,2]
-    }
+    let lf2 = df! (
+        "a" => &["foo", "spam", "eggs"],
+        "b" => &[3,2,2]
+    )
     .unwrap()
     .lazy();
 
