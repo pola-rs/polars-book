@@ -572,7 +572,7 @@ Additional information
 
 ### With_columns
 
-`with_colums` allows you to create new columns for you analyses. We create to new columns `e` and `b+42`. First we sum all values from column `b` and store the results in column `e`. After that we add `42` to the values of `b`. Creating a new column `b+42` to store these results.
+`with_colums` allows you to create new columns for you analyses. We create two new columns `e` and `b+42`. First we sum all values from column `b` and store the results in column `e`. After that we add `42` to the values of `b`. Creating a new column `b+42` to store these results.
 
 ```python
 df.with_columns([
