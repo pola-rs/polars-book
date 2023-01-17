@@ -18,4 +18,4 @@ yielding:
 {{#include ../../outputs/aggregate/output.txt}}
 ```
 
-See more in the [API docs of Expr](POLARS_PY_REF_GUIDE/expression.html#aggregation)
+See more in the [API docs of Expr](POLARS_PY_REF_GUIDE/expressions/aggregation.html)

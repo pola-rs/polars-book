@@ -52,5 +52,5 @@ print(df_with_year)
 {{#include ../../outputs/time_series/parse_dates_with_year.txt}}
 ```
 
-See the [API docs](https://pola-rs.github.io/polars/py-polars/html/reference/series/timeseries.html)
+See the [API docs](POLARS_PY_REF_GUIDE/series/timeseries.html)
 for more date feature options.
