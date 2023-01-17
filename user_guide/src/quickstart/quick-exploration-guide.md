@@ -296,7 +296,7 @@ shape: (5, 4)
 └─────┴──────────┴─────────────────────┴─────┘
 ```
 
-The `tail` function shows the last 5 rows of a `DataFrame`. You can also specificy the number of rows you want to see, similar to `head`.
+The `tail` function shows the last 5 rows of a `DataFrame`. You can also specify the number of rows you want to see, similar to `head`.
 
 ```python
 df.tail(5)
@@ -387,7 +387,7 @@ Additional information
 
 ### Select statement
 
-To select a column we need to do two things. Define the `DataFrame` we want the data from. And second, select the data that we need. In the example below you see that we select `col('*')`. The asteriks stands for all columns.
+To select a column we need to do two things. Define the `DataFrame` we want the data from. And second, select the data that we need. In the example below you see that we select `col('*')`. The asterisk stands for all columns.
 
 ```python
 df.select(
@@ -699,7 +699,7 @@ Additional information
 Below are some examples on how to combine operations to create the `DataFrame` you require.
 
 ```python
-# create a new colum that multiplies column `a` and `b` from our DataFrame
+# create a new column that multiplies column `a` and `b` from our DataFrame
 # select all the columns, but exclude column `c` and `d` from the final DataFrame
 
 df_x = df.with_column(

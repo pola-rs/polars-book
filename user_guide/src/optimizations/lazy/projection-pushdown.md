@@ -29,7 +29,7 @@ dataset.show_graph(optimized=False)
 
 ![](../../outputs/projection_pushdown/graph.png)
 
-Now were focussed on the projection's indicated with π. The first node shows π 3/6,
+Now were focused on the projection's indicated with π. The first node shows π 3/6,
 indicating that we select 3 out of 6 columns in the `DataFrame`. If we look the csv scans
 we see a wildcard π \*/6 and π \*/1 meaning that we select all of 6 columns of the
 reddit dataset and the one and only column from the runescape dataset respectively.
