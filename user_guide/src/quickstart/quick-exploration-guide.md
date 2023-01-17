@@ -379,7 +379,7 @@ Additional information
 
 ## Expressions
 
-`Expressions` are the core strenght of `Polars`. The `expressions` offer a versatile structure that solves easy queries, but is easily extended to complex analyses. Below we will cover the basic components that serve as building block for all your queries.
+`Expressions` are the core strength of `Polars`. The `expressions` offer a versatile structure that solves easy queries, but is easily extended to complex analyses. Below we will cover the basic components that serve as building block for all your queries.
 
 - `select`
 - `filter`
