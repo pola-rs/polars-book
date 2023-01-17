@@ -161,6 +161,17 @@ df.with_columns([
 
 These column assignments are executed in parallel.
 
+We can add a column based on a `list` by creating a `Series` from the `list` and passing the `Series` to `with_column`
+```python
+my_list = [10, 20, 30, 40, 50]
+(
+    df
+    .with_column(
+        pl.Series(name="col_list", values=my_list)
+        )
+)
+```
+
 #### Column assignment based on predicate
 
 In this case we have a dataframe `df` with columns `a`,`b` and `c`. We want to re-assign

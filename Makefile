@@ -17,9 +17,9 @@ data: .venv
 	wget -q $(DATA_SRC)/runescape100k.tar.gz -O - | tar -xzf - -O > $(DATA_DIR)/runescape.csv
 
 run: data
-	./tasks.sh process_nbook 10-minutes-to-polars
 	./tasks.sh process_nbook introduction_polars-py
 	./tasks.sh process_nbook introduction_polars-rs
+	$(PYTHON) -m user_guide.src.examples.tutorials
 	$(PYTHON) -m user_guide.src.examples.testing
 	$(PYTHON) -m user_guide.src.examples.multiple_files
 	$(PYTHON) -m user_guide.src.examples.combining_data
