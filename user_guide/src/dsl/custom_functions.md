@@ -149,7 +149,7 @@ achieve the same goals.
 In this example we create a global `counter` and then add the integer `1` to the global state at every element processed.
 Every iteration the result of the increment will be added to the element value.
 
-> Note, this example isn't provided in Rust.  The reason is that the global `counter` value would lead to data races when this apply is evaluated in parallel.  It would be possible to wrap it in a `Mutex` to protect the variable, but that would be obscuring the point of the example.  This is a case where the Python Global Interpreter Lock's performance tradeoff provides some safety guarentees.
+> Note, this example isn't provided in Rust.  The reason is that the global `counter` value would lead to data races when this apply is evaluated in parallel.  It would be possible to wrap it in a `Mutex` to protect the variable, but that would be obscuring the point of the example.  This is a case where the Python Global Interpreter Lock's performance tradeoff provides some safety guarantees.
 
 ```python
 {{#include ../examples/expressions/apply_function_2.py:4:}}

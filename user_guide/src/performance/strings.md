@@ -24,7 +24,7 @@ strings. On the other hand for `Vec<String>`, we only need to swap pointers arou
 which is only 8 bytes data that have to be moved with little cost.
 
 Reordering a `DataFrame` embedding a large number of `Utf8` `Series` due to an operation
-(filtering, joining, grouping, *etc.*) can quickly become quite expensive.
+(filtering, joining, grouping, _etc._) can quickly become quite expensive.
 
 ## Categorical type
 
@@ -35,11 +35,21 @@ cache efficiency whilst remaining cheap to move values around.
 In the example below we demonstrate how you can cast a `Utf8` `Series` column to a
 `Categorical` `Series`.
 
+<div class="tabbed-blocks">
+
 ```python
 import polars as pl
 
 df["utf8-column"].cast(pl.Categorical)
 ```
+
+```rust,noplayground
+use polars::prelude::*;
+
+df.column("utf8-column").unwrap().cast(&DataType::Categorical(None)).unwrap();
+```
+
+</div>
 
 ### Eager join multiple DataFrames on Categorical data
 
@@ -50,9 +60,25 @@ context manager. This will synchronize all discoverable string values for the du
 context manager. If you want the global string cache to exist during the whole
 run, you can set `toggle_string_cache` to `True`.
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/strings_performance/snippet1.py}}
 ```
+
+```rust,noplayground
+use polars::prelude::*;
+
+fn main() {
+    let words = "All that glitters is not gold".split(' ').collect::<Vec<_>>();
+    let df = df! {
+        "shakespear" => words
+    }.unwrap();
+    println!("{df}");
+}
+```
+
+</div>
 
 ### Lazy join multiple DataFrames on Categorical data
 
@@ -60,6 +86,36 @@ A lazy query always has a global string cache (unless you opt-out) for the durat
 that query (until `.collect()` is called). The example below shows how you could join
 two `DataFrames` with `Categorical` types.
 
+<div class="tabbed-blocks">
+
 ```python
 {{#include ../examples/strings_performance/snippet2.py}}
 ```
+
+```rust,noplayground
+use polars::{prelude::*, toggle_string_cache};
+
+fn main() {
+    toggle_string_cache(true);
+    let lf1 = df! {
+        "a" => ["foo", "bar", "ham"],
+        "b" => [1, 2, 3]
+    }
+    .unwrap()
+    .lazy();
+    let lf2 = df! {
+        "a" => ["foo", "spam", "eggs"],
+        "b" => [3,2,2]
+    }
+    .unwrap()
+    .lazy();
+
+    let lf1 = lf1.with_column(col("a").cast(DataType::Categorical(None)));
+    let lf2 = lf2.with_column(col("a").cast(DataType::Categorical(None)));
+    let joined = lf1.inner_join(lf2, col("a"), col("a"));
+    println!("{:?}", joined.collect().unwrap());
+}
+
+```
+
+</div>

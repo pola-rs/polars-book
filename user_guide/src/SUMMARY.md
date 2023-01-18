@@ -2,6 +2,7 @@
 
 - [Introduction](introduction.md)
 - [Getting started](quickstart/intro.md)
+  - [Polars quick exploration guide](quickstart/quick-exploration-guide.md)
 - [Polars expressions](dsl/intro.md)
   - [Expressions](dsl/expressions.md)
   - [Contexts](dsl/contexts.md)
@@ -23,6 +24,7 @@
   - [IO](howcani/io/intro.md)
     - [CSV files](howcani/io/csv.md)
     - [Parquet files](howcani/io/parquet.md)
+    - [JSON files](howcani/io/json.md)
     - [Multiple files](multiple_files/intro.md)
     - [Read from a database](howcani/io/read_db.md)
     - [Interact with AWS](howcani/io/aws.md)
@@ -47,6 +49,7 @@
   - [Combining data](howcani/combining_data/intro.md)
     - [Concatenation](howcani/combining_data/concatenating.md)
     - [Joining](howcani/combining_data/joining.md)
+  - [Multiprocessing](howcani/multiprocessing.md)
 
 
 [//]: # (  - [Apply]&#40;howcani/apply/intro.md&#41;)

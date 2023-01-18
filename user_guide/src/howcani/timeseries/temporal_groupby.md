@@ -94,7 +94,7 @@ data points that in these gaps will not be a member of any group
               |--|
 ```
 
-See [the API pages](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.groupby_dynamic.html) for the full range of time periods.
+See [the API pages](POLARS_PY_REF_GUIDE/dataframe/api/polars.DataFrame.groupby_dynamic.html) for the full range of time periods.
 
 #### `truncate` parameter to set the start date for each group
 
