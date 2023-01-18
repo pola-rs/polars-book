@@ -32,4 +32,4 @@ returning:
 {{#include ../../outputs/timestamps/output.txt}}
 ```
 
-All datetime functionality is shown in the [`dt` namespace](POLARS_PY_REF_GUIDE/series.html#timeseries).
+All datetime functionality is shown in the [`dt` namespace](POLARS_PY_REF_GUIDE/series/timeseries.html).

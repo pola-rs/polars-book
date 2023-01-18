@@ -100,7 +100,7 @@ print(fill_forward_df)
 {{#include ../outputs/missing_data/fill_strategies_forward_df.txt}}
 ```
 
-See the [API docs](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.Series.fill_null.html) for other available strategies.
+See the [API docs](POLARS_PY_REF_GUIDE/series/api/polars.Series.fill_null.html) for other available strategies.
 
 ### Fill with an expression
 

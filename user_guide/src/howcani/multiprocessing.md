@@ -8,7 +8,7 @@ TLDR: if you find that using Python's built-in `multiprocessing` module together
 
 ## When not to use multiprocessing
 
-Before we dive into the details, it is important to emphasize that Polars has been build from the start to use all your CPU cores.
+Before we dive into the details, it is important to emphasize that Polars has been built from the start to use all your CPU cores.
 It does this by executing computations which can be done in parallel in separate threads.
 For example, requesting two expressions in a `select` statement can be done in parallel, with the results only being combined at the end.
 Another example is aggregating a value within groups using `groupby().agg(<expr>)`, each group can be evaluated separately.
@@ -93,6 +93,11 @@ Third, because it is faster to create new processes compared to `spawn`, as `spa
 Hence the warning in the Python docs that it is slower: there is more overhead to `spawn`.
 However, in almost all cases, one would like to use multiple processes to speed up computations that take multiple minutes or even hours, meaning the overhead is negligible in the grand scheme of things.
 And more importantly, it actually works in combination with multithreaded libraries.
+
+Fourth, `spawn` starts a new process, and therefore it requires code to be importable, in contrast to `fork`.
+In particular, this means that when using `spawn` the relevant code should not be in the global scope, such as in Jupyter notebooks or in plain scripts.
+Hence in the examples above, we define functions where we spawn within, and run those functions from a `__main__` clause.
+This is not an issue for typical projects, but in quick experimentation in notebooks it could fail.
 
 ## References
 
