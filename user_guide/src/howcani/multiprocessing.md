@@ -14,7 +14,7 @@ For example, requesting two expressions in a `select` statement can be done in p
 Another example is aggregating a value within groups using `groupby().agg(<expr>)`, each group can be evaluated separately.
 It is very unlikely that the `multiprocessing` module can improve your code performance in these cases.
 
-See [the optimizations section](optimizations/lazy/intro.md) for more optimizations.
+See [the optimizations section](../optimizations/lazy/intro.md) for more optimizations.
 
 ## When to use multiprocessing
 
