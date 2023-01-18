@@ -44,7 +44,7 @@ print(indexing_df)
 {{#include outputs/selecting_data/expression_df.txt}}
 ```
 
-We strongly recommend that you use the Expression API approach whereever possible:
+We strongly recommend that you use the Expression API approach wherever possible:
 
 - the indexing approach does not work in lazy mode and cannot be optimized
 - the Expression API approach can be parallelized in eager and lazy mode
