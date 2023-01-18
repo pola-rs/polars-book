@@ -3,7 +3,7 @@
 You cannot use an expression anywhere. An expression needs a context, the available contexts are:
 
 - selection: `df.select([..])`
-- groupy aggregation: `df.groupby(..).agg([..])`
+- groupby aggregation: `df.groupby(..).agg([..])`
 - hstack/ add columns: `df.with_columns([..])`
 
 ## Syntactic sugar
