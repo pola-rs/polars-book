@@ -81,6 +81,7 @@ print(
 
 ```rust,noplayground
 use color_eyre::{Result};
+use std::io::Cursor;
 use polars::prelude::*;
 use reqwest::blocking::Client;
 
