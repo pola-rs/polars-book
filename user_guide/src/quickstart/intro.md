@@ -83,6 +83,7 @@ print(
 use color_eyre::{Result};
 use polars::prelude::*;
 use reqwest::blocking::Client;
+use std::io::Cursor;
 
 fn main() -> Result<()> { 
     let data: Vec<u8> = Client::new()
