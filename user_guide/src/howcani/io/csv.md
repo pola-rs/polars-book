@@ -35,8 +35,8 @@ df.write_csv("path.csv")
 use polars::prelude::*;
 
 let mut df = df!(
-    "foo" => [1, 2, 3],
-    "bar" => [None, Some("bak"), Some("baz")],
+    "foo" => &[1, 2, 3],
+    "bar" => &[None, Some("bak"), Some("baz")],
 )
 .unwrap();
 

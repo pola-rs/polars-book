@@ -2,10 +2,10 @@ use color_eyre::Result;
 use polars::prelude::*;
 
 fn main() -> Result<()> {
-    let df = df! [
-        "keys" => ["a", "a", "b"],
-        "values" => [10, 7, 1],
-    ]?;
+    let df = df! (
+        "keys" => &["a", "a", "b"],
+        "values" => &[10, 7, 1],
+    )?;
 
     let out = df
         .lazy()

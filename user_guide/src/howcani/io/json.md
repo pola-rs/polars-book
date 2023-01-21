@@ -56,8 +56,8 @@ df.write_ndjson("path.json")
 use polars::prelude::*;
 
 let mut df = df!(
-    "foo" => [1, 2, 3],
-    "bar" => [None, Some("bak"), Some("baz")],
+    "foo" => &[1, 2, 3],
+    "bar" => &[None, Some("bak"), Some("baz")],
 )
 .unwrap();
 
@@ -80,7 +80,7 @@ JsonWriter::new(&mut file)
 
 ## Scan
 
-`Polars` allows you to *scan* a JSON input **only for newline delimited json**. Scanning delays the actual parsing of the
+`Polars` allows you to _scan_ a JSON input **only for newline delimited json**. Scanning delays the actual parsing of the
 file and instead returns a lazy computation holder called a `LazyFrame`.
 
 <div class="tabbed-blocks">

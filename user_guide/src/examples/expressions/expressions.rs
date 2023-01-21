@@ -7,12 +7,12 @@ fn main() -> Result<()> {
     let mut arr = [0f64; 5];
     thread_rng().fill(&mut arr);
 
-    let df = df! [
-        "nrs" => [Some(1), Some(2), Some(3), None, Some(5)],
-        "names" => [Some("foo"), Some("ham"), Some("spam"), Some("eggs"), None],
-        "random" => arr,
-        "groups" => ["A", "A", "B", "C", "B"],
-    ]?;
+    let df = df! (
+        "nrs" => &[Some(1), Some(2), Some(3), None, Some(5)],
+        "names" => &[Some("foo"), Some("ham"), Some("spam"), Some("eggs"), None],
+        "random" => &arr,
+        "groups" => &["A", "A", "B", "C", "B"],
+    )?;
 
     println!("{}", &df);
     // ANCHOR_END: dataset
