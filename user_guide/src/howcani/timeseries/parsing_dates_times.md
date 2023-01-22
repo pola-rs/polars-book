@@ -44,7 +44,7 @@ print(df)
 You can extract data features such as the year or day from a date column using the `.dt` namespace on a date column:
 
 ```python
-{{#include ../../examples/time_series/parsing_dates.py:11:11}}
+{{#include ../../examples/time_series/parsing_dates.py:16:16}}
 print(df_with_year)
 ```
 
