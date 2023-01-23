@@ -1,62 +1,97 @@
 # Time zones
 
-Working with time zones can be done using `dt.with_timezone` and `dt.cast_timezone`.
+## Parsing
 
-## Convert tz-naive to tz-aware from UTC
-
-Filtering date columns works in the same way as with other types of columns using the `.filter` method.
-
-Polars uses Python's native `datetime`, `date` and `timedelta` for equality comparisons between the datatypes
-`pl.Datetime`, `pl.Date` and `pl.Duration`.
-
-In the following example we use a time series of Apple stock prices.
+You can use `'%z'` to parse timezones:
 
 ```python
-{{#include ../../examples/time_series/parsing_dates.py:1:4}}
-print(df)
+{{#include ../../examples/time_series/time_zones.py:2:5}}
 ```
 
 ```text
-{{#include ../../outputs/time_series/parse_dates_example_df.txt}}
+{{#include ../../outputs/time_series/with_offset_parsed.txt}}
 ```
 
-## Filtering by single dates
-
-We can filter by a single date by casting the desired date string to a `Date` object
-in a filter expression:
+Note that the `'Z'` suffix for Zulu time is not yet supported - if your time string has it, you should put a `'Z'` in your format string and then cast to `'UTC'`:
 
 ```python
-{{#include ../../examples/time_series/parsing_dates.py:6:8}}
+{{#include ../../examples/time_series/time_zones.py:7:9}}
 ```
 
 ```text
-{{#include ../../outputs/time_series/parse_dates_filtered_df.txt}}
+{{#include ../../outputs/time_series/zulu_time_parsed.txt}}
 ```
 
-Note we are using the lowercase `datetime` method rather than the uppercase `Datetime` data type.
+## Conversion
 
-## Filtering by a date range
+Setting time zones and converting between them can be done with `dt.with_timezone` and `dt.cast_timezone`.
 
-We can filter by a range of dates using the `is_between` method in a filter expression with the start and end dates:
+Let's start with
 
 ```python
-{{#include ../../examples/time_series/parsing_dates.py:10:12}}
+{{#include ../../examples/time_series/time_zones.py:11:11}}
 ```
 
 ```text
-{{#include ../../outputs/time_series/parse_dates_filtered_range_df.txt}}
+{{#include ../../outputs/time_series/tz_naive.txt}}
 ```
 
-## Filtering with negative dates
-
-Say you are working with an archeologist and are dealing in negative dates.
-Polars can parse and store them just fine, but the Python `datetime` library
-does not. So for filtering, you should use attributes in the `.dt` namespace:
-
 ```python
-{{#include ../../examples/time_series/parsing_dates.py:18:22}}
+{{#include ../../examples/time_series/time_zones.py:13:13}}
 ```
 
 ```text
-{{#include ../../outputs/time_series/negative_dates_filtered_df.txt}}
+{{#include ../../outputs/time_series/tz_aware.txt}}
+```
+
+and look at some examples.
+
+### Convert tz-naive to tz-aware from UTC
+
+```python
+{{#include ../../examples/time_series/time_zones.py:15:15}}
+```
+
+```text
+{{#include ../../outputs/time_series/tz_aware_from_utc.txt}}
+```
+
+### Set timezone on tz-naive
+
+```python
+{{#include ../../examples/time_series/time_zones.py:17:17}}
+```
+
+```text
+{{#include ../../outputs/time_series/timezone_set_on_tz_naive.txt}}
+```
+
+### Convert tz-aware to different timezone
+
+```python
+{{#include ../../examples/time_series/time_zones.py:19:19}}
+```
+
+```text
+{{#include ../../outputs/time_series/tz_aware_to_different_timezone.txt}}
+```
+
+### Change timezone of tz-aware (without conversion)
+
+```python
+{{#include ../../examples/time_series/time_zones.py:21:21}}
+```
+
+```text
+{{#include ../../outputs/time_series/tz_aware_with_changed_timezone.txt}}
+```
+
+### Remove timezone from tz-aware
+
+```python
+{{#include ../../examples/time_series/time_zones.py:23:23}}
+```
+
+```text
+{{#include ../../outputs/time_series/tz_aware_to_naive.txt}}
 ```
