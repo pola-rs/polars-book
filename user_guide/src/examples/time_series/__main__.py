@@ -12,6 +12,17 @@ from .parsing_dates import (
 )
 from .cast_date_to_string import df as cast_date_to_string_df
 from .resampling_example import df as resample_df, out1, out2
+from .time_zones import (
+    with_offset_parsed,
+    zulu_time_parsed,
+    tz_naive,
+    tz_aware,
+    out_1 as tz_aware_from_utc,
+    out_2 as timezone_set_on_tz_naive,
+    out_3 as tz_aware_to_different_timezone,
+    out_4 as tz_aware_with_changed_timezone,
+    out_5 as tz_aware_to_naive,
+)
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/time_series")
 
@@ -53,3 +64,30 @@ with open(f"{path}/resample_upsample_output.txt", "w") as f:
 
 with open(f"{path}/resample_upsample_interpolation.txt", "w") as f:
     f.write(f"{out2}\n")
+
+with open(f"{path}/with_offset_parsed.txt", "w") as f:
+    f.write(f"{with_offset_parsed}\n")
+
+with open(f"{path}/zulu_time_parsed.txt", "w") as f:
+    f.write(f"{zulu_time_parsed}\n")
+
+with open(f"{path}/tz_naive.txt", "w") as f:
+    f.write(f"{tz_naive}\n")
+
+with open(f"{path}/tz_aware.txt", "w") as f:
+    f.write(f"{tz_aware}\n")
+
+with open(f"{path}/tz_aware_from_utc.txt", "w") as f:
+    f.write(f"{tz_aware_from_utc}\n")
+
+with open(f"{path}/timezone_set_on_tz_naive.txt", "w") as f:
+    f.write(f"{timezone_set_on_tz_naive}\n")
+
+with open(f"{path}/tz_aware_to_different_timezone.txt", "w") as f:
+    f.write(f"{tz_aware_to_different_timezone}\n")
+
+with open(f"{path}/tz_aware_with_changed_timezone.txt", "w") as f:
+    f.write(f"{tz_aware_with_changed_timezone}\n")
+
+with open(f"{path}/tz_aware_to_naive.txt", "w") as f:
+    f.write(f"{tz_aware_to_naive}\n")
