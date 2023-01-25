@@ -1,16 +1,21 @@
 # Selecting with indexing
 
-In this page we cover use of square bracket indexing to select data. Square bracket indexing
-can be used to select rows and/or columns.
+In this page we cover use of square bracket indexing to select data. Square bracket indexing can be used to select rows and/or columns.
 
-## Indexing is an anti-pattern in `Polars`
+## Indexing has a limited use case in `Polars`
 
-Indexing polars with square brackets is considered an anti-pattern and the functionality may be removed in the future.
-Polars [strongly favours the expression API with `select` and `filter`](selecting_data_expressions.md) in favor of accessing by square bracket indexing. See the [introduction to this section](selecting_data_intro.md) for more information.
+There are some use cases in Polars where square bracket indexing is effective. However, there are many use cases where indexing prevents you from using the full power of Polars. 
 
-## Indexing does not work in lazy mode
+Use cases where indexing **is** effective:
+- to extract a scalar value from a `DataFrame`
+- to convert a `DataFrame` column to a `Series`
+- for exploratory data analysis and to inspect some rows and/or columns
 
-Selecting data by indexing only works with a `DataFrame` in eager mode. If you try to select data by indexing on a `LazyFrame` it will raise an exception that a `LazyFrame` is not subscriptable. Instead you need to [select data using expressions](selecting_data_expressions.md).
+The first downside of indexing with square brackets is that indexing only works in eager mode. Any steps in your query that involve square bracket indexing cannot be included in a lazy query meaning that the step cannot be optimised as part of a lazy query and the step cannot be part of a streaming query that processes larger-than-memory data in batches
+
+The second downside of indexing with square brackets is that operations on multiple columns are not parallelised.
+
+Outside of the use cases noted above Polars [strongly favours the expression API with `select` and `filter`](selecting_data_expressions.md) in favor of accessing by square bracket indexing.
 
 ## Rules for square bracket indexing
 
