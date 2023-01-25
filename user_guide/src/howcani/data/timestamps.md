@@ -14,7 +14,7 @@
 `Polars` try to guess the format of the date\[time\], or explicitly provide a `fmt`
 rule.
 
-For instance (check [this link](https://strftime.org/) for an comprehensive list):
+For instance (check [this link](https://docs.rs/chrono/latest/chrono/format/strftime/index.html) for an comprehensive list):
 
 - `"%Y-%m-%d"` for `"2020-12-31"`
 - `"%Y/%B/%d"` for `"2020/December/31"`
