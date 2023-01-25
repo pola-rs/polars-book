@@ -4,9 +4,10 @@ In this page we cover use of square bracket indexing to select data. Square brac
 
 ## Indexing has a limited use case in `Polars`
 
-There are some use cases in Polars where square bracket indexing is effective. However, there are many use cases where indexing prevents you from using the full power of Polars. 
+There are some use cases in Polars where square bracket indexing is effective. However, there are many use cases where indexing prevents you from using the full power of Polars.
 
 Use cases where indexing **is** effective:
+
 - to extract a scalar value from a `DataFrame`
 - to convert a `DataFrame` column to a `Series`
 - for exploratory data analysis and to inspect some rows and/or columns
