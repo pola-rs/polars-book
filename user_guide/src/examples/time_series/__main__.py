@@ -14,7 +14,6 @@ from .cast_date_to_string import df as cast_date_to_string_df
 from .resampling_example import df as resample_df, out1, out2
 from .time_zones import (
     with_offset_parsed,
-    zulu_time_parsed,
     tz_naive,
     tz_aware,
     out_1 as tz_aware_from_utc,
@@ -67,9 +66,6 @@ with open(f"{path}/resample_upsample_interpolation.txt", "w") as f:
 
 with open(f"{path}/with_offset_parsed.txt", "w") as f:
     f.write(f"{with_offset_parsed}\n")
-
-with open(f"{path}/zulu_time_parsed.txt", "w") as f:
-    f.write(f"{zulu_time_parsed}\n")
 
 with open(f"{path}/tz_naive.txt", "w") as f:
     f.write(f"{tz_naive}\n")

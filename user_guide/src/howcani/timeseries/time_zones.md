@@ -2,6 +2,8 @@
 
 ## Parsing
 
+# See the chrono docs for which directives to use to parse timezones.
+
 You can use `'%z'` to parse timezones:
 
 ```python
@@ -12,24 +14,16 @@ You can use `'%z'` to parse timezones:
 {{#include ../../outputs/time_series/with_offset_parsed.txt}}
 ```
 
-Note that the `'Z'` suffix for Zulu time is not yet supported - if your time string has it, you should put a `'Z'` in your format string and then cast to `'UTC'`:
-
-```python
-{{#include ../../examples/time_series/time_zones.py:7:9}}
-```
-
-```text
-{{#include ../../outputs/time_series/zulu_time_parsed.txt}}
-```
-
 ## Conversion
 
-Setting time zones and converting between them can be done with `dt.with_timezone` and `dt.cast_timezone`.
+The main methods for setting and converting between time zones are:
+- ``dt.with_time_zone``: convert to a given time zone;
+- ``dt.cast_time_zone``: set given time zone.
 
 Let's start with
 
 ```python
-{{#include ../../examples/time_series/time_zones.py:11:11}}
+{{#include ../../examples/time_series/time_zones.py:07:07}}
 ```
 
 ```text
@@ -37,7 +31,7 @@ Let's start with
 ```
 
 ```python
-{{#include ../../examples/time_series/time_zones.py:13:13}}
+{{#include ../../examples/time_series/time_zones.py:09:09}}
 ```
 
 ```text
@@ -49,7 +43,7 @@ and look at some examples.
 ### Convert tz-naive to tz-aware from UTC
 
 ```python
-{{#include ../../examples/time_series/time_zones.py:15:15}}
+{{#include ../../examples/time_series/time_zones.py:11:11}}
 ```
 
 ```text
@@ -59,7 +53,7 @@ and look at some examples.
 ### Set timezone on tz-naive
 
 ```python
-{{#include ../../examples/time_series/time_zones.py:17:17}}
+{{#include ../../examples/time_series/time_zones.py:13:13}}
 ```
 
 ```text
@@ -69,7 +63,7 @@ and look at some examples.
 ### Convert tz-aware to different timezone
 
 ```python
-{{#include ../../examples/time_series/time_zones.py:19:19}}
+{{#include ../../examples/time_series/time_zones.py:14:14}}
 ```
 
 ```text
@@ -79,7 +73,7 @@ and look at some examples.
 ### Change timezone of tz-aware (without conversion)
 
 ```python
-{{#include ../../examples/time_series/time_zones.py:21:21}}
+{{#include ../../examples/time_series/time_zones.py:17:17}}
 ```
 
 ```text
@@ -89,7 +83,7 @@ and look at some examples.
 ### Remove timezone from tz-aware
 
 ```python
-{{#include ../../examples/time_series/time_zones.py:23:23}}
+{{#include ../../examples/time_series/time_zones.py:19:19}}
 ```
 
 ```text
