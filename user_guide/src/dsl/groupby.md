@@ -69,8 +69,8 @@ Per GROUP `"first_name"` we
 - count the number of rows in the group:
   - short form: `pl.count("party")`
   - full form: `pl.col("party").count()`
-- aggregate the gender values groups to a list:
-  - full form: `pl.col("gender").list()`
+- aggregate the gender values groups:
+  - full form: `pl.col("gender")`
 - get the first value of column `"last_name"` in the group:
   - short form: `pl.first("last_name")` (not available in Rust)
   - full form: `pl.col("last_name").first()`

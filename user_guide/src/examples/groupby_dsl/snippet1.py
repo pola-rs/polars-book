@@ -8,7 +8,7 @@ q = (
     .agg(
         [
             pl.count(),
-            pl.col("gender").list(),
+            pl.col("gender"),
             pl.first("last_name"),
         ]
     )

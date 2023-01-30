@@ -10,4 +10,4 @@ dtypes = {
     "party": pl.Categorical,
 }
 
-dataset = pl.read_csv(url, dtype=dtypes).with_column(pl.col("birthday").str.strptime(pl.Date, strict=False))
+dataset = pl.read_csv(url, dtypes=dtypes).with_column(pl.col("birthday").str.strptime(pl.Date, strict=False))

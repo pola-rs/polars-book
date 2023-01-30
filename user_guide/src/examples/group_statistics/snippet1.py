@@ -15,7 +15,7 @@ q = (
     dataset.groupby("country")
     .agg(
         [
-            pl.col("date").list().alias("date"),
+            pl.col("date").alias("date"),
             pl.col("cumcases").apply(mkdiff).alias("diff"),
         ]
     )
