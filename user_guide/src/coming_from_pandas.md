@@ -85,7 +85,7 @@ If you want to select rows based on the values then in `Polars` you use the `.fi
 method:
 
 ```python
-df.filter(pl.col('a')<10)
+df.filter(pl.col('a') < 10)
 ```
 
 As noted in the section on expressions below, `Polars` can run operations in `.select`
@@ -105,8 +105,8 @@ The CSV file has numerous columns but we just want to do a groupby on one of the
 columns (`id1`) and then sum by a value column (`v1`). In `Pandas` this would be:
 
 ```python
-    df = pd.read_csv(csvFile)
-    groupedDf = df.loc[:,['id1','v1']].groupby('id1').sum('v1')
+    df = pd.read_csv(csv_file)
+    grouped_df = df.loc[:,['id1','v1']].groupby('id1').sum('v1')
 ```
 
 In `Polars` you can build this query in lazy mode with query optimization and evaluate
@@ -114,8 +114,8 @@ it by replacing the eager `Pandas` function `read_csv` with the implicitly lazy 
 function `scan_csv`:
 
 ```python
-    df = pl.scan_csv(csvFile)
-    groupedDf = df.groupby('id1').agg(pl.col('v1').sum()).collect()
+    df = pl.scan_csv(csv_file)
+    grouped_df = df.groupby('id1').agg(pl.col('v1').sum()).collect()
 ```
 
 `Polars` optimizes this query by identifying that only the `id1` and `v1` columns are
