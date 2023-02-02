@@ -99,7 +99,7 @@ let df = LazyJsonLineReader::new("path.json".to_string()).finish().unwrap();
 
 ### Note about Rust usage
 
-Parquet functionality is not enabled by default. It must be added as an additional feature.
+json functionality is not enabled by default. It must be added as an additional feature.
 This can be enabled via `cargo add polars --features json` or by directly adding it to your `Cargo.toml`
 
 ```toml
