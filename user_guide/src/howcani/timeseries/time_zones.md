@@ -1,91 +1,62 @@
 # Time zones
 
-## Parsing
+> You really should never, ever deal with time zones if you can help it
 
-# See the chrono docs for which directives to use to parse timezones.
-
-You can use `'%z'` to parse timezones:
-
-```python
-{{#include ../../examples/time_series/time_zones.py:2:5}}
-```
-
-```text
-{{#include ../../outputs/time_series/with_offset_parsed.txt}}
-```
-
-## Conversion
+-- <cite>Tom Scott</cite>
 
 The main methods for setting and converting between time zones are:
-- ``dt.with_time_zone``: convert to a given time zone;
-- ``dt.cast_time_zone``: set given time zone.
+- ``dt.with_time_zone``: convert from one time zone to another;
+- ``dt.cast_time_zone``: set/unset/change time zone.
 
-Let's start with
+Let's look at some examples:
 
 ```python
-{{#include ../../examples/time_series/time_zones.py:07:07}}
+{{#include ../../examples/time_series/time_zones/tz_naive.py:03:03}}
 ```
 
 ```text
-{{#include ../../outputs/time_series/tz_naive.txt}}
+{{#include ../../outputs/time_series/time_zones/tz_naive.txt}}
 ```
 
 ```python
-{{#include ../../examples/time_series/time_zones.py:09:09}}
+{{#include ../../examples/time_series/time_zones/tz_aware.py:03:03}}
 ```
 
 ```text
-{{#include ../../outputs/time_series/tz_aware.txt}}
+{{#include ../../outputs/time_series/time_zones/tz_aware.txt}}
 ```
-
-and look at some examples.
-
-### Convert tz-naive to tz-aware from UTC
 
 ```python
-{{#include ../../examples/time_series/time_zones.py:11:11}}
+{{#include ../../examples/time_series/time_zones/set_time_zone.py:03:03}}
 ```
 
 ```text
-{{#include ../../outputs/time_series/tz_aware_from_utc.txt}}
+{{#include ../../outputs/time_series/time_zones/set_time_zone.txt}}
 ```
-
-### Set timezone on tz-naive
 
 ```python
-{{#include ../../examples/time_series/time_zones.py:13:13}}
+{{#include ../../examples/time_series/time_zones/change_time_zone.py:03:03}}
 ```
 
 ```text
-{{#include ../../outputs/time_series/timezone_set_on_tz_naive.txt}}
+{{#include ../../outputs/time_series/time_zones/change_time_zone.txt}}
 ```
-
-### Convert tz-aware to different timezone
 
 ```python
-{{#include ../../examples/time_series/time_zones.py:14:14}}
+{{#include ../../examples/time_series/time_zones/convert_time_zone.py:03:03}}
 ```
 
 ```text
-{{#include ../../outputs/time_series/tz_aware_to_different_timezone.txt}}
+{{#include ../../outputs/time_series/time_zones/convert_time_zone.txt}}
 ```
-
-### Change timezone of tz-aware (without conversion)
 
 ```python
-{{#include ../../examples/time_series/time_zones.py:17:17}}
+{{#include ../../examples/time_series/time_zones/unset_time_zone.py:03:03}}
 ```
 
 ```text
-{{#include ../../outputs/time_series/tz_aware_with_changed_timezone.txt}}
+{{#include ../../outputs/time_series/time_zones/unset_time_zone.txt}}
 ```
 
-### Remove timezone from tz-aware
-
-```python
-{{#include ../../examples/time_series/time_zones.py:19:19}}
-```
-
-```text
-{{#include ../../outputs/time_series/tz_aware_to_naive.txt}}
-```
+See the [list of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+for a list of what's available.

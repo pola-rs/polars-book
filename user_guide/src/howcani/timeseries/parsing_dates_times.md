@@ -54,3 +54,16 @@ print(df_with_year)
 
 See the [API docs](POLARS_PY_REF_GUIDE/series/timeseries.html)
 for more date feature options.
+
+## Mixed offsets
+
+If you have mixed offsets (say, due to crossing daylight saving time),
+then you can use `utc=True` and then convert to your time zone:
+
+```python
+{{#include ../../examples/time_series/time_zones/mixed_offsets.py:03:09}}
+```
+
+```text
+{{#include ../../outputs/time_series/time_zones/mixed_parsed.txt}}
+```
