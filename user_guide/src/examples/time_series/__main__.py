@@ -13,7 +13,7 @@ from .parsing_dates import (
 from .cast_date_to_string import df as cast_date_to_string_df
 from .resampling_example import df as resample_df, out1, out2
 from .time_zones import (
-    tz_naive, 
+    tz_naive,
     tz_aware,
     set_time_zone,
     change_time_zone,
