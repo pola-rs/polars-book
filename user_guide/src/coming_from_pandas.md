@@ -7,12 +7,21 @@ code.
 
 ## Differences in concepts between `Polars` and `Pandas`
 
-### `Polars` does not have an index
+### `Polars` does not have a multi-index/index
 
 `Pandas` gives a label to each row with an index. `Polars` does not use an index and
 each row is indexed by its integer position in the table.
 
-Indexes are not needed! Not having them makes things easier - convince us otherwise!
+Polars aims to have predictable results and readable queries, as such we think an index does not help us reach that
+objective. We believe the semantics of a query should not change by the state of an index or a `reset_index` call.
+
+In Polars a DataFrame will always be a 2D table with heterogeneous data-types. The data-types may have nesting, but the
+table itself will not.
+Operations like resampling will be done by specialized functions or methods that act like 'verbs' on a table explicitly
+stating columns that 'verb' operates on. As such, it is our conviction that not having indices make things simpler,
+more explicit, more readable and less error-prone.
+
+Note that an 'index' data structure as known in databases will be used by polars as an optimization technique.
 
 For more detail on how you select data in `Polars` see the [selecting data](howcani/selecting_data/selecting_data_intro.md)
 section.
