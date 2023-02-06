@@ -4,6 +4,7 @@ from .horizontal_concat_example import df_h1, df_h2, df_horizontal_concat
 from .diagonal_concat_example import df_d1, df_d2, df_diagonal_concat
 from .inner_join_example import df_customers, df_orders, df_inner_customer_join
 from .left_join_example import df_left_join
+from .outer_join_example import df_outer_join
 from .cross_join_example import df_colors, df_sizes, df_cross_join
 from .semi_join_example import df_cars, df_repairs, df_inner_join, df_semi_join, df_anti_join
 from .asof_join_example import df_trades, df_quotes, df_asof_join, df_asof_tolerance_join
@@ -25,6 +26,7 @@ variable_filename_tuples = [
     (df_orders, "df_orders"),
     (df_inner_customer_join, "df_inner_customer_join"),
     (df_left_join, "df_left_join"),
+    (df_outer_join, "df_outer_join"),
     (df_colors, "df_colors"),
     (df_sizes, "df_sizes"),
     (df_cross_join, "df_cross_join"),
