@@ -12,6 +12,39 @@
 - `semi`
 - `anti`
 
+### Inner join
+
+An `inner` join produces a `DataFrame` that contains only the rows where the join key exists in both `DataFrames`. Let's take for example the following two `DataFrames`:
+
+```python
+{{#include ../../examples/combining_data/inner_join_example.py:3:8}}
+print(df_customers)
+```
+
+```text
+{{#include ../../outputs/combining_data/df_customers.txt}}
+```
+
+```python
+{{#include ../../examples/combining_data/inner_join_example.py:9:15}}
+print(df_orders)
+```
+
+```text
+{{#include ../../outputs/combining_data/df_orders.txt}}
+```
+
+To get a `DataFrame` with the orders and their associated customer we can do an `inner` join on the `customer_id` column:
+
+```python
+{{#include ../../examples/combining_data/inner_join_example.py:16:16}}
+print(df_inner_join)
+```
+
+```text
+{{#include ../../outputs/combining_data/df_inner_customer_join.txt}}
+```
+
 ### Cross join
 
 A `cross` join is a cartesian product of the two `DataFrames`. This means that every row in the left `DataFrame` is joined with every row in the right `DataFrame`. The `cross` join is useful for creating a `DataFrame` with all possible combinations of the columns in two `DataFrames`. Let's take for example the following two `DataFrames`:
