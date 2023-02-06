@@ -45,6 +45,21 @@ print(df_inner_join)
 {{#include ../../outputs/combining_data/df_inner_customer_join.txt}}
 ```
 
+### Left join
+
+The `left` join produces a `DataFrame` that contains all the rows from the left `DataFrame` and only the rows from the right `DataFrame` where the join key exists in the left `DataFrame`. If we now take the example from above and want to have a `DataFrame` with all the customers and their associated orders (regardless of whether they have placed an order or not) we can do a `left` join:
+
+```python
+{{#include ../../examples/combining_data/left_join_example.py:16:16}}
+print(df_left_join)
+```
+
+```text
+{{#include ../../outputs/combining_data/df_left_join.txt}}
+```
+
+Notice, that the fields for the customer with the `customer_id` of `3` are null, as there are no orders for this customer.
+
 ### Cross join
 
 A `cross` join is a cartesian product of the two `DataFrames`. This means that every row in the left `DataFrame` is joined with every row in the right `DataFrame`. The `cross` join is useful for creating a `DataFrame` with all possible combinations of the columns in two `DataFrames`. Let's take for example the following two `DataFrames`:
