@@ -62,7 +62,7 @@ Notice, that the fields for the customer with the `customer_id` of `3` are null,
 
 ### Outer join
 
-The `outer` join produces a `DataFrame` that contains all the rows from both `DataFrames`. Columns are null, if the join key does not exist in the `DataFrame`. Doing an `outer` join on the two `DataFrames` from above produces a similar `DataFrame` to the `left` join:
+The `outer` join produces a `DataFrame` that contains all the rows from both `DataFrames`. Columns are null, if the join key does not exist in the source `DataFrame`. Doing an `outer` join on the two `DataFrames` from above produces a similar `DataFrame` to the `left` join:
 
 ```python
 {{#include ../../examples/combining_data/outer_join_example.py:16:16}}
@@ -95,7 +95,7 @@ print(df_sizes)
 {{#include ../../outputs/combining_data/df_sizes.txt}}
 ```
 
-We can create a `DataFrame` with all possible combinations of the colors and sizes with a `cross` join:
+We can now create a `DataFrame` containing all possible combinations of the colors and sizes with a `cross` join:
 
 ```python
 {{#include ../../examples/combining_data/cross_join_example.py:13:13}}
