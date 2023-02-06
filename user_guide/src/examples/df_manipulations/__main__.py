@@ -26,7 +26,7 @@ with open(f"{path}/drop_nulls.txt", "w") as f:
     f.write(f"{df.drop_nulls()}\n")
 
 with open(f"{path}/fill_na.txt", "w") as f:
-    f.write(f"{df.fill_null('forward')}\n")
+    f.write(f"{df.fill_null(strategy='forward')}\n")
 
 with open(f"{path}/get_columns.txt", "w") as f:
     f.write(f"{df.columns}\n")
