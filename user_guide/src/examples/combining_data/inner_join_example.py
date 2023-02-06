@@ -8,8 +8,8 @@ df_customers = pl.DataFrame(
 )
 df_orders = pl.DataFrame(
     {
-        "customer_id": [1, 2, 2],
         "order_id": ["a", "b", "c"],
+        "customer_id": [1, 2, 2],
         "amount": [100, 200, 300],
     }
 )
