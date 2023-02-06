@@ -12,6 +12,41 @@
 - `semi`
 - `anti`
 
+### Cros join
+
+A `cross` join is a cartesian product of the two `DataFrames`. This means that every row in the left `DataFrame` is joined with every row in the right `DataFrame`. The `cross` join is useful for creating a `DataFrame` with all possible combinations of the columns in two `DataFrames`. Let's take for example the following two `DataFrames`:
+
+```python
+{{#include ../../examples/combining_data/cross_join_example.py:3:7}}
+print(df_colors)
+```
+
+```text
+{{#include ../../outputs/combining_data/df_colors.txt}}
+```
+
+```python
+{{#include ../../examples/combining_data/cross_join_example.py:8:12}}
+print(df_sizes)
+```
+
+```text
+{{#include ../../outputs/combining_data/df_sizes.txt}}
+```
+
+We can create a `DataFrame` with all possible combinations of the colors and sizes with a `cross` join:
+
+```python
+{{#include ../../examples/combining_data/cross_join_example.py:13:13}}
+print(df_cross_join)
+```
+
+```text
+{{#include ../../outputs/combining_data/df_cross_join.txt}}
+```
+
+<br>
+
 The `inner`, `left`, `outer` and `cross` join strategies are standard amongst dataframe libraries. We provide more details on the less familiar `semi`, `anti` and `asof` join strategies below.
 
 ### Semi join

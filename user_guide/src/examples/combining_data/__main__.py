@@ -2,6 +2,7 @@ from ..paths import OUTPUT_BASE_DIR, create_if_not_exists
 from .vertical_concat_example import df_v1, df_v2, df_vertical_concat
 from .horizontal_concat_example import df_h1, df_h2, df_horizontal_concat
 from .diagonal_concat_example import df_d1, df_d2, df_diagonal_concat
+from .cross_join_example import df_colors, df_sizes, df_cross_join
 from .semi_join_example import df_cars, df_repairs, df_inner_join, df_semi_join, df_anti_join
 from .asof_join_example import df_trades, df_quotes, df_asof_join, df_asof_tolerance_join
 
@@ -18,6 +19,9 @@ variable_filename_tuples = [
     (df_d1, "df_d1"),
     (df_d2, "df_d2"),
     (df_diagonal_concat, "df_diagonal_concat"),
+    (df_colors, "df_colors"),
+    (df_sizes, "df_sizes"),
+    (df_cross_join, "df_cross_join"),
     (df_cars, "df_cars"),
     (df_repairs, "df_repairs"),
     (df_inner_join, "df_inner_join"),
