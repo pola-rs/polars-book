@@ -13,5 +13,4 @@ df_orders = pl.DataFrame(
         "amount": [100, 200, 300],
     }
 )
-df_inner_customer_join = df_customers.join(
-    df_orders, on="customer_id", how="inner")
+df_inner_customer_join = df_customers.join(df_orders, on="customer_id", how="inner")
