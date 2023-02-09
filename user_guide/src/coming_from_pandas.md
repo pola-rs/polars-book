@@ -158,7 +158,7 @@ df["hundredXValue"] = df["value"] * 100
 
 These column assignments are executed sequentially.
 
-In `Polars` we add columns to `df` using the `.with_column` method and name them with
+In `Polars` we add columns to `df` using the `.with_columns` method and name them with
 the `.alias` method:
 
 ```python
