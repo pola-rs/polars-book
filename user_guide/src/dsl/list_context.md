@@ -69,7 +69,7 @@ Note that we must `select` the list's element from the context. When we apply ex
 rank_pct = pl.element().rank(reverse=True) / pl.col("").count()
 
 
-grades.with_column(
+grades.with_columns(
     # create the list of homogeneous data
     pl.concat_list(pl.all().exclude("student")).alias("all_grades")
 ).select([

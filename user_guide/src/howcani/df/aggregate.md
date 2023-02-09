@@ -1,6 +1,6 @@
 # Aggregate
 
-Column Aggregations can be within via a `.select()` or the `.with_column()`/`.with_columns()`
+Column Aggregations can be within via a `.select()` or the `.with_columns()`
 context.
 
 Aggregation on all columns can be performed using the wildcard expression:

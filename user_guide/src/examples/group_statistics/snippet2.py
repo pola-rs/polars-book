@@ -8,7 +8,7 @@ def mkdiff(cumcases: pl.Series) -> pl.Series:
     return cumcases - cumcases.shift(1)
 
 
-q = dataset.with_column(
+q = dataset.with_columns(
     pl.col("cumcases").apply(mkdiff).over("country").take(pl.col("country").arg_unique()).explode().alias("diffcases"),
 )
 
