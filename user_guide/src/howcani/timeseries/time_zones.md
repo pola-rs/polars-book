@@ -7,7 +7,8 @@
 The main methods for setting and converting between time zones are:
 
 - `dt.with_time_zone`: convert from one time zone to another;
-- `dt.cast_time_zone`: set/unset/change time zone.
+- `dt.cast_time_zone`: unset/change time zone;
+- `dt.tz_localize`: set time zone.
 
 Let's look at some examples:
 
