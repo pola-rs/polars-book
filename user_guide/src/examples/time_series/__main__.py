@@ -13,13 +13,8 @@ from .parsing_dates import (
 from .cast_date_to_string import df as cast_date_to_string_df
 from .resampling_example import df as resample_df, out1, out2
 from .time_zones import (
-    tz_naive,
-    tz_aware,
-    set_time_zone,
-    change_time_zone,
-    convert_time_zone,
-    unset_time_zone,
-    mixed_parsed,
+    time_zones_df,
+    time_zones_operations,
 )
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/time_series")
@@ -64,23 +59,8 @@ with open(f"{path}/resample_upsample_output.txt", "w") as f:
 with open(f"{path}/resample_upsample_interpolation.txt", "w") as f:
     f.write(f"{out2}\n")
 
-with open(f"{path}/time_zones/tz_naive.txt", "w") as f:
-    f.write(f"{tz_naive}\n")
+with open(f"{path}/time_zones/time_zones_df.txt", "w") as f:
+    f.write(f"{time_zones_df}\n")
 
-with open(f"{path}/time_zones/tz_aware.txt", "w") as f:
-    f.write(f"{tz_aware}\n")
-
-with open(f"{path}/time_zones/set_time_zone.txt", "w") as f:
-    f.write(f"{set_time_zone}\n")
-
-with open(f"{path}/time_zones/change_time_zone.txt", "w") as f:
-    f.write(f"{change_time_zone}\n")
-
-with open(f"{path}/time_zones/convert_time_zone.txt", "w") as f:
-    f.write(f"{convert_time_zone}\n")
-
-with open(f"{path}/time_zones/unset_time_zone.txt", "w") as f:
-    f.write(f"{unset_time_zone}\n")
-
-with open(f"{path}/time_zones/mixed_parsed.txt", "w") as f:
-    f.write(f"{mixed_parsed}\n")
+with open(f"{path}/time_zones/time_zones_operations.txt", "w") as f:
+    f.write(f"{time_zones_operations}\n")

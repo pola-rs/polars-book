@@ -6,58 +6,25 @@
 
 The main methods for setting and converting between time zones are:
 
-- `dt.with_time_zone`: convert from one time zone to another;
-- `dt.cast_time_zone`: unset/change time zone;
-- `dt.tz_localize`: set time zone.
+- `dt.convert_time_zone`: convert from one time zone to another;
+- `dt.replace_time_zone`: set/unset/change time zone;
 
-Let's look at some examples:
+Let's look at some examples of common operations:
 
 ```python
-{{#include ../../examples/time_series/time_zones/tz_naive.py:03:03}}
+{{#include ../../examples/time_series/time_zones.py:03:06}}
 ```
 
 ```text
-{{#include ../../outputs/time_series/time_zones/tz_naive.txt}}
+{{#include ../../outputs/time_series/time_zones/time_zones_df.txt}}
 ```
 
 ```python
-{{#include ../../examples/time_series/time_zones/tz_aware.py:03:03}}
+{{#include ../../examples/time_series/time_zones.py:08:14}}
 ```
 
 ```text
-{{#include ../../outputs/time_series/time_zones/tz_aware.txt}}
-```
-
-```python
-{{#include ../../examples/time_series/time_zones/set_time_zone.py:03:03}}
-```
-
-```text
-{{#include ../../outputs/time_series/time_zones/set_time_zone.txt}}
-```
-
-```python
-{{#include ../../examples/time_series/time_zones/change_time_zone.py:03:03}}
-```
-
-```text
-{{#include ../../outputs/time_series/time_zones/change_time_zone.txt}}
-```
-
-```python
-{{#include ../../examples/time_series/time_zones/convert_time_zone.py:03:03}}
-```
-
-```text
-{{#include ../../outputs/time_series/time_zones/convert_time_zone.txt}}
-```
-
-```python
-{{#include ../../examples/time_series/time_zones/unset_time_zone.py:03:03}}
-```
-
-```text
-{{#include ../../outputs/time_series/time_zones/unset_time_zone.txt}}
+{{#include ../../outputs/time_series/time_zones/time_zones_operations.txt}}
 ```
 
 See the [list of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
