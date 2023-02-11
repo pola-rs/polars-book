@@ -43,7 +43,7 @@ df = pl.read_parquet("somefile.parquet")
 for col in df:
     # only for date64
     if col.dtype == pl.Date64:
-        df = df.with_column(col.dt.to_python_datetime())
+        df = df.with_columns(col.dt.to_python_datetime())
 
 # create sql identifiers for the column names
 # we do this to safely insert this into a sql query

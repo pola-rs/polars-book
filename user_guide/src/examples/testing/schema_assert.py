@@ -7,7 +7,7 @@ trip_duration = (pl.col("dropoff_datetime") - pl.col("pickup_datetime")).dt.seco
 
 assert (
     pl.scan_csv("data/yellow_tripdata_2010-01.csv", parse_dates=True)
-    .with_column(trip_duration.alias("trip_duration"))
+    .with_columns(trip_duration.alias("trip_duration"))
     .filter(pl.col("trip_duration") > 0)
     .groupby(["vendor_id"])
     .agg(

@@ -702,7 +702,7 @@ Below are some examples on how to combine operations to create the `DataFrame` y
 # create a new column that multiplies column `a` and `b` from our DataFrame
 # select all the columns, but exclude column `c` and `d` from the final DataFrame
 
-df_x = df.with_column(
+df_x = df.with_columns(
     (pl.col("a") * pl.col("b")).alias("a * b")
 ).select([
     pl.all().exclude(['c', 'd'])

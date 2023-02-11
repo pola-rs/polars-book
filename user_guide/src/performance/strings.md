@@ -110,8 +110,8 @@ fn main() {
     .unwrap()
     .lazy();
 
-    let lf1 = lf1.with_column(col("a").cast(DataType::Categorical(None)));
-    let lf2 = lf2.with_column(col("a").cast(DataType::Categorical(None)));
+    let lf1 = lf1.with_columns(col("a").cast(DataType::Categorical(None)));
+    let lf2 = lf2.with_columns(col("a").cast(DataType::Categorical(None)));
     let joined = lf1.inner_join(lf2, col("a"), col("a"));
     println!("{:?}", joined.collect().unwrap());
 }

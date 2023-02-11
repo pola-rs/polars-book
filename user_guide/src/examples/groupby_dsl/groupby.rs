@@ -8,12 +8,12 @@ fn main() -> Result<()> {
     let url = "https://theunitedstates.io/congress-legislators/legislators-historical.csv";
 
     let mut schema = Schema::new();
-    schema.with_column("first_name".to_string(), DataType::Categorical(None));
-    schema.with_column("gender".to_string(), DataType::Categorical(None));
-    schema.with_column("type".to_string(), DataType::Categorical(None));
-    schema.with_column("state".to_string(), DataType::Categorical(None));
-    schema.with_column("party".to_string(), DataType::Categorical(None));
-    schema.with_column("birthday".to_string(), DataType::Date);
+    schema.with_columns("first_name".to_string(), DataType::Categorical(None));
+    schema.with_columns("gender".to_string(), DataType::Categorical(None));
+    schema.with_columns("type".to_string(), DataType::Categorical(None));
+    schema.with_columns("state".to_string(), DataType::Categorical(None));
+    schema.with_columns("party".to_string(), DataType::Categorical(None));
+    schema.with_columns("birthday".to_string(), DataType::Date);
 
     let data: Vec<u8> = Client::new().get(url).send()?.text()?.bytes().collect();
 

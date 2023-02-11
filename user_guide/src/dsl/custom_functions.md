@@ -27,13 +27,13 @@ we could use `map` to pass an expression column to a neural network model.
 <div class="tabbed-blocks">
 
 ```python
-df.with_column([
+df.with_columns([
     pl.col("features").map(lambda s: MyNeuralNetwork.forward(s.to_numpy())).alias("activations")
 ])
 ```
 
 ```rust,noplayground
-df.with_column([
+df.with_columns([
     col("features").map(|s| Ok(my_nn.forward(s))).alias("activations")
 ])
 ```
