@@ -136,8 +136,8 @@ These are some tools that share similar functionality to what polars does.
 
   - Vaexs method of out-of-core analysis is memory mapping files. This works until it doesn't. For instance parquet
     or csv files first need to be read and converted to a file format that can be memory mapped. Another downside is
-    that the OS determines when pages will be swapped. Then there are operation that need a full data shuffle, such as
-    sort, at the moment of writing vaex relies on pyarrow for sorts, meaning that the data must fit into memory.
+    that the OS determines when pages will be swapped. Operations that need a full data shuffle, such as
+    sorts cannot benefit from memory mapping. At the moment of writing vaex relies on pyarrow for sorts, meaning that the data must fit into memory.
   - Polars' out of core processing is not based on memory mapping, but on streaming data in batches (and spilling to disk
     if needed), we control which data must be hold in memory, not the OS, meaning that we don't have unexpected IO stalls.
 
