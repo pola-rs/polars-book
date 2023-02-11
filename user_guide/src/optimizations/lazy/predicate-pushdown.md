@@ -1,26 +1,21 @@
 # Predicate pushdown
 
-> The Predicate pushdown page is under construction
+A *predicate* is database jargon for applying a filter condition on some table, thereby reducing the number of rows from that table.
 
-Predicate pushdown is an optimization `Polars` does that reduces query times and memory
-usage. A predicate is database jargon for applying a filter on some table, thereby
-reducing the number of rows on that table.
+Predicate pushdown is an optimization `Polars` does that reduces query times and memory usage. 
 
-So let's see if we can load some Reddit data and filter on a few predicates.
+## Creating a lazy query
+Let's load some Reddit data and filter on a few predicates. We use the lazy API here because we start the query with `pl.scan_csv` instead of `pl.read_csv`
 
 ```python
 {{#include ../../examples/predicate_pushdown/snippet1.py}}
 ```
 
-If we were to run this query above nothing would happen! This is due to the lazy evaluation.
-Nothing will happen until specifically requested. This allows Polars to see the whole
-context of a query and optimize just in time for execution.
+## Query execution
+If we were to run this code the query would not be evaluated. Instead Polars takes each line of code and adds it to the internal query graph. This allows Polars to see the whole context of a query. After each line of code Polars optimizes the query graph and this optimized query graph will eventually be executed.
 
-Execution is requested by the `.collect` method. This would query all available data.
-While you're writing, optimizing, and checking your query, this is often undesirable. Another
-method that calls for execution is the `.fetch` method. `.fetch` takes a parameter
-`n_rows` and tries to 'fetch' that number of rows at the data source (no guarantees are
-given though).
+Execution is requested by calling the `.collect` method on the query. The  `.collect` method would query all available data.
+While you're writing, optimizing, and checking your query on a large dataset, querying all available data may lead to a slow development process. In this scenario you can instead execute the query with the `.fetch` method. `.fetch` takes a parameter `n_rows` and tries to 'fetch' that number of rows at the data source (no guarantees are given though).
 
 So let's "fetch" ~10 Million rows from the source file and apply the predicates.
 
@@ -32,11 +27,11 @@ q1.fetch(n_rows=int(1e7))
 {{#include ../../outputs/predicate_pushdown/output1.txt}}
 ```
 
-Above we see that from the 10 Million rows, 61503 rows match our predicate.
+Above we see that from the 10 Million rows, 656 rows match our predicate.
 
-## Break it down
+## Visualising a query plan
 
-In `Polars` we can visualize the query plan. Let's take a look.
+In `Polars` we can visualize the query plan. First we visualise the non-optimized plan by setting `optimized=False`.
 
 ```python
 q1.show_graph(optimized=False)
@@ -44,17 +39,22 @@ q1.show_graph(optimized=False)
 
 ![](../../outputs/predicate_pushdown/graph1.png)
 
-The astute reader maybe would notice that our query is not very optimal because we have
-three separate *FILTER* nodes. That means that after every *FILTER* a new `DataFrame` is
-allocated, which will be input to the next *FILTER* and then deleted from memory -- that
-must be redundant, and you know what... they'd be right. The predicates should be
-combined. We should have written this query:
+We read the query plan from bottom to top. This non-optimized plan is roughly to:
+- get the full dataset from the `data/reddit.csv` file
+- apply the first filter
+- apply the second filter
+- apply the third filter
+
+Our query is not very optimal because we have three separate *FILTER* nodes. That means that after every *FILTER* a new `DataFrame` is
+allocated internally and this new `DataFrame` is input to the next *FILTER* and then deleted from memory. There is a lot of redundancy here. 
+
+We can manually combine the three predicates by writing this query with a single `filter` and the predicates combined with `&`:
 
 ```python
 {{#include ../../examples/predicate_pushdown/snippet2.py}}
 ```
-
-That would translate to:
+## Manual optimization
+If we examine the query graph for this manually optimized query we get:
 
 ```python
 q2.show_graph(optimized=False)
@@ -62,19 +62,21 @@ q2.show_graph(optimized=False)
 
 ![](../../outputs/predicate_pushdown/graph2.png)
 
-As we can see the predicates are combined. This would lead to less copying of data.
+In this case the predicates are combined. This would lead to less copying of data.
 
-## In comes optimization
+## Automatic query optimization
 
-`Polars` tries to save that mental overhead from the query writer and combines predicates
-for you. Besides that, it pushes predicates down to the scan level! Let's see how our
-optimized query looks.
+With the lazy API `Polars` saves that mental overhead from the query writer and combines predicates for you (we appreciate that this is hard to see in the visualisation!). 
 
 ```python
 q1.show_graph(optimized=True)
 ```
 
 ![](../../outputs/predicate_pushdown/graph1-optimized.png)
+
+However, Polars has done more than just combine the predicates. The Polars query optimiser does a *pushdown* to the scan level. This pushdown to the scan level means that the filters are applied as Polars reads the CSV file line-by-line. This is different to the manual optimization above where Polars reads the full CSV into memory before applying the filters. Let's see how our
+optimized query looks.
+
 
 It may be hard to see, but what is clear is that there is only a single node: the *CSV
 SCAN*. The predicate filtering is done during the reading of the csv. This means that
