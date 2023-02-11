@@ -20,15 +20,30 @@ For [`Pandas`](https://pandas.pydata.org/) users, our
 
 ## Goals and non-goals
 
-The goal of `Polars` is to provide a lightning fast `DataFrame` library that utilizes all
-available cores on your machine. Unlike tools such as dask -- which tries to parallelize existing single-threaded libraries
-like `NumPy` and `Pandas` -- `Polars` is written from the ground up, designed for parallelization of queries on `DataFrame`s.
+The goal of `Polars` is to provide a lightning fast `DataFrame` library that:
 
-`Polars` goes to great lengths to:
+- Utilizes all available cores on your machine.
+- Optimizes queries to reduce unneeded work/memory allocations.
+- Handles datasets much larger than your available RAM.
+- Has an API that is consistent and predictable.
+- Has a strict schema (data-types should be known before running the query).
 
-- Reduce redundant copies
-- Traverse memory cache efficiently
-- Minimize contention in parallelism
+Polars is written in Rust which gives it C/C++ performance and allows it to fully control performance critical parts
+in a query engine.
+
+As such `Polars` goes to great lengths to:
+
+- Reduce redundant copies.
+- Traverse memory cache efficiently.
+- Minimize contention in parallelism.
+- Process data in chunks.
+- Reuse memory allocations.
+
+Polars also has control over IO, allowing it to save redundant copies and to push down projections and predicates to
+the scan level.
+
+Unlike tools such as dask -- which tries to parallelize existing single-threaded libraries
+like `NumPy` and `Pandas` --`Polars` is written from the ground up, designed for parallelization of queries on `DataFrame`s.
 
 `Polars` is lazy and semi-lazy. It allows you to do most of your work eagerly, similar to `Pandas`, but
 it also provides a powerful expression syntax that will be optimized and executed on within the query engine.
@@ -41,8 +56,6 @@ distributes the available work to different *executors* that use the algorithms 
 in the eager API to produce a result. Because the whole query context is known to
 the optimizer and executors of the logical plan, processes dependent on separate data
 sources can be parallelized on the fly.
-
-![](https://raw.githubusercontent.com/pola-rs/polars-static/master/docs/api.svg)
 
 ### Performance 🚀🚀
 
@@ -69,6 +82,10 @@ Below a concise list of the features allowing `Polars` to meet its goals:
 - Efficient algorithms
 - Very fast IO
   - Its csv and parquet readers are among the fastest in existence
+- Out of Core
+  - Many queries can be executed completely out of core
+    (meaning that we can process datasets that are larger than RAM)
+  - Arrow/IPC files can be memory mapped (this is the strategy vaex uses)
 - [Query optimizations](optimizations/lazy/intro.md)
   - Predicate pushdown
     - Filtering at scan level
@@ -77,11 +94,69 @@ Below a concise list of the features allowing `Polars` to meet its goals:
   - Aggregate pushdown
     - Aggregations at scan level
   - Simplify expressions
+  - Scan sharing
+  - Common subplan elimination
   - Parallel execution of physical plan
   - Cardinality based groupby dispatch
     - Different groupby strategies based on data cardinality
 - SIMD vectorization
 - [`NumPy` universal functions](https://numpy.org/doc/stable/reference/ufuncs.html)
+
+### Comparison with other tools
+
+These are some tools that share similar functionality to what polars does.
+
+- Pandas
+
+  - A very versatile tool for small data. Read [10 things I hate about pandas](https://wesmckinney.com/blog/apache-arrow-pandas-internals/)
+    written by the author himself. Polars has solved all those 10 things.
+    Polars is a versatile tool for small and large data with a more predictable API, less ambiguous and stricter API.
+
+- Pandas the API
+
+  - The API of pandas was designed for in memory data. This makes it a poor fit for performant analysis on large data
+    (read anything that does not fit into RAM). Any tool that tries to distribute that API will likely have a
+    suboptimal query plan compared to plans that follow from a declarative API like SQL or polars' API.
+
+- Dask
+
+  - Parallelizes existing single-threaded libraries like `NumPy` and `Pandas`. As a consumer of those libraries Dask
+    therefore has less control over low level performance and semantics.
+    Those libraries are treated like a black box.
+    On a single machine the parallelization effort can also be seriously stalled by pandas strings.
+    Pandas strings, by default, are stored as python objects in
+    numpy arrays meaning that any operation on them is GIL bound and therefore single threaded. This can be circumvented
+    by multi-processing but has a non-trivial cost.
+
+- Modin
+
+  - Similar to Dask
+
+- Vaex
+
+  - Vaexs method of out-of-core analysis is memory mapping files. This works until it doesn't. For instance parquet
+    or csv files first need to be read and converted to a file format that can be memory mapped. Another downside is
+    that the OS determines when pages will be swapped. Then there are operation that need a full data shuffle, such as
+    sort, at the moment of writing vaex relies on pyarrow for sorts, meaning that the data must fit into memory.
+  - Polars' out of core processing is not based on memory mapping, but on streaming data in batches (and spilling to disk
+    if needed), we control which data must be hold in memory, not the OS, meaning that we don't have unexpected IO stalls.
+
+- DuckDB
+
+  - Polars and DuckDB have many similarities. DuckDB is focussed on providing an in-process OLAP Sqlite alternative,
+    polars is focussed on providing a scalable `DataFrame` interface to many languages. Those different front-ends lead to
+    different optimization strategies and different algorithm prioritization. The interop between both is zero-copy.
+    See more: https://duckdb.org/docs/guides/python/polars
+
+- Spark
+
+  - Spark is designed for distributed workloads and uses the JVM. The setup for spark is complicated and the startup-time
+    is slow. Polars has much better performance characteristics on a single machine. The API's are somewhat similar.
+
+- Any
+
+  - Polars is written in Rust. This gives it strong safety, performance and concurrency guarantees.
+    Polars is written in a modular manner. Parts of polars can be used in other query program and can be added as a library.
 
 ## Acknowledgements
 
