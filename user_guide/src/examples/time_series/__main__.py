@@ -12,13 +12,8 @@ from .parsing_dates import (
 )
 from .cast_date_to_string import df as cast_date_to_string_df
 from .resampling_example import df as resample_df, out1, out2
-from .time_zones import (
-    time_zones_df,
-    time_zones_operations,
-)
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/time_series")
-create_if_not_exists(f"{OUTPUT_BASE_DIR}/time_series/time_zones")
 
 with open(f"{path}/days_month.txt", "w") as f:
     f.write(f"{days_month}\n")
@@ -58,9 +53,3 @@ with open(f"{path}/resample_upsample_output.txt", "w") as f:
 
 with open(f"{path}/resample_upsample_interpolation.txt", "w") as f:
     f.write(f"{out2}\n")
-
-with open(f"{path}/time_zones/time_zones_df.txt", "w") as f:
-    f.write(f"{time_zones_df}\n")
-
-with open(f"{path}/time_zones/time_zones_operations.txt", "w") as f:
-    f.write(f"{time_zones_operations}\n")

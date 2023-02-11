@@ -12,7 +12,7 @@ The main methods for setting and converting between time zones are:
 Let's look at some examples of common operations:
 
 ```python
-{{#include ../../examples/time_series/time_zones.py:03:06}}
+{{#include ../../examples/time_series/time_zones/snippet.py:03:06}}
 ```
 
 ```text
@@ -20,7 +20,7 @@ Let's look at some examples of common operations:
 ```
 
 ```python
-{{#include ../../examples/time_series/time_zones.py:08:14}}
+{{#include ../../examples/time_series/time_zones/snippet.py:08:14}}
 ```
 
 ```text
