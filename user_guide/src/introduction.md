@@ -153,6 +153,13 @@ These are some tools that share similar functionality to what polars does.
   - Spark is designed for distributed workloads and uses the JVM. The setup for spark is complicated and the startup-time
     is slow. Polars has much better performance characteristics on a single machine. The API's are somewhat similar.
 
+- CuDF
+
+  - GPU's are fast, but not readily available and expensive in production. The amount of memory available on GPU often
+    is a fraction of available RAM. Next to that Polars is close in [performance to CuDF](https://zakopilo.hatenablog.jp/entry/2023/02/04/220552) and on some operations even faster.
+    CuDF also doesn't optimize your query, so it is likely that on ETL jobs polars will be faster because it can elide
+    unneeded work and materialization's.
+
 - Any
 
   - Polars is written in Rust. This gives it strong safety, performance and concurrency guarantees.
