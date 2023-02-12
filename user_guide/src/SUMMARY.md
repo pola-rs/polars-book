@@ -61,6 +61,7 @@
     \<> (    - [Gotchas](performance/gotchas.md))
 - [Optimizations](optimizations/intro.md)
   - [Lazy API](optimizations/lazy/intro.md)
+    - [Key concepts](optimizations/lazy/lazy-query.md)
     - [Predicate pushdown](optimizations/lazy/predicate-pushdown.md)
     - [Projection pushdown](optimizations/lazy/projection-pushdown.md)
     - [Other optimizations](optimizations/lazy/other-optimizations.md)
