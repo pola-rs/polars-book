@@ -1,37 +1,4 @@
-# Lazy API key concepts
-
-## Creating a lazy query
-Let's load some Reddit data and filter on a few predicates. We use the lazy API here because we start the query with `pl.scan_csv` instead of `pl.read_csv`
-
-```python
-{{#include ../../examples/predicate_pushdown/snippet1.py:10}}
-```
-
-When we use a `pl.scan_` function we start a query in lazy mode. A `pl.scan_` function is available for a number of file types including CSV, Parquet, Arrow and newline delimited JSON.
-
-An alternative way to access the lazy API is to call `.lazy()` on a `DataFrame` that has already been created.
-
-```python
-{{#include ../../examples/predicate_pushdown/snippet3.py:4}}
-```
-
-
-
-## Role of the schema in the lazy API
-The schema of a Polars `DataFrame` or `LazyFrame` sets out the names of the columns and their datatypes. You can see the schema at any point with the `schema` method on a `DataFrame` or `LazyFrame` 
-```python
-{{#include ../../examples/predicate_pushdown/snippet3.py:6:6}}
-```
-
-```text
-{{#include ../../outputs/predicate_pushdown/output4.txt}}
-```
-
-To use the lazy API Polars must know the schema at every step of a query plan. This means that operations where the schema is not knowable in advance can not be used with the lazy API.
-
-The classic example of an operation where the schema is not knowable in advance is a `pivot` operation. With a `pivot` the column names come from data in one of the columns. As these data cannot be known in advance a `pivot` cannot be used in the lazy API.
-
-## Query execution
+# Query execution
 If we were to run the code above on the Reddit CSV the query would not be evaluated. Instead Polars takes each line of code and adds it to the internal query graph. This allows Polars to see the whole context of a query. After each line of code Polars optimizes the query graph and this optimized query graph will eventually be executed.
 
 
