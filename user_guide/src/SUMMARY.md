@@ -21,6 +21,7 @@
   - [Schema in the lazy API](lazy-api/lazy-schema.md)
   - [Understanding the query plan](lazy-api/lazy-query-plan.md)
   - [Executing lazy queries](lazy-api/lazy-query-execution.md)
+  - [Streaming](lazy-api/streaming.md)
 
 - [Data Types](datatypes.md)
 - [Coming from Pandas](coming_from_pandas.md)
