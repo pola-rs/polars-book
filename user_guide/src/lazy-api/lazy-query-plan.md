@@ -1,44 +1,69 @@
 # Understanding a query plan
 
-In `Polars` we can visualize both the non-optimized and optimized query plans.
+For any lazy query `Polars` has both:
+
+- the non-optimized plan that reflects the code as we provide it and
+- the optimized plan with any changes made by the query optimizer
+
+We can understand both the non-optimized and optimized query plans with visualization and by printing them.
 
 ## Non-optimized query plan
+
+### Graphviz visualization
+
 First we visualise the non-optimized plan by setting `optimized=False`.
 
 ```python
-q1.show_graph(optimized=False)
+{{#include ../examples/lazy_api/snippet1.py:19:19}}
 ```
 
-![](../../outputs/predicate_pushdown/graph1.png)
+![](../outputs/lazy_api/graph1.png)
+
+The visualisation should be read from bottom to top. In the visualisation:
+
+- each box corresponds to a stage in the query plan
+- the `\sigma` stands for `SELECTION` and indicates any filter conditions
+- the `\pi` stands for `PROJECTION` indicates choosing a subset of columns
+
+### Printed query plan
 
 We can also print the non-optimized plan with `describe_plan`
 
 ```python
-{{#include ../../examples/predicate_pushdown/snippet1.py:10:10}}
-```
-```text
-{{#include ../../outputs/predicate_pushdown/output7.txt}}
+{{#include ../examples/lazy_api/snippet1.py:11:11}}
 ```
 
-Whether we use the visualization or the printed plan we read it from bottom to top. This non-optimized plan is roughly to:
+```text
+{{#include ../outputs/lazy_api/q1_plan.txt}}
+```
+
+The printed plan should also be read from bottom to top. This non-optimized plan is roughly to:
+
 - get the full dataset from the `data/reddit.csv` file
-- apply the first filter on the `comment_karma` column
-- apply the second filter on the `link_karma` column
-- apply the third filter on the `name` column
+- transform the `name` column to uppercase
+- apply a filter on the `comment_karma` column
 
 ## Optimized query plan
-With query optimization in the lazy API `Polars` saves that mental overhead from the query writer and combines predicates for you (we appreciate that this is hard to see in the visualisation!). 
+
+With query optimization in the lazy API `Polars` saves the mental overhead of manually combining filter predicates into a single `filter` and combines predicates for you. We can see this in the visualization with the default arguments for `show_graph`
 
 ```python
-q1.show_graph(optimized=True)
+{{#include ../examples/lazy_api/snippet1.py:21:21}}
 ```
 
-![](../../outputs/predicate_pushdown/graph1-optimized.png)
+![](../outputs/lazy_api/graph1-optimized.png)
 
 We can also print the optimized plan with `describe_optimized_plan`
+
 ```python
-{{#include ../../examples/predicate_pushdown/snippet1.py:16:16}}
+{{#include ../examples/lazy_api/snippet1.py:15:15}}
 ```
+
 ```text
-{{#include ../../outputs/predicate_pushdown/output9.txt}}
+{{#include ../outputs/lazy_api/q1_opt_plan.txt}}
 ```
+
+The optimized plan is to:
+
+- read the data from the Reddit CSV applying the filter while reading the CSV file line-by-line
+- transform the `name` column to uppercase

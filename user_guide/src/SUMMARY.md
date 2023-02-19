@@ -17,8 +17,10 @@
   - [API](dsl/api.md)
   - [Video introduction](dsl/video_intro.md)
 - [Lazy API](lazy-api/intro.md)
-  - [Creating a lazy query](lazy-api/expressions.md)
+  - [Using the lazy API](lazy-api/lazy-query-create.md)
   - [Schema in the lazy API](lazy-api/lazy-schema.md)
+  - [Understanding the query plan](lazy-api/lazy-query-plan.md)
+  - [Executing lazy queries](lazy-api/lazy-query-execution.md)
 
 - [Data Types](datatypes.md)
 - [Coming from Pandas](coming_from_pandas.md)

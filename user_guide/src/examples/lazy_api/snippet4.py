@@ -4,8 +4,7 @@ from ..paths import DATA_DIR
 
 q4 = (
     pl.scan_csv(f"{DATA_DIR}/reddit.csv")
+    .with_columns(pl.col("name").str.to_uppercase())
     .filter(pl.col("comment_karma") > 0)
-    .filter(pl.col("link_karma") > 0)
-    .filter(pl.col("name").str.contains(r"^a"))  # filter name that start with an "a"
     .collect()
 )
