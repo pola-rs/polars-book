@@ -48,7 +48,7 @@ Creating a simple `Series` or `Dataframe` is easy and very familiar to other pac
 You can create a `Series` in Polars by providing a `list` or a `tuple`.
 
 ```python
-{{#include ../examples/quickstart/series_tuple.py}}
+{{#include ../examples/quickstart/series_tuple.py:3:}}
 
 print(series)
 ```
@@ -58,7 +58,7 @@ print(series)
 ```
 
 ```python
-{{#include ../examples/quickstart/series_list.py}}
+{{#include ../examples/quickstart/series_list.py:3:}}
 
 print(series)
 ```
@@ -70,7 +70,7 @@ print(series)
 A `DataFrame` is created from a `dict` or a collection of `dicts`.
 
 ```python
-{{#include ../examples/quickstart/dataframe1.py}}
+{{#include ../examples/quickstart/dataframe1.py:4:}}
 
 print(df)
 ```
@@ -95,7 +95,7 @@ dataframe.write_csv('output.csv')
 ```
 
 ```python
-{{#include ../examples/quickstart/read_csv_datetime.py}}
+{{#include ../examples/quickstart/read_csv_datetime.py:3:}}
 
 print(df_csv)
 ```
@@ -160,51 +160,23 @@ print(df)
 The `head` function shows by default the first 5 rows of a `DataFrame`. You can specify the number of rows you want to see (e.g. `df.head(10)`).
 
 ```python
-df.head(5)
+
+print(out)
 ```
 
-```
-shape: (5, 4)
-┌─────┬──────────┬─────────────────────┬─────┐
-│ a   ┆ b        ┆ c                   ┆ d   │
-│ --- ┆ ---      ┆ ---                 ┆ --- │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64 │
-╞═════╪══════════╪═════════════════════╪═════╡
-│ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0 │
-└─────┴──────────┴─────────────────────┴─────┘
+```text
+{{#include ../outputs/quickstart/head.txt}}
 ```
 
 The `tail` function shows the last 5 rows of a `DataFrame`. You can also specify the number of rows you want to see, similar to `head`.
 
 ```python
-df.tail(5)
+
+print(out)
 ```
 
-```
-shape: (5, 4)
-┌─────┬──────────┬─────────────────────┬───────┐
-│ a   ┆ b        ┆ c                   ┆ d     │
-│ --- ┆ ---      ┆ ---                 ┆ ---   │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   │
-╞═════╪══════════╪═════════════════════╪═══════╡
-│ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  │
-└─────┴──────────┴─────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/tail.txt}}
 ```
 
 If you want to get an impression of the data of your `DataFrame`, you can also use `sample`. With `sample` you get an *n* number of random rows from the `DataFrame`.
