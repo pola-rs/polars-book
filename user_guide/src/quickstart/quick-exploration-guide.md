@@ -97,7 +97,7 @@ dataframe.write_csv('output.csv')
 ```python
 {{#include ../examples/quickstart/read_csv_datetime.py:3:}}
 
-print(df_csv)
+print(df_csv_with_dates)
 ```
 
 ```text
@@ -148,7 +148,7 @@ Additional information
 This part focuses on viewing data in a `DataFrame`. We first create a `DataFrame` to work with.
 
 ```python
-{{#include ../examples/quickstart/dataframe2.py}}
+{{#include ../examples/quickstart/dataframe2.py:5:}}
 
 print(df)
 ```
@@ -160,6 +160,7 @@ print(df)
 The `head` function shows by default the first 5 rows of a `DataFrame`. You can specify the number of rows you want to see (e.g. `df.head(10)`).
 
 ```python
+{{#include ../examples/quickstart/head.py:4:}}
 
 print(out)
 ```
@@ -171,6 +172,7 @@ print(out)
 The `tail` function shows the last 5 rows of a `DataFrame`. You can also specify the number of rows you want to see, similar to `head`.
 
 ```python
+{{#include ../examples/quickstart/tail.py:4:}}
 
 print(out)
 ```
@@ -182,51 +184,25 @@ print(out)
 If you want to get an impression of the data of your `DataFrame`, you can also use `sample`. With `sample` you get an *n* number of random rows from the `DataFrame`.
 
 ```python
-df.sample(n=3)
+{{#include ../examples/quickstart/sample.py:4:}}
+
+print(out)
 ```
 
-```
-shape: (3, 4)
-┌─────┬──────────┬─────────────────────┬──────┐
-│ a   ┆ b        ┆ c                   ┆ d    │
-│ --- ┆ ---      ┆ ---                 ┆ ---  │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64  │
-╞═════╪══════════╪═════════════════════╪══════╡
-│ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┤
-│ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┤
-│ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null │
-└─────┴──────────┴─────────────────────┴──────┘
+```text
+{{#include ../outputs/quickstart/sample.txt}}
 ```
 
 `Describe` returns summary statistics of your `DataFrame`. It will provide several quick statistics if possible.
 
 ```python
-df.describe()
+{{#include ../examples/quickstart/describe.py:4:}}
+
+print(out)
 ```
 
-```
-shape: (7, 5)
-┌────────────┬─────────┬──────────┬────────────────────────────┬───────┐
-│ describe   ┆ a       ┆ b        ┆ c                          ┆ d     │
-│ ---        ┆ ---     ┆ ---      ┆ ---                        ┆ ---   │
-│ str        ┆ f64     ┆ f64      ┆ str                        ┆ f64   │
-╞════════════╪═════════╪══════════╪════════════════════════════╪═══════╡
-│ count      ┆ 8.0     ┆ 8.0      ┆ 8                          ┆ 8.0   │
-├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ null_count ┆ 0.0     ┆ 0.0      ┆ 0                          ┆ 1.0   │
-├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ mean       ┆ 3.5     ┆ 0.431245 ┆ null                       ┆ NaN   │
-├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ std        ┆ 2.44949 ┆ 0.340445 ┆ null                       ┆ NaN   │
-├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ min        ┆ 0.0     ┆ 0.062943 ┆ 2022-12-01 00:00:00.000000 ┆ -42.0 │
-├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ max        ┆ 7.0     ┆ 0.896408 ┆ 2022-12-08 00:00:00.000000 ┆ 2.0   │
-├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ median     ┆ 3.5     ┆ 0.42741  ┆ null                       ┆ 1.0   │
-└────────────┴─────────┴──────────┴────────────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/describe.txt}}
 ```
 
 Additional information
