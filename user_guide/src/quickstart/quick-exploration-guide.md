@@ -113,7 +113,7 @@ dataframe.write_json('output.json')
 ```
 
 ```python
-{{#include ../examples/quickstart/read_json.py}}
+{{#include ../examples/quickstart/read_json.py:3:}}
 
 print(df_json)
 ```
@@ -129,7 +129,7 @@ dataframe.write_parquet('output.parquet')
 ```
 
 ```python
-{{#include ../examples/quickstart/read_parquet.py}}
+{{#include ../examples/quickstart/read_parquet.py:3:}}
 
 print(df_parquet)
 ```
@@ -160,7 +160,7 @@ print(df)
 The `head` function shows by default the first 5 rows of a `DataFrame`. You can specify the number of rows you want to see (e.g. `df.head(10)`).
 
 ```python
-{{#include ../examples/quickstart/head.py:4:}}
+{{#include ../examples/quickstart/head.py:3:}}
 
 print(out)
 ```
@@ -172,7 +172,7 @@ print(out)
 The `tail` function shows the last 5 rows of a `DataFrame`. You can also specify the number of rows you want to see, similar to `head`.
 
 ```python
-{{#include ../examples/quickstart/tail.py:4:}}
+{{#include ../examples/quickstart/tail.py:3:}}
 
 print(out)
 ```
@@ -184,7 +184,7 @@ print(out)
 If you want to get an impression of the data of your `DataFrame`, you can also use `sample`. With `sample` you get an *n* number of random rows from the `DataFrame`.
 
 ```python
-{{#include ../examples/quickstart/sample.py:4:}}
+{{#include ../examples/quickstart/sample.py:3:}}
 
 print(out)
 ```
@@ -196,7 +196,7 @@ print(out)
 `Describe` returns summary statistics of your `DataFrame`. It will provide several quick statistics if possible.
 
 ```python
-{{#include ../examples/quickstart/describe.py:4:}}
+{{#include ../examples/quickstart/describe.py:3:}}
 
 print(out)
 ```
@@ -290,7 +290,7 @@ print(out)
 With `filter` you can also create more complex filters that include multiple columns.
 
 ```python
-{{#include ../examples/quickstart/filter2.py:5:}}
+{{#include ../examples/quickstart/filter2.py:4:}}
 
 print(out)
 ```
