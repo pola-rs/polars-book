@@ -48,70 +48,34 @@ Creating a simple `Series` or `Dataframe` is easy and very familiar to other pac
 You can create a `Series` in Polars by providing a `list` or a `tuple`.
 
 ```python
-# with a tuple
-series = pl.Series("a", [1, 2, 3, 4, 5])
+{{#include ../examples/quickstart/series_tuple.py}}
 
 print(series)
 ```
 
-```
-shape: (5,)
-Series: 'a' [i64]
-[
-    1
-    2
-    3
-    4
-    5
-]
+```text
+{{#include ../outputs/quickstart/series_tuple.txt}}
 ```
 
 ```python
-# with a list
-series = pl.Series([1, 2, 3, 4, 5])
+{{#include ../examples/quickstart/series_list.py}}
 
 print(series)
 ```
 
-```
-shape: (5,)
-Series: '' [i64]
-[
-    1
-    2
-    3
-    4
-    5
-]
+```text
+{{#include ../outputs/quickstart/series_list.txt}}
 ```
 
 A `DataFrame` is created from a `dict` or a collection of `dicts`.
 
 ```python
-dataframe = pl.DataFrame({"integer": [1, 2, 3], 
-                          "date": [
-                              (datetime(2022, 1, 1)), 
-                              (datetime(2022, 1, 2)), 
-                              (datetime(2022, 1, 3))
-                          ], 
-                          "float":[4.0, 5.0, 6.0]})
-
-print(dataframe)
+{{#include ../examples/quickstart/dataframe.py}}
+print(df)
 ```
 
-```
-shape: (3, 3)
-┌─────────┬─────────────────────┬───────┐
-│ integer ┆ date                ┆ float │
-│ ---     ┆ ---                 ┆ ---   │
-│ i64     ┆ datetime[μs]        ┆ f64   │
-╞═════════╪═════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02 00:00:00 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
-└─────────┴─────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/dataframe.txt}}
 ```
 
 Additional information
