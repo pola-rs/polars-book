@@ -70,12 +70,13 @@ print(series)
 A `DataFrame` is created from a `dict` or a collection of `dicts`.
 
 ```python
-{{#include ../examples/quickstart/dataframe.py}}
+{{#include ../examples/quickstart/dataframe1.py}}
+
 print(df)
 ```
 
 ```text
-{{#include ../outputs/quickstart/dataframe.txt}}
+{{#include ../outputs/quickstart/output.csv}}
 ```
 
 Additional information
@@ -94,48 +95,16 @@ dataframe.write_csv('output.csv')
 ```
 
 ```python
-df_csv = pl.read_csv('output.csv')
+{{#include ../examples/quickstart/read_csv_datetime.py}}
 
 print(df_csv)
 ```
 
-```
-shape: (3, 3)
-┌─────────┬────────────────────────────┬───────┐
-│ integer ┆ date                       ┆ float │
-│ ---     ┆ ---                        ┆ ---   │
-│ i64     ┆ str                        ┆ f64   │
-╞═════════╪════════════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01T00:00:00.000000 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02T00:00:00.000000 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03T00:00:00.000000 ┆ 6.0   │
-└─────────┴────────────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/output.csv}}
 ```
 
-As we can see above, Polars made the datetimes a `string`. We can tell Polars to parse dates, when reading the csv, to ensure the date becomes a datetime. The example can be found below:
-
-```python
-df_csv_with_dates = pl.read_csv('output.csv', parse_dates=True)
-
-print(df_csv_with_dates)
-```
-
-```
-shape: (3, 3)
-┌─────────┬─────────────────────┬───────┐
-│ integer ┆ date                ┆ float │
-│ ---     ┆ ---                 ┆ ---   │
-│ i64     ┆ datetime[μs]        ┆ f64   │
-╞═════════╪═════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02 00:00:00 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
-└─────────┴─────────────────────┴───────┘
-```
+You can add `parse_dates=True` to ensure that date column(s) are set as datetime.
 
 #### json
 
@@ -144,24 +113,13 @@ dataframe.write_json('output.json')
 ```
 
 ```python
-df_json = pl.read_json('output.json')
+{{#include ../examples/quickstart/read_json.py}}
 
 print(df_json)
 ```
 
-```
-shape: (3, 3)
-┌─────────┬─────────────────────┬───────┐
-│ integer ┆ date                ┆ float │
-│ ---     ┆ ---                 ┆ ---   │
-│ i64     ┆ datetime[μs]        ┆ f64   │
-╞═════════╪═════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02 00:00:00 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
-└─────────┴─────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/output.json}}
 ```
 
 #### parquet
@@ -171,24 +129,13 @@ dataframe.write_parquet('output.parquet')
 ```
 
 ```python
-df_parquet = pl.read_parquet('output.parquet')
+{{#include ../examples/quickstart/read_parquet.py}}
 
 print(df_parquet)
 ```
 
-```
-shape: (3, 3)
-┌─────────┬─────────────────────┬───────┐
-│ integer ┆ date                ┆ float │
-│ ---     ┆ ---                 ┆ ---   │
-│ i64     ┆ datetime[μs]        ┆ f64   │
-╞═════════╪═════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02 00:00:00 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
-└─────────┴─────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/output.parquet}}
 ```
 
 Additional information
@@ -201,38 +148,13 @@ Additional information
 This part focuses on viewing data in a `DataFrame`. We first create a `DataFrame` to work with.
 
 ```python
-df = pl.DataFrame({"a": np.arange(0, 8), 
-                   "b": np.random.rand(8), 
-                   "c": [datetime(2022, 12, 1) + timedelta(days=idx) for idx in range(8)],
-                   "d": [1, 2.0, np.NaN, np.NaN, 0, -5, -42, None]
-                  })
+{{#include ../examples/quickstart/dataframe2.py}}
 
 print(df)
 ```
 
-```
-shape: (8, 4)
-┌─────┬──────────┬─────────────────────┬───────┐
-│ a   ┆ b        ┆ c                   ┆ d     │
-│ --- ┆ ---      ┆ ---                 ┆ ---   │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   │
-╞═════╪══════════╪═════════════════════╪═══════╡
-│ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  │
-└─────┴──────────┴─────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/output2.csv}}
 ```
 
 The `head` function shows by default the first 5 rows of a `DataFrame`. You can specify the number of rows you want to see (e.g. `df.head(10)`).

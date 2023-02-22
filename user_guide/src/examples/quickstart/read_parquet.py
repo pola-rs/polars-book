@@ -1,0 +1,1 @@
+df_parquet = pl.read_parquet('output.parquet')
