@@ -9,7 +9,7 @@ def get_person() -> pl.Expr:
 
 q = (
     dataset.lazy()
-    .sort("birthday", reverse=True)
+    .sort("birthday", descending=True)
     .groupby(["state"])
     .agg(
         [
