@@ -12,7 +12,7 @@ q = (
             pl.first("last_name"),
         ]
     )
-    .sort("count", reverse=True)
+    .sort("count", descending=True)
     .limit(5)
 )
 
