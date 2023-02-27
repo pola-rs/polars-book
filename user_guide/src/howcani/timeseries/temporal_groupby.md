@@ -10,6 +10,7 @@ In following simple example we calculate the annual average closing price of App
 
 ```python
 {{#include ../../examples/time_series/parsing_dates.py:4:4}}
+print(df)
 ```
 
 ```text
@@ -151,7 +152,7 @@ Below is an example with a dynamic groupby.
 
 ```python
 {{#include ../../examples/time_series/dynamic_ds.py:0:}}
-print(out)
+print(df)
 ```
 
 ```text
