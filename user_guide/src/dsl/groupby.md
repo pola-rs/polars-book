@@ -49,7 +49,7 @@ We can start with the simple
 <div class="tabbed-blocks">
 
 ```python
-{{#include ../examples/groupby_dsl/dataset.py:5:}}
+{{#include ../examples/groupby_dsl/dataset.py}}
 ```
 
 ```rust,noplayground
