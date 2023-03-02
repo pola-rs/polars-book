@@ -1,6 +1,6 @@
 # Lazy API
 
-The lazy API is important for optimal queries because:
+With the lazy API Polars doesn't run each query line-by-line but instead processes the full query end-to-end. To get the most out of Polars it is important that you use the lazy API because:
 
 - the lazy API allows Polars to apply automatic query optimization with the query optimizer
 - the lazy API allows you to work with larger than memory datasets using streaming
@@ -10,7 +10,8 @@ The pages in this section cover:
 
 - [Using the lazy API](lazy-query-create.md)
 - [Schema in the lazy API](lazy-schema.md)
-- [Executing lazy queries](lazy-query-execute.md)
+- [Understanding the query plan](lazy-query-plan.md)
+- [Executing lazy queries](lazy-query-execution.md)
 - [Streaming larger-than-memory datasets](streaming.md)
 
 ## Dataset

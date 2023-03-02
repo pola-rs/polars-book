@@ -11,6 +11,7 @@ from .snippet5 import q5 as q5
 from .snippet6 import q6 as q6
 from .snippet8 import q8
 from .snippet10 import dataset
+from .snippet11 import q11
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/lazy_api")
 
@@ -31,6 +32,8 @@ variable_filename_tuples = [
     (df1, "df1"),
     (dataset, "dataset"),
     (q8, "q8"),
+    (q5, "q5"),
+    (q11, "q11"),
 ]
 for variable, filename in variable_filename_tuples:
     with open(f"{path}/{filename}.txt", "w") as f:
