@@ -114,7 +114,7 @@ The CSV file has numerous columns but we just want to do a groupby on one of the
 columns (`id1`) and then sum by a value column (`v1`). In `Pandas` this would be:
 
 ```python
-    df = pd.read_csv(csv_file)
+    df = pd.read_csv(csv_file, usecols=['id1','v1'])
     grouped_df = df.loc[:,['id1','v1']].groupby('id1').sum('v1')
 ```
 
@@ -158,7 +158,7 @@ df["hundredXValue"] = df["value"] * 100
 
 These column assignments are executed sequentially.
 
-In `Polars` we add columns to `df` using the `.with_column` method and name them with
+In `Polars` we add columns to `df` using the `.with_columns` method and name them with
 the `.alias` method:
 
 ```python
@@ -185,7 +185,7 @@ df.loc[df["c"] == 2, "a"] = df.loc[df["c"] == 2, "b"]
 while in `Polars` this would be:
 
 ```python
-df.with_column(
+df.with_columns(
     pl.when(pl.col("c") == 2)
     .then(pl.col("b"))
     .otherwise(pl.col("a")).alias("a")

@@ -51,7 +51,7 @@ df.column("utf8-column").unwrap().cast(&DataType::Categorical(None)).unwrap();
 
 </div>
 
-### Eager join multiple DataFrames on Categorical data
+### Join multiple DataFrames on Categorical data
 
 When two `DataFrames` need to be joined based on string data the `Categorical` data needs
 to be synchronized (data in column `A` of `df1` needs to point to the same underlying
@@ -76,46 +76,6 @@ fn main() {
     ).unwrap();
     println!("{df}");
 }
-```
-
-</div>
-
-### Lazy join multiple DataFrames on Categorical data
-
-A lazy query always has a global string cache (unless you opt-out) for the duration of
-that query (until `.collect()` is called). The example below shows how you could join
-two `DataFrames` with `Categorical` types.
-
-<div class="tabbed-blocks">
-
-```python
-{{#include ../examples/strings_performance/snippet2.py}}
-```
-
-```rust,noplayground
-use polars::{prelude::*, toggle_string_cache};
-
-fn main() {
-    toggle_string_cache(true);
-    let lf1 = df! (
-        "a" => &["foo", "bar", "ham"],
-        "b" => &[1, 2, 3]
-    )
-    .unwrap()
-    .lazy();
-    let lf2 = df! (
-        "a" => &["foo", "spam", "eggs"],
-        "b" => &[3,2,2]
-    )
-    .unwrap()
-    .lazy();
-
-    let lf1 = lf1.with_column(col("a").cast(DataType::Categorical(None)));
-    let lf2 = lf2.with_column(col("a").cast(DataType::Categorical(None)));
-    let joined = lf1.inner_join(lf2, col("a"), col("a"));
-    println!("{:?}", joined.collect().unwrap());
-}
-
 ```
 
 </div>

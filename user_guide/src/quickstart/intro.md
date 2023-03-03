@@ -23,7 +23,7 @@ $ yarn add nodejs-polars
 
 </div>
 
-All binaries are pre-built for `Python` v3.6+.
+All binaries are pre-built for `Python` v3.7+.
 
 ## Quick start
 

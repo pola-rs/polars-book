@@ -8,22 +8,22 @@ df = pl.DataFrame(
 )
 
 fill_literal_df = (
-    df.with_column(
+    df.with_columns(
         pl.col("col2").fill_null(
             pl.lit(2),
         ),
     ),
 )
 
-fill_forward_df = df.with_column(
+fill_forward_df = df.with_columns(
     pl.col("col2").fill_null(strategy="forward"),
 )
 
-fill_median_df = df.with_column(
+fill_median_df = df.with_columns(
     pl.col("col2").fill_null(pl.median("col2")),
 )
 
-fill_interpolation_df = df.with_column(
+fill_interpolation_df = df.with_columns(
     pl.col("col2").interpolate(),
 )
 
@@ -32,6 +32,6 @@ nan_df = pl.DataFrame(
         "value": [1.0, float("nan"), float("nan"), 3.0],
     },
 )
-mean_nan_df = nan_df.with_column(
+mean_nan_df = nan_df.with_columns(
     pl.col("value").fill_nan(None).alias("value"),
 ).mean()

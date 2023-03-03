@@ -99,7 +99,7 @@ df.null_count()
 ## Sort columns
 
 ```python
-df.sort("a", reverse=True)
+df.sort("a", descending=True)
 ```
 
 ```text

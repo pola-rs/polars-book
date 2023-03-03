@@ -25,6 +25,7 @@ run: data
 	$(PYTHON) -m user_guide.src.examples.missing_data
 	$(PYTHON) -m user_guide.src.examples.selecting_data
 	$(PYTHON) -m user_guide.src.examples.time_series
+	$(PYTHON) -m user_guide.src.examples.time_series.time_zones
 	$(PYTHON) -m user_guide.src.examples.expressions
 	$(PYTHON) -m user_guide.src.examples.aggregate
 	$(PYTHON) -m user_guide.src.examples.column_row_selection

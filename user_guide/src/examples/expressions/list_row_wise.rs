@@ -32,7 +32,7 @@ fn main() -> Result<()> {
     let grades = grades
         .clone()
         .lazy()
-        .with_column(
+        .with_columns(
             // create the list of homogeneous data
             concat_lst([all().exclude(["student"])]).alias("all_grades"),
         )
