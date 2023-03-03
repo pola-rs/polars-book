@@ -14,7 +14,7 @@ The schema plays an important role in the lazy API.
 
 ## Type checking in the lazy API
 
-One advantage of the lazy API is that Polars will check the schema before any data is processed. This check happens when you execute your lazy query. 
+One advantage of the lazy API is that Polars will check the schema before any data is processed. This check happens when you execute your lazy query.
 
 We see how this works in the following simple example where we call the `.round` expression on the integer `bar` column.
 

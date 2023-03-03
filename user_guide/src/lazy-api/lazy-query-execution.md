@@ -33,11 +33,12 @@ If your data requires more memory than you have available Polars may be able to 
 ```python
 {{#include ../examples/lazy_api/snippet5.py}}
 ```
+
 We look at [streaming in more detail here](streaming.md).
 
 ### Execution on a partial dataset
 
-While you're writing, optimizing or checking your query on a large dataset, querying all available data may lead to a slow development process. 
+While you're writing, optimizing or checking your query on a large dataset, querying all available data may lead to a slow development process.
 
 You can instead execute the query with the `.fetch` method. The `.fetch` method takes a parameter `n_rows` and tries to 'fetch' that number of rows at the data source. The number of rows cannot be guaranteed, however, as the lazy API does not count how many rows there are at each stage of the query.
 

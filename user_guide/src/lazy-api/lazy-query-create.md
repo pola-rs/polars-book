@@ -1,6 +1,6 @@
 # Using the lazy API
 
-We see how here how to use the lazy API starting from either a file or an existing `DataFrame`.
+Here we see how to use the lazy API starting from either a file or an existing `DataFrame`.
 
 ## Using the lazy API from a file
 
@@ -8,7 +8,7 @@ In the ideal case we use the lazy API right from a file as the query optimizer m
 
 We create a lazy query from the Reddit CSV data and apply some transformations.
 
-We are using the lazy API here because we start the query with `pl.scan_csv` instead of `pl.read_csv`
+By starting the query with `pl.scan_csv` we are using the lazy API.
 
 ```python
 {{#include ../examples/lazy_api/snippet1.py::9}}
@@ -29,8 +29,7 @@ The lazy query will not be executed at this point. See this page on [executing l
 An alternative way to access the lazy API is to call `.lazy` on a `DataFrame` that has already been created in memory.
 
 ```python
-{{#include ../examples/lazy_api/snippet3.py::4}}
+{{#include ../examples/lazy_api/snippet3.py:4:4}}
 ```
 
 By calling `.lazy` we convert the `DataFrame` to a `LazyFrame`.
-

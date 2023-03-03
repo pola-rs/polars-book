@@ -40,11 +40,12 @@ We can also print the non-optimized plan with `describe_plan`
 The printed plan should also be read from bottom to top. This non-optimized plan is roughly to:
 
 - read from the `data/reddit.csv` file
-- read all 6 columns (where the * wildcard in PROJECT */6 COLUMNS means take all columns)
+- read all 6 columns (where the * wildcard in PROJECT \*/6 COLUMNS means take all columns)
 - transform the `name` column to uppercase
 - apply a filter on the `comment_karma` column
 
 ## Optimized query plan
+
 Now we visualise the optimized plan with `show_graph`.
 
 ```python
