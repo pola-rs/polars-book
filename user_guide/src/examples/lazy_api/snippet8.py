@@ -1,6 +1,6 @@
 import polars as pl
 
-q8 = (
+lazy_eager_query = (
     pl.DataFrame({"id": ["a", "b", "c"], "month": ["jan", "feb", "mar"], "values": [0, 1, 2]})
     .lazy()
     .with_columns((2 * pl.col("values")).alias("double_values"))
