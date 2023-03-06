@@ -4,9 +4,8 @@ from ..paths import DATA_DIR
 
 q1 = (
     pl.scan_csv(f"{DATA_DIR}/reddit.csv")
+    .with_columns(pl.col("name").str.to_uppercase())
     .filter(pl.col("comment_karma") > 0)
-    .filter(pl.col("link_karma") > 0)
-    .filter(pl.col("name").str.contains(r"^a"))  # filter name that start with an "a"
 )
 
 q1.describe_plan()
@@ -16,3 +15,7 @@ q1_plan = q1.describe_plan()
 q1.describe_optimized_plan()
 
 q1_opt_plan = q1.describe_optimized_plan()
+
+q1.show_graph(optimized=False)
+
+q1.show_graph()
