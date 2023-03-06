@@ -69,7 +69,7 @@ print(df)
 You can do a lot with expressions. They are so expressive that you sometimes have
 multiple ways to get the same results. To get a better feel for them let's go through some more examples.
 
-> A note for the Rust examples:  Each of these examples use the same dataset.  So, due to Rust's ownership rules, and the fact that all the examples run in the same context, we'll `clone()` the dataset for each example to ensure that no prior example affects the behavior of later examples.  This is the case for all Rust examples for the remainder of this book.  It's worth mentioning, that clones in Polars are very efficient, and don't result in a "deep copy" of the data.  They're implemented using the Rust `Arc` type (Automatic Reference Counting).
+> A note for the Rust examples:  Each of these examples use the same dataset.  So, due to Rust's ownership rules, and the fact that all the examples run in the same context, we'll `clone()` the dataset for each example to ensure that no prior example affects the behavior of later examples.  This is the case for all Rust examples for the remainder of this book.  It's worth mentioning, that clones in Polars are very efficient, and don't result in a "deep copy" of the data.  They're implemented using the Rust `Arc` type (Atomically Reference Counted).
 
 ### Count unique values
 
