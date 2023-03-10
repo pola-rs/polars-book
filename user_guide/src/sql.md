@@ -2,12 +2,12 @@
 
 ## Starting the SQL Context
 
-You can query a `Polars` `LazyFrame` with SQL. 
+You can query a `Polars` `LazyFrame` with SQL.
 The first step is to initialize a SQL context, and register a `LazyFrame` with it.
 
 Let's load some data and initialize the SQL context:
 
-```python 
+```python
 {{#include examples/sql/sql_1.py}}
 ```
 

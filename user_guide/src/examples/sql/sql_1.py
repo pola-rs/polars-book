@@ -7,4 +7,4 @@ pokemon = pl.read_csv(
 
 # initialize the SQL context and register the lazyframe
 sql = pl.SQLContext()
-sql.register('pokemon', pokemon)
+sql.register("pokemon", pokemon)

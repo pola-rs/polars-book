@@ -3,7 +3,8 @@ from .sql_1 import pokemon, sql
 
 pl.Config.set_tbl_rows(6)
 
-out = sql.query("""
+out = sql.query(
+    """
 SELECT 
     "Type 1",
     COUNT(DISTINCT "Type 2") AS count_type_2,
@@ -11,4 +12,5 @@ SELECT
     MAX(Speed) AS max_speed
 FROM pokemon
 GROUP BY "Type 1"
-""")
+"""
+)
