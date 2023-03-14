@@ -169,7 +169,7 @@ print(out)
 {{#include ../outputs/expressions/example_4.txt}}
 ```
 
-It is also possible to chain multiple `when -> then` statements together like in the example below. 
+It is also possible to chain multiple `when -> then` statements together like in the example below.
 This is similar to the SQL `CASE WHEN`.
 
 <div class="tabbed-blocks">
