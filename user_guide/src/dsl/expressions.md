@@ -190,7 +190,7 @@ print(out)
 ```
 
 If you are looking to replace the values of a column based on a dictionary, you don't need
-chained `when -> then`. You can use `map_dict`. More information [here](POLARS_PY_REF_GUIDE/expressions/api/polars.Expr.map_dict.html).
+chained `when -> then`. You can use `map_dict`. Read more in the reference guide [here](POLARS_PY_REF_GUIDE/expressions/api/polars.Expr.map_dict.html).
 
 ### Window expressions
 
