@@ -153,7 +153,7 @@ shape: (3, 3)
 As we can see above, Polars made the datetimes a `string`. We can tell Polars to parse dates, when reading the csv, to ensure the date becomes a datetime. The example can be found below:
 
 ```python
-df_csv_with_dates = pl.read_csv('output.csv', parse_dates=True)
+df_csv_with_dates = pl.read_csv('output.csv', try_parse_dates=True)
 
 print(df_csv_with_dates)
 ```
