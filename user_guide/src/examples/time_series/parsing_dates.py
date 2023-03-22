@@ -1,7 +1,7 @@
 import polars as pl
 from datetime import datetime
 
-df = pl.read_csv("data/appleStock.csv", parse_dates=True)
+df = pl.read_csv("data/appleStock.csv", try_parse_dates=True)
 
 filtered_df = df.filter(
     pl.col("Date") == datetime(1995, 10, 16),
