@@ -169,6 +169,29 @@ print(out)
 {{#include ../outputs/expressions/example_4.txt}}
 ```
 
+It is also possible to chain multiple `when -> then` statements together like in the example below.
+This is similar to the SQL `CASE WHEN`.
+
+<div class="tabbed-blocks">
+
+```python
+{{#include ../examples/expressions/expressions_examples_5.py:4:}}
+print(out)
+```
+
+```rust,noplayground
+{{#include ../examples/expressions/expressions.rs:chained_when_then}}
+```
+
+</div>
+
+```text
+{{#include ../outputs/expressions/example_5.txt}}
+```
+
+If you are looking to replace the values of a column based on a dictionary, you don't need
+chained `when -> then`. You can use `map_dict`. Read more in the reference guide [here](POLARS_PY_REF_GUIDE/expressions/api/polars.Expr.map_dict.html).
+
 ### Window expressions
 
 A polars expression can also do an implicit GROUPBY, AGGREGATION, and JOIN in a single expression.
