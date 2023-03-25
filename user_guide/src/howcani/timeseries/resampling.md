@@ -15,7 +15,7 @@ We can resample by either:
 Let's go through an example where we generate data at 30 minute intervals:
 
 ```python
-{{#include ../../examples/time_series/resampling_example.py:0:10}}
+{{#include ../../examples/time_series/resampling_example.py:0:11}}
 print(df)
 ```
 
