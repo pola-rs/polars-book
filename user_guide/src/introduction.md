@@ -137,7 +137,7 @@ These are some tools that share similar functionality to what polars does.
   - Vaexs method of out-of-core analysis is memory mapping files. This works until it doesn't. For instance parquet
     or csv files first need to be read and converted to a file format that can be memory mapped. Another downside is
     that the OS determines when pages will be swapped. Operations that need a full data shuffle, such as
-    sorts cannot benefit from memory mapping. At the moment of writing vaex relies on pyarrow for sorts, meaning that the data must fit into memory.
+    sorts, have terrible performance on memory mapped data.
   - Polars' out of core processing is not based on memory mapping, but on streaming data in batches (and spilling to disk
     if needed), we control which data must be hold in memory, not the OS, meaning that we don't have unexpected IO stalls.
 
@@ -151,13 +151,17 @@ These are some tools that share similar functionality to what polars does.
 - Spark
 
   - Spark is designed for distributed workloads and uses the JVM. The setup for spark is complicated and the startup-time
-    is slow. Polars has much better performance characteristics on a single machine. The API's are somewhat similar.
+    is slow. On a single machine Polars has much better performance characteristics. If you need to process TB's of data
+    spark is a better choice.
 
 - CuDF
 
-  - GPU's are fast, but not readily available and expensive in production. The amount of memory available on GPU often
-    is a fraction of available RAM. Next to that Polars is close in [performance to CuDF](https://zakopilo.hatenablog.jp/entry/2023/02/04/220552) and on some operations even faster.
-    CuDF also doesn't optimize your query, so it is likely that on ETL jobs polars will be faster because it can elide
+  - GPU's and CuDF are fast!
+    However, GPU's are not readily available and expensive in production. The amount of memory available on GPU often
+    is a fraction of available RAM.
+    This (and out-of-core) processing means that polars can handle much larger data-sets.
+    Next to that Polars can be close in [performance to CuDF](https://zakopilo.hatenablog.jp/entry/2023/02/04/220552).
+    CuDF doesn't optimize your query, so is not uncommon that on ETL jobs polars will be faster because it can elide
     unneeded work and materialization's.
 
 - Any
