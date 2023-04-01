@@ -135,7 +135,7 @@ If you do want to run this query in eager mode you can just replace `scan_csv` w
 `read_csv` in the `Polars` code.
 
 Read more about working with lazy evaluation in the
-[lazy API](optimizations/lazy/intro.html) section.
+[lazy API](lazy-api/intro.md) section.
 
 ### Express yourself
 
