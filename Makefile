@@ -19,6 +19,7 @@ data: .venv
 run: data
 	./tasks.sh process_nbook introduction_polars-py
 	./tasks.sh process_nbook introduction_polars-rs
+	$(PYTHON) -m user_guide.src.examples.lazy_api
 	$(PYTHON) -m user_guide.src.examples.testing
 	$(PYTHON) -m user_guide.src.examples.multiple_files
 	$(PYTHON) -m user_guide.src.examples.combining_data
