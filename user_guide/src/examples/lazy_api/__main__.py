@@ -31,6 +31,7 @@ variable_filename_tuples = [
     (lazy_eager_query, "lazy_eager_query"),
     (q9, "q9"),
     (q11, "q11"),
+    (q3_schema, "q3_schema"),
 ]
 for variable, filename in variable_filename_tuples:
     with open(f"{path}/{filename}.txt", "w") as f:
