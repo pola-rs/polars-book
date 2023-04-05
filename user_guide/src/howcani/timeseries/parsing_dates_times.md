@@ -61,7 +61,7 @@ If you have mixed offsets (say, due to crossing daylight saving time),
 then you can use `utc=True` and then convert to your time zone:
 
 ```python
-{{#include ../../examples/time_series/time_zones/mixed_offsets.py:03:09}}
+{{#include ../../examples/time_series/time_zones/mixed_offsets.py:03:13}}
 ```
 
 ```text

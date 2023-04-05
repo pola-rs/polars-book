@@ -1,6 +1,7 @@
 import polars as pl
 from ...paths import OUTPUT_BASE_DIR, create_if_not_exists
 from .snippet import time_zones_df, time_zones_operations
+from .mixed_offsets import mixed_parsed
 
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/time_series/time_zones")
 
@@ -9,3 +10,6 @@ with open(f"{path}/time_zones_df.txt", "w") as f:
 
 with open(f"{path}/time_zones_operations.txt", "w") as f:
     f.write(f"{time_zones_operations}\n")
+
+with open(f"{path}/mixed_parsed.txt", "w") as f:
+    f.write(f"{mixed_parsed}")
