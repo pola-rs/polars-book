@@ -18,9 +18,10 @@ Streaming is supported for many operations including:
 
 - `filter`,`slice`,`head`,`tail`
 - `with_columns`,`select`
-- `groupby`,`groupby_dynamic`
-- `join`,`join_asof`
+- `groupby`
+- `join`
 - `sort`
+- `explode`,`melt`
 - `scan_csv`,`scan_parquet`,`scan_ipc`
 
 ## Sinking to a file

@@ -7,7 +7,7 @@ The schema of a Polars `DataFrame` or `LazyFrame` sets out the names of the colu
 ```
 
 ```text
-{{#include ../outputs/lazy_api/output4.txt}}
+{{#include ../outputs/lazy_api/q3_schema.txt}}
 ```
 
 The schema plays an important role in the lazy API.
