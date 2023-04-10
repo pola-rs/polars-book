@@ -58,6 +58,8 @@ print(df)
 
 ```rust,noplayground
 {{#include ../examples/expressions/expressions.rs:dataset}}
+    Ok(())
+}
 ```
 
 </div>
