@@ -94,7 +94,7 @@ In `Polars` you can combine two different `head` expressions on the same DataFra
 ```python
 df.select([
     pl.col("foo").sort().head(2),
-    pl.col("bar").sort(reverse=True).head(2),
+    pl.col("bar").sort(descending=True).head(2),
 ])
 ```
 

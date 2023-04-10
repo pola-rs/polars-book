@@ -6,6 +6,7 @@ from .expressions_examples_1 import out as e1
 from .expressions_examples_2 import out as e2
 from .expressions_examples_3 import out as e3
 from .expressions_examples_4 import out as e4
+from .expressions_examples_5 import out as e5
 from .agg_context_1 import out as ac1
 from .with_column_context_1 import df as c2
 from .window import df as w0
@@ -47,6 +48,9 @@ with open(f"{path}/example_3.txt", "w") as f:
 
 with open(f"{path}/example_4.txt", "w") as f:
     f.write(f"{e4}\n")
+
+with open(f"{path}/example_5.txt", "w") as f:
+    f.write(f"{e5}\n")
 
 with open(f"{path}/agg_context_1.txt", "w") as f:
     f.write(f"{ac1}\n")

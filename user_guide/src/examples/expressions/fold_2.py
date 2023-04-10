@@ -10,7 +10,7 @@ df = pl.DataFrame(
 out = df.filter(
     pl.fold(
         acc=pl.lit(True),
-        f=lambda acc, x: acc & x,
+        function=lambda acc, x: acc & x,
         exprs=pl.col("*") > 1,
     )
 )

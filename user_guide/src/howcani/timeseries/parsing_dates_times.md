@@ -11,7 +11,7 @@
 
 ## Parsing dates from a file
 
-When loading from a CSV file `Polars` attempts to parse dates and times if the `parse_dates` flag is set to `True`:
+When loading from a CSV file `Polars` attempts to parse dates and times if the `try_parse_dates` flag is set to `True`:
 
 ```python
 {{#include ../../examples/time_series/parsing_dates.py:4:4}}
@@ -61,7 +61,7 @@ If you have mixed offsets (say, due to crossing daylight saving time),
 then you can use `utc=True` and then convert to your time zone:
 
 ```python
-{{#include ../../examples/time_series/time_zones/mixed_offsets.py:03:09}}
+{{#include ../../examples/time_series/time_zones/mixed_offsets.py:03:13}}
 ```
 
 ```text

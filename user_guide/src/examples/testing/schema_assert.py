@@ -6,7 +6,7 @@ os.chdir("user_guide")
 trip_duration = (pl.col("dropoff_datetime") - pl.col("pickup_datetime")).dt.seconds() / 3600
 
 assert (
-    pl.scan_csv("data/yellow_tripdata_2010-01.csv", parse_dates=True)
+    pl.scan_csv("data/yellow_tripdata_2010-01.csv", try_parse_dates=True)
     .with_columns(trip_duration.alias("trip_duration"))
     .filter(pl.col("trip_duration") > 0)
     .groupby(["vendor_id"])

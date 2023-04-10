@@ -6,7 +6,7 @@ Element-wise functions such as `np.exp()`, `np.cos()`, `np.div()`, *etc.* all wo
 almost zero overhead.
 
 However, as a `Polars`-specific remark: missing values are a separate bitmask and are not
-visible by `NumPy`. It can yield to a window function or a `np.convolve()` giving
+visible by `NumPy`. This can lead to a window function or a `np.convolve()` giving
 flawed or incomplete results.
 
 Convert a `Polars` `Series` to a `NumPy` array with the `.to_numpy()` method.

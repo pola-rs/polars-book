@@ -35,7 +35,7 @@ with open(f"{path}/null_count.txt", "w") as f:
     f.write(f"{df.null_count()}\n")
 
 with open(f"{path}/sort_columns.txt", "w") as f:
-    f.write(f"{df.sort('a', reverse=True)}\n")
+    f.write(f"{df.sort('a', descending=True)}\n")
 
 with open(f"{path}/to_numpy.txt", "w") as f:
     f.write(f"{df.to_numpy()}\n")

@@ -114,7 +114,7 @@ The CSV file has numerous columns but we just want to do a groupby on one of the
 columns (`id1`) and then sum by a value column (`v1`). In `Pandas` this would be:
 
 ```python
-    df = pd.read_csv(csv_file)
+    df = pd.read_csv(csv_file, usecols=['id1','v1'])
     grouped_df = df.loc[:,['id1','v1']].groupby('id1').sum('v1')
 ```
 
@@ -135,7 +135,7 @@ If you do want to run this query in eager mode you can just replace `scan_csv` w
 `read_csv` in the `Polars` code.
 
 Read more about working with lazy evaluation in the
-[lazy API](optimizations/lazy/intro.html) section.
+[lazy API](lazy-api/intro.md) section.
 
 ### Express yourself
 

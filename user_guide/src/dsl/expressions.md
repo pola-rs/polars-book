@@ -58,6 +58,8 @@ print(df)
 
 ```rust,noplayground
 {{#include ../examples/expressions/expressions.rs:dataset}}
+    Ok(())
+}
 ```
 
 </div>
@@ -69,7 +71,7 @@ print(df)
 You can do a lot with expressions. They are so expressive that you sometimes have
 multiple ways to get the same results. To get a better feel for them let's go through some more examples.
 
-> A note for the Rust examples:  Each of these examples use the same dataset.  So, due to Rust's ownership rules, and the fact that all the examples run in the same context, we'll `clone()` the dataset for each example to ensure that no prior example affects the behavior of later examples.  This is the case for all Rust examples for the remainder of this book.  It's worth mentioning, that clones in Polars are very efficient, and don't result in a "deep copy" of the data.  They're implemented using the Rust `Arc` type (Automatic Reference Counting).
+> A note for the Rust examples:  Each of these examples use the same dataset.  So, due to Rust's ownership rules, and the fact that all the examples run in the same context, we'll `clone()` the dataset for each example to ensure that no prior example affects the behavior of later examples.  This is the case for all Rust examples for the remainder of this book.  It's worth mentioning, that clones in Polars are very efficient, and don't result in a "deep copy" of the data.  They're implemented using the Rust `Arc` type (Atomically Reference Counted).
 
 ### Count unique values
 
@@ -168,6 +170,29 @@ print(out)
 ```text
 {{#include ../outputs/expressions/example_4.txt}}
 ```
+
+It is also possible to chain multiple `when -> then` statements together like in the example below.
+This is similar to the SQL `CASE WHEN`.
+
+<div class="tabbed-blocks">
+
+```python
+{{#include ../examples/expressions/expressions_examples_5.py:4:}}
+print(out)
+```
+
+```rust,noplayground
+{{#include ../examples/expressions/expressions.rs:chained_when_then}}
+```
+
+</div>
+
+```text
+{{#include ../outputs/expressions/example_5.txt}}
+```
+
+If you are looking to replace the values of a column based on a dictionary, you don't need
+chained `when -> then`. You can use `map_dict`. Read more in the reference guide [here](POLARS_PY_REF_GUIDE/expressions/api/polars.Expr.map_dict.html).
 
 ### Window expressions
 

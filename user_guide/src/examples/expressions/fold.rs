@@ -10,7 +10,7 @@ fn main() -> Result<()> {
 
     let out = df
         .lazy()
-        .select([fold_exprs(lit(0), |acc, x| Ok(acc + x), [col("*")]).alias("sum")])
+        .select([fold_exprs(lit(0), |acc, x| Ok(Some(acc + x)), [col("*")]).alias("sum")])
         .collect()?;
     println!("{}", out);
     // ANCHOR_END: manual_sum
@@ -25,7 +25,7 @@ fn main() -> Result<()> {
         .lazy()
         .filter(fold_exprs(
             lit(true),
-            |acc, x| acc.bitand(&x),
+            |acc, x| Some(acc.bitand(&x)),
             [col("*").gt(1)],
         ))
         .collect()?;

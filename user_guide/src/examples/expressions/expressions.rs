@@ -65,6 +65,17 @@ fn main() -> Result<()> {
     println!("{}", out);
     // ANCHOR_END: binary
 
+    // ANCHOR: chained_when_then
+    let out = df
+        .clone()
+        .lazy()
+        .select([when(col("random").eq("A")).then(1)
+            .when(col("random").gt(0.5)).then(0)
+            .otherwise(col("random"))])
+        .collect()?;
+    println!("{}", out);
+    // ANCHOR_END: chained_when_then
+
     // ANCHOR: window
     let df = df
         .lazy()

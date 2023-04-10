@@ -124,7 +124,7 @@ In addition, we can fill nulls with interpolation (without using the `fill_null`
 
 ```python
 {{#include ../examples/missing_data/fill_strategies.py:26:28}}
-print(fill_interpolation)
+print(fill_interpolation_df)
 ```
 
 ```text

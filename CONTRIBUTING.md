@@ -61,13 +61,10 @@ Do not hesitate to [open a new issue](https://github.com/pola-rs/polars-book/iss
 ### Content formatting
 
 The `Python` code is checked and linted using [`black`](https://github.com/psf/black), [`flake8`](https://gitlab.com/pycqa/flake8) and [`isort`](https://pycqa.github.io/isort/).
-The `Markdown` files are formatted using [`mdformat`](https://github.com/executablebooks/mdformat).
-The recommended way is to use [`pre-commit`](https://pre-commit.com/) before committing your code:
+The `Markdown` files are formatted using [`mdformat`](https://github.com/executablebooks/mdformat). The recommended way is to run the Makefile before committing your code:
 
 ```shell
-$ pip install pre-commit
-$ pre-commit install  # config stored in the .pre-commit-config.yaml
-$ pre-commit run --all-files
+$ make fmt
 ```
 
 Another way is to run each manually:
@@ -77,8 +74,6 @@ $ black .
 $ flake8 --max-doc-length=88 .  # max-line-length is imposed by black
 $ mdformat --wrap=88 user_guide/src/references.md
 ```
-
-for instance (check the linter package versions in the `.pre-commit-config.yaml`).
 
 ## Code examples
 

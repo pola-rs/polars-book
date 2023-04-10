@@ -1,7 +1,7 @@
 import polars as pl
 from datetime import datetime
 
-df = pl.read_csv("data/appleStock.csv", parse_dates=True)
+df = pl.read_csv("data/appleStock.csv", try_parse_dates=True)
 
 filtered_df = df.filter(
     pl.col("Date") == datetime(1995, 10, 16),
@@ -13,7 +13,7 @@ filtered_range_df = df.filter(
 
 annual_average_df = df.groupby_dynamic("Date", every="1y").agg(pl.col("Close").mean())
 
-df_with_year = df.with_column(pl.col("Date").dt.year().alias("year"))
+df_with_year = df.with_columns(pl.col("Date").dt.year().alias("year"))
 
 ts = pl.Series(["-1300-05-23", "-1400-03-02"]).str.strptime(pl.Date)
 
