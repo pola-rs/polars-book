@@ -48,70 +48,35 @@ Creating a simple `Series` or `Dataframe` is easy and very familiar to other pac
 You can create a `Series` in Polars by providing a `list` or a `tuple`.
 
 ```python
-# with a tuple
-series = pl.Series("a", [1, 2, 3, 4, 5])
+{{#include ../examples/quickstart/series_tuple.py:3:}}
 
 print(series)
 ```
 
-```
-shape: (5,)
-Series: 'a' [i64]
-[
-    1
-    2
-    3
-    4
-    5
-]
+```text
+{{#include ../outputs/quickstart/series_tuple.txt}}
 ```
 
 ```python
-# with a list
-series = pl.Series([1, 2, 3, 4, 5])
+{{#include ../examples/quickstart/series_list.py:3:}}
 
 print(series)
 ```
 
-```
-shape: (5,)
-Series: '' [i64]
-[
-    1
-    2
-    3
-    4
-    5
-]
+```text
+{{#include ../outputs/quickstart/series_list.txt}}
 ```
 
 A `DataFrame` is created from a `dict` or a collection of `dicts`.
 
 ```python
-dataframe = pl.DataFrame({"integer": [1, 2, 3], 
-                          "date": [
-                              (datetime(2022, 1, 1)), 
-                              (datetime(2022, 1, 2)), 
-                              (datetime(2022, 1, 3))
-                          ], 
-                          "float":[4.0, 5.0, 6.0]})
+{{#include ../examples/quickstart/dataframe1.py:4:}}
 
-print(dataframe)
+print(df)
 ```
 
-```
-shape: (3, 3)
-┌─────────┬─────────────────────┬───────┐
-│ integer ┆ date                ┆ float │
-│ ---     ┆ ---                 ┆ ---   │
-│ i64     ┆ datetime[μs]        ┆ f64   │
-╞═════════╪═════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02 00:00:00 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
-└─────────┴─────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/output.csv}}
 ```
 
 Additional information
@@ -130,48 +95,16 @@ dataframe.write_csv('output.csv')
 ```
 
 ```python
-df_csv = pl.read_csv('output.csv')
-
-print(df_csv)
-```
-
-```
-shape: (3, 3)
-┌─────────┬────────────────────────────┬───────┐
-│ integer ┆ date                       ┆ float │
-│ ---     ┆ ---                        ┆ ---   │
-│ i64     ┆ str                        ┆ f64   │
-╞═════════╪════════════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01T00:00:00.000000 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02T00:00:00.000000 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03T00:00:00.000000 ┆ 6.0   │
-└─────────┴────────────────────────────┴───────┘
-```
-
-As we can see above, Polars made the datetimes a `string`. We can tell Polars to parse dates, when reading the csv, to ensure the date becomes a datetime. The example can be found below:
-
-```python
-df_csv_with_dates = pl.read_csv('output.csv', try_parse_dates=True)
+{{#include ../examples/quickstart/read_csv_datetime.py:3:}}
 
 print(df_csv_with_dates)
 ```
 
+```text
+{{#include ../outputs/quickstart/output.csv}}
 ```
-shape: (3, 3)
-┌─────────┬─────────────────────┬───────┐
-│ integer ┆ date                ┆ float │
-│ ---     ┆ ---                 ┆ ---   │
-│ i64     ┆ datetime[μs]        ┆ f64   │
-╞═════════╪═════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02 00:00:00 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
-└─────────┴─────────────────────┴───────┘
-```
+
+You can add `parse_dates=True` to ensure that date column(s) are set as datetime.
 
 #### json
 
@@ -180,24 +113,13 @@ dataframe.write_json('output.json')
 ```
 
 ```python
-df_json = pl.read_json('output.json')
+{{#include ../examples/quickstart/read_json.py:3:}}
 
 print(df_json)
 ```
 
-```
-shape: (3, 3)
-┌─────────┬─────────────────────┬───────┐
-│ integer ┆ date                ┆ float │
-│ ---     ┆ ---                 ┆ ---   │
-│ i64     ┆ datetime[μs]        ┆ f64   │
-╞═════════╪═════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02 00:00:00 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
-└─────────┴─────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/output.json}}
 ```
 
 #### parquet
@@ -207,24 +129,13 @@ dataframe.write_parquet('output.parquet')
 ```
 
 ```python
-df_parquet = pl.read_parquet('output.parquet')
+{{#include ../examples/quickstart/read_parquet.py:3:}}
 
 print(df_parquet)
 ```
 
-```
-shape: (3, 3)
-┌─────────┬─────────────────────┬───────┐
-│ integer ┆ date                ┆ float │
-│ ---     ┆ ---                 ┆ ---   │
-│ i64     ┆ datetime[μs]        ┆ f64   │
-╞═════════╪═════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02 00:00:00 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
-└─────────┴─────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/output.parquet}}
 ```
 
 Additional information
@@ -237,138 +148,61 @@ Additional information
 This part focuses on viewing data in a `DataFrame`. We first create a `DataFrame` to work with.
 
 ```python
-df = pl.DataFrame({"a": np.arange(0, 8), 
-                   "b": np.random.rand(8), 
-                   "c": [datetime(2022, 12, 1) + timedelta(days=idx) for idx in range(8)],
-                   "d": [1, 2.0, np.NaN, np.NaN, 0, -5, -42, None]
-                  })
+{{#include ../examples/quickstart/dataframe2.py:5:}}
 
 print(df)
 ```
 
-```
-shape: (8, 4)
-┌─────┬──────────┬─────────────────────┬───────┐
-│ a   ┆ b        ┆ c                   ┆ d     │
-│ --- ┆ ---      ┆ ---                 ┆ ---   │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   │
-╞═════╪══════════╪═════════════════════╪═══════╡
-│ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  │
-└─────┴──────────┴─────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/output2.csv}}
 ```
 
 The `head` function shows by default the first 5 rows of a `DataFrame`. You can specify the number of rows you want to see (e.g. `df.head(10)`).
 
 ```python
-df.head(5)
+{{#include ../examples/quickstart/head.py:3:}}
+
+print(out)
 ```
 
-```
-shape: (5, 4)
-┌─────┬──────────┬─────────────────────┬─────┐
-│ a   ┆ b        ┆ c                   ┆ d   │
-│ --- ┆ ---      ┆ ---                 ┆ --- │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64 │
-╞═════╪══════════╪═════════════════════╪═════╡
-│ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0 │
-└─────┴──────────┴─────────────────────┴─────┘
+```text
+{{#include ../outputs/quickstart/head.txt}}
 ```
 
 The `tail` function shows the last 5 rows of a `DataFrame`. You can also specify the number of rows you want to see, similar to `head`.
 
 ```python
-df.tail(5)
+{{#include ../examples/quickstart/tail.py:3:}}
+
+print(out)
 ```
 
-```
-shape: (5, 4)
-┌─────┬──────────┬─────────────────────┬───────┐
-│ a   ┆ b        ┆ c                   ┆ d     │
-│ --- ┆ ---      ┆ ---                 ┆ ---   │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   │
-╞═════╪══════════╪═════════════════════╪═══════╡
-│ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  │
-└─────┴──────────┴─────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/tail.txt}}
 ```
 
 If you want to get an impression of the data of your `DataFrame`, you can also use `sample`. With `sample` you get an *n* number of random rows from the `DataFrame`.
 
 ```python
-df.sample(n=3)
+{{#include ../examples/quickstart/sample.py:3:}}
+
+print(out)
 ```
 
-```
-shape: (3, 4)
-┌─────┬──────────┬─────────────────────┬──────┐
-│ a   ┆ b        ┆ c                   ┆ d    │
-│ --- ┆ ---      ┆ ---                 ┆ ---  │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64  │
-╞═════╪══════════╪═════════════════════╪══════╡
-│ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┤
-│ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┤
-│ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null │
-└─────┴──────────┴─────────────────────┴──────┘
+```text
+{{#include ../outputs/quickstart/sample.txt}}
 ```
 
 `Describe` returns summary statistics of your `DataFrame`. It will provide several quick statistics if possible.
 
 ```python
-df.describe()
+{{#include ../examples/quickstart/describe.py:3:}}
+
+print(out)
 ```
 
-```
-shape: (7, 5)
-┌────────────┬─────────┬──────────┬────────────────────────────┬───────┐
-│ describe   ┆ a       ┆ b        ┆ c                          ┆ d     │
-│ ---        ┆ ---     ┆ ---      ┆ ---                        ┆ ---   │
-│ str        ┆ f64     ┆ f64      ┆ str                        ┆ f64   │
-╞════════════╪═════════╪══════════╪════════════════════════════╪═══════╡
-│ count      ┆ 8.0     ┆ 8.0      ┆ 8                          ┆ 8.0   │
-├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ null_count ┆ 0.0     ┆ 0.0      ┆ 0                          ┆ 1.0   │
-├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ mean       ┆ 3.5     ┆ 0.431245 ┆ null                       ┆ NaN   │
-├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ std        ┆ 2.44949 ┆ 0.340445 ┆ null                       ┆ NaN   │
-├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ min        ┆ 0.0     ┆ 0.062943 ┆ 2022-12-01 00:00:00.000000 ┆ -42.0 │
-├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ max        ┆ 7.0     ┆ 0.896408 ┆ 2022-12-08 00:00:00.000000 ┆ 2.0   │
-├╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ median     ┆ 3.5     ┆ 0.42741  ┆ null                       ┆ 1.0   │
-└────────────┴─────────┴──────────┴────────────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/describe.txt}}
 ```
 
 Additional information
@@ -390,126 +224,49 @@ Additional information
 To select a column we need to do two things. Define the `DataFrame` we want the data from. And second, select the data that we need. In the example below you see that we select `col('*')`. The asterisk stands for all columns.
 
 ```python
-df.select(
-    pl.col('*')
-)
+{{#include ../examples/quickstart/select1.py:4:}}
+
+print(out)
 ```
 
-```
-shape: (8, 4)
-┌─────┬──────────┬─────────────────────┬───────┐
-│ a   ┆ b        ┆ c                   ┆ d     │
-│ --- ┆ ---      ┆ ---                 ┆ ---   │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   │
-╞═════╪══════════╪═════════════════════╪═══════╡
-│ 0   ┆ 0.164545 ┆ 2022-12-01 00:00:00 ┆ 1.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 1   ┆ 0.747291 ┆ 2022-12-02 00:00:00 ┆ 2.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2   ┆ 0.889227 ┆ 2022-12-03 00:00:00 ┆ NaN   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3   ┆ 0.736651 ┆ 2022-12-04 00:00:00 ┆ NaN   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.099687 ┆ 2022-12-05 00:00:00 ┆ 0.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.965809 ┆ 2022-12-06 00:00:00 ┆ -5.0  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.93697  ┆ 2022-12-07 00:00:00 ┆ -42.0 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 7   ┆ 0.848925 ┆ 2022-12-08 00:00:00 ┆ null  │
-└─────┴──────────┴─────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/select1.txt}}
 ```
 
 You can also specify the specific columns that you want to return. There are two ways to do this. The first option is to create a `list` of column names, as seen below.
 
 ```python
-df.select(
-    pl.col(['a', 'b'])
-)
+{{#include ../examples/quickstart/select2.py:4:}}
+
+print(out)
 ```
 
-```
-shape: (8, 2)
-┌─────┬──────────┐
-│ a   ┆ b        │
-│ --- ┆ ---      │
-│ i64 ┆ f64      │
-╞═════╪══════════╡
-│ 0   ┆ 0.164545 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 1   ┆ 0.747291 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 2   ┆ 0.889227 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 3   ┆ 0.736651 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.099687 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.965809 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.93697  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 7   ┆ 0.848925 │
-└─────┴──────────┘
+```text
+{{#include ../outputs/quickstart/select2.txt}}
 ```
 
 The second option is to specify each column within a `list` in the `select` statement. This option is shown below.
 
 ```python
-# in this example we limit the number of rows returned to 3, as the comparison is clear.
-# this also shows how easy we can extend our expression to what we need. 
-df.select([
-    pl.col('a'),
-    pl.col('b')
-]).limit(3)
+{{#include ../examples/quickstart/select3.py:4:}}
+
+print(out)
 ```
 
-```
-shape: (3, 2)
-┌─────┬──────────┐
-│ a   ┆ b        │
-│ --- ┆ ---      │
-│ i64 ┆ f64      │
-╞═════╪══════════╡
-│ 0   ┆ 0.164545 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 1   ┆ 0.747291 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 2   ┆ 0.889227 │
-└─────┴──────────┘
+```text
+{{#include ../outputs/quickstart/select3.txt}}
 ```
 
 If you want to exclude an entire column from your view, you can simply use `exclude` in your `select` statement.
 
 ```python
-df.select([
-    pl.exclude('a')
-])
+{{#include ../examples/quickstart/select4.py:4:}}
+
+print(out)
 ```
 
-```
-shape: (8, 3)
-┌──────────┬─────────────────────┬───────┐
-│ b        ┆ c                   ┆ d     │
-│ ---      ┆ ---                 ┆ ---   │
-│ f64      ┆ datetime[μs]        ┆ f64   │
-╞══════════╪═════════════════════╪═══════╡
-│ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0   │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0   │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN   │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  │
-└──────────┴─────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/select4.txt}}
 ```
 
 Additional information
@@ -521,49 +278,25 @@ Additional information
 The `filter` option allows us to create a subset of the `DataFrame`. We use the same `DataFrame` as earlier and we filter between two specified dates.
 
 ```python
-df.filter(
-    pl.col("c").is_between(datetime(2022, 12, 2), datetime(2022, 12, 8)),
-)
+{{#include ../examples/quickstart/filter1.py:5:}}
+
+print(out)
 ```
 
-```
-shape: (5, 4)
-┌─────┬──────────┬─────────────────────┬───────┐
-│ a   ┆ b        ┆ c                   ┆ d     │
-│ --- ┆ ---      ┆ ---                 ┆ ---   │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   │
-╞═════╪══════════╪═════════════════════╪═══════╡
-│ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 │
-└─────┴──────────┴─────────────────────┴───────┘
+```text
+{{#include ../outputs/quickstart/filter1.txt}}
 ```
 
 With `filter` you can also create more complex filters that include multiple columns.
 
 ```python
-df.filter(
-    (pl.col('a') <= 3) & (pl.col('d').is_not_nan())
-)
+{{#include ../examples/quickstart/filter2.py:4:}}
+
+print(out)
 ```
 
-```
-shape: (2, 4)
-┌─────┬──────────┬─────────────────────┬─────┐
-│ a   ┆ b        ┆ c                   ┆ d   │
-│ --- ┆ ---      ┆ ---                 ┆ --- │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64 │
-╞═════╪══════════╪═════════════════════╪═════╡
-│ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0 │
-└─────┴──────────┴─────────────────────┴─────┘
+```text
+{{#include ../outputs/quickstart/filter2.txt}}
 ```
 
 Additional information
@@ -575,35 +308,13 @@ Additional information
 `with_columns` allows you to create new columns for you analyses. We create two new columns `e` and `b+42`. First we sum all values from column `b` and store the results in column `e`. After that we add `42` to the values of `b`. Creating a new column `b+42` to store these results.
 
 ```python
-df.with_columns([
-    pl.col('b').sum().alias('e'),
-    (pl.col('b') + 42).alias('b+42')
-])
+{{#include ../examples/quickstart/withcolumns.py:4:}}
+
+print(out)
 ```
 
-```
-shape: (8, 6)
-┌─────┬──────────┬─────────────────────┬───────┬──────────┬───────────┐
-│ a   ┆ b        ┆ c                   ┆ d     ┆ e        ┆ b+42      │
-│ --- ┆ ---      ┆ ---                 ┆ ---   ┆ ---      ┆ ---       │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   ┆ f64      ┆ f64       │
-╞═════╪══════════╪═════════════════════╪═══════╪══════════╪═══════════╡
-│ 0   ┆ 0.606396 ┆ 2022-12-01 00:00:00 ┆ 1.0   ┆ 4.126554 ┆ 42.606396 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-│ 1   ┆ 0.404966 ┆ 2022-12-02 00:00:00 ┆ 2.0   ┆ 4.126554 ┆ 42.404966 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-│ 2   ┆ 0.619193 ┆ 2022-12-03 00:00:00 ┆ NaN   ┆ 4.126554 ┆ 42.619193 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-│ 3   ┆ 0.41586  ┆ 2022-12-04 00:00:00 ┆ NaN   ┆ 4.126554 ┆ 42.41586  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.35721  ┆ 2022-12-05 00:00:00 ┆ 0.0   ┆ 4.126554 ┆ 42.35721  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.726861 ┆ 2022-12-06 00:00:00 ┆ -5.0  ┆ 4.126554 ┆ 42.726861 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.201782 ┆ 2022-12-07 00:00:00 ┆ -42.0 ┆ 4.126554 ┆ 42.201782 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-│ 7   ┆ 0.794286 ┆ 2022-12-08 00:00:00 ┆ null  ┆ 4.126554 ┆ 42.794286 │
-└─────┴──────────┴─────────────────────┴───────┴──────────┴───────────┘
+```text
+{{#include ../outputs/quickstart/withcolumns.txt}}
 ```
 
 ### Groupby
@@ -611,83 +322,34 @@ shape: (8, 6)
 We will create a new `DataFrame` for the Groupby functionality. This new `DataFrame` will include several 'groups' that we want to groupby.
 
 ```python
-df2 = pl.DataFrame({
-                    "x": np.arange(0, 8), 
-                    "y": ['A', 'A', 'A', 'B', 'B', 'C', 'X', 'X'],
-})
+{{#include ../examples/quickstart/dataframe3.py}}
 
-print(df2)
+print(df)
 ```
 
-```
-shape: (8, 2)
-┌─────┬─────┐
-│ x   ┆ y   │
-│ --- ┆ --- │
-│ i64 ┆ str │
-╞═════╪═════╡
-│ 0   ┆ A   │
-├╌╌╌╌╌┼╌╌╌╌╌┤
-│ 1   ┆ A   │
-├╌╌╌╌╌┼╌╌╌╌╌┤
-│ 2   ┆ A   │
-├╌╌╌╌╌┼╌╌╌╌╌┤
-│ 3   ┆ B   │
-├╌╌╌╌╌┼╌╌╌╌╌┤
-│ 4   ┆ B   │
-├╌╌╌╌╌┼╌╌╌╌╌┤
-│ 5   ┆ C   │
-├╌╌╌╌╌┼╌╌╌╌╌┤
-│ 6   ┆ X   │
-├╌╌╌╌╌┼╌╌╌╌╌┤
-│ 7   ┆ X   │
-└─────┴─────┘
+```text
+{{#include ../outputs/quickstart/output3.csv}}
 ```
 
 ```python
 # without maintain_order you will get a random order back.
-df2.groupby("y", maintain_order=True).count()
+{{#include ../examples/quickstart/groupby1.py:4:}}
+
+print(out)
 ```
 
-```
-shape: (4, 2)
-┌─────┬───────┐
-│ y   ┆ count │
-│ --- ┆ ---   │
-│ str ┆ u32   │
-╞═════╪═══════╡
-│ A   ┆ 3     │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ B   ┆ 2     │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ C   ┆ 1     │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ X   ┆ 2     │
-└─────┴───────┘
+```text
+{{#include ../outputs/quickstart/groupby1.txt}}
 ```
 
 ```python
-df2.groupby("y", maintain_order=True).agg([
-    pl.col("*").count().alias("count"),
-    pl.col("*").sum().alias("sum")
-])
+{{#include ../examples/quickstart/groupby2.py:4:}}
+
+print(out)
 ```
 
-```
-shape: (4, 3)
-┌─────┬───────┬─────┐
-│ y   ┆ count ┆ sum │
-│ --- ┆ ---   ┆ --- │
-│ str ┆ u32   ┆ i64 │
-╞═════╪═══════╪═════╡
-│ A   ┆ 3     ┆ 3   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ B   ┆ 2     ┆ 7   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ C   ┆ 1     ┆ 5   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ X   ┆ 2     ┆ 13  │
-└─────┴───────┴─────┘
+```text
+{{#include ../outputs/quickstart/groupby2.txt}}
 ```
 
 Additional information
@@ -702,75 +364,25 @@ Below are some examples on how to combine operations to create the `DataFrame` y
 # create a new column that multiplies column `a` and `b` from our DataFrame
 # select all the columns, but exclude column `c` and `d` from the final DataFrame
 
-df_x = df.with_columns(
-    (pl.col("a") * pl.col("b")).alias("a * b")
-).select([
-    pl.all().exclude(['c', 'd'])
-])
+{{#include ../examples/quickstart/combine1.py:4:}}
 
-print(df_x)
+print(out)
 ```
 
-```
-shape: (8, 3)
-┌─────┬──────────┬──────────┐
-│ a   ┆ b        ┆ a * b    │
-│ --- ┆ ---      ┆ ---      │
-│ i64 ┆ f64      ┆ f64      │
-╞═════╪══════════╪══════════╡
-│ 0   ┆ 0.220182 ┆ 0.0      │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 1   ┆ 0.750839 ┆ 0.750839 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 2   ┆ 0.634639 ┆ 1.269277 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 3   ┆ 0.67404  ┆ 2.022121 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.102818 ┆ 0.41127  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.896408 ┆ 4.482038 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.062943 ┆ 0.377657 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 7   ┆ 0.108093 ┆ 0.756653 │
-└─────┴──────────┴──────────┘
+```text
+{{#include ../outputs/quickstart/combine1.txt}}
 ```
 
 ```python
 # only excluding column `d` in this example
 
-df_y = df.with_columns([
-    (pl.col("a") * pl.col("b")).alias("a * b")
-]).select([
-    pl.all().exclude('d')
-])
+{{#include ../examples/quickstart/combine2.py:4:}}
 
-print(df_y)
+print(out)
 ```
 
-```
-shape: (8, 4)
-┌─────┬──────────┬─────────────────────┬──────────┐
-│ a   ┆ b        ┆ c                   ┆ a * b    │
-│ --- ┆ ---      ┆ ---                 ┆ ---      │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64      │
-╞═════╪══════════╪═════════════════════╪══════════╡
-│ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 0.0      │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 0.750839 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ 1.269277 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ 2.022121 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.41127  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ 4.482038 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ 0.377657 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ 0.756653 │
-└─────┴──────────┴─────────────────────┴──────────┘
+```text
+{{#include ../outputs/quickstart/combine2.txt}}
 ```
 
 Additional information
@@ -784,47 +396,21 @@ Additional information
 Let's have a closer look on how to `join` two `DataFrames` to a single `DataFrame`.
 
 ```python
-df = pl.DataFrame({"a": np.arange(0, 8), 
-                   "b": np.random.rand(8), 
-                   "c": [datetime(2022, 12, 1) + timedelta(days=idx) for idx in range(8)],
-                   "d": [1, 2.0, np.NaN, np.NaN, 0, -5, -42, None]
-                  })
+{{#include ../examples/quickstart/join_df1.py:4:}}
 
-df2 = pl.DataFrame({
-                    "x": np.arange(0, 8), 
-                    "y": ['A', 'A', 'A', 'B', 'B', 'C', 'X', 'X'],
-})
+{{#include ../examples/quickstart/join_df2.py:3:}}
 ```
 
 Our two `DataFrames` both have an 'id'-like column: `a` and `x`. We can use those columns to `join` the `DataFrames` in this example.
 
 ```python
-df.join(df2, left_on="a", right_on="x")
+{{#include ../examples/quickstart/qs_join1.py:5:}}
+
+print(out)
 ```
 
-```
-shape: (8, 5)
-┌─────┬──────────┬─────────────────────┬───────┬─────┐
-│ a   ┆ b        ┆ c                   ┆ d     ┆ y   │
-│ --- ┆ ---      ┆ ---                 ┆ ---   ┆ --- │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   ┆ str │
-╞═════╪══════════╪═════════════════════╪═══════╪═════╡
-│ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0   ┆ A   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0   ┆ A   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN   ┆ A   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   ┆ B   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   ┆ B   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  ┆ C   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 ┆ X   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  ┆ X   │
-└─────┴──────────┴─────────────────────┴───────┴─────┘
+```text
+{{#include ../outputs/quickstart/qs_join1.txt}}
 ```
 
 Additional information
@@ -837,32 +423,13 @@ Additional information
 We can also `concatenate` two `DataFrames`. Vertical concatenation will make the `DataFrame` longer. Horizontal concatenation will make the `DataFrame` wider. Below you can see the result of an horizontal concatenation of our two `DataFrames`.
 
 ```python
-pl.concat([df,df2], how="horizontal")
+{{#include ../examples/quickstart/concat1.py:5:}}
+
+print(out)
 ```
 
-```
-shape: (8, 6)
-┌─────┬──────────┬─────────────────────┬───────┬─────┬─────┐
-│ a   ┆ b        ┆ c                   ┆ d     ┆ x   ┆ y   │
-│ --- ┆ ---      ┆ ---                 ┆ ---   ┆ --- ┆ --- │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   ┆ i64 ┆ str │
-╞═════╪══════════╪═════════════════════╪═══════╪═════╪═════╡
-│ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0   ┆ 0   ┆ A   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
-│ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0   ┆ 1   ┆ A   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
-│ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN   ┆ 2   ┆ A   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
-│ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   ┆ 3   ┆ B   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
-│ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   ┆ 4   ┆ B   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
-│ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  ┆ 5   ┆ C   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
-│ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 ┆ 6   ┆ X   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌┤
-│ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  ┆ 7   ┆ X   │
-└─────┴──────────┴─────────────────────┴───────┴─────┴─────┘
+```text
+{{#include ../outputs/quickstart/concat1.txt}}
 ```
 
 Additional information
