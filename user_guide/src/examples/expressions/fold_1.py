@@ -8,5 +8,5 @@ df = pl.DataFrame(
 )
 
 out = df.select(
-    pl.fold(acc=pl.lit(0), f=lambda acc, x: acc + x, exprs=pl.col("*")).alias("sum"),
+    pl.fold(acc=pl.lit(0), function=lambda acc, x: acc + x, exprs=pl.all()).alias("sum"),
 )
