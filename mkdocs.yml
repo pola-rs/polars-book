@@ -1,0 +1,47 @@
+site_name: Polars User Guide
+theme:
+  name: material
+  logo: assets/logo.png
+  features:
+    - navigation.tracking
+    - navigation.instant
+    - navigation.sections
+    - navigation.tabs
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+plugins:
+  - search:
+      lang: en
+extra:
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true 
+extra_css:
+  - stylesheets/extra.css
+repo_url: https://github.com/pola-rs/polars
+repo_name: pola-rs/polars
+
+nav:
+  - Home: index.md
+  - Getting Started: 
+    - getting-started/intro.md
+    - getting-started/installation.md
+    - getting-started/series-dataframes.md
+    - getting-started/reading-writing.md  
+    - getting-started/expressions.md
+    - getting-started/joins.md
+  - User Guide: 
+    - io/index.md

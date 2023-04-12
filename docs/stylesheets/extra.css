@@ -1,0 +1,16 @@
+:root {
+    --md-primary-fg-color:        #0B7189    ;
+    --md-primary-fg-color--light: #C2CCD6;
+    --md-primary-fg-color--dark:  #103547;
+    --md-text-font: 'Proxima Nova', sans-serif;
+}
+
+  
+span .md-typeset .emojione, .md-typeset .gemoji, .md-typeset .twemoji {
+    vertical-align: text-bottom;
+}
+
+@font-face {
+    font-family: 'Proxima Nova', sans-serif;
+    src: 'https://fonts.cdnfonts.com/css/proxima-nova-2'
+}
