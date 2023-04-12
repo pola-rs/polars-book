@@ -29,6 +29,10 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true 
+  - pymdownx.snippets:
+      base_path: ['.','docs/src/']
+      check_paths: false
+      dedent_subsections: true
 extra_css:
   - stylesheets/extra.css
 repo_url: https://github.com/pola-rs/polars

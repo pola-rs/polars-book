@@ -10,27 +10,18 @@ The snippet below shows how to create a simple named `Series` object. In a later
 === ":fontawesome-brands-python: Python"
     [:material-api:  `Series`](https://pola-rs.github.io/polars/py-polars/html/reference/series/index.html)
     ``` python
-    import polars as pl
-    
-    s = pl.Series("a", [1, 2, 3, 4, 5])
-    print(s)
+    --8<-- "getting-started/python/series-dataframes.py:series"
     ```
 
 === ":fontawesome-brands-rust: Rust"
     [:material-api:  `Series`](https://pola-rs.github.io/polars/polars/series/struct.Series.html)
     ``` rust
-    use polars::prelude::*;
-
-    let s = Series::new("a", [1, 2, 3, 4, 5]);
-    println!("{}",s);
+    --8<-- "getting-started/rust/series-dataframes.rs:series"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
     [:material-api:  `Series`](https://pola-rs.github.io/nodejs-polars/interfaces/Series-1.html)
     ``` javaScript
-    import pl from 'nodejs-polars';
-
-    const s = pl.Series("a", [1, 2, 3, 4, 5]);
-    console.log(s);
+    --8<-- "getting-started/node/series-dataframes.js:series"
     ```
 
 ```
@@ -58,27 +49,20 @@ Although it is more common to work directly on a `DataFrame` object, `Series` im
     [:material-api:  `min`](https://pola-rs.github.io/polars/py-polars/html/reference/series/api/polars.Series.min.html) ·
     [:material-api:  `max`](https://pola-rs.github.io/polars/py-polars/html/reference/series/api/polars.Series.max.html)
     ``` python
-    s = pl.Series("a", [1, 2, 3, 4, 5])
-    print(s.min())
-    print(s.max())
+    --8<-- "getting-started/python/series-dataframes.py:minmax"
     ```
 
 === ":fontawesome-brands-rust: Rust"
     [:material-api:  `min`](https://pola-rs.github.io/polars/polars/series/struct.Series.html#method.min) ·
     [:material-api:  `max`](https://pola-rs.github.io/polars/polars/series/struct.Series.html#method.max)
     ``` rust
-    let s = Series::new("a", [1, 2, 3, 4, 5]);
-    // The use of generics is necessary for the type system
-    println!("{}",s.min::<u64>().unwrap());
-    println!("{}",s.max::<u64>().unwrap());
+    --8<-- "getting-started/rust/series-dataframes.rs:minmax"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
     [:material-api:  `min`](https://pola-rs.github.io/nodejs-polars/interfaces/Series-1.html#min) ·
     [:material-api:  `max`](https://pola-rs.github.io/nodejs-polars/interfaces/Series-1.html#max)
     ``` javaScript
-    const s = pl.Series("a", [1, 2, 3, 4, 5]);
-    console.log(s.min());
-    console.log(s.max());
+    --8<-- "getting-started/node/series-dataframes.js:minmax"
     ```
 
 ```
@@ -93,21 +77,17 @@ There are a number of methods related to string operations in the `StringNamespa
 === ":fontawesome-brands-python: Python"
     [:material-api:  `replace`](https://pola-rs.github.io/polars/py-polars/html/reference/series/api/polars.Series.str.replace.html)
     ``` python
-    s = pl.Series("a", ["polar", "bear","arctic" ,"polar fox", "polar bear"])
-    s2 = s.str.replace("polar","pola")
-    print(s2)
+    --8<-- "getting-started/python/series-dataframes.py:string"
     ```
 
 === ":fontawesome-brands-rust: Rust"
     ``` rust
-    // This operation is not directly available on the Series object yet, only on the DataFrame
+    --8<-- "getting-started/rust/series-dataframes.rs:string"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
     [:material-api:  `replace`](https://pola-rs.github.io/nodejs-polars/interfaces/StringNamespace.html#replace)
     ``` javaScript
-    const s = pl.Series("a", ["polar", "bear","arctic" ,"polar fox", "polar bear"]);
-    const s2 = s.str.replace("polar","pola");
-    console.log(s2);
+    --8<-- "getting-started/node/series-dataframes.js:string"
     ```
 
 ```
@@ -129,24 +109,17 @@ Similar to strings, there is a seperate namespace for datetime related operation
 === ":fontawesome-brands-python: Python"
     [:material-api:  `day`](https://pola-rs.github.io/polars/py-polars/html/reference/series/api/polars.Series.dt.day.html)
     ``` python
-    from datetime import datetime
-    start = datetime(2001, 1, 1)
-    stop = datetime(2001, 1, 9)
-    s = pl.date_range(start, stop, interval="2d")
-    s.dt.day()
-    print(s)
+    --8<-- "getting-started/python/series-dataframes.py:dt"
     ```
 
 === ":fontawesome-brands-rust: Rust"
     ``` rust
-    // This operation is not directly available on the Series object yet, only on the DataFrame
+    --8<-- "getting-started/rust/series-dataframes.rs:dt"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
     [:material-api:  `day`](https://pola-rs.github.io/nodejs-polars/interfaces/DatetimeNamespace.html#day)
     ``` javaScript
-    const s = pl.Series("a", [new Date(2001,1,1),new Date(2001,1,3),new Date(2001,1,5),new Date(2001,1,7),new Date(2001,1,9)]);
-    const s2 = s.date.day();
-    console.log(s2);
+    --8<-- "getting-started/node/series-dataframes.js:dt"
     ```
 
 ```
@@ -168,47 +141,18 @@ A `DataFrame` is a 2-dimensional data structure that is backed by a `Series`, an
 === ":fontawesome-brands-python: Python"
     [:material-api:  `DataFrame`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html)
     ``` python
-    df = pl.DataFrame({"integer": [1, 2, 3, 4, 5], 
-                            "date": [
-                                datetime(2022, 1, 1), 
-                                datetime(2022, 1, 2), 
-                                datetime(2022, 1, 3), 
-                                datetime(2022, 1, 4), 
-                                datetime(2022, 1, 5)
-                            ], 
-                            "float":[4.0, 5.0, 6.0, 7.0, 8.0]})
-
-    print(df)
+    --8<-- "getting-started/python/series-dataframes.py:dataframe"
     ```
 
 === ":fontawesome-brands-rust: Rust"
     [:material-api:  `DataFrame`](https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html)
     ``` rust
-    let df: DataFrame = df!("integer" => &[1, 2, 3, 4, 5],
-                            "date" => &[
-                                        NaiveDate::from_ymd_opt(2022, 1, 1).unwrap().and_hms_opt(0, 0, 0).unwrap(),
-                                        NaiveDate::from_ymd_opt(2022, 1, 2).unwrap().and_hms_opt(0, 0, 0).unwrap(),
-                                        NaiveDate::from_ymd_opt(2022, 1, 3).unwrap().and_hms_opt(0, 0, 0).unwrap(),
-                                        NaiveDate::from_ymd_opt(2022, 1, 4).unwrap().and_hms_opt(0, 0, 0).unwrap(),
-                                        NaiveDate::from_ymd_opt(2022, 1, 5).unwrap().and_hms_opt(0, 0, 0).unwrap()
-                            ],
-                            "float" => &[4.0, 5.0, 6.0 7.0, 8.0]
-                            ).expect("should not fail");
-    println!("{}",df);
+    --8<-- "getting-started/rust/series-dataframes.rs:dataframe"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
     [:material-api:  `DataFrame`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html)
     ``` javaScript
-    let df = pl.DataFrame({"integer": [1, 2, 3, 4, 5], 
-                            "date": [
-                                new Date(2022, 1, 1, 0, 0), 
-                                new Date(2022, 1, 2, 0, 0), 
-                                new Date(2022, 1, 3, 0, 0), 
-                                new Date(2022, 1, 4, 0, 0), 
-                                new Date(2022, 1, 5, 0, 0)
-                            ], 
-                            "float":[4.0, 5.0, 6.0, 7.0, 8.0]})
-    console.log(df);
+    --8<-- "getting-started/node/series-dataframes.js:dataframe"
     ```
 
 ```
@@ -242,18 +186,18 @@ The `head` function shows by default the first 5 rows of a `DataFrame`. You can 
 === ":fontawesome-brands-python: Python"
     [:material-api:  `head`](https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html#method.head)
     ``` python
-    print(df.head(3))
+    --8<-- "getting-started/python/series-dataframes.py:head"
     ```
 
 === ":fontawesome-brands-rust: Rust"
     [:material-api:  `head`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.head.html)
     ``` rust
-    println!("{}",df.head(Some(3)));
+    --8<-- "getting-started/rust/series-dataframes.rs:head"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
     [:material-api:  `head`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#head)
     ``` javaScript
-    console.log(df.head(3));
+    --8<-- "getting-started/node/series-dataframes.js:head"
     ```
 
 
@@ -279,18 +223,18 @@ The `tail` function shows the last 5 rows of a `DataFrame`. You can also specify
 === ":fontawesome-brands-python: Python"
     [:material-api:  `tail`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.tail.html)
     ``` python
-    print(df.tail(3))
+    --8<-- "getting-started/python/series-dataframes.py:tail"
     ```
 
 === ":fontawesome-brands-rust: Rust"
     [:material-api:  `tail`](https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html#method.tail)
     ``` rust
-    println!("{}",df.tail(Some(3)));
+    --8<-- "getting-started/rust/series-dataframes.rs:tail"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
     [:material-api:  `tail`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#tail)
     ``` javaScript
-    console.log(df.tail(3));
+    --8<-- "getting-started/node/series-dataframes.js:tail"
     ```
 
 ```
@@ -315,18 +259,18 @@ If you want to get an impression of the data of your `DataFrame`, you can also u
 === ":fontawesome-brands-python: Python"
     [:material-api:  `sample`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.sample.html)
     ``` python
-    print(df.sample(2))
+    --8<-- "getting-started/python/series-dataframes.py:sample"
     ```
 
 === ":fontawesome-brands-rust: Rust"
     [:material-api:  `sample_n`](https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html#method.sample_n)
     ``` rust
-    println!("{}",df.sample_n(2, false, true, None).unwrap());
+    --8<-- "getting-started/rust/series-dataframes.rs:sample"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
     [:material-api:  `sample`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#sample)
     ``` javaScript
-    console.log(df.sample(2));
+    --8<-- "getting-started/node/series-dataframes.js:sample"
     ```
 
 ```
@@ -349,18 +293,18 @@ shape: (2, 3)
 === ":fontawesome-brands-python: Python"
     [:material-api:  `describe`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.describe.html)
     ``` python
-    print(df.describe())
+    --8<-- "getting-started/python/series-dataframes.py:describe"
     ```
 
 === ":fontawesome-brands-rust: Rust"
     [:material-api:  `describe`](https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html#method.describe)
     ``` rust
-    println!("{}",df.describe(None));
+    --8<-- "getting-started/rust/series-dataframes.rs:describe"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
     [:material-api:  `describe`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#describe)
     ``` javaScript
-    console.log(df.describe());
+    --8<-- "getting-started/node/series-dataframes.js:describe"
     ```
 
 ```
