@@ -10,11 +10,22 @@
 
 To select a column we need to do two things. Define the `DataFrame` we want the data from. And second, select the data that we need. In the example below you see that we select `col('*')`. The asterisk stands for all columns.
 
-```python
-df.select(
-    pl.col('*')
-)
-```
+=== ":fontawesome-brands-python: Python"
+    [:material-api:  `select`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.select.html)
+    ``` python
+    --8<-- "getting-started/python/expressions.py:select"
+    ```
+
+=== ":fontawesome-brands-rust: Rust"
+    [:material-api:  `select`](https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.select)
+    ``` rust
+    --8<-- "getting-started/rust/expressions.rs:select"
+    ```
+=== ":fontawesome-brands-node-js: NodeJS"
+    [:material-api:  `select`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#select)
+    ``` javaScript
+    --8<-- "getting-started/node/expressions.js:select"
+    ```
 
 ```
 shape: (8, 4)
@@ -43,11 +54,22 @@ shape: (8, 4)
 
 You can also specify the specific columns that you want to return. There are two ways to do this. The first option is to create a `list` of column names, as seen below.
 
-```python
-df.select(
-    pl.col(['a', 'b'])
-)
-```
+=== ":fontawesome-brands-python: Python"
+    [:material-api:  `select`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.select.html)
+    ``` python
+    --8<-- "getting-started/python/expressions.py:select2"
+    ```
+
+=== ":fontawesome-brands-rust: Rust"
+    [:material-api:  `select`](https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.select)
+    ``` rust
+    --8<-- "getting-started/rust/expressions.rs:select2"
+    ```
+=== ":fontawesome-brands-node-js: NodeJS"
+    [:material-api:  `select`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#select)
+    ``` javaScript
+    --8<-- "getting-started/node/expressions.js:select2"
+    ```
 
 ```
 shape: (8, 2)
@@ -76,14 +98,22 @@ shape: (8, 2)
 
 The second option is to specify each column within a `list` in the `select` statement. This option is shown below.
 
-```python
-# in this example we limit the number of rows returned to 3, as the comparison is clear.
-# this also shows how easy we can extend our expression to what we need. 
-df.select([
-    pl.col('a'),
-    pl.col('b')
-]).limit(3)
-```
+=== ":fontawesome-brands-python: Python"
+    [:material-api:  `select`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.select.html)
+    ``` python
+    --8<-- "getting-started/python/expressions.py:select3"
+    ```
+
+=== ":fontawesome-brands-rust: Rust"
+    [:material-api:  `select`](https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.select)
+    ``` rust
+    --8<-- "getting-started/rust/expressions.rs:select3"
+    ```
+=== ":fontawesome-brands-node-js: NodeJS"
+    [:material-api:  `select`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#select)
+    ``` javaScript
+    --8<-- "getting-started/node/expressions.js:select3"
+    ```
 
 ```
 shape: (3, 2)
@@ -102,11 +132,22 @@ shape: (3, 2)
 
 If you want to exclude an entire column from your view, you can simply use `exclude` in your `select` statement.
 
-```python
-df.select([
-    pl.exclude('a')
-])
-```
+=== ":fontawesome-brands-python: Python"
+    [:material-api:  `select`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.select.html)
+    ``` python
+    --8<-- "getting-started/python/expressions.py:exclude"
+    ```
+
+=== ":fontawesome-brands-rust: Rust"
+    [:material-api:  `select`](https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.select)
+    ``` rust
+    --8<-- "getting-started/rust/expressions.rs:exclude"
+    ```
+=== ":fontawesome-brands-node-js: NodeJS"
+    [:material-api:  `select`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#select)
+    ``` javaScript
+    --8<-- "getting-started/node/expressions.js:exclude"
+    ```
 
 ```
 shape: (8, 3)
@@ -133,19 +174,27 @@ shape: (8, 3)
 └──────────┴─────────────────────┴───────┘
 ```
 
-Additional information
-
-- Link to `select` with `expressions` in the Polars Book: [link](../dsl/expressions.md)
 
 ### Filter
 
 The `filter` option allows us to create a subset of the `DataFrame`. We use the same `DataFrame` as earlier and we filter between two specified dates.
 
-```python
-df.filter(
-    pl.col("c").is_between(datetime(2022, 12, 2), datetime(2022, 12, 8)),
-)
-```
+=== ":fontawesome-brands-python: Python"
+    [:material-api:  `filter`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.filter.html)
+    ``` python
+    --8<-- "getting-started/python/expressions.py:filter"
+    ```
+
+=== ":fontawesome-brands-rust: Rust"
+    [:material-api:  `filter`](https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.filter)
+    ``` rust
+    --8<-- "getting-started/rust/expressions.rs:filter"
+    ```
+=== ":fontawesome-brands-node-js: NodeJS"
+    [:material-api:  `filter`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#filter)
+    ``` javaScript
+    --8<-- "getting-started/node/expressions.js:filter"
+    ```
 
 ```
 shape: (5, 4)
@@ -168,11 +217,22 @@ shape: (5, 4)
 
 With `filter` you can also create more complex filters that include multiple columns.
 
-```python
-df.filter(
-    (pl.col('a') <= 3) & (pl.col('d').is_not_nan())
-)
-```
+=== ":fontawesome-brands-python: Python"
+    [:material-api:  `filter`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.filter.html)
+    ``` python
+    --8<-- "getting-started/python/expressions.py:filter2"
+    ```
+
+=== ":fontawesome-brands-rust: Rust"
+    [:material-api:  `filter`](https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.filter)
+    ``` rust
+    --8<-- "getting-started/rust/expressions.rs:filter2"
+    ```
+=== ":fontawesome-brands-node-js: NodeJS"
+    [:material-api:  `filter`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#filter)
+    ``` javaScript
+    --8<-- "getting-started/node/expressions.js:filter2"
+    ```
 
 ```
 shape: (2, 4)
@@ -187,20 +247,26 @@ shape: (2, 4)
 └─────┴──────────┴─────────────────────┴─────┘
 ```
 
-Additional information
-
-- Link to filtering in `expressions` in the Polars Book: [link](../dsl/expressions.md#filter-and-conditionals)
-
 ### With_columns
 
 `with_columns` allows you to create new columns for you analyses. We create two new columns `e` and `b+42`. First we sum all values from column `b` and store the results in column `e`. After that we add `42` to the values of `b`. Creating a new column `b+42` to store these results.
 
-```python
-df.with_columns([
-    pl.col('b').sum().alias('e'),
-    (pl.col('b') + 42).alias('b+42')
-])
-```
+=== ":fontawesome-brands-python: Python"
+    [:material-api:  `with_columns`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.with_columns.html)
+    ``` python
+    --8<-- "getting-started/python/expressions.py:with_columns"
+    ```
+
+=== ":fontawesome-brands-rust: Rust"
+    [:material-api:  `with_column`](https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.with_column)
+    ``` rust
+    --8<-- "getting-started/rust/expressions.rs:with_columns"
+    ```
+=== ":fontawesome-brands-node-js: NodeJS"
+    [:material-api:  `withColumns`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#withColumns)
+    ``` javaScript
+    --8<-- "getting-started/node/expressions.js:with_columns"
+    ```
 
 ```
 shape: (8, 6)
@@ -231,14 +297,22 @@ shape: (8, 6)
 
 We will create a new `DataFrame` for the Groupby functionality. This new `DataFrame` will include several 'groups' that we want to groupby.
 
-```python
-df2 = pl.DataFrame({
-                    "x": np.arange(0, 8), 
-                    "y": ['A', 'A', 'A', 'B', 'B', 'C', 'X', 'X'],
-})
+=== ":fontawesome-brands-python: Python"
+    [:material-api:  `DataFrame`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html)
+    ``` python
+    --8<-- "getting-started/python/expressions.py:dataframe2"
+    ```
 
-print(df2)
-```
+=== ":fontawesome-brands-rust: Rust"
+    [:material-api:  `DataFrame`](https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html)
+    ``` rust
+    --8<-- "getting-started/rust/expressions.rs:dataframe2"
+    ```
+=== ":fontawesome-brands-node-js: NodeJS"
+    [:material-api:  `DataFrame`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html)
+    ``` javaScript
+    --8<-- "getting-started/node/expressions.js:dataframe2"
+    ```
 
 ```
 shape: (8, 2)
@@ -265,10 +339,22 @@ shape: (8, 2)
 └─────┴─────┘
 ```
 
-```python
-# without maintain_order you will get a random order back.
-df2.groupby("y", maintain_order=True).count()
-```
+=== ":fontawesome-brands-python: Python"
+    [:material-api:  `groupby`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.groupby.html)
+    ``` python
+    --8<-- "getting-started/python/expressions.py:groupby"
+    ```
+
+=== ":fontawesome-brands-rust: Rust"
+    [:material-api:  `groupby`](https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.groupby)
+    ``` rust
+    --8<-- "getting-started/rust/expressions.rs:groupby"
+    ```
+=== ":fontawesome-brands-node-js: NodeJS"
+    [:material-api:  `groupBy`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#groupBy)
+    ``` javaScript
+    --8<-- "getting-started/node/expressions.js:groupby"
+    ```
 
 ```
 shape: (4, 2)
@@ -287,12 +373,22 @@ shape: (4, 2)
 └─────┴───────┘
 ```
 
-```python
-df2.groupby("y", maintain_order=True).agg([
-    pl.col("*").count().alias("count"),
-    pl.col("*").sum().alias("sum")
-])
-```
+=== ":fontawesome-brands-python: Python"
+    [:material-api:  `groupby`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.groupby.html)
+    ``` python
+    --8<-- "getting-started/python/expressions.py:groupby2"
+    ```
+
+=== ":fontawesome-brands-rust: Rust"
+    [:material-api:  `groupby`](https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.groupby)
+    ``` rust
+    --8<-- "getting-started/rust/expressions.rs:groupby2"
+    ```
+=== ":fontawesome-brands-node-js: NodeJS"
+    [:material-api:  `groupBy`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#groupBy)
+    ``` javaScript
+    --8<-- "getting-started/node/expressions.js:groupby2"
+    ```
 
 ```
 shape: (4, 3)
@@ -311,26 +407,30 @@ shape: (4, 3)
 └─────┴───────┴─────┘
 ```
 
-Additional information
-
-- Link to `groupby` with `expressions` in the Polars Book: [link](../dsl/groupby.md)
-
 ### Combining operations
 
 Below are some examples on how to combine operations to create the `DataFrame` you require.
 
-```python
-# create a new column that multiplies column `a` and `b` from our DataFrame
-# select all the columns, but exclude column `c` and `d` from the final DataFrame
 
-df_x = df.with_columns(
-    (pl.col("a") * pl.col("b")).alias("a * b")
-).select([
-    pl.all().exclude(['c', 'd'])
-])
+=== ":fontawesome-brands-python: Python"
+    [:material-api:  `select`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.select.html) ·
+    [:material-api:  `with_columns`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.with_columns.html)
+    ``` python
+    --8<-- "getting-started/python/expressions.py:combine"
+    ```
 
-print(df_x)
-```
+=== ":fontawesome-brands-rust: Rust"
+    [:material-api:  `select`](https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.select) ·
+    [:material-api:  `with_column`](https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.with_column)
+    ``` rust
+    --8<-- "getting-started/rust/expressions.rs:combine"
+    ```
+=== ":fontawesome-brands-node-js: NodeJS"
+    [:material-api:  `select`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#select) ·
+    [:material-api:  `withColumns`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#withColumns)
+    ``` javaScript
+    --8<-- "getting-started/node/expressions.js:combine"
+    ```
 
 ```
 shape: (8, 3)
@@ -357,17 +457,26 @@ shape: (8, 3)
 └─────┴──────────┴──────────┘
 ```
 
-```python
-# only excluding column `d` in this example
+=== ":fontawesome-brands-python: Python"
+    [:material-api:  `select`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.select.html) ·
+    [:material-api:  `with_columns`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.with_columns.html)
+    ``` python
+    --8<-- "getting-started/python/expressions.py:combine2"
+    ```
 
-df_y = df.with_columns([
-    (pl.col("a") * pl.col("b")).alias("a * b")
-]).select([
-    pl.all().exclude('d')
-])
+=== ":fontawesome-brands-rust: Rust"
+    [:material-api:  `select`](https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.select) ·
+    [:material-api:  `with_column`](https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.with_column)
+    ``` rust
+    --8<-- "getting-started/rust/expressions.rs:combine2"
+    ```
+=== ":fontawesome-brands-node-js: NodeJS"
+    [:material-api:  `select`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#select) ·
+    [:material-api:  `withColumns`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#withColumns)
+    ``` javaScript
+    --8<-- "getting-started/node/expressions.js:combine2"
+    ```
 
-print(df_y)
-```
 
 ```
 shape: (8, 4)
