@@ -5,45 +5,22 @@ Polars supports reading & writing to all common files (e.g. csv, json, parquet),
 === ":fontawesome-brands-python: Python"
     [:material-api:  `DataFrame`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html)
     ``` python
-    df = pl.DataFrame({"integer": [1, 2, 3,], 
-                            "date": [
-                                datetime(2022, 1, 1), 
-                                datetime(2022, 1, 2), 
-                                datetime(2022, 1, 3), 
-                            ], 
-                            "float":[4.0, 5.0, 6.0]})
-
-    print(df)
+    --8<-- "getting-started/python/reading-writing.py:dataframe"
     ```
 
 === ":fontawesome-brands-rust: Rust"
     [:material-api:  `DataFrame`](https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html)
     ``` rust
-    let df: DataFrame = df!("integer" => &[1, 2, 3],
-                            "date" => &[
-                                        NaiveDate::from_ymd_opt(2022, 1, 1).unwrap().and_hms_opt(0, 0, 0).unwrap(),
-                                        NaiveDate::from_ymd_opt(2022, 1, 2).unwrap().and_hms_opt(0, 0, 0).unwrap(),
-                                        NaiveDate::from_ymd_opt(2022, 1, 3).unwrap().and_hms_opt(0, 0, 0).unwrap(),
-                            ],
-                            "float" => &[4.0, 5.0, 6.0]
-                            ).expect("should not fail");
-    println!("{}",df);
+    --8<-- "getting-started/rust/reading-writing.rs:dataframe"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
     [:material-api:  `DataFrame`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html)
     ``` javaScript
-    let df = pl.DataFrame({"integer": [1, 2, 3], 
-                            "date": [
-                                new Date(2022, 1, 1, 0, 0), 
-                                new Date(2022, 1, 2, 0, 0), 
-                                new Date(2022, 1, 3, 0, 0)
-                            ], 
-                            "float":[4.0, 5.0, 6.0]})
-    console.log(df);
+    --8<-- "getting-started/node/reading-writing.js:dataframe"
     ```
 
 
-### CSV
+#### CSV
 
 Polars has its own fast implementation for csv reading with many flexible configuration options. 
 
@@ -51,27 +28,20 @@ Polars has its own fast implementation for csv reading with many flexible config
     [:material-api:  `read_csv`](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_csv.html) ·
     [:material-api:  `write_csv`](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.write_csv.html) 
     ``` python
-    df.write_csv('output.csv')
-    df_csv = pl.read_csv('output.csv')
-    print(df_csv)
+    --8<-- "getting-started/python/reading-writing.py:csv"
     ```
 
 === ":fontawesome-brands-rust: Rust"
     [:material-api:  `CsvReader`](https://pola-rs.github.io/polars/polars_io/csv/struct.CsvReader.html) ·
     [:material-api:  `CsvWriter`](https://pola-rs.github.io/polars/polars_io/csv/struct.CsvWriter.html) 
     ``` rust
-    let mut file = File::create("output.csv").expect("could not create file");
-    CsvWriter::new(&mut file).has_header(true).with_delimiter(b',').finish(&mut df);
-    let df_csv = CsvReader::from_path("output.csv").unwrap().infer_schema(None).has_header(true).finish().unwrap();
-    println!("{}",df_csv);
+    --8<-- "getting-started/rust/reading-writing.rs:csv"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
     [:material-api:  `readCSV`](https://pola-rs.github.io/nodejs-polars/functions/readCSV.html) ·
     [:material-api:  `writeCSV`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#writeCSV) 
     ``` javaScript
-    df.writeCSV("output.csv");
-    let df_csv = pl.readCSV("output.csv);
-    console.log(df_csv);
+    --8<-- "getting-started/node/reading-writing.js:csv"
     ```
 
 ```
@@ -94,23 +64,18 @@ As we can see above, Polars made the datetimes a `string`. We can tell Polars to
 === ":fontawesome-brands-python: Python"
     [:material-api:  `read_csv`](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_csv.html)
     ``` python
-    df_csv = pl.read_csv('output.csv',try_parse_dates=True)
-    print(df_csv)
+    --8<-- "getting-started/python/reading-writing.py:csv2"
     ```
 
 === ":fontawesome-brands-rust: Rust"
     [:material-api:  `CsvReader`](https://pola-rs.github.io/polars/polars_io/csv/struct.CsvReader.html)
     ``` rust
-    let mut file = File::create("output.csv").expect("could not create file");
-    CsvWriter::new(&mut file).has_header(true).with_delimiter(b',').finish(&mut df);
-    let df_csv = CsvReader::from_path("output.csv").unwrap().infer_schema(None).has_header(true).with_parse_dates(true).finish().unwrap();
-    println!("{}",df_csv);
+    --8<-- "getting-started/rust/reading-writing.rs:csv2"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
     [:material-api:  `readCSV`](https://pola-rs.github.io/nodejs-polars/functions/readCSV.html) ·
     ``` javaScript
-    let df_csv = pl.readCSV("output.csv,{parseDates:true});
-    console.log(df_csv);
+    --8<-- "getting-started/node/reading-writing.js:csv2"
     ```
 
 ```
@@ -134,9 +99,7 @@ shape: (3, 3)
     [:material-api:  `read_json`](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_json.html) ·
     [:material-api:  `write_csv`](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.write_json.html) 
     ``` python
-    df.write_json('output.json')
-    df_json = pl.read_json('output.json')
-    print(df_json)
+    --8<-- "getting-started/python/reading-writing.py:json"
     ```
 
 === ":fontawesome-brands-rust: Rust"
@@ -144,19 +107,13 @@ shape: (3, 3)
     [:material-api:  `JsonWriter`](https://pola-rs.github.io/polars/polars_io/json/struct.JsonWriter.html)
 
     ``` rust
-    let mut file = File::create("output.json").expect("could not create file");
-    JsonWriter::new(&mut file).finish(&mut df);
-    let mut f = File::open("output.json").unwrap();
-    let df_json = JsonReader::new(f).with_json_format(JsonFormat::JsonLines).finish().unwrap();
-    println!("{}",df_json);
+    --8<-- "getting-started/rust/reading-writing.rs:json"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
     [:material-api:  `readJSON`](https://pola-rs.github.io/nodejs-polars/functions/readJSON.html) ·
     [:material-api:  `writeJSON`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#writeJSON) 
     ``` javaScript
-    df.writeJSON("output.json");
-    let df_json = pl.readJSON("output.json");
-    console.log(df_json);
+    --8<-- "getting-started/node/reading-writing.js:json"
     ```
 
 ```
@@ -180,28 +137,20 @@ shape: (3, 3)
     [:material-api:  `read_parquet`](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_parquet.html) ·
     [:material-api:  `write_parquet`](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.write_parquet.html) 
     ``` python
-    df.write_parquet('output.parquet')
-    df_parquet = pl.read_parquet('output.parquet')
-    print(df_parquet)
+    --8<-- "getting-started/python/reading-writing.py:parquet"
     ```
 
 === ":fontawesome-brands-rust: Rust"
     [:material-api:  `ParquetReader`](https://pola-rs.github.io/polars/polars_io/parquet/struct.ParquetReader.html) ·
     [:material-api:  `ParquetWriter`](https://pola-rs.github.io/polars/polars_io/parquet/struct.ParquetWriter.html)
     ``` rust
-    let mut file = File::create("output.parquet").expect("could not create file");
-    ParquetWriter::new(&mut file).finish(&mut df);
-    let mut f = File::open("output.parquet").unwrap();
-    let df_parquet = ParquetReader::new(f).finish().unwrap();
-    println!("{}",df_parquet);
+    --8<-- "getting-started/rust/reading-writing.rs:parquet"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
     [:material-api:  `readParquet`](https://pola-rs.github.io/nodejs-polars/functions/readParquet.html) ·
     [:material-api:  `writeParquet`](https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#writeParquet) 
     ``` javaScript
-    df.writeParquet("output.parquet");
-    let df_parquet = pl.readParquet("output.parquet");
-    console.log(df_parquet);
+    --8<-- "getting-started/node/reading-writing.js:parquet"
     ```
 
 ```

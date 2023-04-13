@@ -9,46 +9,18 @@ Polars supports all types of join (e.g. left, right, inner, outer). Let's have a
 === ":fontawesome-brands-python: Python"
 
     ``` python
-    df = pl.DataFrame({"a": np.arange(0, 8), 
-                    "b": np.random.rand(8), 
-                    "d": [1, 2.0, np.NaN, np.NaN, 0, -5, -42, None]
-                    })
-
-    df2 = pl.DataFrame({
-                        "x": np.arange(0, 8), 
-                        "y": ['A', 'A', 'A', 'B', 'B', 'C', 'X', 'X'],
-    })
-    joined = df.join(df2, left_on="a", right_on="x")
-    print(joined)
+    --8<-- "getting-started/python/joins.py:join"
     ```
 
 === ":fontawesome-brands-rust: Rust"
 
     ``` rust
-    let df: DataFrame = df!("a" => 0..8,
-                            "b"=> (0..8).map(|_| rng.gen::<f64>()).collect::<Vec<f64>>(),
-                            "d"=> [Some(1.0), Some(2.0), None, None, Some(0.0), Some(-5.0), Some(-42.), None]
-                        ).expect("should not fail");
-    let df2: DataFrame = df!("x" => 0..8,
-                            "y"=> &["A", "A", "A", "B", "B", "C", "X", "X"],
-                        ).expect("should not fail");
-    let joined = df.join(&df2,["a"],["x"],JoinType::Left,None).unwrap();
-    println!("{}",joined);
+    --8<-- "getting-started/rust/joins.rs:join"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
 
     ``` javaScript
-    df = pl.DataFrame({"a": [...Array(8).keys()], 
-                    "b": Array.from({length: 8}, () => Math.random()), 
-                    "d": [1, 2.0, null, null, 0, -5, -42, null]
-                    })
-
-    df2 = pl.DataFrame({
-                        "x": [...Array(8).keys()], 
-                        "y": ['A', 'A', 'A', 'B', 'B', 'C', 'X', 'X'],
-    })
-    joined = df.join(df2, {leftOn:"a", rightOn:"x"})
-    console.log(joined);
+    --8<-- "getting-started/node/joins.js:join"
     ```
 
 ```
@@ -84,21 +56,18 @@ We can also `concatenate` two `DataFrames`. Vertical concatenation will make the
 === ":fontawesome-brands-python: Python"
 
     ``` python
-    stacked = df.hstack(df2) 
-    print(stacked)
+    --8<-- "getting-started/python/joins.py:hstack"
     ```
 
 === ":fontawesome-brands-rust: Rust"
 
     ``` rust
-    let stacked = df.hstack(df2.get_columns()).unwrap();
-    println!("{}",stacked);
+    --8<-- "getting-started/rust/joins.rs:hstack"
     ```
 === ":fontawesome-brands-node-js: NodeJS"
 
     ``` javaScript
-    stacked = df.hstack(df2);
-    console.log(stacked);
+    --8<-- "getting-started/node/joins.js:hstack"
     ```
 
 ```
