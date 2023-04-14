@@ -1,3 +1,11 @@
+//!
+//! ```cargo
+//! [dependencies]
+//! rand = "0.8.5"
+//! polars = "0.*"
+//! ```
+
+
 use polars::prelude::*;
 use rand::Rng;
 

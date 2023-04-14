@@ -46,7 +46,7 @@ df.filter(
     pl.col("c").gt(new Date(2022,12,2)).lt(new Date(2022,12,8))
 )
 // --8<-- [end:filter]
-``
+
 // --8<-- [start:filter2]
 df.filter(
     (pl.col('a').ltEq(3).and(pl.col('d').isNotNull()))
@@ -69,7 +69,7 @@ df2 = pl.DataFrame({
 
 // --8<-- [start:groupby]
 df2.groupBy("y").count()
-print(df2)
+console.log(df2)
 // --8<-- [end:groupby]
 
 // --8<-- [start:groupby2]
@@ -85,7 +85,7 @@ df_x = df.withColumns(
     pl.all().exclude(['c', 'd'])
 ])
 
-print(df_x)
+console.log(df_x)
 // --8<-- [end:combine]
 
 // --8<-- [start:combine2]
@@ -94,5 +94,5 @@ df_y = df.withColumns([
 ]).select([
     pl.all().exclude('d')
 ])
-print(df_y)
+console.log(df_y)
 // --8<-- [end:combine2]
