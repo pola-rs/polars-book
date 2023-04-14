@@ -14,3 +14,10 @@ span .md-typeset .emojione, .md-typeset .gemoji, .md-typeset .twemoji {
     font-family: 'Proxima Nova', sans-serif;
     src: 'https://fonts.cdnfonts.com/css/proxima-nova-2'
 }
+
+.contributor_icon {
+    height:40px;
+    width:40px;
+    border-radius: 20px;
+    margin: 0 5px;
+}
