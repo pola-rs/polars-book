@@ -9,6 +9,7 @@ jobs:
   test:
     name: docs
     runs-on: ubuntu-latest
+    needs: [test-python, test-node, markdown-link-check]
     steps:
       - uses: actions/checkout@v2
 
