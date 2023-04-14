@@ -16,5 +16,5 @@ jobs:
         with:
           key: ${{ github.ref }}
           path: .cache
-      - run: pip install -r requirements.txt
+      - run: pip install -r requirements-dev.txt
       - run: find docs/src/ -name "*.py" | xargs -n 1 sh -c 'python $0 || exit 255'
