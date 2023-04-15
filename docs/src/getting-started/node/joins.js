@@ -12,7 +12,7 @@ df2 = pl.DataFrame({
 })
 joined = df.join(df2, {leftOn:"a", rightOn:"x"})
 console.log(joined);
-// --8<-- [start:join]
+// --8<-- [end:join]
 
 // --8<-- [start:hstack]
 stacked = df.hstack(df2);

@@ -1,11 +1,3 @@
-//!
-//! ```cargo
-//! [dependencies]
-//! rand = "0.8.5"
-//! polars = "0.*"
-//! ```
-
-
 use polars::prelude::*;
 use rand::Rng;
 
@@ -22,7 +14,7 @@ fn main() {
                         ).expect("should not fail");
     let joined = df.join(&df2,["a"],["x"],JoinType::Left,None).unwrap();
     println!("{}",joined);
-    // --8<-- [start:join]
+    // --8<-- [end:join]
     
     // --8<-- [start:hstack]
     let stacked = df.hstack(df2.get_columns()).unwrap();

@@ -4,7 +4,7 @@ fn main() {
 
     let s = Series::new("a", [1, 2, 3, 4, 5]);
     println!("{}",s);
-    // --8<-- [start:series]
+    // --8<-- [end:series]
     
     // --8<-- [start:minmax]
     let s = Series::new("a", [1, 2, 3, 4, 5]);

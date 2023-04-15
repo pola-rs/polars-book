@@ -3,7 +3,7 @@ import polars as pl
 
 s = pl.Series("a", [1, 2, 3, 4, 5])
 print(s)
-# --8<-- [start:series]
+# --8<-- [end:series]
 
 # --8<-- [start:minmax]
 s = pl.Series("a", [1, 2, 3, 4, 5])
