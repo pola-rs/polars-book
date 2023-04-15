@@ -113,4 +113,4 @@ Thanks for taking the time to contribute! We appreciate all contributions, from 
 
 ## License
 
-This project is licensed under the terms of the [MIT license](https://opensource.org/license/mit/).
+This project is licensed under the terms of the MIT license.
