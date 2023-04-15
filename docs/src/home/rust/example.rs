@@ -1,0 +1,16 @@
+fn main() {
+
+    // --8<-- [start:example]
+    use polars::prelude::*;
+
+    let q = LazyCsvReader::new("docs/src/home/iris.csv")
+        .has_header(true)
+        .finish()?
+        .filter(col("sepal_length").gt(lit(5)))
+        .groupby(vec![col("species")])
+        .agg([col("*").sum()])
+    
+    let df = q.collect()
+    // --8<-- [end:example]
+
+}
