@@ -1,7 +1,7 @@
 use polars::prelude::*;
 use rand::Rng;
 
-fn main() {
+fn main() -> Result<(), Box<dyn std::error::Error>>{
     let mut rng = rand::thread_rng();
 
     // --8<-- [start:join]
@@ -12,13 +12,15 @@ fn main() {
     let df2: DataFrame = df!("x" => 0..8,
                             "y"=> &["A", "A", "A", "B", "B", "C", "X", "X"],
                         ).expect("should not fail");
-    let joined = df.join(&df2,["a"],["x"],JoinType::Left,None).unwrap();
+    let joined = df.join(&df2,["a"],["x"],JoinType::Left,None)?;
     println!("{}",joined);
     // --8<-- [end:join]
     
     // --8<-- [start:hstack]
-    let stacked = df.hstack(df2.get_columns()).unwrap();
+    let stacked = df.hstack(df2.get_columns())?;
     println!("{}",stacked);
     // --8<-- [end:hstack]
+
+    Ok(())                        
 
 }

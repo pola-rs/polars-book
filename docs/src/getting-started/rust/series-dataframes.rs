@@ -1,4 +1,6 @@
-fn main() {
+use chrono::prelude::*;
+
+fn main() -> Result<(), Box<dyn std::error::Error>>{
     // --8<-- [start:series]
     use polars::prelude::*;
 
@@ -30,7 +32,7 @@ fn main() {
                                         NaiveDate::from_ymd_opt(2022, 1, 4).unwrap().and_hms_opt(0, 0, 0).unwrap(),
                                         NaiveDate::from_ymd_opt(2022, 1, 5).unwrap().and_hms_opt(0, 0, 0).unwrap()
                             ],
-                            "float" => &[4.0, 5.0, 6.0 7.0, 8.0]
+                            "float" => &[4.0, 5.0, 6.0, 7.0, 8.0]
                             ).expect("should not fail");
     println!("{}",df);
     // --8<-- [end:dataframe]
@@ -44,11 +46,11 @@ fn main() {
     // --8<-- [end:tail]
     
     // --8<-- [start:sample]
-    println!("{}",df.sample_n(2, false, true, None).unwrap());
+    println!("{}",df.sample_n(2, false, true, None)?);
     // --8<-- [end:sample]
     
     // --8<-- [start:describe]
     println!("{}",df.describe(None));
     // --8<-- [end:describe]
-
+    Ok(())
 }

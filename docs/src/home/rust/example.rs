@@ -1,4 +1,4 @@
-fn main() {
+fn main() -> Result<(), Box<dyn std::error::Error>>{
 
     // --8<-- [start:example]
     use polars::prelude::*;
@@ -8,9 +8,10 @@ fn main() {
         .finish()?
         .filter(col("sepal_length").gt(lit(5)))
         .groupby(vec![col("species")])
-        .agg([col("*").sum()])
+        .agg([col("*").sum()]);
     
-    let df = q.collect()
+    let df = q.collect();
     // --8<-- [end:example]
 
+    Ok(())
 }

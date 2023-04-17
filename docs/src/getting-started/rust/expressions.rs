@@ -2,7 +2,10 @@ use polars::prelude::*;
 use rand::Rng;
 use chrono::prelude::*;
 
-fn main() {
+fn main() -> Result<(), Box<dyn std::error::Error>>{
+
+    let mut rng = rand::thread_rng();
+
     let df: DataFrame = df!("a" => 0..8,
                             "b"=> (0..8).map(|_| rng.gen::<f64>()).collect::<Vec<f64>>(),
                             "c"=> [
@@ -19,22 +22,22 @@ fn main() {
                         ).expect("should not fail");
     
     // --8<-- [start:select]
-    let out = df.clone().lazy().select([col("*")]).collect().unwrap();
+    let out = df.clone().lazy().select([col("*")]).collect()?;
     println!("{}",out);
     // --8<-- [end:select]
 
     // --8<-- [start:select2]
-    let out = df.clone().lazy().select([col("a"), col("b")]).collect().unwrap();
+    let out = df.clone().lazy().select([col("a"), col("b")]).collect()?;
     println!("{}",out);
     // --8<-- [end:select2]
 
     // --8<-- [start:select3]
-    let out = df.clone().lazy().select([col("a"), col("b")]).limit(3).collect().unwrap();
+    let out = df.clone().lazy().select([col("a"), col("b")]).limit(3).collect()?;
     println!("{}",out);
     // --8<-- [end:select3]
 
     // --8<-- [start:exclude]
-    let out = df.clone().lazy().select([col("*").exclude(["a"])]).collect().unwrap();
+    let out = df.clone().lazy().select([col("*").exclude(["a"])]).collect()?;
     println!("{}",out);
     // --8<-- [end:exclude]
 
@@ -43,7 +46,7 @@ fn main() {
     // --8<-- [end:filter]
 
     // --8<-- [start:filter2]
-    let out = df.clone().lazy().filter(col("a").lt_eq(3).and(col("d").is_not_null())).collect().unwrap();
+    let out = df.clone().lazy().filter(col("a").lt_eq(3).and(col("d").is_not_null())).collect()?;
     println!("{}",out);
     // --8<-- [end:filter2]
 
@@ -53,7 +56,7 @@ fn main() {
             col("b").sum().alias("e"),
             (col("b") + lit(42)).alias("b+42")
         ]
-    ).collect().unwrap();
+    ).collect()?;
     println!("{}",out);
     // --8<-- [end:with_columns]
 
@@ -65,7 +68,7 @@ fn main() {
     // --8<-- [end:dataframe2]
 
     // --8<-- [start:groupby]
-    let out = df2.clone().lazy().groupby(["y"]).agg([count()]).collect().unwrap();
+    let out = df2.clone().lazy().groupby(["y"]).agg([count()]).collect()?;
     println!("{}",out);
     // --8<-- [end:groupby]
 
@@ -73,7 +76,7 @@ fn main() {
     let out = df2.clone().lazy().groupby(["y"]).agg([
         col("*").count().alias("count"),
         col("*").sum().alias("sum"),
-    ]).collect().unwrap();
+    ]).collect()?;
     println!("{}",out);
     // --8<-- [end:groupby2]
 
@@ -82,7 +85,7 @@ fn main() {
         (col("a") * col("b")).alias("a * b")
     ]).select([
         col("*").exclude(["c","d"])
-    ]).collect().unwrap();
+    ]).collect()?;
     println!("{}",out);
     // --8<-- [end:combine]
 
@@ -91,8 +94,10 @@ fn main() {
         (col("a") * col("b")).alias("a * b")
     ]).select([
         col("*").exclude(["d"])
-    ]).collect().unwrap();
+    ]).collect()?;
     println!("{}",out);
     // --8<-- [end:combine2]
+    
+    Ok(())
 
 }
