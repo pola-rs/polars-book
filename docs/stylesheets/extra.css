@@ -21,3 +21,7 @@ span .md-typeset .emojione, .md-typeset .gemoji, .md-typeset .twemoji {
     border-radius: 20px;
     margin: 0 5px;
 }
+
+.md-typeset ol li, .md-typeset ul li{
+    margin-bottom: 0em !important;
+}

@@ -5,8 +5,8 @@ theme:
   features:
     - navigation.tracking
     - navigation.instant
-    - navigation.sections
     - navigation.tabs
+    - navigation.tabs.sticky
     - content.tabs.link
   icon:
     repo: fontawesome/brands/github
@@ -33,6 +33,7 @@ markdown_extensions:
       base_path: ['.','docs/src/']
       check_paths: false
       dedent_subsections: true
+  - footnotes
 extra_css:
   - stylesheets/extra.css
 repo_url: https://github.com/pola-rs/polars
@@ -49,3 +50,29 @@ nav:
     - getting-started/joins.md
   - User Guide: 
     - user-guide/index.md
+    - user-guide/installation.md
+    - user-guide/philosophy.md
+    - Concepts:
+      - user-guide/concepts/data-types.md
+      - user-guide/concepts/data-structures.md
+      - user-guide/concepts/contexts.md
+      - user-guide/concepts/expressions.md
+      - user-guide/concepts/lazy-vs-eager.md
+      - user-guide/concepts/streaming.md
+    - Expressions:
+      - user-guide/expressions/index.md
+    - Lazy API:
+      - user-guide/lazy/index.md
+    - IO:
+      - user-guide/io/index.md
+    - Select:
+      - user-guide/select/index.md
+    - Time Series:
+      - user-guide/time-series/index.md
+    - Migration:
+      - user-guide/migration/pandas.md
+      - user-guide/migration/spark.md
+    - Misc:
+      - user-guide/misc/alternatives.md
+      - user-guide/misc/reference-guides.md
+      - user-guide/misc/contributing.md

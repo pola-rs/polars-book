@@ -1,10 +1,11 @@
 ## Expressions
 
-`Expressions` are the core strength of `Polars`. The `expressions` offer a versatile structure that solves easy queries, but is easily extended to complex analyses. Below we will cover the basic components that serve as building block for all your queries.
+`Expressions` are the core strength of `Polars`. The `expressions` offer a versatile structure that both solves easy queries and is easily extended to complex ones. Below we will cover the basic components that serve as building block (or in `Polars` terminology contexts) for all your queries:
 
 - `select`
 - `filter`
 - `with_columns`
+- `groupby`
 
 ### Select statement
 
