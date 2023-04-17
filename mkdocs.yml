@@ -7,6 +7,7 @@ theme:
     - navigation.instant
     - navigation.tabs
     - navigation.tabs.sticky
+    - navigation.footer
     - content.tabs.link
   icon:
     repo: fontawesome/brands/github
