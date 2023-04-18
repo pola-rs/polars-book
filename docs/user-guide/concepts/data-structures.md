@@ -1,7 +1,5 @@
 # Data Structures
 
-# Series & DataFrames
-
 The core base data structures provided by Polars are  `Series` and `DataFrames`. 
 
 ## Series

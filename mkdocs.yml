@@ -62,9 +62,22 @@ nav:
       - user-guide/concepts/lazy-vs-eager.md
       - user-guide/concepts/streaming.md
     - Expressions:
+      - user-guide/expressions/operators.md
+      - user-guide/expressions/casting.md
+      - user-guide/expressions/functions.md
+      - user-guide/expressions/aggregation.md
+      - user-guide/expressions/window.md
+      - user-guide/expressions/folds.md
+      - user-guide/expressions/lists.md
+      - user-guide/expressions/user-defined-functions.md
+      - user-guide/expressions/numpy.md
       - user-guide/expressions/index.md
     - Lazy API:
-      - user-guide/lazy/index.md
+      - user-guide/lazy/using.md
+      - user-guide/lazy/schemas.md
+      - user-guide/lazy/query_plan.md
+      - user-guide/lazy/query_execution.md
+      - user-guide/lazy/streaming.md
     - IO:
       - user-guide/io/index.md
     - Select:
