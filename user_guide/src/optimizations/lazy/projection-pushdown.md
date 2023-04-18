@@ -1,7 +1,5 @@
 # Projection pushdown
 
-> The Projection pushdown page is under construction.
-
 Let's expand our query from the previous section by joining the result of the *FILTER*
 operation with the runescape data to find popular Reddit usernames that have a
 username starting with an `"a"` that also played Runescape. That must be something we are all
