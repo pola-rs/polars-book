@@ -79,7 +79,7 @@ See the results in h2oai's [db-benchmark](https://h2oai.github.io/db-benchmark/)
 
 ## Community
 
-`Polars` has a very active community with frequent releases (approximately weekly). Below are the top 50 contributors to the project sorted by number of contributions: 
+`Polars` has a very active community with frequent releases (approximately weekly). Below are some of the top contributors to the project: 
 
 --8<-- "docs/people.md"
 

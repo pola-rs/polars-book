@@ -54,7 +54,6 @@ nav:
   - User Guide: 
     - user-guide/index.md
     - user-guide/installation.md
-    - user-guide/philosophy.md
     - Concepts:
       - user-guide/concepts/data-types.md
       - user-guide/concepts/data-structures.md
