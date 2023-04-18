@@ -1,6 +1,6 @@
 from ..paths import OUTPUT_BASE_DIR, create_if_not_exists
-from .series_tuple import series as s1
-from .series_list import series as s2
+from .series_tuple import series as series1
+from .series_list import series as series2
 from .dataframe1 import df as df1
 from .dataframe2 import df as df2
 from .dataframe3 import df as df3
@@ -27,10 +27,10 @@ from .concat1 import out as concat1
 path = create_if_not_exists(f"{OUTPUT_BASE_DIR}/quickstart")
 
 with open(f"{path}/series_tuple.txt", "w") as f:
-    f.write(f"{s1}\n")
+    f.write(f"{series1}\n")
 
 with open(f"{path}/series_list.txt", "w") as f:
-    f.write(f"{s2}\n")
+    f.write(f"{series2}\n")
 
 with open(f"{path}/output.csv", "w") as f:
     f.write(f"{df1}\n")
