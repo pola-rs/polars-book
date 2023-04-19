@@ -41,7 +41,6 @@ Note how we call `.over("Type 1")` and `.over(["Type 1", "Type 2"])`. Using wind
 
 The best part is, this won't cost you anything. The computed groups are cached and shared between different `window` expressions.
 
-<div class="tabbed-blocks">
 
 === ":fontawesome-brands-python: Python"
     ``` python
