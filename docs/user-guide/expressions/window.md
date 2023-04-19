@@ -100,8 +100,6 @@ Observe that the group `Water` of column `Type 1` is not contiguous. There are t
 that each pokemon within a group are sorted by `Speed` in `ascending` order. Unfortunately, for this example we want them sorted in
 `descending` speed order. Luckily with window functions this is easy to accomplish.
 
-<div class="tabbed-blocks">
-
 === ":fontawesome-brands-python: Python"
     ``` python
     --8<-- "user-guide/python/expressions/window.py:sort"
