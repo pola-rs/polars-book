@@ -70,3 +70,11 @@ df_alias = df.select([
 ])
 print(df_alias)
 # --8<-- [end:countunique]
+
+# --8<-- [start:conditional]
+df_conditional = df.select([
+    pl.col("nrs"),
+    pl.when(pl.col("nrs") > 2).then(pl.lit(True)).otherwise(pl.lit(False)).alias("conditional")
+])
+print(df_conditional)
+# --8<-- [end:conditional]

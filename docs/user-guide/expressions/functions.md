@@ -121,7 +121,7 @@ In case of multiple columns for example when using `all()` or `col(*)` you can a
     [:material-api:  `suffix`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.suffix.html)
     [:material-api:  `map_alias`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.map_alias.html)
 
-##### Count Unique Values
+#### Count Unique Values
 
 There are two ways two count unique values in `Polars` one is an exact methodology and the other one is an approximantion. The approximation uses the [HyperLogLog++](https://en.wikipedia.org/wiki/HyperLogLog) algorithm to approximate the cardinality and is especially usefull for very large datasets where an approximation is good enough.
 
@@ -142,14 +142,25 @@ shape: (1, 2)
 └────────┴───────────────┘
 ```
 
-##### Null Support
+#### Conditionals
 
-TODO
+`Polars` supports if-like conditions in expression with the `when`, `then`, `otherwise` syntax. The predicate is placed in the `when` clause and when this evaluates to `true` the `then` expression is applied otherwise the `otherwise` expression is applied (row-wise).
 
-##### Clipping
-
-TODO
-
-##### Conditionals
-
-TODO
+=== ":fontawesome-brands-python: Python"
+    ``` python
+    --8<-- "user-guide/python/expressions/functions.py:conditional"
+    ```
+```
+shape: (5, 2)
+┌──────┬─────────────┐
+│ nrs  ┆ conditional │
+│ ---  ┆ ---         │
+│ i64  ┆ bool        │
+╞══════╪═════════════╡
+│ 1    ┆ false       │
+│ 2    ┆ false       │
+│ 3    ┆ true        │
+│ null ┆ false       │
+│ 5    ┆ true        │
+└──────┴─────────────┘
+```

@@ -63,10 +63,11 @@ nav:
       - user-guide/concepts/streaming.md
     - Expressions:
       - user-guide/expressions/operators.md
-      - user-guide/expressions/casting.md
       - user-guide/expressions/functions.md
+      - user-guide/expressions/casting.md
       - user-guide/expressions/strings.md
       - user-guide/expressions/aggregation.md
+      - user-guide/expressions/null.md
       - user-guide/expressions/window.md
       - user-guide/expressions/folds.md
       - user-guide/expressions/lists.md
