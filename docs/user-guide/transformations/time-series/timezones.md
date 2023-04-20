@@ -21,7 +21,7 @@ Examples of valid time zones are:
 Note that, because a `Datetime` can only have a single time zone, it is
 impossible to have a column with multiple time zones. If you are parsing data
 with multiple offsets, you may want to pass `utc=True` to convert
-them all to a common time zone (`UTC`), see [parsing dates and times](parsing_dates_times.md).
+them all to a common time zone (`UTC`), see [parsing dates and times](parsing.md).
 
 The main methods for setting and converting between time zones are:
 
