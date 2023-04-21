@@ -19,6 +19,9 @@ Polars supports reading & writing to all common files (e.g. csv, json, parquet),
     --8<-- "getting-started/node/reading-writing.js:dataframe"
     ```
 
+```python exec="on" result="text" session="getting-started/reading"
+--8<-- "getting-started/python/reading-writing.py:dataframe"
+```
 
 #### CSV
 
@@ -44,19 +47,8 @@ Polars has its own fast implementation for csv reading with many flexible config
     --8<-- "getting-started/node/reading-writing.js:csv"
     ```
 
-```
-shape: (3, 3)
-┌─────────┬────────────────────────────┬───────┐
-│ integer ┆ date                       ┆ float │
-│ ---     ┆ ---                        ┆ ---   │
-│ i64     ┆ str                        ┆ f64   │
-╞═════════╪════════════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01T00:00:00.000000 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02T00:00:00.000000 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03T00:00:00.000000 ┆ 6.0   │
-└─────────┴────────────────────────────┴───────┘
+```python exec="on" result="text" session="getting-started/reading"
+--8<-- "getting-started/python/reading-writing.py:csv"
 ```
 
 As we can see above, Polars made the datetimes a `string`. We can tell Polars to parse dates, when reading the csv, to ensure the date becomes a datetime. The example can be found below:
@@ -78,19 +70,8 @@ As we can see above, Polars made the datetimes a `string`. We can tell Polars to
     --8<-- "getting-started/node/reading-writing.js:csv2"
     ```
 
-```
-shape: (3, 3)
-┌─────────┬─────────────────────┬───────┐
-│ integer ┆ date                ┆ float │
-│ ---     ┆ ---                 ┆ ---   │
-│ i64     ┆ datetime[μs]        ┆ f64   │
-╞═════════╪═════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02 00:00:00 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
-└─────────┴─────────────────────┴───────┘
+```python exec="on" result="text" session="getting-started/reading"
+--8<-- "getting-started/python/reading-writing.py:csv2"
 ```
 
 #### JSON
@@ -116,19 +97,8 @@ shape: (3, 3)
     --8<-- "getting-started/node/reading-writing.js:json"
     ```
 
-```
-shape: (3, 3)
-┌─────────┬─────────────────────┬───────┐
-│ integer ┆ date                ┆ float │
-│ ---     ┆ ---                 ┆ ---   │
-│ i64     ┆ str                 ┆ f64   │
-╞═════════╪═════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02 00:00:00 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
-└─────────┴─────────────────────┴───────┘
+```python exec="on" result="text" session="getting-started/reading"
+--8<-- "getting-started/python/reading-writing.py:json"
 ```
 
 #### Parquet
@@ -153,17 +123,6 @@ shape: (3, 3)
     --8<-- "getting-started/node/reading-writing.js:parquet"
     ```
 
-```
-shape: (3, 3)
-┌─────────┬─────────────────────┬───────┐
-│ integer ┆ date                ┆ float │
-│ ---     ┆ ---                 ┆ ---   │
-│ i64     ┆ datetime[μs]        ┆ f64   │
-╞═════════╪═════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02 00:00:00 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
-└─────────┴─────────────────────┴───────┘
+```python exec="on" result="text" session="getting-started/reading"
+--8<-- "getting-started/python/reading-writing.py:parquet"
 ```

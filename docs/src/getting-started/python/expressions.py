@@ -1,3 +1,4 @@
+# --8<-- [start:setup]
 import polars as pl
 import numpy as np
 from datetime import datetime
@@ -16,6 +17,7 @@ df = pl.DataFrame({"a": np.arange(0, 8),
                         ], 
                 "d": [1, 2.0, np.NaN, np.NaN, 0, -5, -42, None]
                 })
+# --8<-- [end:setup]
 
 # --8<-- [start:select]
 df.select(
@@ -70,7 +72,6 @@ df2 = pl.DataFrame({
 
 # --8<-- [start:groupby]
 df2.groupby("y", maintain_order=True).count()
-print(df2)
 # --8<-- [end:groupby]
 
 # --8<-- [start:groupby2]

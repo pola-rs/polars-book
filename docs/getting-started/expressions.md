@@ -1,4 +1,4 @@
-## Expressions
+# Expressions
 
 `Expressions` are the core strength of `Polars`. The `expressions` offer a versatile structure that both solves easy queries and is easily extended to complex ones. Below we will cover the basic components that serve as building block (or in `Polars` terminology contexts) for all your queries:
 
@@ -28,29 +28,11 @@ To select a column we need to do two things. Define the `DataFrame` we want the 
     --8<-- "getting-started/node/expressions.js:select"
     ```
 
-```
-shape: (8, 4)
-┌─────┬──────────┬─────────────────────┬───────┐
-│ a   ┆ b        ┆ c                   ┆ d     │
-│ --- ┆ ---      ┆ ---                 ┆ ---   │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   │
-╞═════╪══════════╪═════════════════════╪═══════╡
-│ 0   ┆ 0.164545 ┆ 2022-12-01 00:00:00 ┆ 1.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 1   ┆ 0.747291 ┆ 2022-12-02 00:00:00 ┆ 2.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2   ┆ 0.889227 ┆ 2022-12-03 00:00:00 ┆ NaN   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3   ┆ 0.736651 ┆ 2022-12-04 00:00:00 ┆ NaN   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.099687 ┆ 2022-12-05 00:00:00 ┆ 0.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.965809 ┆ 2022-12-06 00:00:00 ┆ -5.0  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.93697  ┆ 2022-12-07 00:00:00 ┆ -42.0 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 7   ┆ 0.848925 ┆ 2022-12-08 00:00:00 ┆ null  │
-└─────┴──────────┴─────────────────────┴───────┘
+```python exec="on" result="text" session="getting-started/expressions"
+--8<-- "getting-started/python/expressions.py:setup"
+print(
+    --8<-- "getting-started/python/expressions.py:select"
+)
 ```
 
 You can also specify the specific columns that you want to return. There are two ways to do this. The first option is to create a `list` of column names, as seen below.
@@ -72,29 +54,10 @@ You can also specify the specific columns that you want to return. There are two
     --8<-- "getting-started/node/expressions.js:select2"
     ```
 
-```
-shape: (8, 2)
-┌─────┬──────────┐
-│ a   ┆ b        │
-│ --- ┆ ---      │
-│ i64 ┆ f64      │
-╞═════╪══════════╡
-│ 0   ┆ 0.164545 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 1   ┆ 0.747291 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 2   ┆ 0.889227 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 3   ┆ 0.736651 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.099687 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.965809 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.93697  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 7   ┆ 0.848925 │
-└─────┴──────────┘
+```python exec="on" result="text" session="getting-started/expressions"
+print(
+    --8<-- "getting-started/python/expressions.py:select2"
+)
 ```
 
 The second option is to specify each column within a `list` in the `select` statement. This option is shown below.
@@ -116,19 +79,10 @@ The second option is to specify each column within a `list` in the `select` stat
     --8<-- "getting-started/node/expressions.js:select3"
     ```
 
-```
-shape: (3, 2)
-┌─────┬──────────┐
-│ a   ┆ b        │
-│ --- ┆ ---      │
-│ i64 ┆ f64      │
-╞═════╪══════════╡
-│ 0   ┆ 0.164545 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 1   ┆ 0.747291 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 2   ┆ 0.889227 │
-└─────┴──────────┘
+```python exec="on" result="text" session="getting-started/expressions"
+print(
+    --8<-- "getting-started/python/expressions.py:select3"
+)
 ```
 
 If you want to exclude an entire column from your view, you can simply use `exclude` in your `select` statement.
@@ -150,29 +104,10 @@ If you want to exclude an entire column from your view, you can simply use `excl
     --8<-- "getting-started/node/expressions.js:exclude"
     ```
 
-```
-shape: (8, 3)
-┌──────────┬─────────────────────┬───────┐
-│ b        ┆ c                   ┆ d     │
-│ ---      ┆ ---                 ┆ ---   │
-│ f64      ┆ datetime[μs]        ┆ f64   │
-╞══════════╪═════════════════════╪═══════╡
-│ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0   │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0   │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN   │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 0.108093 ┆ 2022-12-08 00:00:00 ┆ null  │
-└──────────┴─────────────────────┴───────┘
+```python exec="on" result="text" session="getting-started/expressions"
+print(
+    --8<-- "getting-started/python/expressions.py:exclude"
+)
 ```
 
 
@@ -197,23 +132,10 @@ The `filter` option allows us to create a subset of the `DataFrame`. We use the 
     --8<-- "getting-started/node/expressions.js:filter"
     ```
 
-```
-shape: (5, 4)
-┌─────┬──────────┬─────────────────────┬───────┐
-│ a   ┆ b        ┆ c                   ┆ d     │
-│ --- ┆ ---      ┆ ---                 ┆ ---   │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   │
-╞═════╪══════════╪═════════════════════╪═══════╡
-│ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ NaN   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ NaN   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.0   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ -5.0  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ -42.0 │
-└─────┴──────────┴─────────────────────┴───────┘
+```python exec="on" result="text" session="getting-started/expressions"
+print(
+    --8<-- "getting-started/python/expressions.py:filter"
+)
 ```
 
 With `filter` you can also create more complex filters that include multiple columns.
@@ -235,17 +157,10 @@ With `filter` you can also create more complex filters that include multiple col
     --8<-- "getting-started/node/expressions.js:filter2"
     ```
 
-```
-shape: (2, 4)
-┌─────┬──────────┬─────────────────────┬─────┐
-│ a   ┆ b        ┆ c                   ┆ d   │
-│ --- ┆ ---      ┆ ---                 ┆ --- │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64 │
-╞═════╪══════════╪═════════════════════╪═════╡
-│ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 1.0 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 2.0 │
-└─────┴──────────┴─────────────────────┴─────┘
+```python exec="on" result="text" session="getting-started/expressions"
+print(
+    --8<-- "getting-started/python/expressions.py:filter2"
+)
 ```
 
 ### With_columns
@@ -269,29 +184,10 @@ shape: (2, 4)
     --8<-- "getting-started/node/expressions.js:with_columns"
     ```
 
-```
-shape: (8, 6)
-┌─────┬──────────┬─────────────────────┬───────┬──────────┬───────────┐
-│ a   ┆ b        ┆ c                   ┆ d     ┆ e        ┆ b+42      │
-│ --- ┆ ---      ┆ ---                 ┆ ---   ┆ ---      ┆ ---       │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64   ┆ f64      ┆ f64       │
-╞═════╪══════════╪═════════════════════╪═══════╪══════════╪═══════════╡
-│ 0   ┆ 0.606396 ┆ 2022-12-01 00:00:00 ┆ 1.0   ┆ 4.126554 ┆ 42.606396 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-│ 1   ┆ 0.404966 ┆ 2022-12-02 00:00:00 ┆ 2.0   ┆ 4.126554 ┆ 42.404966 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-│ 2   ┆ 0.619193 ┆ 2022-12-03 00:00:00 ┆ NaN   ┆ 4.126554 ┆ 42.619193 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-│ 3   ┆ 0.41586  ┆ 2022-12-04 00:00:00 ┆ NaN   ┆ 4.126554 ┆ 42.41586  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.35721  ┆ 2022-12-05 00:00:00 ┆ 0.0   ┆ 4.126554 ┆ 42.35721  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.726861 ┆ 2022-12-06 00:00:00 ┆ -5.0  ┆ 4.126554 ┆ 42.726861 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.201782 ┆ 2022-12-07 00:00:00 ┆ -42.0 ┆ 4.126554 ┆ 42.201782 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┤
-│ 7   ┆ 0.794286 ┆ 2022-12-08 00:00:00 ┆ null  ┆ 4.126554 ┆ 42.794286 │
-└─────┴──────────┴─────────────────────┴───────┴──────────┴───────────┘
+```python exec="on" result="text" session="getting-started/expressions"
+print(
+    --8<-- "getting-started/python/expressions.py:with_columns"
+)
 ```
 
 ### Groupby
@@ -315,29 +211,9 @@ We will create a new `DataFrame` for the Groupby functionality. This new `DataFr
     --8<-- "getting-started/node/expressions.js:dataframe2"
     ```
 
-```
-shape: (8, 2)
-┌─────┬─────┐
-│ x   ┆ y   │
-│ --- ┆ --- │
-│ i64 ┆ str │
-╞═════╪═════╡
-│ 0   ┆ A   │
-├╌╌╌╌╌┼╌╌╌╌╌┤
-│ 1   ┆ A   │
-├╌╌╌╌╌┼╌╌╌╌╌┤
-│ 2   ┆ A   │
-├╌╌╌╌╌┼╌╌╌╌╌┤
-│ 3   ┆ B   │
-├╌╌╌╌╌┼╌╌╌╌╌┤
-│ 4   ┆ B   │
-├╌╌╌╌╌┼╌╌╌╌╌┤
-│ 5   ┆ C   │
-├╌╌╌╌╌┼╌╌╌╌╌┤
-│ 6   ┆ X   │
-├╌╌╌╌╌┼╌╌╌╌╌┤
-│ 7   ┆ X   │
-└─────┴─────┘
+```python exec="on" result="text" session="getting-started/expressions"
+--8<-- "getting-started/python/expressions.py:dataframe2"
+print(df2)
 ```
 
 === ":fontawesome-brands-python: Python"
@@ -357,21 +233,10 @@ shape: (8, 2)
     --8<-- "getting-started/node/expressions.js:groupby"
     ```
 
-```
-shape: (4, 2)
-┌─────┬───────┐
-│ y   ┆ count │
-│ --- ┆ ---   │
-│ str ┆ u32   │
-╞═════╪═══════╡
-│ A   ┆ 3     │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ B   ┆ 2     │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ C   ┆ 1     │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ X   ┆ 2     │
-└─────┴───────┘
+```python exec="on" result="text" session="getting-started/expressions"
+print(
+    --8<-- "getting-started/python/expressions.py:groupby"
+)
 ```
 
 === ":fontawesome-brands-python: Python"
@@ -391,21 +256,10 @@ shape: (4, 2)
     --8<-- "getting-started/node/expressions.js:groupby2"
     ```
 
-```
-shape: (4, 3)
-┌─────┬───────┬─────┐
-│ y   ┆ count ┆ sum │
-│ --- ┆ ---   ┆ --- │
-│ str ┆ u32   ┆ i64 │
-╞═════╪═══════╪═════╡
-│ A   ┆ 3     ┆ 3   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ B   ┆ 2     ┆ 7   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ C   ┆ 1     ┆ 5   │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌┼╌╌╌╌╌┤
-│ X   ┆ 2     ┆ 13  │
-└─────┴───────┴─────┘
+```python exec="on" result="text" session="getting-started/expressions"
+print(
+    --8<-- "getting-started/python/expressions.py:groupby2"
+)    
 ```
 
 ### Combining operations
@@ -433,29 +287,8 @@ Below are some examples on how to combine operations to create the `DataFrame` y
     --8<-- "getting-started/node/expressions.js:combine"
     ```
 
-```
-shape: (8, 3)
-┌─────┬──────────┬──────────┐
-│ a   ┆ b        ┆ a * b    │
-│ --- ┆ ---      ┆ ---      │
-│ i64 ┆ f64      ┆ f64      │
-╞═════╪══════════╪══════════╡
-│ 0   ┆ 0.220182 ┆ 0.0      │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 1   ┆ 0.750839 ┆ 0.750839 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 2   ┆ 0.634639 ┆ 1.269277 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 3   ┆ 0.67404  ┆ 2.022121 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.102818 ┆ 0.41127  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.896408 ┆ 4.482038 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.062943 ┆ 0.377657 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 7   ┆ 0.108093 ┆ 0.756653 │
-└─────┴──────────┴──────────┘
+```python exec="on" result="text" session="getting-started/expressions"
+--8<-- "getting-started/python/expressions.py:combine"
 ```
 
 === ":fontawesome-brands-python: Python"
@@ -479,27 +312,6 @@ shape: (8, 3)
     ```
 
 
-```
-shape: (8, 4)
-┌─────┬──────────┬─────────────────────┬──────────┐
-│ a   ┆ b        ┆ c                   ┆ a * b    │
-│ --- ┆ ---      ┆ ---                 ┆ ---      │
-│ i64 ┆ f64      ┆ datetime[μs]        ┆ f64      │
-╞═════╪══════════╪═════════════════════╪══════════╡
-│ 0   ┆ 0.220182 ┆ 2022-12-01 00:00:00 ┆ 0.0      │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 1   ┆ 0.750839 ┆ 2022-12-02 00:00:00 ┆ 0.750839 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 2   ┆ 0.634639 ┆ 2022-12-03 00:00:00 ┆ 1.269277 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 3   ┆ 0.67404  ┆ 2022-12-04 00:00:00 ┆ 2.022121 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 4   ┆ 0.102818 ┆ 2022-12-05 00:00:00 ┆ 0.41127  │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 5   ┆ 0.896408 ┆ 2022-12-06 00:00:00 ┆ 4.482038 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 6   ┆ 0.062943 ┆ 2022-12-07 00:00:00 ┆ 0.377657 │
-├╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌┤
-│ 7   ┆ 0.108093 ┆ 2022-12-08 00:00:00 ┆ 0.756653 │
-└─────┴──────────┴─────────────────────┴──────────┘
+```python exec="on" result="text" session="getting-started/expressions"
+--8<-- "getting-started/python/expressions.py:combine2"
 ```

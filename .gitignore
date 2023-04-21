@@ -10,6 +10,8 @@ __pycache__
 *.png
 *.swp
 *.txt
+output.json
+*.parquet
 docs/people.md
 user_guide/src/examples/target
 .vscode

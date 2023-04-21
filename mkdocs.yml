@@ -14,6 +14,7 @@ theme:
 plugins:
   - search:
       lang: en
+  - markdown-exec
 extra:
   consent:
     title: Cookie consent
