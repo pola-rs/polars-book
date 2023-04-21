@@ -113,12 +113,12 @@ polars = { version = "0.26.1", features = ["lazy","temporal","describe","json","
                   are less cache efficient.
      - `cse` - Activate common subplan elimination optimization
  - IO related:
-    <!-- markdown-link-check-disable-next-line -->
+    <!-- markdown-link-check-disable -->
      - `serde` - Support for [serde](https://crates.io/crates/serde) serialization and deserialization.
                  Can be used for JSON and more serde supported serialization formats.
-    <!-- markdown-link-check-disable-next-line --> 
      - `serde-lazy` - Support for [serde](https://crates.io/crates/serde) serialization and deserialization.
                  Can be used for JSON and more serde supported serialization formats.
+    <!-- markdown-link-check-enable -->
      - `parquet` - Read Apache Parquet format
      - `json` - JSON serialization
      - `ipc` - Arrow's IPC format serialization
