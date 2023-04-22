@@ -13,23 +13,9 @@ In following simple example we calculate the annual average closing price of App
     --8<-- "user-guide/python/transformations/time-series/rolling.py:df"
     ```
 
-```text
-shape: (100, 2)
-┌────────────┬────────┐
-│ Date       ┆ Close  │
-│ ---        ┆ ---    │
-│ date       ┆ f64    │
-╞════════════╪════════╡
-│ 1981-02-23 ┆ 24.62  │
-│ 1981-05-06 ┆ 27.38  │
-│ 1981-05-18 ┆ 28.0   │
-│ 1981-09-25 ┆ 14.25  │
-│ …          ┆ …      │
-│ 2012-12-04 ┆ 575.85 │
-│ 2013-07-05 ┆ 417.42 │
-│ 2013-11-07 ┆ 512.49 │
-│ 2014-02-25 ┆ 522.06 │
-└────────────┴────────┘
+```python exec="on" result="text" session="user-guide/transformations/ts/rolling"
+--8<-- "user-guide/python/transformations/time-series/rolling.py:setup"
+--8<-- "user-guide/python/transformations/time-series/rolling.py:df"
 ```
 
 !!! info 
@@ -47,23 +33,8 @@ To get the annual average closing price we tell `groupby_dynamic` that we want t
 
 The annual average closing price is then:
 
-```text
-shape: (34, 2)
-┌────────────┬───────────┐
-│ Date       ┆ Close     │
-│ ---        ┆ ---       │
-│ date       ┆ f64       │
-╞════════════╪═══════════╡
-│ 1981-01-01 ┆ 23.5625   │
-│ 1982-01-01 ┆ 11.0      │
-│ 1983-01-01 ┆ 30.543333 │
-│ 1984-01-01 ┆ 27.583333 │
-│ …          ┆ …         │
-│ 2011-01-01 ┆ 368.225   │
-│ 2012-01-01 ┆ 560.965   │
-│ 2013-01-01 ┆ 464.955   │
-│ 2014-01-01 ┆ 522.06    │
-└────────────┴───────────┘
+```python exec="on" result="text" session="user-guide/transformations/ts/rolling"
+--8<-- "user-guide/python/transformations/time-series/rolling.py:groupby"
 ```
 
 ### Parameters for `groupby_dynamic`
@@ -147,24 +118,10 @@ Below we show an example where we use **groupby_dynamic** to compute:
     --8<-- "user-guide/python/transformations/time-series/rolling.py:groupbydyn"
     ```
 
-```text
-shape: (36, 3)
-┌─────────────────────┬─────────┬───────────────┐
-│ time                ┆ day/eom ┆ days_in_month │
-│ ---                 ┆ ---     ┆ ---           │
-│ datetime[μs]        ┆ u32     ┆ i64           │
-╞═════════════════════╪═════════╪═══════════════╡
-│ 2021-01-01 00:00:00 ┆ 30      ┆ 31            │
-│ 2021-01-01 00:00:00 ┆ 29      ┆ 31            │
-│ 2021-01-01 00:00:00 ┆ 28      ┆ 31            │
-│ 2021-02-01 00:00:00 ┆ 27      ┆ 28            │
-│ …                   ┆ …       ┆ …             │
-│ 2021-11-01 00:00:00 ┆ 27      ┆ 30            │
-│ 2021-12-01 00:00:00 ┆ 30      ┆ 31            │
-│ 2021-12-01 00:00:00 ┆ 29      ┆ 31            │
-│ 2021-12-01 00:00:00 ┆ 28      ┆ 31            │
-└─────────────────────┴─────────┴───────────────┘
+```python exec="on" result="text" session="user-guide/transformations/ts/rolling"
+--8<-- "user-guide/python/transformations/time-series/rolling.py:groupbydyn"
 ```
+
 
 ## Grouping by rolling windows
 
@@ -198,21 +155,8 @@ Below is an example with a dynamic groupby.
     --8<-- "user-guide/python/transformations/time-series/rolling.py:groupbyroll"
     ```
     
-```text
-shape: (7, 2)
-┌─────────────────────┬────────┐
-│ time                ┆ groups │
-│ ---                 ┆ ---    │
-│ datetime[μs]        ┆ str    │
-╞═════════════════════╪════════╡
-│ 2021-12-16 00:00:00 ┆ a      │
-│ 2021-12-16 00:30:00 ┆ a      │
-│ 2021-12-16 01:00:00 ┆ a      │
-│ 2021-12-16 01:30:00 ┆ b      │
-│ 2021-12-16 02:00:00 ┆ b      │
-│ 2021-12-16 02:30:00 ┆ a      │
-│ 2021-12-16 03:00:00 ┆ a      │
-└─────────────────────┴────────┘
+```python exec="on" result="text" session="user-guide/transformations/ts/rolling"
+--8<-- "user-guide/python/transformations/time-series/rolling.py:groupbyroll"
 ```
 
 === ":fontawesome-brands-python: Python"
@@ -220,19 +164,6 @@ shape: (7, 2)
     --8<-- "user-guide/python/transformations/time-series/rolling.py:groupbydyn2"
     ```
 
-```text
-shape: (7, 5)
-┌────────┬─────────────────────┬─────────────────────┬─────────────────────┬───────┐
-│ groups ┆ _lower_boundary     ┆ _upper_boundary     ┆ time                ┆ count │
-│ ---    ┆ ---                 ┆ ---                 ┆ ---                 ┆ ---   │
-│ str    ┆ datetime[μs]        ┆ datetime[μs]        ┆ datetime[μs]        ┆ u32   │
-╞════════╪═════════════════════╪═════════════════════╪═════════════════════╪═══════╡
-│ a      ┆ 2021-12-15 23:00:00 ┆ 2021-12-16 00:00:00 ┆ 2021-12-15 23:00:00 ┆ 1     │
-│ a      ┆ 2021-12-16 00:00:00 ┆ 2021-12-16 01:00:00 ┆ 2021-12-16 00:00:00 ┆ 3     │
-│ a      ┆ 2021-12-16 01:00:00 ┆ 2021-12-16 02:00:00 ┆ 2021-12-16 01:00:00 ┆ 1     │
-│ a      ┆ 2021-12-16 02:00:00 ┆ 2021-12-16 03:00:00 ┆ 2021-12-16 02:00:00 ┆ 2     │
-│ a      ┆ 2021-12-16 03:00:00 ┆ 2021-12-16 04:00:00 ┆ 2021-12-16 03:00:00 ┆ 1     │
-│ b      ┆ 2021-12-16 01:00:00 ┆ 2021-12-16 02:00:00 ┆ 2021-12-16 01:00:00 ┆ 2     │
-│ b      ┆ 2021-12-16 02:00:00 ┆ 2021-12-16 03:00:00 ┆ 2021-12-16 02:00:00 ┆ 1     │
-└────────┴─────────────────────┴─────────────────────┴─────────────────────┴───────┘
+```python exec="on" result="text" session="user-guide/transformations/ts/rolling"
+--8<-- "user-guide/python/transformations/time-series/rolling.py:groupbydyn2"
 ```

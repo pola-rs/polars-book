@@ -7,8 +7,9 @@ The schema of a Polars `DataFrame` or `LazyFrame` sets out the names of the colu
     --8<-- "user-guide/python/lazy/schema.py:schema"
     ```
 
-```text
-{'foo': Utf8, 'bar': Int64}
+```python exec="on" result="text" session="user-guide/lazy/schemas"
+--8<-- "user-guide/python/expressions/schema.py:setup"
+--8<-- "user-guide/python/expressions/schema.py:schema"
 ```
 
 The schema plays an important role in the lazy API.
@@ -61,14 +62,6 @@ We show how to deal with a non-lazy operation in this example where we:
     --8<-- "user-guide/python/lazy/schema.py:lazyeager"
     ```
 
-```text
-shape: (2, 4)
-┌─────┬──────┬──────┬──────┐
-│ id  ┆ jan  ┆ feb  ┆ mar  │
-│ --- ┆ ---  ┆ ---  ┆ ---  │
-│ str ┆ i64  ┆ i64  ┆ i64  │
-╞═════╪══════╪══════╪══════╡
-│ a   ┆ 0    ┆ null ┆ null │
-│ b   ┆ null ┆ 2    ┆ null │
-└─────┴──────┴──────┴──────┘
+```python exec="on" result="text" session="user-guide/lazy/schemas"
+--8<-- "user-guide/python/lazy/schema.py:lazyeager"
 ```

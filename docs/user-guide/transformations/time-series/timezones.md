@@ -35,16 +35,9 @@ Let's look at some examples of common operations:
     --8<-- "user-guide/python/transformations/time-series/timezones.py:example"
     ```
 
-```text
-shape: (2, 2)
-┌─────────────────────┬─────────────────────────┐
-│ tz_naive            ┆ tz_aware                │
-│ ---                 ┆ ---                     │
-│ datetime[μs]        ┆ datetime[μs, UTC]       │
-╞═════════════════════╪═════════════════════════╡
-│ 2021-03-27 03:00:00 ┆ 2021-03-27 03:00:00 UTC │
-│ 2021-03-28 03:00:00 ┆ 2021-03-28 03:00:00 UTC │
-└─────────────────────┴─────────────────────────┘
+```python exec="on" result="text" session="user-guide/transformations/ts/timezones"
+--8<-- "user-guide/python/transformations/time-series/timezones.py:setup"
+--8<-- "user-guide/python/transformations/time-series/timezones.py:example"
 ```
 
 === ":fontawesome-brands-python: Python"
@@ -52,14 +45,7 @@ shape: (2, 2)
     --8<-- "user-guide/python/transformations/time-series/timezones.py:example2"
     ```
 
-```text
-shape: (2, 3)
-┌───────────────────────────────┬──────────────────────────────┬─────────────────────┐
-│ replace time zone             ┆ convert time zone            ┆ unset time zone     │
-│ ---                           ┆ ---                          ┆ ---                 │
-│ datetime[μs, Europe/Brussels] ┆ datetime[μs, Asia/Kathmandu] ┆ datetime[μs]        │
-╞═══════════════════════════════╪══════════════════════════════╪═════════════════════╡
-│ 2021-03-27 03:00:00 CET       ┆ 2021-03-27 08:45:00 +0545    ┆ 2021-03-27 03:00:00 │
-│ 2021-03-28 03:00:00 CEST      ┆ 2021-03-28 08:45:00 +0545    ┆ 2021-03-28 03:00:00 │
-└───────────────────────────────┴──────────────────────────────┴─────────────────────┘
+```python exec="on" result="text" session="user-guide/transformations/ts/timezones"
+--8<-- "user-guide/python/transformations/time-series/timezones.py:setup"
+--8<-- "user-guide/python/transformations/time-series/timezones.py:example2"
 ```

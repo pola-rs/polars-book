@@ -19,21 +19,9 @@ Let's go through an example where we generate data at 30 minute intervals:
     --8<-- "user-guide/python/transformations/time-series/resampling.py:df"
     ```
 
-```text
-shape: (7, 3)
-┌─────────────────────┬────────┬────────┐
-│ time                ┆ groups ┆ values │
-│ ---                 ┆ ---    ┆ ---    │
-│ datetime[μs]        ┆ str    ┆ f64    │
-╞═════════════════════╪════════╪════════╡
-│ 2021-12-16 00:00:00 ┆ a      ┆ 1.0    │
-│ 2021-12-16 00:30:00 ┆ a      ┆ 2.0    │
-│ 2021-12-16 01:00:00 ┆ a      ┆ 3.0    │
-│ 2021-12-16 01:30:00 ┆ b      ┆ 4.0    │
-│ 2021-12-16 02:00:00 ┆ b      ┆ 5.0    │
-│ 2021-12-16 02:30:00 ┆ a      ┆ 6.0    │
-│ 2021-12-16 03:00:00 ┆ a      ┆ 7.0    │
-└─────────────────────┴────────┴────────┘
+```python exec="on" result="text" session="user-guide/transformations/ts/resampling"
+--8<-- "user-guide/python/transformations/time-series/resampling.py:setup"
+--8<-- "user-guide/python/transformations/time-series/resampling.py:df"
 ```
 
 Upsampling can be done by defining the new sampling interval. By upsampling we are adding in extra rows where we do not have data. As such upsampling by itself gives a DataFrame with nulls. These nulls can then be filled with a fill strategy or interpolation.
@@ -47,23 +35,8 @@ In this example we upsample from the original 30 minutes to 15 minutes and then 
     --8<-- "user-guide/python/transformations/time-series/resampling.py:upsample"
     ```
 
-```text
-shape: (13, 3)
-┌─────────────────────┬────────┬────────┐
-│ time                ┆ groups ┆ values │
-│ ---                 ┆ ---    ┆ ---    │
-│ datetime[μs]        ┆ str    ┆ f64    │
-╞═════════════════════╪════════╪════════╡
-│ 2021-12-16 00:00:00 ┆ a      ┆ 1.0    │
-│ 2021-12-16 00:15:00 ┆ a      ┆ 1.0    │
-│ 2021-12-16 00:30:00 ┆ a      ┆ 2.0    │
-│ 2021-12-16 00:45:00 ┆ a      ┆ 2.0    │
-│ …                   ┆ …      ┆ …      │
-│ 2021-12-16 02:15:00 ┆ b      ┆ 5.0    │
-│ 2021-12-16 02:30:00 ┆ a      ┆ 6.0    │
-│ 2021-12-16 02:45:00 ┆ a      ┆ 6.0    │
-│ 2021-12-16 03:00:00 ┆ a      ┆ 7.0    │
-└─────────────────────┴────────┴────────┘
+```python exec="on" result="text" session="user-guide/transformations/ts/resampling"
+--8<-- "user-guide/python/transformations/time-series/resampling.py:upsample"
 ```
 
 In this example we instead fill the nulls by linear interpolation:
@@ -73,21 +46,6 @@ In this example we instead fill the nulls by linear interpolation:
     --8<-- "user-guide/python/transformations/time-series/resampling.py:upsample2"
     ```
 
-```text
-shape: (13, 3)
-┌─────────────────────┬────────┬────────┐
-│ time                ┆ groups ┆ values │
-│ ---                 ┆ ---    ┆ ---    │
-│ datetime[μs]        ┆ str    ┆ f64    │
-╞═════════════════════╪════════╪════════╡
-│ 2021-12-16 00:00:00 ┆ a      ┆ 1.0    │
-│ 2021-12-16 00:15:00 ┆ a      ┆ 1.5    │
-│ 2021-12-16 00:30:00 ┆ a      ┆ 2.0    │
-│ 2021-12-16 00:45:00 ┆ a      ┆ 2.5    │
-│ …                   ┆ …      ┆ …      │
-│ 2021-12-16 02:15:00 ┆ b      ┆ 5.5    │
-│ 2021-12-16 02:30:00 ┆ a      ┆ 6.0    │
-│ 2021-12-16 02:45:00 ┆ a      ┆ 6.5    │
-│ 2021-12-16 03:00:00 ┆ a      ┆ 7.0    │
-└─────────────────────┴────────┴────────┘
+````python exec="on" result="text" session="user-guide/transformations/ts/resampling"
+--8<-- "user-guide/python/transformations/time-series/resampling.py:upsample2"
 ```

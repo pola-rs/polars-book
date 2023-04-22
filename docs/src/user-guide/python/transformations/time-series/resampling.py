@@ -1,6 +1,8 @@
+# --8<-- [start:setup]
 from datetime import datetime
 
 import polars as pl
+# --8<-- [end:setup]
 
 # --8<-- [start:df]
 df = pl.DataFrame(

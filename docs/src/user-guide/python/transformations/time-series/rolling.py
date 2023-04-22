@@ -1,5 +1,7 @@
+# --8<-- [start:setup]
 import polars as pl
 from datetime import datetime
+# --8<-- [end:setup]
 
 # --8<-- [start:df]
 df = pl.read_csv("docs/src/user-guide/appleStock.csv", try_parse_dates=True)
@@ -10,6 +12,7 @@ print(df)
 annual_average_df = df.groupby_dynamic("Date", every="1y").agg(pl.col("Close").mean())
 
 df_with_year = df.with_columns(pl.col("Date").dt.year().alias("year"))
+print(df_with_year)
 # --8<-- [end:groupby]
 
 # --8<-- [start:groupbydyn]

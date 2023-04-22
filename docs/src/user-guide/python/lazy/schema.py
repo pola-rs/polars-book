@@ -1,4 +1,6 @@
+# --8<-- [start:setup]
 import polars as pl
+# --8<-- [end:setup]
 
 # --8<-- [start:schema]
 q3 = pl.DataFrame({"foo": ["a", "b", "c"], "bar": [0, 1, 2]}).lazy()
@@ -21,4 +23,5 @@ lazy_eager_query = (
     .filter(pl.col("mar").is_null())
     .collect()
 )
+print(lazy_eager_query)
 # --8<-- [end:lazyeager]

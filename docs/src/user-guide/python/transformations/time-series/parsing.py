@@ -1,4 +1,6 @@
+# --8<-- [start:setup]
 import polars as pl
+# --8<-- [end:setup]
 
 # --8<-- [start:df]
 df = pl.read_csv("docs/src/user-guide/appleStock.csv", try_parse_dates=True)

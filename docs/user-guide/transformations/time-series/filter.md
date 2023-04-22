@@ -11,23 +11,8 @@ In the following example we use a time series of Apple stock prices.
     --8<-- "user-guide/python/transformations/time-series/filter.py:df"
     ```
 
-```text
-shape: (100, 2)
-┌────────────┬────────┐
-│ Date       ┆ Close  │
-│ ---        ┆ ---    │
-│ date       ┆ f64    │
-╞════════════╪════════╡
-│ 1981-02-23 ┆ 24.62  │
-│ 1981-05-06 ┆ 27.38  │
-│ 1981-05-18 ┆ 28.0   │
-│ 1981-09-25 ┆ 14.25  │
-│ …          ┆ …      │
-│ 2012-12-04 ┆ 575.85 │
-│ 2013-07-05 ┆ 417.42 │
-│ 2013-11-07 ┆ 512.49 │
-│ 2014-02-25 ┆ 522.06 │
-└────────────┴────────┘
+```python exec="on" result="text" session="user-guide/transformations/ts/filter"
+--8<-- "user-guide/python/transformations/time-series/filter.py:df"
 ```
 
 ## Filtering by single dates
@@ -40,15 +25,8 @@ in a filter expression:
     --8<-- "user-guide/python/transformations/time-series/filter.py:filter"
     ```
 
-```text
-shape: (1, 2)
-┌────────────┬───────┐
-│ Date       ┆ Close │
-│ ---        ┆ ---   │
-│ date       ┆ f64   │
-╞════════════╪═══════╡
-│ 1995-10-16 ┆ 36.13 │
-└────────────┴───────┘
+```python exec="on" result="text" session="user-guide/transformations/ts/filter"
+--8<-- "user-guide/python/transformations/time-series/filter.py:filter"
 ```
 
 Note we are using the lowercase `datetime` method rather than the uppercase `Datetime` data type.
@@ -62,16 +40,8 @@ We can filter by a range of dates using the `is_between` method in a filter expr
     --8<-- "user-guide/python/transformations/time-series/filter.py:range"
     ```
 
-```text
-shape: (2, 2)
-┌────────────┬───────┐
-│ Date       ┆ Close │
-│ ---        ┆ ---   │
-│ date       ┆ f64   │
-╞════════════╪═══════╡
-│ 1995-07-06 ┆ 47.0  │
-│ 1995-10-16 ┆ 36.13 │
-└────────────┴───────┘
+```python exec="on" result="text" session="user-guide/transformations/ts/filter"
+--8<-- "user-guide/python/transformations/time-series/filter.py:range"
 ```
 
 ## Filtering with negative dates
@@ -85,13 +55,6 @@ does not. So for filtering, you should use attributes in the `.dt` namespace:
     --8<-- "user-guide/python/transformations/time-series/filter.py:negative"
     ```
 
-```text
-shape: (1, 2)
-┌─────────────┬────────┐
-│ ts          ┆ values │
-│ ---         ┆ ---    │
-│ date        ┆ i64    │
-╞═════════════╪════════╡
-│ -1400-03-02 ┆ 4      │
-└─────────────┴────────┘
+```python exec="on" result="text" session="user-guide/transformations/ts/filter"
+--8<-- "user-guide/python/transformations/time-series/filter.py:negative"
 ```
