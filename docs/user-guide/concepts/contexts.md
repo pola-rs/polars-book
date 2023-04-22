@@ -16,19 +16,9 @@ The examples below are performed on the following `DataFrame`:
     ```
 
 
-```
-shape: (5, 4)
-┌──────┬───────┬──────────┬────────┐
-│ nrs  ┆ names ┆ random   ┆ groups │
-│ ---  ┆ ---   ┆ ---      ┆ ---    │
-│ i64  ┆ str   ┆ f64      ┆ str    │
-╞══════╪═══════╪══════════╪════════╡
-│ 1    ┆ foo   ┆ 0.154163 ┆ A      │
-│ 2    ┆ ham   ┆ 0.74005  ┆ A      │
-│ 3    ┆ spam  ┆ 0.263315 ┆ B      │
-│ null ┆ egg   ┆ 0.533739 ┆ C      │
-│ 5    ┆ null  ┆ 0.014575 ┆ B      │
-└──────┴───────┴──────────┴────────┘
+```python exec="on" result="text" session="user-guide/contexts"
+--8<-- "user-guide/python/concepts/contexts.py:setup"
+--8<-- "user-guide/python/concepts/contexts.py:dataframe"
 ```
 
 ## Select 
@@ -42,19 +32,8 @@ A `Series` of a length of 1 will be broadcasted to match the height of the `Data
     --8<-- "user-guide/python/concepts/contexts.py:select"
     ```
 
-```
-shape: (5, 4)
-┌─────┬───────┬────────────┬────────┐
-│ nrs ┆ names ┆ first name ┆ 10xnrs │
-│ --- ┆ ---   ┆ ---        ┆ ---    │
-│ i64 ┆ str   ┆ str        ┆ f64    │
-╞═════╪═══════╪════════════╪════════╡
-│ 11  ┆ null  ┆ foo        ┆ 27.5   │
-│ 11  ┆ egg   ┆ foo        ┆ 27.5   │
-│ 11  ┆ foo   ┆ foo        ┆ 27.5   │
-│ 11  ┆ ham   ┆ foo        ┆ 27.5   │
-│ 11  ┆ spam  ┆ foo        ┆ 27.5   │
-└─────┴───────┴────────────┴────────┘
+```python exec="on" result="text" session="user-guide/contexts"
+--8<-- "user-guide/python/concepts/contexts.py:select"
 ```
 
 As you can see from the query the `select` context is very powerfull and allows you to perform arbitrary expressions independent (and in parallel) of each other. 
@@ -66,19 +45,8 @@ Similarly to the `select` statement there is the `with_columns` statement which 
     --8<-- "user-guide/python/concepts/contexts.py:with_columns"
     ```
 
-```
-shape: (5, 6)
-┌──────┬───────┬──────────┬────────┬─────────┬───────┐
-│ nrs  ┆ names ┆ random   ┆ groups ┆ nrs_sum ┆ count │
-│ ---  ┆ ---   ┆ ---      ┆ ---    ┆ ---     ┆ ---   │
-│ i64  ┆ str   ┆ f64      ┆ str    ┆ i64     ┆ u32   │
-╞══════╪═══════╪══════════╪════════╪═════════╪═══════╡
-│ 1    ┆ foo   ┆ 0.154163 ┆ A      ┆ 11      ┆ 5     │
-│ 2    ┆ ham   ┆ 0.74005  ┆ A      ┆ 11      ┆ 5     │
-│ 3    ┆ spam  ┆ 0.263315 ┆ B      ┆ 11      ┆ 5     │
-│ null ┆ egg   ┆ 0.533739 ┆ C      ┆ 11      ┆ 5     │
-│ 5    ┆ null  ┆ 0.014575 ┆ B      ┆ 11      ┆ 5     │
-└──────┴───────┴──────────┴────────┴─────────┴───────┘
+```python exec="on" result="text" session="user-guide/contexts"
+--8<-- "user-guide/python/concepts/contexts.py:with_columns"
 ```
 
 ## Filter 
@@ -90,16 +58,8 @@ In the `filter` context you filter the existing dataframe based on arbritary exp
     --8<-- "user-guide/python/concepts/contexts.py:filter"
     ```
 
-```
-shape: (2, 4)
-┌──────┬───────┬──────────┬────────┐
-│ nrs  ┆ names ┆ random   ┆ groups │
-│ ---  ┆ ---   ┆ ---      ┆ ---    │
-│ i64  ┆ str   ┆ f64      ┆ str    │
-╞══════╪═══════╪══════════╪════════╡
-│ 3    ┆ spam  ┆ 0.263315 ┆ B      │
-│ 5    ┆ null  ┆ 0.014575 ┆ B      │
-└──────┴───────┴──────────┴────────┘
+```python exec="on" result="text" session="user-guide/contexts"
+--8<-- "user-guide/python/concepts/contexts.py:filter"
 ```
 
 ## Groupby / Aggregation 
@@ -111,17 +71,8 @@ In the `groupby` context expressions work on groups and thus may yield results o
     --8<-- "user-guide/python/concepts/contexts.py:groupby"
     ```
 
-```
-shape: (3, 5)
-┌────────┬──────┬───────┬────────────┬────────────────┐
-│ groups ┆ nrs  ┆ count ┆ random_sum ┆ reversed names │
-│ ---    ┆ ---  ┆ ---   ┆ ---        ┆ ---            │
-│ str    ┆ i64  ┆ u32   ┆ f64        ┆ list[str]      │
-╞════════╪══════╪═══════╪════════════╪════════════════╡
-│ B      ┆ 8    ┆ 2     ┆ 0.263315   ┆ [null, "spam"] │
-│ C      ┆ null ┆ 1     ┆ 0.533739   ┆ ["egg"]        │
-│ A      ┆ 3    ┆ 2     ┆ 0.894213   ┆ ["ham", "foo"] │
-└────────┴──────┴───────┴────────────┴────────────────┘
+```python exec="on" result="text" session="user-guide/contexts"
+--8<-- "user-guide/python/concepts/contexts.py:groupby"
 ```
 
 As you can see from the result all expressions are applied to the group defined by the `groupby` context. Besides the standard `groupby`, `groupby_dynamic`, and `groupby_rolling` are also entrances to the groupby context.

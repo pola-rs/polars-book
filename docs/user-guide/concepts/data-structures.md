@@ -24,16 +24,8 @@ The snippet below shows how to create a simple named `Series` object.
     --8<-- "getting-started/node/series-dataframes.js:series"
     ```
 
-```
-shape: (5,)
-Series: 'a' [i64]
-[
-    1
-    2
-    3
-    4
-    5
-]
+```python exec="on" result="text" session="getting-started/series"
+--8<-- "getting-started/python/series-dataframes.py:series"
 ```
 
 ## DataFrame
@@ -57,24 +49,8 @@ A `DataFrame` is a 2-dimensional data structure that is backed by a `Series`, an
     --8<-- "getting-started/node/series-dataframes.js:dataframe"
     ```
 
-```
-shape: (3, 3)
-┌─────────┬─────────────────────┬───────┐
-│ integer ┆ date                ┆ float │
-│ ---     ┆ ---                 ┆ ---   │
-│ i64     ┆ datetime[μs]        ┆ f64   │
-╞═════════╪═════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02 00:00:00 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 4       ┆ 2022-01-04 00:00:00 ┆ 7.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 5       ┆ 2022-01-05 00:00:00 ┆ 8.0   │
-└─────────┴─────────────────────┴───────┘
-
+```python exec="on" result="text" session="getting-started/series"
+--8<-- "getting-started/python/series-dataframes.py:dataframe"
 ```
 
 ### Viewing data
@@ -103,19 +79,8 @@ The `head` function shows by default the first 5 rows of a `DataFrame`. You can 
     ```
 
 
-```
-shape: (3, 3)
-┌─────────┬─────────────────────┬───────┐
-│ integer ┆ date                ┆ float │
-│ ---     ┆ ---                 ┆ ---   │
-│ i64     ┆ datetime[μs]        ┆ f64   │
-╞═════════╪═════════════════════╪═══════╡
-│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2       ┆ 2022-01-02 00:00:00 ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
-└─────────┴─────────────────────┴───────┘
+```python exec="on" result="text" session="getting-started/series"
+--8<-- "getting-started/python/series-dataframes.py:head"
 ```
 
 #### Tail
@@ -139,19 +104,8 @@ The `tail` function shows the last 5 rows of a `DataFrame`. You can also specify
     --8<-- "getting-started/node/series-dataframes.js:tail"
     ```
 
-```
-shape: (3, 3)
-┌─────────┬─────────────────────┬───────┐
-│ integer ┆ date                ┆ float │
-│ ---     ┆ ---                 ┆ ---   │
-│ i64     ┆ datetime[μs]        ┆ f64   │
-╞═════════╪═════════════════════╪═══════╡
-│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 4       ┆ 2022-01-04 00:00:00 ┆ 7.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 5       ┆ 2022-01-05 00:00:00 ┆ 8.0   │
-└─────────┴─────────────────────┴───────┘
+```python exec="on" result="text" session="getting-started/series"
+--8<-- "getting-started/python/series-dataframes.py:tail"
 ```
 
 #### Sample
@@ -175,17 +129,8 @@ If you want to get an impression of the data of your `DataFrame`, you can also u
     --8<-- "getting-started/node/series-dataframes.js:sample"
     ```
 
-```
-shape: (2, 3)
-┌─────────┬─────────────────────┬───────┐
-│ integer ┆ date                ┆ float │
-│ ---     ┆ ---                 ┆ ---   │
-│ f64     ┆ datetime[ms]        ┆ f64   │
-╞═════════╪═════════════════════╪═══════╡
-│ 1.0     ┆ 2022-01-31 23:00:00 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ 2.0     ┆ 2022-02-01 23:00:00 ┆ 5.0   │
-└─────────┴─────────────────────┴───────┘
+```python exec="on" result="text" session="getting-started/series"
+--8<-- "getting-started/python/series-dataframes.py:sample"
 ```
 
 #### Describe
@@ -209,21 +154,7 @@ shape: (2, 3)
     --8<-- "getting-started/node/series-dataframes.js:describe"
     ```
 
+```python exec="on" result="text" session="getting-started/series"
+--8<-- "getting-started/python/series-dataframes.py:describe"
 ```
-shape: (5, 4)
-┌──────────┬─────────┬─────────────────────┬───────┐
-│ describe ┆ integer ┆ date                ┆ float │
-│ ---      ┆ ---     ┆ ---                 ┆ ---   │
-│ str      ┆ f64     ┆ datetime[ms]        ┆ f64   │
-╞══════════╪═════════╪═════════════════════╪═══════╡
-│ mean     ┆ 2.0     ┆ null                ┆ 5.0   │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ std      ┆ 1.0     ┆ null                ┆ 1.0   │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ min      ┆ 1.0     ┆ 2022-01-31 23:00:00 ┆ 4.0   │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ max      ┆ 3.0     ┆ 2022-02-02 23:00:00 ┆ 6.0   │
-├╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌┤
-│ median   ┆ 2.0     ┆ null                ┆ 5.0   │
-└──────────┴─────────┴─────────────────────┴───────┘
-```
+
