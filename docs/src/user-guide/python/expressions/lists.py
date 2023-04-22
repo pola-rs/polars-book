@@ -21,10 +21,9 @@ print(out)
 
 # --8<-- [start:expression]
 # the percentage rank expression
-rank_pct = pl.element().rank(descending=True) / pl.col("").count()
+rank_pct = pl.element().rank(descending=True) / pl.col("*").count()
 
-
-grades.with_columns(
+out = grades.with_columns(
     # create the list of homogeneous data
     pl.concat_list(pl.all().exclude("student")).alias("all_grades")
 ).select([
@@ -33,4 +32,5 @@ grades.with_columns(
     # compute the rank by calling `arr.eval`
     pl.col("all_grades").arr.eval(rank_pct, parallel=True).alias("grades_rank")
 ])
+print(out)
 # --8<-- [end:expression]

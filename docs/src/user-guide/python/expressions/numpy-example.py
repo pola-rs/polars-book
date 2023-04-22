@@ -8,3 +8,4 @@ out = df.select(
         np.log(pl.all()).suffix("_log"),
     ]
 )
+print(out)

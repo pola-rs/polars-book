@@ -93,7 +93,7 @@ nav:
       - user-guide/io/index.md
     - SQL:
       - user-guide/sql/index.md
-    - Migration:
+    - Migrating:
       - user-guide/migration/pandas.md
       - user-guide/migration/spark.md
     - Misc:

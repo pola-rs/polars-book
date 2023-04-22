@@ -33,6 +33,7 @@ q = (
 )
 
 df = q.collect()
+print(df)
 # --8<-- [end:basic]
 
 # --8<-- [start:conditional]
@@ -50,6 +51,7 @@ q = (
 )
 
 df = q.collect()
+print(df)
 # --8<-- [end:conditional]
 
 # --8<-- [start:nested]
@@ -63,6 +65,7 @@ q = (
 )
 
 df = q.collect()
+print(df)
 # --8<-- [end:nested]
 
 # --8<-- [start:filter]
@@ -89,6 +92,7 @@ q = (
 )
 
 df = q.collect()
+print(df)
 # --8<-- [end:filter]
 
 # --8<-- [start:sort]
@@ -110,6 +114,7 @@ q = (
 )
 
 df = q.collect()
+print(df)
 # --8<-- [end:sort]
 
 # --8<-- [start:sort2]
@@ -132,6 +137,7 @@ q = (
 )
 
 df = q.collect()
+print(df)
 # --8<-- [end:sort2]
 
 # --8<-- [start:sort3]
@@ -156,4 +162,5 @@ q = (
 )
 
 df = q.collect()
+print(df)
 # --8<-- [end:sort3]

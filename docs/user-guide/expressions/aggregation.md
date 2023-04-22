@@ -38,9 +38,7 @@ we have a nice summary overview.
 ```python exec="on" result="text" session="user-guide/expressions"
 --8<-- "user-guide/python/expressions/aggregation.py:setup"
 --8<-- "user-guide/python/expressions/aggregation.py:dataframe"
-print(
-    --8<-- "user-guide/python/expressions/aggregation.py:basic"
-)
+--8<-- "user-guide/python/expressions/aggregation.py:basic"
 ```
 
 #### Conditionals
@@ -54,10 +52,8 @@ that in the aggregation without the need of `lambda` or grooming the `DataFrame`
     --8<-- "user-guide/python/expressions/aggregation.py:conditional"
     ```
 
-```python exec="on" result="text" session="user-guide/expressions"
-print(
-    --8<-- "user-guide/python/expressions/aggregation.py:conditional"
-)
+```python exec="on" result="text" session="user-guide/expressions
+--8<-- "user-guide/python/expressions/aggregation.py:conditional"
 ```
 
 Similarly,  this could also be done with a nested GROUPBY, but that doesn't help show off some of these nice features. 😉
@@ -68,9 +64,7 @@ Similarly,  this could also be done with a nested GROUPBY, but that doesn't help
     ```
 
 ```python exec="on" result="text" session="user-guide/expressions"
-print(
-    --8<-- "user-guide/python/expressions/aggregation.py:nested"
-)
+--8<-- "user-guide/python/expressions/aggregation.py:nested"
 ```
 
 #### Filtering
@@ -90,9 +84,7 @@ In the example below we show how that can be done.
     ```
 
 ```python exec="on" result="text" session="user-guide/expressions"
-print(
-    --8<-- "user-guide/python/expressions/aggregation.py:filter"
-)
+--8<-- "user-guide/python/expressions/aggregation.py:filter"
 ```
 
 #### Sorting
@@ -116,9 +108,7 @@ However, **if** we also want to sort the names alphabetically, this breaks. Luck
     ```
 
 ```python exec="on" result="text" session="user-guide/expressions"
-print(
-    --8<-- "user-guide/python/expressions/aggregation.py:sort2"
-)
+--8<-- "user-guide/python/expressions/aggregation.py:sort2"
 ```
 
 We can even sort by another column in the `groupby` context. If we want to know if the alphabetically sorted name is male or female we could add: `pl.col("gender").sort_by("first_name").first().alias("gender")`
@@ -129,9 +119,7 @@ We can even sort by another column in the `groupby` context. If we want to know 
     ```
 
 ```python exec="on" result="text" session="user-guide/expressions"
-print(
-    --8<-- "user-guide/python/expressions/aggregation.py:sort3"
-)
+--8<-- "user-guide/python/expressions/aggregation.py:sort3"
 ```
 
 ### Do not kill parallelization

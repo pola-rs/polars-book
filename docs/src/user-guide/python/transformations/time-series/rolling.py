@@ -16,7 +16,7 @@ print(df_with_year)
 # --8<-- [end:groupby]
 
 # --8<-- [start:groupbydyn]
-df = pl.date_range(low=datetime(2021, 1, 1), high=datetime(2021, 12, 31), interval="1d", name="time").to_frame()
+df = pl.date_range(start=datetime(2021, 1, 1), end=datetime(2021, 12, 31), interval="1d", name="time").to_frame()
 
 out = (
     df.groupby_dynamic("time", every="1mo", period="1mo", closed="left")
@@ -35,8 +35,8 @@ print(out)
 df = pl.DataFrame(
     {
         "time": pl.date_range(
-            low=datetime(2021, 12, 16),
-            high=datetime(2021, 12, 16, 3),
+            start=datetime(2021, 12, 16),
+            end=datetime(2021, 12, 16, 3),
             interval="30m",
         ),
         "groups": ["a", "a", "a", "b", "b", "a", "a"],

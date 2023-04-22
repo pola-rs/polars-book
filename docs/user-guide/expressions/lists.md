@@ -50,9 +50,7 @@ Note that we must `select` the list's element from the context. When we apply ex
     ```
 
 ```python exec="on" result="text" session="user-guide/lists"
-print(
-    --8<-- "user-guide/python/expressions/lists.py:expression"
-)
+--8<-- "user-guide/python/expressions/lists.py:expression"
 ```
 
 Note that this solution works for any expressions/operation you want to do row wise.

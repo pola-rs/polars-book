@@ -8,8 +8,8 @@ The schema of a Polars `DataFrame` or `LazyFrame` sets out the names of the colu
     ```
 
 ```python exec="on" result="text" session="user-guide/lazy/schemas"
---8<-- "user-guide/python/expressions/schema.py:setup"
---8<-- "user-guide/python/expressions/schema.py:schema"
+--8<-- "user-guide/python/lazy/schema.py:setup"
+--8<-- "user-guide/python/lazy/schema.py:schema"
 ```
 
 The schema plays an important role in the lazy API.

@@ -21,6 +21,7 @@ When loading from a CSV file `Polars` attempts to parse dates and times if the `
     ```
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/parsing"
+--8<-- "user-guide/python/transformations/time-series/parsing.py:setup"
 --8<-- "user-guide/python/transformations/time-series/parsing.py:df"
 ```
 
