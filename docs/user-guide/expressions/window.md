@@ -11,23 +11,8 @@ snippet below contains information about pokemon and has the following columns:
     --8<-- "user-guide/python/expressions/window.py:pokemon"
     ```
 
-```
-shape: (163, 13)
-┌─────┬───────────────────────┬─────────┬────────┬───┬─────────┬───────┬────────────┬───────────┐
-│ #   ┆ Name                  ┆ Type 1  ┆ Type 2 ┆ … ┆ Sp. Def ┆ Speed ┆ Generation ┆ Legendary │
-│ --- ┆ ---                   ┆ ---     ┆ ---    ┆   ┆ ---     ┆ ---   ┆ ---        ┆ ---       │
-│ i64 ┆ str                   ┆ str     ┆ str    ┆   ┆ i64     ┆ i64   ┆ i64        ┆ bool      │
-╞═════╪═══════════════════════╪═════════╪════════╪═══╪═════════╪═══════╪════════════╪═══════════╡
-│ 1   ┆ Bulbasaur             ┆ Grass   ┆ Poison ┆ … ┆ 65      ┆ 45    ┆ 1          ┆ false     │
-│ 2   ┆ Ivysaur               ┆ Grass   ┆ Poison ┆ … ┆ 80      ┆ 60    ┆ 1          ┆ false     │
-│ 3   ┆ Venusaur              ┆ Grass   ┆ Poison ┆ … ┆ 100     ┆ 80    ┆ 1          ┆ false     │
-│ 3   ┆ VenusaurMega Venusaur ┆ Grass   ┆ Poison ┆ … ┆ 120     ┆ 80    ┆ 1          ┆ false     │
-│ …   ┆ …                     ┆ …       ┆ …      ┆ … ┆ …       ┆ …     ┆ …          ┆ …         │
-│ 147 ┆ Dratini               ┆ Dragon  ┆ null   ┆ … ┆ 50      ┆ 50    ┆ 1          ┆ false     │
-│ 148 ┆ Dragonair             ┆ Dragon  ┆ null   ┆ … ┆ 70      ┆ 70    ┆ 1          ┆ false     │
-│ 149 ┆ Dragonite             ┆ Dragon  ┆ Flying ┆ … ┆ 100     ┆ 80    ┆ 1          ┆ false     │
-│ 150 ┆ Mewtwo                ┆ Psychic ┆ null   ┆ … ┆ 90      ┆ 130   ┆ 1          ┆ true      │
-└─────┴───────────────────────┴─────────┴────────┴───┴─────────┴───────┴────────────┴───────────┘
+```python exec="on" result="text" session="user-guide/window"
+--8<-- "user-guide/python/expressions/window.py:pokemon"
 ```
 
 ## Groupby Aggregations in selection
@@ -47,23 +32,10 @@ The best part is, this won't cost you anything. The computed groups are cached a
     --8<-- "user-guide/python/expressions/window.py:groupby"
     ```
 
-```
-shape: (163, 5)
-┌─────────┬────────┬────────────────────┬─────────────────────────────────┬────────────┐
-│ Type 1  ┆ Type 2 ┆ avg_attack_by_type ┆ avg_defense_by_type_combination ┆ avg_attack │
-│ ---     ┆ ---    ┆ ---                ┆ ---                             ┆ ---        │
-│ str     ┆ str    ┆ f64                ┆ f64                             ┆ f64        │
-╞═════════╪════════╪════════════════════╪═════════════════════════════════╪════════════╡
-│ Grass   ┆ Poison ┆ 72.923077          ┆ 67.8                            ┆ 75.349693  │
-│ Grass   ┆ Poison ┆ 72.923077          ┆ 67.8                            ┆ 75.349693  │
-│ Grass   ┆ Poison ┆ 72.923077          ┆ 67.8                            ┆ 75.349693  │
-│ Grass   ┆ Poison ┆ 72.923077          ┆ 67.8                            ┆ 75.349693  │
-│ …       ┆ …      ┆ …                  ┆ …                               ┆ …          │
-│ Dragon  ┆ null   ┆ 94.0               ┆ 55.0                            ┆ 75.349693  │
-│ Dragon  ┆ null   ┆ 94.0               ┆ 55.0                            ┆ 75.349693  │
-│ Dragon  ┆ Flying ┆ 94.0               ┆ 95.0                            ┆ 75.349693  │
-│ Psychic ┆ null   ┆ 53.875             ┆ 51.428571                       ┆ 75.349693  │
-└─────────┴────────┴────────────────────┴─────────────────────────────────┴────────────┘
+```python exec="on" result="text" session="user-guide/window"
+print(
+    --8<-- "user-guide/python/expressions/window.py:groupby"
+)
 ```
 
 ## Operations per group
@@ -78,21 +50,8 @@ Let's filter out some rows to make this more clear.
     --8<-- "user-guide/python/expressions/window.py:operations"
     ```
 
-```
-shape: (7, 3)
-┌─────────────────────┬────────┬───────┐
-│ Name                ┆ Type 1 ┆ Speed │
-│ ---                 ┆ ---    ┆ ---   │
-│ str                 ┆ str    ┆ i64   │
-╞═════════════════════╪════════╪═══════╡
-│ Slowpoke            ┆ Water  ┆ 15    │
-│ Slowbro             ┆ Water  ┆ 30    │
-│ SlowbroMega Slowbro ┆ Water  ┆ 30    │
-│ Exeggcute           ┆ Grass  ┆ 40    │
-│ Exeggutor           ┆ Grass  ┆ 55    │
-│ Starmie             ┆ Water  ┆ 115   │
-│ Jynx                ┆ Ice    ┆ 95    │
-└─────────────────────┴────────┴───────┘
+```python exec="on" result="text" session="user-guide/window"
+--8<-- "user-guide/python/expressions/window.py:operations"
 ```
 
 
@@ -105,21 +64,8 @@ that each pokemon within a group are sorted by `Speed` in `ascending` order. Unf
     --8<-- "user-guide/python/expressions/window.py:sort"
     ```
 
-```
-shape: (7, 3)
-┌─────────────────────┬────────┬───────┐
-│ Name                ┆ Type 1 ┆ Speed │
-│ ---                 ┆ ---    ┆ ---   │
-│ str                 ┆ str    ┆ i64   │
-╞═════════════════════╪════════╪═══════╡
-│ Starmie             ┆ Water  ┆ 115   │
-│ Slowpoke            ┆ Water  ┆ 30    │
-│ SlowbroMega Slowbro ┆ Water  ┆ 30    │
-│ Exeggutor           ┆ Grass  ┆ 55    │
-│ Exeggcute           ┆ Grass  ┆ 40    │
-│ Slowbro             ┆ Water  ┆ 15    │
-│ Jynx                ┆ Ice    ┆ 95    │
-└─────────────────────┴────────┴───────┘
+```python exec="on" result="text" session="user-guide/window"
+--8<-- "user-guide/python/expressions/window.py:sort"
 ```
 
 `Polars` keeps track of each group's location and maps the expressions to the proper row locations. This will also work over different groups in a single `select`.
@@ -153,24 +99,10 @@ For more exercise, below are some window functions for us to compute:
     --8<-- "user-guide/python/expressions/window.py:examples"
     ```
 
+```python exec="on" result="text" session="user-guide/window"
+--8<-- "user-guide/python/expressions/window.py:examples"
 ```
-shape: (43, 4)
-┌────────┬─────────────────────┬─────────────────┬─────────────────────────┐
-│ Type 1 ┆ fastest/group       ┆ strongest/group ┆ sorted_by_alphabet      │
-│ ---    ┆ ---                 ┆ ---             ┆ ---                     │
-│ str    ┆ str                 ┆ str             ┆ str                     │
-╞════════╪═════════════════════╪═════════════════╪═════════════════════════╡
-│ Bug    ┆ Paras               ┆ Metapod         ┆ Beedrill                │
-│ Bug    ┆ Metapod             ┆ Kakuna          ┆ BeedrillMega Beedrill   │
-│ Bug    ┆ Parasect            ┆ Caterpie        ┆ Butterfree              │
-│ Dragon ┆ Dratini             ┆ Dratini         ┆ Dragonair               │
-│ …      ┆ …                   ┆ …               ┆ …                       │
-│ Rock   ┆ Omanyte             ┆ Omastar         ┆ Geodude                 │
-│ Water  ┆ Slowpoke            ┆ Magikarp        ┆ Blastoise               │
-│ Water  ┆ Slowbro             ┆ Tentacool       ┆ BlastoiseMega Blastoise │
-│ Water  ┆ SlowbroMega Slowbro ┆ Horsea          ┆ Cloyster                │
-└────────┴─────────────────────┴─────────────────┴─────────────────────────┘
-```
+
 
 ## Flattened window function
 

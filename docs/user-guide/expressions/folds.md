@@ -14,17 +14,9 @@ Let's start with an example by implementing the `sum` operation ourselves, with 
     --8<-- "user-guide/python/expressions/folds.py:mansum"
     ```
 
-```
-shape: (3, 1)
-┌─────┐
-│ sum │
-│ --- │
-│ i64 │
-╞═════╡
-│ 11  │
-│ 22  │
-│ 33  │
-└─────┘
+```python exec="on" result="text" session="user-guide/folds"
+--8<-- "user-guide/python/expressions/folds.py:setup"
+--8<-- "user-guide/python/expressions/folds.py:mansum"
 ```
 
 
@@ -39,15 +31,8 @@ In the case where you'd want to apply a condition/predicate on all columns in a 
     --8<-- "user-guide/python/expressions/folds.py:conditional"
     ```
 
-```
-shape: (1, 2)
-┌─────┬─────┐
-│ a   ┆ b   │
-│ --- ┆ --- │
-│ i64 ┆ i64 │
-╞═════╪═════╡
-│ 3   ┆ 2   │
-└─────┴─────┘
+```python exec="on" result="text" session="user-guide/folds"
+--8<-- "user-guide/python/expressions/folds.py:conditional"
 ```
 
 In the snippet we filter all rows where **each** column value is `> 1`.
@@ -63,15 +48,6 @@ Therefore, we recommend using the `concat_str` expression for this.
     --8<-- "user-guide/python/expressions/folds.py:string"
     ```
 
-```
-shape: (3, 1)
-┌─────┐
-│ a   │
-│ --- │
-│ str │
-╞═════╡
-│ a1  │
-│ b2  │
-│ c3  │
-└─────┘
+```python exec="on" result="text" session="user-guide/folds"
+--8<-- "user-guide/python/expressions/folds.py:string"
 ```

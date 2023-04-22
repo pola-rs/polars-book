@@ -17,19 +17,11 @@ Let's say we have the following data:
     --8<-- "user-guide/python/expressions/lists.py:dataframe"
     ```
 
+```python exec="on" result="text" session="user-guide/lists"
+--8<-- "user-guide/python/expressions/lists.py:setup"
+--8<-- "user-guide/python/expressions/lists.py:dataframe"
 ```
-shape: (4, 4)
-┌─────────┬────────────┬─────────┬───────────┐
-│ student ┆ arithmetic ┆ biology ┆ geography │
-│ ---     ┆ ---        ┆ ---     ┆ ---       │
-│ str     ┆ i64        ┆ i64     ┆ i64       │
-╞═════════╪════════════╪═════════╪═══════════╡
-│ bas     ┆ 10         ┆ 4       ┆ 8         │
-│ laura   ┆ 5          ┆ 6       ┆ 4         │
-│ tim     ┆ 6          ┆ 2       ┆ 9         │
-│ jenny   ┆ 8          ┆ 7       ┆ 7         │
-└─────────┴────────────┴─────────┴───────────┘
-```
+
 
 If we want to compute the `rank` of all the columns except for `"student"`, we can collect those into a `list` data type:
 
@@ -40,18 +32,8 @@ This would give:
     --8<-- "user-guide/python/expressions/lists.py:rank"
     ```
 
-```
-shape: (4, 1)
-┌────────────┐
-│ all_grades │
-│ ---        │
-│ list[i64]  │
-╞════════════╡
-│ [10, 4, 8] │
-│ [5, 6, 4]  │
-│ [6, 2, 9]  │
-│ [8, 7, 7]  │
-└────────────┘
+```python exec="on" result="text" session="user-guide/lists"
+--8<-- "user-guide/python/expressions/lists.py:rank"
 ```
 
 ## Running polars expression on list elements
@@ -67,21 +49,10 @@ Note that we must `select` the list's element from the context. When we apply ex
     --8<-- "user-guide/python/expressions/lists.py:expression"
     ```
 
-```
-shape: (4, 5)
-┌─────────┬────────────┬─────────┬───────────┬────────────────────────────────┐
-│ student ┆ arithmetic ┆ biology ┆ geography ┆ grades_rank                    │
-│ ---     ┆ ---        ┆ ---     ┆ ---       ┆ ---                            │
-│ str     ┆ i64        ┆ i64     ┆ i64       ┆ list [f32]                     │
-╞═════════╪════════════╪═════════╪═══════════╪════════════════════════════════╡
-│ bas     ┆ 10         ┆ 4       ┆ 8         ┆ [0.333333, 1.0, 0.666667]      │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┤
-│ laura   ┆ 5          ┆ 6       ┆ 4         ┆ [0.666667, 0.333333, 1.0]      │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┤
-│ tim     ┆ 6          ┆ 2       ┆ 9         ┆ [0.666667, 1.0, 0.333333]      │
-├╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┤
-│ jenny   ┆ 8          ┆ 7       ┆ 7         ┆ [0.333333, 0.833333, 0.833333] │
-└─────────┴────────────┴─────────┴───────────┴────────────────────────────────┘
+```python exec="on" result="text" session="user-guide/lists"
+print(
+    --8<-- "user-guide/python/expressions/lists.py:expression"
+)
 ```
 
 Note that this solution works for any expressions/operation you want to do row wise.

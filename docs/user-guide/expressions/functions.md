@@ -9,20 +9,11 @@ In the examples below we will use the following `DataFrame`:
     --8<-- "user-guide/python/expressions/functions.py:dataframe"
     ```
 
+```python exec="on" result="text" session="user-guide/functions"
+--8<-- "user-guide/python/expressions/functions.py:setup"
+--8<-- "user-guide/python/expressions/functions.py:dataframe"
 ```
-shape: (5, 4)
-┌──────┬───────┬──────────┬────────┐
-│ nrs  ┆ names ┆ random   ┆ groups │
-│ ---  ┆ ---   ┆ ---      ┆ ---    │
-│ i64  ┆ str   ┆ f64      ┆ str    │
-╞══════╪═══════╪══════════╪════════╡
-│ 1    ┆ foo   ┆ 0.154163 ┆ A      │
-│ 2    ┆ ham   ┆ 0.74005  ┆ A      │
-│ 3    ┆ spam  ┆ 0.263315 ┆ B      │
-│ null ┆ egg   ┆ 0.533739 ┆ C      │
-│ 5    ┆ null  ┆ 0.014575 ┆ B      │
-└──────┴───────┴──────────┴────────┘
-```
+
 
 #### Column Selection
 
@@ -42,19 +33,8 @@ There are various convenience methods to select multiple or all columns.
     --8<-- "user-guide/python/expressions/functions.py:exclude"
     ```
 
-```
-shape: (5, 3)
-┌──────┬───────┬──────────┐
-│ nrs  ┆ names ┆ random   │
-│ ---  ┆ ---   ┆ ---      │
-│ i64  ┆ str   ┆ f64      │
-╞══════╪═══════╪══════════╡
-│ 1    ┆ foo   ┆ 0.154163 │
-│ 2    ┆ ham   ┆ 0.74005  │
-│ 3    ┆ spam  ┆ 0.263315 │
-│ null ┆ egg   ┆ 0.533739 │
-│ 5    ┆ spam  ┆ 0.014575 │
-└──────┴───────┴──────────┘
+```python exec="on" result="text" session="user-guide/functions"
+--8<-- "user-guide/python/expressions/functions.py:exclude"
 ```
 
 #### Column Naming
@@ -66,19 +46,8 @@ By default if you perform a expression it will keep the same name as the origina
     --8<-- "user-guide/python/expressions/functions.py:samename"
     ```
 
-```
-shape: (5, 1)
-┌──────┐
-│ nrs  │
-│ ---  │
-│ i64  │
-╞══════╡
-│ 6    │
-│ 7    │
-│ 8    │
-│ null │
-│ 10   │
-└──────┘
+```python exec="on" result="text" session="user-guide/functions"
+--8<-- "user-guide/python/expressions/functions.py:samename"
 ```
 
 This might get problematic in case you use the same column muliple times in your expression as the output columns will get duplicated. For example the following query will fail.
@@ -88,8 +57,8 @@ This might get problematic in case you use the same column muliple times in your
     --8<-- "user-guide/python/expressions/functions.py:samenametwice"
     ```
 
-```
-column with name 'nrs' has more than one occurrences
+```python exec="on" result="text" session="user-guide/functions"
+--8<-- "user-guide/python/expressions/functions.py:samenametwice"
 ```
 
 You can change the output name of an expression by using the `alias` function 
@@ -99,19 +68,8 @@ You can change the output name of an expression by using the `alias` function
     --8<-- "user-guide/python/expressions/functions.py:samenamealias"
     ```
 
-```
-shape: (5, 2)
-┌─────────┬─────────┐
-│ nrs + 5 ┆ nrs - 5 │
-│ ---     ┆ ---     │
-│ i64     ┆ i64     │
-╞═════════╪═════════╡
-│ 6       ┆ -4      │
-│ 7       ┆ -3      │
-│ 8       ┆ -2      │
-│ null    ┆ null    │
-│ 10      ┆ 0       │
-└─────────┴─────────┘
+```python exec="on" result="text" session="user-guide/functions"
+--8<-- "user-guide/python/expressions/functions.py:samenamealias"
 ```
 
 In case of multiple columns for example when using `all()` or `col(*)` you can apply a mapping function `map_alias`  to change the original column name into something else. In case you want to add a suffix (`suffix()`) or prefix (`prefix()`) these are also build in. 
@@ -131,15 +89,8 @@ There are two ways two count unique values in `Polars` one is an exact methodolo
     --8<-- "user-guide/python/expressions/functions.py:countunique"
     ```
 
-```
-shape: (1, 2)
-┌────────┬───────────────┐
-│ unique ┆ unique_approx │
-│ ---    ┆ ---           │
-│ u32    ┆ u32           │
-╞════════╪═══════════════╡
-│ 4      ┆ 4             │
-└────────┴───────────────┘
+```python exec="on" result="text" session="user-guide/functions"
+--8<-- "user-guide/python/expressions/functions.py:countunique"
 ```
 
 #### Conditionals
@@ -150,17 +101,7 @@ shape: (1, 2)
     ``` python
     --8<-- "user-guide/python/expressions/functions.py:conditional"
     ```
-```
-shape: (5, 2)
-┌──────┬─────────────┐
-│ nrs  ┆ conditional │
-│ ---  ┆ ---         │
-│ i64  ┆ bool        │
-╞══════╪═════════════╡
-│ 1    ┆ false       │
-│ 2    ┆ false       │
-│ 3    ┆ true        │
-│ null ┆ false       │
-│ 5    ┆ true        │
-└──────┴─────────────┘
+
+```python exec="on" result="text" session="user-guide/functions"
+--8<-- "user-guide/python/expressions/functions.py:conditional"
 ```

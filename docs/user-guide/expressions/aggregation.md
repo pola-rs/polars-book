@@ -35,19 +35,12 @@ we have a nice summary overview.
     --8<-- "user-guide/python/expressions/aggregation.py:basic"
     ```
 
-```
-shape: (5, 4)
-┌────────────┬───────┬───────────────────┬───────────┐
-│ first_name ┆ count ┆ gender            ┆ last_name │
-│ ---        ┆ ---   ┆ ---               ┆ ---       │
-│ cat        ┆ u32   ┆ list[cat]         ┆ str       │
-╞════════════╪═══════╪═══════════════════╪═══════════╡
-│ John       ┆ 1256  ┆ ["M", "M", … "M"] ┆ Walker    │
-│ William    ┆ 1022  ┆ ["M", "M", … "M"] ┆ Few       │
-│ James      ┆ 714   ┆ ["M", "M", … "M"] ┆ Armstrong │
-│ Thomas     ┆ 454   ┆ ["M", "M", … "M"] ┆ Tucker    │
-│ Charles    ┆ 439   ┆ ["M", "M", … "M"] ┆ Carroll   │
-└────────────┴───────┴───────────────────┴───────────┘
+```python exec="on" result="text" session="user-guide/expressions"
+--8<-- "user-guide/python/expressions/aggregation.py:setup"
+--8<-- "user-guide/python/expressions/aggregation.py:dataframe"
+print(
+    --8<-- "user-guide/python/expressions/aggregation.py:basic"
+)
 ```
 
 #### Conditionals
@@ -61,19 +54,10 @@ that in the aggregation without the need of `lambda` or grooming the `DataFrame`
     --8<-- "user-guide/python/expressions/aggregation.py:conditional"
     ```
 
-```text
-shape: (5, 3)
-┌───────┬──────┬─────┐
-│ state ┆ anti ┆ pro │
-│ ---   ┆ ---  ┆ --- │
-│ cat   ┆ u32  ┆ u32 │
-╞═══════╪══════╪═════╡
-│ CT    ┆ 0    ┆ 3   │
-│ NJ    ┆ 0    ┆ 3   │
-│ NC    ┆ 1    ┆ 2   │
-│ VA    ┆ 3    ┆ 1   │
-│ SC    ┆ 0    ┆ 1   │
-└───────┴──────┴─────┘
+```python exec="on" result="text" session="user-guide/expressions"
+print(
+    --8<-- "user-guide/python/expressions/aggregation.py:conditional"
+)
 ```
 
 Similarly,  this could also be done with a nested GROUPBY, but that doesn't help show off some of these nice features. 😉
@@ -83,19 +67,10 @@ Similarly,  this could also be done with a nested GROUPBY, but that doesn't help
     --8<-- "user-guide/python/expressions/aggregation.py:nested"
     ```
 
-```
-shape: (5, 3)
-┌───────┬─────────────────────┬───────┐
-│ state ┆ party               ┆ count │
-│ ---   ┆ ---                 ┆ ---   │
-│ cat   ┆ cat                 ┆ u32   │
-╞═══════╪═════════════════════╪═══════╡
-│ CT    ┆ Pro-Administration  ┆ 3     │
-│ VA    ┆ Anti-Administration ┆ 3     │
-│ NJ    ┆ Pro-Administration  ┆ 3     │
-│ NC    ┆ Pro-Administration  ┆ 2     │
-│ VA    ┆ Pro-Administration  ┆ 1     │
-└───────┴─────────────────────┴───────┘
+```python exec="on" result="text" session="user-guide/expressions"
+print(
+    --8<-- "user-guide/python/expressions/aggregation.py:nested"
+)
 ```
 
 #### Filtering
@@ -114,19 +89,10 @@ In the example below we show how that can be done.
     --8<-- "user-guide/python/expressions/aggregation.py:filter"
     ```
 
-```text
-shape: (5, 5)
-┌───────┬────────────────┬────────────────┬────────┬──────────┐
-│ state ┆ avg M birthday ┆ avg F birthday ┆ # male ┆ # female │
-│ ---   ┆ ---            ┆ ---            ┆ ---    ┆ ---      │
-│ cat   ┆ f64            ┆ f64            ┆ u32    ┆ u32      │
-╞═══════╪════════════════╪════════════════╪════════╪══════════╡
-│ DE    ┆ 181.593407     ┆ null           ┆ 97     ┆ 0        │
-│ VA    ┆ 191.542781     ┆ 65.2           ┆ 430    ┆ 5        │
-│ SC    ┆ 183.018349     ┆ 121.8          ┆ 247    ┆ 5        │
-│ MD    ┆ 187.280899     ┆ 93.375         ┆ 298    ┆ 8        │
-│ PA    ┆ 179.724846     ┆ 91.857143      ┆ 1050   ┆ 7        │
-└───────┴────────────────┴────────────────┴────────┴──────────┘
+```python exec="on" result="text" session="user-guide/expressions"
+print(
+    --8<-- "user-guide/python/expressions/aggregation.py:filter"
+)
 ```
 
 #### Sorting
@@ -138,19 +104,8 @@ It's common to see a `DataFrame` being sorted for the sole purpose of managing t
     --8<-- "user-guide/python/expressions/aggregation.py:sort"
     ```
 
-```
-shape: (5, 3)
-┌───────┬────────────────┬───────────────────┐
-│ state ┆ youngest       ┆ oldest            │
-│ ---   ┆ ---            ┆ ---               │
-│ cat   ┆ str            ┆ str               │
-╞═══════╪════════════════╪═══════════════════╡
-│ DE    ┆ John Carney    ┆ Samuel White      │
-│ VA    ┆ Scott Taylor   ┆ William Grayson   │
-│ SC    ┆ Joe Cunningham ┆ Ralph Izard       │
-│ MD    ┆ Frank Kratovil ┆ Benjamin Contee   │
-│ PA    ┆ Conor Lamb     ┆ Thomas Fitzsimons │
-└───────┴────────────────┴───────────────────┘
+```python exec="on" result="text" session="user-guide/expressions"
+--8<-- "user-guide/python/expressions/aggregation.py:sort"
 ```
 
 However, **if** we also want to sort the names alphabetically, this breaks. Luckily we can sort in a `groupby` context separate from the `DataFrame`.
@@ -160,19 +115,10 @@ However, **if** we also want to sort the names alphabetically, this breaks. Luck
     --8<-- "user-guide/python/expressions/aggregation.py:sort2"
     ```
 
-```
-shape: (5, 4)
-┌───────┬────────────────┬───────────────────┬────────────────────┐
-│ state ┆ youngest       ┆ oldest            ┆ alphabetical_first │
-│ ---   ┆ ---            ┆ ---               ┆ ---                │
-│ cat   ┆ str            ┆ str               ┆ str                │
-╞═══════╪════════════════╪═══════════════════╪════════════════════╡
-│ DE    ┆ John Carney    ┆ Samuel White      ┆ Albert Polk        │
-│ VA    ┆ Scott Taylor   ┆ William Grayson   ┆ A. McEachin        │
-│ SC    ┆ Joe Cunningham ┆ Ralph Izard       ┆ Abraham Nott       │
-│ MD    ┆ Frank Kratovil ┆ Benjamin Contee   ┆ Albert Blakeney    │
-│ PA    ┆ Conor Lamb     ┆ Thomas Fitzsimons ┆ Aaron Kreider      │
-└───────┴────────────────┴───────────────────┴────────────────────┘
+```python exec="on" result="text" session="user-guide/expressions"
+print(
+    --8<-- "user-guide/python/expressions/aggregation.py:sort2"
+)
 ```
 
 We can even sort by another column in the `groupby` context. If we want to know if the alphabetically sorted name is male or female we could add: `pl.col("gender").sort_by("first_name").first().alias("gender")`
@@ -182,19 +128,10 @@ We can even sort by another column in the `groupby` context. If we want to know 
     --8<-- "user-guide/python/expressions/aggregation.py:sort3"
     ```
 
-```
-shape: (5, 5)
-┌───────┬────────────────┬───────────────────┬────────────────────┬────────┐
-│ state ┆ youngest       ┆ oldest            ┆ alphabetical_first ┆ gender │
-│ ---   ┆ ---            ┆ ---               ┆ ---                ┆ ---    │
-│ cat   ┆ str            ┆ str               ┆ str                ┆ cat    │
-╞═══════╪════════════════╪═══════════════════╪════════════════════╪════════╡
-│ DE    ┆ John Carney    ┆ Samuel White      ┆ Albert Polk        ┆ M      │
-│ VA    ┆ Scott Taylor   ┆ William Grayson   ┆ A. McEachin        ┆ M      │
-│ SC    ┆ Joe Cunningham ┆ Ralph Izard       ┆ Abraham Nott       ┆ M      │
-│ MD    ┆ Frank Kratovil ┆ Benjamin Contee   ┆ Albert Blakeney    ┆ M      │
-│ PA    ┆ Conor Lamb     ┆ Thomas Fitzsimons ┆ Aaron Kreider      ┆ M      │
-└───────┴────────────────┴───────────────────┴────────────────────┴────────┘
+```python exec="on" result="text" session="user-guide/expressions"
+print(
+    --8<-- "user-guide/python/expressions/aggregation.py:sort3"
+)
 ```
 
 ### Do not kill parallelization

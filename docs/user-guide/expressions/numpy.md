@@ -13,17 +13,8 @@ This means that if a function is not provided by `Polars`, we can use `NumPy` an
     ```
 
 
-```
-shape: (3, 2)
-┌──────────┬──────────┐
-│ a_log    ┆ b_log    │
-│ ---      ┆ ---      │
-│ f64      ┆ f64      │
-╞══════════╪══════════╡
-│ 0.0      ┆ 1.386294 │
-│ 0.693147 ┆ 1.609438 │
-│ 1.098612 ┆ 1.791759 │
-└──────────┴──────────┘
+```python exec="on" result="text" session="user-guide/numpy"
+--8<-- "user-guide/python/expressions/numpy-example.py"
 ```
 
 ### Interoperability

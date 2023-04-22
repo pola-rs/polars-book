@@ -1,4 +1,6 @@
+# --8<-- [start:setup]
 import polars as pl
+# --8<-- [end:setup]
 
 # --8<-- [start:mansum]
 df = pl.DataFrame(

@@ -39,20 +39,9 @@ Use cases for `map` in the `groupby` context are slim. They are only used for pe
     --8<-- "user-guide/python/expressions/user-defined-functions.py:dataframe"
     ```
 
-```
-shape: (3, 2)
-┌──────┬────────┐
-│ keys ┆ values │
-│ ---  ┆ ---    │
-│ str  ┆ i64    │
-╞══════╪════════╡
-│ a    ┆ 10     │
-├╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┤
-│ a    ┆ 7      │
-├╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┤
-│ b    ┆ 1      │
-└──────┴────────┘
-
+```python exec="on" result="text" session="user-guide/udf"
+--8<-- "user-guide/python/expressions/user-defined-functions.py:setup"
+--8<-- "user-guide/python/expressions/user-defined-functions.py:dataframe"
 ```
 
 In the snippet above we groupby the `"keys"` column. That means we have the following groups:
@@ -109,16 +98,8 @@ So with `apply` we should be able to fix our example:
     --8<-- "user-guide/python/expressions/user-defined-functions.py:apply"
     ```
 
-```text
-shape: (2, 3)
-┌──────┬────────────┬──────────────────┐
-│ keys ┆ shift_map  ┆ shift_expression │
-│ ---  ┆ ---        ┆ ---              │
-│ str  ┆ list[i64]  ┆ list[i64]        │
-╞══════╪════════════╪══════════════════╡
-│ a    ┆ [null, 10] ┆ [null, 10]       │
-│ b    ┆ [null]     ┆ [null]           │
-└──────┴────────────┴──────────────────┘
+```python exec="on" result="text" session="user-guide/udf"
+--8<-- "user-guide/python/expressions/user-defined-functions.py:apply"
 ```
 
 And observe, a valid result! 🎉
@@ -146,18 +127,10 @@ Every iteration the result of the increment will be added to the element value.
     --8<-- "user-guide/python/expressions/user-defined-functions.py:counter"
     ```
 
-```text
-shape: (3, 2)
-┌────────────────┬───────────────┐
-│ solution_apply ┆ solution_expr │
-│ ---            ┆ ---           │
-│ i64            ┆ i64           │
-╞════════════════╪═══════════════╡
-│ 11             ┆ 11            │
-│ 9              ┆ 9             │
-│ 4              ┆ 4             │
-└────────────────┴───────────────┘
+```python exec="on" result="text" session="user-guide/udf"
+--8<-- "user-guide/python/expressions/user-defined-functions.py:counter"
 ```
+
 
 ### Combining multiple column values
 
@@ -180,19 +153,9 @@ In Python, those would be passed as `dict` to the calling python function and ca
     --8<-- "user-guide/python/expressions/user-defined-functions.py:combine"
     ```
 
-```text
-shape: (3, 2)
-┌────────────────┬───────────────┐
-│ solution_apply ┆ solution_expr │
-│ ---            ┆ ---           │
-│ i64            ┆ i64           │
-╞════════════════╪═══════════════╡
-│ 11             ┆ 11            │
-│ 8              ┆ 8             │
-│ 2              ┆ 2             │
-└────────────────┴───────────────┘
+```python exec="on" result="text" session="user-guide/udf"
+--8<-- "user-guide/python/expressions/user-defined-functions.py:combine"
 ```
-
 ### Return types?
 
 Custom python functions are black boxes for polars. We really don't know what kind of black arts you are doing, so we have

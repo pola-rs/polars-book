@@ -15,17 +15,11 @@ You can manually define a missing value with the python `None` value:
     --8<-- "user-guide/python/expressions/null.py:dataframe"
     ```
 
+```python exec="on" result="text" session="user-guide/null"
+--8<-- "user-guide/python/expressions/null.py:setup"
+--8<-- "user-guide/python/expressions/null.py:dataframe"
 ```
-shape: (2, 1)
-┌───────┐
-│ value │
-│ ---   │
-│ i64   │
-╞═══════╡
-│ 1     │
-│ null  │
-└───────┘
-```
+
 
 !!! info
     In `Pandas` the value for missing data depends on the dtype of the column. In `Polars` missing data is always represented as a `null` value.
@@ -42,15 +36,8 @@ The first piece of metadata is the `null_count` - this is the number of rows wit
     ```
 
 
-```text
-shape: (1, 1)
-┌───────┐
-│ value │
-│ ---   │
-│ u32   │
-╞═══════╡
-│ 1     │
-└───────┘
+```python exec="on" result="text" session="user-guide/null"
+--8<-- "user-guide/python/expressions/null.py:count"
 ```
 
 The `null_count` method can be called on a `DataFrame`, a column from a `DataFrame` or a `Series`. The `null_count`method is a cheap operation as `null_count` is already calculated for the underlying Arrow array.
@@ -66,16 +53,8 @@ You can return a `Series` based on the validity bitmap for a column in a `DataFr
     ```
 
 
-```text
-shape: (2, 1)
-┌───────┐
-│ value │
-│ ---   │
-│ bool  │
-╞═══════╡
-│ false │
-│ true  │
-└───────┘
+```python exec="on" result="text" session="user-guide/null"
+--8<-- "user-guide/python/expressions/null.py:isnull"
 ```
 
 The `is_null` method is a cheap operation that does not require scanning the full column for `null` values. This is because the validity bitmap already exists and can be returned as a Boolean array.
@@ -97,17 +76,8 @@ We illustrate each way to fill nulls by defining a simple `DataFrame` with a mis
     ```
 
 
-```text
-shape: (3, 2)
-┌──────┬──────┐
-│ col1 ┆ col2 │
-│ ---  ┆ ---  │
-│ i64  ┆ i64  │
-╞══════╪══════╡
-│ 1    ┆ 1    │
-│ 2    ┆ null │
-│ 3    ┆ 3    │
-└──────┴──────┘
+```python exec="on" result="text" session="user-guide/null"
+--8<-- "user-guide/python/expressions/null.py:dataframe2"
 ```
 
 ### Fill with specified literal value
@@ -120,17 +90,9 @@ We can fill the missing data with a specified literal value with `pl.lit`:
     ```
 
 
-```text
-shape: (3, 2)
-┌──────┬──────┐
-│ col1 ┆ col2 │
-│ ---  ┆ ---  │
-│ i64  ┆ i64  │
-╞══════╪══════╡
-│ 1    ┆ 1    │
-│ 2    ┆ 2    │
-│ 3    ┆ 3    │
-└──────┴──────┘
+
+```python exec="on" result="text" session="user-guide/null"
+--8<-- "user-guide/python/expressions/null.py:fill"
 ```
 
 ### Fill with a strategy
@@ -143,17 +105,8 @@ We can fill the missing data with a strategy such as filling forward:
     ```
 
 
-```text
-shape: (3, 2)
-┌──────┬──────┐
-│ col1 ┆ col2 │
-│ ---  ┆ ---  │
-│ i64  ┆ i64  │
-╞══════╪══════╡
-│ 1    ┆ 1    │
-│ 2    ┆ 1    │
-│ 3    ┆ 3    │
-└──────┴──────┘
+```python exec="on" result="text" session="user-guide/null"
+--8<-- "user-guide/python/expressions/null.py:fillstrategy"
 ```
 
 You can find other fill strategies in the API docs.
@@ -169,17 +122,8 @@ to fill nulls with the median value from that column:
     ```
 
 
-```text
-shape: (3, 2)
-┌──────┬──────┐
-│ col1 ┆ col2 │
-│ ---  ┆ ---  │
-│ i64  ┆ f64  │
-╞══════╪══════╡
-│ 1    ┆ 1.0  │
-│ 2    ┆ 2.0  │
-│ 3    ┆ 3.0  │
-└──────┴──────┘
+```python exec="on" result="text" session="user-guide/null"
+--8<-- "user-guide/python/expressions/null.py:fillexpr"
 ```
 
 In this case the column is cast from integer to float because the median is a float statistic.
@@ -194,17 +138,8 @@ In addition, we can fill nulls with interpolation (without using the `fill_null`
     ```
 
 
-```text
-shape: (3, 2)
-┌──────┬──────┐
-│ col1 ┆ col2 │
-│ ---  ┆ ---  │
-│ i64  ┆ i64  │
-╞══════╪══════╡
-│ 1    ┆ 1    │
-│ 2    ┆ 2    │
-│ 3    ┆ 3    │
-└──────┴──────┘
+```python exec="on" result="text" session="user-guide/null"
+--8<-- "user-guide/python/expressions/null.py:fillinterpolate"
 ```
 
 
@@ -218,18 +153,8 @@ Missing data in a `Series` has a `null` value. However, you can use `NotaNumber`
     ```
 
 
-```text
-shape: (4, 1)
-┌───────┐
-│ value │
-│ ---   │
-│ f64   │
-╞═══════╡
-│ 1.0   │
-│ NaN   │
-│ NaN   │
-│ 3.0   │
-└───────┘
+```python exec="on" result="text" session="user-guide/null"
+--8<-- "user-guide/python/expressions/null.py:nan"
 ```
 
 !!! info
@@ -249,13 +174,6 @@ One further difference between `null` and `NaN` values is that taking the `mean`
     --8<-- "user-guide/python/expressions/null.py:nanfill"
     ```
 
-```text
-shape: (1, 1)
-┌───────┐
-│ value │
-│ ---   │
-│ f64   │
-╞═══════╡
-│ 2.0   │
-└───────┘
+```python exec="on" result="text" session="user-guide/null"
+--8<-- "user-guide/python/expressions/null.py:nanfill"
 ```

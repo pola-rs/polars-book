@@ -1,5 +1,7 @@
+# --8<-- [start:setup]
 import polars as pl
 from datetime import date
+# --8<-- [end:setup]
 
 # --8<-- [start:dataframe]
 url = "https://theunitedstates.io/congress-legislators/legislators-historical.csv"

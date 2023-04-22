@@ -1,7 +1,11 @@
+# --8<-- [start:setup]
+
 import polars as pl
 import numpy as np
 
 np.random.seed(12)
+# --8<-- [end:setup]
+
 
 # --8<-- [start:dataframe]
 df = pl.DataFrame(
