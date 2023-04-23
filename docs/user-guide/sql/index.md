@@ -1,4 +1,4 @@
-# Polars SQL
+# SQL
 
 ## Starting the SQL Context
 

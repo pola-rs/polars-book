@@ -90,7 +90,14 @@ nav:
       - user-guide/lazy/execution.md
       - user-guide/lazy/streaming.md
     - IO:
-      - user-guide/io/index.md
+      - user-guide/io/csv.md
+      - user-guide/io/parquet.md
+      - user-guide/io/json.md
+      - user-guide/io/multiple.md
+      - user-guide/io/database.md
+      - user-guide/io/aws.md
+      - user-guide/io/bigquery.md
+      - user-guide/io/postgres.md
     - SQL:
       - user-guide/sql/index.md
     - Migrating:
