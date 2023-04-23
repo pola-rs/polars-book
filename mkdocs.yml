@@ -76,7 +76,9 @@ nav:
       - user-guide/expressions/numpy.md
     - Transformations:
       - user-guide/transformations/joins.md  
+      - user-guide/transformations/concatenation.md  
       - user-guide/transformations/pivot.md
+      - user-guide/transformations/melt.md
       - Time Series:
         - user-guide/transformations/time-series/parsing.md
         - user-guide/transformations/time-series/filter.md
@@ -85,6 +87,7 @@ nav:
         - user-guide/transformations/time-series/timezones.md
     - Lazy API:
       - user-guide/lazy/using.md
+      - user-guide/lazy/optimizations.md
       - user-guide/lazy/schemas.md
       - user-guide/lazy/query_plan.md
       - user-guide/lazy/execution.md
