@@ -105,7 +105,7 @@ that in the aggregation without the need of `lambda` or grooming the `DataFrame`
 ```
 
 ```rust,noplayground
-{{#include ../examples/groupby_dsl/groupby.rs:condtional}}
+{{#include ../examples/groupby_dsl/groupby.rs:conditional}}
 ```
 
 </div>

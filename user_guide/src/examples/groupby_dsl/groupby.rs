@@ -45,7 +45,7 @@ fn main() -> Result<()> {
     println!("{}", df);
     // ANCHOR_END: aggregation
 
-    // ANCHOR: condtional
+    // ANCHOR: conditional
     let df = dataset
         .clone()
         .lazy()
@@ -69,7 +69,7 @@ fn main() -> Result<()> {
         .collect()?;
 
     println!("{}", df);
-    // ANCHOR_END: condtional
+    // ANCHOR_END: conditional
 
     // ANCHOR: nested_groupby
     let df = dataset
