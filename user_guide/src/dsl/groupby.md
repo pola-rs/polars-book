@@ -1,7 +1,5 @@
 # GroupBy
 
-> The GroupBy page is under construction.
-
 ## A multithreaded approach
 
 One of the most efficient ways to process tabular data is to parallelize its processing

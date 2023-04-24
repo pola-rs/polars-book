@@ -1,7 +1,5 @@
 # Other optimizations
 
-> The Other optimizations page is under construction.
-
 Besides predicate and projection pushdown, `Polars` does other optimizations.
 
 One important topic is optional caching and parallelization. It's easy to imagine having two

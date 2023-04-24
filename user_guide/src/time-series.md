@@ -1,7 +1,5 @@
 # Time-series
 
-> The Time-series page is under construction.
-
 We are still working on this page. But here is already some example to show how we can use `groupby_dynamic` to group by
 a time window.
 

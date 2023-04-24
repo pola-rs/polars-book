@@ -54,7 +54,7 @@ print(series)
 ```
 
 ```text
-{{#include ../outputs/quickstart/series_tuple.txt}}
+{{#include ../outputs/quickstart/series_list.txt}}
 ```
 
 ```python
