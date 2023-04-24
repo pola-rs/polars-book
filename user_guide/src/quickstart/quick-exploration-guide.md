@@ -104,7 +104,7 @@ print(df_csv_with_dates)
 {{#include ../outputs/quickstart/output.csv}}
 ```
 
-You can add `parse_dates=True` to ensure that date column(s) are set as datetime.
+You can add `try_parse_dates=True` to ensure that date column(s) are set as datetime.
 
 #### json
 
