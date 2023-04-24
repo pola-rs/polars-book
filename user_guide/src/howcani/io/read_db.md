@@ -31,15 +31,13 @@ $  pip install connectorx
 
 ADBC (Arrow Database Connectivity) is an engine supported by the Apache Arrow project. ADBC aims to be both an API standard for connecting to databases and libraries implementing this standard in a range of languages.
 
-It is still early days for ADBC so support for different databases and data types is still limited. To install ADBC you need to install the driver for your database. For example to install the driver for SQLite you run
+It is still early days for ADBC so support for different databases is still limited. At present drivers for ADBC are only available for [Postgres and SQLite](https://arrow.apache.org/adbc/0.1.0/driver/cpp/index.html). To install ADBC you need to install the driver for your database. For example to install the driver for SQLite you run
 
 ```shell
 $  pip install adbc-driver-sqlite
 ```
 
-At present drivers for ADBC are only available for [Postgres and SQLite](https://arrow.apache.org/adbc/0.1.0/driver/cpp/index.html). If this changes please feel free to [create an issue](https://github.com/pola-rs/polars-book/issues) or [ pull request](https://github.com/pola-rs/polars-book/pulls) in this repository!
-
-To use ADBC you then specify the engine as an argument to `pl.read_database`
+AS ADBC is not the default enginee you must specify the engine as an argument to `pl.read_database`
 
 ```python
 uri = "postgres://username:password@server:port/database"
