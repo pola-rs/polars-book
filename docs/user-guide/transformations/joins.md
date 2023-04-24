@@ -214,6 +214,7 @@ To avoid joining between trades on one stock with a quote on another you must sp
     ```
 
 ```python exec="on" result="text" session="user-guide/transformations/joins"
+--8<-- "user-guide/python/transformations/joins.py:asofpre"
 --8<-- "user-guide/python/transformations/joins.py:asof"
 ```
 

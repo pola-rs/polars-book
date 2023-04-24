@@ -23,12 +23,12 @@ First we visualise the non-optimized plan by setting `optimized=False`.
 ```python exec="on" result="text" session="user-guide/lazy/query_plan"
 --8<-- "user-guide/python/lazy/query_plan.py:setup"
 --8<-- "user-guide/python/lazy/query_plan.py:plan"
---8<-- "user-guide/python/lazy/query_plan.py:createplan"
---8<-- "user-guide/python/lazy/query_plan.py:createplan2"
 ```
 </div>
 
-![](../../src/images//query_plan.png)
+```python exec="on" session="user-guide/lazy/query_plan"
+--8<-- "user-guide/python/lazy/query_plan.py:createplan"
+```
 
 The query plan visualisation should be read from bottom to top. In the visualisation:
 
@@ -69,7 +69,9 @@ Now we visualise the optimized plan with `show_graph`.
     --8<-- "user-guide/python/lazy/query_plan.py:show"
     ```
 
-![](../../src/images//query_plan_optimized.png)
+```python exec="on" session="user-guide/lazy/query_plan"
+--8<-- "user-guide/python/lazy/query_plan.py:createplan2"
+```
 
 We can also print the optimized plan with `describe_optimized_plan`
 

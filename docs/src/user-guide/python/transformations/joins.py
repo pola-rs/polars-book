@@ -128,8 +128,14 @@ df_quotes = pl.DataFrame(
         "quote": [100, 300, 501, 102],
     }
 )
+
 print(df_quotes)
 # --8<-- [end:df8]
+
+# --8<-- [start:asofpre]
+df_trades = df_trades.sort("time")
+df_quotes = df_quotes.sort("time") # Set column as sorted
+# --8<-- [end:asofpre]
 
 # --8<-- [start:asof]
 df_asof_join = df_trades.join_asof(df_quotes, on="time", by="stock")

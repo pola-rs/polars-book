@@ -19,6 +19,7 @@ out = df.pivot(
     index="foo",
     columns="bar",
     values="N",
+    aggregate_function='first'
 )
 print(out)
 # --8<-- [end:eager]
@@ -31,6 +32,7 @@ q = (
         index="foo",
         columns="bar",
         values="N",
+        aggregate_function='first'
     )
     .lazy()
 )

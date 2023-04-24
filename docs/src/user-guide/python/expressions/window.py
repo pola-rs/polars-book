@@ -53,41 +53,41 @@ pl.sum("foo").over("groups")
 (pl.col("x").sum() * pl.col("y")).over("groups")
 
 # sum within a group and multiply with group elements
-# and aggregate the group to a list
+# and aggregate the group to a implode
 # output type: -> List(Int32)
-(pl.col("x").sum() * pl.col("y")).list().over("groups")
+(pl.col("x").sum() * pl.col("y")).implode().over("groups")
 
-# note that it will require an explicit `list()` call
+# note that it will require an explicit `implode()` call
 # sum within a group and multiply with group elements
 # and aggregate the group to a list
 # the flatten call explodes that list
 
 # This is the fastest method to do things over groups when the groups are sorted
-(pl.col("x").sum() * pl.col("y")).list().over("groups").flatten()
+(pl.col("x").sum() * pl.col("y")).implode().over("groups").flatten()
 # --8<-- [end:rules]
 
 # --8<-- [start:examples]
 out = df.sort("Type 1").select(
     [
-        pl.col("Type 1").head(3).list().over("Type 1").flatten(),
+        pl.col("Type 1").head(3).implode().over("Type 1").flatten(),
         pl.col("Name")
         .sort_by(pl.col("Speed"))
         .head(3)
-        .list()
+        .implode()
         .over("Type 1")
         .flatten()
         .alias("fastest/group"),
         pl.col("Name")
         .sort_by(pl.col("Attack"))
         .head(3)
-        .list()
+        .implode()
         .over("Type 1")
         .flatten()
         .alias("strongest/group"),
         pl.col("Name")
         .sort()
         .head(3)
-        .list()
+        .implode()
         .over("Type 1")
         .flatten()
         .alias("sorted_by_alphabet"),

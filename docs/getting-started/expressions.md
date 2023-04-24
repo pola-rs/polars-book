@@ -7,6 +7,8 @@
 - `with_columns`
 - `groupby`
 
+To learn more about expressions and the context in which they operate, see the User Guide sections: [Contexts](../user-guide/concepts/contexts.md) and [Expressions](../user-guide/concepts/expressions.md).
+
 ### Select statement
 
 To select a column we need to do two things. Define the `DataFrame` we want the data from. And second, select the data that we need. In the example below you see that we select `col('*')`. The asterisk stands for all columns.

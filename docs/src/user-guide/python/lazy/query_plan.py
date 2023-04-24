@@ -11,26 +11,37 @@ q1 = (
 # --8<-- [end:plan]
 
 # --8<-- [start:createplan]
-q1.show_graph(optimized=False, show=False ,output_path="docs/src/images/query_plan.png")
+import base64
+q1.show_graph(optimized=False, show=False ,output_path="images/query_plan.png")
+with open("images/query_plan.png","rb") as f:
+    png = base64.b64encode(f.read()).decode()
+    print(f'<img src="data:image/png;base64, {png}"/>')
 # --8<-- [end:createplan]
 
+"""
 # --8<-- [start:showplan]
 q1.show_graph(optimized=False)
 # --8<-- [end:showplan]
+"""
 
 # --8<-- [start:describe]
-q1.describe_plan()
+q1.explain(optimized=False)
 # --8<-- [end:describe]
 
 # --8<-- [start:createplan2]
-q1.show_graph(show=False, output_path="docs/src/images/query_plan_optimized.png")
+q1.show_graph(show=False, output_path="images/query_plan_optimized.png")
+with open("images/query_plan_optimized.png","rb") as f:
+    png = base64.b64encode(f.read()).decode()
+    print(f'<img src="data:image/png;base64, {png}"/>')
 # --8<-- [end:createplan2]
 
+"""
 # --8<-- [start:show]
 q1.show_graph()
 # --8<-- [end:show]
+"""
 
 # --8<-- [start:optimized]
-q1.describe_optimized_plan()
+q1.explain()
 # --8<-- [end:optimized]
 

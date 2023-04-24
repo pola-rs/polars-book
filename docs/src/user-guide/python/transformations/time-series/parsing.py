@@ -12,7 +12,7 @@ print(df)
 # --8<-- [start:cast]
 df = pl.read_csv("docs/src/data/appleStock.csv", try_parse_dates=False)
 
-df = df.with_columns(pl.col("Date").str.strptime(pl.Date, fmt="%Y-%m-%d"))
+df = df.with_columns(pl.col("Date").str.strptime(pl.Date, format="%Y-%m-%d"))
 print(df)
 # --8<-- [end:cast]
 
@@ -36,7 +36,7 @@ data = [
 ]
 mixed_parsed = (
     pl.Series(data)
-    .str.strptime(pl.Datetime, fmt="%Y-%m-%dT%H:%M:%S%z", utc=True)
+    .str.strptime(pl.Datetime, format="%Y-%m-%dT%H:%M:%S%z", utc=True)
     .dt.convert_time_zone("Europe/Brussels")
 )
 # --8<-- [end:mixed]
