@@ -1,5 +1,6 @@
 # --8<-- [start:setup]
 import polars as pl
+
 # --8<-- [end:setup]
 
 # --8<-- [start:mansum]
@@ -11,7 +12,9 @@ df = pl.DataFrame(
 )
 
 out = df.select(
-    pl.fold(acc=pl.lit(0), function=lambda acc, x: acc + x, exprs=pl.all()).alias("sum"),
+    pl.fold(acc=pl.lit(0), function=lambda acc, x: acc + x, exprs=pl.all()).alias(
+        "sum"
+    ),
 )
 print(out)
 # --8<-- [end:mansum]

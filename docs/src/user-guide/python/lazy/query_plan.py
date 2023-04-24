@@ -1,4 +1,5 @@
 import polars as pl
+
 """
 # --8<-- [start:plan]
 q1 = (

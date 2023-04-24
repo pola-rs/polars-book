@@ -1,5 +1,6 @@
 # --8<-- [start:setup]
 import polars as pl
+
 # --8<-- [end:setup]
 
 # --8<-- [start:example]
@@ -13,8 +14,12 @@ print(time_zones_df)
 # --8<-- [start:example2]
 time_zones_operations = time_zones_df.select(
     [
-        pl.col("tz_aware").dt.replace_time_zone("Europe/Brussels").alias("replace time zone"),
-        pl.col("tz_aware").dt.convert_time_zone("Asia/Kathmandu").alias("convert time zone"),
+        pl.col("tz_aware")
+        .dt.replace_time_zone("Europe/Brussels")
+        .alias("replace time zone"),
+        pl.col("tz_aware")
+        .dt.convert_time_zone("Asia/Kathmandu")
+        .alias("convert time zone"),
         pl.col("tz_aware").dt.replace_time_zone(None).alias("unset time zone"),
     ]
 )

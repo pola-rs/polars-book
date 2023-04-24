@@ -12,13 +12,14 @@ print(s.max())
 # --8<-- [end:minmax]
 
 # --8<-- [start:string]
-s = pl.Series("a", ["polar", "bear","arctic" ,"polar fox", "polar bear"])
-s2 = s.str.replace("polar","pola")
+s = pl.Series("a", ["polar", "bear", "arctic", "polar fox", "polar bear"])
+s2 = s.str.replace("polar", "pola")
 print(s2)
 # --8<-- [end:string]
 
 # --8<-- [start:dt]
 from datetime import datetime
+
 start = datetime(2001, 1, 1)
 stop = datetime(2001, 1, 9)
 s = pl.date_range(start, stop, interval="2d")
@@ -27,15 +28,19 @@ print(s)
 # --8<-- [end:dt]
 
 # --8<-- [start:dataframe]
-df = pl.DataFrame({"integer": [1, 2, 3, 4, 5], 
-                        "date": [
-                            datetime(2022, 1, 1), 
-                            datetime(2022, 1, 2), 
-                            datetime(2022, 1, 3), 
-                            datetime(2022, 1, 4), 
-                            datetime(2022, 1, 5)
-                        ], 
-                        "float":[4.0, 5.0, 6.0, 7.0, 8.0]})
+df = pl.DataFrame(
+    {
+        "integer": [1, 2, 3, 4, 5],
+        "date": [
+            datetime(2022, 1, 1),
+            datetime(2022, 1, 2),
+            datetime(2022, 1, 3),
+            datetime(2022, 1, 4),
+            datetime(2022, 1, 5),
+        ],
+        "float": [4.0, 5.0, 6.0, 7.0, 8.0],
+    }
+)
 
 print(df)
 # --8<-- [end:dataframe]

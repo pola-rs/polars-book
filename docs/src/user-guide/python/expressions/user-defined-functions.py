@@ -1,6 +1,7 @@
 # --8<-- [start:setup]
 
 import polars as pl
+
 # --8<-- [end:setup]
 
 # --8<-- [start:dataframe]
@@ -53,7 +54,9 @@ print(out)
 # --8<-- [start:combine]
 out = df.select(
     [
-        pl.struct(["keys", "values"]).apply(lambda x: len(x["keys"]) + x["values"]).alias("solution_apply"),
+        pl.struct(["keys", "values"])
+        .apply(lambda x: len(x["keys"]) + x["values"])
+        .alias("solution_apply"),
         (pl.col("keys").str.lengths() + pl.col("values")).alias("solution_expr"),
     ]
 )

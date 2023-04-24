@@ -1,5 +1,6 @@
 # --8<-- [start:setup]
 import polars as pl
+
 # --8<-- [end:setup]
 
 # --8<-- [start:dataframe]
@@ -26,11 +27,13 @@ rank_pct = pl.element().rank(descending=True) / pl.col("*").count()
 out = grades.with_columns(
     # create the list of homogeneous data
     pl.concat_list(pl.all().exclude("student")).alias("all_grades")
-).select([
-    # select all columns except the intermediate list
-    pl.all().exclude("all_grades"),
-    # compute the rank by calling `arr.eval`
-    pl.col("all_grades").arr.eval(rank_pct, parallel=True).alias("grades_rank")
-])
+).select(
+    [
+        # select all columns except the intermediate list
+        pl.all().exclude("all_grades"),
+        # compute the rank by calling `arr.eval`
+        pl.col("all_grades").arr.eval(rank_pct, parallel=True).alias("grades_rank"),
+    ]
+)
 print(out)
 # --8<-- [end:expression]

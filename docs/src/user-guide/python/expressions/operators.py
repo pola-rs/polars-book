@@ -21,25 +21,28 @@ print(df)
 
 # --8<-- [start:numerical]
 
-df_numerical = df.select([
-    (pl.col("nrs") + 5).alias("nrs + 5"),
-    (pl.col("nrs") - 5).alias("nrs - 5"),
-    (pl.col("nrs") * pl.col("random")).alias("nrs * random"),
-    (pl.col("nrs") / pl.col("random")).alias("nrs / random"),
-])
+df_numerical = df.select(
+    [
+        (pl.col("nrs") + 5).alias("nrs + 5"),
+        (pl.col("nrs") - 5).alias("nrs - 5"),
+        (pl.col("nrs") * pl.col("random")).alias("nrs * random"),
+        (pl.col("nrs") / pl.col("random")).alias("nrs / random"),
+    ]
+)
 print(df_numerical)
 
 # --8<-- [end:numerical]
 
 # --8<-- [start:logical]
-df_logical = df.select([
-    (pl.col("nrs") > 1).alias("nrs > 1"),
-    (pl.col("random") <= .5).alias("random < .5"),
-    (pl.col("nrs") != 1).alias("nrs != 1"),
-    (pl.col("nrs") == 1).alias("nrs == 1"),
-    ((pl.col("random") <= .5) & (pl.col("nrs") > 1)).alias("and_expr"), # and
-    ((pl.col("random") <= .5) | (pl.col("nrs") > 1)).alias("or_expr"), # or
-])
+df_logical = df.select(
+    [
+        (pl.col("nrs") > 1).alias("nrs > 1"),
+        (pl.col("random") <= 0.5).alias("random < .5"),
+        (pl.col("nrs") != 1).alias("nrs != 1"),
+        (pl.col("nrs") == 1).alias("nrs == 1"),
+        ((pl.col("random") <= 0.5) & (pl.col("nrs") > 1)).alias("and_expr"),  # and
+        ((pl.col("random") <= 0.5) | (pl.col("nrs") > 1)).alias("or_expr"),  # or
+    ]
+)
 print(df_logical)
 # --8<-- [end:logical]
-
