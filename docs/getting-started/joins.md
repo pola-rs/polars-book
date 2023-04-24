@@ -28,6 +28,8 @@ Polars supports all types of join (e.g. left, right, inner, outer). Let's have a
 --8<-- "getting-started/python/joins.py:join"
 ```
 
+To see more examples with other types of joins, go the [User Guide](../user-guide/transformations/joins.md).
+
 ## Concat
 
 We can also `concatenate` two `DataFrames`. Vertical concatenation will make the `DataFrame` longer. Horizontal concatenation will make the `DataFrame` wider. Below you can see the result of an horizontal concatenation of our two `DataFrames`.

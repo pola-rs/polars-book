@@ -126,3 +126,5 @@ As we can see above, Polars made the datetimes a `string`. We can tell Polars to
 ```python exec="on" result="text" session="getting-started/reading"
 --8<-- "getting-started/python/reading-writing.py:parquet"
 ```
+
+To see more examples and other data formats go to the [User Guide](../user-guide/io/csv.md), section IO.
