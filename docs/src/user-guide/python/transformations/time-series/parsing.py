@@ -4,13 +4,13 @@ import polars as pl
 # --8<-- [end:setup]
 
 # --8<-- [start:df]
-df = pl.read_csv("docs/src/user-guide/appleStock.csv", try_parse_dates=True)
+df = pl.read_csv("docs/src/data/appleStock.csv", try_parse_dates=True)
 print(df)
 # --8<-- [end:df]
 
 
 # --8<-- [start:cast]
-df = pl.read_csv("docs/src/user-guide/appleStock.csv", try_parse_dates=False)
+df = pl.read_csv("docs/src/data/appleStock.csv", try_parse_dates=False)
 
 df = df.with_columns(pl.col("Date").str.strptime(pl.Date, fmt="%Y-%m-%d"))
 print(df)

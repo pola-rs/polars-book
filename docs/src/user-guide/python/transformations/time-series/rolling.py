@@ -5,7 +5,7 @@ from datetime import datetime
 # --8<-- [end:setup]
 
 # --8<-- [start:df]
-df = pl.read_csv("docs/src/user-guide/appleStock.csv", try_parse_dates=True)
+df = pl.read_csv("docs/src/data/appleStock.csv", try_parse_dates=True)
 print(df)
 # --8<-- [end:df]
 

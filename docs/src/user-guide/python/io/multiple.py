@@ -12,6 +12,9 @@ df = pl.read_csv("my_many_files_*.csv")
 print(df)
 # --8<-- [end:read]
 
+# --8<-- [start:creategraph]
+pl.scan_csv("my_many_files_*.csv").show_graph(output_path="docs/src/images/multiple.png",show=False)
+# --8<-- [end:creategraph]
 
 # --8<-- [start:graph]
 pl.scan_csv("my_many_files_*.csv").show_graph()

@@ -21,6 +21,7 @@ To read multiple files into a single `DataFrame`, we can use globbing patterns:
 ```python exec="on" result="text" session="user-guide/io/multiple"
 --8<-- "user-guide/python/io/multiple.py:create"
 --8<-- "user-guide/python/io/multiple.py:read"
+--8<-- "user-guide/python/io/multiple.py:creategraph"
 ```
 
 To see how this works we can take a look at the query plan. Below we see that all files are read separately and
@@ -31,9 +32,7 @@ concatenated into a single `DataFrame`. `Polars` will try to parallelize the rea
     --8<-- "user-guide/python/io/multiple.py:graph"
     ```
 
-```python exec="on" result="text" session="user-guide/io/multiple"
---8<-- "user-guide/python/io/multiple.py:graph"
-```
+![multiple](../../src/images/multiple.png)
 
 ## Reading and processing in parallel
 
