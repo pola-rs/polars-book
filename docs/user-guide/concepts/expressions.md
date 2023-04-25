@@ -28,6 +28,9 @@ Polars expressions are a mapping from a series to a series (or mathematically `F
 The following is an expression:
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `col`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.col.html) ·
+    [:material-api:  `sort`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.sort.html) ·
+    [:material-api:  `head`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.head.html)
     ``` python
     --8<-- "user-guide/python/concepts/expressions.py:example1"
     ```
@@ -44,6 +47,7 @@ can be *piped* together. You can run an expression by passing them to one of `Po
 Here we run two expressions by running `df.select`:
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `select`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.select.html)
     ``` python
     --8<-- "user-guide/python/concepts/expressions.py:example2"
     ```

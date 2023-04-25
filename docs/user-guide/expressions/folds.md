@@ -10,6 +10,7 @@ The `fold` expression operates on columns for maximum speed. It utilizes the dat
 Let's start with an example by implementing the `sum` operation ourselves, with a `fold`.
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `fold`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.fold.html)
     ``` python
     --8<-- "user-guide/python/expressions/folds.py:mansum"
     ```
@@ -27,6 +28,7 @@ The snippet above recursively applies the function `f(acc, x) -> acc` to an accu
 In the case where you'd want to apply a condition/predicate on all columns in a `DataFrame` a `fold` operation can be a very concise way to express this.
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `fold`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.fold.html)
     ``` python
     --8<-- "user-guide/python/expressions/folds.py:conditional"
     ```
@@ -44,6 +46,7 @@ Folds could be used to concatenate string data. However, due to the materializat
 Therefore, we recommend using the `concat_str` expression for this.
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `concat_str`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.concat_str.html)
     ``` python
     --8<-- "user-guide/python/expressions/folds.py:string"
     ```

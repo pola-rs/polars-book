@@ -62,7 +62,7 @@ fill_median_df = df.with_columns(
     pl.col("col2").fill_null(pl.median("col2")),
 )
 print(fill_median_df)
-# --8<-- [start:fillexpr]
+# --8<-- [end:fillexpr]
 
 # --8<-- [start:fillinterpolate]
 fill_interpolation_df = df.with_columns(

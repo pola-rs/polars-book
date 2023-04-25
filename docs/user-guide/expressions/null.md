@@ -11,6 +11,7 @@ Each column in a `DataFrame` (or equivalently a `Series`) is an Arrow array or a
 You can manually define a missing value with the python `None` value:
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `DataFrame`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html)
     ``` python
     --8<-- "user-guide/python/expressions/null.py:dataframe"
     ```
@@ -31,6 +32,7 @@ Each Arrow array used by `Polars` stores two kinds of metadata related to missin
 The first piece of metadata is the `null_count` - this is the number of rows with `null` values in the column:
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `null_count`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.null_count.html)
     ``` python
     --8<-- "user-guide/python/expressions/null.py:count"
     ```
@@ -54,6 +56,7 @@ You can return a `Series` based on the validity bitmap for a column in a `DataFr
 
 
 ```python exec="on" result="text" session="user-guide/null"
+    [:material-api:  `is_null`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.is_null.html)
 --8<-- "user-guide/python/expressions/null.py:isnull"
 ```
 
@@ -71,6 +74,7 @@ Missing data in a `Series` can be filled with the `fill_null` method. You have t
 We illustrate each way to fill nulls by defining a simple `DataFrame` with a missing value in `col2`:
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `DataFrame`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html)
     ``` python
     --8<-- "user-guide/python/expressions/null.py:dataframe2"
     ```
@@ -85,6 +89,7 @@ We illustrate each way to fill nulls by defining a simple `DataFrame` with a mis
 We can fill the missing data with a specified literal value with `pl.lit`:
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `fill_null`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.fill_null.html)
     ``` python
     --8<-- "user-guide/python/expressions/null.py:fill"
     ```
@@ -100,6 +105,7 @@ We can fill the missing data with a specified literal value with `pl.lit`:
 We can fill the missing data with a strategy such as filling forward:
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `fill_null`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.fill_null.html)
     ``` python
     --8<-- "user-guide/python/expressions/null.py:fillstrategy"
     ```
@@ -117,6 +123,7 @@ For more flexibility we can fill the missing data with an expression. For exampl
 to fill nulls with the median value from that column:
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `fill_null`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.fill_null.html)
     ``` python
     --8<-- "user-guide/python/expressions/null.py:fillexpr"
     ```
@@ -133,6 +140,7 @@ In this case the column is cast from integer to float because the median is a fl
 In addition, we can fill nulls with interpolation (without using the `fill_null` function):
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `interpolate`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.interpolate.html) 
     ``` python
     --8<-- "user-guide/python/expressions/null.py:fillinterpolate"
     ```
@@ -148,6 +156,7 @@ In addition, we can fill nulls with interpolation (without using the `fill_null`
 Missing data in a `Series` has a `null` value. However, you can use `NotaNumber` or `NaN` values in columns with float datatypes. These `NaN` values can be created from Numpy's `np.nan` or the native python `float('nan')`:
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `DataFrame`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html)
     ``` python
     --8<-- "user-guide/python/expressions/null.py:nan"
     ```
@@ -170,6 +179,7 @@ Missing data in a `Series` has a `null` value. However, you can use `NotaNumber`
 One further difference between `null` and `NaN` values is that taking the `mean` of a column with `null` values excludes the `null` values from the calculation but with `NaN` values taking the mean results in a `NaN`. This behaviour can be avoided by replacing the `NaN` values with `null` values;
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `fill_nan`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.fill_nan.html)
     ``` python
     --8<-- "user-guide/python/expressions/null.py:nanfill"
     ```

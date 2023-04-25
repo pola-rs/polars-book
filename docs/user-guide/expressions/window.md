@@ -2,11 +2,11 @@
 
 Window functions are expressions with superpowers. They allow you to perform aggregations on groups in the
 `select` context. Let's get a feel of what that means. First we create a dataset. The dataset loaded in the
-snippet below contains information about pokemon and has the following columns:
+snippet below contains information about pokemon:
 
-`['#',  'Name',  'Type 1',  'Type 2',  'Total',  'HP',  'Attack',  'Defense',  'Sp. Atk',  'Sp. Def',  'Speed',  'Generation',  'Legendary']`
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `read_csv`](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_csv.html)
     ``` python
     --8<-- "user-guide/python/expressions/window.py:pokemon"
     ```
@@ -28,14 +28,13 @@ The best part is, this won't cost you anything. The computed groups are cached a
 
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `over`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.over.html)
     ``` python
     --8<-- "user-guide/python/expressions/window.py:groupby"
     ```
 
 ```python exec="on" result="text" session="user-guide/window"
-print(
-    --8<-- "user-guide/python/expressions/window.py:groupby"
-)
+--8<-- "user-guide/python/expressions/window.py:groupby"
 ```
 
 ## Operations per group
@@ -46,6 +45,7 @@ want to `sort` the values within a `group`, you can write `col("value").sort().o
 Let's filter out some rows to make this more clear.
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `filter`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.filter.html)
     ``` python
     --8<-- "user-guide/python/expressions/window.py:operations"
     ```
@@ -60,6 +60,7 @@ that each pokemon within a group are sorted by `Speed` in `ascending` order. Unf
 `descending` speed order. Luckily with window functions this is easy to accomplish.
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `over`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.over.html)
     ``` python
     --8<-- "user-guide/python/expressions/window.py:sort"
     ```
@@ -80,6 +81,8 @@ The power of window expressions is that you often don't need a `groupby -> explo
 The evaluations of window expressions are as follows (assuming we apply it to a `pl.Int32` column):
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `over`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.over.html) ·
+    [:material-api:  `implode`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.implode.html)
     ``` python
     --8<-- "user-guide/python/expressions/window.py:rules"
     ```
@@ -95,6 +98,8 @@ For more exercise, below are some window functions for us to compute:
 - sort the pokemon by name within a type and select the first `3` as `"sorted_by_alphabet"`
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `over`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.over.html) ·
+    [:material-api:  `implode`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.implode.html)
     ``` python
     --8<-- "user-guide/python/expressions/window.py:examples"
     ```
@@ -108,11 +113,11 @@ For more exercise, below are some window functions for us to compute:
 
 If we have a window function that aggregates to a `list` like the example above with the following Python expression:
 
-`pl.col("Name").sort_by(pl.col("Speed")).head(3).list().over("Type 1")`
+`pl.col("Name").sort_by(pl.col("Speed")).head(3).implode().over("Type 1")`
 
 and in Rust:
 
-`col("Name").sort_by(["Speed"], [false]).head(Some(3)).list().over(["Type 1"])`
+`col("Name").sort_by(["Speed"], [false]).head(Some(3)).implode().over(["Type 1"])`
 
 This still works, but that would give us a column type `List` which might not be what we want (this would significantly increase our memory usage!).
 

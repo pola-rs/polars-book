@@ -26,6 +26,7 @@ we could use `map` to pass an expression column to a neural network model.
 
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `map`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.map.html)
     ``` python
     df.with_columns([
         pl.col("features").map(lambda s: MyNeuralNetwork.forward(s.to_numpy())).alias("activations")
@@ -35,6 +36,7 @@ we could use `map` to pass an expression column to a neural network model.
 Use cases for `map` in the `groupby` context are slim. They are only used for performance reasons, but can quite easily lead to incorrect results. Let me explain why.
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `map`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.map.html)
     ``` python
     --8<-- "user-guide/python/expressions/user-defined-functions.py:dataframe"
     ```
@@ -94,6 +96,7 @@ That is:
 So with `apply` we should be able to fix our example:
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `apply`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.apply.html)
     ``` python
     --8<-- "user-guide/python/expressions/user-defined-functions.py:apply"
     ```
@@ -123,6 +126,7 @@ Every iteration the result of the increment will be added to the element value.
 > Note, this example isn't provided in Rust.  The reason is that the global `counter` value would lead to data races when this apply is evaluated in parallel.  It would be possible to wrap it in a `Mutex` to protect the variable, but that would be obscuring the point of the example.  This is a case where the Python Global Interpreter Lock's performance tradeoff provides some safety guarantees.
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `apply`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.apply.html)
     ``` python
     --8<-- "user-guide/python/expressions/user-defined-functions.py:counter"
     ```
@@ -149,6 +153,7 @@ type. This data type collects those columns as fields in the `struct`. So if we'
 In Python, those would be passed as `dict` to the calling python function and can thus be indexed by `field: str`.  In rust, you'll get a `Series` with the `Struct` type. The fields of the struct can then be indexed and downcast.
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `apply`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.apply.html)
     ``` python
     --8<-- "user-guide/python/expressions/user-defined-functions.py:combine"
     ```

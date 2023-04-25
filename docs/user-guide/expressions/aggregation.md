@@ -31,6 +31,7 @@ Besides the aggregation, we immediately sort the result and limit to the top `5`
 we have a nice summary overview.
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `groupby`](https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.groupby.html)
     ``` python
     --8<-- "user-guide/python/expressions/aggregation.py:basic"
     ```
@@ -48,11 +49,12 @@ many delegates of a "state" are "Pro" or "Anti" administration. We could directl
 that in the aggregation without the need of `lambda` or grooming the `DataFrame`.
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `groupby`](https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.groupby.html)
     ``` python
     --8<-- "user-guide/python/expressions/aggregation.py:conditional"
     ```
 
-```python exec="on" result="text" session="user-guide/expressions
+```python exec="on" result="text" session="user-guide/expressions"
 --8<-- "user-guide/python/expressions/aggregation.py:conditional"
 ```
 
@@ -79,6 +81,7 @@ In the example below we show how that can be done.
      Note that we can make `Python` functions for clarity. These functions don't cost us anything. That is because we only create `Polars` expressions, we don't apply a custom function over a `Series` during runtime of the query.  Of course, you can make functions that return expressions in Rust, too.
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `groupby`](https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.groupby.html)
     ``` python
     --8<-- "user-guide/python/expressions/aggregation.py:filter"
     ```
@@ -92,6 +95,7 @@ In the example below we show how that can be done.
 It's common to see a `DataFrame` being sorted for the sole purpose of managing the ordering during a GROUPBY operation. Let's say that we want to get the names of the oldest and youngest politicians per state. We could SORT and GROUPBY.
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `groupby`](https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.groupby.html)
     ``` python
     --8<-- "user-guide/python/expressions/aggregation.py:sort"
     ```
@@ -103,6 +107,7 @@ It's common to see a `DataFrame` being sorted for the sole purpose of managing t
 However, **if** we also want to sort the names alphabetically, this breaks. Luckily we can sort in a `groupby` context separate from the `DataFrame`.
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `groupby`](https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.groupby.html)
     ``` python
     --8<-- "user-guide/python/expressions/aggregation.py:sort2"
     ```
@@ -114,6 +119,7 @@ However, **if** we also want to sort the names alphabetically, this breaks. Luck
 We can even sort by another column in the `groupby` context. If we want to know if the alphabetically sorted name is male or female we could add: `pl.col("gender").sort_by("first_name").first().alias("gender")`
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `groupby`](https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.groupby.html)
     ``` python
     --8<-- "user-guide/python/expressions/aggregation.py:sort3"
     ```

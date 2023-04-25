@@ -5,6 +5,7 @@
 In the examples below we will use the following `DataFrame`:
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `DataFrame`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html#dataframe)
     ``` python
     --8<-- "user-guide/python/expressions/functions.py:dataframe"
     ```
@@ -22,6 +23,7 @@ There are various convenience methods to select multiple or all columns.
 ##### Select All Columns
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `all`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.all.html)
     ``` python
     --8<-- "user-guide/python/expressions/functions.py:all"
     ```
@@ -29,6 +31,7 @@ There are various convenience methods to select multiple or all columns.
 ##### Select All Columns Except
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `exclude`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.exclude.html)
     ``` python
     --8<-- "user-guide/python/expressions/functions.py:exclude"
     ```
@@ -64,6 +67,7 @@ This might get problematic in case you use the same column muliple times in your
 You can change the output name of an expression by using the `alias` function 
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `alias`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.alias.html)
     ``` python
     --8<-- "user-guide/python/expressions/functions.py:samenamealias"
     ```
@@ -85,6 +89,8 @@ There are two ways two count unique values in `Polars` one is an exact methodolo
 
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `n_unique`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.n_unique.html) ·
+    [:material-api:  `approx_unique`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.approx_unique.html)
     ``` python
     --8<-- "user-guide/python/expressions/functions.py:countunique"
     ```
@@ -98,6 +104,7 @@ There are two ways two count unique values in `Polars` one is an exact methodolo
 `Polars` supports if-like conditions in expression with the `when`, `then`, `otherwise` syntax. The predicate is placed in the `when` clause and when this evaluates to `true` the `then` expression is applied otherwise the `otherwise` expression is applied (row-wise).
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `when`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.when.html)
     ``` python
     --8<-- "user-guide/python/expressions/functions.py:conditional"
     ```

@@ -4,6 +4,7 @@
 
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `read_csv`](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_csv.html)
     ``` python
     --8<-- "user-guide/python/concepts/lazy-vs-eager.py:eager"
     ```
@@ -20,6 +21,7 @@ Every step is executed immediately returning the intermediate results. This can 
 - Projection pushdown: Select only the columns that are needed while reading the dataset, thus removing the need to load additional columns (e.g. petal length & petal width)
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `read_csv`](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.scan_csv.html)
     ``` python
     --8<-- "user-guide/python/concepts/lazy-vs-eager.py:lazy"
     ```

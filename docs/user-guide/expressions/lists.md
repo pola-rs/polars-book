@@ -13,6 +13,7 @@ Luckily we have a data type that has the guarantee that the rows are homogeneous
 Let's say we have the following data:
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `DataFrame`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html#dataframe)
     ``` python
     --8<-- "user-guide/python/expressions/lists.py:dataframe"
     ```
@@ -28,6 +29,7 @@ If we want to compute the `rank` of all the columns except for `"student"`, we c
 This would give:
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `concat_list`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.concat_list.html)
     ``` python
     --8<-- "user-guide/python/expressions/lists.py:rank"
     ```
@@ -45,6 +47,7 @@ Let's expand the example from above with something a little more interesting. Pa
 Note that we must `select` the list's element from the context. When we apply expressions over list elements, we use `pl.element()` to select the element of a list.
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `arr.eval`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.arr.eval.html)
     ``` python
     --8<-- "user-guide/python/expressions/lists.py:expression"
     ```

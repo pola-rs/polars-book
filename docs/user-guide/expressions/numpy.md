@@ -8,6 +8,7 @@ This means that if a function is not provided by `Polars`, we can use `NumPy` an
 ### Example
 
 === ":fontawesome-brands-python: Python"
+    [:material-api:  `DataFrame`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html)
     ``` python
     --8<-- "user-guide/python/expressions/numpy-example.py"
     ```
