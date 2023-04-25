@@ -27,7 +27,9 @@ lazy_eager_query = (
     .lazy()
     .with_columns((2 * pl.col("values")).alias("double_values"))
     .collect()
-    .pivot(index="id", columns="month", values="double_values",aggregate_function='first')
+    .pivot(
+        index="id", columns="month", values="double_values", aggregate_function="first"
+    )
     .lazy()
     .filter(pl.col("mar").is_null())
     .collect()

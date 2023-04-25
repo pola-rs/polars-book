@@ -134,7 +134,7 @@ print(df_quotes)
 
 # --8<-- [start:asofpre]
 df_trades = df_trades.sort("time")
-df_quotes = df_quotes.sort("time") # Set column as sorted
+df_quotes = df_quotes.sort("time")  # Set column as sorted
 # --8<-- [end:asofpre]
 
 # --8<-- [start:asof]

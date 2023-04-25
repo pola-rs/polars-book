@@ -15,12 +15,7 @@ df = pl.DataFrame(
 
 # --8<-- [start:eager]
 
-out = df.pivot(
-    index="foo",
-    columns="bar",
-    values="N",
-    aggregate_function='first'
-)
+out = df.pivot(index="foo", columns="bar", values="N", aggregate_function="first")
 print(out)
 # --8<-- [end:eager]
 
@@ -28,12 +23,7 @@ print(out)
 q = (
     df.lazy()
     .collect()
-    .pivot(
-        index="foo",
-        columns="bar",
-        values="N",
-        aggregate_function='first'
-    )
+    .pivot(index="foo", columns="bar", values="N", aggregate_function="first")
     .lazy()
 )
 out = q.collect()
