@@ -28,7 +28,9 @@ we could use `map` to pass an expression column to a neural network model.
 
 ```python
 df.with_columns([
-    pl.col("features").map(lambda s: MyNeuralNetwork.forward(s.to_numpy())).alias("activations")
+    pl.col("features").map(
+        lambda s: MyNeuralNetwork.forward(s.to_numpy())
+    ).alias("activations")
 ])
 ```
 
