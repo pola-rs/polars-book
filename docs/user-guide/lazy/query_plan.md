@@ -13,21 +13,17 @@ We can understand both the non-optimized and optimized query plans with visualiz
 
 First we visualise the non-optimized plan by setting `optimized=False`.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/lazy/query_plan.py:plan"
-    --8<-- "user-guide/python/lazy/query_plan.py:showplan"
-    ```
+{{code_block('user-guide/lazy/query_plan','plan',['show_graph'])}}
 
 <div style="display:none">
 ```python exec="on" result="text" session="user-guide/lazy/query_plan"
---8<-- "user-guide/python/lazy/query_plan.py:setup"
---8<-- "user-guide/python/lazy/query_plan.py:plan"
+--8<-- "python/user-guide/lazy/query_plan.py:setup"
+--8<-- "python/user-guide/lazy/query_plan.py:plan"
 ```
 </div>
 
 ```python exec="on" session="user-guide/lazy/query_plan"
---8<-- "user-guide/python/lazy/query_plan.py:createplan"
+--8<-- "python/user-guide/lazy/query_plan.py:createplan"
 ```
 
 The query plan visualisation should be read from bottom to top. In the visualisation:
@@ -38,12 +34,9 @@ The query plan visualisation should be read from bottom to top. In the visualisa
 
 ### Printed query plan
 
-We can also print the non-optimized plan with `describe_plan`
+We can also print the non-optimized plan with `explain(optimized=False)`
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/lazy/query_plan.py:describe"
-    ```
+{{code_block('user-guide/lazy/query_plan','plan',['explain'])}}
 
 ```text
 FILTER [(col("comment_karma")) > (0)] FROM WITH_COLUMNS:
@@ -64,21 +57,15 @@ The printed plan should also be read from bottom to top. This non-optimized plan
 
 Now we visualise the optimized plan with `show_graph`.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/lazy/query_plan.py:show"
-    ```
+{{code_block('user-guide/lazy/query_plan','show',['show_graph'])}}
 
 ```python exec="on" session="user-guide/lazy/query_plan"
---8<-- "user-guide/python/lazy/query_plan.py:createplan2"
+--8<-- "python/user-guide/lazy/query_plan.py:createplan2"
 ```
 
-We can also print the optimized plan with `describe_optimized_plan`
+We can also print the optimized plan with `explain`
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/lazy/query_plan.py:optimized"
-    ```
+{{code_block('user-guide/lazy/query_plan','optimized',['explain'])}}
 
 ```text
  WITH_COLUMNS:

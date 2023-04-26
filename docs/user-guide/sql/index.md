@@ -7,13 +7,11 @@ The first step is to initialize a SQL context, and register a `LazyFrame` with i
 
 Let's load some data and initialize the SQL context:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/sql/index.py:df"
-    ```
+
+{{code_block('user-guide/sql/index','df',['SQLContext'])}}
 
 ```python exec="on" result="text" session="user-guide/sql/index"
---8<-- "user-guide/python/sql/index.py:df"
+--8<-- "python/user-guide/sql/index.py:df"
 ```
 
 
@@ -24,11 +22,8 @@ You can call the register function multiple time for each of your LazyFrame.
 
 You run your SQL queries with `SQLContext.query`.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/sql/index.py:query"
-    ```
+{{code_block('user-guide/sql/index','query',['SQLquery'])}}
 
 ```python exec="on" result="text" session="user-guide/sql/index"
---8<-- "user-guide/python/sql/index.py:query"
+--8<-- "python/user-guide/sql/index.py:query"
 ```

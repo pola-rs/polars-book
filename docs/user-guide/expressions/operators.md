@@ -6,37 +6,25 @@ This section describes how to use basic operators (e.g. addition, substraction) 
 
     In Rust and Python it is possible to use the operators directly (as in `+ - * / < > `) as the language allows operator overloading. For instance, the operator `+` translates to the `.add()` method. In NodeJS this is not possible and you must use the methods themselves, in python and rust you can choose which one you prefer.
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `DataFrame`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/operators.py:dataframe"
-    ```
+{{code_block('user-guide/expressions/operators','dataframe',['DataFrame'])}}
 
 ```python exec="on" result="text" session="user-guide/operators"
---8<-- "user-guide/python/expressions/operators.py:setup"
---8<-- "user-guide/python/expressions/operators.py:dataframe"
+--8<-- "python/user-guide/expressions/operators.py:setup"
+--8<-- "python/user-guide/expressions/operators.py:dataframe"
 ```
 
 ### Numerical
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `operators`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/operators.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/operators.py:numerical"
-    ```
+{{code_block('user-guide/expressions/operators','numerical',['operators'])}}
 
 ```python exec="on" result="text" session="user-guide/operators"
---8<-- "user-guide/python/expressions/operators.py:numerical"
+--8<-- "python/user-guide/expressions/operators.py:numerical"
 ```
 
 ### Logical
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `operators`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/operators.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/operators.py:logical"
-    ```
+{{code_block('user-guide/expressions/operators','logical',['operators'])}}
 
 ```python exec="on" result="text" session="user-guide/operators"
---8<-- "user-guide/python/expressions/operators.py:logical"
+--8<-- "python/user-guide/expressions/operators.py:logical"
 ```

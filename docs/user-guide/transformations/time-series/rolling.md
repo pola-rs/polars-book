@@ -8,14 +8,11 @@ We can calculate temporal statistics using `groupby_dynamic` to group rows into 
 
 In following simple example we calculate the annual average closing price of Apple stock prices. We first load the data from CSV:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/time-series/rolling.py:df"
-    ```
+{{code_block('user-guide/transformations/time-series/rolling','df',['upsample'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/rolling"
---8<-- "user-guide/python/transformations/time-series/rolling.py:setup"
---8<-- "user-guide/python/transformations/time-series/rolling.py:df"
+--8<-- "python/user-guide/transformations/time-series/rolling.py:setup"
+--8<-- "python/user-guide/transformations/time-series/rolling.py:df"
 ```
 
 !!! info 
@@ -26,15 +23,12 @@ To get the annual average closing price we tell `groupby_dynamic` that we want t
 - group by the `Date` column on an annual (`1y`) basis
 - take the mean values of the `Close` column for each year:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/time-series/rolling.py:groupby"
-    ```
+{{code_block('user-guide/transformations/time-series/rolling','groupby',['groupby_dynamic'])}}
 
 The annual average closing price is then:
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/rolling"
---8<-- "user-guide/python/transformations/time-series/rolling.py:groupby"
+--8<-- "python/user-guide/transformations/time-series/rolling.py:groupby"
 ```
 
 ### Parameters for `groupby_dynamic`
@@ -113,13 +107,10 @@ Below we show an example where we use **groupby_dynamic** to compute:
 - the number of days until the end of the month
 - the number of days in a month
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/time-series/rolling.py:groupbydyn"
-    ```
+{{code_block('user-guide/transformations/time-series/rolling','groupbydyn',['groupby_dynamic','explode','date_range'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/rolling"
---8<-- "user-guide/python/transformations/time-series/rolling.py:groupbydyn"
+--8<-- "python/user-guide/transformations/time-series/rolling.py:groupbydyn"
 ```
 
 
@@ -150,20 +141,14 @@ Rolling and dynamic groupby's can be combined with normal groupby operations.
 
 Below is an example with a dynamic groupby.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/time-series/rolling.py:groupbyroll"
-    ```
+{{code_block('user-guide/transformations/time-series/rolling','groupbyroll',['DataFrame'])}}
     
 ```python exec="on" result="text" session="user-guide/transformations/ts/rolling"
---8<-- "user-guide/python/transformations/time-series/rolling.py:groupbyroll"
+--8<-- "python/user-guide/transformations/time-series/rolling.py:groupbyroll"
 ```
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/time-series/rolling.py:groupbydyn2"
-    ```
+{{code_block('user-guide/transformations/time-series/rolling','groupbydyn2',['groupby_dynamic'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/rolling"
---8<-- "user-guide/python/transformations/time-series/rolling.py:groupbydyn2"
+--8<-- "python/user-guide/transformations/time-series/rolling.py:groupbydyn2"
 ```

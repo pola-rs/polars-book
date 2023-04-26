@@ -4,15 +4,10 @@ Window functions are expressions with superpowers. They allow you to perform agg
 `select` context. Let's get a feel of what that means. First we create a dataset. The dataset loaded in the
 snippet below contains information about pokemon:
 
-
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `read_csv`](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_csv.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/window.py:pokemon"
-    ```
+{{code_block('user-guide/expressions/window','pokemon',['read_csv'])}}
 
 ```python exec="on" result="text" session="user-guide/window"
---8<-- "user-guide/python/expressions/window.py:pokemon"
+--8<-- "python/user-guide/expressions/window.py:pokemon"
 ```
 
 ## Groupby Aggregations in selection
@@ -27,14 +22,10 @@ Note how we call `.over("Type 1")` and `.over(["Type 1", "Type 2"])`. Using wind
 The best part is, this won't cost you anything. The computed groups are cached and shared between different `window` expressions.
 
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `over`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.over.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/window.py:groupby"
-    ```
+{{code_block('user-guide/expressions/window','groupby',['over'])}}
 
 ```python exec="on" result="text" session="user-guide/window"
---8<-- "user-guide/python/expressions/window.py:groupby"
+--8<-- "python/user-guide/expressions/window.py:groupby"
 ```
 
 ## Operations per group
@@ -44,14 +35,10 @@ want to `sort` the values within a `group`, you can write `col("value").sort().o
 
 Let's filter out some rows to make this more clear.
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `filter`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.filter.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/window.py:operations"
-    ```
+{{code_block('user-guide/expressions/window','operations',['filter'])}}
 
 ```python exec="on" result="text" session="user-guide/window"
---8<-- "user-guide/python/expressions/window.py:operations"
+--8<-- "python/user-guide/expressions/window.py:operations"
 ```
 
 
@@ -59,14 +46,10 @@ Observe that the group `Water` of column `Type 1` is not contiguous. There are t
 that each pokemon within a group are sorted by `Speed` in `ascending` order. Unfortunately, for this example we want them sorted in
 `descending` speed order. Luckily with window functions this is easy to accomplish.
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `over`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.over.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/window.py:sort"
-    ```
+{{code_block('user-guide/expressions/window','sort',['over'])}}
 
 ```python exec="on" result="text" session="user-guide/window"
---8<-- "user-guide/python/expressions/window.py:sort"
+--8<-- "python/user-guide/expressions/window.py:sort"
 ```
 
 `Polars` keeps track of each group's location and maps the expressions to the proper row locations. This will also work over different groups in a single `select`.
@@ -80,12 +63,7 @@ The power of window expressions is that you often don't need a `groupby -> explo
 
 The evaluations of window expressions are as follows (assuming we apply it to a `pl.Int32` column):
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `over`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.over.html) ·
-    [:material-api:  `implode`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.implode.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/window.py:rules"
-    ```
+{{code_block('user-guide/expressions/window','rules',['over','implode'])}}
 
 ## More examples
 
@@ -97,15 +75,10 @@ For more exercise, below are some window functions for us to compute:
 - sort the pokemon within a type by attack and select the first `3` as `"strongest/group"`
 - sort the pokemon by name within a type and select the first `3` as `"sorted_by_alphabet"`
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `over`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.over.html) ·
-    [:material-api:  `implode`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.implode.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/window.py:examples"
-    ```
+{{code_block('user-guide/expressions/window','examples',['over','implode'])}}
 
 ```python exec="on" result="text" session="user-guide/window"
---8<-- "user-guide/python/expressions/window.py:examples"
+--8<-- "python/user-guide/expressions/window.py:examples"
 ```
 
 

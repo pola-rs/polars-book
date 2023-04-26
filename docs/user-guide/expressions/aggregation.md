@@ -3,12 +3,8 @@
 `Polars` implements a powerful syntax defined not only in its lazy API, but also in its eager API. Let's take a look at what that means.
 
 We can start with the simple [US congress `dataset`](https://github.com/unitedstates/congress-legislators).
-
-
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/expressions/aggregation.py:dataframe"
-    ```
+ 
+{{code_block('user-guide/expressions/aggregation','dataframe',['DataFrame'])}}
 
 #### Basic aggregations
 
@@ -30,16 +26,13 @@ Per GROUP `"first_name"` we
 Besides the aggregation, we immediately sort the result and limit to the top `5` so that
 we have a nice summary overview.
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `groupby`](https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.groupby.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/aggregation.py:basic"
-    ```
+{{code_block('user-guide/expressions/aggregation','basic',['groupby'])}}
+
 
 ```python exec="on" result="text" session="user-guide/expressions"
---8<-- "user-guide/python/expressions/aggregation.py:setup"
---8<-- "user-guide/python/expressions/aggregation.py:dataframe"
---8<-- "user-guide/python/expressions/aggregation.py:basic"
+--8<-- "python/user-guide/expressions/aggregation.py:setup"
+--8<-- "python/user-guide/expressions/aggregation.py:dataframe"
+--8<-- "python/user-guide/expressions/aggregation.py:basic"
 ```
 
 #### Conditionals
@@ -48,25 +41,18 @@ It's that easy! Let's turn it up a notch. Let's say we want to know how
 many delegates of a "state" are "Pro" or "Anti" administration. We could directly query
 that in the aggregation without the need of `lambda` or grooming the `DataFrame`.
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `groupby`](https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.groupby.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/aggregation.py:conditional"
-    ```
+{{code_block('user-guide/expressions/aggregation','conditional',['groupby'])}}
 
 ```python exec="on" result="text" session="user-guide/expressions"
---8<-- "user-guide/python/expressions/aggregation.py:conditional"
+--8<-- "python/user-guide/expressions/aggregation.py:conditional"
 ```
 
 Similarly,  this could also be done with a nested GROUPBY, but that doesn't help show off some of these nice features. 😉
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/expressions/aggregation.py:nested"
-    ```
+{{code_block('user-guide/expressions/aggregation','nested',['groupby'])}}
 
 ```python exec="on" result="text" session="user-guide/expressions"
---8<-- "user-guide/python/expressions/aggregation.py:nested"
+--8<-- "python/user-guide/expressions/aggregation.py:nested"
 ```
 
 #### Filtering
@@ -80,52 +66,36 @@ In the example below we show how that can be done.
 !!! note
      Note that we can make `Python` functions for clarity. These functions don't cost us anything. That is because we only create `Polars` expressions, we don't apply a custom function over a `Series` during runtime of the query.  Of course, you can make functions that return expressions in Rust, too.
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `groupby`](https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.groupby.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/aggregation.py:filter"
-    ```
+{{code_block('user-guide/expressions/aggregation','filter',['groupby'])}}
 
 ```python exec="on" result="text" session="user-guide/expressions"
---8<-- "user-guide/python/expressions/aggregation.py:filter"
+--8<-- "python/user-guide/expressions/aggregation.py:filter"
 ```
 
 #### Sorting
 
 It's common to see a `DataFrame` being sorted for the sole purpose of managing the ordering during a GROUPBY operation. Let's say that we want to get the names of the oldest and youngest politicians per state. We could SORT and GROUPBY.
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `groupby`](https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.groupby.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/aggregation.py:sort"
-    ```
+{{code_block('user-guide/expressions/aggregation','sort',['groupby'])}}
 
 ```python exec="on" result="text" session="user-guide/expressions"
---8<-- "user-guide/python/expressions/aggregation.py:sort"
+--8<-- "python/user-guide/expressions/aggregation.py:sort"
 ```
 
 However, **if** we also want to sort the names alphabetically, this breaks. Luckily we can sort in a `groupby` context separate from the `DataFrame`.
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `groupby`](https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.groupby.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/aggregation.py:sort2"
-    ```
+{{code_block('user-guide/expressions/aggregation','sort2',['groupby'])}}
 
 ```python exec="on" result="text" session="user-guide/expressions"
---8<-- "user-guide/python/expressions/aggregation.py:sort2"
+--8<-- "python/user-guide/expressions/aggregation.py:sort2"
 ```
 
 We can even sort by another column in the `groupby` context. If we want to know if the alphabetically sorted name is male or female we could add: `pl.col("gender").sort_by("first_name").first().alias("gender")`
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `groupby`](https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.groupby.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/aggregation.py:sort3"
-    ```
+{{code_block('user-guide/expressions/aggregation','sort3',['groupby'])}}
 
 ```python exec="on" result="text" session="user-guide/expressions"
---8<-- "user-guide/python/expressions/aggregation.py:sort3"
+--8<-- "python/user-guide/expressions/aggregation.py:sort3"
 ```
 
 ### Do not kill parallelization

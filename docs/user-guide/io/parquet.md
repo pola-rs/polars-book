@@ -9,28 +9,19 @@ copying as we read `Parquet` directly into `Arrow` memory and _keep it there_.
 ## Read
 
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/io/parquet.py:read"
-    ```
+{{code_block('user-guide/io/parquet','read',['read_parquet'])}}
 
 
 ## Write
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/io/parquet.py:write"
-    ```
+{{code_block('user-guide/io/parquet','write',['write_parquet'])}}
 
 ## Scan
 
 `Polars` allows you to _scan_ a `Parquet` input. Scanning delays the actual parsing of the
 file and instead returns a lazy computation holder called a `LazyFrame`.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/io/parquet.py:scan"
-    ```
+{{code_block('user-guide/io/parquet','scan',['scan_parquet'])}}
 
 
 If you want to know why this is desirable, you can read more about those `Polars` optimizations [here](../concepts/lazy-vs-eager.md).

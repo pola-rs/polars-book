@@ -33,7 +33,7 @@ To use the library import it into your project
 === ":fontawesome-brands-rust: Rust"
 
     ``` rust
-    use polars::prelude::-;
+    use polars::prelude::*;
     ```
 === ":fontawesome-brands-node-js: NodeJS"
 
@@ -76,7 +76,7 @@ pip install polars[numpy, fsspec]
 [dependencies]
 polars = { version = "0.26.1", features = ["lazy","temporal","describe","json","parquet","dtype-datetime"]}
 ```
- The opt-in features are (not including dtype features):
+ The opt-in features are:
 
  - Additional data types:
     - `dtype-date`
@@ -133,7 +133,7 @@ polars = { version = "0.26.1", features = ["lazy","temporal","describe","json","
      - `sort_multiple` - Allow sorting a `DataFrame` on multiple columns
      - `rows` - Create `DataFrame` from rows and extract rows from `DataFrames`.
                 And activates `pivot` and `transpose` operations
-     - `asof_join` - Join ASOF, to join on nearest keys instead of exact equality match.
+     - `join_asof` - Join ASOF, to join on nearest keys instead of exact equality match.
      - `cross_join` - Create the cartesian product of two DataFrames.
      - `semi_anti_join` - SEMI and ANTI joins.
      - `groupby_list` - Allow groupby operation on keys of type List.

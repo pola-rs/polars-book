@@ -57,21 +57,7 @@ See the results in h2oai's [db-benchmark](https://h2oai.github.io/db-benchmark/)
 
 ## Example
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "home/python/example.py:example"
-    ```
-
-=== ":fontawesome-brands-rust: Rust"
-
-    ``` rust
-    --8<-- "home/rust/example.rs:example"
-    ```
-=== ":fontawesome-brands-node-js: NodeJS"
-
-    ``` javaScript
-    --8<-- "home/node/example.js:example"
-    ```
+{{code_block('home/example','example',['scan_csv','filter','groupby','collect'])}}
 
 ## Sponsors
 

@@ -6,39 +6,26 @@
 
 Reading a JSON file should look familiar:
 
-
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/io/json.py:read"
-    ```
+{{code_block('user-guide/io/json','read',['read_json'])}}
 
 
 ### Newline Delimited JSON
 
 JSON objects that are delimited by newlines can be read into polars in a much more performant way than standard json.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/io/json.py:readnd"
-    ```
+{{code_block('user-guide/io/json','readnd',['read_ndjson'])}}
 
 ## Write
 
+{{code_block('user-guide/io/json','write',['write_json','write_ndjson'])}}
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/io/json.py:write"
-    ```
 
 ## Scan
 
 `Polars` allows you to _scan_ a JSON input **only for newline delimited json**. Scanning delays the actual parsing of the
 file and instead returns a lazy computation holder called a `LazyFrame`.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/io/json.py:scan"
-    ```
+{{code_block('user-guide/io/json','scan',['scan_ndjson'])}}
 
 ### Note about Rust usage
 

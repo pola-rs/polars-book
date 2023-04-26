@@ -15,14 +15,11 @@ Polars has native support for parsing time series data and doing more sophistica
 
 When loading from a CSV file `Polars` attempts to parse dates and times if the `try_parse_dates` flag is set to `True`:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/time-series/parsing.py:df"
-    ```
+{{code_block('user-guide/transformations/time-series/parsing','df',['read_csv'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/parsing"
---8<-- "user-guide/python/transformations/time-series/parsing.py:setup"
---8<-- "user-guide/python/transformations/time-series/parsing.py:df"
+--8<-- "python/user-guide/transformations/time-series/parsing.py:setup"
+--8<-- "python/user-guide/transformations/time-series/parsing.py:df"
 ```
 
 On the other hand binary formats such as parquet have a schema that is respected by `Polars`.
@@ -31,13 +28,10 @@ On the other hand binary formats such as parquet have a schema that is respected
 
 You can also cast a column of datetimes encoded as strings to a datetime type. You do this by calling the string `str.strptime` method and passing the format of the date string:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/time-series/parsing.py:cast"
-    ```
+{{code_block('user-guide/transformations/time-series/parsing','cast',['read_csv','strptime'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/parsing"
---8<-- "user-guide/python/transformations/time-series/parsing.py:cast"
+--8<-- "python/user-guide/transformations/time-series/parsing.py:cast"
 ```
 
 [The strptime date formats can be found here.](https://docs.rs/chrono/latest/chrono/format/strftime/index.html).
@@ -46,13 +40,10 @@ You can also cast a column of datetimes encoded as strings to a datetime type. Y
 
 You can extract data features such as the year or day from a date column using the `.dt` namespace on a date column:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/time-series/parsing.py:extract"
-    ```
+{{code_block('user-guide/transformations/time-series/parsing','extract',['year'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/parsing"
---8<-- "user-guide/python/transformations/time-series/parsing.py:extract"
+--8<-- "python/user-guide/transformations/time-series/parsing.py:extract"
 ```
 
 ## Mixed offsets
@@ -60,11 +51,9 @@ You can extract data features such as the year or day from a date column using t
 If you have mixed offsets (say, due to crossing daylight saving time),
 then you can use `utc=True` and then convert to your time zone:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/time-series/parsing.py:mixed"
-    ```
+
+{{code_block('user-guide/transformations/time-series/parsing','mixed',['strptime','convert_time_zone'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/parsing"
---8<-- "user-guide/python/transformations/time-series/parsing.py:mixed"
+--8<-- "python/user-guide/transformations/time-series/parsing.py:mixed"
 ```

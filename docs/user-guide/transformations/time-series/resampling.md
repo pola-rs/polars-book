@@ -14,14 +14,11 @@ We can resample by either:
 
 Let's go through an example where we generate data at 30 minute intervals:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/time-series/resampling.py:df"
-    ```
+{{code_block('user-guide/transformations/time-series/resampling','df',['DataFrame','date_range'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/resampling"
---8<-- "user-guide/python/transformations/time-series/resampling.py:setup"
---8<-- "user-guide/python/transformations/time-series/resampling.py:df"
+--8<-- "python/user-guide/transformations/time-series/resampling.py:setup"
+--8<-- "python/user-guide/transformations/time-series/resampling.py:df"
 ```
 
 Upsampling can be done by defining the new sampling interval. By upsampling we are adding in extra rows where we do not have data. As such upsampling by itself gives a DataFrame with nulls. These nulls can then be filled with a fill strategy or interpolation.
@@ -30,22 +27,17 @@ Upsampling can be done by defining the new sampling interval. By upsampling we a
 
 In this example we upsample from the original 30 minutes to 15 minutes and then use a `forward` strategy to replace the nulls with the previous non-null value:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/time-series/resampling.py:upsample"
-    ```
+{{code_block('user-guide/transformations/time-series/resampling','upsample',['upsample'])}}
+
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/resampling"
---8<-- "user-guide/python/transformations/time-series/resampling.py:upsample"
+--8<-- "python/user-guide/transformations/time-series/resampling.py:upsample"
 ```
 
 In this example we instead fill the nulls by linear interpolation:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/time-series/resampling.py:upsample2"
-    ```
+{{code_block('user-guide/transformations/time-series/resampling','upsample2',['upsample','interpolate','fill_null'])}}
 
-````python exec="on" result="text" session="user-guide/transformations/ts/resampling"
---8<-- "user-guide/python/transformations/time-series/resampling.py:upsample2"
+```python exec="on" result="text" session="user-guide/transformations/ts/resampling"
+--8<-- "python/user-guide/transformations/time-series/resampling.py:upsample2"
 ```

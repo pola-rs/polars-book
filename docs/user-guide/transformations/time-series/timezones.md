@@ -30,22 +30,15 @@ The main methods for setting and converting between time zones are:
 
 Let's look at some examples of common operations:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/time-series/timezones.py:example"
-    ```
+{{code_block('user-guide/transformations/time-series/timezones','example',['strptime','replace_time_zone'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/timezones"
---8<-- "user-guide/python/transformations/time-series/timezones.py:setup"
---8<-- "user-guide/python/transformations/time-series/timezones.py:example"
+--8<-- "python/user-guide/transformations/time-series/timezones.py:setup"
+--8<-- "python/user-guide/transformations/time-series/timezones.py:example"
 ```
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/time-series/timezones.py:example2"
-    ```
+{{code_block('user-guide/transformations/time-series/timezones','example2',['convert_time_zone','replace_time_zone'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/timezones"
---8<-- "user-guide/python/transformations/time-series/timezones.py:setup"
---8<-- "user-guide/python/transformations/time-series/timezones.py:example2"
+--8<-- "python/user-guide/transformations/time-series/timezones.py:example2"
 ```

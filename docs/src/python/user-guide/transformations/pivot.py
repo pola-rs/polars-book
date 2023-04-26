@@ -11,15 +11,15 @@ df = pl.DataFrame(
         "bar": ["k", "l", "m", "n", "o"],
     }
 )
+print(df)
 # --8<-- [end:df]
 
 # --8<-- [start:eager]
-
 out = df.pivot(index="foo", columns="bar", values="N", aggregate_function="first")
 print(out)
 # --8<-- [end:eager]
 
-# --8<-- [end:lazy]
+# --8<-- [start:lazy]
 q = (
     df.lazy()
     .collect()

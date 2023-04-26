@@ -7,9 +7,7 @@ To read from one of the supported databases (e.g. MySQL, Postgres, Sqlite, Redsh
     $  pip install connectorx>=0.2.0a3
     ```
 
-Then you can read using the `read_sql` function:
+Then you can read using the `read_databse` function:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/io/database.py:read"
-    ```
+{{code_block('user-guide/io/database','read',['read_database'])}}
+

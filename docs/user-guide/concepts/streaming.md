@@ -4,11 +4,7 @@ One additional benefit of the lazy API is that it allows queries to be executed 
 
 To tell Polars we want to execute a query in streaming mode we pass the `streaming=True` argument to `collect`
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `collect`](https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.collect.html)
-    ``` python
-    --8<-- "user-guide/python/concepts/lazy-vs-eager.py:streaming"
-    ```
+{{code_block('user-guide/concepts/lazy-vs-eager','streaming',['collect'])}}
 
 ## When is streaming available?
 

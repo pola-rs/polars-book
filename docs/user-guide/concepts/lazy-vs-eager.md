@@ -2,12 +2,8 @@
 
 `Polars` supports two modes of operation: lazy and eager. In the eager API the query is executed immediately while in the lazy API the query is only evaluated once it is 'needed'. Deferring the execution to the last minute can have significant performance advantages that is why the Lazy API is preferred in most cases. Let us demonstrate this with an example:
 
+{{code_block('user-guide/concepts/lazy-vs-eager','eager',['read_csv'])}}
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `read_csv`](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_csv.html)
-    ``` python
-    --8<-- "user-guide/python/concepts/lazy-vs-eager.py:eager"
-    ```
 
 In this example we use the eager API to:
 
@@ -20,11 +16,7 @@ Every step is executed immediately returning the intermediate results. This can 
 - Predicate pushdown: Apply filters as early as possible while reading the dataset, thus only reading rows with sepal length greater than 5.
 - Projection pushdown: Select only the columns that are needed while reading the dataset, thus removing the need to load additional columns (e.g. petal length & petal width)
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `read_csv`](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.scan_csv.html)
-    ``` python
-    --8<-- "user-guide/python/concepts/lazy-vs-eager.py:lazy"
-    ```
+{{code_block('user-guide/concepts/lazy-vs-eager','lazy',['scan_csv'])}}
 
 These will signficantly lower the load on memory & CPU thus allowing you to fit bigger datasets in memory and process faster. Once the query is defined you call `collect` to inform `Polars` that you want to execute it. In the section on Lazy API we will go into more details on its implementation.
 

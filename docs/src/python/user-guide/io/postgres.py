@@ -5,7 +5,7 @@ import polars as pl
 conn = "postgresql://username:password@server:port/database"
 query = "SELECT * FROM foo"
 
-pl.read_sql(query, conn)
+pl.read_database(query, conn)
 # --8<-- [end:read]
 
 # --8<-- [start:write]

@@ -12,7 +12,7 @@ df = pl.read_json("path.json")
 """
 # --8<-- [start:readnd]
 df = pl.read_ndjson("path.json")
-# --8<-- [end:readmd]
+# --8<-- [end:readnd]
 """
 
 # --8<-- [start:write]

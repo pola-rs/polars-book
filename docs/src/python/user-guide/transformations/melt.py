@@ -9,6 +9,7 @@ df = pl.DataFrame(
         "D": [2, 4, 6],
     }
 )
+print(df)
 # --8<-- [end:df]
 
 # --8<-- [start:melt]

@@ -2,14 +2,12 @@
 
 The schema of a Polars `DataFrame` or `LazyFrame` sets out the names of the columns and their datatypes. You can see the schema with the `.schema` method on a `DataFrame` or `LazyFrame`
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/lazy/schema.py:schema"
-    ```
+{{code_block('user-guide/lazy/schema','schema',['DataFrame','lazy'])}}
+
 
 ```python exec="on" result="text" session="user-guide/lazy/schemas"
---8<-- "user-guide/python/lazy/schema.py:setup"
---8<-- "user-guide/python/lazy/schema.py:schema"
+--8<-- "python/user-guide/lazy/schema.py:setup"
+--8<-- "python/user-guide/lazy/schema.py:schema"
 ```
 
 The schema plays an important role in the lazy API.
@@ -20,10 +18,7 @@ One advantage of the lazy API is that Polars will check the schema before any da
 
 We see how this works in the following simple example where we call the `.round` expression on the integer `bar` column.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/lazy/schema.py:typecheck"
-    ```
+{{code_block('user-guide/lazy/schema','typecheck',['lazy','with_columns'])}}
 
 The `.round` expression is only valid for columns with a floating point dtype. Calling `.round` on an integer column means the operation will raise a `SchemaError`.
 
@@ -57,11 +52,8 @@ We show how to deal with a non-lazy operation in this example where we:
 - do a `.filter`
 - finish by executing the query with `.collect` to get a `DataFrame`
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/lazy/schema.py:lazyeager"
-    ```
+{{code_block('user-guide/lazy/schema','lazyeager',['collect','pivot','filter'])}}
 
 ```python exec="on" result="text" session="user-guide/lazy/schemas"
---8<-- "user-guide/python/lazy/schema.py:lazyeager"
+--8<-- "python/user-guide/lazy/schema.py:lazyeager"
 ```

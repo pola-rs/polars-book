@@ -1,0 +1,167 @@
+python:
+  DataFrame: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html
+  Series: https://pola-rs.github.io/polars/py-polars/html/reference/series/index.html
+  select: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.select.html
+  filter: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.filter.html
+  with_columns: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.with_columns.html
+  groupby: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.groupby.html
+  join: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.join.html
+  hstack: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.hstack.html
+  read_csv: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_csv.html
+  write_csv: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.write_csv.html
+  read_json: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_json.html
+  write_json: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.write_json.html
+  read_parquet: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_parquet.html
+  write_parquet: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.write_parquet.html
+  min: https://pola-rs.github.io/polars/py-polars/html/reference/series/api/polars.Series.min.html
+  max: https://pola-rs.github.io/polars/py-polars/html/reference/series/api/polars.Series.max.html
+  replace: https://pola-rs.github.io/polars/py-polars/html/reference/series/api/polars.Series.str.replace.html
+  sample: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.sample.html
+  day: https://pola-rs.github.io/polars/py-polars/html/reference/series/api/polars.Series.dt.day.html
+  head: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.head.html
+  tail: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.tail.html
+  describe: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.describe.html
+  col: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.col.html
+  sort: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.sort.html
+  scan_csv: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.scan_csv.html
+  collect: https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.collect.html
+  fold: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.fold.html
+  concat_str: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.concat_str.html
+  all: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.all.html
+  exclude: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.exclude.html
+  alias: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.alias.html
+  prefix: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.prefix.html
+  suffix: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.suffix.html
+  map_alias: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.map_alias.html
+  n_unique: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.n_unique.html
+  approx_unique: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.approx_unique.html
+  when: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.when.html
+  concat_list: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.concat_list.html
+  arr.eval: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.arr.eval.html
+  null_count: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.null_count.html
+  is_null: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.is_null.html
+  fill_null: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.fill_null.html
+  interpolate: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.interpolate.html
+  fill_nan: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.fill_nan.html
+  operators: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/operators.html
+  map: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.map.html
+  apply: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.apply.html
+  over: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.over.html
+  implode: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.implode.html
+  read_database: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_database.html
+  read_parquet: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_parquet.html
+  write_parquet: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.write_parquet.html
+  scan_parquet: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.scan_parquet.html
+  read_json: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_json.html
+  read_ndjson: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_ndjson.html
+  write_ndjson: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.write_ndjson.html
+  write_json: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.write_json.html
+  scan_ndjson: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.scan_ndjson.html
+  from_arrow: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.from_arrow.html
+  show_graph: https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.show_graph.html
+  lazy: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.lazy.html
+  explain: https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.explain.html
+  fetch: https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.fetch.html
+  SQLContext: https://pola-rs.github.io/polars/py-polars/html/reference/sql
+  SQLquery: 
+    name: query
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.SQLContext.query.html
+  join_asof: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.join_asof.html
+  concat: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.concat.html
+  pivot: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.pivot.html
+  melt: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.melt.html
+  is_between: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.is_between.html
+  strptime: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.strptime.html
+  year: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.dt.year.html
+  convert_time_zone: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.dt.convert_time_zone.html
+  replace_time_zone: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.dt.replace_time_zone.html
+  date_range: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.date_range.html
+  upsample: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.upsample.html
+  groupby_dynamic: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.groupby_dynamic.html
+  explode: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.explode.html
+
+
+rust:
+  DataFrame: https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html
+  Series: https://pola-rs.github.io/polars/polars/series/struct.Series.html
+  select: https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.select
+  filter: https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.filter
+  with_columns: https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.with_column
+  groupby: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.groupby.html
+  join: https://pola-rs.github.io/polars/polars_core/frame/hash_join/index.html
+  hstack: https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.hstack
+  rust: https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.hstack
+  read_csv: 
+    name: CsvReader
+    link: https://pola-rs.github.io/polars/polars_io/csv/struct.CsvReader.html
+  scan_csv:
+    name: LazyCsvReader
+    link: https://pola-rs.github.io/polars/polars/prelude/struct.LazyCsvReader.html
+  write_csv:
+    name: CsvWriter
+    link: https://pola-rs.github.io/polars/polars_io/csv/struct.CsvWriter.html
+  read_json:
+    name: JsonReader
+    link: https://pola-rs.github.io/polars/polars_io/json/struct.JsonReader.html
+  write_json:
+    name: JsonWriter
+    link: https://pola-rs.github.io/polars/polars_io/json/struct.JsonWriter.html
+  read_parquet:
+    name: ParquetReader
+    link: https://pola-rs.github.io/polars/polars_io/parquet/struct.ParquetReader.html
+  write_parquet:
+    name: ParquetWriter
+    link: https://pola-rs.github.io/polars/polars_io/parquet/struct.ParquetWriter.html
+  min: https://pola-rs.github.io/polars/polars/series/struct.Series.html#method.min
+  max: https://pola-rs.github.io/polars/polars/series/struct.Series.html#method.max
+  sample:
+    name: sample_n
+    link: https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html#method.sample_n
+  head: https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html#method.head
+  tail: https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html#method.tail
+  describe: https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html#method.describe
+  collect: https://pola-rs.github.io/polars/polars/prelude/struct.LazyFrame.html#method.collect
+javascript:
+  DataFrame: https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html
+  Series: https://pola-rs.github.io/nodejs-polars/interfaces/Series-1.html
+  select: https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#select
+  filter: https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#filter
+  with_columns: 
+    name: withColumns
+    link: https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#withColumns
+  groupby: 
+    name: groupBy
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.groupby.html
+  join: https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#join
+  hstack: https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#hstack
+  read_csv:
+    name: readCSV
+    link: https://pola-rs.github.io/nodejs-polars/functions/readCSV.html
+  scan_csv:
+    name: scanCSV
+    link: https://pola-rs.github.io/nodejs-polars/functions/pl.scanCSV.html
+  write_csv:
+    name: writeCSV
+    link: https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#writeCSV
+  read_json:
+    name: readJSON
+    link: https://pola-rs.github.io/nodejs-polars/functions/readJSON.html
+  write_json:
+    name: writeJSON
+    link: https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#writeJSON
+  read_parquet:
+    name: readParquet
+    link: https://pola-rs.github.io/nodejs-polars/functions/readParquet.html
+  write_parquet:
+    name: writeParquet
+    link: https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#writeParquet
+  min: https://pola-rs.github.io/nodejs-polars/interfaces/Series-1.html#min
+  max: https://pola-rs.github.io/nodejs-polars/interfaces/Series-1.html#max
+  replace: https://pola-rs.github.io/nodejs-polars/interfaces/StringNamespace.html#replace
+  sample: https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#sample
+  day: https://pola-rs.github.io/nodejs-polars/interfaces/DatetimeNamespace.html#day
+  head: https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#head
+  tail: https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#tail
+  describe: https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html#describe
+  collect: https://pola-rs.github.io/nodejs-polars/interfaces/pl.LazyDataFrame.html#collect
+

@@ -2,10 +2,8 @@
 
 Our example query on the Reddit dataset is:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/lazy/execution.py:df"
-    ```
+{{code_block('user-guide/lazy/execution','df',['scan_csv'])}}
+
 
 If we were to run the code above on the Reddit CSV the query would not be evaluated. Instead Polars takes each line of code, adds it to the internal query graph and optimizes the query graph.
 
@@ -15,10 +13,7 @@ When we execute the code Polars executes the optimized query graph by default.
 
 We can execute our query on the full dataset by calling the `.collect` method on the query.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/lazy/execution.py:collect"
-    ```
+{{code_block('user-guide/lazy/execution','collect',['scan_csv','collect'])}}
 
 ```text
 shape: (14_029, 6)
@@ -47,10 +42,7 @@ With the default `collect` method Polars processes all of your data as one batch
 
 If your data requires more memory than you have available Polars may be able to process the data in batches using *streaming* mode. To use streaming mode you simply pass the `streaming=True` argument to `collect`
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/lazy/execution.py:stream"
-    ```
+{{code_block('user-guide/lazy/execution','stream',['scan_csv','collect'])}}
 
 We look at [streaming in more detail here](streaming.md).
 
@@ -62,10 +54,7 @@ You can instead execute the query with the `.fetch` method. The `.fetch` method 
 
 Here we "fetch" 100 rows from the source file and apply the predicates.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/lazy/execution.py:partial"
-    ```
+{{code_block('user-guide/lazy/execution','partial',['scan_csv','collect','fetch'])}}
 
 ```text
 shape: (27, 6)

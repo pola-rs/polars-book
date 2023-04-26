@@ -16,10 +16,7 @@ We create a lazy query from the Reddit CSV data and apply some transformations.
 
 By starting the query with `pl.scan_csv` we are using the lazy API.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/lazy/using.py:dataframe"
-    ```
+{{code_block('user-guide/lazy/using','dataframe',['scan_csv','with_columns','filter','col'])}}
 
 A `pl.scan_` function is available for a number of file types including CSV, IPC, Parquet and JSON.
 
@@ -35,9 +32,6 @@ The lazy query will not be executed at this point. See this page on [executing l
 
 An alternative way to access the lazy API is to call `.lazy` on a `DataFrame` that has already been created in memory.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/lazy/using.py:fromdf"
-    ```
+{{code_block('user-guide/lazy/using','fromdf',['lazy'])}}
 
 By calling `.lazy` we convert the `DataFrame` to a `LazyFrame`.

@@ -11,10 +11,7 @@ To read or write from GBQ, additional dependencies are needed:
 
 We can load a query into a `DataFrame` like this:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/io/bigquery.py:read"
-    ```
+{{code_block('user-guide/io/bigquery','read',['from_arrow'])}}
 
 
 ## Write

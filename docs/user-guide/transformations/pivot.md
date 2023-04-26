@@ -15,25 +15,21 @@ aggregation.
 
 ## Dataset
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/pivot.py:df"
-    ```
+{{code_block('user-guide/transformations/pivot','df',['DataFrame'])}}
+
 
 ```python exec="on" result="text" session="user-guide/transformations/pivot"
---8<-- "user-guide/python/transformations/pivot.py:setup"
---8<-- "user-guide/python/transformations/pivot.py:df"
+--8<-- "python/user-guide/transformations/pivot.py:setup"
+--8<-- "python/user-guide/transformations/pivot.py:df"
 ```
 
 ## Eager
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/pivot.py:eager"
-    ```
+{{code_block('user-guide/transformations/pivot','eager',['pivot'])}}
+
 
 ```python exec="on" result="text" session="user-guide/transformations/pivot"
---8<-- "user-guide/python/transformations/pivot.py:eager"
+--8<-- "python/user-guide/transformations/pivot.py:eager"
 ```
 
 ## Lazy
@@ -45,11 +41,8 @@ running the query.
 Polars could have abstracted this fact for you just like Spark does, but we don't want you to shoot yourself in the foot
 with a shotgun. The cost should be clear up front.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/pivot.py:lazy"
-    ```
+{{code_block('user-guide/transformations/pivot','lazy',['pivot'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/pivot"
---8<-- "user-guide/python/transformations/pivot.py:lazy"
+--8<-- "python/user-guide/transformations/pivot.py:lazy"
 ```

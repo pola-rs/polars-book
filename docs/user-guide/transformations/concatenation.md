@@ -10,14 +10,11 @@ There are a number of ways to concatenate data from separate DataFrames:
 
 In a vertical concatenation you combine all of the rows from a list of `DataFrames` into a single longer `DataFrame`.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/conatenation.py:vertical"
-    ```
+{{code_block('user-guide/transformations/concatenation','vertical',['concat'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/concatenation"
---8<-- "user-guide/python/transformations/conatenation.py:setup"
---8<-- "user-guide/python/transformations/conatenation.py:vertical"
+--8<-- "python/user-guide/transformations/concatenation.py:setup"
+--8<-- "python/user-guide/transformations/concatenation.py:vertical"
 ```
 
 Vertical concatenation fails when the dataframes do not have the same column names.
@@ -26,13 +23,10 @@ Vertical concatenation fails when the dataframes do not have the same column nam
 
 In a horizontal concatenation you combine all of the columns from a list of `DataFrames` into a single wider `DataFrame`.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/conatenation.py:horizontal"
-    ```
+{{code_block('user-guide/transformations/concatenation','horizontal',['concat'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/concatenation"
---8<-- "user-guide/python/transformations/conatenation.py:horizontal"
+--8<-- "python/user-guide/transformations/concatenation.py:horizontal"
 ```
 
 Horizontal concatenation fails when dataframes have overlapping columns or a different number of rows.
@@ -41,13 +35,10 @@ Horizontal concatenation fails when dataframes have overlapping columns or a dif
 
 In a diagonal concatenation you combine all of the row and columns from a list of `DataFrames` into a single longer and/or wider `DataFrame`.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/transformations/conatenation.py:cross"
-    ```
+{{code_block('user-guide/transformations/concatenation','cross',['concat'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/concatenation"
---8<-- "user-guide/python/transformations/conatenation.py:cross"
+--8<-- "python/user-guide/transformations/concatenation.py:cross"
 ```
 
 Diagonal concatenation generates nulls when the column names do not overlap.

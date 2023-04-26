@@ -18,14 +18,7 @@ located on an AWS bucket.
 
 ## Read
 
+
 Load a `.parquet` file using:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/io/aws.py:bucket"
-    ```
-
-
-## Write
-
---8<-- "docs/snippets/under_construction.md"
+{{code_block('user-guide/io/aws','bucket',['from_arrow'])}}

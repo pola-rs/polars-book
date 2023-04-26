@@ -35,15 +35,11 @@ we could use `map` to pass an expression column to a neural network model.
 
 Use cases for `map` in the `groupby` context are slim. They are only used for performance reasons, but can quite easily lead to incorrect results. Let me explain why.
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `map`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.map.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/user-defined-functions.py:dataframe"
-    ```
+{{code_block('user-guide/expressions/user-defined-functions','dataframe',['map'])}}
 
 ```python exec="on" result="text" session="user-guide/udf"
---8<-- "user-guide/python/expressions/user-defined-functions.py:setup"
---8<-- "user-guide/python/expressions/user-defined-functions.py:dataframe"
+--8<-- "python/user-guide/expressions/user-defined-functions.py:setup"
+--8<-- "python/user-guide/expressions/user-defined-functions.py:dataframe"
 ```
 
 In the snippet above we groupby the `"keys"` column. That means we have the following groups:
@@ -95,14 +91,10 @@ That is:
 
 So with `apply` we should be able to fix our example:
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `apply`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.apply.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/user-defined-functions.py:apply"
-    ```
+{{code_block('user-guide/expressions/user-defined-functions','apply',['apply'])}}
 
 ```python exec="on" result="text" session="user-guide/udf"
---8<-- "user-guide/python/expressions/user-defined-functions.py:apply"
+--8<-- "python/user-guide/expressions/user-defined-functions.py:apply"
 ```
 
 And observe, a valid result! 🎉
@@ -125,14 +117,10 @@ Every iteration the result of the increment will be added to the element value.
 
 > Note, this example isn't provided in Rust.  The reason is that the global `counter` value would lead to data races when this apply is evaluated in parallel.  It would be possible to wrap it in a `Mutex` to protect the variable, but that would be obscuring the point of the example.  This is a case where the Python Global Interpreter Lock's performance tradeoff provides some safety guarantees.
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `apply`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.apply.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/user-defined-functions.py:counter"
-    ```
+{{code_block('user-guide/expressions/user-defined-functions','counter',['apply'])}}
 
 ```python exec="on" result="text" session="user-guide/udf"
---8<-- "user-guide/python/expressions/user-defined-functions.py:counter"
+--8<-- "python/user-guide/expressions/user-defined-functions.py:counter"
 ```
 
 
@@ -152,14 +140,10 @@ type. This data type collects those columns as fields in the `struct`. So if we'
 
 In Python, those would be passed as `dict` to the calling python function and can thus be indexed by `field: str`.  In rust, you'll get a `Series` with the `Struct` type. The fields of the struct can then be indexed and downcast.
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `apply`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.apply.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/user-defined-functions.py:combine"
-    ```
+{{code_block('user-guide/expressions/user-defined-functions','combine',['apply'])}}
 
 ```python exec="on" result="text" session="user-guide/udf"
---8<-- "user-guide/python/expressions/user-defined-functions.py:combine"
+--8<-- "python/user-guide/expressions/user-defined-functions.py:combine"
 ```
 ### Return types?
 

@@ -4,15 +4,11 @@
 
 In the examples below we will use the following `DataFrame`:
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `DataFrame`](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/index.html#dataframe)
-    ``` python
-    --8<-- "user-guide/python/expressions/functions.py:dataframe"
-    ```
+{{code_block('user-guide/expressions/functions','dataframe',['DataFrame'])}}
 
 ```python exec="on" result="text" session="user-guide/functions"
---8<-- "user-guide/python/expressions/functions.py:setup"
---8<-- "user-guide/python/expressions/functions.py:dataframe"
+--8<-- "python/user-guide/expressions/functions.py:setup"
+--8<-- "python/user-guide/expressions/functions.py:dataframe"
 ```
 
 
@@ -22,58 +18,46 @@ There are various convenience methods to select multiple or all columns.
 
 ##### Select All Columns
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `all`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.all.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/functions.py:all"
-    ```
+{{code_block('user-guide/expressions/functions','all',['all'])}}
+
 
 ##### Select All Columns Except
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `exclude`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.exclude.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/functions.py:exclude"
-    ```
+{{code_block('user-guide/expressions/functions','exclude',['exclude'])}}
 
 ```python exec="on" result="text" session="user-guide/functions"
---8<-- "user-guide/python/expressions/functions.py:exclude"
+--8<-- "python/user-guide/expressions/functions.py:exclude"
 ```
 
 #### Column Naming
 
 By default if you perform a expression it will keep the same name as the original column. In the example below we perform an expression on the `nrs` column. Note that the output `DataFrame` still has the same name.
 
+{{code_block('user-guide/expressions/functions','samename',[])}}
+
 === ":fontawesome-brands-python: Python"
     ``` python
-    --8<-- "user-guide/python/expressions/functions.py:samename"
+    --8<-- "python/user-guide/expressions/functions.py:samename"
     ```
 
 ```python exec="on" result="text" session="user-guide/functions"
---8<-- "user-guide/python/expressions/functions.py:samename"
+--8<-- "python/user-guide/expressions/functions.py:samename"
 ```
 
 This might get problematic in case you use the same column muliple times in your expression as the output columns will get duplicated. For example the following query will fail.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/expressions/functions.py:samenametwice"
-    ```
+{{code_block('user-guide/expressions/functions','samenametwice',[])}}
 
 ```python exec="on" result="text" session="user-guide/functions"
---8<-- "user-guide/python/expressions/functions.py:samenametwice"
+--8<-- "python/user-guide/expressions/functions.py:samenametwice"
 ```
 
 You can change the output name of an expression by using the `alias` function 
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `alias`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.alias.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/functions.py:samenamealias"
-    ```
+{{code_block('user-guide/expressions/functions','samenamealias',['alias'])}}
 
 ```python exec="on" result="text" session="user-guide/functions"
---8<-- "user-guide/python/expressions/functions.py:samenamealias"
+--8<-- "python/user-guide/expressions/functions.py:samenamealias"
 ```
 
 In case of multiple columns for example when using `all()` or `col(*)` you can apply a mapping function `map_alias`  to change the original column name into something else. In case you want to add a suffix (`suffix()`) or prefix (`prefix()`) these are also build in. 
@@ -88,27 +72,18 @@ In case of multiple columns for example when using `all()` or `col(*)` you can a
 There are two ways two count unique values in `Polars` one is an exact methodology and the other one is an approximantion. The approximation uses the [HyperLogLog++](https://en.wikipedia.org/wiki/HyperLogLog) algorithm to approximate the cardinality and is especially usefull for very large datasets where an approximation is good enough.
 
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `n_unique`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.n_unique.html) ·
-    [:material-api:  `approx_unique`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.approx_unique.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/functions.py:countunique"
-    ```
+{{code_block('user-guide/expressions/functions','countunique',['n_unique','approx_unique'])}}
 
 ```python exec="on" result="text" session="user-guide/functions"
---8<-- "user-guide/python/expressions/functions.py:countunique"
+--8<-- "python/user-guide/expressions/functions.py:countunique"
 ```
 
 #### Conditionals
 
 `Polars` supports if-like conditions in expression with the `when`, `then`, `otherwise` syntax. The predicate is placed in the `when` clause and when this evaluates to `true` the `then` expression is applied otherwise the `otherwise` expression is applied (row-wise).
 
-=== ":fontawesome-brands-python: Python"
-    [:material-api:  `when`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.when.html)
-    ``` python
-    --8<-- "user-guide/python/expressions/functions.py:conditional"
-    ```
+{{code_block('user-guide/expressions/functions','conditional',['when'])}}
 
 ```python exec="on" result="text" session="user-guide/functions"
---8<-- "user-guide/python/expressions/functions.py:conditional"
+--8<-- "python/user-guide/expressions/functions.py:conditional"
 ```

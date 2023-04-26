@@ -11,10 +11,8 @@ To read from postgres, additional dependencies are needed:
 
 Then you can read with the following code snippet:
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/io/postgres.py:read"
-    ```
+{{code_block('user-guide/io/postgres','read',['read_database'])}}
+
 
 ## Write
 
@@ -32,7 +30,4 @@ to the server.
 We first make sure that all our dtypes are in a format that `psycopg2` recognizes, and then we use `DataFrame.rows` to
 easily transform the columnar data to rows that the database driver can work with.
 
-=== ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "user-guide/python/io/postgres.py:write"
-    ```
+{{code_block('user-guide/io/postgres','write',['read_parquet'])}}
