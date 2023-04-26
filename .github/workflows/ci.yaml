@@ -1,5 +1,4 @@
-name: Polars Guides
-
+name: ci
 on:
   pull_request:
     branches:
@@ -7,40 +6,56 @@ on:
       - main
   push:
     branches:
-      - master
-
+      - master 
+      - main
+permissions:
+  contents: write
 jobs:
-  test:
-    name: docs
+
+  test-python:
     runs-on: ubuntu-latest
-    needs: [test-python, test-node, markdown-link-check]
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup Python
-        uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
-          python-version: 3.8
+          python-version: 3.x
+      - uses: actions/cache@v2
+        with:
+          key: ${{ github.ref }}
+          path: .cache
+      - run: pip install -r requirements.txt
+      - name: Install graphviz
+        run: sudo apt-get install -y graphviz
+      - run: find docs/src/ -name "*.py" | xargs -n 1 sh -c 'python $0 || exit 255'
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install --no-install-recommends -y graphviz make wget
-          python -m pip install ghp-import
-          sudo wget https://github.com/rust-lang/mdBook/releases/download/v0.4.7/mdbook-v0.4.7-x86_64-unknown-linux-gnu.tar.gz -O - | sudo tar -xzf - -C /usr/bin/
-          sudo wget https://github.com/ritchie46/mdBook/releases/download/api-0.0.1/mdbook -O /usr/bin/mdbook2
-          sudo chmod +x /usr/bin/mdbook2
+  black:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - uses: actions/cache@v2
+        with:
+          key: ${{ github.ref }}
+          path: .cache
+      - run: pip install black==23.3.0
+      - run: black --check .
 
-      - name: Run snippets
-        run: |
-          make run
+  test-node:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - name: Install Polars 
+        run: npm i -s nodejs-polars
+      - name: Run code snippets
+        run: find docs/src/ -name "*.js" | xargs -n 1 sh -c 'node $0 || exit 255'
 
-      - name: Deploy docs
-        run: |
-          mkdir -p docs
-          cd user_guide
-          mdbook build --dest-dir ../docs/user-guide .
-          cd ..
-          echo '<meta http-equiv=refresh content=0;url=/polars-book/user-guide/index.html>' > docs/index.html
-          ghp-import --no-jekyll docs
-          git push -qf https://${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git gh-pages
+  markdown-link-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: gaurav-nelson/github-action-markdown-link-check@v1
