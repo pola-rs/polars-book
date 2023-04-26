@@ -95,4 +95,5 @@ out = df.sort("Type 1").select(
         .alias("sorted_by_alphabet"),
     ]
 )
+print(out)
 # --8<-- [end:examples]

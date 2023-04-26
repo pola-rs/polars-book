@@ -39,8 +39,8 @@ These are some tools that share similar functionality to what polars does.
 
 - DuckDB
 
-    Polars and DuckDB have many similarities. DuckDB is focussed on providing an in-process OLAP Sqlite alternative,
-    polars is focussed on providing a scalable `DataFrame` interface to many languages. Those different front-ends lead to
+    Polars and DuckDB have many similarities. DuckDB is focused on providing an in-process OLAP Sqlite alternative,
+    polars is focused on providing a scalable `DataFrame` interface to many languages. Those different front-ends lead to
     different optimization strategies and different algorithm prioritization. The interop between both is zero-copy.
     See more: https://duckdb.org/docs/guides/python/polars
 

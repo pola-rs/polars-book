@@ -32,6 +32,12 @@ we could use `map` to pass an expression column to a neural network model.
         pl.col("features").map(lambda s: MyNeuralNetwork.forward(s.to_numpy())).alias("activations")
     ])
     ```
+=== ":fontawesome-brands-rust: Rust"
+    ``` rust
+    df.with_columns([
+        col("features").map(|s| Ok(my_nn.forward(s))).alias("activations")
+    ])
+    ```
 
 Use cases for `map` in the `groupby` context are slim. They are only used for performance reasons, but can quite easily lead to incorrect results. Let me explain why.
 

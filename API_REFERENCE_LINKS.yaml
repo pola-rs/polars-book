@@ -84,13 +84,12 @@ python:
 rust:
   DataFrame: https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html
   Series: https://pola-rs.github.io/polars/polars/series/struct.Series.html
-  select: https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.select
-  filter: https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.filter
-  with_columns: https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.with_column
-  groupby: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.groupby.html
+  select: https://pola-rs.github.io/polars/polars_lazy/frame/struct.LazyFrame.html#method.select
+  filter: https://pola-rs.github.io/polars/polars_lazy/frame/struct.LazyFrame.html#method.filter
+  with_columns: https://pola-rs.github.io/polars/polars_lazy/frame/struct.LazyFrame.html#method.with_columns
+  groupby: https://pola-rs.github.io/polars/polars_lazy/frame/struct.LazyFrame.html#method.groupby
   join: https://pola-rs.github.io/polars/polars_core/frame/hash_join/index.html
   hstack: https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.hstack
-  rust: https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.hstack
   read_csv: 
     name: CsvReader
     link: https://pola-rs.github.io/polars/polars_io/csv/struct.CsvReader.html
@@ -103,17 +102,28 @@ rust:
   read_json:
     name: JsonReader
     link: https://pola-rs.github.io/polars/polars_io/json/struct.JsonReader.html
+  read_ndjson:
+    name: JsonLineReader
+    link: https://pola-rs.github.io/polars/polars_io/ndjson_core/ndjson/struct.JsonLineReader.html
   write_json:
     name: JsonWriter
     link: https://pola-rs.github.io/polars/polars_io/json/struct.JsonWriter.html
+  write_ndjson:
+    name: JsonWriter
+    link: https://pola-rs.github.io/polars/polars_io/json/struct.JsonWriter.html
+  scan_ndjson:
+    name: LazyJsonLineReader
+    link: https://pola-rs.github.io/polars/polars_lazy/frame/struct.LazyJsonLineReader.html
   read_parquet:
     name: ParquetReader
     link: https://pola-rs.github.io/polars/polars_io/parquet/struct.ParquetReader.html
   write_parquet:
     name: ParquetWriter
     link: https://pola-rs.github.io/polars/polars_io/parquet/struct.ParquetWriter.html
+  scan_parquet: https://pola-rs.github.io/polars/polars/prelude/struct.LazyFrame.html#method.scan_parquet
   min: https://pola-rs.github.io/polars/polars/series/struct.Series.html#method.min
   max: https://pola-rs.github.io/polars/polars/series/struct.Series.html#method.max
+  implode: https://pola-rs.github.io/polars/polars_lazy/dsl/enum.Expr.html#method.implode
   sample:
     name: sample_n
     link: https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html#method.sample_n
@@ -121,6 +131,22 @@ rust:
   tail: https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html#method.tail
   describe: https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html#method.describe
   collect: https://pola-rs.github.io/polars/polars/prelude/struct.LazyFrame.html#method.collect
+  col: https://pola-rs.github.io/polars/polars_lazy/dsl/fn.col.html
+  sort: https://pola-rs.github.io/polars/polars_lazy/dsl/enum.Expr.html#method.sort
+  arr.eval:
+    name: arr
+    link: https://pola-rs.github.io/polars/polars_lazy/dsl/enum.Expr.html#method.arr
+  fold:
+    name: fold_exprs
+    link: https://pola-rs.github.io/polars/polars_lazy/dsl/fn.fold_exprs.html
+  concat_str: https://pola-rs.github.io/polars/polars_lazy/dsl/fn.concat_str.html
+  concat_list:
+    name: concat_lst
+    link: https://pola-rs.github.io/polars/polars_lazy/dsl/fn.concat_lst.html
+  map: https://pola-rs.github.io/polars/polars_lazy/dsl/enum.Expr.html#method.map
+  apply: https://pola-rs.github.io/polars/polars_lazy/dsl/enum.Expr.html#method.apply
+  over: https://pola-rs.github.io/polars/polars_lazy/dsl/enum.Expr.html#method.over
+
 javascript:
   DataFrame: https://pola-rs.github.io/nodejs-polars/interfaces/DataFrame-1.html
   Series: https://pola-rs.github.io/nodejs-polars/interfaces/Series-1.html

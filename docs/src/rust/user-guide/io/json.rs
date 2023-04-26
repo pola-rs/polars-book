@@ -11,7 +11,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>>{
     // --8<-- [end:read]
 
 
-    // --8<-- [start:read]
+    // --8<-- [start:readnd]
     let mut file = std::fs::File::open("path.json").unwrap();
     let df = JsonLineReader::new(&mut file).finish().unwrap();
     // --8<-- [end:readnd]
