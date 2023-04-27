@@ -49,7 +49,7 @@ jobs:
         with:
           node-version: 18.x
       - run: npm install --save-dev --save-exact rome
-      - run: black --check .
+      - run: npx rome format docs/src/node/
 
 
   test-node:
