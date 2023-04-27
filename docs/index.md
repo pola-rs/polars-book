@@ -40,7 +40,7 @@ Polars is a highly performant DataFrame library for manipulating structured data
 
 ## About this guide
 
-The `Polars` user guide is intended to live alongside the API documentation. Its purpose is to explain (new) users how to use `Polars` and to provide meaningfull examples. The guide is split into two parts:
+The `Polars` user guide is intended to live alongside the API documentation. Its purpose is to explain (new) users how to use `Polars` and to provide meaningful examples. The guide is split into two parts:
 
 - [Getting Started](getting-started/intro.md): A 10 minute helicopter view of the library and its primary function.
 - [User Guide](user-guide/index.md): A detailed explanation of how the library is setup and how to use it most effectively. 

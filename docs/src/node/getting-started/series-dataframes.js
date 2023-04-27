@@ -3,7 +3,7 @@ const pl = require("nodejs-polars");
 
 var s = pl.Series("a", [1, 2, 3, 4, 5]);
 console.log(s);
-// --8<-- [start:series]
+// --8<-- [end:series]
 
 // --8<-- [start:minmax]
 var s = pl.Series("a", [1, 2, 3, 4, 5]);

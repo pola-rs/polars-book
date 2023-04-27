@@ -39,4 +39,5 @@ mixed_parsed = (
     .str.strptime(pl.Datetime, format="%Y-%m-%dT%H:%M:%S%z", utc=True)
     .dt.convert_time_zone("Europe/Brussels")
 )
+print(mixed_parsed)
 # --8<-- [end:mixed]

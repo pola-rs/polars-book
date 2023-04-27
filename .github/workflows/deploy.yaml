@@ -19,5 +19,6 @@ jobs:
           key: ${{ github.ref }}
           path: .cache
       - run: pip install -r requirements.txt
+      - run: sudo apt-get install -y graphviz
       - run: python scripts/people.py
       - run: mkdocs gh-deploy --force
