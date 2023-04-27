@@ -41,6 +41,16 @@ jobs:
           path: .cache
       - run: pip install black==23.3.0
       - run: black --check .
+  rome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - run: npm install --save-dev --save-exact rome
+      - run: black --check .
+
 
   test-node:
     runs-on: ubuntu-latest

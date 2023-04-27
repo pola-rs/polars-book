@@ -1,13 +1,15 @@
-const pl = require('nodejs-polars');
+const pl = require("nodejs-polars");
 
 // --8<-- [start:dataframe]
-let df = pl.DataFrame({"integer": [1, 2, 3], 
-                        "date": [
-                            new Date(2022, 1, 1, 0, 0), 
-                            new Date(2022, 1, 2, 0, 0), 
-                            new Date(2022, 1, 3, 0, 0)
-                        ], 
-                        "float":[4.0, 5.0, 6.0]})
+let df = pl.DataFrame({
+  integer: [1, 2, 3],
+  date: [
+    new Date(2022, 1, 1, 0, 0),
+    new Date(2022, 1, 2, 0, 0),
+    new Date(2022, 1, 3, 0, 0),
+  ],
+  float: [4.0, 5.0, 6.0],
+});
 console.log(df);
 // --8<-- [end:dataframe]
 
@@ -18,7 +20,7 @@ console.log(df_csv);
 // --8<-- [end:csv]
 
 // --8<-- [start:csv2]
-var df_csv = pl.readCSV("output.csv",{parseDates:true});
+var df_csv = pl.readCSV("output.csv", { parseDates: true });
 console.log(df_csv);
 // --8<-- [end:csv2]
 
