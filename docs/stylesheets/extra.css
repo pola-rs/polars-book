@@ -15,6 +15,10 @@ span .md-typeset .emojione, .md-typeset .gemoji, .md-typeset .twemoji {
     src: 'https://fonts.cdnfonts.com/css/proxima-nova-2'
 }
 
+:root {
+  --md-code-font: "Source Code Pro" !important;
+}
+
 .contributor_icon {
     height:40px;
     width:40px;
