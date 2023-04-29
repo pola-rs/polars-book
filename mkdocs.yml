@@ -1,6 +1,8 @@
 site_name: Polars User Guide
+site_url: https://pola-rs.github.io/polars-book
 theme:
   name: material
+  custom_dir: overrides
   logo: assets/logo.png
   features:
     - navigation.tracking
