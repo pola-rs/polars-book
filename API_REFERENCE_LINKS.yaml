@@ -71,6 +71,7 @@ python:
   pivot: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.pivot.html
   melt: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.melt.html
   is_between: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.is_between.html
+  strftime: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.dt.strftime.html
   strptime: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.strptime.html
   year: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.dt.year.html
   convert_time_zone: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.dt.convert_time_zone.html
@@ -79,8 +80,7 @@ python:
   upsample: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.upsample.html
   groupby_dynamic: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.groupby_dynamic.html
   explode: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.explode.html
-
-
+  cast: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.cast.html
 rust:
   DataFrame: https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html
   Series: https://pola-rs.github.io/polars/polars/series/struct.Series.html
