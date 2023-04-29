@@ -1,4 +1,5 @@
 site_name: Polars User Guide
+site_url: https://pola-rs.github.io/polars-book
 theme:
   name: material
   logo: assets/logo.png
