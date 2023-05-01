@@ -1,10 +1,9 @@
 use polars::prelude::*;
-use rand::{thread_rng, Rng};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // --8<-- [start:dataframe]
-    let grades = df!(
+    let df = df!(
         "keys" => &["a", "a", "b"],
         "values" => &[10, 7, 1],
     )?;

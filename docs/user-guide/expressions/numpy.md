@@ -7,7 +7,7 @@ This means that if a function is not provided by `Polars`, we can use `NumPy` an
 
 ### Example
 
-{{code_block('user-guide/expressions/numpy-example',api_functions=['DataFrame'])}}
+{{code_block('user-guide/expressions/numpy-example',api_functions=['DataFrame','np.log'])}}
 
 ```python exec="on" result="text" session="user-guide/numpy"
 --8<-- "python/user-guide/expressions/numpy-example.py"

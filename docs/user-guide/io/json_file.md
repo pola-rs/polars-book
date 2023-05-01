@@ -26,20 +26,3 @@ JSON objects that are delimited by newlines can be read into polars in a much mo
 file and instead returns a lazy computation holder called a `LazyFrame`.
 
 {{code_block('user-guide/io/json-file','scan',['scan_ndjson'])}}
-
-### Note about Rust usage
-
-json functionality is not enabled by default. It must be added as an additional feature.
-This can be enabled via `cargo add polars --features json` or by directly adding it to your `Cargo.toml`
-
-```toml
-[dependencies]
-polars = { version = "0.24.3", features = ["json"] }
-```
-
-Additionally, scanning of json files requires the `lazy` feature
-
-```toml
-[dependencies]
-polars = { version = "0.24.3", features = ["json", "lazy"] }
-```

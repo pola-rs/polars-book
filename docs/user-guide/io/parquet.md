@@ -25,20 +25,3 @@ file and instead returns a lazy computation holder called a `LazyFrame`.
 
 
 If you want to know why this is desirable, you can read more about those `Polars` optimizations [here](../concepts/lazy-vs-eager.md).
-
-### Note about Rust usage
-
-Parquet functionality is not enabled by default. It must be added as an additional feature.
-This can be enabled via `cargo add polars --features parquet` or by directly adding it to your `Cargo.toml`
-
-```toml
-[dependencies]
-polars = { version = "0.24.3", features = ["parquet"] }
-```
-
-Additionally, scanning of parquet files requires the `lazy` feature
-
-```toml
-[dependencies]
-polars = { version = "0.24.3", features = ["parquet", "lazy"] }
-```

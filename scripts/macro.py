@@ -1,11 +1,11 @@
 from collections import OrderedDict
 import os
-from typing import List, Optional, Union
+from typing import  List, Optional, Set
 import yaml
 import logging
 
 
-# Supported Languages and there metadata
+# Supported Languages and their metadata
 LANGUAGES = OrderedDict(
     python={
         "extension": ".py",
@@ -30,6 +30,44 @@ LANGUAGES = OrderedDict(
 # Load all links to reference docs
 with open("API_REFERENCE_LINKS.yaml", "r") as f:
     API_REFERENCE_LINKS = yaml.load(f, Loader=yaml.CLoader)
+
+
+def create_feature_flag_link(feature_name: str) -> str:
+    """Create a feature flag warning telling the user to activate a certain feature before running the code
+
+    Args:
+        feature_name (str): name of the feature
+
+    Returns:
+        str: Markdown formatted string with a link and the feature flag message
+    """
+    return f'[:material-flag-plus:  Available on feature {feature_name}](/polars-book/user-guide/installation/#feature-flags "To use this functionality enable the feature flag {feature_name}"){{.feature-flag}}'
+
+
+def create_feature_flag_links(language: str, api_functions: List[str]) -> List[str]:
+    """Generate markdown feature flags for the code tas based on the api_functions.
+        It checks for the key feature_flag in the configuration yaml for the function and if it exists print out markdown
+
+    Args:
+        language (str): programming languages
+        api_functions (List[str]): Api functions that are called
+
+    Returns:
+        List[str]: Per unique feature flag a markdown formatted string for the feature flag
+    """
+    api_functions_info = [
+        info
+        for f in api_functions
+        if (info := API_REFERENCE_LINKS.get(language).get(f))
+    ]
+    feature_flags: Set[str] = {
+        flag
+        for info in api_functions_info
+        if type(info) == dict and info.get("feature_flags")
+        for flag in info.get("feature_flags")
+    }
+
+    return [create_feature_flag_link(flag) for flag in feature_flags]
 
 
 def create_api_function_link(language: str, function_key: str) -> Optional[str]:
@@ -59,29 +97,39 @@ def create_api_function_link(language: str, function_key: str) -> Optional[str]:
 
 def code_tab(
     base_path: str,
-    section: str,
-    language_info: Union[str, dict],
+    section: Optional[str],
+    language_info: dict,
     api_functions: List[str],
 ) -> str:
-    """
-    Return a code tab in Markdown based on:
-    - Filepath of the code
-    - Optional Section within the path
-    - Additional links to API functions dependent on the language (lookup of e.g. reference_links/python.yaml)
+    """Generate a single tab for the code block corresponding to a specific language.
+        It gets the code at base_path and possible section and pretty prints markdown for it
+
+    Args:
+        base_path (str): path where the code is located
+        section (str, optional): section in the code that should be displayed
+        language_info (dict): Language specific information (icon name, display name, ...)
+        api_functions (List[str]): List of api functions which should be linked
+
+    Returns:
+        str: A markdown formatted string represented a single tab
     """
     language = language_info["code_name"]
 
+    # Create feature flags
+    feature_flags_links = create_feature_flag_links(language, api_functions)
+
     # Create API Links if they are defined in the YAML
-    api_functions_template = " ·".join(
+    api_functions = [
         link for f in api_functions if (link := create_api_function_link(language, f))
-    )
+    ]
+    language_headers = " ·".join(api_functions + feature_flags_links)
 
     # Create path for Snippets extension
     snippets_file_name = f"{base_path}:{section}" if section else f"{base_path}"
 
     # See Content Tabs for details https://squidfunk.github.io/mkdocs-material/reference/content-tabs/
     return f"""=== \":fontawesome-brands-{language_info['icon_name']}: {language_info['display_name']}\"
-    {api_functions_template}
+    {language_headers}
     ```{language}   
     --8<-- \"{snippets_file_name}\"
     ```
@@ -90,17 +138,24 @@ def code_tab(
 
 def define_env(env):
     @env.macro
-    def code_block(path, section=None, api_functions=None):
-        """
-        Loop over all languages:
-        - Check if the file defined by path parameter exist
-        - If yes, then create a content tab with code for it
+    def code_block(
+        path: str, section: str = None, api_functions: List[str] = None
+    ) -> str:
+        """Dynamically generate a code block for the code located under {language}/path
+
+        Args:
+            path (str): base_path for each language
+            section (str, optional): Optional segment within the code file. Defaults to None.
+            api_functions (List[str], optional): API functions that should be linked. Defaults to None.
+        Returns:
+            str: Markdown tabbed code block with possible links to api functions and feature flags
         """
         result = []
 
         for language, info in LANGUAGES.items():
             base_path = f"{language}/{path}{info['extension']}"
             full_path = "docs/src/" + base_path
+            # Check if file exists for the language
             if os.path.exists(full_path):
                 result.append(code_tab(base_path, section, info, api_functions))
 

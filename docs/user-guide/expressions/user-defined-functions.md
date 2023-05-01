@@ -146,7 +146,7 @@ type. This data type collects those columns as fields in the `struct`. So if we'
 
 In Python, those would be passed as `dict` to the calling python function and can thus be indexed by `field: str`.  In rust, you'll get a `Series` with the `Struct` type. The fields of the struct can then be indexed and downcast.
 
-{{code_block('user-guide/expressions/user-defined-functions','combine',['apply'])}}
+{{code_block('user-guide/expressions/user-defined-functions','combine',['apply','struct'])}}
 
 ```python exec="on" result="text" session="user-guide/udf"
 --8<-- "python/user-guide/expressions/user-defined-functions.py:combine"

@@ -1,5 +1,4 @@
 use polars::prelude::*;
-use rand::{thread_rng, Rng};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     
@@ -35,7 +34,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .lazy()
         .with_columns(
             // create the list of homogeneous data
-            concat_lst([all().exclude(["student"])]).alias("all_grades"),
+            [concat_lst([all().exclude(["student"])]).alias("all_grades")],
         )
         .select([
             // select all columns except the intermediate list

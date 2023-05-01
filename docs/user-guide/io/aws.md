@@ -2,12 +2,8 @@
 
 --8<-- "docs/snippets/under_construction.md"
 
-To read from or write to an AWS bucket, additional dependencies are needed:
+To read from or write to an AWS bucket, additional dependencies are needed in Rust:
 
-=== ":fontawesome-brands-python: Python"
-    ``` shell-python
-    $ pip install s3fs
-    ```
 === ":fontawesome-brands-rust: Rust"
     ``` shell-rust
     $ cargo add aws_sdk_s3 aws_config tokio --features tokio/full
