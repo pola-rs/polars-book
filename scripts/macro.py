@@ -1,6 +1,6 @@
 from collections import OrderedDict
 import os
-from typing import  List, Optional, Set
+from typing import List, Optional, Set
 import yaml
 import logging
 
