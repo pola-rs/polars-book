@@ -60,6 +60,6 @@ df.select(
 df = pl.DataFrame({"id": [1, 2], "text": ["123abc", "abc456"]})
 df.with_columns(
     pl.col("text").str.replace(r"abc\b", "ABC"),
-    pl.col("text").str.replace_all("a", "-", literal=True),
+    pl.col("text").str.replace_all("a", "-", literal=True).alias("text_replace_all"),
 )
 # --8<-- [end:replace]
