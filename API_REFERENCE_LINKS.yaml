@@ -99,6 +99,18 @@ python:
     link: https://numpy.org/doc/stable/reference/generated/numpy.log.html
     feature_flags: ['numpy']
   struct: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.struct.html#
+  lengths: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.lengths.html
+  n_chars: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.n_chars.html
+  str.contains:
+    name: contains
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.contains.html
+  starts_with: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.starts_with.html
+  ends_with: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.ends_with.html
+  extract: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.extract.html
+  extract_all: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.extract_all.html
+  replace: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.replace.html
+  replace_all: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.replace_all.html
+
 rust:
   DataFrame: https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html
   Series: https://pola-rs.github.io/polars/polars/series/struct.Series.html
