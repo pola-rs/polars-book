@@ -3,8 +3,8 @@ const pl = require("nodejs-polars");
 // --8<-- [start:eager]
 
 df = pl.readCSV("docs/src/data/iris.csv");
-df_small = df.filter(col("sepal_length").gt(5));
-df_agg = df_small.groupby("species").agg(col("sepal_width").mean());
+df_small = df.filter(pl.col("sepal_length").gt(5));
+df_agg = df_small.groupby("species").agg(pl.col("sepal_width").mean());
 console.log(df_agg);
 // --8<-- [end:eager]
 
