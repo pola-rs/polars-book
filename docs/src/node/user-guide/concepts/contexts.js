@@ -1,7 +1,6 @@
 // --8<-- [start:setup]
-
-import pl from "nodejs-polars";
-import Chance from "chance";
+const pl = require("nodejs-polars");
+const Chance = require("chance");
 
 const chance = new Chance(42);
 // --8<-- [end:setup]
