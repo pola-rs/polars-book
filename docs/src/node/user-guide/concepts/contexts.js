@@ -8,7 +8,9 @@ const chance = new Chance(42);
 
 // --8<-- [start:dataframe]
 
-const arr = Array.from({length: 5}).map((_) => chance.floating({min: 0, max: 1}))
+const arr = Array.from({ length: 5 }).map((_) =>
+  chance.floating({ min: 0, max: 1 }),
+);
 
 let df = pl.DataFrame({
   nrs: [1, 2, 3, null, 5],
@@ -46,10 +48,19 @@ console.log(df);
 
 // --8<-- [start:groupby]
 out = df.groupBy("groups").agg(
-  pl.col("nrs").sum(),                     // sum nrs by groups
-  pl.col("random").count().alias("count"), // count group members
+  pl
+    .col("nrs")
+    .sum(), // sum nrs by groups
+  pl
+    .col("random")
+    .count()
+    .alias("count"), // count group members
   // sum random where name != null
-  pl.col("random").filter(pl.col("names").isNotNull()).sum().suffix("_sum"),
+  pl
+    .col("random")
+    .filter(pl.col("names").isNotNull())
+    .sum()
+    .suffix("_sum"),
   pl.col("names").reverse().alias("reversed names"),
 );
 console.log(out);

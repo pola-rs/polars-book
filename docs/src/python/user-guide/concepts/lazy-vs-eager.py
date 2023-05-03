@@ -18,4 +18,3 @@ q = (
 
 df = q.collect()
 # --8<-- [end:lazy]
-
