@@ -11,7 +11,11 @@ Polars is a library and installation is as simple as invoking the package manage
 === ":fontawesome-brands-rust: Rust"
 
     ``` shell
-    cargo add polars
+    cargo add polars -F lazy
+
+    # Or Cargo.toml
+    [dependencies]
+    polars = { version = "x", features = ["lazy", ...]}
     ```
 === ":fontawesome-brands-node-js: NodeJS"
 

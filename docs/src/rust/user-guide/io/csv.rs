@@ -1,6 +1,4 @@
 use polars::prelude::*;
-use rand::Rng;
-use chrono::prelude::*;
 
 fn main() -> Result<(), Box<dyn std::error::Error>>{
 

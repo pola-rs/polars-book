@@ -26,6 +26,18 @@ span .md-typeset .emojione, .md-typeset .gemoji, .md-typeset .twemoji {
     margin: 0 5px;
 }
 
+.feature-flag{
+  background-color: rgba(255, 245, 214,.5);
+  border: none;
+  padding: 0px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: .85em;
+}
+
 .md-typeset ol li, .md-typeset ul li{
     margin-bottom: 0em !important;
 }

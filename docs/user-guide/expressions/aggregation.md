@@ -4,7 +4,7 @@
 
 We can start with the simple [US congress `dataset`](https://github.com/unitedstates/congress-legislators).
  
-{{code_block('user-guide/expressions/aggregation','dataframe',['DataFrame'])}}
+{{code_block('user-guide/expressions/aggregation','dataframe',['DataFrame','Categorical'])}}
 
 #### Basic aggregations
 

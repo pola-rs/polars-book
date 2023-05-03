@@ -1,10 +1,13 @@
 use polars::prelude::*;
-use rand::Rng;
+
 
 fn main() -> Result<(), Box<dyn std::error::Error>>{
-    let mut rng = rand::thread_rng();
+    
 
     // --8<-- [start:join]
+    use rand::Rng;
+    let mut rng = rand::thread_rng();
+
     let df: DataFrame = df!("a" => 0..8,
                             "b"=> (0..8).map(|_| rng.gen::<f64>()).collect::<Vec<f64>>(),
                             "d"=> [Some(1.0), Some(2.0), None, None, Some(0.0), Some(-5.0), Some(-42.), None]

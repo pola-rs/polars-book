@@ -1,9 +1,11 @@
 use polars::prelude::*;
-use rand::{thread_rng, Rng};
+
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     
     // --8<-- [start:dataframe]
+    use rand::{thread_rng, Rng};
+    
     let mut arr = [0f64; 5];
     thread_rng().fill(&mut arr);
 

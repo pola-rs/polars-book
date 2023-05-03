@@ -1,10 +1,11 @@
-use std::io::Cursor;
-
 use polars::prelude::*;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     
     // --8<-- [start:dataframe]
+    use std::io::Cursor;
+    use reqwest::blocking::Client;
+
     let url = "https://theunitedstates.io/congress-legislators/legislators-historical.csv";
 
     let mut schema = Schema::new();

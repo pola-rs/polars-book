@@ -1,8 +1,8 @@
-use chrono::prelude::*;
 
+use polars::prelude::*;
 fn main() -> Result<(), Box<dyn std::error::Error>>{
     // --8<-- [start:series]
-    use polars::prelude::*;
+    use chrono::prelude::*;
 
     let s = Series::new("a", [1, 2, 3, 4, 5]);
     println!("{}",s);
