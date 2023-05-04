@@ -29,10 +29,8 @@ To update your own repo with code pushed on the upstream repo:
 ### Building locally
 To build the documentation locally you will need to install the python libraries defined in the `requirements.txt` file.
 
-Then run `python scripts/people.py` to build the list of contributors.
-
 <!-- markdown-link-check-disable -->
-When these steps are done run `mkdocs serve` to run the server. You can then view the docs at http://localhost:8000/
+When these are installed run `mkdocs serve` to run the server. You can then view the docs at http://localhost:8000/
 <!-- markdown-link-check-enable -->
 
 ### Want to discuss something?
