@@ -5,7 +5,7 @@
     --md-text-font: 'Proxima Nova', sans-serif;
 }
 
-  
+
 span .md-typeset .emojione, .md-typeset .gemoji, .md-typeset .twemoji {
     vertical-align: text-bottom;
 }
@@ -38,6 +38,9 @@ span .md-typeset .emojione, .md-typeset .gemoji, .md-typeset .twemoji {
   font-size: .85em;
 }
 
+[data-md-color-scheme=slate] .feature-flag{
+  background-color:var(--md-code-bg-color);
+}
 .md-typeset ol li, .md-typeset ul li{
     margin-bottom: 0em !important;
 }
