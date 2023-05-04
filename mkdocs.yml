@@ -128,9 +128,6 @@ nav:
       - user-guide/misc/reference-guides.md
       - user-guide/misc/contributing.md
 
-<<<<<<< HEAD
 hooks:
   - scripts/people.py
 
-=======
->>>>>>> @{-1}
