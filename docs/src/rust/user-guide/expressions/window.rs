@@ -56,7 +56,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // --8<-- [start:sort]
     let out = filtered
         .lazy()
-        .with_columns([cols(["Name", "Speed"]).sort(true).over(["Type 1"])])
+        .with_columns([cols(["Name", "Speed"]).sort_by(["Speed"],[true]).over(["Type 1"])])
         .collect()?;
     println!("{}", out);
     // --8<-- [end:sort]
