@@ -39,7 +39,7 @@ print(filtered)
 # --8<-- [start:sort]
 out = filtered.with_columns(
     [
-        pl.col(["Name", "Speed"]).sort(descending=True).over("Type 1"),
+        pl.col(["Name", "Speed"]).sort_by("Speed", descending=True).over("Type 1"),
     ]
 )
 print(out)

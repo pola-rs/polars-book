@@ -61,6 +61,8 @@ jobs:
           node-version: 18.x
       - name: Install Polars 
         run: npm i -s nodejs-polars
+      - name: Install rng 
+        run: npm i -s chance
       - name: Run code snippets
         run: find docs/src/ -name "*.js" | xargs -n 1 sh -c 'node $0 || exit 255'
 

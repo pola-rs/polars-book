@@ -4,7 +4,7 @@ One additional benefit of the lazy API is that it allows queries to be executed 
 
 To tell Polars we want to execute a query in streaming mode we pass the `streaming=True` argument to `collect`
 
-{{code_block('user-guide/concepts/lazy-vs-eager','streaming',['collect'])}}
+{{code_block('user-guide/concepts/streaming','streaming',['collect'])}}
 
 ## When is streaming available?
 
