@@ -35,6 +35,7 @@
     - [JSON files](howcani/io/json.md)
     - [Multiple files](multiple_files/intro.md)
     - [Read from a database](howcani/io/read_db.md)
+    - [Write to a database](howcani/io/write_db.md)
     - [Interact with AWS](howcani/io/aws.md)
     - [Interact with Google BigQuery](howcani/io/google-big-query.md)
     - [Interact with Postgres](howcani/io/postgres.md)
