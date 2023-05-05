@@ -50,7 +50,7 @@ If you are looking for details on a specific level / object, it is probably best
 ## Performance :rocket: :rocket:
 
 `Polars` is very fast, and in fact is one of the best performing solutions available.
-See the results in h2oai's [db-benchmark](https://h2oai.github.io/db-benchmark/). 
+See the results in h2oai's [db-benchmark](https://duckdblabs.github.io/db-benchmark/), revived by the DuckDB project.
 
 `Polars` [TPCH Benchmark results](https://www.pola.rs/benchmarks.html) are now available on the official website.
 
