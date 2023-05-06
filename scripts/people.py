@@ -5,6 +5,7 @@ g = Github(None)
 
 ICON_TEMPLATE = "[![{login}]({avatar_url}){{.contributor_icon}}]({html_url})"
 
+
 def get_people_md():
     repo = g.get_repo("pola-rs/polars")
     contributors = repo.get_contributors()
@@ -19,6 +20,7 @@ def get_people_md():
                 + "\n"
             )
 
+
 def on_startup(command, dirty):
     """Mkdocs hook to autogenerate docs/people.md on startup"""
     try:
@@ -26,6 +28,7 @@ def on_startup(command, dirty):
     except Exception as e:
         msg = f"WARNING:{__file__}: Could not generate docs/people.md. Got error: {str(e)}"
         print(msg)
+
 
 if __name__ == "__main__":
     get_people_md()
