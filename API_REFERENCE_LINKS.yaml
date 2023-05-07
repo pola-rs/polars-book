@@ -49,10 +49,16 @@ python:
   apply: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.apply.html
   over: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.over.html
   implode: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.implode.html
-  read_database: 
+  read_database_connectorx: 
     name: read_database
     link: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_database.html
     feature_flags: ['connectorx']
+  read_database: 
+    name: read_database
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_database.html
+  write_database: 
+    name: write_database
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.write_database.html
   read_parquet: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_parquet.html
   write_parquet: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.write_parquet.html
   scan_parquet: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.scan_parquet.html

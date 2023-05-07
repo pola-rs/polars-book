@@ -6,7 +6,7 @@ We can read from a database with Polars using the `pl.read_database` function. T
 
 For example, the following snippet shows the general patterns for reading all columns from the `foo` table in a Postgres database:
 
-{{code_block('user-guide/io/database','read',['read_database'])}}
+{{code_block('user-guide/io/database','read',['read_database_connectorx'])}}
 
 ### Engines
 
@@ -16,7 +16,7 @@ Polars doesn't manage connections and data transfer from databases by itself. In
 
 Connector-x is the default engine and [supports numerous databases](https://github.com/sfu-db/connector-x#sources) including Postgres, Mysql, SQL Server and Redshift. Connector-x is written in Rust and stores data in Arrow format to allow for zero-copy to Polars.
 
-To read from one of the supported databases with `connector-x` you need to activate the feature flag (or in python jargon extra) `connectorx` or install it manually
+To read from one of the supported databases with `connector-x` you need to activate the additional dependancy `connectorx` when installing Polars or install it manually with
 
 ```shell
 $  pip install connectorx
@@ -38,7 +38,7 @@ As ADBC is not the default engine you must specify the engine as an argument to 
 
 ## Write to a database
 
-We can read from a database with Polars using the `pl.write_database` function. 
+We can write to a database with Polars using the `pl.write_database` function. 
 
 ### Engines
 As with reading from a database above Polars uses an *engine* to write to a database. The currently supported engines are:
@@ -50,7 +50,12 @@ With the default engine SQLalchemy you can write to any database supported by SQ
 ```shell
 $  pip install SQLAlchemy pandas
 ```
+In this example, we write the `DataFrame` to a table called `records` in the database
 
-```shell
 {{code_block('user-guide/io/database','write',['write_database'])}}
 
+In the SQLalchemy approach Polars converts the `DataFrame` to a Pandas `DataFrame` backed by PyArrow and then uses SQLalchemy methods on a Pandas `DataFrame` to write to the database. 
+
+#### ADBC
+As with reading from a database you can also use ADBC to write to a SQLite or Posgres database. As shown above you need to install the appropriate ADBC driver for your database.
+{{code_block('user-guide/io/database','write_adbc',['write_database'])}}
