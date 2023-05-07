@@ -70,6 +70,9 @@ python:
   explain: https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.explain.html
   fetch: https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.fetch.html
   SQLContext: https://pola-rs.github.io/polars/py-polars/html/reference/sql
+  SQLregister:
+    name: register
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.SQLContext.register.html#polars.SQLContext.register
   SQLquery: 
     name: query
     link: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.SQLContext.query.html
@@ -124,6 +127,7 @@ rust:
   groupby: https://pola-rs.github.io/polars/polars_lazy/frame/struct.LazyFrame.html#method.groupby
   join: https://pola-rs.github.io/polars/polars_core/frame/hash_join/index.html
   hstack: https://pola-rs.github.io/polars/polars_core/frame/struct.DataFrame.html#method.hstack
+  SQLContext: https://pola-rs.github.io/polars/py-polars/html/reference/sql.html 
   read_csv: 
     name: CsvReader
     link: https://pola-rs.github.io/polars/polars_io/csv/struct.CsvReader.html
