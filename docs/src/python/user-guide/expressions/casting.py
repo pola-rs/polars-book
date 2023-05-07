@@ -111,8 +111,10 @@ from datetime import date, datetime
 
 df = pl.DataFrame(
     {
-        "date": pl.date_range(date(2022, 1, 1), date(2022, 1, 5),eager=True),
-        "datetime": pl.date_range(datetime(2022, 1, 1), datetime(2022, 1, 5),eager=True),
+        "date": pl.date_range(date(2022, 1, 1), date(2022, 1, 5), eager=True),
+        "datetime": pl.date_range(
+            datetime(2022, 1, 1), datetime(2022, 1, 5), eager=True
+        ),
     }
 )
 
@@ -123,7 +125,7 @@ print(out)
 # --8<-- [start:dates2]
 df = pl.DataFrame(
     {
-        "date": pl.date_range(date(2022, 1, 1), date(2022, 1, 5),eager=True),
+        "date": pl.date_range(date(2022, 1, 1), date(2022, 1, 5), eager=True),
         "string": [
             "2022-01-01",
             "2022-01-02",
