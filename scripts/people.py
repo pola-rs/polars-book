@@ -5,10 +5,10 @@ g = Github(None)
 
 ICON_TEMPLATE = "[![{login}]({avatar_url}){{.contributor_icon}}]({html_url})"
 
-if __name__ == "__main__":
+
+def get_people_md():
     repo = g.get_repo("pola-rs/polars")
     contributors = repo.get_contributors()
-
     with open("./docs/people.md", "w") as f:
         for c in itertools.islice(contributors, 50):
             f.write(
@@ -19,3 +19,16 @@ if __name__ == "__main__":
                 )
                 + "\n"
             )
+
+
+def on_startup(command, dirty):
+    """Mkdocs hook to autogenerate docs/people.md on startup"""
+    try:
+        get_people_md()
+    except Exception as e:
+        msg = f"WARNING:{__file__}: Could not generate docs/people.md. Got error: {str(e)}"
+        print(msg)
+
+
+if __name__ == "__main__":
+    get_people_md()

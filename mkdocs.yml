@@ -131,3 +131,6 @@ nav:
       - user-guide/misc/reference-guides.md
       - user-guide/misc/contributing.md
 
+hooks:
+  - scripts/people.py
+
