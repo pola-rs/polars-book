@@ -12,7 +12,7 @@ print(df)
 # --8<-- [start:groupby]
 annual_average_df = df.groupby_dynamic("Date", every="1y").agg(pl.col("Close").mean())
 
-df_with_year = df.with_columns(pl.col("Date").dt.year().alias("year"))
+df_with_year = annual_average_df.with_columns(pl.col("Date").dt.year().alias("year"))
 print(df_with_year)
 # --8<-- [end:groupby]
 
