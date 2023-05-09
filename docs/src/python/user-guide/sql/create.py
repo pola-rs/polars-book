@@ -5,7 +5,7 @@ import polars as pl
 
 # --8<-- [start:create]
 data = {"name": ["Alice", "Bob", "Charlie", "David"], "age": [25, 30, 35, 40]}
-df = pl.DataFrame(data).lazy()
+df = pl.LazyFrame(data)
 
 ctx = pl.SQLContext()
 ctx.register("my_table", df)
