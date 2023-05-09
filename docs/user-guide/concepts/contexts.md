@@ -29,7 +29,7 @@ A `Series` of a length of 1 will be broadcasted to match the height of the `Data
 --8<-- "python/user-guide/concepts/contexts.py:select"
 ```
 
-As you can see from the query the `select` context is very powerfull and allows you to perform arbitrary expressions independent (and in parallel) of each other. 
+As you can see from the query the `select` context is very powerful and allows you to perform arbitrary expressions independent (and in parallel) of each other. 
 
 Similarly to the `select` statement there is the `with_columns` statement which also is an entrance to the selection context. The main difference is that `with_columns` retains the original columns and adds new ones while `select` drops the original columns.
 
