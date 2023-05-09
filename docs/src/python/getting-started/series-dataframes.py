@@ -22,7 +22,7 @@ from datetime import datetime
 
 start = datetime(2001, 1, 1)
 stop = datetime(2001, 1, 9)
-s = pl.date_range(start, stop, interval="2d")
+s = pl.date_range(start, stop, interval="2d", eager=True)
 s.dt.day()
 print(s)
 # --8<-- [end:dt]

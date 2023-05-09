@@ -124,7 +124,11 @@ nav:
       - user-guide/io/bigquery.md
       - user-guide/io/postgres.md
     - SQL:
-      - user-guide/sql/index.md
+      - user-guide/sql/intro.md
+      - user-guide/sql/show.md
+      - user-guide/sql/select.md
+      - user-guide/sql/create.md
+      - user-guide/sql/cte.md
     - Migrating:
       - user-guide/migration/pandas.md
       - user-guide/migration/spark.md
