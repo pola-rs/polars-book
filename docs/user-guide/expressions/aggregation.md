@@ -112,7 +112,7 @@ code preventing any multiple threads from executing the function.
 
 This all feels terribly limiting, especially because we often need those `lambda` functions in a
 `.groupby()` step, for example. This approach is still supported by `Polars`, but
-keeping in mind bytecode **and** the GIL costs have to be paid. It is recommended to try to solve your queries using the expression syntax before moving to `lambdas`.
+keeping in mind bytecode **and** the GIL costs have to be paid. It is recommended to try to solve your queries using the expression syntax before moving to `lambdas`. If you want to learn more about using `lambdas`, go to the [user defined functions section](./user-defined-functions.md). 
 
 
 ### Conclusion
