@@ -5,10 +5,10 @@ import polars as pl
 
 # --8<-- [start:cte]
 ctx = pl.SQLContext()
-df = pl.DataFrame(
+df = pl.LazyFrame(
     {"name": ["Alice", "Bob", "Charlie", "David"], "age": [25, 30, 35, 40]}
 )
-ctx.register("my_table", df.lazy())
+ctx.register("my_table", df)
 
 result = ctx.query(
     """
