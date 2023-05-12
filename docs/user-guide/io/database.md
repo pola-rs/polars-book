@@ -10,13 +10,16 @@ For example, the following snippet shows the general patterns for reading all co
 
 ### Engines
 
-Polars doesn't manage connections and data transfer from databases by itself. Instead external libraries (known as *engines*) handle this. At present Polars can use two engines to read from databases: [connector-x](https://github.com/sfu-db/connector-x) and [ADBC](https://arrow.apache.org/docs/format/ADBC.html).
+Polars doesn't manage connections and data transfer from databases by itself. Instead external libraries (known as *engines*) handle this. At present Polars can use two engines to read from databases: 
 
-#### Connector-x
+- [ConnectorX](https://github.com/sfu-db/connector-x) and 
+- [ADBC](https://arrow.apache.org/docs/format/ADBC.html)
 
-Connector-x is the default engine and [supports numerous databases](https://github.com/sfu-db/connector-x#sources) including Postgres, Mysql, SQL Server and Redshift. Connector-x is written in Rust and stores data in Arrow format to allow for zero-copy to Polars.
+#### ConnectorX
 
-To read from one of the supported databases with `connector-x` you need to activate the additional dependancy `connectorx` when installing Polars or install it manually with
+ConnectorX is the default engine and [supports numerous databases](https://github.com/sfu-db/connector-x#sources) including Postgres, Mysql, SQL Server and Redshift. ConnectorX is written in Rust and stores data in Arrow format to allow for zero-copy to Polars.
+
+To read from one of the supported databases with `ConnectorX` you need to activate the additional dependancy `ConnectorX` when installing Polars or install it manually with
 
 ```shell
 $  pip install connectorx
@@ -42,11 +45,12 @@ We can write to a database with Polars using the `pl.write_database` function.
 
 ### Engines
 As with reading from a database above Polars uses an *engine* to write to a database. The currently supported engines are:
-- SQLalchemy and
+
+- [SQLAlchemy](https://www.sqlalchemy.org/) and
 - Arrow Database Connectivity (ADBC)
 
-#### SQLalchemy
-With the default engine SQLalchemy you can write to any database supported by SQLalchemy. To use this engine you need to install SQLalchemy and Pandas
+#### SQLAlchemy
+With the default engine SQLAlchemy you can write to any database supported by SQLAlchemy. To use this engine you need to install SQLAlchemy and Pandas
 ```shell
 $  pip install SQLAlchemy pandas
 ```
@@ -54,7 +58,7 @@ In this example, we write the `DataFrame` to a table called `records` in the dat
 
 {{code_block('user-guide/io/database','write',['write_database'])}}
 
-In the SQLalchemy approach Polars converts the `DataFrame` to a Pandas `DataFrame` backed by PyArrow and then uses SQLalchemy methods on a Pandas `DataFrame` to write to the database. 
+In the SQLAlchemy approach Polars converts the `DataFrame` to a Pandas `DataFrame` backed by PyArrow and then uses SQLAlchemy methods on a Pandas `DataFrame` to write to the database. 
 
 #### ADBC
 As with reading from a database you can also use ADBC to write to a SQLite or Posgres database. As shown above you need to install the appropriate ADBC driver for your database.
