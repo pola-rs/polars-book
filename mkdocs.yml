@@ -120,7 +120,6 @@ nav:
       - user-guide/io/database.md
       - user-guide/io/aws.md
       - user-guide/io/bigquery.md
-      - user-guide/io/postgres.md
     - SQL:
       - user-guide/sql/index.md
     - Migrating:
