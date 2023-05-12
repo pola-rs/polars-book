@@ -1,4 +1,4 @@
-f"""
+"""
 # --8<-- [start:read]
 import polars as pl
 
