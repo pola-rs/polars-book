@@ -2,7 +2,7 @@
 
 ## Read from a database
 
-We can read from a database with Polars using the `pl.read_database` function. To use this function you need an SQL query string and a connection string called a `uri`.
+We can read from a database with Polars using the `pl.read_database` function. To use this function you need an SQL query string and a connection string called a `connection_uri`.
 
 For example, the following snippet shows the general patterns for reading all columns from the `foo` table in a Postgres database:
 
