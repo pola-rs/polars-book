@@ -17,7 +17,7 @@ CTEs are particularly useful when working with complex queries that involve mult
 
 Polars supports Common Table Expressions (CTEs) using the WITH clause in SQL syntax. Below is an example 
 
-{{code_block('user-guide/sql/cte','cte',['SQLregister','SQLquery'])}}
+{{code_block('user-guide/sql/cte','cte',['SQLregister','SQLexecute'])}}
 
 ```python exec="on" result="text" session="user-guide/sql/cte"
 --8<-- "python/user-guide/sql/cte.py:setup"
@@ -27,4 +27,4 @@ Polars supports Common Table Expressions (CTEs) using the WITH clause in SQL syn
 
 
 
-In this example, we use the `query()` method of the `SQLContext` to execute a SQL query that includes a CTE. The CTE selects all rows from the `my_table` LazyFrame where the `age` column is greater than 30 and gives it the alias `older_people`. We then execute a second SQL query that selects all rows from the `older_people` CTE where the `name` column starts with the letter 'C'.
+In this example, we use the `execute()` method of the `SQLContext` to execute a SQL query that includes a CTE. The CTE selects all rows from the `my_table` LazyFrame where the `age` column is greater than 30 and gives it the alias `older_people`. We then execute a second SQL query that selects all rows from the `older_people` CTE where the `name` column starts with the letter 'C'.

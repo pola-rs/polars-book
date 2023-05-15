@@ -10,13 +10,13 @@ df = pl.LazyFrame(
 )
 ctx.register("my_table", df)
 
-result = ctx.query(
+result = ctx.execute(
     """
     WITH older_people AS (
         SELECT * FROM my_table WHERE age > 30
     )
     SELECT * FROM older_people WHERE STARTS_WITH(name,'C')
-"""
+""", eager=True
 )
 
 print(result)

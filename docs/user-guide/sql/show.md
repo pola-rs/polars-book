@@ -10,7 +10,7 @@ SHOW TABLES
 
 Here's an example of how to use the `SHOW TABLES` statement in Polars:
 
-{{code_block('user-guide/sql/show','show',['SQLregister','SQLquery'])}}
+{{code_block('user-guide/sql/show','show',['SQLregister','SQLexecute'])}}
 
 ```python exec="on" result="text" session="user-guide/sql/show"
 --8<-- "python/user-guide/sql/show.py:setup"
@@ -18,6 +18,6 @@ Here's an example of how to use the `SHOW TABLES` statement in Polars:
 ```
 
 
-In this example, we create two DataFrames and register them with the `SQLContext` using different names. We then execute a `SHOW TABLES` statement using the `query()` method of the `SQLContext` object, which returns a DataFrame containing a list of all the registered tables and their names. The resulting DataFrame is then printed using the `print()` function.
+In this example, we create two DataFrames and register them with the `SQLContext` using different names. We then execute a `SHOW TABLES` statement using the `execute()` method of the `SQLContext` object, which returns a DataFrame containing a list of all the registered tables and their names. The resulting DataFrame is then printed using the `print()` function.
 
 Note that the `SHOW TABLES` statement only lists tables that have been registered with the current `SQLContext`. If you register a DataFrame with a different `SQLContext` or in a different Python session, it will not appear in the list of tables returned by `SHOW TABLES`.

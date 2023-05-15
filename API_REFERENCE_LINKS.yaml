@@ -79,9 +79,15 @@ python:
   SQLregister:
     name: register
     link: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.SQLContext.register.html#polars.SQLContext.register
+  SQLregister_many:
+    name: register_many
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.SQLContext.register_many.html
   SQLquery: 
     name: query
     link: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.SQLContext.query.html
+  SQLexecute:
+    name: execute
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.SQLContext.execute.html
   join_asof: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.join_asof.html
   concat: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.concat.html
   pivot: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.pivot.html

@@ -18,11 +18,9 @@ df2 = pl.LazyFrame(
         "age": [45, 50, 55, 60],
     }
 )
-ctx = pl.SQLContext()
-ctx.register("my_table1", df1)
-ctx.register("my_table2", df2)
+ctx = pl.SQLContext( mytable1 = df1, mytable2 = df2)
 
-tables = ctx.query("SHOW TABLES")
+tables = ctx.execute("SHOW TABLES", eager=True)
 
 print(tables)
 # --8<-- [end:show]
