@@ -16,6 +16,9 @@ Polars uses the `SQLContext` to manage SQL queries . The context contains a dict
 --8<-- "python/user-guide/sql/intro.py:setup"
 --8<-- "python/user-guide/sql/intro.py:context"
 ```
+
+## Register Dataframes
+
 There are 2 ways to register DataFrames in the `SQLContext`:
 
 - register all `LazyFrames` and `DataFrames` in the global namespace
@@ -44,6 +47,8 @@ Once the `SQLContext` is initialized, we can register additional Dataframes or u
 - `register_globals`
 - `register_many`
 - `unregister`
+
+## Execute queries and collect results
 
 SQL queries are always executed in lazy mode to benefit from lazy optimizations, so we have 2 options to collect the result:
 
