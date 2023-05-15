@@ -20,7 +20,7 @@ df = pl.DataFrame(
     }
 )
 
-ctx = pl.SQLContext( population = df, eager_execution=True)
+ctx = pl.SQLContext(population=df, eager_execution=True)
 
 print(ctx.execute("SELECT * FROM population"))
 # --8<-- [end:df]
@@ -72,7 +72,7 @@ income = pl.DataFrame(
         "income": [55000, 62000, 48000, 52000, 42000, 38000, 41000],
     }
 )
-ctx.register_many(income = income)
+ctx.register_many(income=income)
 result = ctx.execute(
     """
         SELECT country, city, income, population

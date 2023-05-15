@@ -16,7 +16,8 @@ result = ctx.execute(
         SELECT * FROM my_table WHERE age > 30
     )
     SELECT * FROM older_people WHERE STARTS_WITH(name,'C')
-""", eager=True
+""",
+    eager=True,
 )
 
 print(result)
