@@ -18,16 +18,15 @@ df = pl.DataFrame(
         "country": ["USA", "USA", "USA", "USA", "USA", "Netherlands"],
         "population": [8399000, 3997000, 2705000, 2320000, 1680000, 900000],
     }
-).lazy()
+)
 
-ctx = pl.SQLContext()
-ctx.register("population", df)
+ctx = pl.SQLContext(population=df, eager_execution=True)
 
-print(ctx.query("SELECT * FROM population"))
+print(ctx.execute("SELECT * FROM population"))
 # --8<-- [end:df]
 
 # --8<-- [start:groupby]
-result = ctx.query(
+result = ctx.execute(
     """
         SELECT country, AVG(population) as avg_population
         FROM population
@@ -39,7 +38,7 @@ print(result)
 
 
 # --8<-- [start:orderby]
-result = ctx.query(
+result = ctx.execute(
     """
         SELECT city, population
         FROM population
@@ -72,9 +71,9 @@ income = pl.DataFrame(
         ],
         "income": [55000, 62000, 48000, 52000, 42000, 38000, 41000],
     }
-).lazy()
-ctx.register("income", income)
-result = ctx.query(
+)
+ctx.register_many(income=income)
+result = ctx.execute(
     """
         SELECT country, city, income, population
         FROM population
@@ -86,7 +85,7 @@ print(result)
 
 
 # --8<-- [start:functions]
-result = ctx.query(
+result = ctx.execute(
     """
         SELECT city, population
         FROM population
@@ -97,7 +96,7 @@ print(result)
 # --8<-- [end:functions]
 
 # --8<-- [start:tablefunctions]
-result = ctx.query(
+result = ctx.execute(
     """
         SELECT *
         FROM read_csv('docs/src/data/iris.csv')
