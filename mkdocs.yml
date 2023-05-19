@@ -55,7 +55,7 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true 
   - pymdownx.snippets:
-      base_path: ['.','docs/src/','docs/']
+      base_path: ['.','docs/src/']
       check_paths: true
       dedent_subsections: true
   - footnotes
