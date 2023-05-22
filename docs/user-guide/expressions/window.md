@@ -96,5 +96,3 @@ This still works, but that would give us a column type `List` which might not be
 
 Instead we could `flatten`. This just turns our 2D list into a 1D array and projects that array/column back to our `DataFrame`.
 This is very fast because the reshape is often free, and adding the column back the the original `DataFrame` is also a lot cheaper (since we don't require a join like in a normal window function).
-
-However, for this operation to make sense, it is important that the columns used in `over([..])` are sorted!
