@@ -69,7 +69,7 @@ pl.sum("foo").over("groups")
 # --8<-- [end:rules]
 
 # --8<-- [start:examples]
-out = df.select(
+out = df.sort("Type 1").select(
     [
         pl.col("Type 1").head(3).implode().over("Type 1").flatten(),
         pl.col("Name")
