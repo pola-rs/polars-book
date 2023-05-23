@@ -58,19 +58,21 @@ with open("products_masterdata.csv", "w") as temp_file:
 
     temp_file.write(csv_data)
 
-sales_data = pd.DataFrame({
-    'product_id': [1, 2, 3, 4, 5],
-    'sales': [100, 200, 150, 250, 300],
-})
+sales_data = pd.DataFrame(
+    {
+        "product_id": [1, 2, 3, 4, 5],
+        "sales": [100, 200, 150, 250, 300],
+    }
+)
 # --8<-- [end:prepare_multiple_sources]
 
 # --8<-- [start:execute_multiple_sources]
 # sales_data is a Pandas DataFrame
-ctx = pl.SQLContext (
+ctx = pl.SQLContext(
     products_masterdata=pl.scan_csv("products_masterdata.csv"),
     products_categories=pl.scan_ndjson("products_categories.json"),
     sales_data=pl.from_pandas(sales_data),
-    eager_execution=True
+    eager_execution=True,
 )
 
 query = """
