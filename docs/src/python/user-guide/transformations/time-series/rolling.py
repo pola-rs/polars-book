@@ -18,12 +18,16 @@ print(df_with_year)
 # --8<-- [end:groupby]
 
 # --8<-- [start:groupbydyn]
-df = pl.date_range(
-    start=datetime(2021, 1, 1),
-    end=datetime(2021, 12, 31),
-    interval="1d",
-    eager=True,
-).alias("time").to_frame()
+df = (
+    pl.date_range(
+        start=datetime(2021, 1, 1),
+        end=datetime(2021, 12, 31),
+        interval="1d",
+        eager=True,
+    )
+    .alias("time")
+    .to_frame()
+)
 
 out = (
     df.groupby_dynamic("time", every="1mo", period="1mo", closed="left")
