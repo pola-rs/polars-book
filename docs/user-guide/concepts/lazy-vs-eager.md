@@ -18,7 +18,7 @@ Every step is executed immediately returning the intermediate results. This can 
 
 {{code_block('user-guide/concepts/lazy-vs-eager','lazy',['scan_csv'])}}
 
-These will signficantly lower the load on memory & CPU thus allowing you to fit bigger datasets in memory and process faster. Once the query is defined you call `collect` to inform `Polars` that you want to execute it. In the section on Lazy API we will go into more details on its implementation.
+These will significantly lower the load on memory & CPU thus allowing you to fit bigger datasets in memory and process faster. Once the query is defined you call `collect` to inform `Polars` that you want to execute it. In the section on Lazy API we will go into more details on its implementation.
 
 
 !!! info "Eager API"
