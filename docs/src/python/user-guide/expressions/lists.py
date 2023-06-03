@@ -31,8 +31,8 @@ out = grades.with_columns(
     [
         # select all columns except the intermediate list
         pl.all().exclude("all_grades"),
-        # compute the rank by calling `arr.eval`
-        pl.col("all_grades").arr.eval(rank_pct, parallel=True).alias("grades_rank"),
+        # compute the rank by calling `list.eval`
+        pl.col("all_grades").list.eval(rank_pct, parallel=True).alias("grades_rank"),
     ]
 )
 print(out)
