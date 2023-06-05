@@ -14,8 +14,9 @@ snippet below contains information about pokemon:
 
 Below we show how to use window functions to group over different columns and perform an aggregation on them.
 Doing so allows us to use multiple groupby operations in parallel, using a single query. The results of the aggregation
-are projected back to the original rows. Therefore, a window function will always lead to a `DataFrame` with the same size
-as the original.
+are projected back to the original rows. Therefore, a window function will almost always lead to a `DataFrame` with the same size as the original.
+
+We will discuss later the cases where a window function can change the numbers of rows in a `DataFrame`.
 
 Note how we call `.over("Type 1")` and `.over(["Type 1", "Type 2"])`. Using window functions we can aggregate over different groups in a single `select` call!  Note that, in Rust, the type of the argument to `over()` must be a collection, so even when you're only using one column, you must provided it in an array.
 
@@ -57,13 +58,23 @@ that each pokemon within a group are sorted by `Speed` in `ascending` order. Unf
 The power of window expressions is that you often don't need a `groupby -> explode` combination, but you can put the logic in a single expression. It also makes the API cleaner. If properly used a:
 
 - `groupby` -> marks that groups are aggregated and we expect a `DataFrame` of size `n_groups`
-- `over` -> marks that we want to compute something within a group, but doesn't modify the original size of the `DataFrame`
+- `over` -> marks that we want to compute something within a group, and doesn't modify the original size of the `DataFrame` except in specific cases
+
+## Map the expression result to the DataFrame rows
+
+In cases where the expression results in multiple values per group, the Window function has 3 strategies for linking the values back to the `DataFrame` rows:
+
+- `mapping_strategy = 'group_to_rows'` -> each value is assigned back to one row. The number of values returned should match the number of rows.
+
+- `mapping_strategy = 'join'` -> the values are imploded in a list, and the list is repeated on all rows. This can be memory intensive.
+
+- `mapping_strategy = 'explode'` -> the values are exploded to new rows. This operation changes the number of rows.
 
 ## Window expression rules
 
 The evaluations of window expressions are as follows (assuming we apply it to a `pl.Int32` column):
 
-{{code_block('user-guide/expressions/window','rules',['over','implode'])}}
+{{code_block('user-guide/expressions/window','rules',['over'])}}
 
 ## More examples
 
@@ -80,21 +91,3 @@ For more exercise, below are some window functions for us to compute:
 ```python exec="on" result="text" session="user-guide/window"
 --8<-- "python/user-guide/expressions/window.py:examples"
 ```
-
-
-## Flattened window function
-
-If we have a window function that aggregates to a `list` like the example above with the following Python expression:
-
-`pl.col("Name").sort_by(pl.col("Speed")).head(3).implode().over("Type 1")`
-
-and in Rust:
-
-`col("Name").sort_by(["Speed"], [false]).head(Some(3)).implode().over(["Type 1"])`
-
-This still works, but that would give us a column type `List` which might not be what we want (this would significantly increase our memory usage!).
-
-Instead we could `flatten`. This just turns our 2D list into a 1D array and projects that array/column back to our `DataFrame`.
-This is very fast because the reshape is often free, and adding the column back the the original `DataFrame` is also a lot cheaper (since we don't require a join like in a normal window function).
-
-However, for this operation to make sense, it is important that the columns used in `over([..])` are sorted!
