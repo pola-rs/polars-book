@@ -71,7 +71,7 @@ sales_data = pd.DataFrame(
 # products_masterdata.csv with schema {'product_id': Int64, 'product_name': Utf8}
 # products_categories.json with schema {'product_id': Int64, 'category': Utf8}
 # sales_data is a Pandas DataFrame with schema {'product_id': Int64, 'sales': Int64}
- 
+
 ctx = pl.SQLContext(
     products_masterdata=pl.scan_csv("products_masterdata.csv"),
     products_categories=pl.scan_ndjson("products_categories.json"),
