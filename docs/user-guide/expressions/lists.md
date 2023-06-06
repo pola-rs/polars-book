@@ -32,13 +32,13 @@ This would give:
 
 ## Running polars expression on list elements
 
-We can run **any** polars expression on the elements of a list with the `arr.eval` (`arr().eval` in Rust) expression! These expressions run entirely on polars' query engine and can run in parallel so will be super fast.
+We can run **any** polars expression on the elements of a list with the `list.eval` (`list().eval` in Rust) expression! These expressions run entirely on polars' query engine and can run in parallel so will be super fast.
 
 Let's expand the example from above with something a little more interesting. Pandas allows you to compute the percentages of the `rank` values. Polars doesn't provide such a keyword argument. But because expressions are so versatile we can create our own percentage rank expression. Let's try that!
 
 Note that we must `select` the list's element from the context. When we apply expressions over list elements, we use `pl.element()` to select the element of a list.
 
-{{code_block('user-guide/expressions/lists','expression',['arr.eval'])}}
+{{code_block('user-guide/expressions/lists','expression',['list.eval'])}}
 
 ```python exec="on" result="text" session="user-guide/lists"
 --8<-- "python/user-guide/expressions/lists.py:expression"
