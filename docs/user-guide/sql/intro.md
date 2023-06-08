@@ -63,6 +63,28 @@ We execute SQL queries by calling `execute` on a `SQLContext`.
 --8<-- "python/user-guide/sql/intro.py:execute"
 ```
 
+## Execute queries from multiple sources
+
+SQL queries can be executed just as easily from multiple sources.
+In the example below, we register :
+
+- a CSV file loaded lazily
+- a NDJSON file loaded lazily
+- a Pandas DataFrame
+
+And we join them together with SQL. 
+Lazy reading allows to only load the necessary rows and columns from the files.
+
+In the same way, it's possible to register cloud datalakes (S3, Azure Data Lake). A PyArrow dataset can point to the datalake, then Polars can read it with `scan_pyarrow_dataset`.
+
+{{code_block('user-guide/sql/intro','execute_multiple_sources',['SQLregister','SQLexecute'])}}
+
+```python exec="on" result="text" session="user-guide/sql"
+--8<-- "python/user-guide/sql/intro.py:prepare_multiple_sources"
+--8<-- "python/user-guide/sql/intro.py:execute_multiple_sources"
+--8<-- "python/user-guide/sql/intro.py:clean_multiple_sources"
+```
+
 [^1]: Additionally it also tracks the [common table expressions](./cte.md) as well. 
 
 ## Compatibility  
