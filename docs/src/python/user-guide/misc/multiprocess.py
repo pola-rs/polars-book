@@ -1,3 +1,4 @@
+"""
 # --8<-- [start:recommendation]
 from multiprocessing import get_context
 
@@ -8,12 +9,6 @@ def my_fun(s):
 
 with get_context("spawn").Pool() as pool:
     pool.map(my_fun, ["input1", "input2", ...])
-
-
-def test_sub_process(df: pl.DataFrame, job_id):
-    df_filtered = df.filter(pl.col("a") > 0)
-    print(f"Filtered (job_id: {job_id})", df_filtered, sep="\n")
-
 
 # --8<-- [end:recommendation]
 
@@ -55,10 +50,19 @@ if __name__ == "__main__":
     main()
 
 # --8<-- [end:example1]
-
+"""
 # --8<-- [start:example2]
-from .example1 import create_dataset, test_sub_process
 import multiprocessing
+import polars as pl
+
+
+def test_sub_process(df: pl.DataFrame, job_id):
+    df_filtered = df.filter(pl.col("a") > 0)
+    print(f"Filtered (job_id: {job_id})", df_filtered, sep="\n")
+
+
+def create_dataset():
+    return pl.DataFrame({"a": [0, 2, 3, 4, 5], "b": [0, 4, 5, 56, 4]})
 
 
 def main():
