@@ -1,6 +1,7 @@
 # --8<-- [start:recommendation]
 from multiprocessing import get_context
 
+
 def my_fun(s):
     print(s)
 
@@ -12,6 +13,8 @@ with get_context("spawn").Pool() as pool:
 def test_sub_process(df: pl.DataFrame, job_id):
     df_filtered = df.filter(pl.col("a") > 0)
     print(f"Filtered (job_id: {job_id})", df_filtered, sep="\n")
+
+
 # --8<-- [end:recommendation]
 
 # --8<-- [start:example1]
@@ -38,7 +41,9 @@ def main():
     test_df = pl.read_parquet("/tmp/test.parquet")
 
     for i in range(0, 5):
-        proc = multiprocessing.get_context("spawn").Process(target=test_sub_process, args=(test_df, i))
+        proc = multiprocessing.get_context("spawn").Process(
+            target=test_sub_process, args=(test_df, i)
+        )
         proc.start()
         proc.join()
 
@@ -60,7 +65,9 @@ def main():
     test_df = create_dataset()
 
     for i in range(0, 5):
-        proc = multiprocessing.get_context("fork").Process(target=test_sub_process, args=(test_df, i))
+        proc = multiprocessing.get_context("fork").Process(
+            target=test_sub_process, args=(test_df, i)
+        )
         proc.start()
         proc.join()
 

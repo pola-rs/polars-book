@@ -2,7 +2,7 @@
 
 TLDR: if you find that using Python's built-in `multiprocessing` module together with Polars results in a Polars error about multiprocessing methods, you should make sure you are using `spawn`, not `fork`, as the starting method:
 
-{{code_block('user-guide/misc/multiprocessing','recommendation',[])}}
+{{code_block('user-guide/misc/multiprocess','recommendation',[])}}
 
 ## When not to use multiprocessing
 
@@ -12,7 +12,7 @@ For example, requesting two expressions in a `select` statement can be done in p
 Another example is aggregating a value within groups using `groupby().agg(<expr>)`, each group can be evaluated separately.
 It is very unlikely that the `multiprocessing` module can improve your code performance in these cases.
 
-See [the optimizations section](user-guide/lazy/optimizations.md) for more optimizations.
+See [the optimizations section](./docs/user-guide/lazy/optimizations.md) for more optimizations.
 
 ## When to use multiprocessing
 
@@ -49,7 +49,7 @@ Thus one should use `spawn`, or `forkserver`, instead. `spawn` is available on a
 The problem with `fork` is in the copying of the parent's process.
 Consider the example below, which is a slightly modified example posted on the [Polars issue tracker](https://github.com/pola-rs/polars/issues/3144):
 
-{{code_block('user-guide/misc/multiprocessing','example1',[])}}
+{{code_block('user-guide/misc/multiprocess','example1',[])}}
 
 Using `fork` as the method, instead of `spawn`, will cause a dead lock.
 Please note: Polars will not even start and raise the error on multiprocessing method being set wrong, but if the check would not be there, the deadlock would exist.
@@ -68,7 +68,7 @@ Thus all child processes will copy the file lock in an acquired state, leaving t
 What makes debugging these issues tricky is that `fork` can work.
 Change the example to not having the call to `pl.read_parquet`:
 
-{{code_block('user-guide/misc/multiprocessing','example2',[])}}
+{{code_block('user-guide/misc/multiprocess','example2',[])}}
 
 This works fine.
 Therefore debugging these issues in larger code bases, i.e. not the small toy examples here, can be a real pain, as a seemingly unrelated change can break your multiprocessing code.
