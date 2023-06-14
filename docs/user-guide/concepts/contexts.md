@@ -6,7 +6,7 @@ A context, as implied by the name, refers to the context in which an expression 
 
 1. Selection: `df.select([..])`, `df.with_columns([..])`
 1. Filtering: `df.filter()`
-1. Groupy / Aggregation: `df.groupby(..).agg([..])`
+1. Groupby / Aggregation: `df.groupby(..).agg([..])`
 
 The examples below are performed on the following `DataFrame`:
 
