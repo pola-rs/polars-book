@@ -132,6 +132,7 @@ nav:
       - user-guide/migration/pandas.md
       - user-guide/migration/spark.md
     - Misc:
+      - user-guide/misc/multiprocessing.md
       - user-guide/misc/alternatives.md
       - user-guide/misc/reference-guides.md
       - user-guide/misc/contributing.md
