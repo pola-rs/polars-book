@@ -1,6 +1,6 @@
 # Lists and Arrays
 
-`Polars` has first-class support for `List` columns: that is, columns where each row is a list of homogenous elements, of varying lengths. `Polars` also has an `Array` datatype, which is analogus to `numpy`'s `ndarray` objects, where the length is identical across rows.
+`Polars` has first-class support for `List` columns: that is, columns where each row is a list of homogenous elements, of varying lengths. `Polars` also has an `Array` datatype, which is analogous to `numpy`'s `ndarray` objects, where the length is identical across rows.
 
 Note: this is different from Python's `List` object, where the elements can be of any time. Polars can store these within columns, but as a generic `Object` datatype that doesn't have the special list manipulation features that we're about to discuss.
 
@@ -30,7 +30,7 @@ One way we could go post this would be to convert each temperature measurement i
 --8<-- "python/user-guide/expressions/lists.py:explode_to_atomic"
 ```
 
-However, in Polars, we often do not need to do this!
+However, in Polars, we often do not need to do this to operate on the `List` elements.
 
 ## Operating on *List* columns
 
@@ -40,6 +40,8 @@ Polars provides several standard operations on `List` columns. If we want the fi
 ```python exec="on" result="text" session="user-guide/lists"
 --8<-- "python/user-guide/expressions/lists.py:list_ops"
 ```
+
+You can check out all the operations that are available by looking through the [`List` API documentation](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/list.html). If you find references to the `arr` API on Stackoverflow or other sources, just replace `arr` with `List`, this was the old accessor for the `List` datatype.
 
 ## Element-wise computation within *List*s
 
@@ -68,9 +70,9 @@ If you're unfamiliar with the `(?i)`, it's a good time to look at the [`str.cont
 
 # Row-wise computations
 
-This context is ideal for computing things in row orientation.
+This context is ideal for computing in row orientation.
 
-Polars expressions work on columns that have the guarantee that they consist of homogeneous data. Columns have this guarantee, rows in a `DataFrame` not so much. Luckily we have a data type that has the guarantee that the rows are homogeneous: `pl.List` data type.  We can **any** Polars operations on the elements of the list with the `arr.eval` (`arr().eval` in Rust) expression! These expressions run entirely on polars' query engine and can run in parallel so will be super fast.
+Polars expressions work on columns that have the guarantee that they consist of homogeneous data. Columns have this guarantee, rows in a `DataFrame` not so much. Luckily we have a data type that has the guarantee that the rows are homogeneous: `pl.List` data type.  We can **any** Polars operations on the elements of the list with the `list.eval` (`list().eval` in Rust) expression! These expressions run entirely on polars' query engine and can run in parallel so will be super fast.
 
 Let's say we have another set of weather data across three days, for different stations:
 
