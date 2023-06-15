@@ -48,4 +48,4 @@ All expressions are run in parallel, meaning that separate `Polars` expressions 
 
 ## Conclusion
 
-This is the tip of the iceberg in terms of possible expressions. There are a ton more, and they can be combined in a variety ways. This page is intended to get you familiar with the concept of expressions, in the section on [expressions](../expressions/operators.md) we will dive deeper.
+This is the tip of the iceberg in terms of possible expressions. There are a ton more, and they can be combined in a variety of ways. This page is intended to get you familiar with the concept of expressions, in the section on [expressions](../expressions/operators.md) we will dive deeper.

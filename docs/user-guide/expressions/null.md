@@ -33,7 +33,7 @@ The first piece of metadata is the `null_count` - this is the number of rows wit
 --8<-- "python/user-guide/expressions/null.py:count"
 ```
 
-The `null_count` method can be called on a `DataFrame`, a column from a `DataFrame` or a `Series`. The `null_count`method is a cheap operation as `null_count` is already calculated for the underlying Arrow array.
+The `null_count` method can be called on a `DataFrame`, a column from a `DataFrame` or a `Series`. The `null_count` method is a cheap operation as `null_count` is already calculated for the underlying Arrow array.
 
 The second piece of metadata is an array called a *validity bitmap* that indicates whether each data value is valid or missing.
 The validity bitmap is memory efficient as it is bit encoded - each value is either a 0 or a 1. This bit encoding means the memory overhead per array is only (array length / 8) bytes. The validity bitmap is used by the `is_null` method in `Polars`.

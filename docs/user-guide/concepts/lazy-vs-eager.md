@@ -11,7 +11,7 @@ In this example we use the eager API to:
 1. Filter the dataset based on sepal length
 1. Calculate the mean of the sepal width per species
 
-Every step is executed immediately returning the intermediate results. This can be very wastefull as we might do work or load extra data that is not being used. If we instead used the lazy API and waited on execution untill all the steps are defined then the query planner could perform various optimizations. In this case:
+Every step is executed immediately returning the intermediate results. This can be very wasteful as we might do work or load extra data that is not being used. If we instead used the lazy API and waited on execution until all the steps are defined then the query planner could perform various optimizations. In this case:
 
 - Predicate pushdown: Apply filters as early as possible while reading the dataset, thus only reading rows with sepal length greater than 5.
 - Projection pushdown: Select only the columns that are needed while reading the dataset, thus removing the need to load additional columns (e.g. petal length & petal width)
@@ -28,5 +28,5 @@ These will significantly lower the load on memory & CPU thus allowing you to fit
 
 ### When to use which
 
-In general the lazy API should be preferred unless you are either interested in the intermediate results or are doing exploratory work and don't know yet how your query is going to look like. 
+In general the lazy API should be preferred unless you are either interested in the intermediate results or are doing exploratory work and don't know yet what your query is going to look like. 
 

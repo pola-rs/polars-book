@@ -7,7 +7,7 @@ The `cast` method includes a `strict` parameter that determines how Polars behav
 
 ## Numerics
 
-Let's take a look at the following `DataFrame` which contains both integers and floating numbers.
+Let's take a look at the following `DataFrame` which contains both integers and floating point numbers.
 
 {{code_block('user-guide/expressions/casting','dfnum',['DataFrame'])}}
 
