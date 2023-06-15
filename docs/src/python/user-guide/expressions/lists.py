@@ -20,48 +20,47 @@ print(weather)
 # --8<-- [end:weather_df]
 
 # --8<-- [start:string_to_list]
-print(weather.with_columns(pl.col("temperatures").str.split(" ")))
+out = weather.with_columns(pl.col("temperatures").str.split(" "))
+print(out)
 # --8<-- [end:string_to_list]
 
 # --8<-- [start:explode_to_atomic]
-print(
-    weather.with_columns(pl.col("temperatures").str.split(" ")).explode("temperatures")
+out = weather.with_columns(pl.col("temperatures").str.split(" ")).explode(
+    "temperatures"
 )
+print(out)
 # --8<-- [end:explode_to_atomic]
 
 # --8<-- [start:list_ops]
-print(
-    weather.with_columns(pl.col("temperatures").str.split(" ")).with_columns(
-        pl.col("temperatures").list.head(3).alias("top3"),
-        pl.col("temperatures").list.slice(-3, 3).alias("bottom_3"),
-        pl.col("temperatures").list.lengths().alias("obs"),
-    )
+out = weather.with_columns(pl.col("temperatures").str.split(" ")).with_columns(
+    pl.col("temperatures").list.head(3).alias("top3"),
+    pl.col("temperatures").list.slice(-3, 3).alias("bottom_3"),
+    pl.col("temperatures").list.lengths().alias("obs"),
 )
+print(out)
 # --8<-- [end:list_ops]
 
 
 # --8<-- [start:count_errors]
-print(
-    weather.with_columns(
-        pl.col("temperatures")
-        .str.split(" ")
-        .list.eval(pl.element().cast(pl.Int64, strict=False).is_null())
-        .list.sum()
-        .alias("errors")
-    )
+out = weather.with_columns(
+    pl.col("temperatures")
+    .str.split(" ")
+    .list.eval(pl.element().cast(pl.Int64, strict=False).is_null())
+    .list.sum()
+    .alias("errors")
 )
+print(out)
 # --8<-- [end:count_errors]
 
 # --8<-- [start:count_errors_regex]
-print(
-    weather.with_columns(
-        pl.col("temperatures")
-        .str.split(" ")
-        .list.eval(pl.element().str.contains("(?i)[a-z]"))
-        .list.sum()
-        .alias("errors")
-    )
+out = weather.with_columns(
+    pl.col("temperatures")
+    .str.split(" ")
+    .list.eval(pl.element().str.contains("(?i)[a-z]"))
+    .list.sum()
+    .alias("errors")
 )
+print(out)
 # --8<-- [end:count_errors_regex]
 
 # --8<-- [start:weather_by_day]
@@ -79,19 +78,19 @@ print(weather_by_day)
 # --8<-- [start:weather_by_day_rank]
 rank_pct = (pl.element().rank(descending=True) / pl.col("*").count()).round(2)
 
-print(
-    weather_by_day.with_columns(
-        # create the list of homogeneous data
-        pl.concat_list(pl.all().exclude("station")).alias("all_temps")
-    ).select(
-        [
-            # select all columns except the intermediate list
-            pl.all().exclude("all_temps"),
-            # compute the rank by calling `list.eval`
-            pl.col("all_temps").list.eval(rank_pct, parallel=True).alias("temps_rank"),
-        ]
-    )
+out = weather_by_day.with_columns(
+    # create the list of homogeneous data
+    pl.concat_list(pl.all().exclude("station")).alias("all_temps")
+).select(
+    [
+        # select all columns except the intermediate list
+        pl.all().exclude("all_temps"),
+        # compute the rank by calling `list.eval`
+        pl.col("all_temps").list.eval(rank_pct, parallel=True).alias("temps_rank"),
+    ]
 )
+
+print(out)
 # --8<-- [end:weather_by_day_rank]
 
 # --8<-- [start:array_df]
