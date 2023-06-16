@@ -8,10 +8,11 @@ The User guide is made with [Material for mkdocs](https://squidfunk.github.io/mk
 
 ```shell
 sudo apt-get install graphviz
-pip install -r requirements.txt
+make requirements
+
 ```
 
-In order to serve the books run `mkdocs serve`. This will run all the python examples and display the output inline using the `markdown-exec` plugin.
+In order to serve the books run `make serve`. This will run all the python examples and display the output inline using the `markdown-exec` plugin.
 
 ## Deployment
 
