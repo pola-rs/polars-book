@@ -82,12 +82,10 @@ out = weather_by_day.with_columns(
     # create the list of homogeneous data
     pl.concat_list(pl.all().exclude("station")).alias("all_temps")
 ).select(
-    [
-        # select all columns except the intermediate list
-        pl.all().exclude("all_temps"),
-        # compute the rank by calling `list.eval`
-        pl.col("all_temps").list.eval(rank_pct, parallel=True).alias("temps_rank"),
-    ]
+    # select all columns except the intermediate list
+    pl.all().exclude("all_temps"),
+    # compute the rank by calling `list.eval`
+    pl.col("all_temps").list.eval(rank_pct, parallel=True).alias("temps_rank"),
 )
 
 print(out)
@@ -96,9 +94,18 @@ print(out)
 # --8<-- [start:array_df]
 array_df = pl.DataFrame(
     [
-        pl.Series("Array_1", [[1, 3], [2, 5]], dtype=pl.Array(2, pl.Int64)),
-        pl.Series("Array_2", [[1, 7, 3], [8, 1, 0]], dtype=pl.Array(3, pl.Int64)),
-    ]
+        pl.Series("Array_1", [[1, 3], [2, 5]]),
+        pl.Series("Array_2", [[1, 7, 3], [8, 1, 0]]),
+    ],
+    schema={"Array_1": pl.Array(2, pl.Int64), "Array_2": pl.Array(3, pl.Int64)},
 )
 print(array_df)
 # --8<-- [end:array_df]
+
+# --8<-- [start:array_ops]
+out = array_df.select(
+    pl.col("Array_1").arr.min().suffix("_min"),
+    pl.col("Array_2").arr.sum().suffix("_sum"),
+)
+print(out)
+# --8<-- [end:array_ops]
