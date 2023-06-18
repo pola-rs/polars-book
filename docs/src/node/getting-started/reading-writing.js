@@ -25,7 +25,7 @@ console.log(df_csv);
 // --8<-- [end:csv2]
 
 // --8<-- [start:json]
-df.writeJSON("output.json");
+df.writeJSON("output.json", { format: "json" });
 let df_json = pl.readJSON("output.json");
 console.log(df_json);
 // --8<-- [end:json]
