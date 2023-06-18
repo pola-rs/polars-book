@@ -1,7 +1,7 @@
 # Folds
 
 `Polars` provides expressions/methods for horizontal aggregations like `sum`,`min`, `mean`,
-etc. by setting the argument `axis=1`. However, when you need a more complex aggregation the default methods `Polars` may not be sufficient. That's when `folds` come in handy.
+etc. by setting the argument `axis=1`. However, when you need a more complex aggregation the default methods `Polars` supplies may not be sufficient. That's when `folds` come in handy.
 
 The `fold` expression operates on columns for maximum speed. It utilizes the data layout very efficiently and often has vectorized execution.
 

@@ -39,7 +39,7 @@ we have a nice summary overview.
 
 It's that easy! Let's turn it up a notch. Let's say we want to know how
 many delegates of a "state" are "Pro" or "Anti" administration. We could directly query
-that in the aggregation without the need of `lambda` or grooming the `DataFrame`.
+that in the aggregation without the need of a `lambda` or grooming the `DataFrame`.
 
 {{code_block('user-guide/expressions/aggregation','conditional',['groupby'])}}
 
@@ -47,7 +47,7 @@ that in the aggregation without the need of `lambda` or grooming the `DataFrame`
 --8<-- "python/user-guide/expressions/aggregation.py:conditional"
 ```
 
-Similarly,  this could also be done with a nested GROUPBY, but that doesn't help show off some of these nice features. 😉
+Similarly, this could also be done with a nested GROUPBY, but that doesn't help show off some of these nice features. 😉
 
 {{code_block('user-guide/expressions/aggregation','nested',['groupby'])}}
 
@@ -61,7 +61,7 @@ We can also filter the groups. Let's say we want to compute a mean per group, bu
 don't want to include all values from that group, and we also don't want to filter the
 rows from the `DataFrame` (because we need those rows for another aggregation).
 
-In the example below we show how that can be done.
+In the example below we show how this can be done.
 
 !!! note
      Note that we can make `Python` functions for clarity. These functions don't cost us anything. That is because we only create `Polars` expressions, we don't apply a custom function over a `Series` during runtime of the query.  Of course, you can make functions that return expressions in Rust, too.
