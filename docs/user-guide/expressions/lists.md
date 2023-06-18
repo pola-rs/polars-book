@@ -41,13 +41,9 @@ Polars provides several standard operations on `List` columns. If we want the fi
 --8<-- "python/user-guide/expressions/lists.py:list_ops"
 ```
 
-You can check out all the operations that are available by looking through the [`List` API documentation](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/list.html).
-
 !!! warning "`arr` then, `list` now"
 
-    If you find references to the `arr` API on Stackoverflow
-    or other sources, just replace `arr` with `list`, this
-    was the old accessor for the `List` datatype.
+    If you find references to the `arr` API on Stackoverflow or other sources, just replace `arr` with `list`, this was the old accessor for the `List` datatype. `arr` now refers to the newly introduced `Array` datatype (see below).
 
 ### Element-wise computation within *List*s
 
