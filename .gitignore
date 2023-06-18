@@ -11,6 +11,7 @@ __pycache__
 *.swp
 *.txt
 output.json
+path.json
 *.parquet
 docs/people.md
 user_guide/src/examples/target
@@ -18,6 +19,7 @@ user_guide/src/examples/target
 cargo.lock
 .DS_Store
 
+node_modules
 # Added by cargo
 
 /target
