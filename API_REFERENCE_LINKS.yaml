@@ -28,6 +28,9 @@ python:
   collect: https://pola-rs.github.io/polars/py-polars/html/reference/lazyframe/api/polars.LazyFrame.collect.html
   fold: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.fold.html
   concat_str: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.concat_str.html
+  str.split: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.split.html
+  Expr.List: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/list.html
+  element: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.element.html
   all: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.all.html
   exclude: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.exclude.html
   alias: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.alias.html
@@ -38,7 +41,7 @@ python:
   approx_unique: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.approx_unique.html
   when: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.when.html
   concat_list: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.concat_list.html
-  arr.eval: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.arr.eval.html
+  list.eval: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.list.eval.html
   null_count: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.null_count.html
   is_null: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.is_null.html
   fill_null: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.fill_null.html
@@ -49,6 +52,7 @@ python:
   apply: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.apply.html
   over: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.over.html
   implode: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.implode.html
+  DataFrame.explode: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.explode.html
   read_database_connectorx: 
     name: read_database
     link: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_database.html
@@ -117,7 +121,7 @@ python:
   lengths: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.lengths.html
   n_chars: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.n_chars.html
   str.contains:
-    name: contains
+    name: str.contains
     link: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.contains.html
   starts_with: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.starts_with.html
   ends_with: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.ends_with.html
@@ -125,6 +129,8 @@ python:
   extract_all: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.extract_all.html
   replace: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.replace.html
   replace_all: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.replace_all.html
+  Array: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.Array.html
+  arr: https://pola-rs.github.io/polars/py-polars/html/reference/series/array.html
 
 rust:
   DataFrame: https://pola-rs.github.io/polars/polars/frame/struct.DataFrame.html
