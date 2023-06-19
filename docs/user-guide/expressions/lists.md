@@ -81,7 +81,7 @@ We can apply **any** Polars operations on the elements of the list with the `lis
 --8<-- "python/user-guide/expressions/lists.py:weather_by_day"
 ```
 
-Let's do something interesting, where we calculate the percentage rank of the temperatures by day, measured across stations. `Polars` doesn't provide a special function to do this sort of "rank percentage" directly, but because expressions are so versatile we can create our own percentage rank expression for highest temperature. Let's try that!
+Let's do something interesting, where we calculate the percentage rank of the temperatures by day, measured across stations. Pandas allows you to compute the percentages of the `rank` values. `Polars` doesn't provide a special function to do this directly, but because expressions are so versatile we can create our own percentage rank expression for highest temperature. Let's try that!
 
 {{code_block('user-guide/expressions/lists','weather_by_day_rank',['list.eval'])}}
 ```python exec="on" result="text" session="user-guide/lists"
