@@ -19,7 +19,7 @@ pl.read_database(query=query, connection_uri=connection_uri, engine="adbc")
 connection_uri = "postgres://username:password@server:port/database"
 df = pl.DataFrame({"foo": [1, 2, 3]})
 
-df.write_database(table_name="records", connection_connection_uri=connection_uri)
+df.write_database(table_name="records",  connection_uri=connection_uri)
 # --8<-- [end:write]
 
 # --8<-- [start:write_adbc]
