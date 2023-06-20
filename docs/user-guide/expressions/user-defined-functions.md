@@ -1,7 +1,7 @@
 # User Defined functions
 
-You should be convinced by now that polar expressions are so powerful and flexible that the need for custom python functions
-is much less needed than you might need in other libraries.
+You should be convinced by now that polar expressions are so powerful and flexible that there is much less need for custom python functions
+than in other libraries.
 
 Still, you need to have the power to be able to pass an expression's state to a third party library or apply your black box function
 over data in polars.

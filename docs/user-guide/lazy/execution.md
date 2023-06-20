@@ -34,7 +34,7 @@ shape: (14_029, 6)
 └─────────┴───────────────────────────┴─────────────┴────────────┴───────────────┴────────────┘
 ```
 
-Above we see that from the 10 Million rows there 14,029 rows match our predicate.
+Above we see that from the 10 million rows there are 14,029 rows that match our predicate.
 
 With the default `collect` method Polars processes all of your data as one batch. This means that all the data has to fit into your available memory at the point of peak memory usage in your query.
 

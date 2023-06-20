@@ -10,7 +10,7 @@ Here we see how to use the lazy API starting from either a file or an existing `
 
 ## Using the lazy API from a file
 
-In the ideal case we use the lazy API right from a file as the query optimizer may help us to reduce the amount of data we read from the file.
+In the ideal case we would use the lazy API right from a file as the query optimizer may help us to reduce the amount of data we read from the file.
 
 We create a lazy query from the Reddit CSV data and apply some transformations.
 

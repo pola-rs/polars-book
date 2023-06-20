@@ -1,7 +1,7 @@
 # Window functions 
 
 Window functions are expressions with superpowers. They allow you to perform aggregations on groups in the
-`select` context. Let's get a feel of what that means. First we create a dataset. The dataset loaded in the
+`select` context. Let's get a feel for what that means. First we create a dataset. The dataset loaded in the
 snippet below contains information about pokemon:
 
 {{code_block('user-guide/expressions/window','pokemon',['read_csv'])}}
