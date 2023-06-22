@@ -121,7 +121,7 @@ The rolling groupby, `groupby_rolling`, is another entrance to the `groupby` con
 not fixed by a parameter `every` and `period`. In a rolling groupby the windows are not fixed at all! They are determined
 by the values in the `index_column`.
 
-So imagine having a time column with the values `{2021-01-06, 20210-01-10}` and a `period="5d"` this would create the following
+So imagine having a time column with the values `{2021-01-06, 2021-01-10}` and a `period="5d"` this would create the following
 windows:
 
 ```text
