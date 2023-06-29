@@ -28,6 +28,8 @@ print(s)
 # --8<-- [end:dt]
 
 # --8<-- [start:dataframe]
+from datetime import datetime
+
 df = pl.DataFrame(
     {
         "integer": [1, 2, 3, 4, 5],
