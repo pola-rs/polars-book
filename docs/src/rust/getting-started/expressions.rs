@@ -42,7 +42,24 @@ fn main() -> Result<(), Box<dyn std::error::Error>>{
     // --8<-- [end:exclude]
 
     // --8<-- [start:filter]
-    // TODO
+    let start_date = NaiveDate::from_ymd_opt(2022, 12, 2)
+        .unwrap()
+        .and_hms_opt(0, 0, 0)
+        .unwrap();
+    let end_date = NaiveDate::from_ymd_opt(2022, 12, 8)
+        .unwrap()
+        .and_hms_opt(0, 0, 0)
+        .unwrap();
+    let out = df
+        .clone()
+        .lazy()
+        .filter(
+            col("c")
+                .gt_eq(lit(start_date))
+                .and(col("c").lt_eq(lit(end_date))),
+        )
+        .collect()?;
+    println!("{}",out);
     // --8<-- [end:filter]
 
     // --8<-- [start:filter2]
