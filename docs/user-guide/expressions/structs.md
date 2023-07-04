@@ -1,6 +1,8 @@
 # The Struct datatype
 
-Polars `Sturct`s are an excellent gateway to operations that require multiple columns. For this section, let's start with a `DataFrame` that captures the average rating of a few movies across some states in the U.S.: 
+Polars `Struct`s are the idiomatic way of working with multiple columns. It is also a free operation i.e. moving columns into `Struct`s does not copy any data!
+
+For this section, let's start with a `DataFrame` that captures the average rating of a few movies across some states in the U.S.: 
 
 {{code_block('user-guide/expressions/structs','ratings_df',['DataFrame'])}}
 ```python exec="on" result="text" session="user-guide/structs"
@@ -10,7 +12,7 @@ Polars `Sturct`s are an excellent gateway to operations that require multiple co
 
 ## Encountering the `Struct` type
 
-A popular operation that will lead to a `Struct` column is the ever so popular `value_counts` function that is commonly used in exploratory data analysis. Checking the number of times a state appears the data will be done as so:
+A common operation that will lead to a `Struct` column is the ever so popular `value_counts` function that is commonly used in exploratory data analysis. Checking the number of times a state appears the data will be done as so:
 
 {{code_block('user-guide/expressions/structs','state_value_counts',['value_counts'])}}
 ```python exec="on" result="text" session="user-guide/structs"
@@ -24,9 +26,13 @@ Quite unexpected an output, especially if coming from tools that do not have suc
 --8<-- "python/user-guide/expressions/structs.py:struct_unnest"
 ```
 
+!!! note "Why `value_counts` returns a `Struct`"
+
+    Polars expressions always have a `Fn(Series) -> Series` signature and `Struct` is thus the data type that allows us to provide multiple columns as input/ouput of an expression. In other words, all expressions have to return a `Series` object, and `Struct` allows us to stay consistent with that requirement. 
+
 ## Structs as `dict`s
 
-A Polars `Struct` column is similar to a Python `dict`, and is an idiomatic way of working with multiple columns in Polars. Polars will interpret a `dict` sent to the `Series` constructor as a `Struct`:
+Polars will interpret a `dict` sent to the `Series` constructor as a `Struct`:
 
 {{code_block('user-guide/expressions/structs','series_struct',['Series'])}}
 ```python exec="on" result="text" session="user-guide/structs"
