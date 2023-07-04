@@ -86,6 +86,7 @@ nav:
       - user-guide/concepts/streaming.md
     - Expressions:
       - user-guide/expressions/operators.md
+      - user-guide/expressions/column_selections.md
       - user-guide/expressions/functions.md
       - user-guide/expressions/casting.md
       - user-guide/expressions/strings.md
