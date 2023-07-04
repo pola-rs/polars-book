@@ -71,7 +71,7 @@ print(out)
 # --8<-- [end:selectors_union]
 
 # --8<-- [start:selectors_by_name]
-out = sdf.select(cs.contains("rn"), cs.matches(".*_.*")) 
+out = sdf.select(cs.contains("rn"), cs.matches(".*_.*"))
 print(out)
 # --8<-- [end:selectors_by_name]
 
