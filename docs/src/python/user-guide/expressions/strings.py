@@ -8,23 +8,19 @@ import polars as pl
 df = pl.DataFrame({"animal": ["Crab", "cat and dog", "rab$bit", None]})
 
 out = df.select(
-    [
-        pl.col("animal").str.lengths().alias("byte_count"),
-        pl.col("animal").str.n_chars().alias("letter_count"),
-    ]
+    pl.col("animal").str.lengths().alias("byte_count"),
+    pl.col("animal").str.n_chars().alias("letter_count"),
 )
 print(out)
 # --8<-- [end:df]
 
 # --8<-- [start:existence]
 out = df.select(
-    [
-        pl.col("animal"),
-        pl.col("animal").str.contains("cat|bit").alias("regex"),
-        pl.col("animal").str.contains("rab$", literal=True).alias("literal"),
-        pl.col("animal").str.starts_with("rab").alias("starts_with"),
-        pl.col("animal").str.ends_with("dog").alias("ends_with"),
-    ]
+    pl.col("animal"),
+    pl.col("animal").str.contains("cat|bit").alias("regex"),
+    pl.col("animal").str.contains("rab$", literal=True).alias("literal"),
+    pl.col("animal").str.starts_with("rab").alias("starts_with"),
+    pl.col("animal").str.ends_with("dog").alias("ends_with"),
 )
 print(out)
 # --8<-- [end:existence]
@@ -40,9 +36,7 @@ df = pl.DataFrame(
     }
 )
 out = df.select(
-    [
-        pl.col("a").str.extract(r"candidate=(\w+)", group_index=1),
-    ]
+    pl.col("a").str.extract(r"candidate=(\w+)", group_index=1),
 )
 print(out)
 # --8<-- [end:extract]
@@ -51,9 +45,7 @@ print(out)
 # --8<-- [start:extract_all]
 df = pl.DataFrame({"foo": ["123 bla 45 asd", "xyz 678 910t"]})
 out = df.select(
-    [
-        pl.col("foo").str.extract_all(r"(\d+)").alias("extracted_nrs"),
-    ]
+    pl.col("foo").str.extract_all(r"(\d+)").alias("extracted_nrs"),
 )
 print(out)
 # --8<-- [end:extract_all]

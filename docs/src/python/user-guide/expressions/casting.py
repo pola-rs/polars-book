@@ -19,13 +19,11 @@ print(df)
 
 # --8<-- [start:castnum]
 out = df.select(
-    [
-        pl.col("integers").cast(pl.Float32).alias("integers_as_floats"),
-        pl.col("floats").cast(pl.Int32).alias("floats_as_integers"),
-        pl.col("floats_with_decimal")
-        .cast(pl.Int32)
-        .alias("floats_with_decimal_as_integers"),
-    ]
+    pl.col("integers").cast(pl.Float32).alias("integers_as_floats"),
+    pl.col("floats").cast(pl.Int32).alias("floats_as_integers"),
+    pl.col("floats_with_decimal")
+    .cast(pl.Int32)
+    .alias("floats_with_decimal_as_integers"),
 )
 print(out)
 # --8<-- [end:castnum]
@@ -33,24 +31,22 @@ print(out)
 
 # --8<-- [start:downcast]
 out = df.select(
-    [
-        pl.col("integers").cast(pl.Int16).alias("integers_smallfootprint"),
-        pl.col("floats").cast(pl.Float32).alias("floats_smallfootprint"),
-    ]
+    pl.col("integers").cast(pl.Int16).alias("integers_smallfootprint"),
+    pl.col("floats").cast(pl.Float32).alias("floats_smallfootprint"),
 )
 print(out)
 # --8<-- [end:downcast]
 
 # --8<-- [start:overflow]
 try:
-    out = df.select([pl.col("big_integers").cast(pl.Int8)])
+    out = df.select(pl.col("big_integers").cast(pl.Int8))
     print(out)
 except Exception as e:
     print(e)
 # --8<-- [end:overflow]
 
 # --8<-- [start:overflow2]
-out = df.select([pl.col("big_integers").cast(pl.Int8, strict=False)])
+out = df.select(pl.col("big_integers").cast(pl.Int8, strict=False))
 print(out)
 # --8<-- [end:overflow2]
 
@@ -65,24 +61,18 @@ df = pl.DataFrame(
 )
 
 out = df.select(
-    [
-        pl.col("integers").cast(pl.Utf8),
-        pl.col("float").cast(pl.Utf8),
-        pl.col("floats_as_string").cast(pl.Float64),
-    ]
+    pl.col("integers").cast(pl.Utf8),
+    pl.col("float").cast(pl.Utf8),
+    pl.col("floats_as_string").cast(pl.Float64),
 )
 print(out)
 # --8<-- [end:strings]
 
 
 # --8<-- [start:strings2]
-df = pl.DataFrame(
-    {
-        "strings_not_float": ["4.0", "not_a_number", "6.0", "7.0", "8.0"],
-    }
-)
+df = pl.DataFrame({"strings_not_float": ["4.0", "not_a_number", "6.0", "7.0", "8.0"]})
 try:
-    out = df.select([pl.col("strings_not_float").cast(pl.Float64)])
+    out = df.select(pl.col("strings_not_float").cast(pl.Float64))
     print(out)
 except Exception as e:
     print(e)
@@ -97,12 +87,7 @@ df = pl.DataFrame(
     }
 )
 
-out = df.select(
-    [
-        pl.col("integers").cast(pl.Boolean),
-        pl.col("floats").cast(pl.Boolean),
-    ]
-)
+out = df.select(pl.col("integers").cast(pl.Boolean), pl.col("floats").cast(pl.Boolean))
 print(out)
 # --8<-- [end:bool]
 
@@ -118,7 +103,7 @@ df = pl.DataFrame(
     }
 )
 
-out = df.select([pl.col("date").cast(pl.Int64), pl.col("datetime").cast(pl.Int64)])
+out = df.select(pl.col("date").cast(pl.Int64), pl.col("datetime").cast(pl.Int64))
 print(out)
 # --8<-- [end:dates]
 
@@ -137,10 +122,8 @@ df = pl.DataFrame(
 )
 
 out = df.select(
-    [
-        pl.col("date").dt.strftime("%Y-%m-%d"),
-        pl.col("string").str.strptime(pl.Datetime, "%Y-%m-%d"),
-    ]
+    pl.col("date").dt.strftime("%Y-%m-%d"),
+    pl.col("string").str.strptime(pl.Datetime, "%Y-%m-%d"),
 )
 print(out)
 # --8<-- [end:dates2]

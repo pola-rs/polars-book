@@ -12,10 +12,5 @@ pl.col("foo").sort().head(2)
 # --8<-- [end:example1]
 
 # --8<-- [start:example2]
-df.select(
-    [
-        pl.col("foo").sort().head(2),
-        pl.col("bar").filter(pl.col("foo") == 1).sum(),
-    ]
-)
+df.select(pl.col("foo").sort().head(2), pl.col("bar").filter(pl.col("foo") == 1).sum())
 # --8<-- [end:example2]

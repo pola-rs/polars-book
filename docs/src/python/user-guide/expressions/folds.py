@@ -45,10 +45,6 @@ df = pl.DataFrame(
     }
 )
 
-out = df.select(
-    [
-        pl.concat_str(["a", "b"]),
-    ]
-)
+out = df.select(pl.concat_str(["a", "b"]))
 print(out)
 # --8<-- [end:string]

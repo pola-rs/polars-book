@@ -83,7 +83,7 @@ df.loc[:,'a']
 but in `Polars` you would use the `.select` method:
 
 ```python
-df.select(['a'])
+df.select('a')
 ```
 
 If you want to select rows based on the values then in `Polars` you use the `.filter`
@@ -158,10 +158,10 @@ In `Polars` we add columns to `df` using the `.with_columns` method and name the
 the `.alias` method:
 
 ```python
-df.with_columns([
+df.with_columns(
     (pl.col("value") * 10).alias("tenXValue"),
     (pl.col("value") * 100).alias("hundredXValue"),
-])
+)
 ```
 
 These column assignments are executed in parallel.
@@ -250,10 +250,10 @@ and then joins the result back to the original `DataFrame` producing:
 In `Polars` the same can be achieved with `window` functions:
 
 ```python
-df.select([
+df.select(
     pl.all(),
     pl.col("type").count().over("c").alias("size")
-])
+)
 ```
 
 ```
@@ -287,12 +287,12 @@ them in a single `select` is both convenient **and** optimal. In the following e
 we look at a case where we are calculating group statistics over `"c"` twice:
 
 ```python
-df.select([
+df.select(
     pl.all(),
     pl.col("c").count().over("c").alias("size"),
     pl.col("c").sum().over("type").alias("sum"),
     pl.col("c").reverse().over("c").flatten().alias("reverse_type")
-])
+)
 ```
 
 ```

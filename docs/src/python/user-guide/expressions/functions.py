@@ -21,30 +21,30 @@ print(df)
 
 # --8<-- [start:all]
 
-df_all = df.select([pl.col("*")])
+df_all = df.select(pl.col("*"))
 
 # Is equivalent to
-df_all = df.select([pl.all()])
+df_all = df.select(pl.all())
 print(df_all)
 # --8<-- [end:all]
 
 
 # --8<-- [start:exclude]
 
-df_exclude = df.select([pl.exclude("groups")])
+df_exclude = df.select(pl.exclude("groups"))
 print(df_exclude)
 # --8<-- [end:exclude]
 
 
 # --8<-- [start:samename]
-df_samename = df.select([pl.col("nrs") + 5])
+df_samename = df.select(pl.col("nrs") + 5)
 print(df_samename)
 # --8<-- [end:samename]
 
 
 # --8<-- [start:samenametwice]
 try:
-    df_samename2 = df.select([pl.col("nrs") + 5, pl.col("nrs") - 5])
+    df_samename2 = df.select(pl.col("nrs") + 5, pl.col("nrs") - 5)
     print(df_samename2)
 except Exception as e:
     print(e)
@@ -52,33 +52,26 @@ except Exception as e:
 
 # --8<-- [start:samenamealias]
 df_alias = df.select(
-    [
-        (pl.col("nrs") + 5).alias("nrs + 5"),
-        (pl.col("nrs") - 5).alias("nrs - 5"),
-    ]
+    (pl.col("nrs") + 5).alias("nrs + 5"), (pl.col("nrs") - 5).alias("nrs - 5")
 )
 print(df_alias)
 # --8<-- [end:samenamealias]
 
 # --8<-- [start:countunique]
 df_alias = df.select(
-    [
-        pl.col("names").n_unique().alias("unique"),
-        pl.approx_unique("names").alias("unique_approx"),
-    ]
+    pl.col("names").n_unique().alias("unique"),
+    pl.approx_unique("names").alias("unique_approx"),
 )
 print(df_alias)
 # --8<-- [end:countunique]
 
 # --8<-- [start:conditional]
 df_conditional = df.select(
-    [
-        pl.col("nrs"),
-        pl.when(pl.col("nrs") > 2)
-        .then(pl.lit(True))
-        .otherwise(pl.lit(False))
-        .alias("conditional"),
-    ]
+    pl.col("nrs"),
+    pl.when(pl.col("nrs") > 2)
+    .then(pl.lit(True))
+    .otherwise(pl.lit(False))
+    .alias("conditional"),
 )
 print(df_conditional)
 # --8<-- [end:conditional]

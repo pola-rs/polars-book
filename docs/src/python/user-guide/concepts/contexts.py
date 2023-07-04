@@ -20,12 +20,10 @@ print(df)
 # --8<-- [start:select]
 
 out = df.select(
-    [
-        pl.sum("nrs"),
-        pl.col("names").sort(),
-        pl.col("names").first().alias("first name"),
-        (pl.mean("nrs") * 10).alias("10xnrs"),
-    ]
+    pl.sum("nrs"),
+    pl.col("names").sort(),
+    pl.col("names").first().alias("first name"),
+    (pl.mean("nrs") * 10).alias("10xnrs"),
 )
 print(out)
 # --8<-- [end:select]
@@ -38,10 +36,7 @@ print(out)
 # --8<-- [start:with_columns]
 
 df = df.with_columns(
-    [
-        pl.sum("nrs").alias("nrs_sum"),
-        pl.col("random").count().alias("count"),
-    ]
+    pl.sum("nrs").alias("nrs_sum"), pl.col("random").count().alias("count")
 )
 print(df)
 # --8<-- [end:with_columns]
@@ -49,13 +44,11 @@ print(df)
 
 # --8<-- [start:groupby]
 out = df.groupby("groups").agg(
-    [
-        pl.sum("nrs"),  # sum nrs by groups
-        pl.col("random").count().alias("count"),  # count group members
-        # sum random where name != null
-        pl.col("random").filter(pl.col("names").is_not_null()).sum().suffix("_sum"),
-        pl.col("names").reverse().alias(("reversed names")),
-    ]
+    pl.sum("nrs"),  # sum nrs by groups
+    pl.col("random").count().alias("count"),  # count group members
+    # sum random where name != null
+    pl.col("random").filter(pl.col("names").is_not_null()).sum().suffix("_sum"),
+    pl.col("names").reverse().alias(("reversed names")),
 )
 print(out)
 # --8<-- [end:groupby]
