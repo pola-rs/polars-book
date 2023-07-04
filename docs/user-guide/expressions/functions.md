@@ -137,7 +137,7 @@ There are two ways to count unique values in `Polars`: an exact methodology, and
 
 ## Conditionals
 
-`Polars` supports if-like conditions in expression with the `when`, `then`, `otherwise` syntax. The predicate is placed in the `when` clause and when this evaluates to `true` the `then` expression is applied otherwise the `otherwise` expression is applied (row-wise).
+`Polars` supports if-else like conditions in expressions with the `when`, `then`, `otherwise` syntax. The predicate is placed in the `when` clause and when this evaluates to `true` the `then` expression is applied otherwise the `otherwise` expression is applied (row-wise).
 
 {{code_block('user-guide/expressions/functions','conditional',['when'])}}
 
