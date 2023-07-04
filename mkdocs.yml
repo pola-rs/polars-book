@@ -95,6 +95,7 @@ nav:
       - user-guide/expressions/folds.md
       - user-guide/expressions/lists.md
       - user-guide/expressions/user-defined-functions.md
+      - user-guide/expressions/structs.md
       - user-guide/expressions/numpy.md
     - Transformations:
       - user-guide/transformations/joins.md  
