@@ -58,6 +58,34 @@ python:
   apply: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.apply.html
   over: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.over.html
   implode: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.implode.html
+  dt_to_string: 
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.dt.to_string.html
+    name: dt.to_string  
+  selectors: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html
+  cs_numeric: 
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.numeric
+    name: cs.numeric
+  cs_by_name:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.by_name
+    name: cs.by_name
+  cs_first:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.first
+    name: cs.first
+  cs_temporal:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.temporal
+    name: cs.temporal
+  cs_contains:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.contains
+    name: cs.contains
+  cs_matches:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.matches
+    name: cs.matches
+  is_selector:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.is_selector
+    name: is_selector
+  selector_column_names:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.selector_column_names
+    name: selector_column_names   
   DataFrame.explode: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.explode.html
   read_database_connectorx: 
     name: read_database
