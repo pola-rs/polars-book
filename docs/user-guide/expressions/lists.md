@@ -2,9 +2,9 @@
 
 `Polars` has first-class support for `List` columns: that is, columns where each row is a list of homogenous elements, of varying lengths. `Polars` also has an `Array` datatype, which is analogous to `numpy`'s `ndarray` objects, where the length is identical across rows.
 
-Note: this is different from Python's `List` object, where the elements can be of any time. Polars can store these within columns, but as a generic `Object` datatype that doesn't have the special list manipulation features that we're about to discuss.
+Note: this is different from Python's `list` object, where the elements can be of any type. Polars can store these within columns, but as a generic `Object` datatype that doesn't have the special list manipulation features that we're about to discuss.
 
-## Powerful *List* manipulation
+## Powerful `List` manipulation
 
 Let's say we had the following data from different weather stations across a state. When the weather station is unable to get a result, an error code is recorded instead of the actual temperature at that time.
 
@@ -14,7 +14,7 @@ Let's say we had the following data from different weather stations across a sta
 --8<-- "python/user-guide/expressions/lists.py:weather_df"
 ```
 
-### Creating a *List* column
+### Creating a `List` column
 
 For the `weather` `DataFrame` created above, it's very likely we need to run some analysis on the temperatures that are captured by each station. To make this happen, we need to first be able to get individual temperature measurements. This is done by:
 
@@ -32,7 +32,7 @@ One way we could go post this would be to convert each temperature measurement i
 
 However, in Polars, we often do not need to do this to operate on the `List` elements.
 
-### Operating on *List* columns
+### Operating on `List` columns
 
 Polars provides several standard operations on `List` columns. If we want the first three measurements, we can do a `head(3)`. The last three can be obtained via a `tail(3)`, or alternately, via `slice` (negative indexing is supported). We can also identify the number of observations via `lengths`. Let's see them in action:
 
@@ -45,7 +45,7 @@ Polars provides several standard operations on `List` columns. If we want the fi
 
     If you find references to the `arr` API on Stackoverflow or other sources, just replace `arr` with `list`, this was the old accessor for the `List` datatype. `arr` now refers to the newly introduced `Array` datatype (see below).
 
-### Element-wise computation within *List*s
+### Element-wise computation within `List`s
 
 If we need to identify the stations that are giving the most number of errors from the starting `DataFrame`, we need to:
 
@@ -88,7 +88,7 @@ Let's do something interesting, where we calculate the percentage rank of the te
 --8<-- "python/user-guide/expressions/lists.py:weather_by_day_rank"
 ```
 
-## Polars Arrays
+## Polars `Array`s
 
 `Array`s are a new data type that was recently introduced, and are still pretty nascent in features that it offers. The major difference between a `List` and an `Array` is that the latter is limited to having the same number of elements per row, while a `List` can have a variable number of elements. Both still require that each element's data type is the same.
 
