@@ -2,7 +2,7 @@
 
 `Polars` can deal with multiple files differently depending on your needs and memory strain.
 
-Let's create some files to give use some context:
+Let's create some files to give us some context:
 
 {{code_block('user-guide/io/multiple','create',['write_csv'])}}
 

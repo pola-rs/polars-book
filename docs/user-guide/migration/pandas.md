@@ -18,7 +18,7 @@ objective. We believe the semantics of a query should not change by the state of
 In Polars a DataFrame will always be a 2D table with heterogeneous data-types. The data-types may have nesting, but the
 table itself will not.
 Operations like resampling will be done by specialized functions or methods that act like 'verbs' on a table explicitly
-stating columns that 'verb' operates on. As such, it is our conviction that not having indices make things simpler,
+stating the columns that that 'verb' operates on. As such, it is our conviction that not having indices make things simpler,
 more explicit, more readable and less error-prone.
 
 Note that an 'index' data structure as known in databases will be used by polars as an optimization technique.
@@ -27,7 +27,7 @@ Note that an 'index' data structure as known in databases will be used by polars
 ### `Polars` uses Apache Arrow arrays to represent data in memory while `Pandas` uses `Numpy` arrays
 
 `Polars` represents data in memory with Arrow arrays while `Pandas` represents data in
-memory in `Numpy` arrays. Apache Arrow is an emerging standard for in-memory columnar
+memory with `Numpy` arrays. Apache Arrow is an emerging standard for in-memory columnar
 analytics that can accelerate data load times, reduce memory usage and accelerate
 calculations.
 
@@ -37,21 +37,21 @@ calculations.
 
 `Polars` exploits the strong support for concurrency in Rust to run many operations in
 parallel. While some operations in `Pandas` are multi-threaded the core of the library
-is single-threaded and an additional library such as `Dask` must be used to parallelise
+is single-threaded and an additional library such as `Dask` must be used to parallelize
 operations.
 
 ### `Polars` can lazily evaluate queries and apply query optimization
 
-Eager evaluation is where code is evaluated as soon as you run the code. Lazy evaluation
-is where running a line of code means that the underlying logic is added to a query plan
+Eager evaluation is when code is evaluated as soon as you run the code. Lazy evaluation
+is when running a line of code means that the underlying logic is added to a query plan
 rather than being evaluated.
 
 `Polars` supports eager evaluation and lazy evaluation whereas `Pandas` only supports
 eager evaluation. The lazy evaluation mode is powerful because `Polars` carries out
-automatic query optimization where it examines the query plan and looks for ways to
+automatic query optimization when it examines the query plan and looks for ways to
 accelerate the query or reduce memory usage.
 
-`Dask` also supports lazy evaluation where it generates a query plan. However, `Dask`
+`Dask` also supports lazy evaluation when it generates a query plan. However, `Dask`
 does not carry out query optimization on the query plan.
 
 ## Key syntax differences
@@ -65,7 +65,7 @@ polars != pandas
 If your `Polars` code looks like it could be `Pandas` code, it might run, but it likely
 runs slower than it should.
 
-Let's go through some typical `Pandas` code and see how we might write that in `Polars`.
+Let's go through some typical `Pandas` code and see how we might rewrite it in `Polars`.
 
 ### Selecting data
 
