@@ -52,7 +52,8 @@ except Exception as e:
 
 # --8<-- [start:samenamealias]
 df_alias = df.select(
-    (pl.col("nrs") + 5).alias("nrs + 5"), (pl.col("nrs") - 5).alias("nrs - 5")
+    (pl.col("nrs") + 5).alias("nrs + 5"),
+    (pl.col("nrs") - 5).alias("nrs - 5"),
 )
 print(df_alias)
 # --8<-- [end:samenamealias]

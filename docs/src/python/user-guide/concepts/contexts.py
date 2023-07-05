@@ -36,7 +36,8 @@ print(out)
 # --8<-- [start:with_columns]
 
 df = df.with_columns(
-    pl.sum("nrs").alias("nrs_sum"), pl.col("random").count().alias("count")
+    pl.sum("nrs").alias("nrs_sum"),
+    pl.col("random").count().alias("count"),
 )
 print(df)
 # --8<-- [end:with_columns]
