@@ -12,13 +12,13 @@ Let's create a dataset to use in this section:
 
 ## Expression Expansion
 
-As we've seen in the previous section, we can select specific columns using the `pl.col` method. It can also select multiple columns - both as a means of convenience, and to *expand* the expression.
+As we've seen in the previous section, we can select specific columns using the `pl.col` method. It can also select multiple columns - both as a means of convenience, and to *expand* the expression. 
 
-This kind of convenience feature isn't just decorative or syntactic sugar. It allows for a very powerful application of [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) principles in your code.
+This kind of convenience feature isn't just decorative or syntactic sugar. It allows for a very powerful application of [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) principles in your code: a single expression that specifies multiple columns expands into a list of expressions (depending on the DataFrame schema), resulting in being able to select multiple columns + run computation on them!
 
 ### Select all, or all but some
 
-We can select all columns in the `DataFrame` ojbject by providing the argument `*`:
+We can select all columns in the `DataFrame` object by providing the argument `*`:
 
 {{code_block('user-guide/expressions/column_selections', 'all',['all'])}}
 ```python exec="on" result="text" session="user-guide/column_selections"
