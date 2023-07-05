@@ -16,6 +16,12 @@ python:
   write_parquet: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.DataFrame.write_parquet.html
   min: https://pola-rs.github.io/polars/py-polars/html/reference/series/api/polars.Series.min.html
   max: https://pola-rs.github.io/polars/py-polars/html/reference/series/api/polars.Series.max.html
+  value_counts: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.value_counts.html
+  unnest: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.unnest.html
+  field: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.struct.field.html
+  struct: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.struct.html
+  rename_fields: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.struct.rename_fields.html
+  is_duplicated: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.is_duplicated.html
   replace: https://pola-rs.github.io/polars/py-polars/html/reference/series/api/polars.Series.str.replace.html
   sample: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.sample.html
   day: https://pola-rs.github.io/polars/py-polars/html/reference/series/api/polars.Series.dt.day.html
@@ -52,6 +58,34 @@ python:
   apply: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.apply.html
   over: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.over.html
   implode: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.implode.html
+  dt_to_string: 
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.dt.to_string.html
+    name: dt.to_string  
+  selectors: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html
+  cs_numeric: 
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.numeric
+    name: cs.numeric
+  cs_by_name:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.by_name
+    name: cs.by_name
+  cs_first:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.first
+    name: cs.first
+  cs_temporal:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.temporal
+    name: cs.temporal
+  cs_contains:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.contains
+    name: cs.contains
+  cs_matches:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.matches
+    name: cs.matches
+  is_selector:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.is_selector
+    name: is_selector
+  selector_column_names:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.selector_column_names
+    name: selector_column_names   
   DataFrame.explode: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.explode.html
   read_database_connectorx: 
     name: read_database
@@ -117,7 +151,6 @@ python:
     name: log
     link: https://numpy.org/doc/stable/reference/generated/numpy.log.html
     feature_flags: ['numpy']
-  struct: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.struct.html#
   lengths: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.lengths.html
   n_chars: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.str.n_chars.html
   str.contains:

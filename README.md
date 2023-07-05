@@ -7,11 +7,11 @@ This repo contains the [User Guide](https://pola-rs.github.io/polars-book/user-g
 The User guide is made with [Material for mkdocs](https://squidfunk.github.io/mkdocs-material/). In order to get started with building this book perform the following steps:
 
 ```shell
-sudo apt-get install graphviz
-pip install -r requirements.txt
+make requirements
+
 ```
 
-In order to serve the books run `mkdocs serve`. This will run all the python examples and display the output inline using the `markdown-exec` plugin.
+In order to serve the books run `make serve`. This will run all the python examples and display the output inline using the `markdown-exec` plugin.
 
 ## Deployment
 
