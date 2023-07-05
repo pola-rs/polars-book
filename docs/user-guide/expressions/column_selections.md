@@ -114,3 +114,21 @@ What if we want to apply a specific operation on the selected columns (i.e. get 
 ```python exec="on" result="text" session="user-guide/column_selections"
 --8<-- "python/user-guide/expressions/column_selections.py:selectors_to_expr"
 ```
+
+### Debugging `selectors`
+
+Polars also provides two helpful utility functions to aid with using selectors: `is_selector` and `selector_column_names`:
+
+{{code_block('user-guide/expressions/column_selections','selectors_is_selector_utility',['is_selector'])}}
+
+```python exec="on" result="text" session="user-guide/column_selections"
+--8<-- "python/user-guide/expressions/column_selections.py:selectors_is_selector_utility"
+```
+
+To predetermine the column names that are selected, which is especially useful for a LazyFrame object:
+
+{{code_block('user-guide/expressions/column_selections','selectors_colnames_utility',['selector_column_names'])}}
+
+```python exec="on" result="text" session="user-guide/column_selections"
+--8<-- "python/user-guide/expressions/column_selections.py:selectors_colnames_utility"
+```

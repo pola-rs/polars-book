@@ -73,7 +73,13 @@ python:
     name: cs.contains
   cs_matches:
     link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.matches
-    name: cs.matches   
+    name: cs.matches
+  is_selector:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.is_selector
+    name: is_selector
+  selector_column_names:
+    link: https://pola-rs.github.io/polars/py-polars/html/reference/selectors.html#polars.selectors.selector_column_names
+    name: selector_column_names   
   DataFrame.explode: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.explode.html
   read_database_connectorx: 
     name: read_database
