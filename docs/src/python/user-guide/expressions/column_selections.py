@@ -83,12 +83,14 @@ print(out)
 
 # --8<-- [start:selectors_is_selector_utility]
 from polars.selectors import is_selector
+
 out = cs.temporal()
 print(is_selector(out))
 # --8<-- [end:selectors_is_selector_utility]
 
 # --8<-- [start:selectors_colnames_utility]
 from polars.selectors import selector_column_names
+
 out = cs.temporal().as_expr().dt.to_string("%Y-%h-%d")
 print(selector_column_names(df, out))
 # --8<-- [end:selectors_colnames_utility]
