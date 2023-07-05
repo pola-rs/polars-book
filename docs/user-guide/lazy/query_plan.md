@@ -46,7 +46,7 @@ FILTER [(col("comment_karma")) > (0)] FROM WITH_COLUMNS:
     PROJECT */6 COLUMNS
 ```
 
-The printed plan should also be read from bottom to top. This non-optimized plan is roughly to:
+The printed plan should also be read from bottom to top. This non-optimized plan is roughly equal to:
 
 - read from the `data/reddit.csv` file
 - read all 6 columns (where the * wildcard in PROJECT \*/6 COLUMNS means take all columns)
