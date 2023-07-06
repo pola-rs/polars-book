@@ -31,10 +31,10 @@ dfs = spark.createDataFrame(
 In `Polars` you can write something like this:
 
 ```python
-df.select([
+df.select(
     pl.col("foo").sort().head(2),
     pl.col("bar").filter(pl.col("foo") == "d").sum()
-])
+)
 ```
 
 Output:
@@ -92,10 +92,10 @@ Output:
 In `Polars` you can combine two different `head` expressions on the same DataFrame, provided that they return the same number of values.
 
 ```python
-df.select([
+df.select(
     pl.col("foo").sort().head(2),
     pl.col("bar").sort(descending=True).head(2),
-])
+)
 ```
 
 Output:
