@@ -17,13 +17,13 @@ See [the optimizations section](../lazy/optimizations.md) for more optimizations
 ## When to use multiprocessing
 
 Although Polars is multithreaded, other libraries may be single-threaded.
-When the other library is the bottleneck, and the problem at hand is parallelizable, it makes sense to use multiprocessing to speed up.
+When the other library is the bottleneck, and the problem at hand is parallelizable, it makes sense to use multiprocessing to gain a speed up.
 
 ## The problem with the default multiprocessing config
 
 ### Summary
 
-The [Python multiprocessing documentation](https://docs.python.org/3/library/multiprocessing.html) lists the three methods a process pool can be created:
+The [Python multiprocessing documentation](https://docs.python.org/3/library/multiprocessing.html) lists the three methods to create a process pool:
 
 1. spawn
 1. fork
@@ -31,7 +31,7 @@ The [Python multiprocessing documentation](https://docs.python.org/3/library/mul
 
 The description of fork is (as of 2022-10-15):
 
-> The parent process uses os.fork() to fork the Python interpreter. The child process, when it begins, is effectively identical to the parent process. All resources of the  parent are inherited by the child process. Note that safely forking a multithreaded process is problematic.
+> The parent process uses os.fork() to fork the Python interpreter. The child process, when it begins, is effectively identical to the parent process. All resources of the parent are inherited by the child process. Note that safely forking a multithreaded process is problematic.
 
 > Available on Unix only. The default on Unix.
 
@@ -52,7 +52,7 @@ Consider the example below, which is a slightly modified example posted on the [
 {{code_block('user-guide/misc/multiprocess','example1',[])}}
 
 Using `fork` as the method, instead of `spawn`, will cause a dead lock.
-Please note: Polars will not even start and raise the error on multiprocessing method being set wrong, but if the check would not be there, the deadlock would exist.
+Please note: Polars will not even start and raise the error on multiprocessing method being set wrong, but if the check had not been there, the deadlock would exist.
 
 The fork method is equivalent to calling `os.fork()`, which is a system call as defined in [the POSIX standard](https://pubs.opengroup.org/onlinepubs/9699919799/functions/fork.html):
 
@@ -91,7 +91,7 @@ And more importantly, it actually works in combination with multithreaded librar
 Fourth, `spawn` starts a new process, and therefore it requires code to be importable, in contrast to `fork`.
 In particular, this means that when using `spawn` the relevant code should not be in the global scope, such as in Jupyter notebooks or in plain scripts.
 Hence in the examples above, we define functions where we spawn within, and run those functions from a `__main__` clause.
-This is not an issue for typical projects, but in quick experimentation in notebooks it could fail.
+This is not an issue for typical projects, but during quick experimentation in notebooks it could fail.
 
 ## References
 

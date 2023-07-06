@@ -1,6 +1,6 @@
 # Usage
 
-With the lazy API Polars doesn't run each query line-by-line but instead processes the full query end-to-end. To get the most out of Polars it is important that you use the lazy API because:
+With the lazy API, Polars doesn't run each query line-by-line but instead processes the full query end-to-end. To get the most out of Polars it is important that you use the lazy API because:
 
 - the lazy API allows Polars to apply automatic query optimization with the query optimizer
 - the lazy API allows you to work with larger than memory datasets using streaming
@@ -10,7 +10,7 @@ Here we see how to use the lazy API starting from either a file or an existing `
 
 ## Using the lazy API from a file
 
-In the ideal case we use the lazy API right from a file as the query optimizer may help us to reduce the amount of data we read from the file.
+In the ideal case we would use the lazy API right from a file as the query optimizer may help us to reduce the amount of data we read from the file.
 
 We create a lazy query from the Reddit CSV data and apply some transformations.
 

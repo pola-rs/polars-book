@@ -11,27 +11,9 @@ In the examples below we will use the following `DataFrame`:
 --8<-- "python/user-guide/expressions/functions.py:dataframe"
 ```
 
+## Column Naming
 
-#### Column Selection
-
-There are various convenience methods to select multiple or all columns. 
-
-##### Select All Columns
-
-{{code_block('user-guide/expressions/functions','all',['all'])}}
-
-
-##### Select All Columns Except
-
-{{code_block('user-guide/expressions/functions','exclude',['exclude'])}}
-
-```python exec="on" result="text" session="user-guide/functions"
---8<-- "python/user-guide/expressions/functions.py:exclude"
-```
-
-#### Column Naming
-
-By default if you perform a expression it will keep the same name as the original column. In the example below we perform an expression on the `nrs` column. Note that the output `DataFrame` still has the same name.
+By default if you perform an expression it will keep the same name as the original column. In the example below we perform an expression on the `nrs` column. Note that the output `DataFrame` still has the same name.
 
 {{code_block('user-guide/expressions/functions','samename',[])}}
 
@@ -44,7 +26,7 @@ By default if you perform a expression it will keep the same name as the origina
 --8<-- "python/user-guide/expressions/functions.py:samename"
 ```
 
-This might get problematic in the case you use the same column multiple times in your expression as the output columns will get duplicated. For example the following query will fail.
+This might get problematic in the case you use the same column multiple times in your expression as the output columns will get duplicated. For example, the following query will fail.
 
 {{code_block('user-guide/expressions/functions','samenametwice',[])}}
 
@@ -67,9 +49,9 @@ In case of multiple columns for example when using `all()` or `col(*)` you can a
     [:material-api:  `suffix`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.suffix.html)
     [:material-api:  `map_alias`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.map_alias.html)
 
-#### Count Unique Values
+## Count Unique Values
 
-There are two ways to count unique values in `Polars`: an exact methodology an approximation. The approximation uses the [HyperLogLog++](https://en.wikipedia.org/wiki/HyperLogLog) algorithm to approximate the cardinality and is especially useful for very large datasets where an approximation is good enough.
+There are two ways to count unique values in `Polars`: an exact methodology and an approximation. The approximation uses the [HyperLogLog++](https://en.wikipedia.org/wiki/HyperLogLog) algorithm to approximate the cardinality and is especially useful for very large datasets where an approximation is good enough.
 
 
 {{code_block('user-guide/expressions/functions','countunique',['n_unique','approx_unique'])}}
@@ -78,9 +60,9 @@ There are two ways to count unique values in `Polars`: an exact methodology an a
 --8<-- "python/user-guide/expressions/functions.py:countunique"
 ```
 
-#### Conditionals
+## Conditionals
 
-`Polars` supports if-like conditions in expression with the `when`, `then`, `otherwise` syntax. The predicate is placed in the `when` clause and when this evaluates to `true` the `then` expression is applied otherwise the `otherwise` expression is applied (row-wise).
+`Polars` supports if-else like conditions in expressions with the `when`, `then`, `otherwise` syntax. The predicate is placed in the `when` clause and when this evaluates to `true` the `then` expression is applied otherwise the `otherwise` expression is applied (row-wise).
 
 {{code_block('user-guide/expressions/functions','conditional',['when'])}}
 

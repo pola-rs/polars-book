@@ -6,7 +6,6 @@ import numpy as np
 np.random.seed(12)
 # --8<-- [end:setup]
 
-
 # --8<-- [start:dataframe]
 df = pl.DataFrame(
     {
@@ -18,23 +17,6 @@ df = pl.DataFrame(
 )
 print(df)
 # --8<-- [end:dataframe]
-
-# --8<-- [start:all]
-
-df_all = df.select(pl.col("*"))
-
-# Is equivalent to
-df_all = df.select(pl.all())
-print(df_all)
-# --8<-- [end:all]
-
-
-# --8<-- [start:exclude]
-
-df_exclude = df.select(pl.exclude("groups"))
-print(df_exclude)
-# --8<-- [end:exclude]
-
 
 # --8<-- [start:samename]
 df_samename = df.select(pl.col("nrs") + 5)

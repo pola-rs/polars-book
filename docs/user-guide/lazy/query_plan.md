@@ -11,7 +11,7 @@ We can understand both the non-optimized and optimized query plans with visualiz
 
 ### Graphviz visualization
 
-First we visualise the non-optimized plan by setting `optimized=False`.
+First we visualize the non-optimized plan by setting `optimized=False`.
 
 {{code_block('user-guide/lazy/query_plan','plan',['show_graph'])}}
 
@@ -26,7 +26,7 @@ First we visualise the non-optimized plan by setting `optimized=False`.
 --8<-- "python/user-guide/lazy/query_plan.py:createplan"
 ```
 
-The query plan visualisation should be read from bottom to top. In the visualisation:
+The query plan visualization should be read from bottom to top. In the visualization:
 
 - each box corresponds to a stage in the query plan
 - the `sigma` stands for `SELECTION` and indicates any filter conditions
@@ -46,7 +46,7 @@ FILTER [(col("comment_karma")) > (0)] FROM WITH_COLUMNS:
     PROJECT */6 COLUMNS
 ```
 
-The printed plan should also be read from bottom to top. This non-optimized plan is roughly to:
+The printed plan should also be read from bottom to top. This non-optimized plan is roughly equal to:
 
 - read from the `data/reddit.csv` file
 - read all 6 columns (where the * wildcard in PROJECT \*/6 COLUMNS means take all columns)
@@ -55,7 +55,7 @@ The printed plan should also be read from bottom to top. This non-optimized plan
 
 ## Optimized query plan
 
-Now we visualise the optimized plan with `show_graph`.
+Now we visualize the optimized plan with `show_graph`.
 
 {{code_block('user-guide/lazy/query_plan','show',['show_graph'])}}
 
