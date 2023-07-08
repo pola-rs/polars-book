@@ -62,7 +62,7 @@ console.log(df2);
 // --8<-- [start:groupby2]
 df2
   .groupBy("y")
-  .agg(pl.col("*").sum().alias("count"), pl.col("*").sum().alias("sum"));
+  .agg(pl.col("*").count().alias("count"), pl.col("*").sum().alias("sum"));
 // --8<-- [end:groupby2]
 
 // --8<-- [start:combine]
