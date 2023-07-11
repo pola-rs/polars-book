@@ -101,14 +101,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .over(["Type 1"])
                 .flatten(),
             col("Name")
-                .sort_by(["Speed"], [false])
+                .sort_by(["Speed"], [true])
                 .head(Some(3))
                 .list()
                 .over(["Type 1"])
                 .flatten()
                 .alias("fastest/group"),
             col("Name")
-                .sort_by(["Attack"], [false])
+                .sort_by(["Attack"], [true])
                 .head(Some(3))
                 .list()
                 .over(["Type 1"])

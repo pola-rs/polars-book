@@ -65,12 +65,12 @@ pl.sum("foo").over("groups")
 out = df.sort("Type 1").select(
     pl.col("Type 1").head(3).over("Type 1", mapping_strategy="explode"),
     pl.col("Name")
-    .sort_by(pl.col("Speed"))
+    .sort_by(pl.col("Speed"), descending=True)
     .head(3)
     .over("Type 1", mapping_strategy="explode")
     .alias("fastest/group"),
     pl.col("Name")
-    .sort_by(pl.col("Attack"))
+    .sort_by(pl.col("Attack"), descending=True)
     .head(3)
     .over("Type 1", mapping_strategy="explode")
     .alias("strongest/group"),

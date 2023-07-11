@@ -143,6 +143,8 @@ print(df_asof_join)
 # --8<-- [end:asof]
 
 # --8<-- [start:asof2]
-df_asof_tolerance_join = df_trades.join_asof(df_quotes, on="time", by="stock")
+df_asof_tolerance_join = df_trades.join_asof(
+    df_quotes, on="time", by="stock", tolerance="1m"
+)
 print(df_asof_tolerance_join)
 # --8<-- [end:asof2]

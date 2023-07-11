@@ -7,20 +7,27 @@ For any lazy query `Polars` has both:
 
 We can understand both the non-optimized and optimized query plans with visualization and by printing them as text.
 
+<div style="display:none">
+```python exec="on" result="text" session="user-guide/lazy/query_plan"
+--8<-- "python/user-guide/lazy/query_plan.py:setup"
+```
+</div>
+
+Below we consider the following query:
+
+{{code_block('user-guide/lazy/query_plan','plan',[])}}
+
+```python exec="on" session="user-guide/lazy/query_plan"
+--8<-- "python/user-guide/lazy/query_plan.py:plan"
+```
+
 ## Non-optimized query plan
 
 ### Graphviz visualization
 
-First we visualize the non-optimized plan by setting `optimized=False`.
+First we visualise the non-optimized plan by setting `optimized=False`.
 
-{{code_block('user-guide/lazy/query_plan','plan',['show_graph'])}}
-
-<div style="display:none">
-```python exec="on" result="text" session="user-guide/lazy/query_plan"
---8<-- "python/user-guide/lazy/query_plan.py:setup"
---8<-- "python/user-guide/lazy/query_plan.py:plan"
-```
-</div>
+{{code_block('user-guide/lazy/query_plan','showplan',['show_graph'])}}
 
 ```python exec="on" session="user-guide/lazy/query_plan"
 --8<-- "python/user-guide/lazy/query_plan.py:createplan"
@@ -36,7 +43,11 @@ The query plan visualization should be read from bottom to top. In the visualiza
 
 We can also print the non-optimized plan with `explain(optimized=False)`
 
-{{code_block('user-guide/lazy/query_plan','plan',['explain'])}}
+{{code_block('user-guide/lazy/query_plan','describe',['explain'])}}
+
+```python exec="on" session="user-guide/lazy/query_plan"
+--8<-- "python/user-guide/lazy/query_plan.py:describe"
+```
 
 ```text
 FILTER [(col("comment_karma")) > (0)] FROM WITH_COLUMNS:
@@ -82,4 +93,4 @@ The optimized plan is to:
 - apply the filter on the `comment_karma` column while the CSV is being read line-by-line
 - transform the `name` column to uppercase
 
-In this case the query optimizer has identified that the `filter` can be applied while the CSV is read from disk rather than writing the whole file to disk and then applying it. This optimization is called *Predicate Pushdown*.
+In this case the query optimizer has identified that the `filter` can be applied while the CSV is read from disk rather than reading the whole file into memory and then applying the filter. This optimization is called *Predicate Pushdown*.

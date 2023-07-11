@@ -82,9 +82,9 @@ For more exercise, below are some window functions for us to compute:
 
 - sort all pokemon by type
 - select the first `3` pokemon per type as `"Type 1"`
-- sort the pokemon within a type by speed and select the first `3` as `"fastest/group"`
-- sort the pokemon within a type by attack and select the first `3` as `"strongest/group"`
-- sort the pokemon by name within a type and select the first `3` as `"sorted_by_alphabet"`
+- sort the pokemon within a type by speed in descending order and select the first `3` as `"fastest/group"`
+- sort the pokemon within a type by attack in descending order and select the first `3` as `"strongest/group"`
+- sort the pokemon within a type by name and select the first `3` as `"sorted_by_alphabet"`
 
 {{code_block('user-guide/expressions/window','examples',['over','implode'])}}
 
