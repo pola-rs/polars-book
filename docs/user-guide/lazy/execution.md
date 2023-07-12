@@ -40,7 +40,7 @@ With the default `collect` method Polars processes all of your data as one batch
 
 !!! warning "Reusing `LazyFrame` objects"
 
-    Remember that `LazyFrame`s are query plans i.e. a promise on computation and does not do any implicit caching. This means that every time you reuse it in separate downstream queries after it is defined, it is computed all over again. If you define an operation on a `LazyFrame` that doesn't maintain row order (such as a `groupby`), then the order will also change every time it is run. To avoid this, use `maintain_order=True` arguments for such operations.
+    Remember that `LazyFrame`s are query plans i.e. a promise on computation and is not guaranteed to cache common subplans. This means that every time you reuse it in separate downstream queries after it is defined, it is computed all over again. If you define an operation on a `LazyFrame` that doesn't maintain row order (such as a `groupby`), then the order will also change every time it is run. To avoid this, use `maintain_order=True` arguments for such operations.
 
 ### Execution on larger-than-memory data
 
