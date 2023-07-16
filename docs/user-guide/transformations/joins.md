@@ -4,13 +4,16 @@
 
 `Polars` supports the following join strategies by specifying the `strategy` argument:
 
-- `inner`
-- `left`
-- `outer`
-- `cross`
-- `asof`
-- `semi`
-- `anti`
+Strategy | Description |
+----------|-------------|
+`inner`  | Returns row with matching keys in *both* frames. Non-matching rows in either the left or right frame are discarded.
+`left`   | Returns all rows in the left dataframe, whether or not a match in the right-frame is found. Non-matching rows have their right columns null-filled.
+`outer`  | Returns all rows from both the left and right dataframe. If no match is found in one frame, columns from the other frame are null-filled.
+`cross`  | Returns the Cartesian product of all rows from the left frame with all rows from the right frame. Duplicates rows are retained; the table length of `A` cross-joined with `B` is always `len(A) × len(B)`.
+`asof`   | A left-join in which the match is performed on the _nearest_ key rather than on equal keys.
+`semi`   | Returns all rows from the left frame in which the join key is also present in the right frame.
+`anti`   | Returns all rows from the left frame in which the join key is _not_ present in the right frame.
+
 
 ### Inner join
 
@@ -97,7 +100,7 @@ The `inner`, `left`, `outer` and `cross` join strategies are standard amongst da
 
 ### Semi join
 
-Consider the following scenario: a car rental company has a `DataFrame` showing the cars that it owns with each car having a unique `id`.
+The `semi` join retuns all rows from the left frame in which the join key is also present in the right frame. Consider the following scenario: a car rental company has a `DataFrame` showing the cars that it owns with each car having a unique `id`.
 
 
 {{code_block('user-guide/transformations/joins','df5',['DataFrame'])}}
