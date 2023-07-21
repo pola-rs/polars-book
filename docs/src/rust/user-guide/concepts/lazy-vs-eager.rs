@@ -4,7 +4,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>>{
 
     // --8<-- [start:eager]
     let df = CsvReader::from_path("docs/src/data/iris.csv").unwrap().finish().unwrap();
-    let mask = df.column("sepal_width")?.f64()?.gt(5.0);
+    let mask = df.column("sepal_length")?.f64()?.gt(5.0);
     let df_small = df.filter(&mask)?;
     let df_agg = df_small.groupby(["species"])?.select(["sepal_width"]).mean()?;
     println!("{}", df_agg);
