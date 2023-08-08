@@ -5,14 +5,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>>{
     use chrono::prelude::*;
 
     let s = Series::new("a", [1, 2, 3, 4, 5]);
-    println!("{}",s);
+    println!("{}", s);
     // --8<-- [end:series]
     
     // --8<-- [start:minmax]
     let s = Series::new("a", [1, 2, 3, 4, 5]);
     // The use of generics is necessary for the type system
-    println!("{}",s.min::<u64>().unwrap());
-    println!("{}",s.max::<u64>().unwrap());
+    println!("{}", s.min::<u64>().unwrap());
+    println!("{}", s.max::<u64>().unwrap());
     // --8<-- [end:minmax]
     
     // --8<-- [start:string]
@@ -34,23 +34,23 @@ fn main() -> Result<(), Box<dyn std::error::Error>>{
                             ],
                             "float" => &[4.0, 5.0, 6.0, 7.0, 8.0]
                             ).expect("should not fail");
-    println!("{}",df);
+    println!("{}", df);
     // --8<-- [end:dataframe]
     
     // --8<-- [start:head]
-    println!("{}",df.head(Some(3)));
+    println!("{}", df.head(Some(3)));
     // --8<-- [end:head]
     
     // --8<-- [start:tail]
-    println!("{}",df.tail(Some(3)));
+    println!("{}", df.tail(Some(3)));
     // --8<-- [end:tail]
     
     // --8<-- [start:sample]
-    println!("{}",df.sample_n(2, false, true, None)?);
+    println!("{}", df.sample_n(2, false, true, None)?);
     // --8<-- [end:sample]
     
     // --8<-- [start:describe]
-    println!("{}",df.describe(None));
+    println!("{}", df.describe(None));
     // --8<-- [end:describe]
     Ok(())
 }
