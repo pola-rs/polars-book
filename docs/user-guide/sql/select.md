@@ -56,7 +56,7 @@ Polars provides a wide range of SQL functions, including:
 - Aggregation functions: `SUM`, `AVG`, `MIN`, `MAX`, `COUNT`, `STDDEV`, `FIRST` etc.
 - Array functions: `EXPLODE`, `UNNEST`,`ARRAY_SUM`,`ARRAY_REVERSE`, etc.
 
-For a full list of supported functions go the [API documentation](https://pola-rs.github.io/polars/py-polars/html/reference/sql.html). The example below demonstrates how to use a function in a query
+For a full list of supported functions go the [Polars API documentation](https://pola-rs.github.io/polars/py-polars/html/reference/sql.html). The example below demonstrates how to use a function in a query
 
 {{code_block('user-guide/sql/sql_select','functions',['SQLquery'])}}
 
