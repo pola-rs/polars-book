@@ -5,7 +5,7 @@ from datetime import datetime
 # --8<-- [end:setup]
 
 # --8<-- [start:df]
-df = pl.read_csv("examples/data/appleStock.csv", try_parse_dates=True)
+df = pl.read_csv("examples/data/apple_stock.csv", try_parse_dates=True)
 df = df.sort("Date")
 print(df)
 # --8<-- [end:df]
