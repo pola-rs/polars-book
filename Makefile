@@ -29,10 +29,6 @@ endif
 	$(MAKE) requirements
 	$(MAKE) install-graphviz
 
-.PHONY: node_modules
-node_modules:  ## Instal NodeJS modules
-	npm install
-
 .PHONY: requirements
 requirements: .venv  ## Install/refresh all project requirements
 	$(VENV_BIN)/python -m pip install --upgrade pip
@@ -43,19 +39,13 @@ serve: .venv  ## Serve the docs locally
 	$(VENV_BIN)/mkdocs serve
 
 .PHONY: lint
-lint: .venv node_modules  ## Lint code examples
+lint: .venv  ## Lint code examples
 # python
 	$(VENV_BIN)/black --check .
-# js
-	npx rome format docs/src/node/
 
 .PHONY: test-python
 test-python: .venv  ## Test Python code examples
 	find docs/src/python -type f | xargs -n 1 bash -c '$(VENV_BIN)/python -W error $$0 || exit 255'
-
-.PHONY: test-node
-test-node: node_modules  ## Test NodeJS code examples
-	find docs/src/ -name "*.js" | xargs -n 1 sh -c 'node $$0 || exit 255'
 
 .PHONY: help
 help:  ## Display this help screen

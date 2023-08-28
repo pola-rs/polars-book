@@ -19,12 +19,6 @@ LANGUAGES = OrderedDict(
         "icon_name": "rust",
         "code_name": "rust",
     },
-    node={
-        "extension": ".js",
-        "display_name": "NodeJS",
-        "icon_name": "node-js",
-        "code_name": "javascript",
-    },
 )
 
 # Load all links to reference docs

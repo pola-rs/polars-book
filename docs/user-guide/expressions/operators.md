@@ -4,7 +4,7 @@ This section describes how to use basic operators (e.g. addition, substraction) 
 
 !!! note Operator Overloading
 
-    In Rust and Python it is possible to use the operators directly (as in `+ - * / < > `) as the language allows operator overloading. For instance, the operator `+` translates to the `.add()` method. In NodeJS this is not possible and you must use the methods themselves, in python and rust you can choose which one you prefer.
+    In Rust and Python it is possible to use the operators directly (as in `+ - * / < > `) as the language allows operator overloading. For instance, the operator `+` translates to the `.add()` method. You can choose the one you prefer.
 
 {{code_block('user-guide/expressions/operators','dataframe',['DataFrame'])}}
 

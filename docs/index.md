@@ -12,24 +12,18 @@ hide:
   <a href="https://docs.rs/polars/latest/polars/">
     <img src="https://docs.rs/polars/badge.svg" alt="rust docs"/>
   </a>
-  <a href="https://github.com/pola-rs/polars/actions">
-    <img src="https://github.com/pola-rs/polars/workflows/Build%20and%20test/badge.svg" alt="Build and test"/>
-  </a>
   <a href="https://crates.io/crates/polars">
     <img src="https://img.shields.io/crates/v/polars.svg"/>
   </a>
   <a href="https://pypi.org/project/polars/">
-    <img src="https://img.shields.io/pypi/v/polars.svg" alt="PyPi Latest Release"/>
-  </a>
-  <a href="https://www.npmjs.com/package/nodejs-polars">
-    <img src="https://img.shields.io/npm/v/nodejs-polars.svg" alt="NPM Latest Release"/>
+    <img src="https://img.shields.io/pypi/v/polars.svg" alt="PyPI Latest Release"/>
   </a>
   <a href="https://doi.org/10.5281/zenodo.7697217">
     <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.7697217.svg" alt="DOI Latest Release"/>
   </a>
 </div>
 
-Polars is a highly performant DataFrame library for manipulating structured data. The core is written in Rust, but the library is available in Python, Rust & NodeJS. Its key features are:
+Polars is a highly performant DataFrame library for manipulating structured data. The core is written in Rust, but the library is also available in Python. Its key features are:
 
 - **Fast**: Polars is written from the ground up, designed close to the machine and without external dependencies.
 - **I/O**: First class support for all common data storage layers: local, cloud storage & databases.
@@ -45,7 +39,7 @@ The `Polars` user guide is intended to live alongside the API documentation. Its
 - [Getting Started](getting-started/intro.md): A 10 minute helicopter view of the library and its primary function.
 - [User Guide](user-guide/index.md): A detailed explanation of how the library is setup and how to use it most effectively.
 
-If you are looking for details on a specific level / object, it is probably best to go the API documentation: [Python](https://pola-rs.github.io/polars/py-polars/html/reference/index.html) | [NodeJS](https://pola-rs.github.io/nodejs-polars/index.html) | [Rust](https://docs.rs/polars/latest/polars/).
+If you are looking for details on a specific level / object, it is probably best to go the API documentation: [Python](https://pola-rs.github.io/polars/py-polars/html/reference/index.html) | [Rust](https://docs.rs/polars/latest/polars/).
 
 ## Performance :rocket: :rocket:
 
