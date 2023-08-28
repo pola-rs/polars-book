@@ -59,7 +59,7 @@ markdown_extensions:
       dedent_subsections: true
   - footnotes
 extra_css:
-  - stylesheets/extra.css
+  - css/extra.css
 repo_url: https://github.com/pola-rs/polars
 repo_name: pola-rs/polars
 watch:
