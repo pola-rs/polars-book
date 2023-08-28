@@ -1,9 +1,11 @@
-mkdocs-material==9.1.6
-PyGithub==1.58.1
-black==23.7.0
-graphviz==0.20.1
-matplotlib==3.7.1
 polars[all] # use latest on purpose
+
+mkdocs-material==9.2.5
+mkdocs-macros-plugin==1.0.4
 markdown-exec[ansi]==1.6.0
-mkdocs-macros-plugin==0.7.0
-PyYAML==6.0
+PyGithub==1.59.1
+
+graphviz==0.20.1
+matplotlib==3.7.2
+
+black==23.7.0
