@@ -22,7 +22,7 @@ We see how this works in the following simple example where we call the `.round`
 
 The `.round` expression is only valid for columns with a floating point dtype. Calling `.round` on an integer column means the operation will raise an `InvalidOperationError` when we evaluate the query with `collect`. This schema check happens before the data is processed when we call `collect`.
 
-```python exec="on" result="text" session="user-guide/lazy/schemas"
+```python exec="on" result="text" session="user-guide/lazy/schemas"```
 
 If we executed this query in eager mode the error would only be found once the data had been processed in all earlier steps.
 
