@@ -1,25 +1,18 @@
-astdocs.py
-./data
-outputs
-reference_guide_python/src
-__pycache__
-.devcontainer
-.idea
-.venv
-*.csv
-*.png
-*.swp
-*.txt
-output.json
-path.json
-*.parquet
-docs/people.md
-user_guide/src/examples/target
-.vscode
-cargo.lock
+# OS
 .DS_Store
 
-node_modules
-# Added by cargo
+# IDE
+.idea/
+.vscode/
 
-/target
+# NodeJS
+node_modules
+
+# Python
+/.venv
+__pycache__
+
+# Project
+/docs/data/
+/docs/people.md
+
