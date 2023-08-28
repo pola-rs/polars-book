@@ -8,7 +8,6 @@ Reading a JSON file should look familiar:
 
 {{code_block('user-guide/io/json-file','read',['read_json'])}}
 
-
 ### Newline Delimited JSON
 
 JSON objects that are delimited by newlines can be read into polars in a much more performant way than standard json.
@@ -18,7 +17,6 @@ JSON objects that are delimited by newlines can be read into polars in a much mo
 ## Write
 
 {{code_block('user-guide/io/json-file','write',['write_json','write_ndjson'])}}
-
 
 ## Scan
 

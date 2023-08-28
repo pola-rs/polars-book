@@ -23,7 +23,6 @@ more explicit, more readable and less error-prone.
 
 Note that an 'index' data structure as known in databases will be used by polars as an optimization technique.
 
-
 ### `Polars` uses Apache Arrow arrays to represent data in memory while `Pandas` uses `Numpy` arrays
 
 `Polars` represents data in memory with Arrow arrays while `Pandas` represents data in
@@ -110,8 +109,8 @@ The CSV file has numerous columns but we just want to do a groupby on one of the
 columns (`id1`) and then sum by a value column (`v1`). In `Pandas` this would be:
 
 ```python
-    df = pd.read_csv(csv_file, usecols=['id1','v1'])
-    grouped_df = df.loc[:,['id1','v1']].groupby('id1').sum('v1')
+df = pd.read_csv(csv_file, usecols=['id1','v1'])
+grouped_df = df.loc[:,['id1','v1']].groupby('id1').sum('v1')
 ```
 
 In `Polars` you can build this query in lazy mode with query optimization and evaluate
@@ -119,8 +118,8 @@ it by replacing the eager `Pandas` function `read_csv` with the implicitly lazy 
 function `scan_csv`:
 
 ```python
-    df = pl.scan_csv(csv_file)
-    grouped_df = df.groupby('id1').agg(pl.col('v1').sum()).collect()
+df = pl.scan_csv(csv_file)
+grouped_df = df.groupby('id1').agg(pl.col('v1').sum()).collect()
 ```
 
 `Polars` optimizes this query by identifying that only the `id1` and `v1` columns are
@@ -316,7 +315,6 @@ shape: (7, 5)
 ├╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌┤
 │ 2   ┆ n    ┆ 4    ┆ 5   ┆ 1            │
 └─────┴──────┴──────┴─────┴──────────────┘
-
 ```
 
 ## Missing data

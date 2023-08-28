@@ -1,11 +1,11 @@
 # Series & DataFrames
 
-The core base data structures provided by Polars are  `Series` and `DataFrames`. 
+The core base data structures provided by Polars are `Series` and `DataFrames`.
 
 ## Series
 
-Series are a 1-dimensional data structure. Within a series all elements have the same data type (e.g. int, string). 
-The snippet below shows how to create a simple named `Series` object. In a later section of this getting started guide we will learn how to read data from external sources (e.g. files, database), for now lets keep it simple.   
+Series are a 1-dimensional data structure. Within a series all elements have the same data type (e.g. int, string).
+The snippet below shows how to create a simple named `Series` object. In a later section of this getting started guide we will learn how to read data from external sources (e.g. files, database), for now lets keep it simple.
 
 {{code_block('getting-started/series-dataframes','series',['Series'])}}
 
@@ -16,7 +16,6 @@ The snippet below shows how to create a simple named `Series` object. In a later
 ### Methods
 
 Although it is more common to work directly on a `DataFrame` object, `Series` implement a number of base methods which make it easy to perform transformations. Below are some examples of common operations you might want to perform. Note that these are for illustration purposes and only show a small subset of what is available.
-
 
 ##### Aggregations
 
@@ -84,7 +83,7 @@ The `tail` function shows the last 5 rows of a `DataFrame`. You can also specify
 
 #### Sample
 
-If you want to get an impression of the data of your `DataFrame`, you can also use `sample`. With `sample` you get an *n* number of random rows from the `DataFrame`.
+If you want to get an impression of the data of your `DataFrame`, you can also use `sample`. With `sample` you get an _n_ number of random rows from the `DataFrame`.
 
 {{code_block('getting-started/series-dataframes','sample',['sample'])}}
 

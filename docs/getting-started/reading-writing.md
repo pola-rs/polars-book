@@ -2,7 +2,6 @@
 
 Polars supports reading & writing to all common files (e.g. csv, json, parquet), cloud storage (S3, Azure Blob, BigQuery) and databases (e.g. postgres, mysql). In the following examples we will show how to operate on most common file formats. For the following dataframe
 
-
 {{code_block('getting-started/reading-writing','dataframe',['DataFrame'])}}
 
 ```python exec="on" result="text" session="getting-started/reading"
@@ -11,7 +10,7 @@ Polars supports reading & writing to all common files (e.g. csv, json, parquet),
 
 #### CSV
 
-Polars has its own fast implementation for csv reading with many flexible configuration options. 
+Polars has its own fast implementation for csv reading with many flexible configuration options.
 
 {{code_block('getting-started/reading-writing','csv',['read_csv','write_csv'])}}
 

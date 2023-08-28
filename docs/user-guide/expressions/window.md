@@ -1,4 +1,4 @@
-# Window functions 
+# Window functions
 
 Window functions are expressions with superpowers. They allow you to perform aggregations on groups in the
 `select` context. Let's get a feel for what that means. First we create a dataset. The dataset loaded in the
@@ -18,10 +18,9 @@ are projected back to the original rows. Therefore, a window function will almos
 
 We will discuss later the cases where a window function can change the numbers of rows in a `DataFrame`.
 
-Note how we call `.over("Type 1")` and `.over(["Type 1", "Type 2"])`. Using window functions we can aggregate over different groups in a single `select` call!  Note that, in Rust, the type of the argument to `over()` must be a collection, so even when you're only using one column, you must provided it in an array.
+Note how we call `.over("Type 1")` and `.over(["Type 1", "Type 2"])`. Using window functions we can aggregate over different groups in a single `select` call! Note that, in Rust, the type of the argument to `over()` must be a collection, so even when you're only using one column, you must provided it in an array.
 
 The best part is, this won't cost you anything. The computed groups are cached and shared between different `window` expressions.
-
 
 {{code_block('user-guide/expressions/window','groupby',['over'])}}
 
@@ -41,7 +40,6 @@ Let's filter out some rows to make this more clear.
 ```python exec="on" result="text" session="user-guide/window"
 --8<-- "python/user-guide/expressions/window.py:operations"
 ```
-
 
 Observe that the group `Water` of column `Type 1` is not contiguous. There are two rows of `Grass` in between. Also note
 that each pokemon within a group are sorted by `Speed` in `ascending` order. Unfortunately, for this example we want them sorted in

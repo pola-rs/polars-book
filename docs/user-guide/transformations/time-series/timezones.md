@@ -2,10 +2,12 @@
 hide:
   - toc
 ---
+
 # Time zones
 
 !!! quote "Tom Scott"
-    You really should never, ever deal with time zones if you can help it
+
+    You really should never, ever deal with time zones if you can help it.
 
 The `Datetime` datatype can have a time zone associated with it.
 Examples of valid time zones are:

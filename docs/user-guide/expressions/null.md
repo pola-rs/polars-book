@@ -17,8 +17,8 @@ You can manually define a missing value with the python `None` value:
 --8<-- "python/user-guide/expressions/null.py:dataframe"
 ```
 
-
 !!! info
+
     In `Pandas` the value for missing data depends on the dtype of the column. In `Polars` missing data is always represented as a `null` value.
 
 ## Missing data metadata
@@ -35,7 +35,7 @@ The first piece of metadata is the `null_count` - this is the number of rows wit
 
 The `null_count` method can be called on a `DataFrame`, a column from a `DataFrame` or a `Series`. The `null_count` method is a cheap operation as `null_count` is already calculated for the underlying Arrow array.
 
-The second piece of metadata is an array called a *validity bitmap* that indicates whether each data value is valid or missing.
+The second piece of metadata is an array called a _validity bitmap_ that indicates whether each data value is valid or missing.
 The validity bitmap is memory efficient as it is bit encoded - each value is either a 0 or a 1. This bit encoding means the memory overhead per array is only (array length / 8) bytes. The validity bitmap is used by the `is_null` method in `Polars`.
 
 You can return a `Series` based on the validity bitmap for a column in a `DataFrame` or a `Series` with the `is_null` method:
@@ -79,7 +79,6 @@ We can fill the missing data with a specified literal value with `pl.lit`:
 
 We can fill the missing data with a strategy such as filling forward:
 
-
 {{code_block('user-guide/expressions/null','fillstrategy',['fill_null'])}}
 
 ```python exec="on" result="text" session="user-guide/null"
@@ -111,7 +110,6 @@ In addition, we can fill nulls with interpolation (without using the `fill_null`
 --8<-- "python/user-guide/expressions/null.py:fillinterpolate"
 ```
 
-
 ## `NotaNumber` or `NaN` values
 
 Missing data in a `Series` has a `null` value. However, you can use `NotaNumber` or `NaN` values in columns with float datatypes. These `NaN` values can be created from Numpy's `np.nan` or the native python `float('nan')`:
@@ -123,6 +121,7 @@ Missing data in a `Series` has a `null` value. However, you can use `NotaNumber`
 ```
 
 !!! info
+
     In `Pandas` by default a `NaN` value in an integer column causes the column to be cast to float. This does not happen in `Polars` - instead an exception is raised.
 
 `NaN` values are considered to be a type of floating point data and are **not considered to be missing data** in `Polars`. This means:

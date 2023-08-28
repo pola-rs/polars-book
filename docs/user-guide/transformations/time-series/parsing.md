@@ -51,7 +51,6 @@ You can extract data features such as the year or day from a date column using t
 If you have mixed offsets (say, due to crossing daylight saving time),
 then you can use `utc=True` and then convert to your time zone:
 
-
 {{code_block('user-guide/transformations/time-series/parsing','mixed',['strptime','convert_time_zone'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/parsing"

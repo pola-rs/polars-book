@@ -29,7 +29,6 @@ In this example we upsample from the original 30 minutes to 15 minutes and then 
 
 {{code_block('user-guide/transformations/time-series/resampling','upsample',['upsample'])}}
 
-
 ```python exec="on" result="text" session="user-guide/transformations/ts/resampling"
 --8<-- "python/user-guide/transformations/time-series/resampling.py:upsample"
 ```

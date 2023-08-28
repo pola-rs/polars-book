@@ -17,7 +17,6 @@ aggregation.
 
 {{code_block('user-guide/transformations/pivot','df',['DataFrame'])}}
 
-
 ```python exec="on" result="text" session="user-guide/transformations/pivot"
 --8<-- "python/user-guide/transformations/pivot.py:setup"
 --8<-- "python/user-guide/transformations/pivot.py:df"
@@ -26,7 +25,6 @@ aggregation.
 ## Eager
 
 {{code_block('user-guide/transformations/pivot','eager',['pivot'])}}
-
 
 ```python exec="on" result="text" session="user-guide/transformations/pivot"
 --8<-- "python/user-guide/transformations/pivot.py:eager"

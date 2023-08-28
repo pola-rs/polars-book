@@ -13,6 +13,7 @@ Polars is a library and installation is as simple as invoking the package manage
     ``` shell
     cargo add polars
     ```
+
 === ":fontawesome-brands-node-js: NodeJS"
 
     ``` shell
@@ -22,7 +23,6 @@ Polars is a library and installation is as simple as invoking the package manage
 ## Importing
 
 To use the library import it into your project
-
 
 === ":fontawesome-brands-python: Python"
 
@@ -35,6 +35,7 @@ To use the library import it into your project
     ``` rust
     use polars::prelude::*;
     ```
+
 === ":fontawesome-brands-node-js: NodeJS"
 
     ``` javaScript

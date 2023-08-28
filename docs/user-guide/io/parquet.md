@@ -8,9 +8,7 @@ copying as we read `Parquet` directly into `Arrow` memory and _keep it there_.
 
 ## Read
 
-
 {{code_block('user-guide/io/parquet','read',['read_parquet'])}}
-
 
 ## Write
 
@@ -22,6 +20,5 @@ copying as we read `Parquet` directly into `Arrow` memory and _keep it there_.
 file and instead returns a lazy computation holder called a `LazyFrame`.
 
 {{code_block('user-guide/io/parquet','scan',['scan_parquet'])}}
-
 
 If you want to know why this is desirable, you can read more about those `Polars` optimizations [here](../concepts/lazy-vs-eager.md).

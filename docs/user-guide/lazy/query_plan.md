@@ -93,4 +93,4 @@ The optimized plan is to:
 - apply the filter on the `comment_karma` column while the CSV is being read line-by-line
 - transform the `name` column to uppercase
 
-In this case the query optimizer has identified that the `filter` can be applied while the CSV is read from disk rather than reading the whole file into memory and then applying the filter. This optimization is called *Predicate Pushdown*.
+In this case the query optimizer has identified that the `filter` can be applied while the CSV is read from disk rather than reading the whole file into memory and then applying the filter. This optimization is called _Predicate Pushdown_.

@@ -4,9 +4,7 @@
 
 Reading a CSV file should look familiar:
 
-
 {{code_block('user-guide/io/csv','read',['read_csv'])}}
-
 
 Writing a CSV file is similar with the `write_csv` function:
 
@@ -14,7 +12,7 @@ Writing a CSV file is similar with the `write_csv` function:
 
 ## Scan
 
-`Polars` allows you to *scan* a CSV input. Scanning delays the actual parsing of the
+`Polars` allows you to _scan_ a CSV input. Scanning delays the actual parsing of the
 file and instead returns a lazy computation holder called a `LazyFrame`.
 
 {{code_block('user-guide/io/csv','scan',['scan_csv'])}}

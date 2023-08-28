@@ -14,7 +14,7 @@ For [`Pandas`](https://pandas.pydata.org/) users, our [Python package](https://p
 The goal of `Polars` is to provide a lightning fast `DataFrame` library that:
 
 - Utilizes all available cores on your machine.
-- Optimizes queries to reduce unneeded work/memory allocations. 
+- Optimizes queries to reduce unneeded work/memory allocations.
 - Handles datasets much larger than your available RAM.
 - Has an API that is consistent and predictable.
 - Has a strict schema (data-types should be known before running the query).
