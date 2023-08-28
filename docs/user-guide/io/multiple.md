@@ -10,9 +10,7 @@ Let's create some files to give us some context:
 
 To read multiple files into a single `DataFrame`, we can use globbing patterns:
 
-
 {{code_block('user-guide/io/multiple','read',['read_csv'])}}
-
 
 ```python exec="on" result="text" session="user-guide/io/multiple"
 --8<-- "python/user-guide/io/multiple.py:create"

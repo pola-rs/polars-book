@@ -9,7 +9,6 @@ FROM table_name;
 
 Here, `column1`, `column2`, etc. are the columns that you want to select from the table. You can also use the wildcard `*` to select all columns. `table_name` is the name of the table or that you want to retrieve data from. In the sections below we will cover some of the more common SELECT variants
 
-
 {{code_block('user-guide/sql/sql_select','df',['SQLregister','SQLexecute'])}}
 
 ```python exec="on" result="text" session="user-guide/sql/select"
@@ -21,17 +20,15 @@ Here, `column1`, `column2`, etc. are the columns that you want to select from th
 
 The `GROUP BY` statement is used to group rows in a table by one or more columns and compute aggregate functions on each group.
 
-
 {{code_block('user-guide/sql/sql_select','groupby',['SQLexecute'])}}
 
 ```python exec="on" result="text" session="user-guide/sql/select"
 --8<-- "python/user-guide/sql/sql_select.py:groupby"
 ```
 
-
 ### ORDER BY
 
-The `ORDER BY` statement is used to sort the result set of a query by one or more columns in ascending or descending order. 
+The `ORDER BY` statement is used to sort the result set of a query by one or more columns in ascending or descending order.
 
 {{code_block('user-guide/sql/sql_select','orderby',['SQLexecute'])}}
 
@@ -64,7 +61,6 @@ For a full list of supported functions go the [API documentation](https://docs.r
 --8<-- "python/user-guide/sql/sql_select.py:functions"
 ```
 
-
 ### Table Functions
 
 In the examples earlier we first generated a DataFrame which we registered in the `SQLContext`. Polars also support directly reading from CSV, Parquet, JSON and IPC in your SQL query using table functions `read_xxx`.
@@ -74,4 +70,3 @@ In the examples earlier we first generated a DataFrame which we registered in th
 ```python exec="on" result="text" session="user-guide/sql/select"
 --8<-- "python/user-guide/sql/sql_select.py:tablefunctions"
 ```
-

@@ -52,7 +52,6 @@ print(
 )
 ```
 
-
 ### Filter
 
 The `filter` option allows us to create a subset of the `DataFrame`. We use the same `DataFrame` as earlier and we filter between two specified dates.
@@ -80,7 +79,6 @@ print(
 `with_columns` allows you to create new columns for your analyses. We create two new columns `e` and `b+42`. First we sum all values from column `b` and store the results in column `e`. After that we add `42` to the values of `b`. Creating a new column `b+42` to store these results.
 
 {{code_block('getting-started/expressions','with_columns',['with_columns'])}}
-
 
 ```python exec="on" result="text" session="getting-started/expressions"
 print(
@@ -112,7 +110,7 @@ print(
 ```python exec="on" result="text" session="getting-started/expressions"
 print(
     --8<-- "python/getting-started/expressions.py:groupby2"
-)    
+)
 ```
 
 ### Combining operations
@@ -124,6 +122,7 @@ Below are some examples on how to combine operations to create the `DataFrame` y
 ```python exec="on" result="text" session="getting-started/expressions"
 --8<-- "python/getting-started/expressions.py:combine"
 ```
+
 {{code_block('getting-started/expressions','combine2',['select','with_columns'])}}
 
 ```python exec="on" result="text" session="getting-started/expressions"

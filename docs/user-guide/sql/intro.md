@@ -2,8 +2,8 @@
 
 While Polars does support writing queries in SQL, it's recommended that users familiarize themselves with the [expression syntax](../concepts/expressions.md) for more readable and expressive code. As a primarily DataFrame library, new features will typically be added to the expression API first. However, if you already have an existing SQL codebase or prefer to use SQL, Polars also offers support for SQL queries.
 
-
 !!! note Execution
+
     In Polars, there is no separate SQL engine because Polars translates SQL queries into [expressions](../concepts/expressions.md), which are then executed using its built-in execution engine. This approach ensures that Polars maintains its performance and scalability advantages as a native DataFrame library while still providing users with the ability to work with SQL queries.
 
 ## Context
@@ -39,6 +39,7 @@ We can also register Pandas DataFrames by converting them to Polars first.
 ```
 
 !!! note Pandas
+
     Converting a Pandas DataFrame backed by Numpy to Polars triggers a conversion to the Arrow format. This conversion has a computation cost. Converting a Pandas DataFrame backed by Arrow on the other hand will be free or almost free.
 
 Once the `SQLContext` is initialized, we can register additional Dataframes or unregister existing Dataframes with:
@@ -72,7 +73,7 @@ In the example below, we register :
 - a NDJSON file loaded lazily
 - a Pandas DataFrame
 
-And we join them together with SQL. 
+And we join them together with SQL.
 Lazy reading allows to only load the necessary rows and columns from the files.
 
 In the same way, it's possible to register cloud datalakes (S3, Azure Data Lake). A PyArrow dataset can point to the datalake, then Polars can read it with `scan_pyarrow_dataset`.
@@ -85,9 +86,9 @@ In the same way, it's possible to register cloud datalakes (S3, Azure Data Lake)
 --8<-- "python/user-guide/sql/intro.py:clean_multiple_sources"
 ```
 
-[^1]: Additionally it also tracks the [common table expressions](./cte.md) as well. 
+[^1]: Additionally it also tracks the [common table expressions](./cte.md) as well.
 
-## Compatibility  
+## Compatibility
 
 Polars does not support the full SQL language, in Polars you are allowed to:
 

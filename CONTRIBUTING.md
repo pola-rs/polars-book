@@ -27,10 +27,13 @@ To update your own repo with code pushed on the upstream repo:
 1. `git push origin <BRANCH>`
 
 ### Building locally
+
 To build the documentation locally you will need to install the python libraries defined in the `requirements.txt` file.
 
 <!-- markdown-link-check-disable -->
+
 When these steps are done run `mkdocs serve` to run the server. You can then view the docs at http://localhost:8000/
+
 <!-- markdown-link-check-enable -->
 
 ### Want to discuss something?
@@ -72,7 +75,7 @@ Find the correct placement for the functionality. Is it an expression add it to 
 
 The `Markdown` file should roughly match the following structure:
 
-1. A clear short title (for example: "*Interact with an AWS bucket*").
+1. A clear short title (for example: "_Interact with an AWS bucket_").
 1. A one-ish-liner to introduce the code snippet.
 1. The code example itself under the corresponding folder (e.g. `docs/src/user-guide/expressions/...py), using the [Snippets](https://facelessuser.github.io/pymdown-extensions/extensions/snippets/) syntax.
 1. The output of the example, using [markdown-exec](https://pawamoy.github.io/markdown-exec/)

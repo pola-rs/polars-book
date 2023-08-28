@@ -1,11 +1,11 @@
 # Data Structures
 
-The core base data structures provided by Polars are  `Series` and `DataFrames`. 
+The core base data structures provided by Polars are `Series` and `DataFrames`.
 
 ## Series
 
-Series are a 1-dimensional data structure. Within a series all elements have the same [Data Type](data-types.md) . 
-The snippet below shows how to create a simple named `Series` object. 
+Series are a 1-dimensional data structure. Within a series all elements have the same [Data Type](data-types.md) .
+The snippet below shows how to create a simple named `Series` object.
 
 {{code_block('getting-started/series-dataframes','series',['Series'])}}
 
@@ -33,7 +33,6 @@ The `head` function shows by default the first 5 rows of a `DataFrame`. You can 
 
 {{code_block('getting-started/series-dataframes','head',['head'])}}
 
-
 ```python exec="on" result="text" session="getting-started/series"
 --8<-- "python/getting-started/series-dataframes.py:head"
 ```
@@ -50,7 +49,7 @@ The `tail` function shows the last 5 rows of a `DataFrame`. You can also specify
 
 #### Sample
 
-If you want to get an impression of the data of your `DataFrame`, you can also use `sample`. With `sample` you get an *n* number of random rows from the `DataFrame`.
+If you want to get an impression of the data of your `DataFrame`, you can also use `sample`. With `sample` you get an _n_ number of random rows from the `DataFrame`.
 
 {{code_block('getting-started/series-dataframes','sample',['sample'])}}
 
@@ -67,4 +66,3 @@ If you want to get an impression of the data of your `DataFrame`, you can also u
 ```python exec="on" result="text" session="getting-started/series"
 --8<-- "python/getting-started/series-dataframes.py:describe"
 ```
-

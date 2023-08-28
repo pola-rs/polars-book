@@ -16,7 +16,6 @@ Let's start with an example by implementing the `sum` operation ourselves, with 
 --8<-- "python/user-guide/expressions/folds.py:mansum"
 ```
 
-
 The snippet above recursively applies the function `f(acc, x) -> acc` to an accumulator `acc` and a new column `x`. The function operates on columns individually and can take advantage of cache efficiency and vectorization.
 
 ### Conditional

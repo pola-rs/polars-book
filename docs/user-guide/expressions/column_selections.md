@@ -1,4 +1,3 @@
-
 # Column Selections
 
 Let's create a dataset to use in this section:
@@ -12,7 +11,7 @@ Let's create a dataset to use in this section:
 
 ## Expression Expansion
 
-As we've seen in the previous section, we can select specific columns using the `pl.col` method. It can also select multiple columns - both as a means of convenience, and to *expand* the expression. 
+As we've seen in the previous section, we can select specific columns using the `pl.col` method. It can also select multiple columns - both as a means of convenience, and to _expand_ the expression.
 
 This kind of convenience feature isn't just decorative or syntactic sugar. It allows for a very powerful application of [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) principles in your code: a single expression that specifies multiple columns expands into a list of expressions (depending on the DataFrame schema), resulting in being able to select multiple columns + run computation on them!
 
@@ -21,11 +20,12 @@ This kind of convenience feature isn't just decorative or syntactic sugar. It al
 We can select all columns in the `DataFrame` object by providing the argument `*`:
 
 {{code_block('user-guide/expressions/column_selections', 'all',['all'])}}
+
 ```python exec="on" result="text" session="user-guide/column_selections"
 --8<-- "python/user-guide/expressions/column_selections.py:all"
 ```
 
-Often, we don't just want to include all columns, but include all *while* excluding a few. This can be done easily as well:
+Often, we don't just want to include all columns, but include all _while_ excluding a few. This can be done easily as well:
 
 {{code_block('user-guide/expressions/column_selections','exclude',['exclude'])}}
 
@@ -35,7 +35,7 @@ Often, we don't just want to include all columns, but include all *while* exclud
 
 ### By multiple strings
 
-Specifying multiple strings allows expressions to *expand* to all matching columns:
+Specifying multiple strings allows expressions to _expand_ to all matching columns:
 
 {{code_block('user-guide/expressions/column_selections','expansion_by_names',['dt_to_string'])}}
 
@@ -79,7 +79,7 @@ To select just the integer and string columns, we can do:
 
 ### Applying set operations
 
-These *selectors* also allow for set based selection operations. For instance, to select the **numeric** columns **except** the **first** column that indicates row numbers:
+These _selectors_ also allow for set based selection operations. For instance, to select the **numeric** columns **except** the **first** column that indicates row numbers:
 
 {{code_block('user-guide/expressions/column_selections','selectors_diff',['cs_first', 'cs_numeric'])}}
 
@@ -97,7 +97,7 @@ We can also select the row number by name **and** any **non**-numeric columns:
 
 ### By patterns and substrings
 
-*Selectors* can also be matched by substring and regex patterns:
+_Selectors_ can also be matched by substring and regex patterns:
 
 {{code_block('user-guide/expressions/column_selections','selectors_by_name',['cs_contains', 'cs_matches'])}}
 

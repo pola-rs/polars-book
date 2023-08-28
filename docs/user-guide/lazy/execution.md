@@ -4,7 +4,6 @@ Our example query on the Reddit dataset is:
 
 {{code_block('user-guide/lazy/execution','df',['scan_csv'])}}
 
-
 If we were to run the code above on the Reddit CSV the query would not be evaluated. Instead Polars takes each line of code, adds it to the internal query graph and optimizes the query graph.
 
 When we execute the code Polars executes the optimized query graph by default.
@@ -44,7 +43,7 @@ With the default `collect` method Polars processes all of your data as one batch
 
 ### Execution on larger-than-memory data
 
-If your data requires more memory than you have available Polars may be able to process the data in batches using *streaming* mode. To use streaming mode you simply pass the `streaming=True` argument to `collect`
+If your data requires more memory than you have available Polars may be able to process the data in batches using _streaming_ mode. To use streaming mode you simply pass the `streaming=True` argument to `collect`
 
 {{code_block('user-guide/lazy/execution','stream',['scan_csv','collect'])}}
 

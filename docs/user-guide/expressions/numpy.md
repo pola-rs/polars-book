@@ -1,4 +1,4 @@
-# Numpy 
+# Numpy
 
 `Polars` expressions support `NumPy` [ufuncs](https://numpy.org/doc/stable/reference/ufuncs.html). See [here](https://numpy.org/doc/stable/reference/ufuncs.html#available-ufuncs)
 for a list on all supported numpy functions.

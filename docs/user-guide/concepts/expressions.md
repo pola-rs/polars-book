@@ -26,9 +26,8 @@ Polars expressions are a mapping from a series to a series (or mathematically `F
 ## Examples
 
 The following is an expression:
- 
-{{code_block('user-guide/concepts/expressions','example1',['col','sort','head'])}}
 
+{{code_block('user-guide/concepts/expressions','example1',['col','sort','head'])}}
 
 The snippet above says:
 
@@ -37,12 +36,11 @@ The snippet above says:
 1. Then take the first two values of the sorted output
 
 The power of expressions is that every expression produces a new expression, and that they
-can be *piped* together. You can run an expression by passing them to one of `Polars` execution contexts.
+can be _piped_ together. You can run an expression by passing them to one of `Polars` execution contexts.
 
 Here we run two expressions by running `df.select`:
 
 {{code_block('user-guide/concepts/expressions','example2',['select'])}}
-
 
 All expressions are run in parallel, meaning that separate `Polars` expressions are **embarrassingly parallel**. Note that within an expression there may be more parallelization going on.
 

@@ -24,20 +24,22 @@ aggregated!
 Use cases for `map` are for instance passing the `Series` in an expression to a third party library. Below we show how
 we could use `map` to pass an expression column to a neural network model.
 
-
 === ":fontawesome-brands-python: Python"
-    [:material-api:  `map`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.map.html)
-    ``` python
-    df.with_columns([
-        pl.col("features").map(lambda s: MyNeuralNetwork.forward(s.to_numpy())).alias("activations")
-    ])
-    ```
+[:material-api: `map`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.map.html)
+
+```python
+df.with_columns([
+    pl.col("features").map(lambda s: MyNeuralNetwork.forward(s.to_numpy())).alias("activations")
+])
+```
+
 === ":fontawesome-brands-rust: Rust"
-    ``` rust
-    df.with_columns([
-        col("features").map(|s| Ok(my_nn.forward(s))).alias("activations")
-    ])
-    ```
+
+```rust
+df.with_columns([
+    col("features").map(|s| Ok(my_nn.forward(s))).alias("activations")
+])
+```
 
 Use cases for `map` in the `groupby` context are slim. They are only used for performance reasons, but can quite easily lead to incorrect results. Let me explain why.
 
@@ -109,8 +111,7 @@ And observe, a valid result! 🎉
 
 In the `select` context, the `apply` expression passes elements of the column to the python function.
 
-*Note that you are
-now running python, this will be slow.*
+_Note that you are now running Python, this will be slow._
 
 Let's go through some examples to see what to expect. We will continue with the `DataFrame` we defined at the start of
 this section and show an example with the `apply` function and a counter example where we use the expression API to
@@ -121,14 +122,13 @@ achieve the same goals.
 In this example we create a global `counter` and then add the integer `1` to the global state at every element processed.
 Every iteration the result of the increment will be added to the element value.
 
-> Note, this example isn't provided in Rust.  The reason is that the global `counter` value would lead to data races when this apply is evaluated in parallel.  It would be possible to wrap it in a `Mutex` to protect the variable, but that would be obscuring the point of the example.  This is a case where the Python Global Interpreter Lock's performance tradeoff provides some safety guarantees.
+> Note, this example isn't provided in Rust. The reason is that the global `counter` value would lead to data races when this apply is evaluated in parallel. It would be possible to wrap it in a `Mutex` to protect the variable, but that would be obscuring the point of the example. This is a case where the Python Global Interpreter Lock's performance tradeoff provides some safety guarantees.
 
 {{code_block('user-guide/expressions/user-defined-functions','counter',['apply'])}}
 
 ```python exec="on" result="text" session="user-guide/udf"
 --8<-- "python/user-guide/expressions/user-defined-functions.py:counter"
 ```
-
 
 ### Combining multiple column values
 
@@ -144,7 +144,7 @@ type. This data type collects those columns as fields in the `struct`. So if we'
 ]
 ```
 
-In Python, those would be passed as `dict` to the calling python function and can thus be indexed by `field: str`.  In rust, you'll get a `Series` with the `Struct` type. The fields of the struct can then be indexed and downcast.
+In Python, those would be passed as `dict` to the calling python function and can thus be indexed by `field: str`. In rust, you'll get a `Series` with the `Struct` type. The fields of the struct can then be indexed and downcast.
 
 {{code_block('user-guide/expressions/user-defined-functions','combine',['apply','struct'])}}
 

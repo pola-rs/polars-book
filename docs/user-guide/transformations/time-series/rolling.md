@@ -15,7 +15,8 @@ In following simple example we calculate the annual average closing price of App
 --8<-- "python/user-guide/transformations/time-series/rolling.py:df"
 ```
 
-!!! info 
+!!! info
+
     The dates are sorted in ascending order - if they are not sorted in this way the `groupby_dynamic` output will not be correct!
 
 To get the annual average closing price we tell `groupby_dynamic` that we want to:
@@ -53,8 +54,6 @@ or leave boundaries between them.
 
 Let's see how the windows for some parameter combinations would look. Let's start out boring. 🥱
 
->
-
 - every: 1 day -> `"1d"`
 - period: 1 day -> `"1d"`
 
@@ -65,8 +64,6 @@ this creates adjacent windows of the same size
       |--|
 ```
 
->
-
 - every: 1 day -> `"1d"`
 - period: 2 days -> `"2d"`
 
@@ -76,8 +73,6 @@ these windows have an overlap of 1 day
    |----|
       |----|
 ```
-
->
 
 - every: 2 days -> `"2d"`
 - period: 1 day -> `"1d"`
@@ -114,7 +109,6 @@ Below we show an example where we use **groupby_dynamic** to compute:
 --8<-- "python/user-guide/transformations/time-series/rolling.py:groupbydyn"
 ```
 
-
 ## Grouping by rolling windows
 
 The rolling groupby, `groupby_rolling`, is another entrance to the `groupby` context. But different from the `groupby_dynamic` the windows are
@@ -125,7 +119,6 @@ So imagine having a time column with the values `{2021-01-06, 2021-01-10}` and a
 windows:
 
 ```text
-
 2021-01-01   2021-01-06
     |----------|
 
@@ -143,7 +136,7 @@ Rolling and dynamic groupby's can be combined with normal groupby operations.
 Below is an example with a dynamic groupby.
 
 {{code_block('user-guide/transformations/time-series/rolling','groupbyroll',['DataFrame'])}}
-    
+
 ```python exec="on" result="text" session="user-guide/transformations/ts/rolling"
 --8<-- "python/user-guide/transformations/time-series/rolling.py:groupbyroll"
 ```

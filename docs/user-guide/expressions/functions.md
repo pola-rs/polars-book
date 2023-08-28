@@ -18,9 +18,10 @@ By default if you perform an expression it will keep the same name as the origin
 {{code_block('user-guide/expressions/functions','samename',[])}}
 
 === ":fontawesome-brands-python: Python"
-    ``` python
-    --8<-- "python/user-guide/expressions/functions.py:samename"
-    ```
+
+```python
+--8<-- "python/user-guide/expressions/functions.py:samename"
+```
 
 ```python exec="on" result="text" session="user-guide/functions"
 --8<-- "python/user-guide/expressions/functions.py:samename"
@@ -34,7 +35,7 @@ This might get problematic in the case you use the same column multiple times in
 --8<-- "python/user-guide/expressions/functions.py:samenametwice"
 ```
 
-You can change the output name of an expression by using the `alias` function 
+You can change the output name of an expression by using the `alias` function
 
 {{code_block('user-guide/expressions/functions','samenamealias',['alias'])}}
 
@@ -42,17 +43,16 @@ You can change the output name of an expression by using the `alias` function
 --8<-- "python/user-guide/expressions/functions.py:samenamealias"
 ```
 
-In case of multiple columns for example when using `all()` or `col(*)` you can apply a mapping function `map_alias`  to change the original column name into something else. In case you want to add a suffix (`suffix()`) or prefix (`prefix()`) these are also built in. 
+In case of multiple columns for example when using `all()` or `col(*)` you can apply a mapping function `map_alias` to change the original column name into something else. In case you want to add a suffix (`suffix()`) or prefix (`prefix()`) these are also built in.
 
 === ":fontawesome-brands-python: Python"
-    [:material-api:  `prefix`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.prefix.html)
-    [:material-api:  `suffix`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.suffix.html)
-    [:material-api:  `map_alias`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.map_alias.html)
+[:material-api: `prefix`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.prefix.html)
+[:material-api: `suffix`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.suffix.html)
+[:material-api: `map_alias`](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.map_alias.html)
 
 ## Count Unique Values
 
 There are two ways to count unique values in `Polars`: an exact methodology and an approximation. The approximation uses the [HyperLogLog++](https://en.wikipedia.org/wiki/HyperLogLog) algorithm to approximate the cardinality and is especially useful for very large datasets where an approximation is good enough.
-
 
 {{code_block('user-guide/expressions/functions','countunique',['n_unique','approx_n_unique'])}}
 

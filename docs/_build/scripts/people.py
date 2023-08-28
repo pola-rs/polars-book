@@ -11,6 +11,10 @@ def get_people_md():
     contributors = repo.get_contributors()
     with open("./docs/people.md", "w") as f:
         for c in itertools.islice(contributors, 50):
+            # We love dependabot, but he doesn't need a spot on our website
+            if c.login == "dependabot[bot]":
+                continue
+
             f.write(
                 ICON_TEMPLATE.format(
                     login=c.login,

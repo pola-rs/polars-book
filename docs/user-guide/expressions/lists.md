@@ -9,6 +9,7 @@ Note: this is different from Python's `list` object, where the elements can be o
 Let's say we had the following data from different weather stations across a state. When the weather station is unable to get a result, an error code is recorded instead of the actual temperature at that time.
 
 {{code_block('user-guide/expressions/lists','weather_df',['DataFrame'])}}
+
 ```python exec="on" result="text" session="user-guide/lists"
 --8<-- "python/user-guide/expressions/lists.py:setup"
 --8<-- "python/user-guide/expressions/lists.py:weather_df"
@@ -19,6 +20,7 @@ Let's say we had the following data from different weather stations across a sta
 For the `weather` `DataFrame` created above, it's very likely we need to run some analysis on the temperatures that are captured by each station. To make this happen, we need to first be able to get individual temperature measurements. This is done by:
 
 {{code_block('user-guide/expressions/lists','string_to_list',['str.split'])}}
+
 ```python exec="on" result="text" session="user-guide/lists"
 --8<-- "python/user-guide/expressions/lists.py:string_to_list"
 ```
@@ -26,6 +28,7 @@ For the `weather` `DataFrame` created above, it's very likely we need to run som
 One way we could go post this would be to convert each temperature measurement into its own row:
 
 {{code_block('user-guide/expressions/lists','explode_to_atomic',['DataFrame.explode'])}}
+
 ```python exec="on" result="text" session="user-guide/lists"
 --8<-- "python/user-guide/expressions/lists.py:explode_to_atomic"
 ```
@@ -37,6 +40,7 @@ However, in Polars, we often do not need to do this to operate on the `List` ele
 Polars provides several standard operations on `List` columns. If we want the first three measurements, we can do a `head(3)`. The last three can be obtained via a `tail(3)`, or alternately, via `slice` (negative indexing is supported). We can also identify the number of observations via `lengths`. Let's see them in action:
 
 {{code_block('user-guide/expressions/lists','list_ops',['Expr.List'])}}
+
 ```python exec="on" result="text" session="user-guide/lists"
 --8<-- "python/user-guide/expressions/lists.py:list_ops"
 ```
@@ -57,13 +61,15 @@ If we need to identify the stations that are giving the most number of errors fr
 The third step requires a casting (or alternately, a regex pattern search) operation to be perform on each element of the list. We can do this using by applying the operation on each element by first referencing them in the `pl.element()` context, and then calling a suitable Polars expression on them. Let's see how:
 
 {{code_block('user-guide/expressions/lists','count_errors',['Expr.List', 'element'])}}
+
 ```python exec="on" result="text" session="user-guide/lists"
 --8<-- "python/user-guide/expressions/lists.py:count_errors"
 ```
 
-What if we chose the regex route (i.e. recognizing the presence of *any* alphabetical character?)
+What if we chose the regex route (i.e. recognizing the presence of _any_ alphabetical character?)
 
 {{code_block('user-guide/expressions/lists','count_errors_regex',['str.contains'])}}
+
 ```python exec="on" result="text" session="user-guide/lists"
 --8<-- "python/user-guide/expressions/lists.py:count_errors_regex"
 ```
@@ -77,6 +83,7 @@ This context is ideal for computing in row orientation.
 We can apply **any** Polars operations on the elements of the list with the `list.eval` (`list().eval` in Rust) expression! These expressions run entirely on Polars' query engine and can run in parallel, so will be well optimized. Let's say we have another set of weather data across three days, for different stations:
 
 {{code_block('user-guide/expressions/lists','weather_by_day',['DataFrame'])}}
+
 ```python exec="on" result="text" session="user-guide/lists"
 --8<-- "python/user-guide/expressions/lists.py:weather_by_day"
 ```
@@ -84,6 +91,7 @@ We can apply **any** Polars operations on the elements of the list with the `lis
 Let's do something interesting, where we calculate the percentage rank of the temperatures by day, measured across stations. Pandas allows you to compute the percentages of the `rank` values. `Polars` doesn't provide a special function to do this directly, but because expressions are so versatile we can create our own percentage rank expression for highest temperature. Let's try that!
 
 {{code_block('user-guide/expressions/lists','weather_by_day_rank',['list.eval'])}}
+
 ```python exec="on" result="text" session="user-guide/lists"
 --8<-- "python/user-guide/expressions/lists.py:weather_by_day_rank"
 ```
@@ -95,6 +103,7 @@ Let's do something interesting, where we calculate the percentage rank of the te
 We can define `Array` columns in this manner:
 
 {{code_block('user-guide/expressions/lists','array_df',['Array'])}}
+
 ```python exec="on" result="text" session="user-guide/lists"
 --8<-- "python/user-guide/expressions/lists.py:array_df"
 ```
@@ -102,6 +111,7 @@ We can define `Array` columns in this manner:
 Basic operations are available on it:
 
 {{code_block('user-guide/expressions/lists','array_ops',['arr'])}}
+
 ```python exec="on" result="text" session="user-guide/lists"
 --8<-- "python/user-guide/expressions/lists.py:array_ops"
 ```

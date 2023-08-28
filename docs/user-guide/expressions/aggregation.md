@@ -3,7 +3,7 @@
 `Polars` implements a powerful syntax defined not only in its lazy API, but also in its eager API. Let's take a look at what that means.
 
 We can start with the simple [US congress `dataset`](https://github.com/unitedstates/congress-legislators).
- 
+
 {{code_block('user-guide/expressions/aggregation','dataframe',['DataFrame','Categorical'])}}
 
 #### Basic aggregations
@@ -27,7 +27,6 @@ Besides the aggregation, we immediately sort the result and limit to the top `5`
 we have a nice summary overview.
 
 {{code_block('user-guide/expressions/aggregation','basic',['groupby'])}}
-
 
 ```python exec="on" result="text" session="user-guide/expressions"
 --8<-- "python/user-guide/expressions/aggregation.py:setup"
@@ -64,7 +63,8 @@ rows from the `DataFrame` (because we need those rows for another aggregation).
 In the example below we show how this can be done.
 
 !!! note
-     Note that we can make `Python` functions for clarity. These functions don't cost us anything. That is because we only create `Polars` expressions, we don't apply a custom function over a `Series` during runtime of the query.  Of course, you can make functions that return expressions in Rust, too.
+
+    Note that we can make `Python` functions for clarity. These functions don't cost us anything. That is because we only create `Polars` expressions, we don't apply a custom function over a `Series` during runtime of the query. Of course, you can make functions that return expressions in Rust, too.
 
 {{code_block('user-guide/expressions/aggregation','filter',['groupby'])}}
 
@@ -112,8 +112,7 @@ code preventing any multiple threads from executing the function.
 
 This all feels terribly limiting, especially because we often need those `lambda` functions in a
 `.groupby()` step, for example. This approach is still supported by `Polars`, but
-keeping in mind bytecode **and** the GIL costs have to be paid. It is recommended to try to solve your queries using the expression syntax before moving to `lambdas`. If you want to learn more about using `lambdas`, go to the [user defined functions section](./user-defined-functions.md). 
-
+keeping in mind bytecode **and** the GIL costs have to be paid. It is recommended to try to solve your queries using the expression syntax before moving to `lambdas`. If you want to learn more about using `lambdas`, go to the [user defined functions section](./user-defined-functions.md).
 
 ### Conclusion
 

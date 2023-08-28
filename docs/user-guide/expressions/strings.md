@@ -15,11 +15,9 @@ The `str` namespace can be accessed through the `.str` attribute of a column wit
 --8<-- "python/user-guide/expressions/strings.py:df"
 ```
 
-
 #### String Parsing
 
 `Polars` offers multiple methods for checking and parsing elements of a string. Firstly, we can use the `contains` method to check whether a given pattern exists within a substring. Subsequently, we can extract these patterns and replace them using other methods, which will be demonstrated in upcoming examples.
-
 
 ##### Check for existence of a pattern
 
@@ -30,7 +28,6 @@ To check for the presence of a pattern within a string, we can use the contains 
 ```python exec="on" result="text" session="user-guide/strings"
 --8<-- "python/user-guide/expressions/strings.py:existence"
 ```
-
 
 ##### Extract a pattern
 
@@ -50,7 +47,6 @@ To extract all occurrences of a pattern within a string, we can use the `extract
 --8<-- "python/user-guide/expressions/strings.py:extract_all"
 ```
 
-
 ##### Replace a pattern
 
 We have discussed two methods for pattern matching and extraction thus far, and now we will explore how to replace a pattern within a string. Similar to `extract` and `extract_all`, Polars provides the `replace` and `replace_all` methods for this purpose. In the example below we replace one match of `abc` at the end of a word (`\b`) by `ABC` and we replace all occurrence of `a` with `-`.
@@ -60,7 +56,6 @@ We have discussed two methods for pattern matching and extraction thus far, and 
 ```python exec="on" result="text" session="user-guide/strings"
 --8<-- "python/user-guide/expressions/strings.py:replace"
 ```
-
 
 #### API Documentation
 
