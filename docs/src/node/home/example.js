@@ -2,7 +2,7 @@
 const pl = require("nodejs-polars");
 
 q = pl
-    .scanCSV("examples/data/iris.csv")
+    .scanCSV("docs/data/iris.csv")
     .filter(pl.col("sepal_length").gt(5))
     .groupBy("species")
     .agg(pl.all().sum());

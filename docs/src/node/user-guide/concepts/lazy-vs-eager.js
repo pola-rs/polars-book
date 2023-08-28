@@ -2,7 +2,7 @@ const pl = require("nodejs-polars");
 
 // --8<-- [start:eager]
 
-df = pl.readCSV("examples/data/iris.csv");
+df = pl.readCSV("docs/data/iris.csv");
 df_small = df.filter(pl.col("sepal_length").gt(5));
 df_agg = df_small.groupBy("species").agg(pl.col("sepal_width").mean());
 console.log(df_agg);
@@ -10,7 +10,7 @@ console.log(df_agg);
 
 // --8<-- [start:lazy]
 q = pl
-    .scanCSV("examples/data/iris.csv")
+    .scanCSV("docs/data/iris.csv")
     .filter(pl.col("sepal_length").gt(5))
     .groupBy("species")
     .agg(pl.col("sepal_width").mean());

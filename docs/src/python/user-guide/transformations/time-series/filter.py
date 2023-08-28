@@ -2,7 +2,7 @@
 import polars as pl
 from datetime import datetime
 
-df = pl.read_csv("examples/data/apple_stock.csv", try_parse_dates=True)
+df = pl.read_csv("docs/data/apple_stock.csv", try_parse_dates=True)
 print(df)
 # --8<-- [end:df]
 

@@ -99,7 +99,7 @@ print(result)
 result = ctx.execute(
     """
         SELECT *
-        FROM read_csv('examples/data/iris.csv')
+        FROM read_csv('docs/data/iris.csv')
     """
 )
 print(result)
