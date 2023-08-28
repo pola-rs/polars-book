@@ -34,25 +34,30 @@ node_modules:
 	npm install
 
 .PHONY: requirements
-requirements: .venv
+requirements: .venv  ## Install/refresh all project requirements
 	$(VENV_BIN)/python -m pip install --upgrade pip
-	$(VENV_BIN)/pip install -r requirements.txt
+	$(VENV_BIN)/pip install --upgrade -r requirements.txt
 
 .PHONY: serve
 serve: .venv
-	@unset CONDA_PREFIX && source $(VENV_BIN)/activate && mkdocs serve
+	$(VENV_BIN)/mkdocs serve
 
 .PHONY: lint
 lint: .venv node_modules
 # python
-	$(VENV_BIN)/black --check . 
+	$(VENV_BIN)/black --check .
 # js
 	npx rome format docs/src/node/
 
 .PHONY: test-python
 test-python: .venv
-	find docs/src/ -name "*.py" | xargs -n 1 sh -c 'python $$0 || exit 255'
+	find docs/src/python -type f | xargs -n 1 bash -c '$(VENV_BIN)/python -W error $$0 || exit 255'
 
 .PHONY: test-node
 test-node: node_modules
 	find docs/src/ -name "*.js" | xargs -n 1 sh -c 'node $$0 || exit 255'
+
+.PHONY: help
+help:  ## Display this help screen
+	@echo -e "\033[1mAvailable commands:\033[0m"
+	@grep -E '^[a-z.A-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-18s\033[0m %s\n", $$1, $$2}' | sort

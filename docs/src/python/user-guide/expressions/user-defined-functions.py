@@ -40,7 +40,7 @@ def add_counter(val: int) -> int:
 
 out = df.select(
     pl.col("values").apply(add_counter).alias("solution_apply"),
-    (pl.col("values") + pl.arange(1, pl.count() + 1)).alias("solution_expr"),
+    (pl.col("values") + pl.int_range(1, pl.count() + 1)).alias("solution_expr"),
 )
 print(out)
 # --8<-- [end:counter]
