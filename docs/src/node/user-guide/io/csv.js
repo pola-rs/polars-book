@@ -4,15 +4,15 @@ const pl = require("nodejs-polars");
 
 `
 // --8<-- [start:read]
-df = pl.readCSV("path.csv")
+df = pl.readCSV("docs/data/path.csv")
 // --8<-- [end:read]
 `;
 
 // --8<-- [start:write]
 df = pl.DataFrame({ foo: [1, 2, 3], bar: [null, "bak", "baz"] });
-df.writeCSV("path.csv");
+df.writeCSV("docs/data/path.csv");
 // --8<-- [end:write]
 
 // --8<-- [start:scan]
-df = pl.scanCSV("path.csv");
+df = pl.scanCSV("docs/data/path.csv");
 // --8<-- [end:scan]

@@ -4,7 +4,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>>{
 
     """
     // --8<-- [start:read]
-    let mut file = std::fs::File::open("path.parquet").unwrap();
+    let mut file = std::fs::File::open("docs/data/path.parquet").unwrap();
 
     let df = ParquetReader::new(&mut file).finish().unwrap();
     // --8<-- [end:read]
@@ -16,8 +16,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>>{
         "bar" => &[None, Some("bak"), Some("baz")],
     )
     .unwrap();
-    
-    let mut file = std::fs::File::create("path.parquet").unwrap();
+
+    let mut file = std::fs::File::create("docs/data/path.parquet").unwrap();
     ParquetWriter::new(&mut file).finish(&mut df).unwrap();
     // --8<-- [end:write]
 

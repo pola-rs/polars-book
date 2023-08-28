@@ -1,6 +1,6 @@
 # AWS
 
---8<-- "docs/snippets/under_construction.md"
+--8<-- "docs/_build/snippets/under_construction.md"
 
 To read from or write to an AWS bucket, additional dependencies are needed in Rust:
 

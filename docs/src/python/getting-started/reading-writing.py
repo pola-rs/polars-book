@@ -18,24 +18,24 @@ print(df)
 # --8<-- [end:dataframe]
 
 # --8<-- [start:csv]
-df.write_csv("output.csv")
-df_csv = pl.read_csv("output.csv")
+df.write_csv("docs/data/output.csv")
+df_csv = pl.read_csv("docs/data/output.csv")
 print(df_csv)
 # --8<-- [end:csv]
 
 # --8<-- [start:csv2]
-df_csv = pl.read_csv("output.csv", try_parse_dates=True)
+df_csv = pl.read_csv("docs/data/output.csv", try_parse_dates=True)
 print(df_csv)
 # --8<-- [end:csv2]
 
 # --8<-- [start:json]
-df.write_json("output.json")
-df_json = pl.read_json("output.json")
+df.write_json("docs/data/output.json")
+df_json = pl.read_json("docs/data/output.json")
 print(df_json)
 # --8<-- [end:json]
 
 # --8<-- [start:parquet]
-df.write_parquet("output.parquet")
-df_parquet = pl.read_parquet("output.parquet")
+df.write_parquet("docs/data/output.parquet")
+df_parquet = pl.read_parquet("docs/data/output.parquet")
 print(df_parquet)
 # --8<-- [end:parquet]

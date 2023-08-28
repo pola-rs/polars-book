@@ -28,7 +28,7 @@ LANGUAGES = OrderedDict(
 )
 
 # Load all links to reference docs
-with open("API_REFERENCE_LINKS.yaml", "r") as f:
+with open("docs/_build/API_REFERENCE_LINKS.yml", "r") as f:
     API_REFERENCE_LINKS = yaml.load(f, Loader=yaml.CLoader)
 
 
@@ -130,7 +130,7 @@ def code_tab(
     # See Content Tabs for details https://squidfunk.github.io/mkdocs-material/reference/content-tabs/
     return f"""=== \":fontawesome-brands-{language_info['icon_name']}: {language_info['display_name']}\"
     {language_headers}
-    ```{language}   
+    ```{language}
     --8<-- \"{snippets_file_name}\"
     ```
     """

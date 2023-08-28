@@ -8,7 +8,6 @@ theme:
     toggle:
       icon: material/brightness-7
       name: Switch to dark mode
-
   # Palette toggle for dark mode
   - media: "(prefers-color-scheme: dark)"
     scheme: slate
@@ -16,8 +15,8 @@ theme:
       icon: material/brightness-4
       name: Switch to light mode
   name: material
-  custom_dir: overrides
-  logo: assets/logo.png
+  custom_dir: docs/_build/overrides
+  logo: _build/assets/logo.png
   features:
     - navigation.tracking
     - navigation.instant
@@ -32,11 +31,11 @@ plugins:
       lang: en
   - markdown-exec
   - macros:
-      module_name: scripts/macro
+      module_name: docs/_build/scripts/macro
 extra:
   consent:
     title: Cookie consent
-    description: >- 
+    description: >-
       We use cookies to recognize your repeated visits and preferences, as well
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
@@ -53,28 +52,28 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.superfences
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
   - pymdownx.snippets:
       base_path: ['.','docs/src/']
       check_paths: true
       dedent_subsections: true
   - footnotes
 extra_css:
-  - stylesheets/extra.css
+  - _build/css/extra.css
 repo_url: https://github.com/pola-rs/polars
 repo_name: pola-rs/polars
 watch:
-  - scripts
+  - docs/_build/scripts
 nav:
   - Home: index.md
-  - Getting Started: 
+  - Getting Started:
     - getting-started/intro.md
     - getting-started/installation.md
     - getting-started/series-dataframes.md
-    - getting-started/reading-writing.md  
+    - getting-started/reading-writing.md
     - getting-started/expressions.md
     - getting-started/joins.md
-  - User Guide: 
+  - User Guide:
     - user-guide/index.md
     - user-guide/installation.md
     - Concepts:
@@ -99,8 +98,8 @@ nav:
       - user-guide/expressions/structs.md
       - user-guide/expressions/numpy.md
     - Transformations:
-      - user-guide/transformations/joins.md  
-      - user-guide/transformations/concatenation.md  
+      - user-guide/transformations/joins.md
+      - user-guide/transformations/concatenation.md
       - user-guide/transformations/pivot.md
       - user-guide/transformations/melt.md
       - Time Series:
@@ -140,5 +139,4 @@ nav:
       - user-guide/misc/contributing.md
 
 hooks:
-  - scripts/people.py
-
+  - docs/_build/scripts/people.py

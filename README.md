@@ -8,7 +8,6 @@ The User guide is made with [Material for mkdocs](https://squidfunk.github.io/mk
 
 ```shell
 make requirements
-
 ```
 
 In order to serve the books run `make serve`. This will run all the python examples and display the output inline using the `markdown-exec` plugin.

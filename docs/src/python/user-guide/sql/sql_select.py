@@ -30,7 +30,7 @@ result = ctx.execute(
     """
         SELECT country, AVG(population) as avg_population
         FROM population
-        GROUP BY country 
+        GROUP BY country
     """
 )
 print(result)
@@ -42,7 +42,7 @@ result = ctx.execute(
     """
         SELECT city, population
         FROM population
-        ORDER BY population 
+        ORDER BY population
     """
 )
 print(result)
@@ -99,7 +99,7 @@ print(result)
 result = ctx.execute(
     """
         SELECT *
-        FROM read_csv('docs/src/data/iris.csv')
+        FROM read_csv('docs/data/iris.csv')
     """
 )
 print(result)

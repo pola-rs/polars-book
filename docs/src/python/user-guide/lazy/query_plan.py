@@ -5,7 +5,7 @@ import polars as pl
 
 # --8<-- [start:plan]
 q1 = (
-    pl.scan_csv(f"docs/src/data/reddit.csv")
+    pl.scan_csv("docs/data/reddit.csv")
     .with_columns(pl.col("name").str.to_uppercase())
     .filter(pl.col("comment_karma") > 0)
 )
@@ -14,8 +14,8 @@ q1 = (
 # --8<-- [start:createplan]
 import base64
 
-q1.show_graph(optimized=False, show=False, output_path="images/query_plan.png")
-with open("images/query_plan.png", "rb") as f:
+q1.show_graph(optimized=False, show=False, output_path="docs/images/query_plan.png")
+with open("docs/images/query_plan.png", "rb") as f:
     png = base64.b64encode(f.read()).decode()
     print(f'<img src="data:image/png;base64, {png}"/>')
 # --8<-- [end:createplan]
@@ -31,8 +31,8 @@ q1.explain(optimized=False)
 # --8<-- [end:describe]
 
 # --8<-- [start:createplan2]
-q1.show_graph(show=False, output_path="images/query_plan_optimized.png")
-with open("images/query_plan_optimized.png", "rb") as f:
+q1.show_graph(show=False, output_path="docs/images/query_plan_optimized.png")
+with open("docs/images/query_plan_optimized.png", "rb") as f:
     png = base64.b64encode(f.read()).decode()
     print(f'<img src="data:image/png;base64, {png}"/>')
 # --8<-- [end:createplan2]

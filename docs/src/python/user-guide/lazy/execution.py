@@ -3,7 +3,7 @@ import polars as pl
 """
 # --8<-- [start:df]
 q1 = (
-    pl.scan_csv("docs/src/data/reddit.csv")
+    pl.scan_csv("docs/data/reddit.csv")
     .with_columns(pl.col("name").str.to_uppercase())
     .filter(pl.col("comment_karma") > 0)
 )
