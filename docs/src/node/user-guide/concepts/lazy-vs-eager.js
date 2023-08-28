@@ -10,10 +10,10 @@ console.log(df_agg);
 
 // --8<-- [start:lazy]
 q = pl
-    .scanCSV("docs/data/iris.csv")
-    .filter(pl.col("sepal_length").gt(5))
-    .groupBy("species")
-    .agg(pl.col("sepal_width").mean());
+  .scanCSV("docs/data/iris.csv")
+  .filter(pl.col("sepal_length").gt(5))
+  .groupBy("species")
+  .agg(pl.col("sepal_width").mean());
 
 df = q.collect();
 // --8<-- [end:lazy]

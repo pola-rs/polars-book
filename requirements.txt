@@ -1,4 +1,4 @@
-polars[all] # use latest on purpose
+polars[all]  # Always install the latest version
 
 mkdocs-material==9.2.5
 mkdocs-macros-plugin==1.0.4
