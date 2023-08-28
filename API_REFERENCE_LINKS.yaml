@@ -44,7 +44,7 @@ python:
   suffix: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.suffix.html
   map_alias: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.map_alias.html
   n_unique: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.n_unique.html
-  approx_unique: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.approx_unique.html
+  approx_n_unique: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.approx_n_unique.html
   when: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.when.html
   concat_list: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.concat_list.html
   list.eval: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.list.eval.html

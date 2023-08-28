@@ -54,7 +54,7 @@ In case of multiple columns for example when using `all()` or `col(*)` you can a
 There are two ways to count unique values in `Polars`: an exact methodology and an approximation. The approximation uses the [HyperLogLog++](https://en.wikipedia.org/wiki/HyperLogLog) algorithm to approximate the cardinality and is especially useful for very large datasets where an approximation is good enough.
 
 
-{{code_block('user-guide/expressions/functions','countunique',['n_unique','approx_unique'])}}
+{{code_block('user-guide/expressions/functions','countunique',['n_unique','approx_n_unique'])}}
 
 ```python exec="on" result="text" session="user-guide/functions"
 --8<-- "python/user-guide/expressions/functions.py:countunique"

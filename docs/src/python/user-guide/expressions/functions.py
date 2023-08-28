@@ -43,7 +43,7 @@ print(df_alias)
 # --8<-- [start:countunique]
 df_alias = df.select(
     pl.col("names").n_unique().alias("unique"),
-    pl.approx_unique("names").alias("unique_approx"),
+    pl.approx_n_unique("names").alias("unique_approx"),
 )
 print(df_alias)
 # --8<-- [end:countunique]

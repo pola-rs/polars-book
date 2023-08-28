@@ -45,7 +45,7 @@ The `Polars` user guide is intended to live alongside the API documentation. Its
 - [Getting Started](getting-started/intro.md): A 10 minute helicopter view of the library and its primary function.
 - [User Guide](user-guide/index.md): A detailed explanation of how the library is setup and how to use it most effectively. 
 
-If you are looking for details on a specific level / object, it is probably best to go the API documentation: [Python](https://pola-rs.github.io/polars/py-polars/html/reference/index.html) | [NodeJS](https://pola-rs.github.io/polars/polars/index.html) | [Rust](https://pola-rs.github.io/polars/polars/index.html).
+If you are looking for details on a specific level / object, it is probably best to go the API documentation: [Python](https://pola-rs.github.io/polars/py-polars/html/reference/index.html) | [NodeJS](https://pola-rs.github.io/nodejs-polars/index.html) | [Rust](https://docs.rs/polars/latest/polars/).
 
 ## Performance :rocket: :rocket:
 
