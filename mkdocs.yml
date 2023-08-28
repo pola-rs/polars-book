@@ -15,8 +15,8 @@ theme:
       icon: material/brightness-4
       name: Switch to light mode
   name: material
-  custom_dir: docs/overrides
-  logo: assets/logo.png
+  custom_dir: docs/_build/overrides
+  logo: _build/assets/logo.png
   features:
     - navigation.tracking
     - navigation.instant
@@ -31,7 +31,7 @@ plugins:
       lang: en
   - markdown-exec
   - macros:
-      module_name: docs/scripts/macro
+      module_name: docs/_build/scripts/macro
 extra:
   consent:
     title: Cookie consent
@@ -59,11 +59,11 @@ markdown_extensions:
       dedent_subsections: true
   - footnotes
 extra_css:
-  - css/extra.css
+  - _build/css/extra.css
 repo_url: https://github.com/pola-rs/polars
 repo_name: pola-rs/polars
 watch:
-  - docs/scripts
+  - docs/_build/scripts
 nav:
   - Home: index.md
   - Getting Started:
@@ -139,5 +139,4 @@ nav:
       - user-guide/misc/contributing.md
 
 hooks:
-  - docs/scripts/people.py
-
+  - docs/_build/scripts/people.py

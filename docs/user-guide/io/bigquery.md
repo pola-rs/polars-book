@@ -16,4 +16,4 @@ We can load a query into a `DataFrame` like this:
 
 ## Write
 
---8<-- "docs/snippets/under_construction.md"
+--8<-- "docs/_build/snippets/under_construction.md"

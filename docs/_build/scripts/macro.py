@@ -28,7 +28,7 @@ LANGUAGES = OrderedDict(
 )
 
 # Load all links to reference docs
-with open("docs/API_REFERENCE_LINKS.yml", "r") as f:
+with open("docs/_build/API_REFERENCE_LINKS.yml", "r") as f:
     API_REFERENCE_LINKS = yaml.load(f, Loader=yaml.CLoader)
 
 

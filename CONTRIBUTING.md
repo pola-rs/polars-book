@@ -78,4 +78,3 @@ The `Markdown` file should roughly match the following structure:
 1. The output of the example, using [markdown-exec](https://pawamoy.github.io/markdown-exec/)
 1. A longer explanation if required.
 1. If applicable, provide both eager and lazy examples.
-
