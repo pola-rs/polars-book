@@ -36,7 +36,7 @@ data = [
 ]
 mixed_parsed = (
     pl.Series(data)
-    .str.strptime(pl.Datetime, format="%Y-%m-%dT%H:%M:%S%z", utc=True)
+    .str.strptime(pl.Datetime, format="%Y-%m-%dT%H:%M:%S%z")
     .dt.convert_time_zone("Europe/Brussels")
 )
 print(mixed_parsed)

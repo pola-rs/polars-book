@@ -45,13 +45,13 @@ serve: .venv
 .PHONY: lint
 lint: .venv node_modules
 # python
-	$(VENV_BIN)/black --check . 
+	$(VENV_BIN)/black --check .
 # js
 	npx rome format docs/src/node/
 
 .PHONY: test-python
 test-python: .venv
-	find docs/src/ -name "*.py" | xargs -n 1 sh -c 'python $$0 || exit 255'
+	find docs/src/python -type f | xargs -n 1 bash -c '$(VENV_BIN)/python -W error $$0 || exit 255'
 
 .PHONY: test-node
 test-node: node_modules
