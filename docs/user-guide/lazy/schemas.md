@@ -20,11 +20,13 @@ We see how this works in the following simple example where we call the `.round`
 
 {{code_block('user-guide/lazy/schema','typecheck',['lazy','with_columns'])}}
 
-The `.round` expression is only valid for columns with a floating point dtype. Calling `.round` on an integer column means the operation will raise a `SchemaError`.
+The `.round` expression is only valid for columns with a floating point dtype. Calling `.round` on an integer column means the operation will raise an `InvalidOperationError` when we evaluate the query with `collect`. This schema check happens before the data is processed when we call `collect`.
+
+```python exec="on" result="text" session="user-guide/lazy/schemas"```
 
 If we executed this query in eager mode the error would only be found once the data had been processed in all earlier steps.
 
-When we execute a lazy query Polars checks for any potential `SchemaError` before the time-consuming step of actually processing the data in the pipeline.
+When we execute a lazy query Polars checks for any potential `InvalidOperationError` before the time-consuming step of actually processing the data in the pipeline.
 
 ## The lazy API must know the schema
 
