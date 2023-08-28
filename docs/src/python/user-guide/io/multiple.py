@@ -16,9 +16,9 @@ print(df)
 import base64
 
 pl.scan_csv("docs/data/my_many_files_*.csv").show_graph(
-    output_path="images/multiple.png", show=False
+    output_path="docs/images/multiple.png", show=False
 )
-with open("images/multiple.png", "rb") as f:
+with open("docs/images/multiple.png", "rb") as f:
     png = base64.b64encode(f.read()).decode()
     print(f'<img src="data:image/png;base64, {png}"/>')
 # --8<-- [end:creategraph]
