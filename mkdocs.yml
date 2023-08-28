@@ -15,7 +15,7 @@ theme:
       icon: material/brightness-4
       name: Switch to light mode
   name: material
-  custom_dir: overrides
+  custom_dir: docs/overrides
   logo: assets/logo.png
   features:
     - navigation.tracking
