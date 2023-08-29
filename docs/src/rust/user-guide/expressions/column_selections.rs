@@ -61,5 +61,39 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("{}", &out);
     // --8<-- [end:expansion_by_dtype]
 
+    // --8<-- [start:selectors_intro]
+    // Not available in Rust, refer the following link
+    // https://github.com/pola-rs/polars/issues/10594
+    // --8<-- [end:selectors_intro]
+
+    // --8<-- [start:selectors_diff]
+    // Not available in Rust, refer the following link
+    // https://github.com/pola-rs/polars/issues/10594
+    // --8<-- [end:selectors_diff]
+
+    // --8<-- [start:selectors_union]
+    // Not available in Rust, refer the following link
+    // https://github.com/pola-rs/polars/issues/10594
+    // --8<-- [end:selectors_union]
+
+    // --8<-- [start:selectors_by_name]
+    // Not available in Rust, refer the following link
+    // https://github.com/pola-rs/polars/issues/1059
+    // --8<-- [end:selectors_by_name]
+
+    // --8<-- [start:selectors_to_expr]
+    // Not available in Rust, refer the following link
+    // https://github.com/pola-rs/polars/issues/10594
+    // --8<-- [end:selectors_to_expr]
+
+    // --8<-- [start:selectors_is_selector_utility]
+    // Not available in Rust, refer the following link
+    // https://github.com/pola-rs/polars/issues/10594
+    // --8<-- [end:selectors_is_selector_utility]
+
+    // --8<-- [start:selectors_colnames_utility]
+    // Not available in Rust, refer the following link
+    // https://github.com/pola-rs/polars/issues/10594
+    // --8<-- [end:selectors_colnames_utility]
     Ok(())
 }
