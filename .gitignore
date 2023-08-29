@@ -8,6 +8,7 @@
 # Python
 /.venv
 __pycache__
+.pytest_cache/
 
 # Project
 /docs/data/
