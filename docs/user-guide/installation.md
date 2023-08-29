@@ -18,12 +18,6 @@ Polars is a library and installation is as simple as invoking the package manage
     polars = { version = "x", features = ["lazy", ...]}
     ```
 
-=== ":fontawesome-brands-node-js: NodeJS"
-
-    ``` shell
-    yarn add nodejs-polars
-    ```
-
 ## Importing
 
 To use the library import it into your project
@@ -38,16 +32,6 @@ To use the library import it into your project
 
     ``` rust
     use polars::prelude::*;
-    ```
-
-=== ":fontawesome-brands-node-js: NodeJS"
-
-    ``` javaScript
-    // esm
-    import pl from 'nodejs-polars';
-
-    // require
-    const pl = require('nodejs-polars'); 
     ```
 
 ## Feature Flags
