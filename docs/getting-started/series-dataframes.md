@@ -39,7 +39,7 @@ There are a number of methods related to string operations in the `StringNamespa
 
 ##### Datetime
 
-Similar to strings, there is a seperate namespace for datetime related operations in the `DateLikeNameSpace`. These only work on `Series`with DataTypes related to dates.
+Similar to strings, there is a separate namespace for datetime related operations in the `DateLikeNameSpace`. These only work on `Series`with DataTypes related to dates.
 
 {{code_block('getting-started/series-dataframes','dt',['day'])}}
 

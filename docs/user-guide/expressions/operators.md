@@ -1,6 +1,6 @@
 # Basic Operators
 
-This section describes how to use basic operators (e.g. addition, substraction) in conjunction with Expressions. We will provide various examples using different themes in the context of the following dataframe.
+This section describes how to use basic operators (e.g. addition, subtraction) in conjunction with Expressions. We will provide various examples using different themes in the context of the following dataframe.
 
 !!! note Operator Overloading
 
