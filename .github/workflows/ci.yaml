@@ -31,7 +31,7 @@ jobs:
       - name: Set up Graphviz
         uses: ts-graphviz/setup-graphviz@v1
 
-      - run: find docs/src/python -type f | xargs -n 1 bash -c 'python -W error $0 || exit 255'
+      - run: pytest
 
   black:
     runs-on: ubuntu-latest

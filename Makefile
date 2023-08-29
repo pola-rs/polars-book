@@ -43,9 +43,9 @@ lint: .venv  ## Lint code examples
 # python
 	$(VENV_BIN)/black --check .
 
-.PHONY: test-python
-test-python: .venv  ## Test Python code examples
-	find docs/src/python -type f | xargs -n 1 bash -c '$(VENV_BIN)/python -W error $$0 || exit 255'
+.PHONY: test
+test: .venv  ## Test Python code examples
+	$(VENV_BIN)/pytest
 
 .PHONY: help
 help:  ## Display this help screen

@@ -1,0 +1,5 @@
+[tool.pytest.ini_options]
+filterwarnings = [
+  "error",
+  "ignore:Matplotlib is currently using agg:UserWarning",
+]
