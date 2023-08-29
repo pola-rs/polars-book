@@ -11,3 +11,4 @@ markdown-exec[ansi]==1.6.0
 PyGithub==1.59.1
 
 black==23.7.0
+pytest==7.4.0
