@@ -41,7 +41,7 @@ Similarly to the `select` statement there is the `with_columns` statement which 
 
 ## Filter
 
-In the `filter` context you filter the existing dataframe based on arbritary expression which evaluates to the `Boolean` data type.
+In the `filter` context you filter the existing dataframe based on arbitrary expression which evaluates to the `Boolean` data type.
 
 {{code_block('user-guide/concepts/contexts','filter',['filter'])}}
 

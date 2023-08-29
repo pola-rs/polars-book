@@ -58,7 +58,7 @@ Do not hesitate to [open a new issue](https://github.com/pola-rs/polars-book/iss
 
 ### Content formatting
 
-The `Python` code is checked and linted using [`black`](https://github.com/psf/black). The recommended way is to run the black before commiting:
+The `Python` code is checked and linted using [`black`](https://github.com/psf/black). The recommended way is to run the black before committing:
 
 ```shell
 $ black .

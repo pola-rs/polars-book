@@ -95,7 +95,7 @@ The `inner`, `left`, `outer` and `cross` join strategies are standard amongst da
 
 ### Semi join
 
-The `semi` join retuns all rows from the left frame in which the join key is also present in the right frame. Consider the following scenario: a car rental company has a `DataFrame` showing the cars that it owns with each car having a unique `id`.
+The `semi` join returns all rows from the left frame in which the join key is also present in the right frame. Consider the following scenario: a car rental company has a `DataFrame` showing the cars that it owns with each car having a unique `id`.
 
 {{code_block('user-guide/transformations/joins','df5',['DataFrame'])}}
 

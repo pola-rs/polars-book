@@ -19,7 +19,7 @@ Polars doesn't manage connections and data transfer from databases by itself. In
 
 ConnectorX is the default engine and [supports numerous databases](https://github.com/sfu-db/connector-x#sources) including Postgres, Mysql, SQL Server and Redshift. ConnectorX is written in Rust and stores data in Arrow format to allow for zero-copy to Polars.
 
-To read from one of the supported databases with `ConnectorX` you need to activate the additional dependancy `ConnectorX` when installing Polars or install it manually with
+To read from one of the supported databases with `ConnectorX` you need to activate the additional dependency `ConnectorX` when installing Polars or install it manually with
 
 ```shell
 $ pip install connectorx
