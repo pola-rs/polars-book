@@ -1,4 +1,4 @@
-# Query Plan
+# Query plan
 
 For any lazy query `Polars` has both:
 

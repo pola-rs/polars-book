@@ -5,7 +5,7 @@ etc. However, when you need a more complex aggregation the default methods `Pola
 
 The `fold` expression operates on columns for maximum speed. It utilizes the data layout very efficiently and often has vectorized execution.
 
-### Manual Sum
+### Manual sum
 
 Let's start with an example by implementing the `sum` operation ourselves, with a `fold`.
 

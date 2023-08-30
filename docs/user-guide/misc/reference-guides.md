@@ -1,4 +1,4 @@
-# Reference Guides
+# Reference guides
 
 The api documentations with details on function / object signatures can be found here:
 

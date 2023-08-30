@@ -10,7 +10,7 @@ Melt operations unpivot a DataFrame from wide format to long format
 --8<-- "python/user-guide/transformations/melt.py:df"
 ```
 
-## Eager + Lazy
+## Eager + lazy
 
 `Eager` and `lazy` have the same API.
 
