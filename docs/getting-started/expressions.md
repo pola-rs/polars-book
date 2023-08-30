@@ -5,7 +5,7 @@
 - `select`
 - `filter`
 - `with_columns`
-- `groupby`
+- `group_by`
 
 To learn more about expressions and the context in which they operate, see the User Guide sections: [Contexts](../user-guide/concepts/contexts.md) and [Expressions](../user-guide/concepts/expressions.md).
 
@@ -86,9 +86,9 @@ print(
 )
 ```
 
-### Groupby
+### Group by
 
-We will create a new `DataFrame` for the Groupby functionality. This new `DataFrame` will include several 'groups' that we want to groupby.
+We will create a new `DataFrame` for the Group by functionality. This new `DataFrame` will include several 'groups' that we want to group by.
 
 {{code_block('getting-started/expressions','dataframe2',['DataFrame'])}}
 
@@ -97,19 +97,19 @@ We will create a new `DataFrame` for the Groupby functionality. This new `DataFr
 print(df2)
 ```
 
-{{code_block('getting-started/expressions','groupby',['groupby'])}}
+{{code_block('getting-started/expressions','group_by',['group_by'])}}
 
 ```python exec="on" result="text" session="getting-started/expressions"
 print(
-    --8<-- "python/getting-started/expressions.py:groupby"
+    --8<-- "python/getting-started/expressions.py:group_by"
 )
 ```
 
-{{code_block('getting-started/expressions','groupby2',['groupby'])}}
+{{code_block('getting-started/expressions','group_by2',['group_by'])}}
 
 ```python exec="on" result="text" session="getting-started/expressions"
 print(
-    --8<-- "python/getting-started/expressions.py:groupby2"
+    --8<-- "python/getting-started/expressions.py:group_by2"
 )
 ```
 

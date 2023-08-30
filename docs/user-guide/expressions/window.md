@@ -10,10 +10,10 @@ snippet below contains information about pokemon:
 --8<-- "python/user-guide/expressions/window.py:pokemon"
 ```
 
-## Groupby Aggregations in selection
+## Group by aggregations in selection
 
 Below we show how to use window functions to group over different columns and perform an aggregation on them.
-Doing so allows us to use multiple groupby operations in parallel, using a single query. The results of the aggregation
+Doing so allows us to use multiple group by operations in parallel, using a single query. The results of the aggregation
 are projected back to the original rows. Therefore, a window function will almost always lead to a `DataFrame` with the same size as the original.
 
 We will discuss later the cases where a window function can change the numbers of rows in a `DataFrame`.
@@ -22,10 +22,10 @@ Note how we call `.over("Type 1")` and `.over(["Type 1", "Type 2"])`. Using wind
 
 The best part is, this won't cost you anything. The computed groups are cached and shared between different `window` expressions.
 
-{{code_block('user-guide/expressions/window','groupby',['over'])}}
+{{code_block('user-guide/expressions/window','group_by',['over'])}}
 
 ```python exec="on" result="text" session="user-guide/window"
---8<-- "python/user-guide/expressions/window.py:groupby"
+--8<-- "python/user-guide/expressions/window.py:group_by"
 ```
 
 ## Operations per group
@@ -53,9 +53,9 @@ that each pokemon within a group are sorted by `Speed` in `ascending` order. Unf
 
 `Polars` keeps track of each group's location and maps the expressions to the proper row locations. This will also work over different groups in a single `select`.
 
-The power of window expressions is that you often don't need a `groupby -> explode` combination, but you can put the logic in a single expression. It also makes the API cleaner. If properly used a:
+The power of window expressions is that you often don't need a `group_by -> explode` combination, but you can put the logic in a single expression. It also makes the API cleaner. If properly used a:
 
-- `groupby` -> marks that groups are aggregated and we expect a `DataFrame` of size `n_groups`
+- `group_by` -> marks that groups are aggregated and we expect a `DataFrame` of size `n_groups`
 - `over` -> marks that we want to compute something within a group, and doesn't modify the original size of the `DataFrame` except in specific cases
 
 ## Map the expression result to the DataFrame rows

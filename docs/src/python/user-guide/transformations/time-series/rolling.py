@@ -10,14 +10,14 @@ df = df.sort("Date")
 print(df)
 # --8<-- [end:df]
 
-# --8<-- [start:groupby]
-annual_average_df = df.groupby_dynamic("Date", every="1y").agg(pl.col("Close").mean())
+# --8<-- [start:group_by]
+annual_average_df = df.group_by_dynamic("Date", every="1y").agg(pl.col("Close").mean())
 
 df_with_year = annual_average_df.with_columns(pl.col("Date").dt.year().alias("year"))
 print(df_with_year)
-# --8<-- [end:groupby]
+# --8<-- [end:group_by]
 
-# --8<-- [start:groupbydyn]
+# --8<-- [start:group_by_dyn]
 df = (
     pl.date_range(
         start=datetime(2021, 1, 1),
@@ -30,7 +30,7 @@ df = (
 )
 
 out = (
-    df.groupby_dynamic("time", every="1mo", period="1mo", closed="left")
+    df.group_by_dynamic("time", every="1mo", period="1mo", closed="left")
     .agg(
         [
             pl.col("time").cumcount().reverse().head(3).alias("day/eom"),
@@ -42,9 +42,9 @@ out = (
     .explode("day/eom")
 )
 print(out)
-# --8<-- [end:groupbydyn]
+# --8<-- [end:group_by_dyn]
 
-# --8<-- [start:groupbyroll]
+# --8<-- [start:group_by_roll]
 df = pl.DataFrame(
     {
         "time": pl.date_range(
@@ -57,10 +57,10 @@ df = pl.DataFrame(
     }
 )
 print(df)
-# --8<-- [end:groupbyroll]
+# --8<-- [end:group_by_roll]
 
-# --8<-- [start:groupbydyn2]
-out = df.groupby_dynamic(
+# --8<-- [start:group_by_dyn2]
+out = df.group_by_dynamic(
     "time",
     every="1h",
     closed="both",
@@ -72,4 +72,4 @@ out = df.groupby_dynamic(
     ]
 )
 print(out)
-# --8<-- [end:groupbydyn2]
+# --8<-- [end:group_by_dyn2]

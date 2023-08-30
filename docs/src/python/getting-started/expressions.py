@@ -61,18 +61,18 @@ df2 = pl.DataFrame(
 )
 # --8<-- [end:dataframe2]
 
-# --8<-- [start:groupby]
-df2.groupby("y", maintain_order=True).count()
-# --8<-- [end:groupby]
+# --8<-- [start:group_by]
+df2.group_by("y", maintain_order=True).count()
+# --8<-- [end:group_by]
 
-# --8<-- [start:groupby2]
-df2.groupby("y", maintain_order=True).agg(
+# --8<-- [start:group_by2]
+df2.group_by("y", maintain_order=True).agg(
     [
         pl.col("*").count().alias("count"),
         pl.col("*").sum().alias("sum"),
     ]
 )
-# --8<-- [end:groupby2]
+# --8<-- [end:group_by2]
 
 # --8<-- [start:combine]
 df_x = df.with_columns((pl.col("a") * pl.col("b")).alias("a * b")).select(

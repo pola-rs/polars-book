@@ -23,7 +23,7 @@ dataset = pl.read_csv(url, dtypes=dtypes).with_columns(
 # --8<-- [start:basic]
 q = (
     dataset.lazy()
-    .groupby("first_name")
+    .group_by("first_name")
     .agg(
         pl.count(),
         pl.col("gender"),
@@ -40,7 +40,7 @@ print(df)
 # --8<-- [start:conditional]
 q = (
     dataset.lazy()
-    .groupby("state")
+    .group_by("state")
     .agg(
         (pl.col("party") == "Anti-Administration").sum().alias("anti"),
         (pl.col("party") == "Pro-Administration").sum().alias("pro"),
@@ -56,7 +56,7 @@ print(df)
 # --8<-- [start:nested]
 q = (
     dataset.lazy()
-    .groupby("state", "party")
+    .group_by("state", "party")
     .agg(pl.count("party").alias("count"))
     .filter(
         (pl.col("party") == "Anti-Administration")
@@ -87,7 +87,7 @@ def avg_birthday(gender: str) -> pl.Expr:
 
 q = (
     dataset.lazy()
-    .groupby("state")
+    .group_by("state")
     .agg(
         avg_birthday("M"),
         avg_birthday("F"),
@@ -110,7 +110,7 @@ def get_person() -> pl.Expr:
 q = (
     dataset.lazy()
     .sort("birthday", descending=True)
-    .groupby("state")
+    .group_by("state")
     .agg(
         get_person().first().alias("youngest"),
         get_person().last().alias("oldest"),
@@ -131,7 +131,7 @@ def get_person() -> pl.Expr:
 q = (
     dataset.lazy()
     .sort("birthday", descending=True)
-    .groupby("state")
+    .group_by("state")
     .agg(
         get_person().first().alias("youngest"),
         get_person().last().alias("oldest"),
@@ -153,7 +153,7 @@ def get_person() -> pl.Expr:
 q = (
     dataset.lazy()
     .sort("birthday", descending=True)
-    .groupby("state")
+    .group_by("state")
     .agg(
         get_person().first().alias("youngest"),
         get_person().last().alias("oldest"),

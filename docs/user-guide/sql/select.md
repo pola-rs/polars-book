@@ -20,10 +20,10 @@ Here, `column1`, `column2`, etc. are the columns that you want to select from th
 
 The `GROUP BY` statement is used to group rows in a table by one or more columns and compute aggregate functions on each group.
 
-{{code_block('user-guide/sql/sql_select','groupby',['SQLexecute'])}}
+{{code_block('user-guide/sql/sql_select','group_by',['SQLexecute'])}}
 
 ```python exec="on" result="text" session="user-guide/sql/select"
---8<-- "python/user-guide/sql/sql_select.py:groupby"
+--8<-- "python/user-guide/sql/sql_select.py:group_by"
 ```
 
 ### ORDER BY

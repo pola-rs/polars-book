@@ -1,10 +1,9 @@
 use polars::prelude::*;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    
     // --8<-- [start:dataframe]
-    use std::io::Cursor;
     use reqwest::blocking::Client;
+    use std::io::Cursor;
 
     let url = "https://theunitedstates.io/congress-legislators/legislators-historical.csv";
 
@@ -31,7 +30,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let df = dataset
         .clone()
         .lazy()
-        .groupby(["first_name"])
+        .group_by(["first_name"])
         .agg([count(), col("gender").list(), col("last_name").first()])
         .sort(
             "count",
@@ -50,7 +49,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let df = dataset
         .clone()
         .lazy()
-        .groupby(["state"])
+        .group_by(["state"])
         .agg([
             (col("party").eq(lit("Anti-Administration")))
                 .sum()
@@ -76,7 +75,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let df = dataset
         .clone()
         .lazy()
-        .groupby(["state", "party"])
+        .group_by(["state", "party"])
         .agg([col("party").count().alias("count")])
         .filter(
             col("party")
@@ -111,7 +110,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let df = dataset
         .clone()
         .lazy()
-        .groupby(["state"])
+        .group_by(["state"])
         .agg([
             avg_birthday("M"),
             avg_birthday("F"),
@@ -139,7 +138,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 nulls_last: true,
             },
         )
-        .groupby(["state"])
+        .group_by(["state"])
         .agg([
             get_person().first().alias("youngest"),
             get_person().last().alias("oldest"),
@@ -161,7 +160,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 nulls_last: true,
             },
         )
-        .groupby(["state"])
+        .group_by(["state"])
         .agg([
             get_person().first().alias("youngest"),
             get_person().last().alias("oldest"),
@@ -184,7 +183,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 nulls_last: true,
             },
         )
-        .groupby(["state"])
+        .group_by(["state"])
         .agg([
             get_person().first().alias("youngest"),
             get_person().last().alias("oldest"),

@@ -2,7 +2,7 @@
 
 ## Grouping by fixed windows
 
-We can calculate temporal statistics using `groupby_dynamic` to group rows into days/months/years etc.
+We can calculate temporal statistics using `group_by_dynamic` to group rows into days/months/years etc.
 
 ### Annual average example
 
@@ -17,22 +17,22 @@ In following simple example we calculate the annual average closing price of App
 
 !!! info
 
-    The dates are sorted in ascending order - if they are not sorted in this way the `groupby_dynamic` output will not be correct!
+    The dates are sorted in ascending order - if they are not sorted in this way the `group_by_dynamic` output will not be correct!
 
-To get the annual average closing price we tell `groupby_dynamic` that we want to:
+To get the annual average closing price we tell `group_by_dynamic` that we want to:
 
 - group by the `Date` column on an annual (`1y`) basis
 - take the mean values of the `Close` column for each year:
 
-{{code_block('user-guide/transformations/time-series/rolling','groupby',['groupby_dynamic'])}}
+{{code_block('user-guide/transformations/time-series/rolling','group_by',['group_by_dynamic'])}}
 
 The annual average closing price is then:
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/rolling"
---8<-- "python/user-guide/transformations/time-series/rolling.py:groupby"
+--8<-- "python/user-guide/transformations/time-series/rolling.py:group_by"
 ```
 
-### Parameters for `groupby_dynamic`
+### Parameters for `group_by_dynamic`
 
 A dynamic window is defined by a:
 
@@ -90,29 +90,29 @@ data points that in these gaps will not be a member of any group
 The `truncate` parameter is a Boolean variable that determines what datetime value is associated with each group in the output. In the example above the first data point is on 23rd February 1981. If `truncate = True` (the default) then the date for the first year in the annual average is 1st January 1981. However, if `truncate = False` then the date for the first year in the annual average is the date of the first data point on 23rd February 1981. Note that `truncate` only affects what's shown in the
 `Date` column and does not affect the window boundaries.
 
-### Using expressions in `groupby_dynamic`
+### Using expressions in `group_by_dynamic`
 
-We aren't restricted to using simple aggregations like `mean` in a groupby operation - we can use the full range of expressions available in Polars.
+We aren't restricted to using simple aggregations like `mean` in a group by operation - we can use the full range of expressions available in Polars.
 
 In the snippet below we create a `date range` with every **day** (`"1d"`) in 2021 and turn this into a `DataFrame`.
 
-Then in the `groupby_dynamic` we create dynamic windows that start every **month** (`"1mo"`) and have a window length of `1` month. The values that match these dynamic windows are then assigned to that group and can be aggregated with the powerful expression API.
+Then in the `group_by_dynamic` we create dynamic windows that start every **month** (`"1mo"`) and have a window length of `1` month. The values that match these dynamic windows are then assigned to that group and can be aggregated with the powerful expression API.
 
-Below we show an example where we use **groupby_dynamic** to compute:
+Below we show an example where we use **group_by_dynamic** to compute:
 
 - the number of days until the end of the month
 - the number of days in a month
 
-{{code_block('user-guide/transformations/time-series/rolling','groupbydyn',['groupby_dynamic','explode','date_range'])}}
+{{code_block('user-guide/transformations/time-series/rolling','group_by_dyn',['group_by_dynamic','explode','date_range'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/rolling"
---8<-- "python/user-guide/transformations/time-series/rolling.py:groupbydyn"
+--8<-- "python/user-guide/transformations/time-series/rolling.py:group_by_dyn"
 ```
 
 ## Grouping by rolling windows
 
-The rolling groupby, `groupby_rolling`, is another entrance to the `groupby` context. But different from the `groupby_dynamic` the windows are
-not fixed by a parameter `every` and `period`. In a rolling groupby the windows are not fixed at all! They are determined
+The rolling group by, `group_by_rolling`, is another entrance to the `group_by` context. But different from the `group_by_dynamic` the windows are
+not fixed by a parameter `every` and `period`. In a rolling group by, the windows are not fixed at all! They are determined
 by the values in the `index_column`.
 
 So imagine having a time column with the values `{2021-01-06, 2021-01-10}` and a `period="5d"` this would create the following
@@ -126,23 +126,23 @@ windows:
              |----------|
 ```
 
-Because the windows of a rolling groupby are always determined by the values in the `DataFrame` column, the number of
+Because the windows of a rolling group by are always determined by the values in the `DataFrame` column, the number of
 groups is always equal to the original `DataFrame`.
 
-## Combining Groupby's
+## Combining group by operations
 
-Rolling and dynamic groupby's can be combined with normal groupby operations.
+Rolling and dynamic group by operations can be combined with normal group by operations.
 
-Below is an example with a dynamic groupby.
+Below is an example with a dynamic group by.
 
-{{code_block('user-guide/transformations/time-series/rolling','groupbyroll',['DataFrame'])}}
+{{code_block('user-guide/transformations/time-series/rolling','group_by_roll',['DataFrame'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/rolling"
---8<-- "python/user-guide/transformations/time-series/rolling.py:groupbyroll"
+--8<-- "python/user-guide/transformations/time-series/rolling.py:group_by_roll"
 ```
 
-{{code_block('user-guide/transformations/time-series/rolling','groupbydyn2',['groupby_dynamic'])}}
+{{code_block('user-guide/transformations/time-series/rolling','group_by_dyn2',['group_by_dynamic'])}}
 
 ```python exec="on" result="text" session="user-guide/transformations/ts/rolling"
---8<-- "python/user-guide/transformations/time-series/rolling.py:groupbydyn2"
+--8<-- "python/user-guide/transformations/time-series/rolling.py:group_by_dyn2"
 ```

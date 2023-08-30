@@ -43,8 +43,8 @@ print(df)
 # --8<-- [end:with_columns]
 
 
-# --8<-- [start:groupby]
-out = df.groupby("groups").agg(
+# --8<-- [start:group_by]
+out = df.group_by("groups").agg(
     pl.sum("nrs"),  # sum nrs by groups
     pl.col("random").count().alias("count"),  # count group members
     # sum random where name != null
@@ -52,4 +52,4 @@ out = df.groupby("groups").agg(
     pl.col("names").reverse().alias("reversed names"),
 )
 print(out)
-# --8<-- [end:groupby]
+# --8<-- [end:group_by]

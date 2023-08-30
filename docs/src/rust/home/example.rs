@@ -6,7 +6,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .has_header(true)
         .finish()?
         .filter(col("sepal_length").gt(lit(5)))
-        .groupby(vec![col("species")])
+        .group_by(vec![col("species")])
         .agg([col("*").sum()]);
 
     let df = q.collect();

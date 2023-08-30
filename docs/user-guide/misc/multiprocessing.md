@@ -9,7 +9,7 @@ TLDR: if you find that using Python's built-in `multiprocessing` module together
 Before we dive into the details, it is important to emphasize that Polars has been built from the start to use all your CPU cores.
 It does this by executing computations which can be done in parallel in separate threads.
 For example, requesting two expressions in a `select` statement can be done in parallel, with the results only being combined at the end.
-Another example is aggregating a value within groups using `groupby().agg(<expr>)`, each group can be evaluated separately.
+Another example is aggregating a value within groups using `group_by().agg(<expr>)`, each group can be evaluated separately.
 It is very unlikely that the `multiprocessing` module can improve your code performance in these cases.
 
 See [the optimizations section](../lazy/optimizations.md) for more optimizations.

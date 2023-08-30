@@ -4,7 +4,7 @@ import polars as pl
 
 df = pl.read_csv("docs/data/iris.csv")
 df_small = df.filter(pl.col("sepal_length") > 5)
-df_agg = df_small.groupby("species").agg(pl.col("sepal_width").mean())
+df_agg = df_small.group_by("species").agg(pl.col("sepal_width").mean())
 print(df_agg)
 # --8<-- [end:eager]
 
@@ -12,7 +12,7 @@ print(df_agg)
 q = (
     pl.scan_csv("docs/data/iris.csv")
     .filter(pl.col("sepal_length") > 5)
-    .groupby("species")
+    .group_by("species")
     .agg(pl.col("sepal_width").mean())
 )
 

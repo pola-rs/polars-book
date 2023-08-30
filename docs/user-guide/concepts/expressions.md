@@ -12,8 +12,8 @@ Expressions are at the core of many data science operations:
 
 However, expressions are also used within other operations:
 
-- taking the mean of a group in a `groupby` operation
-- calculating the size of groups in a `groupby` operation
+- taking the mean of a group in a `group_by` operation
+- calculating the size of groups in a `group_by` operation
 - taking the sum horizontally across columns
 
 `Polars` performs these core data transformations very quickly by:

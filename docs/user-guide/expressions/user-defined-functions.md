@@ -17,8 +17,8 @@ These functions have an important distinction in how they operate and consequent
 
 A `map` passes the `Series` backed by the `expression` as is.
 
-`map` follows the same rules in both the `select` and the `groupby` context, this will
-mean that the `Series` represents a column in a `DataFrame`. Note that in the `groupby` context, that column is not yet
+`map` follows the same rules in both the `select` and the `group_by` context, this will
+mean that the `Series` represents a column in a `DataFrame`. Note that in the `group_by` context, that column is not yet
 aggregated!
 
 Use cases for `map` are for instance passing the `Series` in an expression to a third party library. Below we show how
@@ -41,7 +41,7 @@ df.with_columns([
 ])
 ```
 
-Use cases for `map` in the `groupby` context are slim. They are only used for performance reasons, but can quite easily lead to incorrect results. Let me explain why.
+Use cases for `map` in the `group_by` context are slim. They are only used for performance reasons, but can quite easily lead to incorrect results. Let me explain why.
 
 {{code_block('user-guide/expressions/user-defined-functions','dataframe',['map'])}}
 
@@ -50,7 +50,7 @@ Use cases for `map` in the `groupby` context are slim. They are only used for pe
 --8<-- "python/user-guide/expressions/user-defined-functions.py:dataframe"
 ```
 
-In the snippet above we groupby the `"keys"` column. That means we have the following groups:
+In the snippet above we group by the `"keys"` column. That means we have the following groups:
 
 ```c
 "a" -> [10, 7]
@@ -86,7 +86,7 @@ Ouch.. we clearly get the wrong results here. Group `"b"` even got a value from 
 
 This went horribly wrong, because the `map` applies the function before we aggregate! So that means the whole column `[10, 7, 1`\] got shifted to `[null, 10, 7]` and was then aggregated.
 
-So my advice is to never use `map` in the `groupby` context unless you know you need it and know what you are doing.
+So my advice is to never use `map` in the `group_by` context unless you know you need it and know what you are doing.
 
 ## To `apply`
 
@@ -95,7 +95,7 @@ Luckily we can fix previous example with `apply`. `apply` works on the smallest 
 That is:
 
 - `select context` -> single elements
-- `groupby context` -> single groups
+- `group by context` -> single groups
 
 So with `apply` we should be able to fix our example:
 

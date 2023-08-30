@@ -9,7 +9,7 @@ print(df.head())
 # --8<-- [end:pokemon]
 
 
-# --8<-- [start:groupby]
+# --8<-- [start:group_by]
 out = df.select(
     "Type 1",
     "Type 2",
@@ -21,7 +21,7 @@ out = df.select(
     pl.col("Attack").mean().alias("avg_attack"),
 )
 print(out)
-# --8<-- [end:groupby]
+# --8<-- [end:group_by]
 
 # --8<-- [start:operations]
 filtered = df.filter(pl.col("Type 2") == "Psychic").select(
