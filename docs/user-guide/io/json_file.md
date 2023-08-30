@@ -1,6 +1,6 @@
 # JSON files
 
-## Read & Write
+## Read & write
 
 ### JSON
 

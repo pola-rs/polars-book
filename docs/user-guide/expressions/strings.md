@@ -15,7 +15,7 @@ The `str` namespace can be accessed through the `.str` attribute of a column wit
 --8<-- "python/user-guide/expressions/strings.py:df"
 ```
 
-#### String Parsing
+#### String parsing
 
 `Polars` offers multiple methods for checking and parsing elements of a string. Firstly, we can use the `contains` method to check whether a given pattern exists within a substring. Subsequently, we can extract these patterns and replace them using other methods, which will be demonstrated in upcoming examples.
 
@@ -57,6 +57,6 @@ We have discussed two methods for pattern matching and extraction thus far, and 
 --8<-- "python/user-guide/expressions/strings.py:replace"
 ```
 
-#### API Documentation
+#### API documentation
 
 In addition to the examples covered above, Polars offers various other string manipulation methods for tasks such as formatting, stripping, splitting, and more. To explore these additional methods, you can go to the API documentation of your chosen programming language for Polars.

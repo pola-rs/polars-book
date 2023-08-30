@@ -1,6 +1,6 @@
 # CSV
 
-## Read & Write
+## Read & write
 
 Reading a CSV file should look familiar:
 

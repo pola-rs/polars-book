@@ -1,4 +1,4 @@
-# Column Selections
+# Column selections
 
 Let's create a dataset to use in this section:
 
@@ -9,7 +9,7 @@ Let's create a dataset to use in this section:
 --8<-- "python/user-guide/expressions/column-selections.py:selectors_df"
 ```
 
-## Expression Expansion
+## Expression expansion
 
 As we've seen in the previous section, we can select specific columns using the `pl.col` method. It can also select multiple columns - both as a means of convenience, and to _expand_ the expression.
 

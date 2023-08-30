@@ -1,4 +1,4 @@
-# Basic Operators
+# Basic operators
 
 This section describes how to use basic operators (e.g. addition, subtraction) in conjunction with Expressions. We will provide various examples using different themes in the context of the following dataframe.
 

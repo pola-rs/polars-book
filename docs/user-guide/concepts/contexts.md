@@ -49,7 +49,7 @@ In the `filter` context you filter the existing dataframe based on arbitrary exp
 --8<-- "python/user-guide/concepts/contexts.py:filter"
 ```
 
-## Group by / Aggregation
+## Group by / aggregation
 
 In the `group_by` context, expressions work on groups and thus may yield results of any length (a group may have many members).
 
