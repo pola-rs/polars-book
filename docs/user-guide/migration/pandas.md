@@ -104,8 +104,8 @@ Working in lazy evaluation mode is straightforward and should be your default in
 We can run in lazy mode by either using an implicitly lazy function (such as `scan_csv`)
 or explicitly using the `lazy` method.
 
-Take the following simple example where we read a CSV file from disk and do a groupby.
-The CSV file has numerous columns but we just want to do a groupby on one of the id
+Take the following simple example where we read a CSV file from disk and do a group by.
+The CSV file has numerous columns but we just want to do a group by on one of the id
 columns (`id1`) and then sum by a value column (`v1`). In `Pandas` this would be:
 
 ```python
@@ -119,7 +119,7 @@ function `scan_csv`:
 
 ```python
 df = pl.scan_csv(csv_file)
-grouped_df = df.groupby('id1').agg(pl.col('v1').sum()).collect()
+grouped_df = df.group_by('id1').agg(pl.col('v1').sum()).collect()
 ```
 
 `Polars` optimizes this query by identifying that only the `id1` and `v1` columns are
@@ -217,7 +217,7 @@ and combine them into a single filter in the optimized plan.
 
 ## `Pandas` transform
 
-The `Pandas` documentation demonstrates an operation on a groupby called `transform`. In
+The `Pandas` documentation demonstrates an operation on a group by called `transform`. In
 this case we have a dataframe `df` and we want a new column showing the number of rows
 in each group.
 
@@ -232,7 +232,7 @@ df = pd.DataFrame({
 df["size"] = df.groupby("c")["type"].transform(len)
 ```
 
-Here `Pandas` does a groupby on `"c"`, takes column `"type"`, computes the group length
+Here `Pandas` does a group by on `"c"`, takes column `"type"`, computes the group length
 and then joins the result back to the original `DataFrame` producing:
 
 ```

@@ -5,7 +5,7 @@ python:
   select: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.select.html
   filter: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.filter.html
   with_columns: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.with_columns.html
-  groupby: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.groupby.html
+  group_by: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.group_by.html
   join: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.join.html
   hstack: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.hstack.html
   read_csv: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.read_csv.html
@@ -144,7 +144,7 @@ python:
     feature_flags: ['timezone']
   date_range: https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.date_range.html
   upsample: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.upsample.html
-  groupby_dynamic: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.groupby_dynamic.html
+  group_by_dynamic: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.group_by_dynamic.html
   explode: https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.explode.html
   cast: https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.Expr.cast.html
   np.log:
@@ -175,7 +175,7 @@ rust:
   select: https://pola-rs.github.io/polars/docs/rust/dev/polars_lazy/frame/struct.LazyFrame.html#method.select
   filter: https://pola-rs.github.io/polars/docs/rust/dev/polars_lazy/frame/struct.LazyFrame.html#method.filter
   with_columns: https://pola-rs.github.io/polars/docs/rust/dev/polars_lazy/frame/struct.LazyFrame.html#method.with_columns
-  groupby: https://pola-rs.github.io/polars/docs/rust/dev/polars_lazy/frame/struct.LazyFrame.html#method.groupby
+  group_by: https://pola-rs.github.io/polars/docs/rust/dev/polars_lazy/frame/struct.LazyFrame.html#method.group_by
   join: https://pola-rs.github.io/polars/docs/rust/dev/polars_core/frame/hash_join/index.html
   hstack: https://pola-rs.github.io/polars/docs/rust/dev/polars_core/frame/struct.DataFrame.html#method.hstack
   SQLContext: https://pola-rs.github.io/polars/py-polars/html/reference/sql.html

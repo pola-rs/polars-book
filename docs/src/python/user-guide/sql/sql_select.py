@@ -25,7 +25,7 @@ ctx = pl.SQLContext(population=df, eager_execution=True)
 print(ctx.execute("SELECT * FROM population"))
 # --8<-- [end:df]
 
-# --8<-- [start:groupby]
+# --8<-- [start:group_by]
 result = ctx.execute(
     """
         SELECT country, AVG(population) as avg_population
@@ -34,7 +34,7 @@ result = ctx.execute(
     """
 )
 print(result)
-# --8<-- [end:groupby]
+# --8<-- [end:group_by]
 
 
 # --8<-- [start:orderby]

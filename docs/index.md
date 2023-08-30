@@ -50,7 +50,7 @@ See the results in h2oai's [db-benchmark](https://duckdblabs.github.io/db-benchm
 
 ## Example
 
-{{code_block('home/example','example',['scan_csv','filter','groupby','collect'])}}
+{{code_block('home/example','example',['scan_csv','filter','group_by','collect'])}}
 
 ## Sponsors
 

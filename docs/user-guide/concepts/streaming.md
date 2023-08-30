@@ -14,7 +14,7 @@ Streaming is supported for many operations including:
 
 - `filter`,`slice`,`head`,`tail`
 - `with_columns`,`select`
-- `groupby`
+- `group_by`
 - `join`
 - `sort`
 - `explode`,`melt`

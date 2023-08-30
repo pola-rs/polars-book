@@ -6,7 +6,7 @@ A context, as implied by the name, refers to the context in which an expression 
 
 1. Selection: `df.select([..])`, `df.with_columns([..])`
 1. Filtering: `df.filter()`
-1. Groupby / Aggregation: `df.groupby(..).agg([..])`
+1. Group by / Aggregation: `df.group_by(..).agg([..])`
 
 The examples below are performed on the following `DataFrame`:
 
@@ -49,16 +49,16 @@ In the `filter` context you filter the existing dataframe based on arbitrary exp
 --8<-- "python/user-guide/concepts/contexts.py:filter"
 ```
 
-## Groupby / Aggregation
+## Group by / Aggregation
 
-In the `groupby` context expressions work on groups and thus may yield results of any length (a group may have many members).
+In the `group_by` context, expressions work on groups and thus may yield results of any length (a group may have many members).
 
-{{code_block('user-guide/concepts/contexts','groupby',['groupby'])}}
+{{code_block('user-guide/concepts/contexts','group_by',['group_by'])}}
 
 ```python exec="on" result="text" session="user-guide/contexts"
---8<-- "python/user-guide/concepts/contexts.py:groupby"
+--8<-- "python/user-guide/concepts/contexts.py:group_by"
 ```
 
-As you can see from the result all expressions are applied to the group defined by the `groupby` context. Besides the standard `groupby`, `groupby_dynamic`, and `groupby_rolling` are also entrances to the groupby context.
+As you can see from the result all expressions are applied to the group defined by the `group_by` context. Besides the standard `group_by`, `group_by_dynamic`, and `group_by_rolling` are also entrances to the group by context.
 
 [^1]: There are additional List and SQL contexts which are covered later in this guide. But for simplicity, we leave them out of scope for now.

@@ -117,7 +117,7 @@ The opt-in features are:
     - gzip
 
 - `DataFrame` operations:
-  - `dynamic_groupby` - Groupby based on a time window instead of predefined keys.
+  - `dynamic_group_by` - Group by based on a time window instead of predefined keys.
     Also activates rolling window group by operations.
   - `sort_multiple` - Allow sorting a `DataFrame` on multiple columns
   - `rows` - Create `DataFrame` from rows and extract rows from `DataFrames`.
@@ -125,7 +125,7 @@ The opt-in features are:
   - `join_asof` - Join ASOF, to join on nearest keys instead of exact equality match.
   - `cross_join` - Create the cartesian product of two DataFrames.
   - `semi_anti_join` - SEMI and ANTI joins.
-  - `groupby_list` - Allow groupby operation on keys of type List.
+  - `group_by_list` - Allow group by operation on keys of type List.
   - `row_hash` - Utility to hash DataFrame rows to UInt64Chunked
   - `diagonal_concat` - Concat diagonally thereby combining different schemas.
   - `horizontal_concat` - Concat horizontally and extend with null values if lengths don't match

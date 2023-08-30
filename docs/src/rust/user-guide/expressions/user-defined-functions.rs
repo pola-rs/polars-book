@@ -1,7 +1,6 @@
 use polars::prelude::*;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-
     // --8<-- [start:dataframe]
     let df = df!(
         "keys" => &["a", "a", "b"],
@@ -10,7 +9,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let out = df
         .lazy()
-        .groupby(["keys"])
+        .group_by(["keys"])
         .agg([
             col("values")
                 .map(|s| Ok(s.shift(1)), GetOutput::default())
@@ -26,7 +25,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let out = df
         .clone()
         .lazy()
-        .groupby([col("keys")])
+        .group_by([col("keys")])
         .agg([
             col("values")
                 .apply(|s| Ok(s.shift(1)), GetOutput::default())
@@ -38,7 +37,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // --8<-- [end:apply]
 
     // --8<-- [start:counter]
-    
+
     // --8<-- [end:counter]
 
     // --8<-- [start:combine]

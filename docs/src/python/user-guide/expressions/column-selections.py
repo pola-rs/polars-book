@@ -49,11 +49,6 @@ out = df.select(pl.col(pl.Int64, pl.UInt32, pl.Boolean).n_unique())
 print(out)
 # --8<-- [end:expansion_by_dtype]
 
-# --8<-- [start:expansion_by_dtype]
-out = df.select(pl.col(pl.Int64, pl.UInt32, pl.Boolean).n_unique())
-print(out)
-# --8<-- [end:expansion_by_dtype]
-
 # --8<-- [start:selectors_intro]
 import polars.selectors as cs
 

@@ -14,4 +14,4 @@ Here is a non-complete overview of optimizations done by polars, what they do an
 | Simplify expressions       | Various optimizations, such as constant folding and replacing expensive operations with faster alternatives. | until fixed point             |
 | Join ordering              | Estimates the branches of joins that should be executed first in order to reduce memory pressure.            | 1 time                        |
 | Type coercion              | Coerce types such that operations succeed and run on minimal required memory.                                | until fixed point             |
-| Cardinality estimation     | Estimates cardinality in order to determine optimal groupby strategy.                                        | 0/n times; dependent on query |
+| Cardinality estimation     | Estimates cardinality in order to determine optimal group by strategy.                                       | 0/n times; dependent on query |

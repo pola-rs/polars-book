@@ -1,11 +1,9 @@
 use polars::prelude::*;
 
-
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    
     // --8<-- [start:dataframe]
     use rand::{thread_rng, Rng};
-    
+
     let mut arr = [0f64; 5];
     thread_rng().fill(&mut arr);
 
@@ -19,7 +17,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("{}", &df);
     // --8<-- [end:dataframe]
 
-// --8<-- [start:select]
+    // --8<-- [start:select]
     let out = df
         .clone()
         .lazy()
@@ -31,14 +29,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         ])
         .collect()?;
     println!("{}", out);
-// --8<-- [end:select]
+    // --8<-- [end:select]
 
-// --8<-- [start:filter]
+    // --8<-- [start:filter]
     let out = df.clone().lazy().filter(col("nrs").gt(lit(2))).collect()?;
     println!("{}", out);
-// --8<-- [end:filter]
+    // --8<-- [end:filter]
 
-// --8<-- [start:with_columns]
+    // --8<-- [start:with_columns]
     let out = df
         .clone()
         .lazy()
@@ -48,12 +46,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         ])
         .collect()?;
     println!("{}", out);
-// --8<-- [end:with_columns]
+    // --8<-- [end:with_columns]
 
-    // --8<-- [start:groupby]
+    // --8<-- [start:group_by]
     let out = df
         .lazy()
-        .groupby([col("groups")])
+        .group_by([col("groups")])
         .agg([
             sum("nrs"),                           // sum nrs by groups
             col("random").count().alias("count"), // count group members
@@ -66,6 +64,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         ])
         .collect()?;
     println!("{}", out);
-    // --8<-- [end:groupby]
+    // --8<-- [end:group_by]
     Ok(())
 }

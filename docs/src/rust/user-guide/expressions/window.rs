@@ -1,11 +1,10 @@
 use polars::prelude::*;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    
     // --8<-- [start:pokemon]
     use polars::prelude::*;
     use reqwest::blocking::Client;
-    
+
     let data: Vec<u8> = Client::new()
         .get("https://gist.githubusercontent.com/ritchie46/cac6b337ea52281aa23c049250a4ff03/raw/89a957ff3919d90e6ef2d34235e6bf22304f3366/pokemon.csv")
         .send()?
@@ -20,7 +19,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("{}", df);
     // --8<-- [end:pokemon]
 
-    // --8<-- [start:groupby]
+    // --8<-- [start:group_by]
     let out = df
         .clone()
         .lazy()
@@ -40,7 +39,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .collect()?;
 
     println!("{}", out);
-    // --8<-- [end:groupby]
+    // --8<-- [end:group_by]
 
     // --8<-- [start:operations]
     let filtered = df
@@ -56,7 +55,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // --8<-- [start:sort]
     let out = filtered
         .lazy()
-        .with_columns([cols(["Name", "Speed"]).sort_by(["Speed"],[true]).over(["Type 1"])])
+        .with_columns([cols(["Name", "Speed"])
+            .sort_by(["Speed"], [true])
+            .over(["Type 1"])])
         .collect()?;
     println!("{}", out);
     // --8<-- [end:sort]
@@ -84,10 +85,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // This is the fastest method to do things over groups when the groups are sorted
     (col("x").sum() * col("y"))
-        .list()
-        .over([col("groups")])
-        .flatten()
-        .alias("x3");
+    .list()
+    .over([col("groups")])
+    .flatten()
+    .alias("x3");
     // --8<-- [end:rules]
 
     // --8<-- [start:examples]
