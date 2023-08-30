@@ -1,10 +1,14 @@
 # User Defined functions
 
-You should be convinced by now that polar expressions are so powerful and flexible that there is much less need for custom python functions
+!!! warning "Not updated for Python Polars `0.19.0`"
+
+    This section of the user guide still needs to be updated for the latest Polars release.
+
+You should be convinced by now that Polars expressions are so powerful and flexible that there is much less need for custom Python functions
 than in other libraries.
 
 Still, you need to have the power to be able to pass an expression's state to a third party library or apply your black box function
-over data in polars.
+over data in Polars.
 
 For this we provide the following expressions:
 
