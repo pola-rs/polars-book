@@ -173,9 +173,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .lazy()
         .select([
             col("date").dt().strftime("%Y-%m-%d"),
-            col("string")
-                .str()
-                .strptime(DataType::Date, StrptimeOptions::default()),
+            col("string").str().strptime(
+                DataType::Datetime(TimeUnit::Microseconds, None),
+                StrptimeOptions::default(),
+            ),
         ])
         .collect()?;
     println!("{}", &out);
