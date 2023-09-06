@@ -1,8 +1,8 @@
 
-use polars::prelude::*;
 fn main() -> Result<(), Box<dyn std::error::Error>>{
     // --8<-- [start:series]
-    use chrono::prelude::*;
+    use polars::prelude::*;
+    use chrono::prelude::*; // This will be needed for the exercise below:
 
     let s = Series::new("a", [1, 2, 3, 4, 5]);
     println!("{}", s);
@@ -50,7 +50,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>>{
     // --8<-- [end:sample]
     
     // --8<-- [start:describe]
-    println!("{}", df.describe(None));
+    println!("{:?}", df.describe(None));
     // --8<-- [end:describe]
     Ok(())
 }
