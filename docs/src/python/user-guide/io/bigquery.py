@@ -21,7 +21,7 @@ from google.cloud import bigquery
 
 client = bigquery.Client()
 
-# write dataframe to stream as parquet file; does not hit disk
+# Write dataframe to stream as parquet file; does not hit disk
 with io.BytesIO() as stream:
     df.write_parquet(stream)
     stream.seek(0)
