@@ -30,7 +30,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let df = dataset
         .clone()
         .lazy()
-        .group_by(["first_name"])
+        .groupby(["first_name"])
         .agg([count(), col("gender").list(), col("last_name").first()])
         .sort(
             "count",
@@ -49,7 +49,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let df = dataset
         .clone()
         .lazy()
-        .group_by(["state"])
+        .groupby(["state"])
         .agg([
             (col("party").eq(lit("Anti-Administration")))
                 .sum()
@@ -75,7 +75,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let df = dataset
         .clone()
         .lazy()
-        .group_by(["state", "party"])
+        .groupby(["state", "party"])
         .agg([col("party").count().alias("count")])
         .filter(
             col("party")
@@ -110,7 +110,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let df = dataset
         .clone()
         .lazy()
-        .group_by(["state"])
+        .groupby(["state"])
         .agg([
             avg_birthday("M"),
             avg_birthday("F"),
@@ -138,7 +138,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 nulls_last: true,
             },
         )
-        .group_by(["state"])
+        .groupby(["state"])
         .agg([
             get_person().first().alias("youngest"),
             get_person().last().alias("oldest"),
@@ -160,7 +160,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 nulls_last: true,
             },
         )
-        .group_by(["state"])
+        .groupby(["state"])
         .agg([
             get_person().first().alias("youngest"),
             get_person().last().alias("oldest"),
@@ -183,7 +183,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 nulls_last: true,
             },
         )
-        .group_by(["state"])
+        .groupby(["state"])
         .agg([
             get_person().first().alias("youngest"),
             get_person().last().alias("oldest"),

@@ -9,7 +9,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let out = df
         .lazy()
-        .group_by(["keys"])
+        .groupby(["keys"])
         .agg([
             col("values")
                 .map(|s| Ok(s.shift(1)), GetOutput::default())
@@ -25,7 +25,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let out = df
         .clone()
         .lazy()
-        .group_by([col("keys")])
+        .groupby([col("keys")])
         .agg([
             col("values")
                 .apply(|s| Ok(s.shift(1)), GetOutput::default())

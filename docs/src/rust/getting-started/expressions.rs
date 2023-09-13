@@ -101,12 +101,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // --8<-- [end:dataframe2]
 
     // --8<-- [start:group_by]
-    let out = df2
-        .clone()
-        .lazy()
-        .group_by(["y"])
-        .agg([count()])
-        .collect()?;
+    let out = df2.clone().lazy().groupby(["y"]).agg([count()]).collect()?;
     println!("{}", out);
     // --8<-- [end:group_by]
 
@@ -114,7 +109,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let out = df2
         .clone()
         .lazy()
-        .group_by(["y"])
+        .groupby(["y"])
         .agg([col("*").count().alias("count"), col("*").sum().alias("sum")])
         .collect()?;
     println!("{}", out);

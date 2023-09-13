@@ -51,7 +51,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // --8<-- [start:group_by]
     let out = df
         .lazy()
-        .group_by([col("groups")])
+        .groupby([col("groups")])
         .agg([
             sum("nrs"),                           // sum nrs by groups
             col("random").count().alias("count"), // count group members
