@@ -14,7 +14,7 @@ In order to serve the books run `make serve`. This will run all the python examp
 
 ## Deployment
 
-Deployment of the book is done using Github Pages and Github Workflows. The book is automatically deployed on each push to master / main branch. There are a number of checks in the CI pipeline to avoid non-working examples:
+Deployment of the book is done using Github Pages and Github Workflows. The book is automatically deployed on each push to the main branch. There are a number of checks in the CI pipeline to avoid non-working examples:
 
 - Run all python examples, fail on any errors
 - Check all links in markdown
