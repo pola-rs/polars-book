@@ -1,3 +1,12 @@
+> [!WARNING]
+>
+> **The user guide has been moved.**
+>
+> It is now part of the [main Polars repository](https://github.com/pola-rs/polars).
+> Please open [new issues](https://github.com/pola-rs/polars/issues/new?assignees=&labels=documentation&projects=&template=documentation.yml) there.
+>
+> Find the user guide at its new location [here](https://pola-rs.github.io/polars/).
+
 # Polars Book
 
 This repo contains the [User Guide](https://pola-rs.github.io/polars-book/user-guide/index.html) for the [Polars DataFrame library](https://github.com/pola-rs/polars).
